@@ -1,0 +1,30 @@
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const assert = require('assert');
+const root = path.join(__dirname, '..', 'prototype');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1].replace(/    loadData\(\)\.catch\(err => \{[^\n]+\}\);/, '');
+const ctx = new Proxy({ measureText: s => ({width:s.length*7}), createLinearGradient: () => ({addColorStop(){}}) }, {get:(t,k)=>k in t?t[k]:()=>{},set:(t,k,v)=>(t[k]=v,true)});
+const els = {};
+const el = id => els[id] ||= { hidden:false, textContent:'', addEventListener(){}, getContext(){return ctx;} };
+const map = JSON.parse(fs.readFileSync(path.join(root, 'data/opening_map.json'), 'utf8'));
+const sandbox = vm.createContext({document:{getElementById:el},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,map});
+vm.runInContext(code, sandbox);
+vm.runInContext('assets.map=map; reset()', sandbox);
+for (const npc of map.entities.villagers) {
+  assert(fs.existsSync(path.join(root,'assets',npc.asset)), npc.asset);
+  sandbox.npc = npc;
+  assert.equal(vm.runInContext('blocked(npc.x,npc.y)',sandbox), true);
+  vm.runInContext('state.player.x=npc.x; state.player.y=npc.y+1; interact()',sandbox);
+  assert.equal(vm.runInContext('state.activeNpc.id',sandbox),npc.id);
+  vm.runInContext('drawDialogue()',sandbox);
+  for (let i=0; i<npc.dialogue.length; i++) vm.runInContext('interact()',sandbox);
+  assert.equal(vm.runInContext('state.mode',sandbox),'explore');
+  assert.equal(vm.runInContext('state.spokeToElder',sandbox),false);
+}
+vm.runInContext('state.player.x=11; state.player.y=9; interact(); interact(); interact(); interact(); interact()',sandbox);
+assert.equal(vm.runInContext('state.spokeToElder',sandbox),true);
+vm.runInContext('state.player.x=19; state.player.y=10; interact()',sandbox);
+assert.equal(vm.runInContext('state.mode',sandbox),'battle');
+console.log('Village NPCs: assets, collision, distinct dialogue and story gate passed.');

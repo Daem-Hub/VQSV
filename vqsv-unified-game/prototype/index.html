@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VQSV Unified — Lát thử 01</title>
+  <link rel="stylesheet" href="pet_book.css">
+  <link rel="stylesheet" href="world_atlas.css">
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, "Segoe UI", sans-serif; background: #11151b; color: #f1f4f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(ellipse at 50% 0%, #273345, #11151b 68%); }
+    main { width: min(1180px, 100%); }
+    header { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin: 0 0 14px; }
+    h1 { margin: 0; font-size: 22px; letter-spacing: .02em; }
+    header p { margin: 4px 0 0; color: #abb7c7; font-size: 13px; }
+    #status { color: #d7c08a; font-size: 13px; text-align: right; }
+    .layout { display: grid; grid-template-columns: minmax(0, 960px) 190px; gap: 16px; align-items: start; }
+    canvas { width: 100%; aspect-ratio: 4 / 3; display: block; background: #233d20; border: 1px solid #536071; border-radius: 10px; image-rendering: pixelated; image-rendering: crisp-edges; box-shadow: 0 18px 60px #0008; }
+    aside { padding: 14px; background: #1b222c; border: 1px solid #344050; border-radius: 10px; font-size: 13px; color: #c3ccd8; line-height: 1.55; }
+    aside strong { color: #fff; }
+    aside p { margin: 0 0 12px; }
+    .objective { padding: 10px; border: 1px solid #53644b; border-radius: 8px; background: #26372d; }
+    .objective strong { color: #f4dc91; }
+    .game-frame { position: relative; min-width: 0; container-type: inline-size; }
+    #battleControls { position: absolute; inset: auto 1.5% 1.5%; color: #3c3124; }
+    #battleControls:not([hidden]) { display: block; }
+    .battle-command-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; padding: 4px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; box-shadow: inset 0 0 0 2px #f0dca7; }
+    #battleControls .battle-command-row button { min-width: 0; min-height: clamp(40px, 9cqw, 84px); padding: 3px 1px; display: grid; place-items: center; gap: 2px; border: 1px solid #8c7652; border-radius: 4px; background: #f2deb0; color: #433522; font-size: clamp(8px, 1.4cqw, 14px); line-height: 1.05; }
+    .battle-icon { display: grid; place-items: center; width: clamp(18px, 4cqw, 36px); height: clamp(18px, 4cqw, 36px); border: 1px solid #8d714d; border-radius: 5px; background: #bd9763; color: #fff6dc; font-size: clamp(11px, 2.5cqw, 22px); }
+    #battleControls button:hover { filter: brightness(1.08); }
+    #battleControls button:disabled { opacity: .55; cursor: not-allowed; }
+    #fightMenu { position: absolute; left: 0; bottom: calc(100% + 4px); width: min(340px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
+    #fightMenu:not([hidden]) { display: grid; gap: 5px; }
+    .skill-heading { display: flex; justify-content: space-between; padding: 2px 5px; color: #493923; font-size: 11px; font-weight: 700; }
+    #fightMenu button { padding: 7px; display: flex; justify-content: space-between; gap: 4px; font-size: 12px; background: #f5e5bc; color: #433522; }
+    .battle-controls-hint { color: #bfccc2; font-size: 11px; line-height: 1.4; }
+    button { width: 100%; border: 0; border-radius: 7px; padding: 9px 10px; color: #10151b; background: #e7c66c; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: #f2d989; }
+    #error { color: #ffb0a4; white-space: pre-wrap; margin-top: 10px; font-size: 12px; }
+    .save-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+    .save-controls button { background: #b7d4bd; font-size: 12px; }
+    #saveStatus { min-height: 1.2em; color: #c7d7c8; font-size: 11px; line-height: 1.4; }
+    #questJournal { width: min(520px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
+    #questJournal::backdrop { background: #07110dcc; }
+    .journal-content { padding: 20px; }
+    .journal-header { display: flex; align-items: center; justify-content: space-between; }
+    .journal-header h2 { margin: 0; color: #f3dc9a; }
+    #closeQuestJournal { width: 38px; padding: 7px; background: #354f3c; color: white; }
+    .journal-subtitle { margin: 4px 0 16px; color: #b8c8b4; font-size: 13px; }
+    .quest-card { padding: 14px; background: #243d2d; border: 1px solid #58745a; border-radius: 9px; }
+    .quest-card h3 { margin: 0 0 6px; color: #f1deaa; font-size: 16px; }
+    .quest-card p { margin: 0 0 12px; color: #c9d8c8; font-size: 13px; line-height: 1.5; }
+    #questSteps { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+    #questSteps li { padding: 8px; background: #1b3024; border-radius: 5px; font-size: 13px; }
+    #questSteps .current { color: #f8dc86; }
+    #questSteps .done { color: #a2c9a1; }
+    @media (max-width: 850px) { .layout { grid-template-columns: 1fr; } aside { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+    @media (max-width: 560px) { body { padding: 12px; } header { align-items: start; flex-direction: column; } #status { text-align: left; } aside { display: block; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>VQSV Unified · Lát chơi thử 01</h1>
+        <p>Làng biên giới sương mù — khám phá, gặp NPC, chiến đấu cùng Lôi Miêu</p>
+      </div>
+      <div id="status">Đang nạp dữ liệu…</div>
+    </header>
+    <div class="layout">
+      <div class="game-frame">
+        <canvas id="game" width="480" height="360" aria-label="Bản thử game VQSV Unified"></canvas>
+        <div id="battleControls" hidden aria-label="Lệnh chiến đấu">
+          <div id="fightMenu" hidden aria-label="Bảng kỹ năng Lôi Miêu">
+            <div class="skill-heading"><span>Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
+            <button id="attackButton" type="button"><span>1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
+            <button id="basicButton" type="button"><span>3 · Vồ nhanh</span><span>Không giới hạn</span></button>
+            <button id="guardButton" type="button"><span>2 · Phòng thủ</span><span>Không giới hạn</span></button>
+          </div>
+          <div class="battle-command-row">
+            <button id="fightButton" type="button"><span class="battle-icon">✦</span><span>Chiến đấu</span></button>
+            <button id="captureButton" type="button"><span class="battle-icon">◉</span><span>Bắt pet</span></button>
+            <button id="itemButton" type="button"><span class="battle-icon">✚</span><span>Đạo cụ</span></button>
+            <button id="teamButton" type="button"><span class="battle-icon">◆</span><span>Sủng vật</span></button>
+            <button id="shopButton" type="button" disabled title="Cửa hàng chưa được xây dựng"><span class="battle-icon">▣</span><span>Thương điếm</span></button>
+            <button id="fleeButton" type="button"><span class="battle-icon">➜</span><span>Chạy trốn</span></button>
+          </div>
+        </div>
+      </div>
+      <aside>
+        <p class="objective"><strong>Mục tiêu</strong><br><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></p>
+        <p><strong>Di chuyển</strong><br>WASD hoặc phím mũi tên · giữ phím để đi liên tục</p>
+        <p><strong>Tương tác</strong><br>E hoặc Enter khi đứng gần nhân vật/điểm sáng</p>
+        <p><strong>Trong trận</strong><br>1: Điện giật · 2: thủ · 3: Vồ nhanh</p>
+        <p id="battleHint" class="battle-controls-hint" hidden aria-live="polite"></p>
+        <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
+        <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
+        <p id="saveStatus" aria-live="polite"></p>
+        <p><strong>Sổ pet</strong><br>Nhấn P để xem hình, hệ và hoạt ảnh đã trích</p>
+        <button id="openQuestJournal" type="button">Nhật ký nhiệm vụ · J</button>
+        <button id="openWorldAtlas" type="button">Bản đồ thế giới · M</button>
+        <button id="openPetBook" type="button">Mở sổ pet</button>
+        <button id="openSkillBook" type="button">Sổ kỹ năng gốc</button>
+        <button id="restart">Chơi lại từ đầu</button>
+        <div id="error"></div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="worldAtlas" aria-labelledby="worldAtlasTitle">
+    <div class="world-atlas">
+      <header class="world-header"><div><h2 id="worldAtlasTitle">Bản đồ thế giới</h2><p>Hành trình của Kael và Lôi Miêu</p></div><button id="closeWorldAtlas" type="button" aria-label="Đóng bản đồ">✕</button></header>
+      <img class="world-image" src="assets/world/world_map_concept.png" alt="Tranh bản đồ các vùng đất và đại dương">
+      <p class="world-warning">Hình minh họa và vị trí các vùng là thiết kế dự kiến. Hiện chỉ Làng biên giới có map chơi thử; chọn từng vùng để xem các địa điểm.</p>
+      <div class="world-layout"><div id="worldRegions" class="world-regions"></div><section id="worldRegionDetail" class="world-detail" aria-live="polite"></section></div>
+    </div>
+  </dialog>
+  <dialog id="questJournal" aria-labelledby="questTitle">
+    <div class="journal-content">
+      <div class="journal-header"><h2 id="questTitle">Nhật ký nhiệm vụ</h2><button id="closeQuestJournal" type="button" aria-label="Đóng nhật ký">✕</button></div>
+      <p class="journal-subtitle">Chương 1 · Làng biên giới sương mù</p>
+      <section class="quest-card"><h3>Dấu vết trong sương</h3><p>Gặp người gác làng, theo dấu vết lạ và cùng Lôi Miêu bảo vệ ngôi làng.</p><ol id="questSteps"></ol></section>
+      <section class="quest-card" style="margin-top:10px"><h3>Thảo dược cho Lôi Miêu · Nhiệm vụ phụ</h3><p id="herbQuestText"></p></section>
+    </div>
+  </dialog>
+  <dialog id="petBook" aria-labelledby="petBookTitle">
+    <div class="pet-book">
+      <header class="pet-book-header"><div><h2 id="petBookTitle">Sổ pet</h2><p>Khám phá pet và hình ảnh từ hai game</p></div><button id="closePetBook" type="button" aria-label="Đóng sổ pet">✕</button></header>
+      <div class="pet-book-filters">
+        <label>Tìm pet<input id="petSearch" type="search" placeholder="Tên, hệ hoặc mã…" autocomplete="off"></label>
+        <label>Nguồn<select id="petSource"><option value="all">Cả hai game</option><option value="vqsv6">VQSV6</option><option value="vqsv5">VQSV5</option></select></label>
+        <label>Hệ<select id="petElement"><option value="all">Tất cả hệ</option></select></label>
+        <label>Bộ sưu tập<select id="petCollectionFilter"><option value="all">Tất cả pet</option><option value="saved">Pet đã gom</option></select></label>
+        <label>Nguyên liệu gốc<select id="petMaterialFilter"><option value="all">Tất cả nguyên liệu</option></select></label>
+      </div>
+      <p id="petCollectionStatus" class="pet-collection-status" aria-live="polite"></p>
+      <div class="pet-book-layout"><section><p id="petCount" class="pet-count"></p><div id="petGrid" class="pet-grid"></div></section><section id="petDetail" class="pet-detail" aria-live="polite"></section></div>
+    </div>
+  </dialog>
+  <dialog id="skillBook" aria-labelledby="skillBookTitle">
+    <div class="skill-book">
+      <header><div><h2 id="skillBookTitle">Kỹ năng & hiệu ứng gốc</h2><p>Tra cứu tài nguyên hai phiên bản</p></div><button id="closeSkillBook" type="button" aria-label="Đóng sổ kỹ năng">✕</button></header>
+      <div class="skill-filters"><label>Tìm kỹ năng<input id="skillSearch" type="search" placeholder="Tên hoặc mô tả…"></label><label>Nguồn<select id="skillSource"><option value="all">Cả hai game</option><option value="VQSV5">VQSV5</option><option value="VQSV6">VQSV6</option></select></label></div>
+      <div class="skill-layout"><section><p id="skillCount"></p><div id="skillList" class="skill-list"></div></section><section id="skillDetail" class="skill-detail"></section></div>
+      <section class="effect-section"><h3>Hiệu ứng VQSV5 để đối chiếu</h3><p>Chọn nhóm và chuỗi để xem. Chưa xác nhận chuỗi nào thuộc kỹ năng nào; tốc độ xem là ước lượng.</p><div class="effect-controls"><label>Nhóm<select id="effectAtlas"></select></label><label>Chuỗi<select id="effectSequence"></select></label><img id="effectPreview" alt="Khung hoạt ảnh hiệu ứng gốc"></div></section>
+    </div>
+  </dialog>
+  <script src="data/bootstrap.js"></script>
+  <script src="pet_book.js"></script>
+  <script src="skill_book.js"></script>
+  <script src="world_atlas.js"></script>
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    const statusEl = document.getElementById("status");
+    const errorEl = document.getElementById("error");
+    const objectiveEl = document.getElementById("objective");
+    const battleControls = document.getElementById("battleControls");
+    const battleHint = document.getElementById("battleHint");
+    const fightMenu = document.getElementById("fightMenu");
+    const saveStatus = document.getElementById("saveStatus");
+    const SAVE_KEY = "vqsv-unified-story-save-v1";
+    const questJournal = document.getElementById("questJournal");
+    const questSteps = document.getElementById("questSteps");
+    const herbQuestText = document.getElementById("herbQuestText");
+    const S = 20;
+    const STEP_MS = 220;
+    const SKILLS = { spark: { name: "Điện giật", damage: 16, uses: 45 }, basic: { name: "Vồ nhanh", damage: 10 } };
+    const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
+    function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
+    function newBattle() { return { heroHp: 60, enemyHp: 48, turn: 0, guard: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, sparkUses: SKILLS.spark.uses, potions: 2, message: "Một sinh vật lạ chặn lối đi." }; }
+    const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
+    const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
+    const assetPaths = {
+      tiles: [[0, "assets/tilesets/tileset_00.png"], [4, "assets/tilesets/tileset_04.png"]],
+      chars: [["player", "assets/characters/kael_pixel_v2.png"], ["elder", "assets/characters/elder_candidate.png"]],
+      pets: [["hero", "assets/pets/electric_cat_candidate.png"], ["enemy", "assets/pets/corrupted_beast_placeholder.png"]]
+    };
+    const lines = [
+      "Đêm nay sương kéo xuống sớm quá, Kael.",
+      "Lôi Miêu của cháu còn yếu. Đừng đi xa khỏi đường làng.",
+      "Ta vừa nghe tiếng động ở bìa rừng. La bàn của cha cháu cũng phát sáng." 
+    ];
+
+    function loadImage(path) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error(`Không nạp được ảnh: ${path}`));
+        image.src = path;
+      });
+    }
+    async function loadData() {
+      if (!window.VQSVBootstrap) throw new Error("Không nạp được data/bootstrap.js");
+      assets.map = window.VQSVBootstrap.map;
+      assets.maps = window.VQSVBootstrap.maps || {[assets.map.id]: assets.map};
+      assets.tileDefs = window.VQSVBootstrap.tileDefs;
+      assets.petCatalog = window.VQSVBootstrap.petRoster;
+      if (!assets.petCatalog?.records?.length) throw new Error("Không nạp được roster pet hợp nhất");
+      const start = assets.map.entities.player;
+      state.player = { x: start.x, y: start.y, visualX: start.x, visualY: start.y, faceX: 1, faceY: 0, step: null, inputDir: null };
+      const jobs = [];
+      for (const [id, path] of assetPaths.tiles) jobs.push(loadImage(path).then(x => assets.tiles[id] = x));
+      for (const [id, path] of assetPaths.chars) jobs.push(loadImage(path).then(x => assets.chars[id] = x));
+      for (const npc of (assets.map.entities.villagers || [])) jobs.push(loadImage(`assets/${npc.asset}`).then(image => { assets.chars[npc.id] = image; }));
+      for (const asset of new Set(assets.map.objects.map(obj => obj.asset).filter(Boolean))) jobs.push(loadImage(`assets/${asset}`).then(image => { assets.props[asset] = image; }));
+      for (const [id, path] of assetPaths.pets) jobs.push(loadImage(path).then(x => assets.pets[id] = x));
+      const sparkFrames = window.VQSVBootstrap.vqsv6Effects?.sprites?.['266']?.states?.[0];
+      if (!sparkFrames?.length) throw new Error("Không có hoạt ảnh gốc của Điện giật");
+      sparkFrames.forEach((frame, index) => jobs.push(loadImage(frame.image).then(image => { assets.skillEffects[index] = { ...frame, image }; })));
+      await Promise.all(jobs);
+      state.mode = "explore";
+      statusEl.textContent = "Đang khám phá · Làng biên giới";
+      updateGuidance();
+      requestAnimationFrame(loop);
+    }
+
+    function updateGuidance() {
+      battleControls.hidden = state.mode !== "battle";
+      battleHint.hidden = state.mode !== "battle";
+      if (state.mode !== "battle") fightMenu.hidden = true;
+      document.getElementById("sparkUses").textContent = `${state.battle.sparkUses} / ${SKILLS.spark.uses}`;
+      document.getElementById("attackButton").disabled = state.battle.sparkUses <= 0 || !!state.battle.pendingUntil;
+      document.getElementById("basicButton").disabled = !!state.battle.pendingUntil;
+      document.getElementById("guardButton").disabled = !!state.battle.pendingUntil;
+      if (state.mode === "battle") battleHint.textContent = `Thuốc thử: ${state.battle.potions} · Bắt pet và cửa hàng đang phát triển.`;
+      if (state.mode === "battle") objectiveEl.textContent = "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
+      else if (state.mode === "ending") objectiveEl.textContent = "La bàn đã thức tỉnh. Anh có thể chơi lại từ đầu.";
+      else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
+      else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
+      else if (!assets.map.entities.elder) objectiveEl.textContent = "Khám phá khu vực; đến lối đi và nhấn E để chuyển map.";
+      else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ hoặc đi về phía đông để khám phá rừng.";
+      else objectiveEl.textContent = "Tìm người gác làng và nói chuyện.";
+    }
+
+    function drawTile(tilesetId, tileId, gx, gy, flip = 0) {
+      const def = assets.tileDefs[tilesetId]?.find(x => x.id === tileId);
+      const atlas = assets.tiles[tilesetId];
+      if (!def || !atlas) return;
+      // Some decoded definitions reference an additional atlas that is not in the current asset set.
+      // Never crop those coordinates from atlas 0; that creates unrelated texture fragments.
+      if ((def.image || 0) !== 0) return;
+      const dy = gy * S + S - def.h;
+      if (flip & 4) {
+        ctx.save();
+        ctx.translate(gx * S + def.w, 0);
+        ctx.scale(-1, 1);
+        ctx.drawImage(atlas, def.src_x, def.src_y, def.w, def.h, 0, dy, def.w, def.h);
+        ctx.restore();
+      } else {
+        ctx.drawImage(atlas, def.src_x, def.src_y, def.w, def.h, gx * S, dy, def.w, def.h);
+      }
+    }
+    function drawMap(depthY = null) {
+      const m = assets.map;
+      ctx.fillStyle = "#536e3b";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const groundStep = m.ground.step || 1;
+      for (let y = 0; y < m.height; y += groundStep) for (let x = 0; x < m.width; x += groundStep) drawTile(m.ground.tileset, m.ground.tile, x, y);
+      for (const mark of m.groundVariation || []) drawTile(mark.tileset, mark.tile, mark.x, mark.y);
+      for (const decor of m.groundDecor || []) drawTile(decor.tileset, decor.tile, decor.x, decor.y);
+      // Water is impassable terrain; the open strip between pools is the bridge.
+      for (const water of m.water || []) {
+        ctx.fillStyle = "#357f95"; ctx.fillRect(water.x*S, water.y*S, water.width*S, water.height*S);
+        ctx.fillStyle = "#55b2bb"; ctx.fillRect(water.x*S+4, water.y*S, water.width*S-8, water.height*S);
+        ctx.fillStyle = "#a5e0d8";
+        for (let y=water.y; y<water.y+water.height; y++) for (let x=water.x; x<water.x+water.width; x++) {
+          if ((x*7+y*11)%3 === 0) ctx.fillRect(x*S+4, y*S+7+(x*3+y)%7, 7, 2);
+        }
+      }
+      for (const path of m.paths) {
+        ctx.fillStyle = "#aa9a57";
+        roundRect(path.x * S, path.y * S, path.width * S, path.height * S, 8, true);
+      }
+      for (const path of m.paths) {
+        ctx.fillStyle = "#d2bd77";
+        roundRect(path.x * S + 2, path.y * S + 2, path.width * S - 4, path.height * S - 4, 6, true);
+      }
+      // Repeated, deterministic pixel specks make the road read as packed earth.
+      ctx.fillStyle = "#af9b60";
+      for (const path of m.paths) for (let y = path.y; y < path.y + path.height; y++) for (let x = path.x; x < path.x + path.width; x++) {
+        const h = (x * 31 + y * 47) % 17;
+        ctx.fillRect(x * S + 5 + h % 9, y * S + 5 + h % 7, 2, 1);
+      }
+      if (m.bridge) {
+        const b = m.bridge;
+        ctx.fillStyle = "#694a31"; ctx.fillRect(b.x*S, b.y*S, b.width*S, b.height*S);
+        ctx.fillStyle = "#bf8b51"; ctx.fillRect(b.x*S+2, b.y*S+3, b.width*S-4, b.height*S-6);
+        ctx.fillStyle = "#916342";
+        for (let x=b.x*S+S; x<(b.x+b.width)*S; x+=S) ctx.fillRect(x, b.y*S+3, 2, b.height*S-6);
+        ctx.fillRect(b.x*S, b.y*S+8, b.width*S, 2); ctx.fillRect(b.x*S, (b.y+b.height)*S-10, b.width*S, 2);
+      }
+      const ordered = [...m.objects].sort((a, b) => a.y - b.y || a.x - b.x);
+      for (const obj of ordered) if (depthY === null || obj.y < depthY) drawMapObject(obj);
+      // A light ground mist sells the location while keeping walkable tiles readable.
+      const mist = ctx.createLinearGradient(0, 0, 480, 360);
+      mist.addColorStop(0, "#cfe7f219");
+      mist.addColorStop(.55, "#d7e8e20a");
+      mist.addColorStop(1, "#cfe7f21c");
+      ctx.fillStyle = mist;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    function drawForeground(depthY) {
+      for (const obj of [...assets.map.objects].sort((a, b) => a.y - b.y || a.x - b.x)) {
+        if (obj.y >= depthY) drawMapObject(obj);
+      }
+    }
+    function drawMapObject(obj) {
+      if (!obj.asset) { drawTile(obj.tileset, obj.tile, obj.x, obj.y, obj.flip || 0); return; }
+      const image = assets.props[obj.asset];
+      if (image) { const scale = obj.scale || 1, w = image.width*scale, h = image.height*scale; ctx.drawImage(image, obj.x*S + S - w/2, (obj.y+1)*S - h, w, h); }
+    }
+    function drawCharacter(sprite, x, y, kind = "idle", faceX = 1, faceY = 0) {
+      if (!sprite) return;
+      const now = performance.now();
+      const moving = kind === "player" && state.player.step !== null;
+      const row = faceY > 0 ? 0 : faceY < 0 ? 3 : faceX < 0 ? 1 : 2;
+      // Advance the walk cycle with distance traveled, so animation follows speed.
+      const phase = Math.floor((state.player.walkDistance || 0) * 2) % 4;
+      const frame = moving ? phase : 0;
+      const bob = kind === "elder" ? Math.sin(now / 520) : 0;
+      ctx.save();
+      ctx.translate(Math.round(x * S + S / 2), Math.round((y + 1) * S - bob));
+      if (kind === "player") {
+        // The hand-measured crop grid keeps generated poses separate and feet aligned.
+        const sourceY = [50, 370, 690, 1020][row];
+        const xOffset = row === 2 ? 2 : row === 3 ? 1 : row === 1 && frame % 2 ? -1 : 0;
+        const yOffset = row === 0 && frame % 2 ? -1 : 0;
+        ctx.drawImage(sprite, 50 + frame * 260, sourceY, 260, 330, -16 + xOffset, -40 + yOffset, 32, 40);
+      } else {
+        ctx.drawImage(sprite, -sprite.width / 2, -sprite.height);
+      }
+      ctx.restore();
+    }
+    function drawCompanion(x, y, faceX = 1) {
+      const sprite = assets.pets.hero;
+      if (!sprite) return;
+      const now = performance.now();
+      const followSide = faceX >= 0 ? -1 : 1;
+      const bob = Math.sin(now / 190) * 1.6;
+      const px = Math.round((x + .5 + followSide * .72) * S - 12);
+      const py = Math.round((y + 1) * S - 24 - bob);
+      ctx.drawImage(sprite, px, py, 24, 24);
+    }
+    function near(a, b) { return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) <= 1; }
+    function villageNpcs() {
+      const villagers = (assets.map.entities.villagers || []).map(npc => {
+        if (npc.id !== "herbalist") return npc;
+        const q = state.herbQuest;
+        const dialogue = q.stage === "unstarted" ? ["Lôi Miêu cần được chăm sóc sau chuyến đi dài.", "Giúp tôi tìm ba khóm thảo dược quanh làng nhé."]
+          : q.stage === "done" ? ["Cảm ơn Kael đã mang thảo dược về.", "Lôi Miêu có thêm thời gian nghỉ ngơi rồi."]
+          : q.collected.length === HERBS.length ? ["Cháu tìm đủ ba khóm rồi à?", "Cảm ơn cháu. Ta sẽ dùng chúng chăm sóc Lôi Miêu."]
+          : [`Cháu đã tìm được ${q.collected.length}/${HERBS.length} khóm thảo dược.`, "Chúng phát sáng trên bãi cỏ quanh làng."];
+        return {...npc, dialogue};
+      });
+      const elder = assets.map.entities.elder;
+      return elder ? [{...elder, id: "elder", dialogue: [...lines, "Đi thôi, Kael. Đừng để Lôi Miêu đi một mình."]}, ...villagers] : villagers;
+    }
+    function nearbyHerb() { return assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.find(herb => !state.herbQuest.collected.includes(herb.id) && near(state.player, herb)) : null; }
+    function nearbyLink() { return (assets.map.links || []).find(link => near(state.player, link)); }
+    function nearbyNpc() {
+      return villageNpcs().filter(npc => near(state.player, npc)).sort((a, b) =>
+        (Math.abs(a.x - state.player.x) + Math.abs(a.y - state.player.y)) - (Math.abs(b.x - state.player.x) + Math.abs(b.y - state.player.y)))[0];
+    }
+    function openQuestJournal() {
+      if (state.mode === "loading" || questJournal.open || document.getElementById("petBook").open || document.getElementById("skillBook").open || document.getElementById("worldAtlas").open) return;
+      if (state.mode === "battle" && state.battle.pendingUntil) return;
+      state.player.inputDir = null;
+      const completed = state.mode === "ending";
+      const steps = [
+        { text: "Nói chuyện với người gác làng", done: state.spokeToElder },
+        { text: "Theo dấu vết ở phía đông và vượt qua sinh vật lạ", done: completed },
+        { text: "Chứng kiến la bàn thức tỉnh", done: completed }
+      ];
+      let current = steps.findIndex(step => !step.done);
+      questSteps.replaceChildren();
+      for (const [index, step] of steps.entries()) {
+        const li = document.createElement("li");
+        li.className = step.done ? "done" : index === current ? "current" : "pending";
+        li.textContent = `${step.done ? "✓" : index === current ? "▶" : "○"}  ${step.text}`;
+        questSteps.append(li);
+      }
+      const q = state.herbQuest;
+      herbQuestText.textContent = q.stage === "unstarted" ? "Chưa nhận: nói chuyện với người chăm sóc pet trong làng trước khi kết thúc trận truyện."
+        : q.stage === "done" ? "✓ Đã mang thảo dược về cho người chăm sóc pet."
+        : q.collected.length === HERBS.length ? "▶ Đã tìm đủ 3 khóm. Quay lại người chăm sóc pet."
+        : `▶ Tìm thảo dược quanh làng: ${q.collected.length}/${HERBS.length} khóm.`;
+      if (state.mode === "ending" && q.stage !== "done") herbQuestText.textContent = "Bản thử đã kết thúc; tải bản lưu trước trận hoặc chơi lại để làm nhiệm vụ này.";
+      questJournal.showModal();
+    }
+    function drawExplore() {
+      drawMap(state.player.visualY);
+      const npcs = villageNpcs();
+      const point = assets.map.entities.encounter;
+      if (assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active") for (const herb of HERBS) {
+        if (state.herbQuest.collected.includes(herb.id)) continue;
+        const x = herb.x*S+10, y = herb.y*S+10;
+        ctx.fillStyle = "#ecf7ad"; ctx.fillRect(x-1,y-7,2,14); ctx.fillRect(x-7,y-1,14,2);
+        ctx.fillStyle = "#53a65a"; ctx.fillRect(x-3,y+3,6,4);
+      }
+      if (!state.spokeToElder && assets.map.entities.elder) {
+        ctx.fillStyle = "#f5dc82"; ctx.font = "bold 15px system-ui"; ctx.textAlign = "center";
+        ctx.fillText("!", assets.map.entities.elder.x * S + S / 2, assets.map.entities.elder.y * S - 26 + Math.sin(performance.now() / 300));
+        ctx.textAlign = "left";
+      }
+      if (point) { ctx.save();
+      ctx.globalAlpha = .75 + Math.sin(performance.now() / 230) * .2;
+      ctx.fillStyle = "#e96c5f";
+      ctx.beginPath();
+      ctx.arc(point.x * S + 10, point.y * S + 10, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore(); }
+      for (const link of (assets.map.links || [])) {
+        ctx.fillStyle = "#f8e69c"; ctx.font = "bold 16px system-ui"; ctx.textAlign = "center";
+        ctx.fillText(link.x === 0 ? "◀" : "▶", link.x*S+10, link.y*S+15); ctx.textAlign = "left";
+      }
+      for (const npc of npcs) if (npc.y < state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
+      drawCompanion(state.player.visualX, state.player.visualY, state.player.faceX);
+      drawCharacter(assets.chars.player, state.player.visualX, state.player.visualY, "player", state.player.faceX, state.player.faceY);
+      for (const npc of npcs) if (npc.y >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
+      drawForeground(state.player.visualY);
+      const npc = nearbyNpc();
+      if (npc) prompt(`E  Nói chuyện · ${npc.name}`);
+      else if (nearbyHerb()) prompt("E  Thu thập thảo dược");
+      else if (point && state.spokeToElder && near(state.player, point)) prompt("E  Theo dấu vết");
+      else if (nearbyLink()) prompt(`E  ${state.spokeToElder ? "Đến " + nearbyLink().label : "Nói chuyện với người gác làng trước"}`);
+      title(assets.map.title.toLocaleUpperCase("vi-VN"));
+    }
+    function prompt(text) {
+      ctx.font = "bold 11px system-ui";
+      const w = ctx.measureText(text).width + 18;
+      ctx.fillStyle = "#111a";
+      roundRect(240 - w / 2, 286, w, 23, 6, true);
+      ctx.fillStyle = "#fff4cf";
+      ctx.fillText(text, 240 - w / 2 + 9, 302);
+    }
+    function roundRect(x, y, w, h, r, fill) {
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, r);
+      if (fill) ctx.fill(); else ctx.stroke();
+    }
+    function title(text) {
+      ctx.fillStyle = "#111a";
+      roundRect(10, 10, 228, 25, 6, true);
+      ctx.fillStyle = "#f4f1dc";
+      ctx.font = "bold 11px system-ui";
+      ctx.fillText(text, 19, 27);
+    }
+    function drawDialogue() {
+      drawExplore();
+      ctx.fillStyle = "#111d";
+      roundRect(16, 264, 448, 84, 8, true);
+      ctx.strokeStyle = "#e2c87f";
+      roundRect(16, 264, 448, 84, 8, false);
+      ctx.fillStyle = "#e8c96f";
+      ctx.font = "bold 12px system-ui";
+      ctx.fillText((state.activeNpc?.name || "Người gác làng").toLocaleUpperCase("vi"), 30, 284);
+      ctx.fillStyle = "#fff";
+      ctx.font = "13px system-ui";
+      const words = (state.activeNpc?.dialogue[state.dialogue] || "").split(" ");
+      let text = "", y = 307;
+      for (const word of words) {
+        const next = text ? `${text} ${word}` : word;
+        if (ctx.measureText(next).width > 412 && text) { ctx.fillText(text, 30, y); y += 17; text = word; } else text = next;
+      }
+      if (text) ctx.fillText(text, 30, y);
+      ctx.fillStyle = "#b7c2d2";
+      ctx.font = "11px system-ui";
+      ctx.fillText("E / Enter  Tiếp tục", 354, 333);
+    }
+    function hpBar(x, y, width, value, max) {
+      ctx.fillStyle = "#101d24"; roundRect(x, y, width, 8, 3, true);
+      const fillWidth = Math.max(0, (width - 4) * Math.min(1, value / max));
+      if (fillWidth > 0) { ctx.fillStyle = value > max * .35 ? "#83d277" : "#ef766a"; ctx.fillRect(x + 2, y + 2, fillWidth, 4); }
+    }
+    function battlePanel(x, y, name, subtitle, hp, max, color) {
+      ctx.fillStyle = "#102528ee"; roundRect(x, y, 192, 55, 7, true);
+      ctx.strokeStyle = color; ctx.lineWidth = 1; roundRect(x, y, 192, 55, 7, false);
+      ctx.fillStyle = color; ctx.fillRect(x + 9, y + 10, 4, 17);
+      ctx.fillStyle = "#f6f1df"; ctx.font = "bold 12px system-ui"; ctx.fillText(name, x + 20, y + 19);
+      ctx.fillStyle = "#b8c9c0"; ctx.font = "9px system-ui"; ctx.fillText(subtitle, x + 20, y + 31);
+      ctx.fillStyle = "#cbd9d1"; ctx.font = "bold 9px system-ui"; ctx.fillText("HP", x + 10, y + 46);
+      hpBar(x + 29, y + 38, 102, hp, max);
+      ctx.textAlign = "right"; ctx.fillText(`${hp} / ${max}`, x + 181, y + 46); ctx.textAlign = "left";
+    }
+    function battleMessage(text) {
+      ctx.font = "12px system-ui";
+      const words = text.split(" "); let line = ""; let y = 279;
+      for (const word of words) {
+        const next = line ? `${line} ${word}` : word;
+        if (ctx.measureText(next).width > 430 && line) { ctx.fillText(line, 25, y); line = word; y += 16; }
+        else line = next;
+      }
+      if (line) ctx.fillText(line, 25, y);
+    }
+    function drawBattle() {
+      const now = performance.now();
+      const sky = ctx.createLinearGradient(0, 0, 0, 270);
+      sky.addColorStop(0, "#202b3c"); sky.addColorStop(1, "#65776b");
+      ctx.fillStyle = sky; ctx.fillRect(0, 0, 480, 360);
+      ctx.fillStyle = "#a74e55"; ctx.globalAlpha = .55; ctx.beginPath(); ctx.arc(391, 65, 27, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+      ctx.fillStyle = "#2c4440";
+      for (const [x, y, w] of [[0,124,75],[62,109,80],[126,130,60],[350,120,62],[402,103,78]]) {
+        ctx.beginPath(); ctx.moveTo(x, 200); ctx.lineTo(x+w/2, y); ctx.lineTo(x+w, 200); ctx.closePath(); ctx.fill();
+      }
+      ctx.fillStyle = "#354d3c"; ctx.fillRect(0, 196, 480, 164);
+      ctx.fillStyle = "#577453"; ctx.beginPath(); ctx.ellipse(135, 200, 105, 27, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(330, 247, 117, 30, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#102528e8"; roundRect(207, 12, 66, 25, 6, true);
+      ctx.textAlign = "center"; ctx.font = "bold 10px system-ui"; ctx.fillStyle = "#eadba6"; ctx.fillText(`LƯỢT ${state.battle.turn + 1}`, 240, 29); ctx.textAlign = "left";
+      battlePanel(12, 12, "SỦNG VẬT THA HÓA", "ĐỐI THỦ · TRĂNG HUYẾT", state.battle.enemyHp, 48, "#dc8e7f");
+      const heroAttack = now - state.battle.attackAt;
+      const enemyAttack = now - state.battle.enemyAt;
+      const guard = now - state.battle.guardAt;
+      const attackPulse = heroAttack >= 0 && heroAttack < 360 ? Math.sin(heroAttack / 360 * Math.PI) : 0;
+      const enemyPulse = enemyAttack >= 0 && enemyAttack < 300 ? Math.sin(enemyAttack / 300 * Math.PI) : 0;
+      const enemyShake = heroAttack >= 0 && heroAttack < 240 ? Math.sin(heroAttack / 28) * (1 - heroAttack / 240) * 5 : 0;
+      const idleEnemy = Math.sin(now / 210) * 2;
+      const idleHero = Math.sin(now / 180 + 1) * 2;
+      ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96);
+      ctx.drawImage(assets.pets.hero, 304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94);
+      if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
+        let elapsed = heroAttack;
+        let chosen = assets.skillEffects[assets.skillEffects.length - 1];
+        for (const frame of assets.skillEffects) { if (elapsed < frame.duration_ticks * 60) { chosen = frame; break; } elapsed -= frame.duration_ticks * 60; }
+        const image = chosen.image;
+        const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
+        ctx.drawImage(image, 140 - image.width * scale / 2, 138 - image.height * scale / 2, image.width * scale, image.height * scale);
+      }
+      if (attackPulse > 0 && state.battle.skill === "basic") {
+        ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
+        for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(128 + i * 12, 114); ctx.lineTo(151 + i * 12, 146); ctx.stroke(); }
+        ctx.restore();
+      }
+      if (guard >= 0 && guard < 500) {
+        ctx.save(); ctx.globalAlpha = Math.max(0, 1 - guard / 500) * .75;
+        ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(350, 198, 57, 54, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      }
+      battlePanel(276, 200, "LÔI MIÊU", "ĐỒNG HÀNH CỦA KAEL", state.battle.heroHp, 60, "#a6dfcf");
+      ctx.fillStyle = "#e8d8ae"; roundRect(8, 260, 464, 47, 5, true);
+      ctx.strokeStyle = "#846b49"; ctx.lineWidth = 2; roundRect(8, 260, 464, 47, 5, false);
+      ctx.fillStyle = "#473b29"; battleMessage(state.battle.message);
+    }
+    function drawEnding() {
+      drawMap();
+      drawCharacter(assets.chars.player, state.player.x, state.player.y, "player", state.player.faceX, state.player.faceY);
+      ctx.fillStyle = "#101b"; roundRect(28, 55, 424, 246, 12, true);
+      ctx.strokeStyle = "#e2c87f"; roundRect(28, 55, 424, 246, 12, false);
+      ctx.fillStyle = "#f0d482"; ctx.font = "bold 17px system-ui"; ctx.fillText("LA BÀN THỨC TỈNH", 150, 91);
+      const pulse = 0.5 + Math.sin(performance.now() / 240) * .5;
+      ctx.save(); ctx.translate(240, 146); ctx.rotate(Math.sin(performance.now() / 1100) * .12);
+      ctx.shadowColor = "#78d8ff"; ctx.shadowBlur = 8 + pulse * 18;
+      ctx.strokeStyle = "#f0d482"; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(0, 0, 26, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, -19); ctx.lineTo(6, 0); ctx.lineTo(0, 19); ctx.lineTo(-6, 0); ctx.closePath(); ctx.fillStyle = `rgba(237,116,104,${.7 + pulse * .3})`; ctx.fill();
+      ctx.restore();
+      ctx.fillStyle = "#fff"; ctx.font = "13px system-ui";
+      ctx.fillText("Ánh sáng xanh chạy quanh vết sẹo của Lôi Miêu.", 83, 202);
+      ctx.fillText("La bàn cũ của cha Kael chỉ về phía bìa rừng.", 89, 224);
+      ctx.fillStyle = "#c6d0dc"; ctx.font = "11px system-ui"; ctx.fillText("Đây là điểm kết thúc của lát prototype đầu tiên.", 113, 266);
+      title("CHƯƠNG 1 · MỞ ĐẦU");
+    }
+    function drawDefeat() {
+      ctx.fillStyle = "#18202a";
+      ctx.fillRect(0, 0, 480, 360);
+      ctx.fillStyle = "#131a23"; roundRect(48, 83, 384, 188, 12, true);
+      ctx.strokeStyle = "#536071"; roundRect(48, 83, 384, 188, 12, false);
+      ctx.fillStyle = "#f0d482"; ctx.font = "bold 17px system-ui"; ctx.fillText("LÔI MIÊU CẦN NGHỈ NGƠI", 105, 128);
+      ctx.fillStyle = "#fff"; ctx.font = "13px system-ui"; ctx.fillText("Kael đưa Lôi Miêu trở lại làng.", 139, 169);
+      ctx.fillStyle = "#c6d0dc"; ctx.font = "11px system-ui"; ctx.fillText("Nhấn R hoặc nút Chơi lại từ đầu để thử lại.", 119, 211);
+      title("TRẬN ĐẤU KẾT THÚC");
+    }
+    function loop() {
+      updateBattle(performance.now());
+      updatePlayer(performance.now());
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (state.mode === "explore") drawExplore();
+      if (state.mode === "dialogue") drawDialogue();
+      if (state.mode === "battle") drawBattle();
+      if (state.mode === "ending") drawEnding();
+      if (state.mode === "defeat") drawDefeat();
+      requestAnimationFrame(loop);
+    }
+    function blocked(x, y) {
+      const m = assets.map;
+      if (x < 0 || y < 0 || x >= m.width || y >= m.height) return true;
+      if (m.objects.some(o => (o.solid || []).some(([sx, sy]) => sx === x && sy === y))) return true;
+      if ((m.water || []).some(w => x >= w.x && x < w.x+w.width && y >= w.y && y < w.y+w.height)) return true;
+      return villageNpcs().some(npc => npc.x === x && npc.y === y);
+    }
+    function startStep(now) {
+      const player = state.player;
+      const dir = player.inputDir;
+      if (state.mode !== "explore" || !dir || player.step) return;
+      const nx = player.x + dir.dx, ny = player.y + dir.dy;
+      player.faceX = dir.dx || player.faceX;
+      player.faceY = dir.dy || player.faceY;
+      if (dir.dx) player.faceY = 0;
+      if (dir.dy) player.faceX = 0;
+      if (blocked(nx, ny)) { player.inputDir = null; return; }
+      player.step = { fromX: player.visualX, fromY: player.visualY, toX: nx, toY: ny, startedAt: now };
+      player.x = nx;
+      player.y = ny;
+    }
+    function updatePlayer(now) {
+      const player = state.player;
+      // Carry leftover frame time into the next tile instead of pausing at each boundary.
+      let completed = 0;
+      while (player.step && completed < 4) {
+        const step = player.step;
+        const t = Math.max(0, Math.min(1, (now - step.startedAt) / STEP_MS));
+        const nextX = step.fromX + (step.toX - step.fromX) * t;
+        const nextY = step.fromY + (step.toY - step.fromY) * t;
+        player.walkDistance = (player.walkDistance || 0) + Math.hypot(nextX - player.visualX, nextY - player.visualY);
+        player.visualX = nextX; player.visualY = nextY;
+        if (t < 1) break;
+        const nextStart = step.startedAt + STEP_MS;
+        player.step = null;
+        completed++;
+        if (player.inputDir) startStep(nextStart);
+      }
+      // Do not fast-forward across the map after a long background-tab pause.
+      if (completed === 4 && player.step && now - player.step.startedAt > STEP_MS) player.step.startedAt = now;
+      if (!player.step && player.inputDir) startStep(now);
+    }
+    function setMove(dx, dy) {
+      if (state.mode !== "explore") return;
+      state.player.inputDir = { dx, dy };
+      if (!state.player.step) startStep(performance.now());
+    }
+    function releaseMove(dx, dy) {
+      const dir = state.player.inputDir;
+      if (dir && dir.dx === dx && dir.dy === dy) state.player.inputDir = null;
+    }
+    function interact() {
+      if (state.mode === "dialogue") {
+        state.dialogue++;
+        if (state.dialogue >= state.activeNpc.dialogue.length) {
+          if (state.activeNpc.id === "elder") state.spokeToElder = true;
+          if (state.activeNpc.id === "herbalist") {
+            if (state.herbQuest.stage === "unstarted") { state.herbQuest.stage = "active"; statusEl.textContent = "Nhiệm vụ phụ · Tìm 3 khóm thảo dược"; }
+            else if (state.herbQuest.stage === "active" && state.herbQuest.collected.length === HERBS.length) { state.herbQuest.stage = "done"; statusEl.textContent = "Hoàn thành · Thảo dược cho Lôi Miêu"; }
+          }
+          state.activeNpc = null; state.mode = "explore";
+        }
+        updateGuidance();
+        return;
+      }
+      if (state.mode !== "explore") return;
+      state.player.inputDir = null;
+      const point = assets.map.entities.encounter;
+      const npc = nearbyNpc();
+      if (npc) { state.dialogue = 0; state.activeNpc = npc; state.mode = "dialogue"; updateGuidance(); return; }
+      const herb = nearbyHerb();
+      if (herb) { state.herbQuest.collected.push(herb.id); statusEl.textContent = `Thảo dược · ${state.herbQuest.collected.length}/${HERBS.length}`; return; }
+      const link = nearbyLink();
+      if (link && state.spokeToElder && assets.maps?.[link.target]) {
+        assets.map = assets.maps[link.target];
+        state.player = {x:link.spawnX,y:link.spawnY,visualX:link.spawnX,visualY:link.spawnY,faceX:1,faceY:0,step:null,inputDir:null};
+        statusEl.textContent = `Đang khám phá · ${assets.map.title}`; updateGuidance(); return;
+      }
+      if (point && state.spokeToElder && near(state.player, point)) {
+        state.mode = "battle";
+        statusEl.textContent = "Chiến đấu · Lôi Miêu";
+        updateGuidance();
+      }
+    }
+    function action(guard, skillId = "spark") {
+      if (state.mode !== "battle" || state.battle.heroHp <= 0 || state.battle.pendingUntil) return;
+      if (!guard && skillId === "spark" && state.battle.sparkUses <= 0) { state.battle.message = "Điện giật đã hết lượt dùng."; return; }
+      fightMenu.hidden = true;
+      const now = performance.now();
+      if (guard) {
+        state.battle.guard = true;
+        state.battle.guardAt = now;
+        state.battle.skill = "guard";
+        state.battle.message = "Lôi Miêu thủ thế, chờ đòn tấn công.";
+      } else {
+        const skill = SKILLS[skillId];
+        if (!skill) return;
+        if (skillId === "spark") state.battle.sparkUses--;
+        state.battle.skill = skillId;
+        state.battle.attackAt = now;
+        state.battle.enemyHp = Math.max(0, state.battle.enemyHp - skill.damage);
+        state.battle.message = `Lôi Miêu dùng ${skill.name}, gây ${skill.damage} sát thương!`;
+      }
+      state.battle.pendingUntil = now + 650;
+      updateGuidance();
+    }
+    function updateBattle(now) {
+      if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
+      state.battle.pendingUntil = 0;
+      if (state.battle.enemyHp <= 0) {
+        state.mode = "ending";
+        statusEl.textContent = "Hoàn tất lát prototype · Chương 1";
+        updateGuidance();
+        return;
+      }
+      enemyCounter();
+      updateGuidance();
+    }
+    function enemyCounter() {
+      const now = performance.now();
+      state.battle.turn++;
+      const damage = state.battle.guard ? 5 : 12;
+      state.battle.heroHp = Math.max(0, state.battle.heroHp - damage);
+      state.battle.guard = false;
+      state.battle.enemyAt = now + 180;
+      state.battle.message += ` Sinh vật phản công ${damage} sát thương.`;
+      if (state.battle.heroHp <= 0) {
+        state.mode = "defeat";
+        statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
+        updateGuidance();
+      }
+    }
+    function usePotion() {
+      if (state.mode !== "battle" || state.battle.pendingUntil) return;
+      if (!state.battle.potions) { state.battle.message = "Đã hết thuốc thử."; return; }
+      if (state.battle.heroHp >= 60) { state.battle.message = "Lôi Miêu đang đầy máu."; return; }
+      const recovered = Math.min(20, 60 - state.battle.heroHp);
+      state.battle.potions--;
+      state.battle.heroHp += recovered;
+      state.battle.message = `Dùng thuốc thử: Lôi Miêu hồi ${recovered} HP.`;
+      enemyCounter();
+      updateGuidance();
+    }
+    function fleeBattle() {
+      if (state.mode !== "battle" || state.battle.pendingUntil) return;
+      state.battle = newBattle(); state.mode = "explore";
+      statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";
+      updateGuidance();
+    }
+    function reset() {
+      if (assets.maps?.["slice01-border-village"]) assets.map = assets.maps["slice01-border-village"];
+      state.mode = "explore"; const start = assets.map.entities.player; state.player = { x: start.x, y: start.y, visualX: start.x, visualY: start.y, faceX: 1, faceY: 0, step: null, inputDir: null }; state.dialogue = 0; state.activeNpc = null; state.spokeToElder = false;
+      state.battle = newBattle(); state.herbQuest = newHerbQuest();
+      statusEl.textContent = "Đang khám phá · Làng biên giới";
+      updateGuidance();
+    }
+    function saveGame() {
+      if (state.mode === "loading" || !assets.map) { saveStatus.textContent = "Game chưa tải xong."; return; }
+      if (state.mode !== "explore" && state.mode !== "ending") { saveStatus.textContent = "Hãy kết thúc hội thoại hoặc trận đấu trước khi lưu."; return; }
+      if (state.player.step) { saveStatus.textContent = "Hãy dừng di chuyển trước khi lưu."; return; }
+      const save = { version: 1, mapId: assets.map.id, x: state.player.x, y: state.player.y,
+        faceX: state.player.faceX, faceY: state.player.faceY, spokeToElder: state.spokeToElder, completed: state.mode === "ending", herbQuest: state.herbQuest };
+      try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); saveStatus.textContent = "Đã lưu tiến trình trên trình duyệt này."; }
+      catch (_) { saveStatus.textContent = "Không thể lưu: trình duyệt không cho phép lưu dữ liệu."; }
+    }
+    function loadGame() {
+      if (!assets.map || state.mode === "loading") { saveStatus.textContent = "Game chưa tải xong."; return; }
+      let save;
+      try { const raw = localStorage.getItem(SAVE_KEY); if (!raw) { saveStatus.textContent = "Chưa có bản lưu trên trình duyệt này."; return; } save = JSON.parse(raw); }
+      catch (_) { saveStatus.textContent = "Không đọc được bản lưu trên trình duyệt này."; return; }
+      const herbQuest = save?.herbQuest ?? newHerbQuest();
+      const herbsValid = herbQuest && ["unstarted", "active", "done"].includes(herbQuest.stage) && Array.isArray(herbQuest.collected)
+        && herbQuest.collected.every(id => HERBS.some(herb => herb.id === id)) && new Set(herbQuest.collected).size === herbQuest.collected.length
+        && (herbQuest.stage !== "unstarted" || herbQuest.collected.length === 0) && (herbQuest.stage !== "done" || herbQuest.collected.length === HERBS.length);
+      const savedMap = assets.maps?.[save?.mapId] || (save?.mapId === assets.map.id ? assets.map : null);
+      const originalMap = assets.map;
+      if (savedMap) assets.map = savedMap;
+      const valid = herbsValid && save && save.version === 1 && !!savedMap && Number.isInteger(save.x) && Number.isInteger(save.y)
+        && !blocked(save.x, save.y) && typeof save.spokeToElder === "boolean" && typeof save.completed === "boolean"
+        && (!save.completed || save.spokeToElder) && [[1,0],[-1,0],[0,1],[0,-1]].some(([x,y]) => save.faceX === x && save.faceY === y);
+      if (!valid) { assets.map = originalMap; saveStatus.textContent = "Bản lưu không hợp lệ hoặc không phù hợp với map hiện tại."; return; }
+      state.player = { x: save.x, y: save.y, visualX: save.x, visualY: save.y, faceX: save.faceX, faceY: save.faceY, step: null, inputDir: null };
+      state.dialogue = 0; state.activeNpc = null; state.spokeToElder = save.spokeToElder; state.herbQuest = {stage: herbQuest.stage, collected: [...herbQuest.collected]}; state.battle = newBattle();
+      state.mode = save.completed ? "ending" : "explore";
+      statusEl.textContent = save.completed ? "Hoàn tất lát prototype · Chương 1" : `Đang khám phá · ${assets.map.title}`;
+      updateGuidance(); saveStatus.textContent = "Đã tải tiến trình.";
+    }
+    window.addEventListener("keydown", e => {
+      const key = e.key.toLowerCase();
+      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open) return;
+      if (e.target instanceof Element && e.target.closest("button, input, select, textarea")) return;
+      if (key === "p" && !e.repeat) { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
+      if (key === "j" && !e.repeat) { openQuestJournal(); return; }
+      if (key === "m" && !e.repeat) { openMap(); return; }
+      if (["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(key)) e.preventDefault();
+      if (["w", "arrowup"].includes(key)) setMove(0, -1);
+      if (["s", "arrowdown"].includes(key)) setMove(0, 1);
+      if (["a", "arrowleft"].includes(key)) setMove(-1, 0);
+      if (["d", "arrowright"].includes(key)) setMove(1, 0);
+      if (!e.repeat && ["e", "enter"].includes(key)) interact();
+      if (!e.repeat && key === "1") action(false);
+      if (!e.repeat && key === "2") action(true);
+      if (!e.repeat && key === "3") action(false, "basic");
+      if (!e.repeat && key === "r") reset();
+    });
+    window.addEventListener("keyup", e => {
+      const key = e.key.toLowerCase();
+      if (["w", "arrowup"].includes(key)) releaseMove(0, -1);
+      if (["s", "arrowdown"].includes(key)) releaseMove(0, 1);
+      if (["a", "arrowleft"].includes(key)) releaseMove(-1, 0);
+      if (["d", "arrowright"].includes(key)) releaseMove(1, 0);
+    });
+    window.addEventListener("blur", () => { state.player.inputDir = null; });
+    document.getElementById("openPetBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); });
+    document.getElementById("openSkillBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openSkillBook(); });
+    document.getElementById("restart").addEventListener("click", reset);
+    document.getElementById("openQuestJournal").addEventListener("click", openQuestJournal);
+    document.getElementById("closeQuestJournal").addEventListener("click", () => questJournal.close());
+    function openMap() {
+      if (state.mode === "loading" || (state.mode === "battle" && state.battle.pendingUntil) || questJournal.open || document.getElementById("petBook").open || document.getElementById("skillBook").open) return;
+      state.player.inputDir = null; window.openWorldAtlas();
+    }
+    document.getElementById("openWorldAtlas").addEventListener("click", openMap);
+    document.getElementById("saveGame").addEventListener("click", saveGame);
+    document.getElementById("loadGame").addEventListener("click", loadGame);
+    document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) fightMenu.hidden = !fightMenu.hidden; });
+    document.getElementById("attackButton").addEventListener("click", () => action(false));
+    document.getElementById("basicButton").addEventListener("click", () => action(false, "basic"));
+    document.getElementById("guardButton").addEventListener("click", () => action(true));
+    document.getElementById("captureButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) state.battle.message = "Chưa thể bắt pet trong trận cốt truyện này."; });
+    document.getElementById("itemButton").addEventListener("click", usePotion);
+    document.getElementById("teamButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
+    document.getElementById("fleeButton").addEventListener("click", fleeBattle);
+    loadData().catch(err => { statusEl.textContent = "Không nạp được prototype"; errorEl.textContent = err.message; console.error(err); });
+  </script>
+</body>
+</html>

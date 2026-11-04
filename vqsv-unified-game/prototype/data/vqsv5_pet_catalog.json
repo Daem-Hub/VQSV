@@ -1,0 +1,4392 @@
+{
+  "source": "vqsv5/raw_data/data/data.d",
+  "records": [
+    {
+      "pet_id": "vqsv5-db-0",
+      "display_name": "Thụ quái",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 0,
+        "atlas_id": 1,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/1.png",
+      "animation": {
+        "atlas_id": 1,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu Thụ Quái đáng yêu. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        1,
+        0,
+        38,
+        15,
+        8,
+        6,
+        8,
+        3,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-1",
+      "display_name": "Bụi gai",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 1,
+        "atlas_id": 1,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/1.png",
+      "animation": {
+        "atlas_id": 1,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Kinh Cứu Thụ Quái (bụi gai) toàn thân dài khắp. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        2,
+        0,
+        46,
+        20,
+        9,
+        8,
+        10,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-2",
+      "display_name": "Cây chứa dịch độc",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 2,
+        "atlas_id": 1,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/1.png",
+      "animation": {
+        "atlas_id": 1,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Độc Thụ Quái (cây chứa dịch độc) toàn thân tràn ngập nọc độc trí mạng. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        10,
+        14,
+        3,
+        0,
+        62,
+        25,
+        10,
+        10,
+        12,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-3",
+      "display_name": "Cổ Thụ Chi Vương",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 3,
+        "atlas_id": 2,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/2.png",
+      "animation": {
+        "atlas_id": 2,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tính tình ôn hòa trưởng giả, khi tức giận sẽ tạo nên uy lực mạnh mẽ có sức hủy diệt to lớn. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        35,
+        80,
+        16,
+        12,
+        16,
+        4,
+        0,
+        82,
+        30,
+        11,
+        12,
+        13,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-4",
+      "display_name": "Cỏ thơm",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 4,
+        "atlas_id": 3,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/3.png",
+      "animation": {
+        "atlas_id": 3,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hoa ăn thịt người. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        33,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        44,
+        15,
+        8,
+        7,
+        9,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-5",
+      "display_name": "Hoa ngũ sắc",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 5,
+        "atlas_id": 3,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/3.png",
+      "animation": {
+        "atlas_id": 3,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Loài thực vật có đôi môi gợi cảm kỳ lạ. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        33,
+        80,
+        12,
+        11,
+        14,
+        2,
+        0,
+        50,
+        20,
+        9,
+        8,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-6",
+      "display_name": "Hoa ăn thịt người",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 6,
+        "atlas_id": 3,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/3.png",
+      "animation": {
+        "atlas_id": 3,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Lợi dụng bề ngoài có 5 sắc màu hấp dẫn con mồi, sau đó xơi tái con mồi chỉ với một ngụm. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        13,
+        11,
+        14,
+        3,
+        0,
+        66,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-7",
+      "display_name": "Thảo quả",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 7,
+        "atlas_id": 4,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/4.png",
+      "animation": {
+        "atlas_id": 4,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Trái cây thần kỳ đã hóa hình hài con người. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        42,
+        15,
+        8,
+        6,
+        8,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-8",
+      "display_name": "Mạn đà la",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 8,
+        "atlas_id": 4,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/4.png",
+      "animation": {
+        "atlas_id": 4,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Có sức mạnh đặc biệt tạo thành ngòi nổ, thực lực bất phàm. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        11,
+        14,
+        2,
+        0,
+        58,
+        20,
+        9,
+        8,
+        10,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-9",
+      "display_name": "Hoa Mạn đà la",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 9,
+        "atlas_id": 4,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/4.png",
+      "animation": {
+        "atlas_id": 4,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Đóa hoa tiên nở rộ rất xinh đẹp trong xứ xở của Thực Vật hệ. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        11,
+        15,
+        3,
+        0,
+        74,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-10",
+      "display_name": "Tiên Nhân Chưởng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 10,
+        "atlas_id": 5,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/5.png",
+      "animation": {
+        "atlas_id": 5,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiên Nhân Chưởng Thực Vật hệ toàn thân bao trùm bộ gai nhọn dài khắp. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        52,
+        15,
+        8,
+        8,
+        8,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-11",
+      "display_name": "Gai khổng lồ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 11,
+        "atlas_id": 5,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/5.png",
+      "animation": {
+        "atlas_id": 5,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Sử dụng những cái gai bọc quanh thân làm thứ vũ khí đánh lui kẻ địch. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        2,
+        0,
+        56,
+        20,
+        9,
+        8,
+        10,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-12",
+      "display_name": "Gai độc",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 12,
+        "atlas_id": 5,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/5.png",
+      "animation": {
+        "atlas_id": 5,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Gai độc quanh thân khi cần có khả năng tạo nên uy lực mạnh mẽ làm kẻ địch lập tức bị mất mạng. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        11,
+        15,
+        3,
+        0,
+        68,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-13",
+      "display_name": "Quả Tử Tiểu Tả",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 13,
+        "atlas_id": 6,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/6.png",
+      "animation": {
+        "atlas_id": 6,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu cô nương rất mê bộ môn khiêu vũ. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        1,
+        0,
+        34,
+        15,
+        8,
+        7,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-14",
+      "display_name": "Tứ Diệp Tiểu Tả",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 14,
+        "atlas_id": 6,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/6.png",
+      "animation": {
+        "atlas_id": 6,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Tiểu cô nương Hawaii phong tình. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        11,
+        13,
+        2,
+        0,
+        58,
+        20,
+        9,
+        8,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-15",
+      "display_name": "Bá Vương Hoa",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 15,
+        "atlas_id": 4,
+        "form_index": 3
+      },
+      "source_asset": "vqsv5/images/data/npc2/4.png",
+      "animation": {
+        "atlas_id": 4,
+        "sequence_ids": [
+          9,
+          10,
+          11
+        ]
+      },
+      "description": "Nữ Vương Hoa Tiên khí chất bất phàm. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        12,
+        14,
+        4,
+        0,
+        74,
+        25,
+        10,
+        12,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-16",
+      "display_name": "Ái Tâm Thảo",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 16,
+        "atlas_id": 6,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/6.png",
+      "animation": {
+        "atlas_id": 6,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Phi Vẫn một đại biểu ái tâm. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        12,
+        14,
+        4,
+        0,
+        75,
+        25,
+        10,
+        11,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-17",
+      "display_name": "Bạch Liệt Sư",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 17,
+        "atlas_id": 7,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/7.png",
+      "animation": {
+        "atlas_id": 7,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Sư tử dũng mãnh với một lớp bạch kim bao trùm dáng vẻ bên ngoài. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        13,
+        10,
+        11,
+        1,
+        1,
+        50,
+        15,
+        9,
+        7,
+        7,
+        3,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-18",
+      "display_name": "Vương Sư",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 18,
+        "atlas_id": 7,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/7.png",
+      "animation": {
+        "atlas_id": 7,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Kim Loại Chi Vương, trên người tản ra khí phách vô cùng mạnh mẽ. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        14,
+        10,
+        11,
+        2,
+        1,
+        64,
+        20,
+        10,
+        9,
+        7,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-19",
+      "display_name": "Đế Vương Sư",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 19,
+        "atlas_id": 8,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/8.png",
+      "animation": {
+        "atlas_id": 8,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Vương Giả, khí thế làm cho không kẻ nào có thể tới gần. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        38,
+        80,
+        15,
+        11,
+        12,
+        3,
+        1,
+        88,
+        25,
+        11,
+        11,
+        9,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-20",
+      "display_name": "Thủy Tinh Hùng Sư",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 20,
+        "atlas_id": 8,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/8.png",
+      "animation": {
+        "atlas_id": 8,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Phát ra hào quang thần thánh của loài sư tử mạnh mẽ, Kim Loại hệ mạnh nhất! [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        38,
+        80,
+        16,
+        13,
+        14,
+        4,
+        1,
+        100,
+        30,
+        12,
+        12,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-21",
+      "display_name": "Xích Đồng Xà",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 21,
+        "atlas_id": 9,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/9.png",
+      "animation": {
+        "atlas_id": 9,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hoạt động sâu trong lòng đất, món ăn ưa thích chính là quặng đồng. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        35,
+        80,
+        13,
+        10,
+        11,
+        1,
+        1,
+        48,
+        15,
+        9,
+        7,
+        6,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-22",
+      "display_name": "Thiết Giáp Xà",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 22,
+        "atlas_id": 10,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/10.png",
+      "animation": {
+        "atlas_id": 10,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Sủng vật bề ngoài được bao bởi một lớp kim loại kỳ quái. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        14,
+        10,
+        11,
+        2,
+        1,
+        60,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-23",
+      "display_name": "Xích Kim Xà Vương",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 23,
+        "atlas_id": 11,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/11.png",
+      "animation": {
+        "atlas_id": 11,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hoa Lệ Kim Bì thể hiện sự vương giả tôn quý, năng lượng mạnh mẽ đủ để cho đối thủ thần phục. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        14,
+        11,
+        12,
+        3,
+        1,
+        80,
+        25,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-24",
+      "display_name": "Xích Kim Xà Hậu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 24,
+        "atlas_id": 11,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/11.png",
+      "animation": {
+        "atlas_id": 11,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Xà Vương buồn. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        15,
+        12,
+        13,
+        4,
+        1,
+        90,
+        30,
+        11,
+        11,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-25",
+      "display_name": "Binh lính Thiết Giáp",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 25,
+        "atlas_id": 12,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/12.png",
+      "animation": {
+        "atlas_id": 12,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Trung thành và chiến đấu anh dũng. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        35,
+        80,
+        13,
+        11,
+        10,
+        1,
+        1,
+        60,
+        15,
+        9,
+        7,
+        7,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-26",
+      "display_name": "Đội trưởng Thiết Giáp",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 26,
+        "atlas_id": 12,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/12.png",
+      "animation": {
+        "atlas_id": 12,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Khát máu và là tay thiện chiến, có thực lực bất phàm. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        14,
+        11,
+        10,
+        2,
+        1,
+        68,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-27",
+      "display_name": "Tướng Thiết Giáp",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 27,
+        "atlas_id": 13,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/13.png",
+      "animation": {
+        "atlas_id": 13,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tướng quân tay cầm trường thương công kích. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        15,
+        12,
+        12,
+        3,
+        1,
+        76,
+        25,
+        10,
+        10,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-28",
+      "display_name": "Song Đao Tướng Quân",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 28,
+        "atlas_id": 13,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/13.png",
+      "animation": {
+        "atlas_id": 13,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Tướng quân thiện chiến rất dũng mãnh và khát máu. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        35,
+        80,
+        12,
+        10,
+        10,
+        4,
+        1,
+        90,
+        30,
+        11,
+        12,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-29",
+      "display_name": "Đao Thương Tướng Quân",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 29,
+        "atlas_id": 13,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/13.png",
+      "animation": {
+        "atlas_id": 13,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Tướng quân tiên phong trí dũng song toàn. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        4,
+        1,
+        95,
+        30,
+        11,
+        12,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-30",
+      "display_name": "Thiết Đầu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 30,
+        "atlas_id": 14,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/14.png",
+      "animation": {
+        "atlas_id": 14,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thiết Đầu Công thiên bẩm trời phú. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        35,
+        80,
+        12,
+        11,
+        10,
+        1,
+        1,
+        60,
+        15,
+        9,
+        8,
+        6,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-31",
+      "display_name": "Thiết Cự Nhân",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 31,
+        "atlas_id": 14,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/14.png",
+      "animation": {
+        "atlas_id": 14,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Được các anh em trong Thiết Đầu gọi là người khổng lồ có bàn tay sắt. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        2,
+        1,
+        68,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-32",
+      "display_name": "Thiết Cự Linh",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 32,
+        "atlas_id": 14,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/14.png",
+      "animation": {
+        "atlas_id": 14,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Người khổng lồ Taurus. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        14,
+        12,
+        11,
+        3,
+        1,
+        84,
+        25,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-33",
+      "display_name": "Người điện",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 33,
+        "atlas_id": 14,
+        "form_index": 3
+      },
+      "source_asset": "vqsv5/images/data/npc2/14.png",
+      "animation": {
+        "atlas_id": 14,
+        "sequence_ids": [
+          9,
+          10,
+          11
+        ]
+      },
+      "description": "Sủng vật quanh thân tràn ngập từ tính. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        37,
+        80,
+        14,
+        12,
+        11,
+        4,
+        1,
+        94,
+        30,
+        11,
+        12,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-34",
+      "display_name": "Đồng Cầu huynh đệ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 34,
+        "atlas_id": 15,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/15.png",
+      "animation": {
+        "atlas_id": 15,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ánh mắt thiện lượng khó che đậy bản chất ác ma. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        1,
+        1,
+        90,
+        15,
+        9,
+        7,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-35",
+      "display_name": "Thiết Cầu huynh đệ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 35,
+        "atlas_id": 16,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/16.png",
+      "animation": {
+        "atlas_id": 16,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Đam mê bộ môn thể thao ngoài trời. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        38,
+        80,
+        15,
+        11,
+        12,
+        2,
+        1,
+        92,
+        20,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-36",
+      "display_name": "Ấu Long",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 36,
+        "atlas_id": 17,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/17.png",
+      "animation": {
+        "atlas_id": 17,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ấu tử Bạch Kim Long, tinh nghịch phi thường. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        39,
+        15,
+        8,
+        8,
+        5,
+        3,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-37",
+      "display_name": "Tiểu Bạch Long",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 37,
+        "atlas_id": 17,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/17.png",
+      "animation": {
+        "atlas_id": 17,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Thể tiến hóa Tiểu Phi Long, tốc độ rất nhanh. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        55,
+        20,
+        9,
+        10,
+        6,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-38",
+      "display_name": "Kim Dực Long",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 38,
+        "atlas_id": 18,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/18.png",
+      "animation": {
+        "atlas_id": 18,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thể trưởng thành Phi Long, cơ thể chứa năng lượng mạnh mẽ. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        83,
+        25,
+        10,
+        12,
+        8,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-39",
+      "display_name": "Bạch Kim Long",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 39,
+        "atlas_id": 18,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/18.png",
+      "animation": {
+        "atlas_id": 18,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Vua bầu trời, có được thực lực thần thánh. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        36,
+        80,
+        15,
+        14,
+        11,
+        4,
+        2,
+        91,
+        30,
+        11,
+        13,
+        11,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-40",
+      "display_name": "Ưng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 40,
+        "atlas_id": 19,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/19.png",
+      "animation": {
+        "atlas_id": 19,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Loài chim hung mãnh bay lượn trên không trung. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        47,
+        15,
+        8,
+        9,
+        5,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-41",
+      "display_name": "Vương Thứu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 41,
+        "atlas_id": 19,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/19.png",
+      "animation": {
+        "atlas_id": 19,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Ưng Chi Vương, vỗ một sải cánh có thể bay đến trời cao. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-42",
+      "display_name": "Sư Thứu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 42,
+        "atlas_id": 19,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/19.png",
+      "animation": {
+        "atlas_id": 19,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Sư Thân Ưng Thú trong truyền thuyết (sự pha trộn giữa sư tử và chim ưng), dã thú dị thường hung mãnh. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        75,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-43",
+      "display_name": "Dơi khổng lồ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 43,
+        "atlas_id": 20,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/20.png",
+      "animation": {
+        "atlas_id": 20,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Dơi Tặc Mi Thử Nhãn, tên trộm đáng yêu. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        12,
+        10,
+        1,
+        2,
+        51,
+        15,
+        8,
+        9,
+        5,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-44",
+      "display_name": "Răng nanh của dơi",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 44,
+        "atlas_id": 20,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/20.png",
+      "animation": {
+        "atlas_id": 20,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": " Batman có đôi mắt màu hồng rất đẹp. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        13,
+        10,
+        2,
+        2,
+        59,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-45",
+      "display_name": "Tần số của dơi",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 45,
+        "atlas_id": 21,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/21.png",
+      "animation": {
+        "atlas_id": 21,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Áo choàng thần bí tạo nên sức hút cho những kẻ kiếm tìm. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        14,
+        11,
+        3,
+        2,
+        67,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-46",
+      "display_name": "Thiên Mã cánh bạc",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 46,
+        "atlas_id": 22,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/22.png",
+      "animation": {
+        "atlas_id": 22,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thiên Mã cực mạnh ai nhìn cũng muốn gần. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        43,
+        15,
+        8,
+        8,
+        5,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-47",
+      "display_name": "Thiên Mã một sừng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 47,
+        "atlas_id": 22,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/22.png",
+      "animation": {
+        "atlas_id": 22,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Đôi cánh kim loại vàng rất mạnh rất tốt. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-48",
+      "display_name": "Thiên Mã Vương",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 48,
+        "atlas_id": 23,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/23.png",
+      "animation": {
+        "atlas_id": 23,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thiên Mã tuấn tú hoàn mỹ, Thiên Mã Hoàng Gia kiểu mẫu. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        13,
+        11,
+        3,
+        2,
+        71,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-49",
+      "display_name": "Mao Cầu Điểu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 49,
+        "atlas_id": 24,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/24.png",
+      "animation": {
+        "atlas_id": 24,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiền vệ Tiểu Điểu, chim nhỏ tai kẹo đường đáng yêu. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        33,
+        80,
+        13,
+        11,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-50",
+      "display_name": "Phiêu Phù Mao Cầu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 50,
+        "atlas_id": 24,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/24.png",
+      "animation": {
+        "atlas_id": 24,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Tiểu Điểu lông xù, tánh khí táo bạo. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        79,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-51",
+      "display_name": "Pháp Quan Mao Cầu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 51,
+        "atlas_id": 24,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/24.png",
+      "animation": {
+        "atlas_id": 24,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Trạng thái đỉnh cao Mao Cầu, trưởng thành, trang trọng. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        14,
+        13,
+        11,
+        4,
+        2,
+        85,
+        30,
+        10,
+        12,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-52",
+      "display_name": "Hổ Thú",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 52,
+        "atlas_id": 25,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/25.png",
+      "animation": {
+        "atlas_id": 25,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Lão Hổ răng hô đáng yêu. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        1,
+        3,
+        75,
+        18,
+        9,
+        8,
+        6,
+        3,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-53",
+      "display_name": "Công phu hổ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 53,
+        "atlas_id": 25,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/25.png",
+      "animation": {
+        "atlas_id": 25,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Chiến sỹ ưu tú nhất đứng đầu Hổ Tộc. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        44,
+        80,
+        14,
+        11,
+        10,
+        2,
+        3,
+        83,
+        23,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-54",
+      "display_name": "Hổ Dũng Sĩ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 54,
+        "atlas_id": 25,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/25.png",
+      "animation": {
+        "atlas_id": 25,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Hổ Tộc là những chiến sỹ dũng mãnh và quyết liệt. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        47,
+        80,
+        15,
+        12,
+        11,
+        3,
+        3,
+        91,
+        27,
+        11,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-55",
+      "display_name": "Hổ Tù Trường",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 55,
+        "atlas_id": 25,
+        "form_index": 3
+      },
+      "source_asset": "vqsv5/images/data/npc2/25.png",
+      "animation": {
+        "atlas_id": 25,
+        "sequence_ids": [
+          9,
+          10,
+          11
+        ]
+      },
+      "description": "Lão hổ sáu tay, sức mạnh phi thường, là đại thủ lĩnh Hổ Tộc. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        47,
+        80,
+        15,
+        12,
+        12,
+        4,
+        3,
+        110,
+        30,
+        11,
+        12,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-56",
+      "display_name": "Ngựa núi",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 56,
+        "atlas_id": 26,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/26.png",
+      "animation": {
+        "atlas_id": 26,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ngựa xanh phi thường, đặc biệt rất bảo vệ môi trường. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        66,
+        15,
+        8,
+        7,
+        5,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-57",
+      "display_name": "Ngựa vằn",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 57,
+        "atlas_id": 26,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/26.png",
+      "animation": {
+        "atlas_id": 26,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Ánh hào quang lấp lóe xung quanh. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        88,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-58",
+      "display_name": "Ngựa lưỡi liềm khổng lồ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 58,
+        "atlas_id": 26,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/26.png",
+      "animation": {
+        "atlas_id": 26,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Cầm trong tay Song Đao Đường Lang mạnh mẽ. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        44,
+        80,
+        15,
+        10,
+        10,
+        3,
+        3,
+        104,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-59",
+      "display_name": "Heo núi",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 59,
+        "atlas_id": 27,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/27.png",
+      "animation": {
+        "atlas_id": 27,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu Trư phàm ăn phàm ngủ hay chảy nước mũi. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        66,
+        15,
+        8,
+        6,
+        5,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-60",
+      "display_name": "Heo răng nanh khổng lồ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 60,
+        "atlas_id": 27,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/27.png",
+      "animation": {
+        "atlas_id": 27,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Heo rừng trong giới xã hội đen, rõ ràng ngay thẳng. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        43,
+        80,
+        13,
+        10,
+        11,
+        2,
+        3,
+        76,
+        20,
+        9,
+        8,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-61",
+      "display_name": "Trư Vương",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 61,
+        "atlas_id": 27,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/27.png",
+      "animation": {
+        "atlas_id": 27,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Heo rừng lão đại tánh khí táo bạo. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        44,
+        80,
+        14,
+        10,
+        11,
+        3,
+        3,
+        86,
+        25,
+        10,
+        10,
+        7,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-62",
+      "display_name": "Heo đốm",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 62,
+        "atlas_id": 27,
+        "form_index": 3
+      },
+      "source_asset": "vqsv5/images/data/npc2/27.png",
+      "animation": {
+        "atlas_id": 27,
+        "sequence_ids": [
+          9,
+          10,
+          11
+        ]
+      },
+      "description": "Heo 101 đốm lấm tấm. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        45,
+        80,
+        15,
+        12,
+        12,
+        4,
+        3,
+        90,
+        28,
+        10,
+        10,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-63",
+      "display_name": "Sơn báo",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 63,
+        "atlas_id": 28,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/28.png",
+      "animation": {
+        "atlas_id": 28,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu Báo Tử dễ bị nhầm lẫn là tiểu miêu. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        62,
+        15,
+        8,
+        6,
+        5,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-64",
+      "display_name": "Beo răng kiếm",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 64,
+        "atlas_id": 29,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/29.png",
+      "animation": {
+        "atlas_id": 29,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hàm răng móng vuốt 10 phần sắc bén. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        92,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-65",
+      "display_name": "Mị Ảnh",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 65,
+        "atlas_id": 29,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/29.png",
+      "animation": {
+        "atlas_id": 29,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Vương giả ẩn giấu trong bóng tối. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        44,
+        80,
+        14,
+        10,
+        11,
+        3,
+        3,
+        96,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-66",
+      "display_name": "Dị Thú",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 66,
+        "atlas_id": 30,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/30.png",
+      "animation": {
+        "atlas_id": 30,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hành Tây Dị Thú hoạt bát. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        84,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-67",
+      "display_name": "Chân Dị Thú",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 67,
+        "atlas_id": 31,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/31.png",
+      "animation": {
+        "atlas_id": 31,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tốc độ rất nhanh, danh xưng là “ Lôi Điện ”. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        44,
+        80,
+        14,
+        11,
+        10,
+        3,
+        3,
+        108,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-68",
+      "display_name": "Tiểu Lam Kình",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 68,
+        "atlas_id": 32,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/32.png",
+      "animation": {
+        "atlas_id": 32,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu Cá Kình đáng yêu chơi đùa tinh nghịch trong nước. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        32,
+        80,
+        12,
+        10,
+        10,
+        1,
+        4,
+        38,
+        15,
+        10,
+        7,
+        5,
+        3,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-69",
+      "display_name": "Cá Kình khổng lồ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 69,
+        "atlas_id": 33,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/33.png",
+      "animation": {
+        "atlas_id": 33,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Kính Quang Lọc, những kẻ yêu hòa bình. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        27,
+        80,
+        15,
+        10,
+        10,
+        2,
+        4,
+        54,
+        20,
+        11,
+        8,
+        6,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-70",
+      "display_name": "Cá Kình một sừng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 70,
+        "atlas_id": 33,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/33.png",
+      "animation": {
+        "atlas_id": 33,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Người bảo vệ hòa bình lạnh lùng. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        3,
+        4,
+        82,
+        25,
+        12,
+        10,
+        8,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-71",
+      "display_name": "Yếu Tắc Kình",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 71,
+        "atlas_id": 34,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/34.png",
+      "animation": {
+        "atlas_id": 34,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Cá Kình cuồng điên mang theo đầy đủ võ trang. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        32,
+        80,
+        17,
+        11,
+        11,
+        4,
+        4,
+        96,
+        30,
+        13,
+        13,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-72",
+      "display_name": "Tiểu Cánh Cụt",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 72,
+        "atlas_id": 35,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/35.png",
+      "animation": {
+        "atlas_id": 35,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ca sỹ siêu cấp. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        50,
+        15,
+        10,
+        7,
+        5,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-73",
+      "display_name": "Đao Phong Cánh Cụt",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 73,
+        "atlas_id": 36,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/36.png",
+      "animation": {
+        "atlas_id": 36,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thân mặc đồng phục hộ vệ. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        2,
+        4,
+        66,
+        20,
+        11,
+        8,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-74",
+      "display_name": "Đế Vương Cánh Cụt",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 74,
+        "atlas_id": 37,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/37.png",
+      "animation": {
+        "atlas_id": 37,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Đế Vương Tính cách quái gở. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        3,
+        4,
+        74,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-75",
+      "display_name": "Hải Quy (rùa biển)",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 75,
+        "atlas_id": 38,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/38.png",
+      "animation": {
+        "atlas_id": 38,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hải Quy đáng yêu thích đùa dai. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        46,
+        15,
+        10,
+        6,
+        5,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-76",
+      "display_name": "Rùa trinh sát",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 76,
+        "atlas_id": 39,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/39.png",
+      "animation": {
+        "atlas_id": 39,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hải Quy thúc thúc 10 phần mị lực. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        27,
+        80,
+        15,
+        10,
+        10,
+        2,
+        4,
+        62,
+        20,
+        11,
+        8,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-77",
+      "display_name": "Rùa ma biển sâu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 77,
+        "atlas_id": 40,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/40.png",
+      "animation": {
+        "atlas_id": 40,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ẩn dưới biển sâu thần bí là năng lượng bí ẩn của loài rùa. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        10,
+        11,
+        3,
+        4,
+        70,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-78",
+      "display_name": "Rùa khổng lồ biển sâu",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 78,
+        "atlas_id": 40,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/40.png",
+      "animation": {
+        "atlas_id": 40,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Hình thể lớn nhưng tâm ôn hòa. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        4,
+        4,
+        92,
+        30,
+        13,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-79",
+      "display_name": "Cua vàng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 79,
+        "atlas_id": 41,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/41.png",
+      "animation": {
+        "atlas_id": 41,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Trời sinh vốn đã ngây thơ, đáng yêu. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        42,
+        15,
+        10,
+        7,
+        5,
+        2,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-80",
+      "display_name": "Cua vân Bạc",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 80,
+        "atlas_id": 41,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/41.png",
+      "animation": {
+        "atlas_id": 41,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Cua con thích khóc hay mất bình tĩnh. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        2,
+        4,
+        58,
+        20,
+        11,
+        8,
+        6,
+        1,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-81",
+      "display_name": "Cua thiên sứ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 81,
+        "atlas_id": 41,
+        "form_index": 2
+      },
+      "source_asset": "vqsv5/images/data/npc2/41.png",
+      "animation": {
+        "atlas_id": 41,
+        "sequence_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      "description": "Vì yêu thích những câu chuyện cổ tích mà từ chối trưởng thành. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        11,
+        11,
+        3,
+        4,
+        78,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-82",
+      "display_name": "Cá heo",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 82,
+        "atlas_id": 42,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/42.png",
+      "animation": {
+        "atlas_id": 42,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu cá heo thực dụng, có thể ngồi, có thể chiến đấu. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        1,
+        4,
+        38,
+        15,
+        13,
+        7,
+        5,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-83",
+      "display_name": "Cá heo tốc độ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 83,
+        "atlas_id": 42,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/42.png",
+      "animation": {
+        "atlas_id": 42,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Cá heo luôn ôm giấc mộng được bay lên không trung. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        2,
+        4,
+        54,
+        20,
+        14,
+        9,
+        6,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-84",
+      "display_name": "Ngựa chiến",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 84,
+        "atlas_id": 26,
+        "form_index": 3
+      },
+      "source_asset": "vqsv5/images/data/npc2/26.png",
+      "animation": {
+        "atlas_id": 26,
+        "sequence_ids": [
+          9,
+          10,
+          11
+        ]
+      },
+      "description": "Dị hoá đem lại sức mạnh phi thường cho sinh vật. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        40,
+        80,
+        13,
+        11,
+        10,
+        4,
+        3,
+        95,
+        20,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-85",
+      "display_name": "Quỷ Vương Địa Phủ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 85,
+        "atlas_id": 43,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/43.png",
+      "animation": {
+        "atlas_id": 43,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "U Linh hệ. [khắc chế 5 hệ khác]",
+      "raw_fields": [
+        60,
+        80,
+        20,
+        17,
+        18,
+        5,
+        255,
+        100,
+        30,
+        12,
+        10,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-86",
+      "display_name": "Quỷ Vương Địa Phủ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 86,
+        "atlas_id": 43,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/43.png",
+      "animation": {
+        "atlas_id": 43,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "U Linh hệ. [khắc chế 5 hệ khác]",
+      "raw_fields": [
+        60,
+        80,
+        20,
+        17,
+        18,
+        5,
+        255,
+        120,
+        40,
+        14,
+        14,
+        13,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-87",
+      "display_name": "Cáp Cáp Thụ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 87,
+        "atlas_id": 44,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/44.png",
+      "animation": {
+        "atlas_id": 44,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Khoái Hoạt Thụ Tinh, tinh quái, đáng yêu. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        32,
+        80,
+        14,
+        14,
+        15,
+        3,
+        0,
+        60,
+        25,
+        10,
+        10,
+        12,
+        1,
+        1,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-88",
+      "display_name": "Thụ tinh ngàn năm",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 88,
+        "atlas_id": 44,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/44.png",
+      "animation": {
+        "atlas_id": 44,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Thụ Tinh thu hành nhiều năm, thực lực phi phàm. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        34,
+        80,
+        16,
+        15,
+        16,
+        4,
+        0,
+        80,
+        30,
+        11,
+        11,
+        13,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-89",
+      "display_name": "Hoa Tiên Tử",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 89,
+        "atlas_id": 45,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/45.png",
+      "animation": {
+        "atlas_id": 45,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Có được ma lực mạnh mẽ nhất Ailulima. [khắc chế Phi Hành hệ]",
+      "raw_fields": [
+        35,
+        82,
+        18,
+        16,
+        17,
+        5,
+        0,
+        82,
+        32,
+        12,
+        12,
+        13,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-90",
+      "display_name": "Cá Chép Rồng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 90,
+        "atlas_id": 46,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/46.png",
+      "animation": {
+        "atlas_id": 46,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tiểu Tê Tê đáng yêu, công thủ cũng không tệ. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        38,
+        80,
+        13,
+        15,
+        13,
+        3,
+        1,
+        88,
+        25,
+        11,
+        10,
+        10,
+        1,
+        1,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-91",
+      "display_name": "Cá Chép Rồng sắt",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 91,
+        "atlas_id": 46,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/46.png",
+      "animation": {
+        "atlas_id": 46,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Toàn thân mặc bộ giáp Warrior mạnh mẽ. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        38,
+        80,
+        14,
+        16,
+        16,
+        4,
+        1,
+        96,
+        30,
+        12,
+        11,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-92",
+      "display_name": "Phá Hư Thần",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 92,
+        "atlas_id": 47,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/47.png",
+      "animation": {
+        "atlas_id": 47,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Có được lực hủy diệt đáng sợ. [khắc chế Mãnh Thú hệ]",
+      "raw_fields": [
+        40,
+        82,
+        16,
+        18,
+        17,
+        5,
+        1,
+        100,
+        32,
+        13,
+        12,
+        14,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-93",
+      "display_name": "Bạch Thiên Sử",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 93,
+        "atlas_id": 48,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/48.png",
+      "animation": {
+        "atlas_id": 48,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Thần Chi Sứ Giả bay lượn trên không trung lam sắc. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        34,
+        80,
+        18,
+        17,
+        9,
+        3,
+        2,
+        83,
+        25,
+        9,
+        10,
+        8,
+        1,
+        1,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-94",
+      "display_name": "Thiên Sử Trường",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 94,
+        "atlas_id": 48,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/48.png",
+      "animation": {
+        "atlas_id": 48,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Thiên Sứ là biểu tượng của sự uy nghi và quyền lực. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        35,
+        80,
+        20,
+        18,
+        10,
+        4,
+        2,
+        91,
+        30,
+        10,
+        11,
+        11,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-95",
+      "display_name": "Phi Thiên Huyền Nữ",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 95,
+        "atlas_id": 49,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/49.png",
+      "animation": {
+        "atlas_id": 49,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Hóa thân Cửu Thiên Huyền Nữ. [khắc chế Hải Dương hệ]",
+      "raw_fields": [
+        36,
+        82,
+        21,
+        22,
+        12,
+        5,
+        2,
+        95,
+        32,
+        11,
+        12,
+        12,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-96",
+      "display_name": "Sói mặt trăng",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 96,
+        "atlas_id": 50,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/50.png",
+      "animation": {
+        "atlas_id": 50,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Tắm trong ánh trăng thần bí. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        47,
+        80,
+        13,
+        17,
+        12,
+        3,
+        3,
+        100,
+        27,
+        11,
+        10,
+        8,
+        1,
+        1,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-97",
+      "display_name": "Sói Vương Cao Ngạo",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 97,
+        "atlas_id": 50,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/50.png",
+      "animation": {
+        "atlas_id": 50,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Vua bóng đêm cao ngạo. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        47,
+        80,
+        14,
+        20,
+        13,
+        4,
+        3,
+        115,
+        30,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-98",
+      "display_name": "Ngân Hồ Vương Tử",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 98,
+        "atlas_id": 51,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/51.png",
+      "animation": {
+        "atlas_id": 51,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Vương tử Ngân Hồ Tộc uy phong lẫm liệt. [khắc chế Thực Vật hệ]",
+      "raw_fields": [
+        50,
+        82,
+        15,
+        21,
+        14,
+        5,
+        3,
+        117,
+        32,
+        12,
+        13,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-99",
+      "display_name": "Tê Lợi Sa (cá mập)",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 99,
+        "atlas_id": 52,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/52.png",
+      "animation": {
+        "atlas_id": 52,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Sát thủ khét tiếng của đại dương. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        28,
+        80,
+        18,
+        12,
+        12,
+        3,
+        4,
+        82,
+        25,
+        11,
+        10,
+        8,
+        1,
+        1,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-100",
+      "display_name": "Sa Vương Cuồng Bạo",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 100,
+        "atlas_id": 52,
+        "form_index": 1
+      },
+      "source_asset": "vqsv5/images/data/npc2/52.png",
+      "animation": {
+        "atlas_id": 52,
+        "sequence_ids": [
+          3,
+          4,
+          5
+        ]
+      },
+      "description": "Tồn tại mối nguy hiểm nhất chính trong đại dương. [khắc chế Kim Loại hệ]",
+      "raw_fields": [
+        32,
+        80,
+        20,
+        14,
+        14,
+        4,
+        4,
+        96,
+        30,
+        12,
+        11,
+        10,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    },
+    {
+      "pet_id": "vqsv5-db-101",
+      "display_name": "Mỹ Nhân Ngư",
+      "element": null,
+      "source_ids": {
+        "game": "VQSV5",
+        "db_id": 101,
+        "atlas_id": 53,
+        "form_index": 0
+      },
+      "source_asset": "vqsv5/images/data/npc2/53.png",
+      "animation": {
+        "atlas_id": 53,
+        "sequence_ids": [
+          0,
+          1,
+          2
+        ]
+      },
+      "description": "Ca sỹ xinh đẹp, tuyệt mỹ thiện lương. [khắc chế Kim Loại hệ] ",
+      "raw_fields": [
+        34,
+        82,
+        16,
+        18,
+        15,
+        5,
+        4,
+        98,
+        32,
+        14,
+        13,
+        11,
+        0,
+        0,
+        0
+      ],
+      "combat_stats": null,
+      "verification": {
+        "name_sprite": "data.d ak.j and ak.e row index; t.class loads atlas and uses form index times three",
+        "element_and_stats": "unresolved"
+      }
+    }
+  ],
+  "notes": "Distinct source rows remain separate even if names and sprite pairs repeat."
+}

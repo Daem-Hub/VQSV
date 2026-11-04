@@ -1,0 +1,5606 @@
+{
+  "source": "map_78.mid",
+  "map_id": 78,
+  "mode": 1,
+  "option": 3,
+  "width": 15,
+  "height": 20,
+  "tile_size": 16,
+  "layer_count": 5,
+  "layers": [
+    {
+      "index": 0,
+      "kind": 0,
+      "encoding": 0,
+      "count": 300,
+      "records": [
+        {
+          "x": 0,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 1,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 3,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 5,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 11,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 12,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 9,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 14,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 15,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 16,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 16,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 17,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 17,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 18,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 18,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 18,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 0,
+          "y": 19,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        },
+        {
+          "x": 1,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 2,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 3,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 5,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 6,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 7,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 8,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 9,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 10,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 11,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 12,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 13,
+          "y": 19,
+          "raw": 0,
+          "tile_or_id": 0,
+          "variant": 0,
+          "signed": 0
+        },
+        {
+          "x": 14,
+          "y": 19,
+          "raw": 1,
+          "tile_or_id": 1,
+          "variant": 0,
+          "signed": 1
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "kind": 1,
+      "encoding": 1,
+      "count": 282,
+      "records": [
+        {
+          "x": 0,
+          "y": 0,
+          "raw": 5,
+          "tile_or_id": 5,
+          "variant": 0,
+          "signed": 5
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "raw": 20486,
+          "tile_or_id": 6,
+          "variant": 5,
+          "signed": 20486
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 5,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 7,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 10,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 11,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "raw": 8,
+          "tile_or_id": 8,
+          "variant": 0,
+          "signed": 8
+        },
+        {
+          "x": 13,
+          "y": 0,
+          "raw": 4102,
+          "tile_or_id": 6,
+          "variant": 1,
+          "signed": 4102
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "raw": 5,
+          "tile_or_id": 5,
+          "variant": 0,
+          "signed": 5
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "raw": 6,
+          "tile_or_id": 6,
+          "variant": 0,
+          "signed": 6
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "raw": 7,
+          "tile_or_id": 7,
+          "variant": 0,
+          "signed": 7
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 7,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 11,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 12,
+          "y": 1,
+          "raw": 12,
+          "tile_or_id": 12,
+          "variant": 0,
+          "signed": 12
+        },
+        {
+          "x": 13,
+          "y": 1,
+          "raw": 16391,
+          "tile_or_id": 7,
+          "variant": 4,
+          "signed": 16391
+        },
+        {
+          "x": 14,
+          "y": 1,
+          "raw": 16390,
+          "tile_or_id": 6,
+          "variant": 4,
+          "signed": 16390
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "raw": 14,
+          "tile_or_id": 14,
+          "variant": 0,
+          "signed": 14
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 6,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 7,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 8,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 11,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 12,
+          "y": 2,
+          "raw": 16399,
+          "tile_or_id": 15,
+          "variant": 4,
+          "signed": 16399
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "raw": 16398,
+          "tile_or_id": 14,
+          "variant": 4,
+          "signed": 16398
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "raw": 17,
+          "tile_or_id": 17,
+          "variant": 0,
+          "signed": 17
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 5,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 6,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 7,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 9,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 11,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "raw": 16402,
+          "tile_or_id": 18,
+          "variant": 4,
+          "signed": 16402
+        },
+        {
+          "x": 13,
+          "y": 3,
+          "raw": 16401,
+          "tile_or_id": 17,
+          "variant": 4,
+          "signed": 16401
+        },
+        {
+          "x": 14,
+          "y": 3,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 5,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 6,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 9,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 9,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 10,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 11,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 11,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 12,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 14,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 14,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 14,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 3,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 11,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 13,
+          "y": 15,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 16,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 5,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 9,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 11,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "raw": 16437,
+          "tile_or_id": 53,
+          "variant": 4,
+          "signed": 16437
+        },
+        {
+          "x": 13,
+          "y": 16,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 0,
+          "y": 17,
+          "raw": 12296,
+          "tile_or_id": 8,
+          "variant": 3,
+          "signed": 12296
+        },
+        {
+          "x": 1,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 3,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 5,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 10,
+          "y": 17,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 11,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 12,
+          "y": 17,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "raw": 4149,
+          "tile_or_id": 53,
+          "variant": 1,
+          "signed": 4149
+        },
+        {
+          "x": 14,
+          "y": 17,
+          "raw": 4104,
+          "tile_or_id": 8,
+          "variant": 1,
+          "signed": 4104
+        },
+        {
+          "x": 1,
+          "y": 18,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 2,
+          "y": 18,
+          "raw": 12341,
+          "tile_or_id": 53,
+          "variant": 3,
+          "signed": 12341
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 4,
+          "y": 18,
+          "raw": 12341,
+          "tile_or_id": 53,
+          "variant": 3,
+          "signed": 12341
+        },
+        {
+          "x": 5,
+          "y": 18,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 9,
+          "y": 18,
+          "raw": 53,
+          "tile_or_id": 53,
+          "variant": 0,
+          "signed": 53
+        },
+        {
+          "x": 10,
+          "y": 18,
+          "raw": 12341,
+          "tile_or_id": 53,
+          "variant": 3,
+          "signed": 12341
+        },
+        {
+          "x": 11,
+          "y": 18,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 12,
+          "y": 18,
+          "raw": 12341,
+          "tile_or_id": 53,
+          "variant": 3,
+          "signed": 12341
+        },
+        {
+          "x": 13,
+          "y": 18,
+          "raw": 8245,
+          "tile_or_id": 53,
+          "variant": 2,
+          "signed": 8245
+        },
+        {
+          "x": 0,
+          "y": 19,
+          "raw": 12293,
+          "tile_or_id": 5,
+          "variant": 3,
+          "signed": 12293
+        },
+        {
+          "x": 14,
+          "y": 19,
+          "raw": 12293,
+          "tile_or_id": 5,
+          "variant": 3,
+          "signed": 12293
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "kind": 2,
+      "encoding": 2,
+      "count": 98,
+      "records": [
+        {
+          "x": 4,
+          "y": 1,
+          "raw": 74,
+          "tile_or_id": 74,
+          "variant": 0,
+          "signed": 74
+        },
+        {
+          "x": 5,
+          "y": 1,
+          "raw": 16458,
+          "tile_or_id": 74,
+          "variant": 4,
+          "signed": 16458
+        },
+        {
+          "x": 9,
+          "y": 1,
+          "raw": 74,
+          "tile_or_id": 74,
+          "variant": 0,
+          "signed": 74
+        },
+        {
+          "x": 10,
+          "y": 1,
+          "raw": 16458,
+          "tile_or_id": 74,
+          "variant": 4,
+          "signed": 16458
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "raw": 75,
+          "tile_or_id": 75,
+          "variant": 0,
+          "signed": 75
+        },
+        {
+          "x": 5,
+          "y": 2,
+          "raw": 16459,
+          "tile_or_id": 75,
+          "variant": 4,
+          "signed": 16459
+        },
+        {
+          "x": 9,
+          "y": 2,
+          "raw": 75,
+          "tile_or_id": 75,
+          "variant": 0,
+          "signed": 75
+        },
+        {
+          "x": 10,
+          "y": 2,
+          "raw": 16459,
+          "tile_or_id": 75,
+          "variant": 4,
+          "signed": 16459
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "raw": 20,
+          "tile_or_id": 20,
+          "variant": 0,
+          "signed": 20
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 4,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 4,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "raw": 16404,
+          "tile_or_id": 20,
+          "variant": 4,
+          "signed": 16404
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 5,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 5,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "raw": 61,
+          "tile_or_id": 61,
+          "variant": 0,
+          "signed": 61
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "raw": 16445,
+          "tile_or_id": 61,
+          "variant": 4,
+          "signed": 16445
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "raw": 61,
+          "tile_or_id": 61,
+          "variant": 0,
+          "signed": 61
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "raw": 16445,
+          "tile_or_id": 61,
+          "variant": 4,
+          "signed": 16445
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 9,
+          "y": 8,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 1,
+          "y": 9,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 2,
+          "y": 9,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 3,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 5,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 9,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 11,
+          "y": 9,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 1,
+          "y": 10,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 3,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 4,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 9,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 10,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 11,
+          "y": 10,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 10,
+          "raw": 62,
+          "tile_or_id": 62,
+          "variant": 0,
+          "signed": 62
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "raw": 16446,
+          "tile_or_id": 62,
+          "variant": 4,
+          "signed": 16446
+        },
+        {
+          "x": 1,
+          "y": 11,
+          "raw": 63,
+          "tile_or_id": 63,
+          "variant": 0,
+          "signed": 63
+        },
+        {
+          "x": 2,
+          "y": 11,
+          "raw": 16447,
+          "tile_or_id": 63,
+          "variant": 4,
+          "signed": 16447
+        },
+        {
+          "x": 5,
+          "y": 11,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 11,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 11,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 11,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 9,
+          "y": 11,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "raw": 63,
+          "tile_or_id": 63,
+          "variant": 0,
+          "signed": 63
+        },
+        {
+          "x": 13,
+          "y": 11,
+          "raw": 16447,
+          "tile_or_id": 63,
+          "variant": 4,
+          "signed": 16447
+        },
+        {
+          "x": 1,
+          "y": 12,
+          "raw": 64,
+          "tile_or_id": 64,
+          "variant": 0,
+          "signed": 64
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "raw": 16448,
+          "tile_or_id": 64,
+          "variant": 4,
+          "signed": 16448
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 12,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 12,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 12,
+          "y": 12,
+          "raw": 64,
+          "tile_or_id": 64,
+          "variant": 0,
+          "signed": 64
+        },
+        {
+          "x": 13,
+          "y": 12,
+          "raw": 16448,
+          "tile_or_id": 64,
+          "variant": 4,
+          "signed": 16448
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 13,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 14,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 7,
+          "y": 17,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 8,
+          "y": 17,
+          "raw": 46,
+          "tile_or_id": 46,
+          "variant": 0,
+          "signed": 46
+        },
+        {
+          "x": 6,
+          "y": 18,
+          "raw": 47,
+          "tile_or_id": 47,
+          "variant": 0,
+          "signed": 47
+        },
+        {
+          "x": 7,
+          "y": 18,
+          "raw": 47,
+          "tile_or_id": 47,
+          "variant": 0,
+          "signed": 47
+        },
+        {
+          "x": 8,
+          "y": 18,
+          "raw": 47,
+          "tile_or_id": 47,
+          "variant": 0,
+          "signed": 47
+        },
+        {
+          "x": 6,
+          "y": 19,
+          "raw": 48,
+          "tile_or_id": 48,
+          "variant": 0,
+          "signed": 48
+        },
+        {
+          "x": 7,
+          "y": 19,
+          "raw": 48,
+          "tile_or_id": 48,
+          "variant": 0,
+          "signed": 48
+        },
+        {
+          "x": 8,
+          "y": 19,
+          "raw": 48,
+          "tile_or_id": 48,
+          "variant": 0,
+          "signed": 48
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "kind": 3,
+      "encoding": 4,
+      "count": 14,
+      "records": [
+        {
+          "x": 0,
+          "y": 18,
+          "raw": 24582,
+          "tile_or_id": 6,
+          "variant": 6,
+          "signed": 24582
+        },
+        {
+          "x": 1,
+          "y": 18,
+          "raw": 9,
+          "tile_or_id": 9,
+          "variant": 0,
+          "signed": 9
+        },
+        {
+          "x": 13,
+          "y": 18,
+          "raw": 16393,
+          "tile_or_id": 9,
+          "variant": 4,
+          "signed": 16393
+        },
+        {
+          "x": 14,
+          "y": 18,
+          "raw": 8198,
+          "tile_or_id": 6,
+          "variant": 2,
+          "signed": 8198
+        },
+        {
+          "x": 1,
+          "y": 19,
+          "raw": 12294,
+          "tile_or_id": 6,
+          "variant": 3,
+          "signed": 12294
+        },
+        {
+          "x": 2,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 3,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 5,
+          "y": 19,
+          "raw": 24681,
+          "tile_or_id": 105,
+          "variant": 6,
+          "signed": 24681
+        },
+        {
+          "x": 9,
+          "y": 19,
+          "raw": 28777,
+          "tile_or_id": 105,
+          "variant": 7,
+          "signed": 28777
+        },
+        {
+          "x": 10,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 11,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 12,
+          "y": 19,
+          "raw": 24584,
+          "tile_or_id": 8,
+          "variant": 6,
+          "signed": 24584
+        },
+        {
+          "x": 13,
+          "y": 19,
+          "raw": 28678,
+          "tile_or_id": 6,
+          "variant": 7,
+          "signed": 28678
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "kind": 4,
+      "encoding": 3,
+      "count": 0,
+      "records": []
+    }
+  ],
+  "bytes_read": 2802,
+  "trailing_bytes": 1,
+  "file_size": 2803
+}

@@ -1,0 +1,50 @@
+{
+  "source": "map_99.mid",
+  "map_id": 99,
+  "mode": 1,
+  "option": 4,
+  "width": 40,
+  "height": 30,
+  "tile_size": 16,
+  "layer_count": 5,
+  "layers": [
+    {
+      "index": 0,
+      "kind": 0,
+      "encoding": 0,
+      "count": 0,
+      "records": []
+    },
+    {
+      "index": 1,
+      "kind": 1,
+      "encoding": 1,
+      "count": 0,
+      "records": []
+    },
+    {
+      "index": 2,
+      "kind": 2,
+      "encoding": 2,
+      "count": 0,
+      "records": []
+    },
+    {
+      "index": 3,
+      "kind": 3,
+      "encoding": 4,
+      "count": 0,
+      "records": []
+    },
+    {
+      "index": 4,
+      "kind": 4,
+      "encoding": 3,
+      "count": 0,
+      "records": []
+    }
+  ],
+  "bytes_read": 26,
+  "trailing_bytes": 1,
+  "file_size": 27
+}

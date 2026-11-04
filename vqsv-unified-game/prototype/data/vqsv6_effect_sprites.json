@@ -1,0 +1,2533 @@
+{
+  "source": "VQSV_FIX_2.7 sprite.mid, spr_N_all(r) and decoded images",
+  "tick_ms": 60,
+  "tick_note": "Ước lượng khi xem; bản mẫu còn có điều kiện và pha hiệu ứng.",
+  "sprites": {
+    "262": {
+      "image_ids": [
+        300,
+        516,
+        304
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_0_frame_2.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_1_frame_10.png",
+            "duration_ticks": 5
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_2_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_2_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_2_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_2_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_2_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_3_frame_5.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_4_frame_10.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_5_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_5_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_5_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_5_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_5_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_6_frame_13.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_7_frame_7.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_13.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_14.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_15.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_16.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_17.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_18.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_19.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_20.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_21.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_262/state_8_frame_22.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 74
+    },
+    "263": {
+      "image_ids": [
+        306
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_0_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_0_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_1_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_1_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_1_frame_2.png",
+            "duration_ticks": 2
+          }
+        ],
+        [],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_3_frame_6.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_19.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_20.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_4_frame_22.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_5_frame_7.png",
+            "duration_ticks": 1
+          }
+        ],
+        [],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_7_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_7_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_7_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_7_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_7_frame_4.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_8_frame_5.png",
+            "duration_ticks": 1
+          }
+        ],
+        [],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_10_frame_9.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_19.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_20.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_22.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_23.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_24.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_25.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_263/state_11_frame_26.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "cell_count": 39
+    },
+    "264": {
+      "image_ids": [
+        305,
+        300
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_0_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_1_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_1_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_1_frame_2.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_2_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_2_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_2_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_2_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_3_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_4_frame_5.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_5_frame_6.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_6_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_6_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_6_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_6_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_7_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_7_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_7_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_7_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_7_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_264/state_8_frame_9.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 38
+    },
+    "265": {
+      "image_ids": [
+        301,
+        302,
+        304
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_0_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_0_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_1_frame_11.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_2_frame_11.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_3_frame_12.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_4_frame_11.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_5_frame_9.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_6_frame_13.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_13.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_7_frame_14.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_265/state_8_frame_13.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 79
+    },
+    "266": {
+      "image_ids": [
+        303,
+        304
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_0_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_0.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_1.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_2.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_3.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_4.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_1_frame_8.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_2_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_2_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_2_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_2_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_3_frame_6.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_4_frame_6.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_5_frame_10.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_2.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_266/state_6_frame_6.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 44
+    },
+    "267": {
+      "image_ids": [
+        307
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_0_frame_5.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_1_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_1_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_1_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_1_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_1_frame_4.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_2_frame_6.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_3_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_3_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_3_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_3_frame_3.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_4_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_4_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_4_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_4_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_4_frame_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_5_frame_9.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_6_frame_5.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_7_frame_14.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_8_frame_8.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_9_frame_10.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_10_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_10_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_10_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_267/state_10_frame_3.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 68
+    },
+    "268": {
+      "image_ids": [
+        308
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_0_frame_5.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_1_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_1_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_1_frame_2.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_2_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_2_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_2_frame_2.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_3_frame_8.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_4_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_4_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_4_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_4_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_4_frame_4.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_5_frame_7.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_6_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_6_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_6_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_6_frame_3.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_268/state_7_frame_12.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "cell_count": 46
+    },
+    "299": {
+      "image_ids": [
+        303
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_299/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_299/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_299/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_299/state_0_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_299/state_0_frame_4.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "cell_count": 5
+    },
+    "300": {
+      "image_ids": [
+        516
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_4.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_300/state_0_frame_7.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "cell_count": 8
+    },
+    "301": {
+      "image_ids": [
+        301
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_301/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_301/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_301/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_301/state_0_frame_3.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "cell_count": 4
+    },
+    "304": {
+      "image_ids": [
+        300
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_304/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_304/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_304/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_304/state_0_frame_3.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 4
+    },
+    "306": {
+      "image_ids": [
+        301
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_306/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_306/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_306/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_306/state_0_frame_3.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 4
+    },
+    "307": {
+      "image_ids": [
+        305
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_307/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_307/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_307/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_307/state_0_frame_3.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 4
+    },
+    "308": {
+      "image_ids": [
+        307
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_308/state_0_frame_10.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 11
+    },
+    "309": {
+      "image_ids": [
+        300
+      ],
+      "states": [
+        [
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv6/sprite_309/state_0_frame_7.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "cell_count": 8
+    }
+  },
+  "errors": {}
+}

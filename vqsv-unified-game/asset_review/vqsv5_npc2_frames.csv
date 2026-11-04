@@ -1,0 +1,2225 @@
+﻿atlas_id,frame_index,monN_indices,x,y,width,height,rect_encoding,meaning
+1,0,,0,0,23,31,u8,Atlas crop rectangle; species-to-frame link not established
+1,1,,23,0,24,27,u8,Atlas crop rectangle; species-to-frame link not established
+1,2,,47,18,24,19,u8,Atlas crop rectangle; species-to-frame link not established
+1,3,,47,0,38,18,u8,Atlas crop rectangle; species-to-frame link not established
+1,4,,71,18,30,16,u8,Atlas crop rectangle; species-to-frame link not established
+1,5,,0,31,23,27,u8,Atlas crop rectangle; species-to-frame link not established
+1,6,,23,32,22,23,u8,Atlas crop rectangle; species-to-frame link not established
+1,7,,0,58,24,28,u8,Atlas crop rectangle; species-to-frame link not established
+1,8,,24,59,22,25,u8,Atlas crop rectangle; species-to-frame link not established
+1,9,,0,87,19,17,u8,Atlas crop rectangle; species-to-frame link not established
+1,10,,19,86,20,18,u8,Atlas crop rectangle; species-to-frame link not established
+1,11,,46,37,18,26,u8,Atlas crop rectangle; species-to-frame link not established
+1,12,,64,37,22,23,u8,Atlas crop rectangle; species-to-frame link not established
+1,13,,46,63,20,26,u8,Atlas crop rectangle; species-to-frame link not established
+1,14,,66,63,22,22,u8,Atlas crop rectangle; species-to-frame link not established
+1,15,,85,0,17,6,u8,Atlas crop rectangle; species-to-frame link not established
+1,16,,85,6,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+1,17,,103,0,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+1,18,,101,14,14,11,u8,Atlas crop rectangle; species-to-frame link not established
+1,19,,101,25,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+1,20,,87,37,21,9,u8,Atlas crop rectangle; species-to-frame link not established
+1,21,,88,59,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+1,22,,100,59,13,13,u8,Atlas crop rectangle; species-to-frame link not established
+1,23,,88,72,26,9,u8,Atlas crop rectangle; species-to-frame link not established
+1,24,,40,89,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+1,25,,55,89,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+1,26,,49,100,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+1,27,,55,100,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+1,28,,71,88,13,15,u8,Atlas crop rectangle; species-to-frame link not established
+1,29,,84,86,13,17,u8,Atlas crop rectangle; species-to-frame link not established
+1,30,,98,81,14,11,u8,Atlas crop rectangle; species-to-frame link not established
+1,31,,97,93,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+1,32,,88,46,20,13,u8,Atlas crop rectangle; species-to-frame link not established
+2,0,"6,7",0,0,53,34,u8,Atlas crop rectangle; species-to-frame link not established
+2,1,"6,7",53,0,53,35,u8,Atlas crop rectangle; species-to-frame link not established
+2,2,"6,7",0,34,31,22,u8,Atlas crop rectangle; species-to-frame link not established
+2,3,"6,7",31,34,14,19,u8,Atlas crop rectangle; species-to-frame link not established
+2,4,"6,7",45,35,14,18,u8,Atlas crop rectangle; species-to-frame link not established
+2,5,"6,7",66,35,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+2,6,"6,7",59,45,19,12,u8,Atlas crop rectangle; species-to-frame link not established
+2,7,"6,7",80,35,20,15,u8,Atlas crop rectangle; species-to-frame link not established
+2,8,"6,7",88,50,15,14,u8,Atlas crop rectangle; species-to-frame link not established
+2,9,"6,7",0,56,37,12,u8,Atlas crop rectangle; species-to-frame link not established
+2,10,"6,7",37,54,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+2,11,"6,7",50,57,17,10,u8,Atlas crop rectangle; species-to-frame link not established
+2,12,"6,7",67,57,20,13,u8,Atlas crop rectangle; species-to-frame link not established
+2,13,"6,7",43,67,16,8,u8,Atlas crop rectangle; species-to-frame link not established
+2,14,"6,7",1,68,8,10,u8,Atlas crop rectangle; species-to-frame link not established
+2,15,"6,7",10,68,7,10,u8,Atlas crop rectangle; species-to-frame link not established
+2,16,"6,7",18,68,13,10,u8,Atlas crop rectangle; species-to-frame link not established
+2,17,"6,7",87,65,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+2,18,"6,7",32,71,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+2,19,"6,7",38,71,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+2,20,"6,7",62,71,6,4,u8,Atlas crop rectangle; species-to-frame link not established
+2,21,"6,7",70,71,7,4,u8,Atlas crop rectangle; species-to-frame link not established
+2,22,"6,7",79,71,7,4,u8,Atlas crop rectangle; species-to-frame link not established
+2,23,"6,7",101,35,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+2,24,"6,7",101,41,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+2,25,"6,7",98,64,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+2,26,"6,7",98,70,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+3,0,"1,8,23,33",0,0,43,42,u8,Atlas crop rectangle; species-to-frame link not established
+3,1,"1,8,23,33",43,0,44,38,u8,Atlas crop rectangle; species-to-frame link not established
+3,2,"1,8,23,33",87,0,16,14,u8,Atlas crop rectangle; species-to-frame link not established
+3,3,"1,8,23,33",103,4,12,9,u8,Atlas crop rectangle; species-to-frame link not established
+3,4,"1,8,23,33",87,14,15,10,u8,Atlas crop rectangle; species-to-frame link not established
+3,5,"1,8,23,33",103,14,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+3,6,"1,8,23,33",87,24,23,16,u8,Atlas crop rectangle; species-to-frame link not established
+3,7,"1,8,23,33",0,42,14,26,u8,Atlas crop rectangle; species-to-frame link not established
+3,8,"1,8,23,33",14,42,17,22,u8,Atlas crop rectangle; species-to-frame link not established
+3,9,"1,8,23,33",31,44,21,21,u8,Atlas crop rectangle; species-to-frame link not established
+3,10,"1,8,23,33",0,68,22,17,u8,Atlas crop rectangle; species-to-frame link not established
+3,11,"1,8,23,33",22,65,26,26,u8,Atlas crop rectangle; species-to-frame link not established
+3,12,"1,8,23,33",47,38,7,5,u8,Atlas crop rectangle; species-to-frame link not established
+3,13,"1,8,23,33",58,38,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+3,14,"1,8,23,33",52,44,19,19,u8,Atlas crop rectangle; species-to-frame link not established
+3,15,"1,8,23,33",48,64,27,28,u8,Atlas crop rectangle; species-to-frame link not established
+3,16,"1,8,23,33",68,38,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+3,17,"1,8,23,33",74,38,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+3,18,"1,8,23,33",72,43,19,14,u8,Atlas crop rectangle; species-to-frame link not established
+3,19,"1,8,23,33",91,44,9,15,u8,Atlas crop rectangle; species-to-frame link not established
+3,20,"1,8,23,33",100,40,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+3,21,"1,8,23,33",100,49,15,8,u8,Atlas crop rectangle; species-to-frame link not established
+3,22,"1,8,23,33",72,59,18,9,u8,Atlas crop rectangle; species-to-frame link not established
+3,23,"1,8,23,33",96,58,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+3,24,"1,8,23,33",76,68,35,9,u8,Atlas crop rectangle; species-to-frame link not established
+3,25,"1,8,23,33",75,77,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+3,26,"1,8,23,33",75,85,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+3,27,"1,8,23,33",93,77,18,8,u8,Atlas crop rectangle; species-to-frame link not established
+3,28,"1,8,23,33",95,85,14,7,u8,Atlas crop rectangle; species-to-frame link not established
+4,0,,0,0,24,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,1,,24,0,23,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,2,,24,10,24,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,3,,48,0,20,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,4,,48,9,19,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,5,,69,0,20,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,6,,69,14,28,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,7,,50,19,8,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,8,,59,19,8,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,9,,97,0,23,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,10,,98,18,14,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,11,,114,18,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,12,,120,0,11,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,13,,131,0,11,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,14,,145,0,8,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,15,,131,8,22,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,16,,154,0,16,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,17,,170,0,15,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,18,,174,15,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,19,,186,0,32,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,20,,122,16,26,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,21,,151,24,34,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,22,,186,23,32,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,23,,0,24,25,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,24,,25,23,25,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,25,,50,24,25,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,26,,75,26,19,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,27,,94,25,26,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,28,,0,46,31,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,29,,31,44,39,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,30,,70,46,20,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,31,,71,59,18,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,32,,119,37,47,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,33,,166,37,52,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,34,,92,49,16,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,35,,108,49,11,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,36,,16,73,26,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,37,,0,68,16,37,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,38,,0,105,33,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,39,,33,96,24,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,40,,0,123,13,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,41,,17,123,13,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,42,,42,69,16,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,43,,58,69,14,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,44,,58,83,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,45,,58,91,25,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,46,,57,114,9,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,47,,66,113,17,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,48,,73,71,21,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,49,,96,73,23,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,50,,83,98,44,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,51,,121,67,52,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,52,,128,98,46,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,53,,173,69,45,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+4,54,,174,101,44,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+5,0,"14,18,19",0,0,26,48,u8,Atlas crop rectangle; species-to-frame link not established
+5,1,"14,18,19",26,0,31,39,u8,Atlas crop rectangle; species-to-frame link not established
+5,2,"14,18,19",57,0,36,27,u8,Atlas crop rectangle; species-to-frame link not established
+5,3,"14,18,19",93,0,13,28,u8,Atlas crop rectangle; species-to-frame link not established
+5,4,"14,18,19",106,0,12,27,u8,Atlas crop rectangle; species-to-frame link not established
+5,5,"14,18,19",57,27,29,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,6,"14,18,19",86,28,15,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,7,"14,18,19",112,22,8,26,u8,Atlas crop rectangle; species-to-frame link not established
+5,8,"14,18,19",102,31,10,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,9,"14,18,19",26,39,12,11,u8,Atlas crop rectangle; species-to-frame link not established
+5,10,"14,18,19",40,39,12,14,u8,Atlas crop rectangle; species-to-frame link not established
+5,11,"14,18,19",0,48,14,15,u8,Atlas crop rectangle; species-to-frame link not established
+5,12,"14,18,19",14,50,16,13,u8,Atlas crop rectangle; species-to-frame link not established
+5,13,"14,18,19",30,53,22,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,14,"14,18,19",52,44,22,20,u8,Atlas crop rectangle; species-to-frame link not established
+5,15,"14,18,19",74,52,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+5,16,"14,18,19",80,46,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+5,17,"14,18,19",97,52,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+5,18,"14,18,19",0,64,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+5,19,"14,18,19",7,64,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+5,20,"14,18,19",14,64,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+5,21,"14,18,19",21,63,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+5,22,"14,18,19",0,70,20,19,u8,Atlas crop rectangle; species-to-frame link not established
+5,23,"14,18,19",21,70,16,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,24,"14,18,19",39,70,12,11,u8,Atlas crop rectangle; species-to-frame link not established
+5,25,"14,18,19",52,64,9,16,u8,Atlas crop rectangle; species-to-frame link not established
+5,26,"14,18,19",61,64,11,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,27,"14,18,19",72,73,6,7,u8,Atlas crop rectangle; species-to-frame link not established
+5,28,"14,18,19",72,61,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+5,29,"14,18,19",94,64,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+5,30,"14,18,19",105,48,15,39,u8,Atlas crop rectangle; species-to-frame link not established
+5,31,"14,18,19",2,89,22,17,u8,Atlas crop rectangle; species-to-frame link not established
+5,32,"14,18,19",37,85,15,20,u8,Atlas crop rectangle; species-to-frame link not established
+5,33,"14,18,19",78,73,27,15,u8,Atlas crop rectangle; species-to-frame link not established
+5,34,"14,18,19",79,89,40,20,u8,Atlas crop rectangle; species-to-frame link not established
+5,35,"14,18,19",62,81,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+5,36,"14,18,19",53,95,25,13,u8,Atlas crop rectangle; species-to-frame link not established
+5,37,"14,18,19",58,81,4,13,u8,Atlas crop rectangle; species-to-frame link not established
+5,38,"14,18,19",37,81,15,4,u8,Atlas crop rectangle; species-to-frame link not established
+5,39,"14,18,19",52,90,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+5,40,"14,18,19",31,92,6,17,u8,Atlas crop rectangle; species-to-frame link not established
+6,0,"20,21",0,0,32,52,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,1,"20,21",32,0,36,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,2,"20,21",32,24,22,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,3,"20,21",56,26,9,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,4,"20,21",34,41,17,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,5,"20,21",52,41,14,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,6,"20,21",68,0,33,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,7,"20,21",68,32,33,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,8,"20,21",101,0,33,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,9,"20,21",101,29,32,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,10,"20,21",134,0,33,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,11,"20,21",133,31,34,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,12,"20,21",167,0,18,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,13,"20,21",185,0,15,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,14,"20,21",200,0,17,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,15,"20,21",167,10,18,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,16,"20,21",185,11,15,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,17,"20,21",200,11,17,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,18,"20,21",167,18,16,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,19,"20,21",183,22,11,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,20,"20,21",167,33,17,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,21,"20,21",184,33,16,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,22,"20,21",167,39,17,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,23,"20,21",184,38,16,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,24,"20,21",200,18,8,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,25,"20,21",208,18,8,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,26,"20,21",200,26,8,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,27,"20,21",208,25,3,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,28,"20,21",211,25,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,29,"20,21",211,31,6,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,30,"20,21",200,38,17,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+6,31,"20,21",56,37,5,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+7,0,3,0,0,26,17,u8,Atlas crop rectangle; species-to-frame link not established
+7,1,3,26,0,21,13,u8,Atlas crop rectangle; species-to-frame link not established
+7,2,3,31,13,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+7,3,3,37,13,9,10,u8,Atlas crop rectangle; species-to-frame link not established
+7,4,3,32,23,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,5,3,47,0,12,19,u8,Atlas crop rectangle; species-to-frame link not established
+7,6,3,47,19,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+7,7,3,0,32,13,13,u8,Atlas crop rectangle; species-to-frame link not established
+7,8,3,13,32,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+7,9,3,26,32,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+7,10,3,39,33,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,11,3,36,83,6,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,12,3,47,36,12,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,13,3,29,83,7,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,14,3,40,48,16,10,u8,Atlas crop rectangle; species-to-frame link not established
+7,15,3,27,44,13,15,u8,Atlas crop rectangle; species-to-frame link not established
+7,16,3,0,45,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+7,17,3,0,57,13,14,u8,Atlas crop rectangle; species-to-frame link not established
+7,18,3,13,59,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+7,19,3,21,83,8,10,u8,Atlas crop rectangle; species-to-frame link not established
+7,20,3,42,79,5,14,u8,Atlas crop rectangle; species-to-frame link not established
+7,21,3,32,72,15,7,u8,Atlas crop rectangle; species-to-frame link not established
+7,22,3,26,59,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+7,23,3,37,58,17,14,u8,Atlas crop rectangle; species-to-frame link not established
+7,24,3,55,58,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+7,25,3,47,72,13,13,u8,Atlas crop rectangle; species-to-frame link not established
+7,26,3,48,85,14,4,u8,Atlas crop rectangle; species-to-frame link not established
+7,27,3,15,71,17,12,u8,Atlas crop rectangle; species-to-frame link not established
+7,28,3,0,71,14,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,29,3,0,83,21,9,u8,Atlas crop rectangle; species-to-frame link not established
+7,30,3,14,44,13,15,u8,Atlas crop rectangle; species-to-frame link not established
+7,31,3,0,17,32,15,u8,Atlas crop rectangle; species-to-frame link not established
+8,0,"11,15,17,29",140,122,18,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,1,"11,15,17,29",130,103,31,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,2,"11,15,17,29",126,114,13,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,3,"11,15,17,29",144,90,16,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,4,"11,15,17,29",129,90,15,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,5,"11,15,17,29",131,30,30,60,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,6,"11,15,17,29",140,2,18,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,7,"11,15,17,29",123,2,16,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,8,"11,15,17,29",108,30,23,45,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,9,"11,15,17,29",93,31,14,39,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,10,"11,15,17,29",90,0,23,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,11,"11,15,17,29",118,80,10,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,12,"11,15,17,29",93,75,23,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,13,"11,15,17,29",93,95,34,44,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,14,"11,15,17,29",82,119,11,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,15,"11,15,17,29",68,104,25,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,16,"11,15,17,29",67,113,15,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,17,"11,15,17,29",67,130,13,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,18,"11,15,17,29",33,103,34,36,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,19,"11,15,17,29",21,118,12,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,20,"11,15,17,29",1,120,19,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,21,"11,15,17,29",0,104,31,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,22,"11,15,17,29",32,91,11,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,23,"11,15,17,29",20,85,12,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,24,"11,15,17,29",1,80,19,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,25,"11,15,17,29",44,44,49,60,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,26,"11,15,17,29",44,0,46,44,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,27,"11,15,17,29",23,63,22,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,28,"11,15,17,29",16,41,28,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,29,"11,15,17,29",2,65,14,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,30,"11,15,17,29",0,41,15,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,31,"11,15,17,29",1,19,43,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,32,"11,15,17,29",0,0,44,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+8,33,"11,15,17,29",90,0,33,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+9,0,5,0,0,26,24,u8,Atlas crop rectangle; species-to-frame link not established
+9,1,5,26,0,27,21,u8,Atlas crop rectangle; species-to-frame link not established
+9,2,5,53,0,21,13,u8,Atlas crop rectangle; species-to-frame link not established
+9,3,5,53,13,21,8,u8,Atlas crop rectangle; species-to-frame link not established
+9,4,5,0,26,25,9,u8,Atlas crop rectangle; species-to-frame link not established
+9,5,5,26,21,21,14,u8,Atlas crop rectangle; species-to-frame link not established
+9,6,5,47,21,17,13,u8,Atlas crop rectangle; species-to-frame link not established
+9,7,5,65,21,9,6,u8,Atlas crop rectangle; species-to-frame link not established
+9,8,5,65,29,10,2,u8,Atlas crop rectangle; species-to-frame link not established
+10,0,"2,4,12,16,27,28",0,0,40,33,u8,Atlas crop rectangle; species-to-frame link not established
+10,1,"2,4,12,16,27,28",40,0,31,25,u8,Atlas crop rectangle; species-to-frame link not established
+10,2,"2,4,12,16,27,28",71,13,32,15,u8,Atlas crop rectangle; species-to-frame link not established
+10,3,"2,4,12,16,27,28",40,26,27,13,u8,Atlas crop rectangle; species-to-frame link not established
+10,4,"2,4,12,16,27,28",67,28,36,12,u8,Atlas crop rectangle; species-to-frame link not established
+10,5,"2,4,12,16,27,28",2,34,12,5,u8,Atlas crop rectangle; species-to-frame link not established
+10,6,"2,4,12,16,27,28",18,34,17,4,u8,Atlas crop rectangle; species-to-frame link not established
+10,7,"2,4,12,16,27,28",74,0,18,13,u8,Atlas crop rectangle; species-to-frame link not established
+11,0,"9,10,22",0,0,38,20,u8,Atlas crop rectangle; species-to-frame link not established
+11,1,"9,10,22",0,20,38,18,u8,Atlas crop rectangle; species-to-frame link not established
+11,2,"9,10,22",38,0,10,19,u8,Atlas crop rectangle; species-to-frame link not established
+11,3,"9,10,22",38,26,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+11,4,"9,10,22",48,0,33,25,u8,Atlas crop rectangle; species-to-frame link not established
+11,5,"9,10,22",81,0,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+11,6,"9,10,22",88,0,21,19,u8,Atlas crop rectangle; species-to-frame link not established
+11,7,"9,10,22",85,19,24,21,u8,Atlas crop rectangle; species-to-frame link not established
+11,8,"9,10,22",50,25,23,15,u8,Atlas crop rectangle; species-to-frame link not established
+11,9,"9,10,22",74,25,11,15,u8,Atlas crop rectangle; species-to-frame link not established
+11,10,"9,10,22",0,38,37,24,u8,Atlas crop rectangle; species-to-frame link not established
+11,11,"9,10,22",37,48,14,14,u8,Atlas crop rectangle; species-to-frame link not established
+11,12,"9,10,22",39,19,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+11,13,"9,10,22",51,40,41,22,u8,Atlas crop rectangle; species-to-frame link not established
+11,14,"9,10,22",92,56,15,6,u8,Atlas crop rectangle; species-to-frame link not established
+11,15,"9,10,22",93,48,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+11,16,"9,10,22",92,40,15,8,u8,Atlas crop rectangle; species-to-frame link not established
+11,17,"9,10,22",0,62,23,25,u8,Atlas crop rectangle; species-to-frame link not established
+11,18,"9,10,22",23,62,26,21,u8,Atlas crop rectangle; species-to-frame link not established
+11,19,"9,10,22",49,62,12,24,u8,Atlas crop rectangle; species-to-frame link not established
+11,20,"9,10,22",0,87,24,13,u8,Atlas crop rectangle; species-to-frame link not established
+11,21,"9,10,22",61,62,23,20,u8,Atlas crop rectangle; species-to-frame link not established
+11,22,"9,10,22",39,39,10,9,u8,Atlas crop rectangle; species-to-frame link not established
+11,23,"9,10,22",24,87,35,13,u8,Atlas crop rectangle; species-to-frame link not established
+11,24,"9,10,22",59,83,16,8,u8,Atlas crop rectangle; species-to-frame link not established
+11,25,"9,10,22",59,91,16,7,u8,Atlas crop rectangle; species-to-frame link not established
+11,26,"9,10,22",84,63,19,19,u8,Atlas crop rectangle; species-to-frame link not established
+11,27,"9,10,22",75,83,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+11,28,"9,10,22",89,83,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+11,29,"9,10,22",89,89,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+11,30,"9,10,22",95,83,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,0,,0,0,13,24,u8,Atlas crop rectangle; species-to-frame link not established
+12,1,,13,0,18,24,u8,Atlas crop rectangle; species-to-frame link not established
+12,2,,0,24,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,3,,11,24,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,4,,31,0,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,5,,43,0,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,6,,58,0,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,7,,31,19,10,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,8,,31,28,12,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,9,,42,22,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,10,,58,20,14,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,11,,58,30,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,12,,69,30,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,13,,43,31,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,14,,63,9,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+12,15,,76,0,14,8,u8,Atlas crop rectangle; species-to-frame link not established
+12,16,,86,22,4,11,u8,Atlas crop rectangle; species-to-frame link not established
+12,17,,31,7,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,18,,43,6,15,15,u8,Atlas crop rectangle; species-to-frame link not established
+12,19,,78,8,12,14,u8,Atlas crop rectangle; species-to-frame link not established
+12,20,,91,0,9,10,u8,Atlas crop rectangle; species-to-frame link not established
+12,21,,90,11,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,22,,90,24,9,13,u8,Atlas crop rectangle; species-to-frame link not established
+12,23,,79,33,10,4,u8,Atlas crop rectangle; species-to-frame link not established
+12,24,,79,38,11,5,u8,Atlas crop rectangle; species-to-frame link not established
+12,25,,90,40,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+12,26,,0,33,28,10,u8,Atlas crop rectangle; species-to-frame link not established
+12,27,,0,44,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,28,,0,52,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,29,,13,43,16,17,u8,Atlas crop rectangle; species-to-frame link not established
+12,30,,29,46,6,9,u8,Atlas crop rectangle; species-to-frame link not established
+12,31,,31,38,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,32,,35,44,17,19,u8,Atlas crop rectangle; species-to-frame link not established
+12,33,,52,43,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+12,34,,54,56,11,5,u8,Atlas crop rectangle; species-to-frame link not established
+12,35,,68,43,22,10,u8,Atlas crop rectangle; species-to-frame link not established
+12,36,,68,53,24,8,u8,Atlas crop rectangle; species-to-frame link not established
+12,37,,92,55,9,15,u8,Atlas crop rectangle; species-to-frame link not established
+12,38,,0,60,11,18,u8,Atlas crop rectangle; species-to-frame link not established
+12,39,,11,63,11,16,u8,Atlas crop rectangle; species-to-frame link not established
+12,40,,22,61,18,18,u8,Atlas crop rectangle; species-to-frame link not established
+12,41,,40,64,13,16,u8,Atlas crop rectangle; species-to-frame link not established
+12,42,,53,63,26,19,u8,Atlas crop rectangle; species-to-frame link not established
+12,43,,79,64,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+12,44,,79,70,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+12,45,,94,70,11,15,u8,Atlas crop rectangle; species-to-frame link not established
+12,46,,4,78,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+12,47,,13,79,15,8,u8,Atlas crop rectangle; species-to-frame link not established
+12,48,,32,80,12,7,u8,Atlas crop rectangle; species-to-frame link not established
+12,49,,92,37,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+13,0,13,37,0,25,39,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,1,13,62,0,25,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,2,13,87,0,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,3,13,98,0,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,4,13,109,0,14,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,5,13,62,11,41,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,6,13,0,38,37,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,7,13,103,15,12,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,8,13,37,39,5,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,9,13,43,39,18,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,10,13,0,56,42,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,11,13,0,81,42,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,12,13,43,62,24,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,13,13,67,63,21,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,14,13,67,84,23,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,15,13,84,49,19,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,16,13,88,63,32,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,17,13,123,0,57,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,18,13,123,28,57,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,19,13,120,62,59,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,20,13,120,89,58,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,21,13,180,0,56,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,22,13,180,30,56,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,23,13,179,61,32,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,24,13,211,61,21,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,25,13,178,95,33,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,26,13,211,95,17,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,27,13,103,49,19,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,28,13,82,121,9,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,29,13,43,107,15,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,30,13,58,107,24,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,31,13,42,89,21,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,32,13,0,107,28,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,33,13,0,118,27,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,34,13,28,107,15,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,35,13,43,123,9,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,36,13,52,120,28,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,37,13,82,106,37,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,38,13,63,97,13,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,39,13,76,94,32,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,40,13,95,84,25,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,41,13,108,95,10,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,42,13,84,37,28,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,43,13,103,28,12,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,44,13,115,16,8,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,45,13,112,40,10,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,46,13,92,120,10,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,47,13,102,119,18,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,48,13,0,0,37,38,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+13,49,13,61,40,23,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+14,0,24,3,0,17,11,u8,Atlas crop rectangle; species-to-frame link not established
+14,1,24,24,0,15,29,u8,Atlas crop rectangle; species-to-frame link not established
+14,2,24,39,0,16,31,u8,Atlas crop rectangle; species-to-frame link not established
+14,3,24,55,0,18,17,u8,Atlas crop rectangle; species-to-frame link not established
+14,4,24,55,17,18,17,u8,Atlas crop rectangle; species-to-frame link not established
+14,5,24,73,0,17,22,u8,Atlas crop rectangle; species-to-frame link not established
+14,6,24,73,22,15,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,7,24,90,0,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,8,24,90,12,16,19,u8,Atlas crop rectangle; species-to-frame link not established
+14,9,24,106,0,10,16,u8,Atlas crop rectangle; species-to-frame link not established
+14,10,24,106,16,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+14,11,24,1,28,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+14,12,24,10,28,12,8,u8,Atlas crop rectangle; species-to-frame link not established
+14,13,24,0,36,31,14,u8,Atlas crop rectangle; species-to-frame link not established
+14,14,24,31,31,19,19,u8,Atlas crop rectangle; species-to-frame link not established
+14,15,24,50,34,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,16,24,61,34,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,17,24,72,34,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,18,24,82,34,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,19,24,93,31,14,18,u8,Atlas crop rectangle; species-to-frame link not established
+14,20,24,107,30,9,18,u8,Atlas crop rectangle; species-to-frame link not established
+14,21,24,0,50,8,18,u8,Atlas crop rectangle; species-to-frame link not established
+14,22,24,8,50,7,18,u8,Atlas crop rectangle; species-to-frame link not established
+14,23,24,15,50,15,20,u8,Atlas crop rectangle; species-to-frame link not established
+14,24,24,31,51,17,19,u8,Atlas crop rectangle; species-to-frame link not established
+14,25,24,50,46,14,23,u8,Atlas crop rectangle; species-to-frame link not established
+14,26,24,64,46,14,23,u8,Atlas crop rectangle; species-to-frame link not established
+14,27,24,78,46,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,28,24,80,58,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+14,29,24,92,49,17,17,u8,Atlas crop rectangle; species-to-frame link not established
+14,30,24,108,65,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+14,31,24,0,11,23,17,u8,Atlas crop rectangle; species-to-frame link not established
+14,32,24,22,28,4,8,u8,Atlas crop rectangle; species-to-frame link not established
+14,33,24,0,37,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+15,0,,0,0,26,24,u8,Atlas crop rectangle; species-to-frame link not established
+15,1,,26,0,29,16,u8,Atlas crop rectangle; species-to-frame link not established
+15,2,,26,16,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+15,3,,34,16,18,6,u8,Atlas crop rectangle; species-to-frame link not established
+15,4,,26,22,20,4,u8,Atlas crop rectangle; species-to-frame link not established
+15,5,,40,25,15,14,u8,Atlas crop rectangle; species-to-frame link not established
+15,6,,40,39,7,3,u8,Atlas crop rectangle; species-to-frame link not established
+15,7,,24,26,16,16,u8,Atlas crop rectangle; species-to-frame link not established
+15,8,,11,24,13,15,u8,Atlas crop rectangle; species-to-frame link not established
+15,9,,0,24,11,15,u8,Atlas crop rectangle; species-to-frame link not established
+15,10,,0,39,15,15,u8,Atlas crop rectangle; species-to-frame link not established
+15,11,,15,43,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+15,12,,15,39,9,4,u8,Atlas crop rectangle; species-to-frame link not established
+15,13,,26,42,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+15,14,,37,42,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+15,15,,48,39,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+15,16,,46,47,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+16,0,,0,0,25,22,u8,Atlas crop rectangle; species-to-frame link not established
+16,1,,25,0,23,21,u8,Atlas crop rectangle; species-to-frame link not established
+16,2,,48,0,27,15,u8,Atlas crop rectangle; species-to-frame link not established
+16,3,,48,15,20,7,u8,Atlas crop rectangle; species-to-frame link not established
+16,4,,68,15,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+16,5,,0,22,29,15,u8,Atlas crop rectangle; species-to-frame link not established
+16,6,,29,21,24,14,u8,Atlas crop rectangle; species-to-frame link not established
+16,7,,53,22,20,14,u8,Atlas crop rectangle; species-to-frame link not established
+16,8,,73,22,4,6,u8,Atlas crop rectangle; species-to-frame link not established
+16,9,,73,29,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+16,10,,73,34,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+16,11,,0,37,19,20,u8,Atlas crop rectangle; species-to-frame link not established
+16,12,,19,37,13,17,u8,Atlas crop rectangle; species-to-frame link not established
+16,13,,32,35,20,12,u8,Atlas crop rectangle; species-to-frame link not established
+16,14,,32,47,9,3,u8,Atlas crop rectangle; species-to-frame link not established
+16,15,,52,44,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+16,16,,65,53,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+16,17,,32,50,3,5,u8,Atlas crop rectangle; species-to-frame link not established
+16,18,,42,47,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+16,19,,58,52,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+16,20,,71,50,2,3,u8,Atlas crop rectangle; species-to-frame link not established
+16,21,,73,49,4,8,u8,Atlas crop rectangle; species-to-frame link not established
+16,22,,63,39,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+16,23,,74,40,3,6,u8,Atlas crop rectangle; species-to-frame link not established
+16,24,,52,36,17,4,u8,Atlas crop rectangle; species-to-frame link not established
+16,25,,52,40,9,4,u8,Atlas crop rectangle; species-to-frame link not established
+17,0,,87,86,4,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,1,,72,82,14,14,u8,Atlas crop rectangle; species-to-frame link not established
+17,2,,0,0,25,26,u8,Atlas crop rectangle; species-to-frame link not established
+17,3,,25,0,23,24,u8,Atlas crop rectangle; species-to-frame link not established
+17,4,,83,62,11,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,5,,80,72,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,6,,68,68,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,7,,67,78,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,8,,63,84,7,12,u8,Atlas crop rectangle; species-to-frame link not established
+17,9,,58,91,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+17,10,,76,63,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+17,11,,68,62,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,12,,80,24,13,32,u8,Atlas crop rectangle; species-to-frame link not established
+17,13,,72,37,8,14,u8,Atlas crop rectangle; species-to-frame link not established
+17,14,,68,51,9,11,u8,Atlas crop rectangle; species-to-frame link not established
+17,15,,77,56,17,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,16,,73,30,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+17,17,,72,24,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,18,,72,14,21,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,19,,72,0,21,14,u8,Atlas crop rectangle; species-to-frame link not established
+17,20,,61,24,11,26,u8,Atlas crop rectangle; species-to-frame link not established
+17,21,,48,0,24,24,u8,Atlas crop rectangle; species-to-frame link not established
+17,22,,50,24,11,25,u8,Atlas crop rectangle; species-to-frame link not established
+17,23,,58,50,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+17,24,,63,62,5,9,u8,Atlas crop rectangle; species-to-frame link not established
+17,25,,52,49,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,26,,41,55,9,16,u8,Atlas crop rectangle; species-to-frame link not established
+17,27,,50,55,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+17,28,,50,63,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+17,29,,41,51,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+17,30,,26,51,15,15,u8,Atlas crop rectangle; species-to-frame link not established
+17,31,,42,71,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+17,32,,31,77,35,8,u8,Atlas crop rectangle; species-to-frame link not established
+17,33,,48,85,9,11,u8,Atlas crop rectangle; species-to-frame link not established
+17,34,,31,66,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+17,35,,26,66,5,19,u8,Atlas crop rectangle; species-to-frame link not established
+17,36,,43,86,5,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,37,,35,92,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+17,38,,35,85,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+17,39,,14,89,21,7,u8,Atlas crop rectangle; species-to-frame link not established
+17,40,,0,86,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+17,41,,9,55,7,18,u8,Atlas crop rectangle; species-to-frame link not established
+17,42,,9,74,6,12,u8,Atlas crop rectangle; species-to-frame link not established
+17,43,,16,52,10,35,u8,Atlas crop rectangle; species-to-frame link not established
+17,44,,0,55,9,29,u8,Atlas crop rectangle; species-to-frame link not established
+17,45,,0,26,14,29,u8,Atlas crop rectangle; species-to-frame link not established
+17,46,,14,26,9,26,u8,Atlas crop rectangle; species-to-frame link not established
+17,47,,23,24,16,26,u8,Atlas crop rectangle; species-to-frame link not established
+17,48,,39,24,11,26,u8,Atlas crop rectangle; species-to-frame link not established
+18,0,25,0,0,43,46,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,1,25,0,46,56,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,2,25,43,0,5,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,3,25,43,12,3,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,4,25,49,2,16,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,5,25,69,0,16,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,6,25,48,15,50,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,7,25,43,38,15,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,8,25,62,38,16,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,9,25,78,40,20,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,10,25,98,0,26,42,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,11,25,124,0,44,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,12,25,125,34,5,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,13,25,143,36,6,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,14,25,125,40,10,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,15,25,57,47,32,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,16,25,89,47,47,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,17,25,0,71,27,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,18,25,27,71,25,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,19,25,0,105,18,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,20,25,19,102,33,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,21,25,57,78,5,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,22,25,65,78,10,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,23,25,76,78,14,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,24,25,90,78,10,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,25,25,103,78,7,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,26,25,52,98,19,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,27,25,72,98,20,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,28,25,136,43,33,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,29,25,111,78,9,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,30,25,120,78,17,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,31,25,93,99,15,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,32,25,110,92,34,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,33,25,168,0,30,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,34,25,198,0,17,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,35,25,216,0,30,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,36,25,203,25,18,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,37,25,221,25,27,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,38,25,169,34,34,45,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,39,25,204,50,34,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,40,25,144,79,30,40,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,41,25,174,79,30,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,42,25,174,110,16,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,43,25,205,77,22,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,44,25,228,80,11,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+18,45,25,205,94,33,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,0,,0,0,15,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,1,,0,16,15,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,2,,15,0,15,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,3,,15,18,11,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,4,,30,0,18,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,5,,15,25,10,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,6,,26,19,19,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,7,,0,32,30,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,8,,0,44,29,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,9,,0,55,30,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,10,,0,79,31,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,11,,0,104,29,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,12,,0,112,26,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,13,,29,95,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,14,,26,110,11,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,15,,37,110,6,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,16,,30,68,23,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,17,,31,81,25,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,18,,30,51,10,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,19,,40,54,26,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,20,,37,119,6,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,21,,53,68,16,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,22,,56,80,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,23,,30,32,17,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,24,,48,0,16,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,25,,48,18,15,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,26,,44,95,18,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,27,,44,111,20,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,28,,64,0,16,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,29,,67,26,11,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,30,,78,24,4,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,31,,50,37,16,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,32,,66,37,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,33,,63,28,4,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,34,,66,52,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,35,,82,0,27,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,36,,81,30,25,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,37,,66,61,21,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,38,,72,68,15,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,39,,69,74,18,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,40,,64,92,9,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,41,,70,88,3,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,42,,73,88,8,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,43,,81,87,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,44,,74,102,13,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,45,,65,111,12,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,46,,65,121,9,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,47,,88,120,23,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,48,,111,109,20,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,49,,131,120,2,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,50,,87,110,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,51,,87,95,13,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,52,,100,95,24,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,53,,87,76,20,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,54,,145,41,3,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,55,,166,27,3,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,56,,124,84,8,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,57,,127,98,6,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,58,,107,75,13,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,59,,133,107,17,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,60,,133,88,31,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,61,,164,87,7,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,62,,166,95,5,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,63,,171,92,12,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,64,,160,71,15,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,65,,171,87,7,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,66,,176,74,7,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,67,,113,68,7,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,68,,183,72,26,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,69,,78,52,9,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,70,,87,61,13,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,71,,120,84,4,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,72,,120,65,5,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,73,,97,52,22,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,74,,100,61,22,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,75,,100,68,10,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,76,,151,118,9,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,77,,150,107,23,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,78,,161,118,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,79,,174,107,8,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,80,,183,107,15,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,81,,122,46,5,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,82,,134,46,22,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,83,,133,65,27,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,84,,74,122,13,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,85,,171,62,11,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,86,,158,32,25,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,87,,169,25,13,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,88,,158,25,8,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,89,,158,16,21,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,90,,158,0,25,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,91,,126,0,32,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,92,,125,32,33,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,93,,150,40,8,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,94,,125,40,20,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,95,,109,0,9,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,96,,118,0,7,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,97,,109,12,17,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,98,,106,31,19,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,99,,107,48,7,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,100,,115,48,7,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,101,,183,0,58,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,102,,185,21,48,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,103,,183,27,29,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,104,,183,43,23,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,105,,210,44,8,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,106,,209,73,6,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,107,,215,65,6,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,108,,221,76,17,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,109,,221,65,24,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,110,,240,75,4,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,111,,211,88,21,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,112,,183,94,17,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,113,,200,96,5,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,114,,205,95,6,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,115,,205,106,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,116,,183,113,34,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,117,,217,110,22,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,118,,212,27,26,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,119,,238,24,7,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,120,,232,37,13,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,121,,236,54,8,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,122,,221,54,14,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,123,,218,37,14,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,124,,232,87,13,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,125,,240,109,5,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,126,,239,119,6,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,127,,242,5,3,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,128,,87,52,10,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,129,,77,111,10,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,130,,125,65,8,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,131,,70,5,1,1,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,132,,127,46,7,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,133,,64,18,1,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,134,,50,56,3,1,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,135,,99,110,12,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+19,136,,206,47,4,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+20,0,,93,122,21,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,1,,93,114,16,8,u8,Atlas crop rectangle; species-to-frame link not established
+20,2,,93,102,7,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,3,,102,98,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,4,,90,95,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+20,5,,110,117,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+20,6,,75,95,15,7,u8,Atlas crop rectangle; species-to-frame link not established
+20,7,,75,102,18,25,u8,Atlas crop rectangle; species-to-frame link not established
+20,8,,99,89,16,9,u8,Atlas crop rectangle; species-to-frame link not established
+20,9,,82,88,16,7,u8,Atlas crop rectangle; species-to-frame link not established
+20,10,,62,117,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+20,11,,62,123,10,4,u8,Atlas crop rectangle; species-to-frame link not established
+20,12,,62,87,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,13,,62,99,13,18,u8,Atlas crop rectangle; species-to-frame link not established
+20,14,,84,66,17,22,u8,Atlas crop rectangle; species-to-frame link not established
+20,15,,101,59,14,19,u8,Atlas crop rectangle; species-to-frame link not established
+20,16,,102,78,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,17,,84,56,16,10,u8,Atlas crop rectangle; species-to-frame link not established
+20,18,,90,42,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+20,19,,97,42,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+20,20,,106,49,9,8,u8,Atlas crop rectangle; species-to-frame link not established
+20,21,,104,42,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+20,22,,93,32,17,10,u8,Atlas crop rectangle; species-to-frame link not established
+20,23,,110,31,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+20,24,,110,36,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+20,25,,93,24,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+20,26,,97,49,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+20,27,,104,14,11,17,u8,Atlas crop rectangle; species-to-frame link not established
+20,28,,104,0,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+20,29,,93,11,8,13,u8,Atlas crop rectangle; species-to-frame link not established
+20,30,,98,0,5,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,31,,92,0,4,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,32,,87,0,4,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,33,,54,118,7,9,u8,Atlas crop rectangle; species-to-frame link not established
+20,34,,48,97,14,21,u8,Atlas crop rectangle; species-to-frame link not established
+20,35,,29,117,8,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,36,,37,116,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+20,37,,29,122,25,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,38,,0,117,29,10,u8,Atlas crop rectangle; species-to-frame link not established
+20,39,,47,91,15,6,u8,Atlas crop rectangle; species-to-frame link not established
+20,40,,46,72,16,19,u8,Atlas crop rectangle; species-to-frame link not established
+20,41,,65,58,19,29,u8,Atlas crop rectangle; species-to-frame link not established
+20,42,,64,39,26,19,u8,Atlas crop rectangle; species-to-frame link not established
+20,43,,65,24,28,15,u8,Atlas crop rectangle; species-to-frame link not established
+20,44,,65,11,28,13,u8,Atlas crop rectangle; species-to-frame link not established
+20,45,,69,0,17,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,46,,0,96,17,21,u8,Atlas crop rectangle; species-to-frame link not established
+20,47,,17,99,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+20,48,,31,86,13,28,u8,Atlas crop rectangle; species-to-frame link not established
+20,49,,44,96,4,20,u8,Atlas crop rectangle; species-to-frame link not established
+20,50,,0,87,13,9,u8,Atlas crop rectangle; species-to-frame link not established
+20,51,,17,87,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,52,,47,56,18,16,u8,Atlas crop rectangle; species-to-frame link not established
+20,53,,48,48,15,8,u8,Atlas crop rectangle; species-to-frame link not established
+20,54,,48,43,15,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,55,,49,32,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,56,,48,24,17,8,u8,Atlas crop rectangle; species-to-frame link not established
+20,57,,51,19,13,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,58,,50,14,15,5,u8,Atlas crop rectangle; species-to-frame link not established
+20,59,,25,12,25,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,60,,25,24,23,32,u8,Atlas crop rectangle; species-to-frame link not established
+20,61,,0,52,20,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,62,,22,56,24,30,u8,Atlas crop rectangle; species-to-frame link not established
+20,63,,0,75,22,12,u8,Atlas crop rectangle; species-to-frame link not established
+20,64,,0,64,22,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,65,,0,41,23,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,66,,0,24,8,15,u8,Atlas crop rectangle; species-to-frame link not established
+20,67,,8,24,17,17,u8,Atlas crop rectangle; species-to-frame link not established
+20,68,,0,0,25,24,u8,Atlas crop rectangle; species-to-frame link not established
+20,69,,25,0,43,11,u8,Atlas crop rectangle; species-to-frame link not established
+20,70,,51,11,11,3,u8,Atlas crop rectangle; species-to-frame link not established
+21,0,26,84,118,32,9,u8,Atlas crop rectangle; species-to-frame link not established
+21,1,26,110,102,6,16,u8,Atlas crop rectangle; species-to-frame link not established
+21,2,26,98,102,12,16,u8,Atlas crop rectangle; species-to-frame link not established
+21,3,26,84,114,14,4,u8,Atlas crop rectangle; species-to-frame link not established
+21,4,26,92,104,5,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,5,26,84,105,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,6,26,92,93,5,11,u8,Atlas crop rectangle; species-to-frame link not established
+21,7,26,101,85,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+21,8,26,116,82,2,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,9,26,109,72,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+21,10,26,82,91,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+21,11,26,96,72,5,20,u8,Atlas crop rectangle; species-to-frame link not established
+21,12,26,101,39,11,33,u8,Atlas crop rectangle; species-to-frame link not established
+21,13,26,101,72,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,14,26,112,40,6,19,u8,Atlas crop rectangle; species-to-frame link not established
+21,15,26,88,38,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+21,16,26,101,31,17,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,17,26,96,17,14,14,u8,Atlas crop rectangle; species-to-frame link not established
+21,18,26,96,0,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+21,19,26,86,56,13,16,u8,Atlas crop rectangle; species-to-frame link not established
+21,20,26,92,72,4,20,u8,Atlas crop rectangle; species-to-frame link not established
+21,21,26,81,72,11,19,u8,Atlas crop rectangle; species-to-frame link not established
+21,22,26,58,105,26,22,u8,Atlas crop rectangle; species-to-frame link not established
+21,23,26,48,107,10,20,u8,Atlas crop rectangle; species-to-frame link not established
+21,24,26,55,89,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+21,25,26,71,84,11,21,u8,Atlas crop rectangle; species-to-frame link not established
+21,26,26,76,72,5,12,u8,Atlas crop rectangle; species-to-frame link not established
+21,27,26,52,72,23,12,u8,Atlas crop rectangle; species-to-frame link not established
+21,28,26,52,84,16,6,u8,Atlas crop rectangle; species-to-frame link not established
+21,29,26,60,61,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+21,30,26,75,56,11,16,u8,Atlas crop rectangle; species-to-frame link not established
+21,31,26,71,0,25,30,u8,Atlas crop rectangle; species-to-frame link not established
+21,32,26,110,0,8,13,u8,Atlas crop rectangle; species-to-frame link not established
+21,33,26,110,15,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,34,26,112,27,6,2,u8,Atlas crop rectangle; species-to-frame link not established
+21,35,26,78,30,10,26,u8,Atlas crop rectangle; species-to-frame link not established
+21,36,26,47,94,8,12,u8,Atlas crop rectangle; species-to-frame link not established
+21,37,26,37,96,10,9,u8,Atlas crop rectangle; species-to-frame link not established
+21,38,26,37,82,15,14,u8,Atlas crop rectangle; species-to-frame link not established
+21,39,26,29,69,21,13,u8,Atlas crop rectangle; species-to-frame link not established
+21,40,26,30,106,18,13,u8,Atlas crop rectangle; species-to-frame link not established
+21,41,26,12,106,18,17,u8,Atlas crop rectangle; species-to-frame link not established
+21,42,26,12,123,18,4,u8,Atlas crop rectangle; species-to-frame link not established
+21,43,26,38,119,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+21,44,26,0,118,12,9,u8,Atlas crop rectangle; species-to-frame link not established
+21,45,26,0,101,12,15,u8,Atlas crop rectangle; species-to-frame link not established
+21,46,26,72,34,6,22,u8,Atlas crop rectangle; species-to-frame link not established
+21,47,26,55,35,13,28,u8,Atlas crop rectangle; species-to-frame link not established
+21,48,26,49,0,22,35,u8,Atlas crop rectangle; species-to-frame link not established
+21,49,26,49,36,5,15,u8,Atlas crop rectangle; species-to-frame link not established
+21,50,26,31,52,24,17,u8,Atlas crop rectangle; species-to-frame link not established
+21,51,26,31,39,15,13,u8,Atlas crop rectangle; species-to-frame link not established
+21,52,26,27,19,22,19,u8,Atlas crop rectangle; species-to-frame link not established
+21,53,26,42,8,7,11,u8,Atlas crop rectangle; species-to-frame link not established
+21,54,26,43,0,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+21,55,26,0,0,42,19,u8,Atlas crop rectangle; species-to-frame link not established
+21,56,26,0,19,26,19,u8,Atlas crop rectangle; species-to-frame link not established
+21,57,26,0,38,31,18,u8,Atlas crop rectangle; species-to-frame link not established
+21,58,26,0,56,28,9,u8,Atlas crop rectangle; species-to-frame link not established
+21,59,26,0,65,29,20,u8,Atlas crop rectangle; species-to-frame link not established
+21,60,26,12,85,25,21,u8,Atlas crop rectangle; species-to-frame link not established
+21,61,26,0,85,12,16,u8,Atlas crop rectangle; species-to-frame link not established
+21,62,26,88,32,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,0,,75,116,13,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,1,,75,104,12,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,2,,87,104,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+22,3,,87,95,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+22,4,,75,95,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,5,,64,94,11,15,u8,Atlas crop rectangle; species-to-frame link not established
+22,6,,58,111,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,7,,58,118,13,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,8,,50,110,8,15,u8,Atlas crop rectangle; species-to-frame link not established
+22,9,,53,104,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,10,,53,97,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,11,,60,78,8,16,u8,Atlas crop rectangle; species-to-frame link not established
+22,12,,53,87,7,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,13,,68,88,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,14,,68,79,16,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,15,,85,67,8,15,u8,Atlas crop rectangle; species-to-frame link not established
+22,16,,85,58,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,17,,85,48,8,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,18,,85,30,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,19,,85,23,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,20,,53,78,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+22,21,,53,61,9,8,u8,Atlas crop rectangle; species-to-frame link not established
+22,22,,55,69,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,23,,63,66,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,24,,73,65,12,14,u8,Atlas crop rectangle; species-to-frame link not established
+22,25,,63,53,22,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,26,,61,36,24,16,u8,Atlas crop rectangle; species-to-frame link not established
+22,27,,51,49,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+22,28,,52,33,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+22,29,,61,26,24,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,30,,61,16,24,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,31,,77,12,6,4,u8,Atlas crop rectangle; species-to-frame link not established
+22,32,,77,0,15,11,u8,Atlas crop rectangle; species-to-frame link not established
+22,33,,60,0,17,16,u8,Atlas crop rectangle; species-to-frame link not established
+22,34,,40,110,10,15,u8,Atlas crop rectangle; species-to-frame link not established
+22,35,,24,108,16,17,u8,Atlas crop rectangle; species-to-frame link not established
+22,36,,46,98,7,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,37,,41,101,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,38,,48,88,3,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,39,,25,89,23,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,40,,39,62,14,26,u8,Atlas crop rectangle; species-to-frame link not established
+22,41,,0,90,25,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,42,,24,67,15,22,u8,Atlas crop rectangle; species-to-frame link not established
+22,43,,0,100,21,8,u8,Atlas crop rectangle; species-to-frame link not established
+22,44,,0,108,24,15,u8,Atlas crop rectangle; species-to-frame link not established
+22,45,,21,100,20,8,u8,Atlas crop rectangle; species-to-frame link not established
+22,46,,88,122,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+22,47,,0,64,24,26,u8,Atlas crop rectangle; species-to-frame link not established
+22,48,,88,110,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+22,49,,30,62,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+22,50,,30,51,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+22,51,,40,52,11,10,u8,Atlas crop rectangle; species-to-frame link not established
+22,52,,39,48,9,4,u8,Atlas crop rectangle; species-to-frame link not established
+22,53,,40,24,12,24,u8,Atlas crop rectangle; species-to-frame link not established
+22,54,,0,25,24,27,u8,Atlas crop rectangle; species-to-frame link not established
+22,55,,85,17,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,56,,22,52,8,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,57,,0,52,22,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,58,,80,88,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,59,,71,119,4,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,60,,24,36,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,61,,24,24,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,62,,87,82,6,13,u8,Atlas crop rectangle; species-to-frame link not established
+22,63,,88,115,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,64,,40,20,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+22,65,,52,20,9,13,u8,Atlas crop rectangle; species-to-frame link not established
+22,66,,31,19,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+22,67,,28,5,32,14,u8,Atlas crop rectangle; species-to-frame link not established
+22,68,,28,0,28,5,u8,Atlas crop rectangle; species-to-frame link not established
+22,69,,17,19,14,4,u8,Atlas crop rectangle; species-to-frame link not established
+22,70,,0,19,17,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,71,,0,0,28,19,u8,Atlas crop rectangle; species-to-frame link not established
+22,72,,44,20,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+22,73,,41,107,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+22,74,,83,11,9,6,u8,Atlas crop rectangle; species-to-frame link not established
+22,75,,52,42,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+22,76,,85,36,8,12,u8,Atlas crop rectangle; species-to-frame link not established
+22,77,,26,43,12,7,u8,Atlas crop rectangle; species-to-frame link not established
+23,0,,0,0,23,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,1,,0,30,39,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,2,,23,11,13,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,3,,23,7,9,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,4,,23,0,5,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,5,,28,0,32,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,6,,36,7,33,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,7,,36,24,7,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,8,,43,24,26,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,9,,39,35,19,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,10,,39,41,19,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,11,,58,71,11,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,12,,58,37,11,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,13,,69,40,22,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,14,,70,65,19,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,15,,69,77,19,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,16,,70,85,17,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,17,,69,22,20,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,18,,69,7,34,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,19,,60,0,8,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,20,,69,1,16,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,21,,85,0,23,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,22,,108,0,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,23,,119,0,4,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,24,,103,8,20,36,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,25,,103,44,18,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,26,,111,60,12,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,27,,89,22,14,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,28,,26,51,13,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,29,,0,51,26,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,30,,1,63,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,31,,0,71,11,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,32,,93,30,10,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,33,,91,46,12,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,34,,90,60,21,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,35,,90,82,15,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,36,,111,76,4,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,37,,103,83,8,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,38,,117,78,6,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,39,,116,89,7,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,40,,116,96,7,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,41,,99,93,17,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,42,,99,112,19,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,43,,90,90,9,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,44,,83,118,7,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,45,,90,123,6,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,46,,84,96,6,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,47,,77,96,7,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,48,,78,119,5,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,49,,70,116,7,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,50,,45,103,32,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,51,,45,116,23,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,52,,58,97,13,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,53,,26,111,19,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,54,,24,117,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,55,,38,117,6,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,56,,22,71,30,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,57,,53,73,5,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,58,,22,85,36,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,59,,25,103,20,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,60,,12,63,10,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,61,,0,92,19,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,62,,0,110,25,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,63,,0,121,14,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,64,,0,100,23,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+23,65,,15,122,5,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+24,0,,0,0,9,22,u8,Atlas crop rectangle; species-to-frame link not established
+24,1,,0,22,9,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,2,,9,22,12,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,3,,21,0,17,30,u8,Atlas crop rectangle; species-to-frame link not established
+24,4,,38,15,29,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,5,,40,22,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,6,,57,22,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,7,,38,0,29,15,u8,Atlas crop rectangle; species-to-frame link not established
+24,8,,0,30,25,15,u8,Atlas crop rectangle; species-to-frame link not established
+24,9,,41,29,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,10,,48,29,16,17,u8,Atlas crop rectangle; species-to-frame link not established
+24,11,,64,30,16,17,u8,Atlas crop rectangle; species-to-frame link not established
+24,12,,80,30,19,16,u8,Atlas crop rectangle; species-to-frame link not established
+24,13,,99,29,9,17,u8,Atlas crop rectangle; species-to-frame link not established
+24,14,,47,46,18,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,15,,66,47,20,11,u8,Atlas crop rectangle; species-to-frame link not established
+24,16,,58,54,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,17,,66,58,3,4,u8,Atlas crop rectangle; species-to-frame link not established
+24,18,,71,59,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+24,19,,57,61,11,5,u8,Atlas crop rectangle; species-to-frame link not established
+24,20,,47,54,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+24,21,,71,63,11,3,u8,Atlas crop rectangle; species-to-frame link not established
+24,22,,77,58,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+24,23,,86,46,10,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,24,,94,51,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,25,,96,46,10,5,u8,Atlas crop rectangle; species-to-frame link not established
+24,26,,41,60,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+24,27,,36,61,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+24,28,,36,46,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+24,29,,25,46,11,16,u8,Atlas crop rectangle; species-to-frame link not established
+24,30,,25,41,3,5,u8,Atlas crop rectangle; species-to-frame link not established
+24,31,,25,30,16,9,u8,Atlas crop rectangle; species-to-frame link not established
+24,32,,28,39,20,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,33,,0,45,14,20,u8,Atlas crop rectangle; species-to-frame link not established
+24,34,,14,45,11,17,u8,Atlas crop rectangle; species-to-frame link not established
+24,35,,86,54,5,11,u8,Atlas crop rectangle; species-to-frame link not established
+24,36,,97,59,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+24,37,,105,53,5,13,u8,Atlas crop rectangle; species-to-frame link not established
+24,38,,80,0,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+24,39,,67,0,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+24,40,,91,58,5,8,u8,Atlas crop rectangle; species-to-frame link not established
+24,41,,67,6,23,24,u8,Atlas crop rectangle; species-to-frame link not established
+24,42,,29,62,7,4,u8,Atlas crop rectangle; species-to-frame link not established
+24,43,,90,0,20,20,u8,Atlas crop rectangle; species-to-frame link not established
+24,44,,90,20,8,10,u8,Atlas crop rectangle; species-to-frame link not established
+24,45,,99,20,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+24,46,,9,0,12,22,u8,Atlas crop rectangle; species-to-frame link not established
+25,0,,0,0,26,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,1,,0,25,22,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,2,,0,39,27,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,3,,0,49,29,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,4,,0,60,26,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,5,,0,72,17,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,6,,0,89,20,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,7,,18,83,27,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,8,,20,89,14,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,9,,20,93,28,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,10,,3,104,44,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,11,,0,118,36,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,12,,36,118,11,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,13,,47,118,10,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,14,,47,109,9,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,15,,48,97,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,16,,48,84,10,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,17,,45,67,14,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,18,,17,73,22,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,19,,39,72,6,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,20,,26,64,11,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,21,,37,64,8,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,22,,29,48,16,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,23,,45,49,17,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,24,,28,32,17,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,25,,45,32,17,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,26,,22,25,7,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,27,,22,34,6,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,28,,29,22,16,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,29,,45,27,19,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,30,,45,22,14,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,31,,26,7,41,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,32,,26,0,22,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,33,,48,0,8,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,34,,56,0,12,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,35,,58,118,6,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,36,,64,118,5,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,37,,70,118,7,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,38,,61,96,21,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,39,,59,75,10,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,40,,62,55,13,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,41,,62,39,14,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,42,,64,31,12,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,43,,64,24,7,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,44,,71,25,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,45,,68,0,5,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,46,,67,14,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,47,,78,10,17,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,48,,73,0,18,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,49,,91,0,26,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,50,,95,11,23,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,51,,95,15,21,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,52,,78,23,11,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,53,,77,46,5,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,54,,76,38,15,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,55,,82,46,8,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,56,,77,51,6,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,57,,83,51,7,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,58,,83,58,4,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,59,,75,61,13,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,60,,91,53,10,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,61,,101,53,12,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,62,,97,67,14,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,63,,88,68,8,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,64,,77,72,20,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,65,,69,75,8,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,66,,78,83,11,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,67,,90,84,5,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,68,,69,91,30,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,69,,99,81,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,70,,82,96,17,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,71,,82,107,15,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,72,,78,118,12,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,73,,90,121,9,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,74,,99,118,5,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,75,,99,96,14,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,76,,113,104,7,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,77,,91,42,12,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,78,,103,42,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,79,,91,30,25,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,80,,118,0,9,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,81,,116,16,11,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,82,,114,41,12,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,83,,114,68,12,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,84,,127,77,9,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,85,,136,63,15,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,86,,126,51,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,87,,127,0,18,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,88,,127,18,15,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,89,,142,21,15,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,90,,142,29,18,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,91,,145,0,11,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,92,,156,0,13,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,93,,160,15,11,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,94,,160,33,3,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,95,,164,32,2,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,96,,168,33,3,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,97,,127,38,8,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,98,,135,38,19,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,99,,154,38,10,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,100,,164,39,8,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,101,,142,49,19,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,102,,161,51,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,103,,151,62,7,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,104,,161,63,10,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,105,,154,73,8,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,106,,170,74,2,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,107,,168,80,4,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,108,,166,86,6,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,109,,166,89,6,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,110,,154,84,11,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,111,,136,80,18,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,112,,134,113,20,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,113,,154,104,7,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,114,,162,104,10,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,115,,155,118,5,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,116,,160,115,12,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,117,,120,102,14,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,118,,162,73,6,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,119,,146,125,4,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,120,,104,119,4,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,121,,109,118,4,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,122,,108,124,6,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,123,,115,123,4,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,124,,114,84,22,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,125,,126,66,10,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,126,,126,71,10,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,127,,113,115,6,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,128,,71,3,1,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,129,,28,71,6,1,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,130,,165,97,3,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,131,,169,97,3,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,132,,0,105,3,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+25,133,,42,87,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,0,,0,0,18,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,1,,18,0,18,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,2,,36,0,18,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,3,,0,210,84,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,4,,54,0,18,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,5,,72,0,26,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,6,,0,18,18,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,7,,18,19,18,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,8,,36,19,35,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,9,,71,26,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,10,,84,26,14,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,11,,83,39,14,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,12,,0,45,27,46,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,13,,27,47,24,43,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,14,,51,47,31,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,15,,84,52,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,16,,83,66,14,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,17,,51,77,37,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,18,,88,76,10,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,19,,14,91,14,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,20,,88,90,10,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,21,,0,91,14,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,22,,14,111,20,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,23,,34,90,15,45,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,24,,49,97,49,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,25,,0,122,16,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,26,,34,137,19,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,27,,17,122,7,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,28,,16,138,18,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,29,,49,118,18,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,30,,68,118,7,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,31,,75,118,23,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,32,,54,138,8,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,33,,82,149,15,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,34,,54,153,16,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,35,,62,138,11,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,36,,70,153,11,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,37,,81,156,17,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,38,,24,122,9,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,39,,0,156,10,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,40,,10,157,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,41,,21,157,23,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,42,,44,163,26,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,43,,0,168,9,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,44,,9,169,11,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,45,,20,170,10,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,46,,30,173,13,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,47,,1,190,9,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,48,,10,189,13,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,49,,24,189,14,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,50,,43,176,13,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,51,,56,177,17,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,52,,47,192,14,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,53,,73,177,13,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,54,,86,179,12,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,55,,73,186,13,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,56,,86,187,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,57,,72,196,13,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,58,,85,197,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,59,,63,144,10,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+26,60,,84,206,14,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+27,0,,0,0,41,27,u8,Atlas crop rectangle; species-to-frame link not established
+27,1,,0,27,22,19,u8,Atlas crop rectangle; species-to-frame link not established
+27,2,,22,27,34,12,u8,Atlas crop rectangle; species-to-frame link not established
+27,3,,28,39,28,13,u8,Atlas crop rectangle; species-to-frame link not established
+27,4,,0,46,28,28,u8,Atlas crop rectangle; species-to-frame link not established
+27,5,,1,74,27,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,6,,0,81,28,10,u8,Atlas crop rectangle; species-to-frame link not established
+27,7,,0,91,28,8,u8,Atlas crop rectangle; species-to-frame link not established
+27,8,,0,99,21,16,u8,Atlas crop rectangle; species-to-frame link not established
+27,9,,21,101,24,17,u8,Atlas crop rectangle; species-to-frame link not established
+27,10,,28,84,28,17,u8,Atlas crop rectangle; species-to-frame link not established
+27,11,,28,70,30,14,u8,Atlas crop rectangle; species-to-frame link not established
+27,12,,22,39,4,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,13,,28,52,30,18,u8,Atlas crop rectangle; species-to-frame link not established
+27,14,,69,65,14,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,15,,69,74,18,12,u8,Atlas crop rectangle; species-to-frame link not established
+27,16,,56,86,14,15,u8,Atlas crop rectangle; species-to-frame link not established
+27,17,,70,86,13,15,u8,Atlas crop rectangle; species-to-frame link not established
+27,18,,113,24,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,19,,107,65,10,4,u8,Atlas crop rectangle; species-to-frame link not established
+27,20,,56,23,15,14,u8,Atlas crop rectangle; species-to-frame link not established
+27,21,,41,23,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+27,22,,49,23,7,3,u8,Atlas crop rectangle; species-to-frame link not established
+27,23,,41,0,54,23,u8,Atlas crop rectangle; species-to-frame link not established
+27,24,,98,113,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,25,,102,18,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,26,,109,41,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+27,27,,102,14,3,4,u8,Atlas crop rectangle; species-to-frame link not established
+27,28,,95,14,7,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,29,,85,23,14,12,u8,Atlas crop rectangle; species-to-frame link not established
+27,30,,71,23,14,21,u8,Atlas crop rectangle; species-to-frame link not established
+27,31,,68,44,8,21,u8,Atlas crop rectangle; species-to-frame link not established
+27,32,,76,44,17,18,u8,Atlas crop rectangle; species-to-frame link not established
+27,33,,26,41,2,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,34,,83,62,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+27,35,,99,24,14,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,36,,98,109,15,4,u8,Atlas crop rectangle; species-to-frame link not established
+27,37,,83,85,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,38,,103,88,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,39,,103,94,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,40,,73,101,28,8,u8,Atlas crop rectangle; species-to-frame link not established
+27,41,,73,109,13,13,u8,Atlas crop rectangle; species-to-frame link not established
+27,42,,45,101,15,21,u8,Atlas crop rectangle; species-to-frame link not established
+27,43,,60,101,13,13,u8,Atlas crop rectangle; species-to-frame link not established
+27,44,,61,114,12,8,u8,Atlas crop rectangle; species-to-frame link not established
+27,45,,86,109,12,13,u8,Atlas crop rectangle; species-to-frame link not established
+27,46,,85,35,14,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,47,,87,74,14,11,u8,Atlas crop rectangle; species-to-frame link not established
+27,48,,96,65,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+27,49,,93,44,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,50,,21,99,7,2,u8,Atlas crop rectangle; species-to-frame link not established
+27,51,,101,101,13,8,u8,Atlas crop rectangle; species-to-frame link not established
+27,52,,106,69,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,53,,101,82,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,54,,103,50,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,55,,105,12,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,56,,101,76,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,57,,103,44,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,58,,99,39,10,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,59,,99,30,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,60,,83,94,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,61,,93,50,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,62,,56,47,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+27,63,,9,115,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+27,64,,14,115,7,3,u8,Atlas crop rectangle; species-to-frame link not established
+27,65,,95,0,10,14,u8,Atlas crop rectangle; species-to-frame link not established
+27,66,,105,0,9,12,u8,Atlas crop rectangle; species-to-frame link not established
+27,67,,94,85,9,16,u8,Atlas crop rectangle; species-to-frame link not established
+27,68,,96,56,22,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,69,,95,20,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+27,70,,71,70,9,4,u8,Atlas crop rectangle; species-to-frame link not established
+27,71,,58,52,10,15,u8,Atlas crop rectangle; species-to-frame link not established
+27,72,,58,67,11,10,u8,Atlas crop rectangle; species-to-frame link not established
+27,73,,58,77,11,9,u8,Atlas crop rectangle; species-to-frame link not established
+27,74,,0,115,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+27,75,,12,118,33,6,u8,Atlas crop rectangle; species-to-frame link not established
+27,76,,48,122,6,2,u8,Atlas crop rectangle; species-to-frame link not established
+27,77,,58,122,7,2,u8,Atlas crop rectangle; species-to-frame link not established
+27,78,,70,122,6,2,u8,Atlas crop rectangle; species-to-frame link not established
+28,0,,0,0,26,27,u8,Atlas crop rectangle; species-to-frame link not established
+28,1,,0,27,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+28,2,,10,27,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+28,3,,0,38,10,9,u8,Atlas crop rectangle; species-to-frame link not established
+28,4,,10,38,6,7,u8,Atlas crop rectangle; species-to-frame link not established
+28,5,,16,39,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+28,6,,25,39,12,7,u8,Atlas crop rectangle; species-to-frame link not established
+28,7,,37,38,18,9,u8,Atlas crop rectangle; species-to-frame link not established
+28,8,,55,37,6,9,u8,Atlas crop rectangle; species-to-frame link not established
+28,9,,61,39,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+28,10,,59,26,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+28,11,,61,10,7,16,u8,Atlas crop rectangle; species-to-frame link not established
+28,12,,57,0,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+28,13,,43,0,14,11,u8,Atlas crop rectangle; species-to-frame link not established
+28,14,,55,12,6,14,u8,Atlas crop rectangle; species-to-frame link not established
+28,15,,51,11,3,13,u8,Atlas crop rectangle; species-to-frame link not established
+28,16,,40,11,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+28,17,,43,24,12,14,u8,Atlas crop rectangle; species-to-frame link not established
+28,18,,33,27,9,10,u8,Atlas crop rectangle; species-to-frame link not established
+28,19,,21,27,12,10,u8,Atlas crop rectangle; species-to-frame link not established
+28,20,,26,11,14,16,u8,Atlas crop rectangle; species-to-frame link not established
+28,21,,26,0,17,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,0,,73,118,5,8,u8,Atlas crop rectangle; species-to-frame link not established
+29,1,,74,102,4,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,2,,30,100,44,14,u8,Atlas crop rectangle; species-to-frame link not established
+29,3,,30,114,42,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,4,,0,113,30,13,u8,Atlas crop rectangle; species-to-frame link not established
+29,5,,0,100,30,13,u8,Atlas crop rectangle; species-to-frame link not established
+29,6,,26,84,14,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,7,,0,68,26,21,u8,Atlas crop rectangle; species-to-frame link not established
+29,8,,26,68,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+29,9,,30,78,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+29,10,,37,79,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,11,,43,79,7,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,12,,40,84,38,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,13,,51,81,3,3,u8,Atlas crop rectangle; species-to-frame link not established
+29,14,,50,70,7,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,15,,57,70,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+29,16,,57,77,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+29,17,,67,78,4,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,18,,72,78,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,19,,0,89,24,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,20,,37,68,12,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,21,,73,54,5,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,22,,69,70,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+29,23,,69,65,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,24,,64,56,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+29,25,,59,64,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,26,,59,59,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+29,27,,48,49,15,10,u8,Atlas crop rectangle; species-to-frame link not established
+29,28,,49,59,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+29,29,,33,52,16,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,30,,18,52,15,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,31,,0,55,18,13,u8,Atlas crop rectangle; species-to-frame link not established
+29,32,,17,37,10,15,u8,Atlas crop rectangle; species-to-frame link not established
+29,33,,0,41,17,14,u8,Atlas crop rectangle; species-to-frame link not established
+29,34,,27,40,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,35,,63,37,7,18,u8,Atlas crop rectangle; species-to-frame link not established
+29,36,,70,37,8,17,u8,Atlas crop rectangle; species-to-frame link not established
+29,37,,69,20,6,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,38,,62,20,7,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,39,,64,8,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,40,,64,0,14,8,u8,Atlas crop rectangle; species-to-frame link not established
+29,41,,47,0,17,15,u8,Atlas crop rectangle; species-to-frame link not established
+29,42,,49,15,12,22,u8,Atlas crop rectangle; species-to-frame link not established
+29,43,,48,37,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,44,,37,34,11,6,u8,Atlas crop rectangle; species-to-frame link not established
+29,45,,37,22,9,12,u8,Atlas crop rectangle; species-to-frame link not established
+29,46,,34,16,4,7,u8,Atlas crop rectangle; species-to-frame link not established
+29,47,,38,16,9,6,u8,Atlas crop rectangle; species-to-frame link not established
+29,48,,30,0,17,16,u8,Atlas crop rectangle; species-to-frame link not established
+29,49,,0,0,30,24,u8,Atlas crop rectangle; species-to-frame link not established
+29,50,,18,24,19,13,u8,Atlas crop rectangle; species-to-frame link not established
+29,51,,0,24,18,17,u8,Atlas crop rectangle; species-to-frame link not established
+29,52,,30,18,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+30,0,32,0,0,31,17,u8,Atlas crop rectangle; species-to-frame link not established
+30,1,32,31,0,24,24,u8,Atlas crop rectangle; species-to-frame link not established
+30,2,32,0,17,23,8,u8,Atlas crop rectangle; species-to-frame link not established
+30,3,32,23,20,2,3,u8,Atlas crop rectangle; species-to-frame link not established
+30,4,32,0,25,33,14,u8,Atlas crop rectangle; species-to-frame link not established
+30,5,32,0,39,15,25,u8,Atlas crop rectangle; species-to-frame link not established
+30,6,32,15,46,9,18,u8,Atlas crop rectangle; species-to-frame link not established
+30,7,32,0,64,16,24,u8,Atlas crop rectangle; species-to-frame link not established
+30,8,32,16,69,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+30,9,32,21,63,13,16,u8,Atlas crop rectangle; species-to-frame link not established
+30,10,32,17,79,19,9,u8,Atlas crop rectangle; species-to-frame link not established
+30,11,32,34,60,13,19,u8,Atlas crop rectangle; species-to-frame link not established
+30,12,32,47,68,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+30,13,32,16,65,3,4,u8,Atlas crop rectangle; species-to-frame link not established
+30,14,32,36,79,16,9,u8,Atlas crop rectangle; species-to-frame link not established
+30,15,32,16,73,4,5,u8,Atlas crop rectangle; species-to-frame link not established
+30,16,32,47,60,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+30,17,32,25,60,3,2,u8,Atlas crop rectangle; species-to-frame link not established
+30,18,32,46,52,9,8,u8,Atlas crop rectangle; species-to-frame link not established
+30,19,32,47,38,8,14,u8,Atlas crop rectangle; species-to-frame link not established
+30,20,32,46,24,9,14,u8,Atlas crop rectangle; species-to-frame link not established
+30,21,32,33,24,13,22,u8,Atlas crop rectangle; species-to-frame link not established
+30,22,32,24,46,22,14,u8,Atlas crop rectangle; species-to-frame link not established
+30,23,32,15,39,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+30,24,32,26,20,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,0,,0,0,26,27,u8,Atlas crop rectangle; species-to-frame link not established
+31,1,,0,27,37,8,u8,Atlas crop rectangle; species-to-frame link not established
+31,2,,0,35,21,20,u8,Atlas crop rectangle; species-to-frame link not established
+31,3,,0,55,8,10,u8,Atlas crop rectangle; species-to-frame link not established
+31,4,,11,55,7,11,u8,Atlas crop rectangle; species-to-frame link not established
+31,5,,0,65,14,13,u8,Atlas crop rectangle; species-to-frame link not established
+31,6,,0,78,10,15,u8,Atlas crop rectangle; species-to-frame link not established
+31,7,,0,94,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+31,8,,10,85,12,12,u8,Atlas crop rectangle; species-to-frame link not established
+31,9,,10,98,10,4,u8,Atlas crop rectangle; species-to-frame link not established
+31,10,,14,68,12,17,u8,Atlas crop rectangle; species-to-frame link not established
+31,11,,26,68,17,18,u8,Atlas crop rectangle; species-to-frame link not established
+31,12,,22,86,14,17,u8,Atlas crop rectangle; species-to-frame link not established
+31,13,,36,86,19,9,u8,Atlas crop rectangle; species-to-frame link not established
+31,14,,36,95,23,6,u8,Atlas crop rectangle; species-to-frame link not established
+31,15,,43,68,14,18,u8,Atlas crop rectangle; species-to-frame link not established
+31,16,,57,76,4,10,u8,Atlas crop rectangle; species-to-frame link not established
+31,17,,61,53,11,30,u8,Atlas crop rectangle; species-to-frame link not established
+31,18,,72,71,10,14,u8,Atlas crop rectangle; species-to-frame link not established
+31,19,,82,71,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+31,20,,84,76,3,4,u8,Atlas crop rectangle; species-to-frame link not established
+31,21,,21,35,16,33,u8,Atlas crop rectangle; species-to-frame link not established
+31,22,,37,27,17,13,u8,Atlas crop rectangle; species-to-frame link not established
+31,23,,37,40,22,16,u8,Atlas crop rectangle; species-to-frame link not established
+31,24,,37,62,23,6,u8,Atlas crop rectangle; species-to-frame link not established
+31,25,,26,0,31,27,u8,Atlas crop rectangle; species-to-frame link not established
+31,26,,57,0,18,10,u8,Atlas crop rectangle; species-to-frame link not established
+31,27,,57,10,12,22,u8,Atlas crop rectangle; species-to-frame link not established
+31,28,,69,10,8,22,u8,Atlas crop rectangle; species-to-frame link not established
+31,29,,59,32,17,21,u8,Atlas crop rectangle; species-to-frame link not established
+31,30,,76,28,11,25,u8,Atlas crop rectangle; species-to-frame link not established
+31,31,,72,53,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+31,32,,72,64,15,7,u8,Atlas crop rectangle; species-to-frame link not established
+31,33,,77,0,9,28,u8,Atlas crop rectangle; species-to-frame link not established
+31,34,,82,87,5,14,u8,Atlas crop rectangle; species-to-frame link not established
+31,35,,84,81,2,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,36,,75,97,6,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,37,,78,91,3,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,38,,79,85,2,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,39,,61,86,14,14,u8,Atlas crop rectangle; species-to-frame link not established
+31,40,,56,86,4,1,u8,Atlas crop rectangle; species-to-frame link not established
+31,41,,55,87,4,2,u8,Atlas crop rectangle; species-to-frame link not established
+31,42,,55,89,5,2,u8,Atlas crop rectangle; species-to-frame link not established
+31,43,,55,91,6,3,u8,Atlas crop rectangle; species-to-frame link not established
+31,44,,82,53,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+31,45,,82,57,3,6,u8,Atlas crop rectangle; species-to-frame link not established
+31,46,,37,56,20,6,u8,Atlas crop rectangle; species-to-frame link not established
+32,0,,0,0,45,12,u8,Atlas crop rectangle; species-to-frame link not established
+32,1,,45,2,23,10,u8,Atlas crop rectangle; species-to-frame link not established
+32,2,,0,12,12,14,u8,Atlas crop rectangle; species-to-frame link not established
+32,3,,12,12,12,11,u8,Atlas crop rectangle; species-to-frame link not established
+32,4,,0,26,7,12,u8,Atlas crop rectangle; species-to-frame link not established
+32,5,,7,26,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+32,6,,7,32,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+32,7,,12,23,14,11,u8,Atlas crop rectangle; species-to-frame link not established
+32,8,,26,12,15,9,u8,Atlas crop rectangle; species-to-frame link not established
+32,9,,26,21,12,7,u8,Atlas crop rectangle; species-to-frame link not established
+32,10,,26,28,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+32,11,,31,28,19,5,u8,Atlas crop rectangle; species-to-frame link not established
+32,12,,12,34,38,9,u8,Atlas crop rectangle; species-to-frame link not established
+32,13,,41,12,14,9,u8,Atlas crop rectangle; species-to-frame link not established
+32,14,,55,12,13,10,u8,Atlas crop rectangle; species-to-frame link not established
+32,15,,49,21,12,9,u8,Atlas crop rectangle; species-to-frame link not established
+32,16,,61,23,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+32,17,,50,30,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+32,18,,57,30,18,12,u8,Atlas crop rectangle; species-to-frame link not established
+32,19,,52,38,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+32,20,,76,35,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+32,21,,90,17,15,12,u8,Atlas crop rectangle; species-to-frame link not established
+32,22,,85,36,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+32,23,,85,29,20,7,u8,Atlas crop rectangle; species-to-frame link not established
+32,24,,68,17,22,12,u8,Atlas crop rectangle; species-to-frame link not established
+32,25,,68,0,31,17,u8,Atlas crop rectangle; species-to-frame link not established
+32,26,,45,0,23,2,u8,Atlas crop rectangle; species-to-frame link not established
+33,0,0,0,0,43,35,u8,Atlas crop rectangle; species-to-frame link not established
+33,1,0,43,0,42,36,u8,Atlas crop rectangle; species-to-frame link not established
+33,2,0,85,0,11,24,u8,Atlas crop rectangle; species-to-frame link not established
+33,3,0,85,24,11,19,u8,Atlas crop rectangle; species-to-frame link not established
+33,4,0,0,35,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+33,5,0,8,35,6,14,u8,Atlas crop rectangle; species-to-frame link not established
+33,6,0,14,35,16,14,u8,Atlas crop rectangle; species-to-frame link not established
+33,7,0,30,35,16,14,u8,Atlas crop rectangle; species-to-frame link not established
+33,8,0,46,36,15,13,u8,Atlas crop rectangle; species-to-frame link not established
+33,9,0,61,36,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+33,10,0,74,36,10,12,u8,Atlas crop rectangle; species-to-frame link not established
+33,11,0,86,43,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+33,12,0,92,45,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+33,13,0,0,49,26,10,u8,Atlas crop rectangle; species-to-frame link not established
+33,14,0,26,49,29,13,u8,Atlas crop rectangle; species-to-frame link not established
+33,15,0,0,59,20,17,u8,Atlas crop rectangle; species-to-frame link not established
+33,16,0,0,76,20,15,u8,Atlas crop rectangle; species-to-frame link not established
+33,17,0,0,93,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+33,18,0,13,91,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+33,19,0,20,62,7,13,u8,Atlas crop rectangle; species-to-frame link not established
+33,20,0,28,62,28,14,u8,Atlas crop rectangle; species-to-frame link not established
+33,21,0,20,76,15,16,u8,Atlas crop rectangle; species-to-frame link not established
+33,22,0,35,76,11,18,u8,Atlas crop rectangle; species-to-frame link not established
+33,23,0,46,76,11,18,u8,Atlas crop rectangle; species-to-frame link not established
+33,24,0,56,49,23,22,u8,Atlas crop rectangle; species-to-frame link not established
+33,25,0,79,49,19,16,u8,Atlas crop rectangle; species-to-frame link not established
+33,26,0,79,65,16,12,u8,Atlas crop rectangle; species-to-frame link not established
+33,27,0,57,71,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+33,28,0,58,76,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+33,29,0,71,71,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+33,30,0,71,76,13,19,u8,Atlas crop rectangle; species-to-frame link not established
+33,31,0,84,77,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+33,32,0,84,87,13,9,u8,Atlas crop rectangle; species-to-frame link not established
+33,33,0,57,88,12,11,u8,Atlas crop rectangle; species-to-frame link not established
+33,34,0,21,94,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+33,35,0,28,94,6,4,u8,Atlas crop rectangle; species-to-frame link not established
+34,0,,0,0,58,37,u8,Atlas crop rectangle; species-to-frame link not established
+34,1,,58,0,20,37,u8,Atlas crop rectangle; species-to-frame link not established
+34,2,,0,37,43,18,u8,Atlas crop rectangle; species-to-frame link not established
+34,3,,0,55,41,19,u8,Atlas crop rectangle; species-to-frame link not established
+34,4,,0,74,38,12,u8,Atlas crop rectangle; species-to-frame link not established
+34,5,,38,74,36,7,u8,Atlas crop rectangle; species-to-frame link not established
+34,6,,43,37,13,28,u8,Atlas crop rectangle; species-to-frame link not established
+34,7,,56,37,15,10,u8,Atlas crop rectangle; species-to-frame link not established
+34,8,,71,37,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+34,9,,56,47,42,18,u8,Atlas crop rectangle; species-to-frame link not established
+34,10,,41,65,34,9,u8,Atlas crop rectangle; species-to-frame link not established
+34,11,,75,65,18,21,u8,Atlas crop rectangle; species-to-frame link not established
+34,12,,93,66,21,18,u8,Atlas crop rectangle; species-to-frame link not established
+34,13,,117,72,10,14,u8,Atlas crop rectangle; species-to-frame link not established
+34,14,,100,58,27,8,u8,Atlas crop rectangle; species-to-frame link not established
+34,15,,98,42,24,16,u8,Atlas crop rectangle; species-to-frame link not established
+34,16,,79,21,17,21,u8,Atlas crop rectangle; species-to-frame link not established
+34,17,,97,24,24,18,u8,Atlas crop rectangle; species-to-frame link not established
+34,18,,78,0,49,22,u8,Atlas crop rectangle; species-to-frame link not established
+35,0,30,0,0,21,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,1,30,0,14,26,13,u8,Atlas crop rectangle; species-to-frame link not established
+35,2,30,0,27,19,10,u8,Atlas crop rectangle; species-to-frame link not established
+35,3,30,19,27,9,3,u8,Atlas crop rectangle; species-to-frame link not established
+35,4,30,0,37,17,12,u8,Atlas crop rectangle; species-to-frame link not established
+35,5,30,19,35,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+35,6,30,20,42,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+35,7,30,20,30,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+35,8,30,21,0,14,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,9,30,26,14,8,13,u8,Atlas crop rectangle; species-to-frame link not established
+35,10,30,35,0,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,11,30,46,0,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,12,30,57,0,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,13,30,65,0,9,13,u8,Atlas crop rectangle; species-to-frame link not established
+35,14,30,34,14,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,15,30,29,29,13,5,u8,Atlas crop rectangle; species-to-frame link not established
+35,16,30,30,34,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+35,17,30,30,40,10,9,u8,Atlas crop rectangle; species-to-frame link not established
+35,18,30,43,34,12,15,u8,Atlas crop rectangle; species-to-frame link not established
+35,19,30,55,34,15,15,u8,Atlas crop rectangle; species-to-frame link not established
+35,20,30,67,13,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+35,21,30,56,15,11,19,u8,Atlas crop rectangle; species-to-frame link not established
+35,22,30,45,15,11,14,u8,Atlas crop rectangle; species-to-frame link not established
+35,23,30,44,29,12,5,u8,Atlas crop rectangle; species-to-frame link not established
+35,24,30,72,24,3,7,u8,Atlas crop rectangle; species-to-frame link not established
+35,25,30,68,24,2,3,u8,Atlas crop rectangle; species-to-frame link not established
+35,26,30,68,32,3,2,u8,Atlas crop rectangle; species-to-frame link not established
+35,27,30,72,31,4,3,u8,Atlas crop rectangle; species-to-frame link not established
+35,28,30,71,35,5,9,u8,Atlas crop rectangle; species-to-frame link not established
+35,29,30,70,44,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+35,30,30,69,22,5,2,u8,Atlas crop rectangle; species-to-frame link not established
+36,0,,0,0,20,18,u8,Atlas crop rectangle; species-to-frame link not established
+36,1,,0,18,30,24,u8,Atlas crop rectangle; species-to-frame link not established
+36,2,,0,42,9,25,u8,Atlas crop rectangle; species-to-frame link not established
+36,3,,10,42,8,11,u8,Atlas crop rectangle; species-to-frame link not established
+36,4,,9,53,12,15,u8,Atlas crop rectangle; species-to-frame link not established
+36,5,,19,42,26,8,u8,Atlas crop rectangle; species-to-frame link not established
+36,6,,21,50,24,17,u8,Atlas crop rectangle; species-to-frame link not established
+36,7,,20,0,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+36,8,,20,10,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+36,9,,30,0,24,15,u8,Atlas crop rectangle; species-to-frame link not established
+36,10,,30,15,21,12,u8,Atlas crop rectangle; species-to-frame link not established
+36,11,,54,0,20,13,u8,Atlas crop rectangle; species-to-frame link not established
+36,12,,74,0,18,31,u8,Atlas crop rectangle; species-to-frame link not established
+36,13,,31,27,13,10,u8,Atlas crop rectangle; species-to-frame link not established
+36,14,,45,31,18,11,u8,Atlas crop rectangle; species-to-frame link not established
+36,15,,64,32,20,10,u8,Atlas crop rectangle; species-to-frame link not established
+36,16,,84,33,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+36,17,,45,42,19,12,u8,Atlas crop rectangle; species-to-frame link not established
+36,18,,45,54,18,15,u8,Atlas crop rectangle; species-to-frame link not established
+36,19,,64,42,16,11,u8,Atlas crop rectangle; species-to-frame link not established
+36,20,,64,53,23,8,u8,Atlas crop rectangle; species-to-frame link not established
+36,21,,63,61,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+36,22,,74,61,13,8,u8,Atlas crop rectangle; species-to-frame link not established
+36,23,,80,42,13,11,u8,Atlas crop rectangle; species-to-frame link not established
+36,24,,52,24,12,3,u8,Atlas crop rectangle; species-to-frame link not established
+36,25,,33,38,6,3,u8,Atlas crop rectangle; species-to-frame link not established
+36,26,,54,13,20,11,u8,Atlas crop rectangle; species-to-frame link not established
+36,27,,89,66,3,3,u8,Atlas crop rectangle; species-to-frame link not established
+36,28,,45,27,19,4,u8,Atlas crop rectangle; species-to-frame link not established
+37,0,,0,0,44,16,u8,Atlas crop rectangle; species-to-frame link not established
+37,1,,0,16,36,33,u8,Atlas crop rectangle; species-to-frame link not established
+37,2,,0,49,24,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,3,,0,62,23,9,u8,Atlas crop rectangle; species-to-frame link not established
+37,4,,0,71,16,9,u8,Atlas crop rectangle; species-to-frame link not established
+37,5,,19,72,3,3,u8,Atlas crop rectangle; species-to-frame link not established
+37,6,,0,81,27,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,7,,0,94,28,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,8,,28,81,16,10,u8,Atlas crop rectangle; species-to-frame link not established
+37,9,,28,91,18,6,u8,Atlas crop rectangle; species-to-frame link not established
+37,10,,28,97,16,10,u8,Atlas crop rectangle; species-to-frame link not established
+37,11,,48,0,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+37,12,,45,6,17,6,u8,Atlas crop rectangle; species-to-frame link not established
+37,13,,44,12,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+37,14,,62,0,13,8,u8,Atlas crop rectangle; species-to-frame link not established
+37,15,,75,0,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+37,16,,62,8,18,10,u8,Atlas crop rectangle; species-to-frame link not established
+37,17,,52,12,10,6,u8,Atlas crop rectangle; species-to-frame link not established
+37,18,,36,18,37,17,u8,Atlas crop rectangle; species-to-frame link not established
+37,19,,36,35,29,14,u8,Atlas crop rectangle; species-to-frame link not established
+37,20,,73,18,10,25,u8,Atlas crop rectangle; species-to-frame link not established
+37,21,,66,35,6,14,u8,Atlas crop rectangle; species-to-frame link not established
+37,22,,48,49,28,16,u8,Atlas crop rectangle; species-to-frame link not established
+37,23,,77,55,17,10,u8,Atlas crop rectangle; species-to-frame link not established
+37,24,,48,66,36,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,25,,46,79,17,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,26,,46,92,19,7,u8,Atlas crop rectangle; species-to-frame link not established
+37,27,,44,100,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+37,28,,67,96,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+37,29,,64,80,18,16,u8,Atlas crop rectangle; species-to-frame link not established
+37,30,,83,80,18,16,u8,Atlas crop rectangle; species-to-frame link not established
+37,31,,80,97,18,9,u8,Atlas crop rectangle; species-to-frame link not established
+37,32,,84,69,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+37,33,,94,55,8,12,u8,Atlas crop rectangle; species-to-frame link not established
+37,34,,85,0,16,31,u8,Atlas crop rectangle; species-to-frame link not established
+37,35,,83,31,19,11,u8,Atlas crop rectangle; species-to-frame link not established
+37,36,,87,42,14,13,u8,Atlas crop rectangle; species-to-frame link not established
+37,37,,56,99,9,8,u8,Atlas crop rectangle; species-to-frame link not established
+37,38,,76,43,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+37,39,,24,49,13,12,u8,Atlas crop rectangle; species-to-frame link not established
+37,40,,37,49,11,11,u8,Atlas crop rectangle; species-to-frame link not established
+37,41,,24,61,12,20,u8,Atlas crop rectangle; species-to-frame link not established
+37,42,,37,60,10,20,u8,Atlas crop rectangle; species-to-frame link not established
+38,0,,0,0,27,8,u8,Atlas crop rectangle; species-to-frame link not established
+38,1,,0,8,37,18,u8,Atlas crop rectangle; species-to-frame link not established
+38,2,,0,26,37,7,u8,Atlas crop rectangle; species-to-frame link not established
+38,3,,0,33,23,6,u8,Atlas crop rectangle; species-to-frame link not established
+38,4,,24,34,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+38,5,,31,34,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+38,6,,0,39,37,14,u8,Atlas crop rectangle; species-to-frame link not established
+38,7,,37,47,10,7,u8,Atlas crop rectangle; species-to-frame link not established
+38,8,,47,46,8,6,u8,Atlas crop rectangle; species-to-frame link not established
+38,9,,51,42,6,4,u8,Atlas crop rectangle; species-to-frame link not established
+38,10,,51,37,6,4,u8,Atlas crop rectangle; species-to-frame link not established
+38,11,,51,28,6,9,u8,Atlas crop rectangle; species-to-frame link not established
+38,12,,50,21,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+38,13,,37,28,13,18,u8,Atlas crop rectangle; species-to-frame link not established
+38,14,,37,8,12,20,u8,Atlas crop rectangle; species-to-frame link not established
+38,15,,49,11,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+38,16,,27,0,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+38,17,,34,0,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+38,18,,39,0,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+38,19,,46,0,12,4,u8,Atlas crop rectangle; species-to-frame link not established
+38,20,,49,4,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,0,,0,0,14,8,u8,Atlas crop rectangle; species-to-frame link not established
+39,1,,0,8,24,18,u8,Atlas crop rectangle; species-to-frame link not established
+39,2,,0,26,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,3,,0,34,9,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,4,,9,33,2,4,u8,Atlas crop rectangle; species-to-frame link not established
+39,5,,0,42,33,11,u8,Atlas crop rectangle; species-to-frame link not established
+39,6,,33,42,6,11,u8,Atlas crop rectangle; species-to-frame link not established
+39,7,,76,44,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,8,,24,0,21,15,u8,Atlas crop rectangle; species-to-frame link not established
+39,9,,17,0,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+39,10,,24,15,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+39,11,,33,15,12,6,u8,Atlas crop rectangle; species-to-frame link not established
+39,12,,29,21,16,21,u8,Atlas crop rectangle; species-to-frame link not established
+39,13,,45,22,10,11,u8,Atlas crop rectangle; species-to-frame link not established
+39,14,,45,33,13,9,u8,Atlas crop rectangle; species-to-frame link not established
+39,15,,39,42,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,16,,50,42,9,11,u8,Atlas crop rectangle; species-to-frame link not established
+39,17,,64,26,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,18,,59,41,15,7,u8,Atlas crop rectangle; species-to-frame link not established
+39,19,,59,48,11,5,u8,Atlas crop rectangle; species-to-frame link not established
+39,20,,45,0,23,22,u8,Atlas crop rectangle; species-to-frame link not established
+39,21,,68,0,14,25,u8,Atlas crop rectangle; species-to-frame link not established
+39,22,,56,23,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+39,23,,59,31,5,10,u8,Atlas crop rectangle; species-to-frame link not established
+39,24,,64,33,12,8,u8,Atlas crop rectangle; species-to-frame link not established
+39,25,,76,34,5,8,u8,Atlas crop rectangle; species-to-frame link not established
+39,26,,12,26,17,15,u8,Atlas crop rectangle; species-to-frame link not established
+40,0,,0,0,29,24,u8,Atlas crop rectangle; species-to-frame link not established
+40,1,,11,24,22,9,u8,Atlas crop rectangle; species-to-frame link not established
+40,2,,0,33,35,2,u8,Atlas crop rectangle; species-to-frame link not established
+40,3,,0,35,22,24,u8,Atlas crop rectangle; species-to-frame link not established
+40,4,,37,33,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+40,5,,22,35,15,15,u8,Atlas crop rectangle; species-to-frame link not established
+40,6,,22,50,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+40,7,,29,50,13,6,u8,Atlas crop rectangle; species-to-frame link not established
+40,8,,31,56,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+40,9,,0,59,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+40,10,,8,59,9,9,u8,Atlas crop rectangle; species-to-frame link not established
+40,11,,0,68,17,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,12,,44,0,25,12,u8,Atlas crop rectangle; species-to-frame link not established
+40,13,,44,12,13,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,14,,57,12,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,15,,71,0,15,24,u8,Atlas crop rectangle; species-to-frame link not established
+40,16,,87,0,12,15,u8,Atlas crop rectangle; species-to-frame link not established
+40,17,,69,72,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+40,18,,99,1,8,5,u8,Atlas crop rectangle; species-to-frame link not established
+40,19,,68,24,21,9,u8,Atlas crop rectangle; species-to-frame link not established
+40,20,,34,25,12,7,u8,Atlas crop rectangle; species-to-frame link not established
+40,21,,46,24,7,9,u8,Atlas crop rectangle; species-to-frame link not established
+40,22,,54,23,14,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,23,,44,23,10,1,u8,Atlas crop rectangle; species-to-frame link not established
+40,24,,48,34,7,11,u8,Atlas crop rectangle; species-to-frame link not established
+40,25,,43,45,5,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,26,,48,45,5,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,27,,39,55,15,6,u8,Atlas crop rectangle; species-to-frame link not established
+40,28,,45,61,6,3,u8,Atlas crop rectangle; species-to-frame link not established
+40,29,,17,60,23,19,u8,Atlas crop rectangle; species-to-frame link not established
+40,30,,39,71,18,8,u8,Atlas crop rectangle; species-to-frame link not established
+40,31,,57,61,12,18,u8,Atlas crop rectangle; species-to-frame link not established
+40,32,,55,33,18,12,u8,Atlas crop rectangle; species-to-frame link not established
+40,33,,54,45,17,14,u8,Atlas crop rectangle; species-to-frame link not established
+40,34,,71,46,10,13,u8,Atlas crop rectangle; species-to-frame link not established
+40,35,,81,46,10,15,u8,Atlas crop rectangle; species-to-frame link not established
+40,36,,73,33,19,13,u8,Atlas crop rectangle; species-to-frame link not established
+40,37,,93,29,10,25,u8,Atlas crop rectangle; species-to-frame link not established
+40,38,,81,71,10,8,u8,Atlas crop rectangle; species-to-frame link not established
+40,39,,91,54,16,25,u8,Atlas crop rectangle; species-to-frame link not established
+40,40,,69,61,20,10,u8,Atlas crop rectangle; species-to-frame link not established
+40,41,,101,7,5,6,u8,Atlas crop rectangle; species-to-frame link not established
+40,42,,100,14,6,7,u8,Atlas crop rectangle; species-to-frame link not established
+40,43,,87,16,11,8,u8,Atlas crop rectangle; species-to-frame link not established
+40,44,,0,24,11,3,u8,Atlas crop rectangle; species-to-frame link not established
+40,45,,29,1,15,23,u8,Atlas crop rectangle; species-to-frame link not established
+40,46,,47,66,8,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,0,,0,0,38,27,u8,Atlas crop rectangle; species-to-frame link not established
+41,1,,38,0,8,21,u8,Atlas crop rectangle; species-to-frame link not established
+41,2,,0,27,38,11,u8,Atlas crop rectangle; species-to-frame link not established
+41,3,,0,38,19,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,4,,19,38,19,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,5,,0,56,45,14,u8,Atlas crop rectangle; species-to-frame link not established
+41,6,,0,70,47,20,u8,Atlas crop rectangle; species-to-frame link not established
+41,7,,46,0,29,25,u8,Atlas crop rectangle; species-to-frame link not established
+41,8,,38,25,19,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,9,,57,25,18,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,10,,38,43,17,13,u8,Atlas crop rectangle; species-to-frame link not established
+41,11,,55,43,11,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,12,,66,43,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+41,13,,70,43,4,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,14,,71,49,2,2,u8,Atlas crop rectangle; species-to-frame link not established
+41,15,,71,52,3,4,u8,Atlas crop rectangle; species-to-frame link not established
+41,16,,47,56,23,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,17,,55,50,14,6,u8,Atlas crop rectangle; species-to-frame link not established
+41,18,,70,56,22,18,u8,Atlas crop rectangle; species-to-frame link not established
+41,19,,47,74,27,10,u8,Atlas crop rectangle; species-to-frame link not established
+41,20,,82,76,15,14,u8,Atlas crop rectangle; species-to-frame link not established
+41,21,,74,74,11,2,u8,Atlas crop rectangle; species-to-frame link not established
+41,22,,74,76,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+41,23,,75,0,19,23,u8,Atlas crop rectangle; species-to-frame link not established
+41,24,,94,0,20,24,u8,Atlas crop rectangle; species-to-frame link not established
+41,25,,74,83,8,7,u8,Atlas crop rectangle; species-to-frame link not established
+41,26,,67,84,7,6,u8,Atlas crop rectangle; species-to-frame link not established
+41,27,,62,84,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,28,,47,84,15,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,29,,75,23,21,10,u8,Atlas crop rectangle; species-to-frame link not established
+41,30,,75,33,25,13,u8,Atlas crop rectangle; species-to-frame link not established
+41,31,,75,46,7,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,32,,75,51,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,33,,84,46,8,4,u8,Atlas crop rectangle; species-to-frame link not established
+41,34,,83,51,9,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,35,,93,50,7,4,u8,Atlas crop rectangle; species-to-frame link not established
+41,36,,94,46,5,3,u8,Atlas crop rectangle; species-to-frame link not established
+41,37,,98,79,12,8,u8,Atlas crop rectangle; species-to-frame link not established
+41,38,,92,54,7,8,u8,Atlas crop rectangle; species-to-frame link not established
+41,39,,93,62,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+41,40,,92,68,8,9,u8,Atlas crop rectangle; species-to-frame link not established
+41,41,,100,56,14,23,u8,Atlas crop rectangle; species-to-frame link not established
+41,42,,100,24,6,5,u8,Atlas crop rectangle; species-to-frame link not established
+41,43,,108,24,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+41,44,,100,45,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+41,45,,107,45,7,7,u8,Atlas crop rectangle; species-to-frame link not established
+41,46,,100,52,14,4,u8,Atlas crop rectangle; species-to-frame link not established
+41,47,,100,29,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+41,48,,101,37,6,8,u8,Atlas crop rectangle; species-to-frame link not established
+41,49,,108,36,6,6,u8,Atlas crop rectangle; species-to-frame link not established
+41,50,,108,42,6,3,u8,Atlas crop rectangle; species-to-frame link not established
+41,51,,109,32,4,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,0,,0,0,24,30,u8,Atlas crop rectangle; species-to-frame link not established
+42,1,,24,0,7,15,u8,Atlas crop rectangle; species-to-frame link not established
+42,2,,0,30,20,22,u8,Atlas crop rectangle; species-to-frame link not established
+42,3,,0,52,26,25,u8,Atlas crop rectangle; species-to-frame link not established
+42,4,,0,81,6,9,u8,Atlas crop rectangle; species-to-frame link not established
+42,5,,6,81,29,7,u8,Atlas crop rectangle; species-to-frame link not established
+42,6,,26,67,19,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,7,,26,51,16,16,u8,Atlas crop rectangle; species-to-frame link not established
+42,8,,20,45,9,6,u8,Atlas crop rectangle; species-to-frame link not established
+42,9,,29,44,17,7,u8,Atlas crop rectangle; species-to-frame link not established
+42,10,,25,16,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+42,11,,24,21,3,3,u8,Atlas crop rectangle; species-to-frame link not established
+42,12,,28,22,2,2,u8,Atlas crop rectangle; species-to-frame link not established
+42,13,,24,25,5,5,u8,Atlas crop rectangle; species-to-frame link not established
+42,14,,20,30,19,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,15,,35,26,13,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,16,,31,0,27,9,u8,Atlas crop rectangle; species-to-frame link not established
+42,17,,31,9,35,16,u8,Atlas crop rectangle; species-to-frame link not established
+42,18,,58,1,8,8,u8,Atlas crop rectangle; species-to-frame link not established
+42,19,,66,0,33,22,u8,Atlas crop rectangle; species-to-frame link not established
+42,20,,99,0,9,15,u8,Atlas crop rectangle; species-to-frame link not established
+42,21,,100,15,7,19,u8,Atlas crop rectangle; species-to-frame link not established
+42,22,,39,30,13,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,23,,52,26,14,15,u8,Atlas crop rectangle; species-to-frame link not established
+42,24,,66,22,19,11,u8,Atlas crop rectangle; species-to-frame link not established
+42,25,,85,23,15,10,u8,Atlas crop rectangle; species-to-frame link not established
+42,26,,66,33,27,11,u8,Atlas crop rectangle; species-to-frame link not established
+42,27,,93,38,5,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,28,,46,44,17,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,29,,46,48,17,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,30,,42,52,20,6,u8,Atlas crop rectangle; species-to-frame link not established
+42,31,,42,58,22,15,u8,Atlas crop rectangle; species-to-frame link not established
+42,32,,45,73,11,7,u8,Atlas crop rectangle; species-to-frame link not established
+42,33,,35,81,29,9,u8,Atlas crop rectangle; species-to-frame link not established
+42,34,,98,34,13,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,35,,16,77,10,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,36,,66,78,11,13,u8,Atlas crop rectangle; species-to-frame link not established
+42,37,,63,44,14,9,u8,Atlas crop rectangle; species-to-frame link not established
+42,38,,77,44,25,11,u8,Atlas crop rectangle; species-to-frame link not established
+42,39,,0,77,16,4,u8,Atlas crop rectangle; species-to-frame link not established
+42,40,,64,55,21,11,u8,Atlas crop rectangle; species-to-frame link not established
+42,41,,78,77,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,42,,65,66,20,11,u8,Atlas crop rectangle; species-to-frame link not established
+42,43,,85,55,14,18,u8,Atlas crop rectangle; species-to-frame link not established
+42,44,,85,73,18,18,u8,Atlas crop rectangle; species-to-frame link not established
+42,45,,104,77,7,14,u8,Atlas crop rectangle; species-to-frame link not established
+42,46,,100,65,11,12,u8,Atlas crop rectangle; species-to-frame link not established
+42,47,,100,55,10,10,u8,Atlas crop rectangle; species-to-frame link not established
+42,48,,0,14,24,16,u8,Atlas crop rectangle; species-to-frame link not established
+42,49,,56,73,10,8,u8,Atlas crop rectangle; species-to-frame link not established
+43,0,,0,0,34,53,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,1,,0,53,34,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,2,,0,83,17,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,3,,19,83,13,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,4,,34,0,45,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,5,,79,0,33,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,6,,34,22,27,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,7,,62,22,23,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,8,,85,23,25,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,9,,35,38,7,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,10,,42,38,15,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,11,,43,48,12,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,12,,57,38,13,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,13,,70,39,21,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,14,,34,59,28,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,15,,62,59,30,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,16,,33,85,23,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,17,,59,79,10,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,18,,77,79,15,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,19,,92,39,19,45,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,20,,92,84,11,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,21,,103,84,8,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,22,,112,75,21,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,23,,128,1,62,48,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,24,,133,49,54,46,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,25,,112,60,21,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,26,,111,31,15,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,27,,112,9,16,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+43,28,,69,79,8,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,0,,83,0,38,54,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,1,,87,54,30,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,2,,121,0,33,69,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,3,,154,0,53,40,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,4,,207,0,7,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,5,,214,0,19,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,6,,233,0,18,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,7,,233,15,18,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,8,,207,24,21,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,9,,233,42,18,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,10,,233,74,16,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,11,,220,81,12,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,12,,202,62,31,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,13,,196,82,21,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,14,,194,44,33,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,15,,172,42,21,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,16,,178,71,18,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,17,,154,40,17,38,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,18,,159,80,19,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,19,,141,77,18,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,20,,113,73,28,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,21,,85,74,28,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,22,,69,54,16,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,23,,69,69,16,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,24,,52,85,18,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,25,,52,55,16,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,26,,52,74,16,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,27,,35,53,16,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,28,,35,81,16,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,29,,1,73,32,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,30,,0,53,35,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,31,,20,2,18,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,32,,38,2,14,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,33,,52,2,14,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,34,,66,4,16,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,35,,20,19,63,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,36,,0,0,20,53,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,37,,251,18,35,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,38,,251,0,35,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,39,,251,38,35,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+44,40,,251,58,35,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,0,,0,0,61,38,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,1,,0,38,59,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,2,,0,73,61,39,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,3,,0,112,35,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,4,,35,112,6,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,5,,42,112,8,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,6,,54,125,7,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,7,,86,0,12,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,8,,62,11,13,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,9,,82,14,16,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,10,,61,25,18,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,11,,80,26,18,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,12,,59,41,39,39,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,13,,61,87,37,59,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,14,,50,112,11,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,15,,35,124,17,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,16,,61,0,23,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+45,17,,63,81,24,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,0,,0,0,22,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,1,,1,11,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,2,,0,22,10,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,3,,11,7,11,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,4,,22,0,12,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,5,,22,24,13,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,6,,35,0,16,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,7,,51,0,14,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,8,,66,0,11,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,9,,77,0,11,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,10,,51,25,13,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,11,,64,25,13,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,12,,79,24,10,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,13,,2,34,13,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,14,,2,42,14,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,15,,1,52,17,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,16,,1,74,18,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,17,,2,88,23,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,18,,25,37,40,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,19,,65,38,14,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,20,,79,51,12,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,21,,65,59,25,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,22,,28,72,37,41,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,23,,65,73,23,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,24,,65,89,26,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,25,,67,103,21,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,26,,2,116,8,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,27,,11,113,30,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,28,,41,115,22,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,29,,65,114,24,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+46,30,,37,30,13,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,0,,0,0,41,50,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,1,,0,50,23,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,2,,23,50,24,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,3,,41,0,25,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,4,,41,26,20,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,5,,49,54,12,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,6,,48,66,14,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,7,,66,0,23,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,8,,89,0,23,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,9,,112,0,23,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,10,,61,27,22,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,11,,83,27,22,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,12,,105,27,27,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,13,,115,61,18,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,14,,63,53,29,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+47,15,,95,62,17,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,0,,0,0,22,44,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,1,,22,0,26,43,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,2,,0,44,22,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,3,,22,43,31,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,4,,0,70,21,39,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,5,,23,75,25,43,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,6,,0,109,22,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,7,,22,118,30,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,8,,0,138,17,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,9,,0,148,29,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,10,,0,178,25,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,11,,29,148,27,37,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,12,,25,185,25,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,13,,48,0,30,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,14,,59,29,19,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,15,,53,52,25,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,16,,52,74,23,60,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,17,,56,134,22,42,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,18,,56,176,24,34,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,19,,80,176,23,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,20,,78,146,26,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,21,,78,70,26,76,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,22,,78,20,30,50,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,23,,78,0,30,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,24,,108,0,21,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,25,,108,31,23,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,26,,108,59,13,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,27,,108,89,17,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,28,,108,110,17,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,29,,108,135,32,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,30,,104,166,23,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,31,,127,166,26,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,32,,107,199,20,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,33,,127,199,13,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,34,,140,199,13,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,35,,144,155,9,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,36,,140,135,13,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,37,,126,119,20,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,38,,146,112,7,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,39,,125,89,28,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,40,,121,59,32,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,41,,137,34,16,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,42,,130,2,14,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+48,43,,131,17,22,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,0,,104,0,23,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,1,,87,0,17,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,2,,67,0,5,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,3,,50,0,17,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,4,,33,0,17,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,5,,19,0,10,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,6,,19,11,13,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,7,,0,0,19,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,8,,110,31,17,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,9,,82,31,28,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,10,,81,60,39,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,11,,43,31,38,42,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,12,,0,31,43,38,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,13,,100,69,27,83,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,14,,70,73,27,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,15,,70,89,26,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,16,,70,102,27,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,17,,36,73,34,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,18,,39,108,30,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,19,,19,69,17,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,20,,0,69,17,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,21,,0,97,38,40,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,22,,70,118,3,3,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,23,,74,118,6,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,24,,82,118,11,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,25,,84,129,14,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,26,,71,129,11,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,27,,38,118,29,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,28,,54,138,14,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,29,,38,137,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,30,,22,137,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,31,,1,137,19,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,32,,72,0,12,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,33,,73,11,14,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+49,34,,11,11,8,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,0,,0,78,10,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,1,,10,78,11,6,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,2,,0,0,25,78,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,3,,25,71,17,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,4,,25,60,16,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,5,,25,38,14,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,6,,25,0,47,38,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,7,,42,38,38,48,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,8,,72,0,28,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,9,,80,16,22,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,10,,80,31,18,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,11,,80,45,23,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,12,,80,77,27,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,13,,103,31,27,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,14,,107,60,29,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,15,,103,0,28,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,16,,131,0,22,35,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,17,,131,35,29,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,18,,136,55,26,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,19,,153,0,16,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,20,,155,22,7,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,21,,162,21,21,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,22,,161,34,21,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,23,,182,22,21,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,24,,169,0,31,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,25,,200,0,27,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,26,,200,13,27,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,27,,203,21,22,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,28,,227,2,22,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,29,,232,17,11,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,30,,230,41,10,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,31,,162,42,21,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,32,,183,46,19,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,33,,202,42,16,31,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,34,,224,54,20,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,35,,162,73,14,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,36,,176,72,14,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,37,,190,73,14,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,38,,204,73,15,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,39,,219,72,15,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,40,,234,73,15,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+50,41,,230,11,16,2,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,0,,0,54,73,51,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,1,,0,0,30,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,2,,30,0,27,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,3,,57,0,32,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,4,,89,3,14,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,5,,104,0,14,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,6,,119,0,13,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,7,,0,19,34,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,8,,34,15,31,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,9,,65,19,33,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,10,,99,18,25,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,11,,0,33,14,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,12,,14,33,19,18,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,13,,34,33,19,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,14,,53,33,17,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,15,,71,33,17,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,16,,88,34,17,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,17,,106,33,7,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,18,,133,4,19,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,19,,124,16,23,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,20,,113,33,20,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,21,,133,32,24,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,22,,185,0,30,43,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,23,,153,59,25,33,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,24,,117,54,36,29,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,25,,158,20,27,28,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,26,,152,0,33,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,27,,147,20,11,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,28,,73,55,15,41,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,29,,88,88,17,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,30,,88,55,29,32,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,31,,106,90,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,32,,120,93,7,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,33,,128,84,22,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,34,,157,48,21,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,35,,151,92,12,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,36,,215,0,57,43,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,37,,178,57,76,48,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,38,,254,57,13,5,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,39,,254,62,13,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,40,,255,87,12,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,41,,165,92,12,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,42,,147,12,38,8,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,43,,227,43,45,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+51,44,,185,43,42,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,0,31,0,45,56,44,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,1,31,57,83,14,12,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,2,31,72,84,12,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,3,31,56,0,16,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,4,31,56,13,15,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,5,31,56,24,13,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,6,31,56,34,15,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,7,31,72,0,12,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,8,31,72,7,11,11,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,9,31,0,0,56,41,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,10,31,85,0,13,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,11,31,84,13,15,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,12,31,72,18,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,13,31,72,28,14,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,14,31,56,45,43,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,15,31,59,66,40,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,16,31,100,60,45,16,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,17,31,142,80,45,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,18,31,99,0,40,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,19,31,100,15,56,41,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,20,31,90,83,14,14,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,21,31,122,85,12,9,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,22,31,114,91,7,4,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,23,31,105,77,17,13,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,24,31,122,77,17,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,25,31,157,36,29,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,26,31,156,17,27,19,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,27,31,154,0,29,17,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+52,28,31,145,56,42,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,0,,0,0,15,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,1,,0,15,6,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,2,,7,15,8,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,3,,0,38,7,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,4,,8,39,11,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,5,,0,61,17,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,6,,0,84,17,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,7,,19,3,29,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,8,,48,0,32,22,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,9,,80,0,8,15,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,10,,80,15,8,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,11,,19,26,42,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,12,,19,53,44,20,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,13,,28,73,31,7,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,14,,61,22,19,25,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,15,,63,47,16,10,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,16,,63,57,17,26,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,17,,80,39,8,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,18,,80,63,8,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,19,,78,86,10,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,20,,59,84,18,23,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,21,,70,110,18,21,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,22,,28,80,31,27,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,23,,17,76,11,30,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,24,,0,107,35,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established
+53,25,,35,107,34,24,u16 big-endian,Atlas crop rectangle; species-to-frame link not established

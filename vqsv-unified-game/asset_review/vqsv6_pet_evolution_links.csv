@@ -1,0 +1,39 @@
+﻿db_id,db_name,element_name,image_id,target_row_index,target_db_id,target_name,target_image_id,field_20,field_21,field_22
+16,Long bảo bối,Hỏa hệ,img_506,7,17,Phệ Hỏa Thú,img_507,0,1,0
+17,Phệ Hỏa Thú,Hỏa hệ,img_507,8,18,Bạo Long Thú,img_508,1,1,0
+19,Ly Ngưu Ngưu,Hỏa hệ,img_509,10,20,Ly Ngưu Thản Khắc,img_510,0,2,0
+21,Nhiệt Bạo Phong Tốc Khuyển,Hỏa hệ,img_511,12,22,Tuyệt Đối Linh Độ Khuyển,img_512,3,1,0
+23,Hỏa Diễm Tường Vân Khuyển,Hỏa hệ,img_513,14,24,Tà Vân Khuyển Thần,img_514,3,1,0
+26,Diệp Tán Oa,Mộc hệ,img_574,17,27,Thụ Tán Oa,img_575,0,2,0
+27,Thụ Tán Oa,Mộc hệ,img_575,18,28,Long Oa,img_576,1,1,0
+29,Tiên Nhân Cầu Bảo Bảo,Mộc hệ,img_579,20,30,Tiên Nhân Chưởng Thú,img_580,0,2,0
+30,Tiên Nhân Chưởng Thú,Mộc hệ,img_580,21,31,Thiết Tý Phách Vương Thụ,img_581,1,1,0
+34,La Phục Thảo,Mộc hệ,img_585,25,35,La phục Oa Oa,img_586,0,1,0
+36,Tây Quan Tiểu Hương Trư,Mộc hệ,img_577,27,37,Trư Lộc Điệp,img_578,0,1,0
+45,Toản Địa Khâu Dẫn,Thổ hệ,img_555,36,46,Toái nham Khâu Dẫn,img_556,0,2,0
+47,Nham Nham Quy,Thổ hệ,img_557,38,48,Kiếm Giáp Hạn Quy,img_558,0,2,0
+49,Bạch Châm Bảo Bảo,Thổ hệ,img_563,40,50,Hắc Châm Yển Bảo Bảo,img_564,3,1,0
+51,Nham Sơn Long,Thổ hệ,img_561,42,52,Zombie Nham Sơn Long,img_562,3,1,3
+53,Thổ Lang Chu Chu,Thổ hệ,img_559,44,54,Độc Lang Chu,img_560,0,2,0
+55,Sừng tê giác bạo long,Thổ hệ,img_565,46,56,Khủng giác bạo long,img_566,3,1,1
+58,Tuyết Cầu Bảo Bảo,Thủy hệ,img_517,49,59,Người tuyết,img_518,0,1,0
+59,Người tuyết,Thủy hệ,img_518,50,60,Tuyết Sơn Cự Linh,img_519,1,1,0
+61,Thủy thủ chim cánh cụt,Thủy hệ,img_520,52,62,Bá tước chim cánh cụt,img_521,0,1,0
+62,Bá tước chim cánh cụt,Thủy hệ,img_521,53,63,Võ thần chim cánh cụt,img_522,2,1,1
+70,Tấn Cá Kiếm,Thủy hệ,img_530,61,71,Cốt Cá Kiếm,img_531,3,1,0
+75,Lôi Vân Miêu,Điện hệ,img_537,66,76,Điện Nhãn Miêu,img_538,0,2,0
+76,Điện Nhãn Miêu,Điện hệ,img_538,67,77,Thân Sĩ Miêu,img_539,1,1,0
+78,Điện Miêu,Điện hệ,img_540,69,79,Thiểm Điện Miêu,img_541,0,1,0
+80,Phù Du Điện Long,Điện hệ,img_543,71,81,Phù Du Quỷ Long,img_542,3,1,0
+82,Chuột Điện,Điện hệ,img_544,73,83,Chuột Lôi Điện,img_545,3,1,1
+86,Độc Ba Lợi,Quỷ hệ,img_593,77,87,Kịch Độc Quái,img_594,0,1,0
+87,Kịch Độc Quái,Quỷ hệ,img_594,78,88,Kịch Độc Khủng Thú,img_595,0,1,0
+89,Đan nhãn thú,Quỷ hệ,img_596,80,90,Độc nhãn quái,img_597,0,1,0
+90,Độc nhãn quái,Quỷ hệ,img_597,81,91,Độc nhãn cự thần,img_598,1,1,0
+92,Túi quỷ,Quỷ hệ,img_599,83,93,Thi Đại Quỷ,img_600,3,1,0
+94,Kính ma,Quỷ hệ,img_601,85,95,Phá kính tà linh,img_602,4,1,0
+99,Chim xanh,Phong hệ,img_612,90,100,Tai tước,img_613,3,1,0
+101,Hải âu,Phong hệ,img_614,92,102,Dực thần,img_615,0,2,3
+103,Hồng nhạn,Phong hệ,img_616,94,104,Phi Dực Thú,img_617,3,1,0
+105,Đậu ưng,Phong hệ,img_618,96,106,Liệt ưng,img_619,0,2,0
+107,Quáng thạch dực long,Phong hệ,img_620,98,108,Tà ma dực long,img_621,3,1,0

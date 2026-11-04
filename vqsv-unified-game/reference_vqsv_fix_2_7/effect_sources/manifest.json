@@ -1,0 +1,3908 @@
+[
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_0.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_0.mid.png",
+    "sha256": "488d6871b8f89bb3559f630c30669686bb277bfa30f564e460bdcd2535ef9237"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_1.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_1.mid.png",
+    "sha256": "3e96c7277a5845685a3e8c9e8b1d7c23e710db20732dbe21f52a39ab357b7dd7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_10.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_10.mid.png",
+    "sha256": "7edd3cf745d37e7945a108bb02e805f7805aea94144164c2a9e9304d08fbf74f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_100.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_100.mid.png",
+    "sha256": "7ec3af261081b7749d4360fbc972585d569e312b64a4e7c2d7e17592eb1a0102"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_10023.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_10023.mid.png",
+    "sha256": "ac4e409c195e46bbf3bd39b33aeb28a84c7c2a48bf202f578d4d29573a18a528"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_10093.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_10093.mid.png",
+    "sha256": "84f97ef8b922221092e79639bfa0761d75c6fc044f8a37c6cc253eb628a28a00"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_101.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_101.mid.png",
+    "sha256": "6533a7557718208d26f47082c6266dda1201ef07185bb5d580389b9b7e3d45e4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_102.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_102.mid.png",
+    "sha256": "1018f5457ee62ec57457be986c1c137a7a8924cc40e10c5807e482318b797078"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_103.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_103.mid.png",
+    "sha256": "9b81b88f104a0f7c9bd3060eea7680299b48f587c5a42a50af0afc19ec7eb8bd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_104.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_104.mid.png",
+    "sha256": "cd06f430a8973f878ece8d6fcc0e0670639e84376cdbebc68f4d231d652dddbd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_105.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_105.mid.png",
+    "sha256": "addc15df47089cf6c35411562e24464890418b3708c8742e1a1fcd85d0b40f2b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_106.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_106.mid.png",
+    "sha256": "e5fd3b897c3f4f8c774c96c8cc023b4c3132ba14d62ac73c045e9f6bc1a53bcd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_108.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_108.mid.png",
+    "sha256": "e3abc98349f649faa8652b5d561f39d2f908b02b291be81d4a7390adc5a56561"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_109.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_109.mid.png",
+    "sha256": "9907882b5ee6e6a6e0b03aad429ddb5da22ccb5653f95ced1b1625df4195ad5f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_11.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_11.mid.png",
+    "sha256": "81d32d231819b3900450c0cc4559e684250f8b0f12c6ce063e594684c24ec8b6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_110.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_110.mid.png",
+    "sha256": "1283cec5493be3b4fe147d096ae8b1a347bc95e66d8d32a629898e3b9a6c78bf"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_111.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_111.mid.png",
+    "sha256": "0d6e678a36a20d75a38368b3cc5e3e6857c74f573dabd635b97155dd451f3720"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_112.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_112.mid.png",
+    "sha256": "dacdf12bd08c460cc75fc01904b11fb25e30657522951e2c658e5c63e68ad490"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_113.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_113.mid.png",
+    "sha256": "c10f60ca1d90d4fffbba2ae093ad930509409aa6fd3059f1dcf3c13a0e70b796"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_114.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_114.mid.png",
+    "sha256": "ce9328f540f151d88dabe4fa793e6bdcb34d60da891847bb3fed19c4b5692374"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_115.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_115.mid.png",
+    "sha256": "05c156fc62bc346fb401e1a7586e2787ceec005e4436de3633d8321d17efb722"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_116.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_116.mid.png",
+    "sha256": "c6a8045581840fee7b3cc669887f91ceb8f1b05399cdd7a556b81f14ba3ee858"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_117.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_117.mid.png",
+    "sha256": "68ae7c1f18bcbfb5d8704c08d3b2d33248f5afb090285611feff9a23a9d95a2b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_12.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_12.mid.png",
+    "sha256": "a96a127016ec776e4ec5106ff6d2630edd9dc3c67e04655cb345d9a91d9580a0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_120.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_120.mid.png",
+    "sha256": "a87b0d65095d452c1bc919c84095b7c7c3c059bd5e8392daf45be65712197659"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_122.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_122.mid.png",
+    "sha256": "dbdb96a260b945ca4ef581d0ae6ab3562468483f7fb6cbd1bdca949e157ee8ee"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_123.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_123.mid.png",
+    "sha256": "db7ac6504a27498f595b6b1eff5b451ae25e318e82f03ecdbfffc7a93456581b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_124.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_124.mid.png",
+    "sha256": "bab6900ad60fc8bf5d13cfd9bf012faca407c39dd790a0dff8d079a42700a904"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_126.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_126.mid.png",
+    "sha256": "6652ce686ca34478cb28bbe736cda9bed0d6a8516ed48094482fda12245480b0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_127.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_127.mid.png",
+    "sha256": "ac795312e9606bae67a36a7272470acc9c04fa29ff9fc8ab40d72da0c4f6ac08"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_128.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_128.mid.png",
+    "sha256": "e2337a2bcefc6b370526ac02d2a7888ebea8563ac4cfa71e6827914f1d5b0595"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_129.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_129.mid.png",
+    "sha256": "fc2c4bf33e419abc2a88813c9a156d5f4cae78b2149583f484d48ca1d9200122"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_13.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_13.mid.png",
+    "sha256": "d16d0a266d68039a621651b8b631533a2b96e9431200f469d3d2501a9d08ae1b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_130.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_130.mid.png",
+    "sha256": "5ba0cde33075d2b460c04e5f59d5ae946065a8274b49635d680e2c922fa3017b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_131.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_131.mid.png",
+    "sha256": "48029f04dbf559fd5fb19f1d1ffff7686580266e400f0f9ef23de78937b71f8b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_132.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_132.mid.png",
+    "sha256": "bc5a156a9fd841ff6f890514cfca7348657012a9a32704a600215c8b595d49c5"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_133.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_133.mid.png",
+    "sha256": "543373e39b441d33f8bc0338c31865f821bdb7d1b8ca41f05116f82f43ec877d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_134.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_134.mid.png",
+    "sha256": "f4e70b7de61d33877b7b159ab32d47ac98a407c232df92db9acb2ea319cda829"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_135.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_135.mid.png",
+    "sha256": "58b14a2de6b7d2731aec9b19222564addd0f643f1c83f652a753ef33596235b6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_136.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_136.mid.png",
+    "sha256": "9fe30ff73db5dd8882926bbdbc0ccc0b717d01be782c28fbd816ac47fb246c9a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_137.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_137.mid.png",
+    "sha256": "a9c88c95bb5200d49a1853394361faa785477f2537f0cc305b8fbe67f0e3fd39"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_138.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_138.mid.png",
+    "sha256": "7f0729bd578e818f547bc285e40e382966afa2ad8bd8674e132c37b34f1edc94"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_139.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_139.mid.png",
+    "sha256": "87b0b54b7574bf2372feb0af12cf7ea25f0bcc1b2e312e9632939ecb9253582e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_14.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_14.mid.png",
+    "sha256": "15454c1aaaa732dd1ff69b02cb7b50be2f2441e850fddab7d6673d36a477ec50"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_140.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_140.mid.png",
+    "sha256": "2730fbd3f5290beb3d8337fb4bd321c69f92fbfcf6f431e333c44e8d340671c0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_141.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_141.mid.png",
+    "sha256": "fa2e1fe178fc0903ca11f847e31392443092402df8813e70038308739959d515"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_142.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_142.mid.png",
+    "sha256": "a2fd261698c7119969f81ef1f69cf71167cf69e3bf8f3579fa1601d488bd038a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_143.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_143.mid.png",
+    "sha256": "39cc284ae3b1b8ce04b0757bbdbea537fd2ac3aa0cef6023693baab94fae90b2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_144.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_144.mid.png",
+    "sha256": "49fc7e1ffe99bfd020918b3c94cedf304059b96433435ac89f44fabbf5c57888"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_145.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_145.mid.png",
+    "sha256": "84d3951a61776606c5c682f9d26ffd0cb819f6baf3c9847898965d02ee67fcec"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_146.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_146.mid.png",
+    "sha256": "c6ac391e5187ee565f4703454b116a2db4a40483d8e9aad394ef5beabf4d5930"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_147.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_147.mid.png",
+    "sha256": "298accd0ee8fd220fa34f611b042cde9a600c4e09084380e6242489863be04a7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_148.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_148.mid.png",
+    "sha256": "348ea9d1f6635c3333f92be635904c760ebd48648473a1678d42a5df64a04a6f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_149.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_149.mid.png",
+    "sha256": "ceda19ec9e51801954aeedc9ea984af900fe6940d737d49ae12964daf6a1fa0f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_15.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_15.mid.png",
+    "sha256": "e97168696b6fa861d85293b7c0aeb69da96419ca1fd01eda79d6db246d2350ff"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_150.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_150.mid.png",
+    "sha256": "8e9241abf06efa746712bab2c24598e69cb8fde993888d70556371ea2bfa8136"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_151.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_151.mid.png",
+    "sha256": "22aca4f655411c4cdc8b79f57889f7ba2fad82dabb67193705674160eda001f8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_152.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_152.mid.png",
+    "sha256": "700f5a1ef451c236e5ab81ccc5496b10f707f3040af2d155805bb84ab4648ec9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_153.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_153.mid.png",
+    "sha256": "f3afc3f9b279406a57523b58510b118079dac1dff0a0ec5de17494ed453a77cf"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_157.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_157.mid.png",
+    "sha256": "9e5de3e284f18eae2d99afaf12749ce9ed191a74a95c76b909df87dcbcf7e34d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_159.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_159.mid.png",
+    "sha256": "a5a197539caa74db19b7e6fe6ce43b9b75f319112e1e462b30f9d8a990f171ab"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_16.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_16.mid.png",
+    "sha256": "1506e87b0a9326cb2151b2c0896b0894406695a29ff5f3526e2ec63a5adc3671"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_161.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_161.mid.png",
+    "sha256": "e9e21a02db303c2ef49109bd217737d0535ff388f0d7131bce2362674d2ba05a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_162.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_162.mid.png",
+    "sha256": "ec57c03038d8338fb4bf5ed4d7f075b8a62908b6f126ba488733fbe27d119572"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_163.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_163.mid.png",
+    "sha256": "5e1b112a9920ff07330d9c41bd0cc2078d42cd5b0b8b74ae7e64c3a5939936f6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_164.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_164.mid.png",
+    "sha256": "dd707cbefdc5a3b67574dd1b81d912f170133582034705216c682c5c5f49fcf6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_17.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_17.mid.png",
+    "sha256": "6b35d1204c4026edf1b9e6bf64170bbc0ae7d79f7a4b038b2f787798d9b68a68"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_18.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_18.mid.png",
+    "sha256": "baf4731d794db3f2c9f45a229c89b320740a9e582b95f83b0c13ab6574ad1482"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_19.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_19.mid.png",
+    "sha256": "768e58bab64a3dcdfd75e8dbb1d0568bb6dd8eaa4620ef3d6ab0b71676316f0f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_2.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_2.mid.png",
+    "sha256": "631857b48bb40e79ebb5ed3638363da65b0a142619d52fe24693b9b9908569a7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_20.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_20.mid.png",
+    "sha256": "6faefa6be348975bf4002184c8600607cb8083147fbeeb9b4a2f90c08466d0fd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_200.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_200.mid.png",
+    "sha256": "1327affe872072a66ad1da677c058c45e849838b4b500fedb21596516fa5d285"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_201.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_201.mid.png",
+    "sha256": "f675c587f9b43fb176c6012f4d9b11da89b3a82bc3fde0a78242ca0183d9bc5c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_202.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_202.mid.png",
+    "sha256": "df669d76d0cbc1d576ef9d47f6a375b9079ecb3139a3d6df2aa134c8b3879080"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_203.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_203.mid.png",
+    "sha256": "2bdc66a7ad586629007d1f5b906d420b215390e97a7b89e382e61b01f8f1b927"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_204.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_204.mid.png",
+    "sha256": "5b247e30b46f9b7162afb017f8215083ae2c84fa872c4db1d294a373c4a2209d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_205.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_205.mid.png",
+    "sha256": "c6774e68761e468899eb2791b0298b5683285c18f91adb2d938e8a2d581079fc"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_206.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_206.mid.png",
+    "sha256": "9d6dca4ce208708e3f9b2192f9edef659b462655bd3ce0bf2fe48a7e875f36b7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_207.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_207.mid.png",
+    "sha256": "5de0f480d416a5a8e7087d4140fe421991f0bcabe79d02570e4952ab34548ee2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_208.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_208.mid.png",
+    "sha256": "51bbb06c39cbafd2194e6fd1ca58afdbed6b8ca8827ffdbbb2515990f996097f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_209.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_209.mid.png",
+    "sha256": "9b1a20508cc3c5236e4833843c60b20474a0010a46ba5b901cfb4984ea6e3699"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_21.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_21.mid.png",
+    "sha256": "9e8e601d33a55d431e785cf754be22fe803e4fe9b702608a0dd0af33806351a5"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_210.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_210.mid.png",
+    "sha256": "26391e8fd770bdfdffe13a0d4ebf990ff49bcf6033da1a5bd1fbe0134517be26"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_211.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_211.mid.png",
+    "sha256": "1a54d96148439fb087f633383c01412b240abb8ba08c658441b1ab60bebf3a66"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_212.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_212.mid.png",
+    "sha256": "1d694f1dfcc6b7d01cdcee0d67b8c878fa7fd421d4efe7af014c32d1c33e89ab"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_213.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_213.mid.png",
+    "sha256": "c83171afdeeb5bfdf13b0d613c75e94485ca91a796dc76801380a7c70e6bc51f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_214.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_214.mid.png",
+    "sha256": "3d408cbfc01ed06e42d2a2ebcb4e3cfeb4862adedd5a9e1636dc6450b4668c4d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_215.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_215.mid.png",
+    "sha256": "10ae56dfca0c385fb9fbfe54e451fb4224c775a9493159f9f46c3b4acb6461c8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_216.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_216.mid.png",
+    "sha256": "7e82dfec7d8ac654ee75bfb93ae3d8e83c6967c8373e252e0caa83f49ccfd388"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_217.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_217.mid.png",
+    "sha256": "e218489cc409334f304b40d3ff87077bdb2a5c22f9629629a4f98ab8b7ead2e8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_218.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_218.mid.png",
+    "sha256": "56bfe831df81ed7758d325e04a95bc6590e9c66569f1ba44dca4b694e39f66ff"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_219.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_219.mid.png",
+    "sha256": "f466c965411ecac10340f98dd70afea0122e462d157783b0a1cc8d345a6f921b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_22.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_22.mid.png",
+    "sha256": "e62e24630ec8829420ec215dcc54e97008771e07068b05bc99cdd6bbc88586d7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_220.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_220.mid.png",
+    "sha256": "d61182377bfbecee7bd409c0c247a3c41f28af5fa45d20445f912d463402af4b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_221.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_221.mid.png",
+    "sha256": "d7da84b9b16bb7b7eddd912d22ec6c6a7ff6f1f1bf09fc90bcfa1043b9772669"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_222.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_222.mid.png",
+    "sha256": "b5ef3eece60f8b71ee2b115362079bbd5173b71b99a82ca0c2bd69e5fdba57a8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_223.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_223.mid.png",
+    "sha256": "8390a7826a3580479a95b3f683a515140afdea7220603163f59ebb6ec1d20259"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_224.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_224.mid.png",
+    "sha256": "55a2cdb35bc876f35a2c4c85afa2f9f437e54efb994d25ea01afb8f466f4206b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_225.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_225.mid.png",
+    "sha256": "2769eaed8945c0acbd67d9cf08ce07c800fe78fa317385ff2f7f3388d98a3f24"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_226.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_226.mid.png",
+    "sha256": "a18316bc39d4c47ca5c14bece1da35aef370014e708ce730439536cf634feb2b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_227.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_227.mid.png",
+    "sha256": "9d0e2a616917ef522cc115b56bee2c4f6d6e7a94d0e9a0f12bc8c6e3ab446c9c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_228.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_228.mid.png",
+    "sha256": "191aa0d02302a15b21cfe175fe95546f9d19c9260993a9a7dc66c3e3f9bb987a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_229.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_229.mid.png",
+    "sha256": "20d2a4a9603d17f6854238e41054ddb105f21a704004681dc08e65fc3391192a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_230.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_230.mid.png",
+    "sha256": "f1103d9b3e97187cc75b61c29eddd0b8c823b097d3f404f140684ff5618b38f9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_231.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_231.mid.png",
+    "sha256": "6ef9188954fc37c5c90e6a1acb3b1b345d663990abace56fcb03f8a39884ca0f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_232.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_232.mid.png",
+    "sha256": "bda38e2d9f1c2fb709dec3026863253cfe5435b8ef3062fa408104605f0a4fe4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_233.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_233.mid.png",
+    "sha256": "9165c2201ada90f169e6973c600f1649d1e0556bae1a5444c15766bd5d20f212"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_234.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_234.mid.png",
+    "sha256": "22d84f8b1cd3cfbcefb0952c796995fc3922eb8fac19dc4f359185506b98a433"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_235.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_235.mid.png",
+    "sha256": "9b6b32260e0182a88d1afc70ceef4633cab11422a2eac4ffa511de19e389b752"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_236.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_236.mid.png",
+    "sha256": "64556d0344f0bd40f70afdb69473c945a6e421c064cb84dccc013f8febfcd75f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_238.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_238.mid.png",
+    "sha256": "0f72d6c75ecd38e050af3ebdd585064170ecee121d2868372a59b3b4189897dd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_240.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_240.mid.png",
+    "sha256": "87541324be384712ce03675ee9eddf89f41b28a90caa9a89432bfaa5c1505c7c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_241.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_241.mid.png",
+    "sha256": "ca96b90577eb432da1fdfab54a4c8784eb98f30f580459298fd3d9a352722380"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_242.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_242.mid.png",
+    "sha256": "ef447b1b66428c97a885dee8ee9dac78e8daca20588aa19555d983635bb32d67"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_244.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_244.mid.png",
+    "sha256": "b2acbe6f9e534b4aabf95374765a0cede6b728719aea92c570407ae226d7bce2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_245.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_245.mid.png",
+    "sha256": "00f8f1b39a6796a50a09a172e57eb0a10f1e764c11274f6ccd55705de7c47950"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_246.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_246.mid.png",
+    "sha256": "f699d899b93984e7d3e3aa4e3348aee2c16d167409abba1d632f13ff69c7eb1a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_247.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_247.mid.png",
+    "sha256": "2c9ba6966b8841e0c01e6a7b3c8e0d80e906158e0f8ac5fae80f1ff747cea4d2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_248.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_248.mid.png",
+    "sha256": "fc7262cb543bc3c9f2354f0548a9930e3b27050e2cfc539d4a0eac02c2c69018"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_249.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_249.mid.png",
+    "sha256": "629f9e6c9388f0ed859df71817f07a30c37ac09eef126e5d2ab107ed676b4cc2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_250.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_250.mid.png",
+    "sha256": "eb507ff20ee88d7a23d0a57929247644ffe86df7b55a655db1caa1ec525ec8b9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_251.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_251.mid.png",
+    "sha256": "4d1889decf7d558a9f0c0280c7fcec13f7fd6654d84b0b181c6450d79587f7e3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_253.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_253.mid.png",
+    "sha256": "fa3bd30b7f2869b1a7d8afdde47be3ac7034641034edf4ad883bc171acd7654a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_254.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_254.mid.png",
+    "sha256": "67afd67ba9c211ffe6226efb440b9507f65d4b850c0dc1518b80c1d3ba091654"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_255.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_255.mid.png",
+    "sha256": "746894dd77d9cc233bbb966abddbf28e57eeed33ffc2caad285f17e07f69a86f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_256.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_256.mid.png",
+    "sha256": "513efee8b5b65bb257bc3eb4bc53c6a0dc5e0bc4b398fef8f800097cd04e4de1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_257.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_257.mid.png",
+    "sha256": "2e8e7324e1768b8fb72bbfa7aff573c6e16c4a842992b82cf5c1282240deb681"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_258.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_258.mid.png",
+    "sha256": "f5840a5b574d8f014d35bef55c9c6286617083060596d920740cc05a4282f490"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_259.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_259.mid.png",
+    "sha256": "197f34f7bcfc057c4d45502da86c0b87b665a8bdb7bc004d4d0c33d839738b2f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_260.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_260.mid.png",
+    "sha256": "acda12fb32f75540871964c32439c1ba4f5f2643e5fd98968bb3c1648db81275"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_261.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_261.mid.png",
+    "sha256": "9315e1bd8a176b1d155176b469645d397d5cc02b741184f9c4f11930a408f3ad"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_262.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_262.mid.png",
+    "sha256": "c83abb830351d7247fb26fdde92a96d66541e2e1869c87d91430124101f3d72c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_263.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_263.mid.png",
+    "sha256": "f829aa6ca75cb6e5b6596bf63b0709216df815b197ab99cde1e55fc24905f03b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_264.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_264.mid.png",
+    "sha256": "a754db72ca41f2cdbe3e84ab7391e99dcdcef42097d58727e16351914832fc7f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_265.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_265.mid.png",
+    "sha256": "456bbc10febd47254ba357a79ea49428e779934ac13a55b226c70236d160eded"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_266.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_266.mid.png",
+    "sha256": "3691cd23916e2b43a3a043758da45a19420dd4f74d6cbf3b3c381e2c36bc89e4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_267.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_267.mid.png",
+    "sha256": "246106a706eb66f980bc68e9b036aa026b9ad5dbcaa0917fb43334ab902d268e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_268.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_268.mid.png",
+    "sha256": "3011699c4acb851bc4815384496a9517d44850e4ae6656fdd09c45e5900347d6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_3.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_3.mid.png",
+    "sha256": "7b80bfd72ad5e5cc1e55649ad6a175d152051ac9ee0f726bd886608920d5fd5d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_300.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_300.mid.png",
+    "sha256": "204510015794c77c2536c4f423a4828504b60af7d69fd5426388bb67955138a0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_301.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_301.mid.png",
+    "sha256": "b4b7083a31b09fded5e0521a6bfaedab308237ce8fcf9080f7aa074f11f5600c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_302.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_302.mid.png",
+    "sha256": "8da265656d01620aa227fc9f7e4c65c6914555aa23e26edbbe7427e05574c36a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_303.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_303.mid.png",
+    "sha256": "7c9cc1502d077677c384c526f4372ec478cee4676c9d5791ebe256d177b31657"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_304.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_304.mid.png",
+    "sha256": "1d69438f9b45a8be277c05281804e10fa02b02df92e50a270b836fcec8601b0d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_305.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_305.mid.png",
+    "sha256": "bb72f186f4ca659e5d6e77940879105282f5205949e7ead544096f7e2c1d5063"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_306.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_306.mid.png",
+    "sha256": "019aca113550d36277dcedf74e381833ded2b3b2471e23b195438629b4ac722d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_307.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_307.mid.png",
+    "sha256": "2c7bce1fd610558cdd6dc0d68eae0691b02dd6b784aa4bcc007cfad22780609b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_308.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_308.mid.png",
+    "sha256": "b86ddcc23d06ab0abafa020dce3956a6bc349c8ccd1668b156d3bfd0e873e441"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_309.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_309.mid.png",
+    "sha256": "fa165ae7bd64aa2dd4849f3e1ed24a722e116a65931d455843fc9a25122ff0db"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_4.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_4.mid.png",
+    "sha256": "6c7c4f7b7715caba636e1b78b855c97ddf7551b0df2e15efa5dcc5002f0db8e0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_5.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_5.mid.png",
+    "sha256": "98b3c98871fdaf373e08de925d09a61be9138f8a6c76e0c2f312ccb65c521aff"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_500.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_500.mid.png",
+    "sha256": "18852e3f45af109602fb70e64ccd352ce019b7276ca7fc8612b753bd2f338ee3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_501.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_501.mid.png",
+    "sha256": "0a3bf51b3a47c32ab585395b6b915b090dba5b4d122c2602ebfe29cd4fe021b3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_502.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_502.mid.png",
+    "sha256": "ab83ed9f2f08f2b0cb28fd5d9071899cc5d201d51b5dfe009ff2907d120813d5"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_503.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_503.mid.png",
+    "sha256": "fca99a4427330ed37fc7ccce39a7ab9fbb66af5ecd89d5f6755cda0ecd720728"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_504.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_504.mid.png",
+    "sha256": "1d61aa18a931ed48185be892c317d73d9d02ea875b228e2ef41a33bcccdcc3d0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_505.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_505.mid.png",
+    "sha256": "bcf799da9b3611d28d4e3c236bab9fd65f69ce5e4e55d8356f77889dbe325be2"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_506.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_506.mid.png",
+    "sha256": "a95cbdcf0f7a8abcef051ef5fc53be3f0898db456ba99a0bd1aed12fc334e747"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_507.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_507.mid.png",
+    "sha256": "4732eb523ba9f8b6d02a23f35c9229eae5e6f8ef81521b466077c8f05fc02c83"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_508.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_508.mid.png",
+    "sha256": "1cbfce46db26d7857cbe54789e46a0367165d0b319e5c38e1255f34e1d76dde1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_509.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_509.mid.png",
+    "sha256": "ee8832ee5a7008cb6d1e12bed379561a9a87c9ef883f2bf18c0157e6f7ffdf97"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_510.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_510.mid.png",
+    "sha256": "e6af49409e8f30a755d2e02bf35c8a76b1a2d63c1d8461f88553a78c1768054d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_511.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_511.mid.png",
+    "sha256": "fe9d34f51efd9667855608572bba7b3eb4f64e5e7e6043175d5d35fbafb8444c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_512.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_512.mid.png",
+    "sha256": "9c643caf0b8d42efa773c703f0d9690673f0e376b714cdf32e8f86e4ce36226a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_513.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_513.mid.png",
+    "sha256": "61a13b8199bf25556d269388b1304c1eddfba5f485bb311a6790edb4686be287"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_514.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_514.mid.png",
+    "sha256": "398586371696e4374c0102b23b3257febeac0558ce22246cdba081561a014e4e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_515.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_515.mid.png",
+    "sha256": "7ae9be0847a51303aba47bebdcf3d4a667736ff4c8d80d89b4ac20c5417af5c6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_516.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_516.mid.png",
+    "sha256": "c1e8e2c77e9f4ef2da7b3b83f72502f3aea41670744520f6391f6085507a0c40"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_517.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_517.mid.png",
+    "sha256": "414d7e95bed32e8f34d4325d2ac38676e8353abf1aae903245aa547598ddfd72"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_518.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_518.mid.png",
+    "sha256": "543e7b65b519bb2d8f2b71945ac237360853d51f4af823101fbd375ed7168130"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_519.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_519.mid.png",
+    "sha256": "9f4135ce1a80dd8d69f9114cff4b31aa06a81560ffbb71e03b6a869b94f78c41"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_520.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_520.mid.png",
+    "sha256": "2b76d42f13a55eb2aae5b098aaf71d8eb68d9aab1bd2416bd750e5870df344ea"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_521.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_521.mid.png",
+    "sha256": "bb069e0d25965bcda2074aacdc22d262107dfa3a0cd38b8cdc5c6ac9b8da1f20"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_522.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_522.mid.png",
+    "sha256": "e3844d7586178e0e9fb678e327d2b6769cf5b62fe3ef74cdf816e75fb49bae33"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_523.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_523.mid.png",
+    "sha256": "97395ef56974e09589f8a097e55318a03cdb4d50055133736fa968bef61cb4a3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_524.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_524.mid.png",
+    "sha256": "6a3190f3f35c9b374cb23ded75908a1c13d9d607039acfd14fa9c979ead8ae2b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_525.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_525.mid.png",
+    "sha256": "3ad96f5c303985ae617064c1b8d1b064d189f5bda4bdca225a607fd5d79fbf5a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_526.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_526.mid.png",
+    "sha256": "e103b67ca40e42676a3aa1602e95dd97a0f715886e398ec6baf0432eedadc52d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_527.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_527.mid.png",
+    "sha256": "9e5b113f7bb246df8bae63b2ca98a3bcf21b186288166303d2fa3c94f1af374e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_528.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_528.mid.png",
+    "sha256": "21750da823df6f5c931975b5e8e625c6efd376b1f7122cd3b7c278da99b14933"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_529.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_529.mid.png",
+    "sha256": "fab455b1e3d11fda8fa04ad0277cb0fad4185bd085a4db0506be5d78931ba078"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_530.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_530.mid.png",
+    "sha256": "ca31c765803b08e7fbe83fee87be230ed63a8320afe0d946556dd56cda05ddeb"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_531.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_531.mid.png",
+    "sha256": "024f77ccb86fba3f9ad38d9e3e8fd6cc3284e7da7e987e9ee954df6b3b9fd541"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_532.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_532.mid.png",
+    "sha256": "01f40ec5733517adcbc541f7660f76060aedb2a2c7daf523cc23b567e30b7c17"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_535.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_535.mid.png",
+    "sha256": "417c7a771f0dc51a9d0a8c766b64f0f11e24a6459ab99b00064001b8d671e19f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_536.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_536.mid.png",
+    "sha256": "171fd6b75623533648ff9c4fcbfc53eb7fe44c621f77726336d42902a1e1e0b1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_537.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_537.mid.png",
+    "sha256": "82a820aa998d973a653d00cb59aa4f83e94cb7034149f2af1881d6ad2b38f243"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_538.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_538.mid.png",
+    "sha256": "2f67ccacd2565af3f7d7de94e51ca7373b387e1a577cd8094870c12e2951e6b9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_539.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_539.mid.png",
+    "sha256": "2717af35f91ba5c7b8cc541a33cdab00750c16432230b92efacbdeb4233668d5"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_540.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_540.mid.png",
+    "sha256": "21ee86db5551d56f564c13c9283e56560d2362afc2f1b92667316031ae3b329e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_541.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_541.mid.png",
+    "sha256": "3cde80528644252bc56688e202966bb21e2863f111e90e9517eb94bdaf88b7ec"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_542.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_542.mid.png",
+    "sha256": "e80d5b56b73269b763f39c3bb9cd8ea2a77461defdb1540c8ebeb0e7e4648b5b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_543.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_543.mid.png",
+    "sha256": "fbac1ab0549b9130fc400509b3fa15fd90dbf5f9105a1b68670993d39f282f1b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_544.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_544.mid.png",
+    "sha256": "081cf0fa31009ae9510aa7d97ea6dff58aa1159c7fff2190080d33e87da7d854"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_545.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_545.mid.png",
+    "sha256": "588fd432d86681c57b7cf68bc7f6acfd6f1c7bcc9a06522f3a53dbcc4694af55"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_546.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_546.mid.png",
+    "sha256": "07be3045bd3b8c19ec92dd6f1da6d95030a36b089de5e1d842900bc1e3b8be9f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_547.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_547.mid.png",
+    "sha256": "b1b13df7ce58f2dd9a0331fb0ed6738084a49bc8bca0d593dd65c995adb777ba"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_548.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_548.mid.png",
+    "sha256": "4d3f910ae2582ad23651a685e8dba121147589ae3de012a9b485850d4c8f72bb"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_550.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_550.mid.png",
+    "sha256": "a3c68712b007ee758460c282debde45c4de0b5b0416998f85511272334d4d38b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_551.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_551.mid.png",
+    "sha256": "d50778bb1d77195db96699132ffbbb07b036e2561afa2aa1a4d6ca6bbf825b86"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_552.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_552.mid.png",
+    "sha256": "3a985f530bced8886ee504ed39d6e1eb14bd99238a93757b06658d6e4d679775"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_553.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_553.mid.png",
+    "sha256": "b6e703b4327a552a9a3fe9d455cba2ffbd15726f40ffa4f93161efc416239de1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_554.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_554.mid.png",
+    "sha256": "9787ffcac291c1da96160544c4839aff82d0d20f1a84b4f97d6464441592471a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_555.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_555.mid.png",
+    "sha256": "52e9230b38f044b474b3b85f3d8b06edff23645a9a04d3a644c651a1f95d66e7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_556.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_556.mid.png",
+    "sha256": "aefb8eae84a7febab86812c7328dad3d5ab978280945f9548b0dc8363578c887"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_557.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_557.mid.png",
+    "sha256": "994618c8f8afc945e8903f1274a061677aaa3b96be141374b6112941ac25bb98"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_558.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_558.mid.png",
+    "sha256": "7def6d3a4719afecf7253fe76d301d1b292d9c5036bf1ede9dbd57b2d0ea068d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_559.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_559.mid.png",
+    "sha256": "83e1720f227bf0c7b5603ca74d7dd28a09db02346f12e026ab482afaca36bc44"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_560.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_560.mid.png",
+    "sha256": "51642d1a6ecaa2d01548a01663f322ed5fdaa5ed7a037a533dca1c7b32aa0c25"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_561.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_561.mid.png",
+    "sha256": "fbd64cbfa9ae2cacd2ba73c0555e69a0f11420d4a70351b8d2991d92cc99669a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_562.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_562.mid.png",
+    "sha256": "3086b63c8b97442c68b4b217aec9e4fd265c28fb55ffbcf84bedf67a9ec23944"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_563.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_563.mid.png",
+    "sha256": "6ef369b5a8af282970e3e2b41ed290080a8e023108b191e3c96d19085adc7706"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_564.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_564.mid.png",
+    "sha256": "aaeb878d342ced0328047382efdcc0a60dac477f62436b4f26233457de0c2d74"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_565.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_565.mid.png",
+    "sha256": "1b5795808898e2993303a4d1a0128e60e1f748e25ad17df3804a812414543835"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_566.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_566.mid.png",
+    "sha256": "5c1891d3518f414087983c095001181c9a048b3fa73eaf9cfb2d0751838860fd"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_568.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_568.mid.png",
+    "sha256": "9e633b855fa95cf4940fbc4877322a0449c1cd0ad3b2b672b50b3f7d0cba0a89"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_569.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_569.mid.png",
+    "sha256": "95de0db7449e5282e32977c1e3d83112b7f1de01a8143375779455159d0ae465"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_570.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_570.mid.png",
+    "sha256": "5f01ebcf23d7aacc12f1b29d499e0f948b88000b409816b87571d5a3be830b27"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_571.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_571.mid.png",
+    "sha256": "820975ef968a4394da79d7d1d8428007f94b2874298c2b17acdf5f2a21ad6eeb"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_572.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_572.mid.png",
+    "sha256": "93f26d24d8a39a11b03b3a00b9561b0a89e0b3b1c574c2d6e14b1d11aaef7e67"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_573.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_573.mid.png",
+    "sha256": "96844e5e5a8e1fe17745998cffff85a66eb401c530f1ad1299aab1109790522e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_574.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_574.mid.png",
+    "sha256": "31459fed1ea527ca098f1c79ce882d1dd451e7c42c6312328694994852b754fb"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_575.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_575.mid.png",
+    "sha256": "81316c17e3813abeed4d1267a5a3aeea522e0a7716926885256ac5f39b10df9b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_576.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_576.mid.png",
+    "sha256": "649a5f0856daa1c9c02537d8d2926cf3b20b5dcdd72c7fb89c0bc525bc35182e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_577.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_577.mid.png",
+    "sha256": "06db20cf998e5cee5f200b9a9ad3c0c134f5bb4cb0e80cefd19e7646725e7055"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_578.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_578.mid.png",
+    "sha256": "d8f8a35244c15ff8ed9794c144b25aa02c0de17f5489dca23a57983676ca8921"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_579.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_579.mid.png",
+    "sha256": "8d38566f8dfecc8d0cf1d4eaa3cd2fec0591fc3bb812959f8dd8288e6540cbe7"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_580.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_580.mid.png",
+    "sha256": "4304ee09713ad5733bad0a7ea94b4b7de5ae4e25a22ea2131a0a580c25bd5c9b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_581.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_581.mid.png",
+    "sha256": "9accedfd49077fb964099e2b2a0903dc45992732bcb84f26ff5283612d9e2344"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_582.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_582.mid.png",
+    "sha256": "b9a6a3fdae89f0e6207c49b560cb64fd9090511588bd0d4cf025389117155068"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_583.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_583.mid.png",
+    "sha256": "84083433ef2d64d0d6884fc6efbb5379bddceed5e7a2ec522484b083d8bae4a4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_584.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_584.mid.png",
+    "sha256": "7714705b2c917c50244f8ba488fee4f87ce1bd2fa877f426c84a1fafbed89bda"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_585.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_585.mid.png",
+    "sha256": "92e625cf42f3593bab194029cc79fb36b43bb9b5ed9f8dc9cf112cad2dd89914"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_586.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_586.mid.png",
+    "sha256": "c8eafbb4b86a6f54242d45f5e894e5fe5701a45a4fd23206d7bd39fddd527b35"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_587.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_587.mid.png",
+    "sha256": "abf885e0964456a87e7ce3a0cb67fe750124d4998a9d61a176eba14293540cf9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_588.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_588.mid.png",
+    "sha256": "db862fd5f520bc34967fbdca69c6f6e1e580892d7c2d5428217b714e54d3a1c8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_589.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_589.mid.png",
+    "sha256": "361fd19fe317d9baf5606ee0e632ad3a1c047b4c59ffe545f00db4ea4525c5cf"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_590.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_590.mid.png",
+    "sha256": "befa9c6392335edebf612735801e2b48cd0702e1654d205480e6259f42f4f874"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_591.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_591.mid.png",
+    "sha256": "3698f5c752a5ffdb8bee723289bbd6e6859a9dc6688011e7f371fe4988557f19"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_592.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_592.mid.png",
+    "sha256": "199bcc5adad292312d982d6b32d7554901a4ad95bd00062118cdd19a3e7012d8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_593.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_593.mid.png",
+    "sha256": "e27a6199b1ea11106a732a1e94d48be6ca495cdb56853e80b9e71248cb699178"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_594.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_594.mid.png",
+    "sha256": "c2f99b9b1eb7db45c42e4f68cb45fe81816170156cbabb23e3a54be4632ef1e6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_595.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_595.mid.png",
+    "sha256": "4863cb96c297ea6e49fc305ba3147026427109e14a133aa5b2195c04ef7fffec"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_596.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_596.mid.png",
+    "sha256": "3f1aa792dbf64c718020bde18fd89230de4e2ed7a6973a601fabe1ceb1694232"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_597.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_597.mid.png",
+    "sha256": "c502f10e7a64e77e1615a191491922c0cea45e70e13ecdd1fdebf511b53aee9c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_598.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_598.mid.png",
+    "sha256": "441ededae069e7f1cf220e0308cec464d0675bc64faffb73f2ccc3c2d14bcf53"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_599.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_599.mid.png",
+    "sha256": "a3d1853885169ecc672cc27048603aab4240326da3810edadce8be16ca79d9d4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_6.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_6.mid.png",
+    "sha256": "ba5892219f8f142bfecb969eebe07881cc62ae60a33db0a225dcd7f0043486de"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_600.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_600.mid.png",
+    "sha256": "1859ff8b9acb1e90f00fad9e81fdf44e6fb6e57ff8b121eadac2dd47a8352b07"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_601.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_601.mid.png",
+    "sha256": "3f5453eb71dcfc6aad059ed9c8a62bfc1f56abe71226884d8b1b6cf3d6604186"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_602.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_602.mid.png",
+    "sha256": "8d9f935d5fb2a7c9c58fa677f0091069a09c1ea64f9fe092671cdf815f989033"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_603.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_603.mid.png",
+    "sha256": "8c858b79a43686c4a1010f609f25c3aa8fccfa668a6d5ccc76c5fb8de134dd66"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_604.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_604.mid.png",
+    "sha256": "8ccc57cda91e3cc14ffe9403eebdf61e868d47b3234d21278f897ca54c2807c6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_605.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_605.mid.png",
+    "sha256": "2d58c4b4812deaf59b6fc0e1364c68d9f8b39ecf00bc4529162cee78ca55a5a9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_606.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_606.mid.png",
+    "sha256": "85bac65885737e3260ae77a6876400d45c376b9f483456a633dd1e5cedba180e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_607.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_607.mid.png",
+    "sha256": "77652368decd8e2423c3f369803e78d07fac98d4847a0af52b80e936a00dd946"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_608.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_608.mid.png",
+    "sha256": "3239f79e308694da1b51a30d037c508ad42f4890f8bf3b9eda9b2eaed46713a1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_609.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_609.mid.png",
+    "sha256": "509d90d38910782a9366c833b8deae26d5e7b1757e4b34e0a9f4bc28bcf709b9"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_610.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_610.mid.png",
+    "sha256": "59b79192c48f64eb5b397cf7d2ad10d546357487d976c0cad8aee50fac85e445"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_611.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_611.mid.png",
+    "sha256": "f0018fb43432983de81a4435321daf2c0608eb08947b719f0498d764be2411fc"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_612.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_612.mid.png",
+    "sha256": "57f30db0e675736868cd564b13b6c0ac4ace4f468d142de1376b32fb2a3436c8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_613.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_613.mid.png",
+    "sha256": "18cc3b881e849709cfec784e27a83b79d4d9463a41cbfa802967a40a374503ca"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_614.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_614.mid.png",
+    "sha256": "e9b1991468d1ee01c98304578f7281578bf2f83c049a70d4ea05da9151b9da3d"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_615.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_615.mid.png",
+    "sha256": "cb5ab03fab107221c764c7677a14a60549e3cca296f3d8e09dc97b554f931c76"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_616.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_616.mid.png",
+    "sha256": "71b62086c1f52e9dd57ca9294542abce57ef463de55483695e88fb65df78e877"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_617.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_617.mid.png",
+    "sha256": "bdd128aae339d9ae2919ac09b00e126e0d26a4c4c66cb9a35507a3f903719cb8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_618.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_618.mid.png",
+    "sha256": "7d92062a6c1f7970d2dae098529ff9f66ab66cd083f3ea1d19a3e23ef1101cf6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_619.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_619.mid.png",
+    "sha256": "253ac2efeb72c6bbe95146216ad43cb0bc9d712a83d23bdd9fffeaf6e6acb20f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_620.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_620.mid.png",
+    "sha256": "b7377fa00ae95667f8eedd4140db5995df88762d14578e01ec123adb25d3ec89"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_621.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_621.mid.png",
+    "sha256": "e16716604e665c8023cc8cbc1a2be5028bba957bbe02485679bca635e918c02f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_7.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_7.mid.png",
+    "sha256": "1f8bfb81d5b164b4eea03985eb9b67032ed83519d0e70da5876773f73010687f"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_8.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_8.mid.png",
+    "sha256": "448cce65e7dace4addef6f8a1a2b9fbb3468060ae0ef8d48752c090d265eb211"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_800.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_800.mid.png",
+    "sha256": "3f415d0bed81d89edf55a332eb0c85ffbf049175c71f6e38fe4977f25e6a6927"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_801.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_801.mid.png",
+    "sha256": "193a22c64e537536f6d357657027443e6e24042d8093a2e423993b09fed80c3c"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_802.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_802.mid.png",
+    "sha256": "7756ac496c99f89cb618cf7c243f81813845f69b4f2d5c4ca0a39279860d88f8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_803.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_803.mid.png",
+    "sha256": "4c98a91ee1d81f8e8aa00f3a1800e5e6137f3b6839e3f99dbaecc4cc3325b72b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_804.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_804.mid.png",
+    "sha256": "5d4b380ef4f2ec82f7bad2e53dbbbf883893c997d39b38d2dfa056d4f5e9fc15"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_810.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_810.mid.png",
+    "sha256": "e759fbeb3bbaa944609f11a3dd8688941032d4f3b06314302acc0035ed35ee1e"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_811.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_811.mid.png",
+    "sha256": "b0ec7eb0ce708736e6f5675bfde7d81ece2b3cc0a2bb2a05064217270ffb4085"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_812.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_812.mid.png",
+    "sha256": "351ef5f8e374c6cb1a9ced81137ed4ebc90674343446a8e175f99ff418e5215a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_813.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_813.mid.png",
+    "sha256": "bb799249be26cae5d066dba852e7e4071bcb606759c0c49b0889c9130e9d1738"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_814.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_814.mid.png",
+    "sha256": "c6758850949e62ca0d6c202c0016079608f46667633a335e50efdf3497a6555a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_815.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_815.mid.png",
+    "sha256": "6fd4966f02b8a4b89400b50bb21269a092c004bfbb9ef9e65c0ef6b0b94d000a"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_816.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_816.mid.png",
+    "sha256": "7c5a192500d41a1990477dd94838e8e51a802d948df47914d891dbb1bcc8b3e4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_817.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_817.mid.png",
+    "sha256": "b0ca118d575d85fa8cd38e446350caed64d0188d4181f5a3d35d22cca150bff3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_818.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_818.mid.png",
+    "sha256": "1500a29d489104bd584441f63250e74b5ed6f86651536b2114b2c745611ef226"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_819.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_819.mid.png",
+    "sha256": "cde0511fde2bf8cd769a0066d30073a585a5ecc7d95cd5033b5438b9109ea2b6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_820.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_820.mid.png",
+    "sha256": "8ad8458359fcc1ac599f100b278c176b1065011cd35052a368bfce4adf1aea42"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_821.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_821.mid.png",
+    "sha256": "0324e8d9976b11840bdb101a5ce7cea60deb9361e33540716366fefa2341dc04"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_822.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_822.mid.png",
+    "sha256": "b9442996873a94af190e038a302cff57ec0901fceaceb47349e4fc9619ea44b3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_823.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_823.mid.png",
+    "sha256": "5dd6ff92d86801836ca8f7c59845ca3e2cea878e248b4b466130b9767257c883"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_824.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_824.mid.png",
+    "sha256": "13277bdcfe2826c094ba74b7b8ec07c63f2685921a89eb700eb15c21bf923da0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_825.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_825.mid.png",
+    "sha256": "2e4d5312547ff7c01377f2987f31f95fb4a185e9c07660b1bcc750693bfeb128"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_826.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_826.mid.png",
+    "sha256": "70e731c9f184953ea6a74cff4acf72f24dc172d12162adf46dd0046350970fb3"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_827.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_827.mid.png",
+    "sha256": "6e4a9c005becd75adfca89653ef03d143a5b99b20c3241781e4e81d0ffdd1430"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_828.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_828.mid.png",
+    "sha256": "a3134b643e98f05c9c1bb563c0bceb8be08949853f9fda847b286af1a56aaabe"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_829.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_829.mid.png",
+    "sha256": "8ce5c897c7d205a1409bd4c8b3bbaf053978ebeaa83bda438e8d638e9a22229b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_830.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_830.mid.png",
+    "sha256": "6c7af6b6f52112db3f79882c03089c4213567a47054f2bf3740177d8365e8cc1"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_831.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_831.mid.png",
+    "sha256": "496d5798113680dc2f880258bbb2ee3dc959d056ed58a14813ac3951100d5191"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_832.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_832.mid.png",
+    "sha256": "833674fd4796a7736a2c2cf93dab41b2ae756295facfe8c9a401d2be830565b8"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_833.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_833.mid.png",
+    "sha256": "8c68fd6d08ace8da220d7bb3170eb3514950c9268426690b8abb0a62a6544af6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_834.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_834.mid.png",
+    "sha256": "4da805984a81782187a50174442b2fd5592f1a368c48354896c16152168a06e0"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_835.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_835.mid.png",
+    "sha256": "cc2745f0d1f8901ff801a9f626201fb1e92544119e315c6b2edc3df9025bf053"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_836.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_836.mid.png",
+    "sha256": "2b8c6e46138c5f0e41fdbf7a7cf55d0ca660691a3b59c4dd2c42c4ebece62ab6"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_837.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_837.mid.png",
+    "sha256": "1af5e4c13fea12ead19533a9b630385f3050ddb963c209db78581b2a07513f24"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_838.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_838.mid.png",
+    "sha256": "b929688fb7c49f84024f8abb7d594929374014c2d9b995c7997d070ecc68318b"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_839.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_839.mid.png",
+    "sha256": "1555312929b41a4d6dedd6a1c3fc0c69a00d63c80cd6aee25dffe7ce8a37e8c4"
+  },
+  {
+    "group": "vqsv6_images",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/img/decoded/data__img__img_9.mid.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_images/data__img__img_9.mid.png",
+    "sha256": "07f82a3a3f7a4b2c1762b12eeed4672a557571c9d0d84e6aee4eccaccf4e0e9c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_0_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_0_all(r)",
+    "sha256": "d25e0b3c137a694c3165dce9bb2ef301c54d039ae48b344918463eb606f09d7e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_100_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_100_all(r)",
+    "sha256": "e3f6ea216946943978695d4ccceb70ed19c4b897ef4efb16a4c05478a4238842"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_101_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_101_all(r)",
+    "sha256": "7951c2023d040e10142a1832eec4b8a1b9aae19366f76b62c6faadd2549b8c01"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_102_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_102_all(r)",
+    "sha256": "f0b60f2fd607ad38139028dc5d1da7e861cf7a1c4bfbe1c2d678aba986c8b4f5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_103_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_103_all(r)",
+    "sha256": "d96a57a1d468e900eda3e5d08262a8fe79ff09e5dfe3b5b967a35aff418d78a6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_104_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_104_all(r)",
+    "sha256": "368dc3867fc9f634e453a517559e9422f7c998c94085bfca60b749f1f440bc15"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_105_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_105_all(r)",
+    "sha256": "0716bf9a10b3761526d6dc2bc04576279f7fbf04bbe08eeed90ebe65275124d6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_106_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_106_all(r)",
+    "sha256": "14b95e6660f1cdad35f17f9399d566e4d0f8d5dad8883a49cab928e393fca5c3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_107_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_107_all(r)",
+    "sha256": "ba25339b84b8057a4bf74f1fd0b6230014230f60d0f1414a088c261092cfc2cb"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_108_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_108_all(r)",
+    "sha256": "9b8fdba94e7cd84b44031a6030999788195671aa137d967798552ef3daea88eb"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_109_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_109_all(r)",
+    "sha256": "bec41abbe48e491eeec6f43e10e849c01a7973c0fe7ab44a1f735ec5dac33497"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_10_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_10_all(r)",
+    "sha256": "e72f563a2de0b18a76307f2fe1695bfa382feee62b375a6655db4e83852e2c78"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_110_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_110_all(r)",
+    "sha256": "494986401b4547db70ef9321225c83990e8f86f38ba2e92f67dc2d958909ab38"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_111_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_111_all(r)",
+    "sha256": "f0d3a027e28ec79dee0d55b08238738110905fc075bcc80dcd254115d9fd603b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_112_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_112_all(r)",
+    "sha256": "565e276b4a71258eabddc08564be782481115b67868df870db6bac44d7d3c950"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_113_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_113_all(r)",
+    "sha256": "1b02e8f7708a607f9f056bf3927cfce5c1479cb231641e84e14803221432ffd5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_114_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_114_all(r)",
+    "sha256": "6adba54983d3ef8903e222f711127eac54914d17528e238b54035bdea0e804ed"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_115_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_115_all(r)",
+    "sha256": "97801868a6876389c77c90aef3811e0c9ddf4ba68dc2d499d1ddf610e589dc9b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_116_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_116_all(r)",
+    "sha256": "99b88c84444872f23f51f147becfa09e6414c0362ec411aacb048b11e64bc619"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_117_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_117_all(r)",
+    "sha256": "56133e6cb979d0ad7e5df014c394e6e6227bb76f1d9543c3c3973a999c75db56"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_118_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_118_all(r)",
+    "sha256": "64f3a392c04988d2fdbf63a73466abbe81a6c13659c096f238c257d867521a58"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_119_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_119_all(r)",
+    "sha256": "60adbe64f215ba8daa2e89d7f129c03ebed7c0144c83034d5d8a37ebfc82098f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_11_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_11_all(r)",
+    "sha256": "346e78f913f8a580e67dd3165cdead89f19e2e96c045ba633a6e3310f4711272"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_120_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_120_all(r)",
+    "sha256": "c0c70cc9262a66c24dabf19a9544c23921b99e0df8035c7977b4a0c16488dac1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_121_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_121_all(r)",
+    "sha256": "2f5948a542ced3b2fe4902e7d98a447ed5c46f7d817742995fadbb5ffce13f7b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_122_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_122_all(r)",
+    "sha256": "b3a23d0292dfbd6e212b79a17b51aa76bd4df9d322265c29c1f9578471a3cfc8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_123_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_123_all(r)",
+    "sha256": "4a77daa9c7155762287fa2fa268e2861eaaaca7bb82ed02040bcdad94c109524"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_124_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_124_all(r)",
+    "sha256": "52cffdfb464ef2ace3445eaa0afd68491a4d8ab1aee6d7bf0376178960e5eeba"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_125_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_125_all(r)",
+    "sha256": "30f1158e8c32fbbec15be90bf67c603e7f3fbaff9e08d3fedf6d802a4151494a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_126_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_126_all(r)",
+    "sha256": "ea1edc4fe4ff5902eeea782871bda04d0a2e5b9783c992bebaa3c5d1d22ef511"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_127_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_127_all(r)",
+    "sha256": "fd4cbc9cc33486764889a84da1187e6a8a68aca85baa03afb0e0ca57dac48e0d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_128_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_128_all(r)",
+    "sha256": "a11b463ee6cf2fec2922ce79a017589a1ef53bb464b3ce2522b6da638d90b13a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_129_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_129_all(r)",
+    "sha256": "2946943ac65acfaa4e932e81d8bd44ff316aaef0968edf2a3494af777721ea75"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_12_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_12_all(r)",
+    "sha256": "177bb0c3e8f7ce0075e0c5d1f1c987f3bf97ef7f2822b2ac601bfde4bbb2be2a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_130_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_130_all(r)",
+    "sha256": "896d6475a3efc37ed796bad08ac62e02b2a0d6b049eb71e5e555cf97a5a5ed30"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_131_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_131_all(r)",
+    "sha256": "27725d3ea66486234fad3bb4de0ba1e1dafec08e58a5d4df465cb461fe730915"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_132_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_132_all(r)",
+    "sha256": "9ce1ed9c3a1f8bb1031bf8cd738a577a67223a8f2dbcf7598532465b24034e92"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_133_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_133_all(r)",
+    "sha256": "4855a07769047fa9b8d856acd8bce347d8729701d8504e6f25400dd31fd0f1ad"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_134_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_134_all(r)",
+    "sha256": "9f1286c8cc5b3ed3cbbe7a2f2440488efb90aeabbaf91726c6e4cae57d0f0a55"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_135_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_135_all(r)",
+    "sha256": "0dc27713d60e392a269f8b9f0bf0a176cf221435535055b2e939434817952ef6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_136_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_136_all(r)",
+    "sha256": "c475d6b9138f3fe36a29fcaef90d6f7b3eb3c6188f827d911bbd28703315115f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_137_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_137_all(r)",
+    "sha256": "7ad6fec336a575c64efdfc4d5f285823ceced7e129b9ca44cc5d0ae0ebc620b5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_138_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_138_all(r)",
+    "sha256": "4a2f3a40a34fc4708900b68602790fd6a464ed9b1bcfb15330e9620575912e9f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_139_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_139_all(r)",
+    "sha256": "2c01caff4e1e35f93c8e3594e30f293aa36d86ef1f38f1cd701679cc836bda3f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_13_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_13_all(r)",
+    "sha256": "04a3d223768e5b6722d248311f37a0ad4e89742e8d7ecbe7cfbda694f983732e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_140_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_140_all(r)",
+    "sha256": "158265580a33cafe60d931086b852b0645788c7d34a1a738f80e5e6aa7ad6b86"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_141_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_141_all(r)",
+    "sha256": "a62fa0b77f49737ef9c98c5ab0eca5161951508b2d0925169656c72180381216"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_142_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_142_all(r)",
+    "sha256": "1c0e1fdec74bd7ae7190bd0a6c5e85dd91cd1a0838b0b501770512a60772dd72"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_143_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_143_all(r)",
+    "sha256": "a37ebe855c295a6129f1f6a9f6a2a68d77ff1916d12415d36a3110956a8ab3e0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_144_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_144_all(r)",
+    "sha256": "14d756a184e98458dd0d693112704f44bc8cc324e6891c8570ad129fb97f0f0d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_145_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_145_all(r)",
+    "sha256": "076bd9c2fd871b673df832ad81d3ec9b611fa0b86b709d0a84779eb9dd93650f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_146_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_146_all(r)",
+    "sha256": "8862480889cda1f0ea9589215b430bf05873e17db157a1e9f11e270713bb164c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_147_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_147_all(r)",
+    "sha256": "aab557adcc4aa424b2a5f61818b0a2e968e977ea64dbc1ddbe7c61b84dcbb8a0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_148_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_148_all(r)",
+    "sha256": "64a5425a203cd177da7fd24bf60d1e974b3f3390087d67bdf5b628ef8cd297ab"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_149_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_149_all(r)",
+    "sha256": "cd4f9c8272b73d717c51f8dee6d6d33ddcc3b8596f9f52d93e149683bdfdc0c9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_14_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_14_all(r)",
+    "sha256": "c142f232b262b12378e9f9c89705a086505e2c9e97b0dc6d7ee9f7c57455a89d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_150_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_150_all(r)",
+    "sha256": "7013250738909534aa6a61998a00247adada169b7f34197f62fadf91d76f60a3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_151_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_151_all(r)",
+    "sha256": "34b0c2f882070f14f516df86940b6bdf2873ae02fc493723887a16a40804623b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_152_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_152_all(r)",
+    "sha256": "c03a1db4de84def462c562f81744974ec24e1898418dcaabbc7522f39375608a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_153_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_153_all(r)",
+    "sha256": "be8a7e7d72fef09ad75e459b4c2633cb40ff2f5456f34af9276fb40389f7ccd9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_154_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_154_all(r)",
+    "sha256": "a1b2eafd2cd68106b0ef22e20b413276a7559ee4395b88d9ae256b9281adf715"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_155_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_155_all(r)",
+    "sha256": "e146cb7dd4b546618f394cc99d9a62eec13b7dc63f973fefe2e3cea7a93632b3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_156_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_156_all(r)",
+    "sha256": "45f558aea0d74692dc088363af11caa47d1dd68de4376ddd3d57616546bf846f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_157_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_157_all(r)",
+    "sha256": "d8ad4ddac12e13f868395f97f30e10aa08db4fea13dd8e8b9fff4c98c049fae8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_158_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_158_all(r)",
+    "sha256": "bed93e57b0fca25732c786cfb1078c0fbbd9727676093d7bc59925824cae6ff1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_159_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_159_all(r)",
+    "sha256": "21e4aeae76cd3210a686836916a91f5855f12cd833fec6738dfdada6a08d1ec2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_15_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_15_all(r)",
+    "sha256": "8cec8165a8560377001e517a7090f411b0813b6644c06aacbdfea3ff83cc9bbe"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_160_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_160_all(r)",
+    "sha256": "8b85e7563ebad3eb4d8cf34600bdbce85e8a8814f8358308f74ccf843d2d64ed"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_161_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_161_all(r)",
+    "sha256": "e6c67feeb82435c2ae148ecb48510ad4bd1823b3b23ff2f8ba28bfa38f2c519b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_162_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_162_all(r)",
+    "sha256": "aa574e8fbe7e689e3de1aa6a09d0a8d2d23cc966a7614aa6d53e73d45d67f5b1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_163_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_163_all(r)",
+    "sha256": "30dfb467b5181fafaea161728fb1f9f0395fc8c65bf222188be1248a11dafc77"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_164_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_164_all(r)",
+    "sha256": "9a916cd362298acba04a5c4663b9a47eb83bdcfeb455a23b8e002b03c8109382"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_165_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_165_all(r)",
+    "sha256": "5b5723ce4492b3e58246331cc1dfab9d37760f6a21afa2b5db7908322504a809"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_166_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_166_all(r)",
+    "sha256": "8a54059e1ec6507e0fe467cb6728d89eb5a431a8c15930d8ab992cdf5a2d9c8d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_167_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_167_all(r)",
+    "sha256": "0b0e136c60f1ea9755382c100b01eeff3d6c7c8df2d44fd2b87c0bb35d01a75a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_168_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_168_all(r)",
+    "sha256": "eb3a229489320c6c64e68002e818e2027320cbe5809536c1cef742a57112e22a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_169_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_169_all(r)",
+    "sha256": "3824f5b748859821810aa675cbe529c8e97420445a77a9c0562e25a9e41bca54"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_16_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_16_all(r)",
+    "sha256": "a7b05ca886d3bc4af13f7b8e39a45a1af994b01d89d061f7edd7dd6dea9e9818"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_170_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_170_all(r)",
+    "sha256": "adb163b61489491cd38b1ce0b7cbf17f035d64776c912b05d8759ea9bbb58b43"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_171_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_171_all(r)",
+    "sha256": "f5328abde334ddf5b5e6c411f8344ca133aa29cbda65bb4101465c2ded352c02"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_172_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_172_all(r)",
+    "sha256": "c4a2adc3201a6b2add44c8eb4334b8d756f4eb45b128a9132b4bd398a3811a96"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_173_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_173_all(r)",
+    "sha256": "b8ef3494b59e8a1361cee539644f59ca446e48d691c4459112d964f6c96dde66"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_174_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_174_all(r)",
+    "sha256": "4b616cfccbb21f81d850b261449ed25da08331b2183705f5c2353747cee18f92"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_175_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_175_all(r)",
+    "sha256": "7c6e23d53fb444a6a08dbb395a46c39a4b1db0407885b7af1837ee6bfe4505d5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_176_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_176_all(r)",
+    "sha256": "321f900b2f4d3e7b149d524a042fc2c3c7c600ea826e215861c26f0c3db31469"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_177_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_177_all(r)",
+    "sha256": "be25aacd6c5f69e5c0a932b0d7c957f3ee87ad57ef212875e1019e4acee9a675"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_178_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_178_all(r)",
+    "sha256": "50d1100311f4a0ff8426a5391f5800619f99da7c3db814c5c36a5294c00a9b3d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_179_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_179_all(r)",
+    "sha256": "889eb6365c90904ebffdb1a904843fa65d716fde8d3b4b6f47765dbe6dd30a0c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_17_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_17_all(r)",
+    "sha256": "a4f6318c273107764c7c465f093780b2b97178161188ea07bd1b5059972167f3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_180_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_180_all(r)",
+    "sha256": "7e450525291f83f69acc2d57676d91e716770052351cd30b32ffd8bf084e88fc"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_181_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_181_all(r)",
+    "sha256": "ebb7999b06dfe30aa593e476548c2917e29fa703ee92a80a8a3b184a66c99bf5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_182_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_182_all(r)",
+    "sha256": "34f77ad6986b4e377ee63ce6fb5458f979e6329852b3829b00679ba06189502e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_183_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_183_all(r)",
+    "sha256": "44178bf2ad95deca2eefa8221385773b1a49d6527d2f1d0db50fb55dd820126e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_184_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_184_all(r)",
+    "sha256": "f53c53dc9cc2f4f60100d134851ca61839a67c07a2e086d834d799c08923d628"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_185_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_185_all(r)",
+    "sha256": "04f4b5dee3218782cf8039affab1ad58e15859e3de2ff8df0f0a7fbe76cebc3d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_186_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_186_all(r)",
+    "sha256": "c6fec8b6f00965d279be068074912907e5ca7e358b9c16825c51c6d1354b2fed"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_187_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_187_all(r)",
+    "sha256": "be9fab0c79df5df94e29cb230e9f24734f83115dace97bb49e0986093e646753"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_188_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_188_all(r)",
+    "sha256": "052544812828f4bb6f89f4b849974979ec2df1696ff4ba2efa62355d04eb435e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_189_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_189_all(r)",
+    "sha256": "ae6da6014d957e3075560c2a148445538192df9407b4d6aabb0f5dc1b59cb1d3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_191_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_191_all(r)",
+    "sha256": "c104d87f3104e3619bdf3271b038a42d5f3564b5df2f7cea3395d951d7f1ca30"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_192_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_192_all(r)",
+    "sha256": "77cb588c723881afa61f8ced2610be1035e37526435305b1cdafe599011513c2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_193_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_193_all(r)",
+    "sha256": "005e77cbf29f426248171381358afc4f1f25b65e0757cf1df87c645dabb3bac9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_194_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_194_all(r)",
+    "sha256": "17cc7bf79385088b07b9bc94bdae56ba228bb139bcb16190cc541309eb978fa7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_195_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_195_all(r)",
+    "sha256": "6fb469def0d249efc7c05628cc232ce6d6ca9fa63906f9e371a095f998cc7222"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_196_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_196_all(r)",
+    "sha256": "88b6d6f194eb468f62af46108eabb428f616119ca31c6010eeda8b3c5fd60213"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_197_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_197_all(r)",
+    "sha256": "d2d4422c584d2590dc810384e531ecb359b4d998a9e8fbfd2b185c5d1c035c8b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_198_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_198_all(r)",
+    "sha256": "391a4e362e8952df664371113d04c87d10c1d781eb0af047dfcf6852ac24b5da"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_199_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_199_all(r)",
+    "sha256": "dc355e5bbc05b37551127688273223d2853e56927ef7beb9f49be041903a1fd7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_1_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_1_all(r)",
+    "sha256": "db8912a0767e1d91f3ee11b29cef2c1ea075ef5eac81c2185a9f1f797a61b60b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_200_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_200_all(r)",
+    "sha256": "74ce9f4babad1b761ab5ef38d31e9779f87e13542104895faa1d25b4ea585057"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_201_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_201_all(r)",
+    "sha256": "e2ea4e0dfc13a71b43902e43ffcd81987d237dfad4eb2c1f035aee7265e8f6e5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_202_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_202_all(r)",
+    "sha256": "f3bc3e007092f656d253531d93547ec2dc0685dc3b25178cc008934b05812f58"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_203_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_203_all(r)",
+    "sha256": "7e7e638332102cdd5b690a362a4e73504901d6b75ccb6f76b4493204c7169020"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_204_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_204_all(r)",
+    "sha256": "657b17bc2ae80fcb648c3363920cbb0035b08d31fc180709628fb1028c167044"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_205_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_205_all(r)",
+    "sha256": "01aad4d99262a532c506e5d467571dfc38d96f29bc2c522e89784b5733b16e1d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_206_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_206_all(r)",
+    "sha256": "4df2a483a6bea9d80db267aba2f4807ce40b36d6cf6102692a679d7dd14605e6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_207_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_207_all(r)",
+    "sha256": "ff0a081082117b726d853a0540b1534bf8a4a84026bcc9840f2bf21071e36b82"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_208_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_208_all(r)",
+    "sha256": "254b0f2f33ebe61bd6bf7c673cffb3e586489beed7541cd6505858c00aeaf102"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_209_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_209_all(r)",
+    "sha256": "bdff2b5b965316f7a6dd16f2014f2256e57bb4321ec4f40438a78f73b9963588"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_20_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_20_all(r)",
+    "sha256": "8d3f9b78ba65fd9a1c6f59c4a67fe7dbc52a8e53ab55772ffb1e811781b38335"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_210_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_210_all(r)",
+    "sha256": "512c108151d9dddc2e53604df21f83e795bde054be9faf2dc95358c72d64f6fd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_211_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_211_all(r)",
+    "sha256": "310e63f3beccb768465102c1da7716f82aba089ffa7aac23bd33249d47ed2258"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_212_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_212_all(r)",
+    "sha256": "84d080e1d6ebfb46bb1c35b37ce70108d1fac437736dd565b785b411209d1fce"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_213_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_213_all(r)",
+    "sha256": "e3e5746f91ad97e5e4d2195ff9db7c8b354e68e5e375c110ff8d8c7571d20bdf"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_214_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_214_all(r)",
+    "sha256": "a5bc03121ca8306cf7ce51d60550e689fecd7518ded6e2fa8c8fcc8f140fbb5c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_215_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_215_all(r)",
+    "sha256": "2ad47918ec562bf64ae7340a57e24cfea4a2cd853c64bec04b57b6a3e3516014"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_216_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_216_all(r)",
+    "sha256": "ca4f0c2f5beefb2705cb1826cecf9a9151d3f4fe77fe5b37bb65bdca715af3b3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_217_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_217_all(r)",
+    "sha256": "7be18d789b6c93d99ee445f673bfa3b06981e6b9eba4e1af24cbd60921c9d581"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_218_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_218_all(r)",
+    "sha256": "8c39fc0a73da013305adf67f39de74088e1f9deeb9a04b3c01ff4f78c876deed"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_219_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_219_all(r)",
+    "sha256": "09be9f6bfdefbec4b3f6e09e4b23e5403c6ee1f1d687f13f209a39e6873879e4"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_220_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_220_all(r)",
+    "sha256": "f3caa7f338e1393bd989b644bcea78589a1d757c2713f5da3f56d5fad65a96ac"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_221_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_221_all(r)",
+    "sha256": "4ec96898b745de96acbbe928f06f4eb5225bef6c7346489917939206704c21af"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_222_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_222_all(r)",
+    "sha256": "3ff9fedf0db521a50ab7b0476c644ff20190d36ce9fa212d37504c1422afecdb"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_223_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_223_all(r)",
+    "sha256": "9883ac58e0a7b07ebf8a545907af18201a7043c9de63b6b96dce973d73ee2e02"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_224_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_224_all(r)",
+    "sha256": "2d27810f188efb78d98163dc9a64d295eb6a1eb0564eddcf6ab3fffa0c45d19d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_225_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_225_all(r)",
+    "sha256": "ccae6c94cb999bf97f449a0c4ace2310846f45ab126d92c1cf3d9c12af706e84"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_226_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_226_all(r)",
+    "sha256": "fc02fd835e85434320fdacd43bfcaa2eb9bd8f0e57bf52359990c8d93a365fd2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_227_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_227_all(r)",
+    "sha256": "8cbda0600a37eb8b534a86e256c343a23026ff17f51489df6b07999d808259fa"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_228_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_228_all(r)",
+    "sha256": "c2e7a6a6ce4b9ed19c0873866860774c11f7a6df8b5b0ccb4ca430d97f906dc8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_229_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_229_all(r)",
+    "sha256": "1652be4f383cd7618a7c9dac7f9d990278aa94337e225530b45714f90fdf955b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_22_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_22_all(r)",
+    "sha256": "42221f8dcbf9571b8f80ab93a7443c0425c048102f2bfb5ede90f103e5c1a989"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_230_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_230_all(r)",
+    "sha256": "dec005dd5f2c36ec422100b2d4df4ddd52b65ee8945cea3fb8f9be6b643a4aa2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_231_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_231_all(r)",
+    "sha256": "48b69f491f6e9593b84ea75baf408ab8a039e23a6b7fbafdd1806554500e1ab1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_232_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_232_all(r)",
+    "sha256": "ede6eb2894c3e8682b81e85043ba3ceb52390e213ef025130811d704f56c8bb7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_233_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_233_all(r)",
+    "sha256": "47f94e949a8e69f3a0b73203bad7461f98b89fed07dbcadfd3d105e38d190218"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_234_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_234_all(r)",
+    "sha256": "97635c6a648a1152e4b92d8880bd97f1884e5991c8aab42063c8b3c1a4010aab"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_235_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_235_all(r)",
+    "sha256": "57c4c2d5e615ff2b749e79699b595e701f05bf783a938fc6d786d28909ef3af1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_236_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_236_all(r)",
+    "sha256": "1747006ce44325a7a524fbcd3d73a124e44fc64f710385b7e70740e04a752994"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_237_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_237_all(r)",
+    "sha256": "e1c53f2cf9fe2c9417cf6e426e041067d400eeebd77422c3c6de7579b70a0f61"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_238_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_238_all(r)",
+    "sha256": "36e6d6cef8b4277cb7994602977628edb2c8f212bddb8747d68ef081fc9291f5"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_239_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_239_all(r)",
+    "sha256": "661b985de99a266c8441d022dce5028776441a66ce98dc9b61471290b928c894"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_23_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_23_all(r)",
+    "sha256": "750dd2c1eb5365c0873d6ace88ddf9b37117d1e3833fe50d78c293eab629009d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_240_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_240_all(r)",
+    "sha256": "aab1520dc614277deb4a9b922e032ae7f3e9d39c7c47b447c8b8731b258029a0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_241_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_241_all(r)",
+    "sha256": "3e062cdeec5c78c6b65faf28edb4d18c2d8245273782824a4321984446f65079"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_242_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_242_all(r)",
+    "sha256": "68da51aad801c9f060344204b3b7dcec7f56f6add3f350904efa25fb1e4236bf"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_243_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_243_all(r)",
+    "sha256": "3cf8a49503e98bd4d70bd8f1de82a549b82a908683701cb96f111caa2a5f60d7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_244_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_244_all(r)",
+    "sha256": "f5bca1f02e60ce53c21d7de2778bc3296391f1d9c7c3c15560e724e5bd7cf01f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_245_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_245_all(r)",
+    "sha256": "548ad48d426bd115c482e72fa3602592fd5573c26800dfae88791a6209db943e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_246_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_246_all(r)",
+    "sha256": "60555e5ac7bdd67fcb5ca636a73b1e02c7ac32a60c1f79d1b0f54bf989ca7720"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_247_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_247_all(r)",
+    "sha256": "3021de258d29ce23d36f5241e6677fdb7daabcb8f6a8982d306d96187c08c652"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_248_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_248_all(r)",
+    "sha256": "9ade315b174cac16d2c0bedd17bb5a6619e078ff009d27c94f40e596fd31adaf"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_249_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_249_all(r)",
+    "sha256": "47b6eed5c188185164525aaa4322ace6323111c43cbe79b208cfe3d4d0f15eb8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_24_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_24_all(r)",
+    "sha256": "a9a8d16ad9a11a0cda3bfc76713c9b389b6bcc97e5dc04785870903d5bd15ecd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_250_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_250_all(r)",
+    "sha256": "e9824e6a296ea3929776a204a0e85a0aeae356dc2922e17f1b5de5549b72d76e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_251_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_251_all(r)",
+    "sha256": "208c13b4492b615004c46ab5dd48583363c3697c986e876a8cf8acc4958b5eb1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_252_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_252_all(r)",
+    "sha256": "2b9d9c2f5d715a7ce69f2470a1cb87aab3d428b6397c5b67fadf47e8633da965"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_253_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_253_all(r)",
+    "sha256": "56f517a6a613f2f95f2832afd339d57fafb022aaa8e1c12c874fcbe3079e0740"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_254_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_254_all(r)",
+    "sha256": "c27dee8bf008faf72ba57ccf1fbaa7721d37bc054372e14748392e8daa026e49"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_255_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_255_all(r)",
+    "sha256": "d50a3cb07fbb135a48f709ea6b6545650b7eba6aa25487bd1f5cd25fb68a4e9c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_256_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_256_all(r)",
+    "sha256": "c6fec8b6f00965d279be068074912907e5ca7e358b9c16825c51c6d1354b2fed"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_257_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_257_all(r)",
+    "sha256": "99831d950b9340218a4941ee68cfba554bbe858c8c9f1ac4320acd33313e4efa"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_258_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_258_all(r)",
+    "sha256": "70a0ea655c3eb1c5298694e1a5e488396c539bc9a0c4964873b27793e20bebfd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_259_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_259_all(r)",
+    "sha256": "94268be53302214fefeea39c31a6016161a42352eefc3c62c5bb527948b66db0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_25_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_25_all(r)",
+    "sha256": "666a8bb150ad91f8af799dd231034c531e1b7890e729b21f65cd9ce4e82c3cb7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_260_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_260_all(r)",
+    "sha256": "c4124a6efc2128cf7d68ee7331a39839a78b10011d313de15d8ec76ad4974aa7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_261_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_261_all(r)",
+    "sha256": "85a35fa593d820fff16743f345b4f1e90ac5a0694fe0cceaa09ccafa0470989b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_262_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_262_all(r)",
+    "sha256": "01607329c0be02632fe670d3732f1ddb71c73580ba96bb43ef0414004864f351"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_263_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_263_all(r)",
+    "sha256": "7ca0d37575350a1dc0b611abcd8d3beacda29f4d9cf18d455f5dd7d5297c11e4"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_264_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_264_all(r)",
+    "sha256": "630b66b049125d05c357dd6757d37bc9463fdd6cbdce6b684e22794221ed4b45"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_265_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_265_all(r)",
+    "sha256": "70c8c63bf20479b8080bdc24aa614628791d7216974ad6be291cd522e1b12afe"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_266_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_266_all(r)",
+    "sha256": "32b0822992ac5a10db450faad255fd71007bfdc11c53817d82491f4056c5861f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_267_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_267_all(r)",
+    "sha256": "e4afa4b334765a9bf64aa5e6a63443d3f75eb9a9835bd016bd1c415ac24267f2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_268_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_268_all(r)",
+    "sha256": "16f9fb9a47c7f12f6e661e9ced953d66a139617b51b4c48f601bf6b049b62432"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_269_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_269_all(r)",
+    "sha256": "487e0aee8f6e6f45d4f566cd79ec941809098a326020674a0f767b10330d1ca1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_270_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_270_all(r)",
+    "sha256": "f7831e2f6511c778903b8f260fe757ff7e3047865ce59ea7d887b9ceae63c25a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_271_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_271_all(r)",
+    "sha256": "4267610a3f4665273ad30098af4fbb48ebc294bc4e7a5ef602991f1979c86d96"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_272_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_272_all(r)",
+    "sha256": "efff51f808d02fa8172c3a23e9f00324915fd860adf233f0c41fa753c97cb320"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_273_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_273_all(r)",
+    "sha256": "e9e86ae5e9067ed380c38007667c7964e3701bc0575412f47d1f5494e69aecf4"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_274_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_274_all(r)",
+    "sha256": "b585435c67e02b4accde4fd5c753e146bfb5fbc553923e82c72ac71a774630a9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_275_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_275_all(r)",
+    "sha256": "6e2e747a3eb9d86fa2fcb8e4da7e140d93b3ccedb9cc2a60cff445f11c7285ca"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_277_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_277_all(r)",
+    "sha256": "733128dc0bdcbd846338a29e22e202e48ab8d5514c612ffe91683c73ef4eec7c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_278_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_278_all(r)",
+    "sha256": "5c6d221a55fab5f4f10f92659017d25434bf0b2ef694c2b06daa57d8f7cabf74"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_279_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_279_all(r)",
+    "sha256": "bc96a67324f069d1ff24a3a1f3d9d0c0ec3af1827ab73dfa7e8aed0a8012a051"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_280_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_280_all(r)",
+    "sha256": "a9a2538a0152e147f83b766b7aab197169f65762383aadb237fe013c81343201"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_282_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_282_all(r)",
+    "sha256": "388b241549231eda4cb23e73bc4afd58bf2ec3bd19de213e5fed6f219b26900a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_283_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_283_all(r)",
+    "sha256": "a4abf828bd4a1621eb198017623e229da2b3046103c070cc48fc23342afabd2d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_284_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_284_all(r)",
+    "sha256": "e9948cb81309905fe6d7f7736fb6238a02d2270c8a79e4ff3899f6bd1ad2235e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_285_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_285_all(r)",
+    "sha256": "4545d7dc20e635aff79623a36b7b4214186c136fee8f10a5b3511b8fb951e342"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_286_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_286_all(r)",
+    "sha256": "48c85cc1d063119b27f97eefeff8f536905d914836e262f55c48258cfb716ec1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_287_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_287_all(r)",
+    "sha256": "4ff0313341d626d5c47eacb0c2dbcbf8ffdabeadabe69bde601856bffbbaf1c1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_288_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_288_all(r)",
+    "sha256": "30bbdbdc7d7eddb8a90754476a89cc48a22bc077584e9941bf9125a1c4da5ab4"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_289_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_289_all(r)",
+    "sha256": "9e2f86b15f72b6fe6d0c30c89ec650f9247800ee170ddb2bbf12e1b0d677a488"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_290_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_290_all(r)",
+    "sha256": "a41ec5cdfd0c7d9676fcda3e3be20a4dddba0023d2f3cf9823a5f9d924775408"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_291_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_291_all(r)",
+    "sha256": "78d60877c41f073a680444f9b7f48bacf6f0f10523b70731e50d37fbc4247437"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_292_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_292_all(r)",
+    "sha256": "0a71806b214ce853a652f04b026681ba53b5e28ecf78a76fe0ac47621104c023"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_293_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_293_all(r)",
+    "sha256": "b61fa4dfc89f2df72b4dcc4c3c8c89330dbfe97b1fbaa5117c1a2e9786efc61b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_294_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_294_all(r)",
+    "sha256": "efd0cb723b2544e432cc0f2e8871b4e8f2353ff0e3d67777ee76e4eb6be22fcc"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_295_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_295_all(r)",
+    "sha256": "2c4176097ed69f610480fd562675d27577df533410fd6dcb36447971bb272c69"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_296_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_296_all(r)",
+    "sha256": "2c2f0ec4e28097c89e1ab39a3a9db74c24fe37f3b0ebc97e29f6dd211cfe643d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_297_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_297_all(r)",
+    "sha256": "a26fe056df911e88a5592cc0ca1637caaa78068e6a70a4f1fa1dec11216c86c7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_298_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_298_all(r)",
+    "sha256": "0ab636b0441d4dc86e9bd944ca47cd41d17d2cd676912abb035bebbe68028fa3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_299_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_299_all(r)",
+    "sha256": "47ec2b3093343355792c88de069ab23e351c51cc6335a73a4f716376cbd9a2a6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_29_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_29_all(r)",
+    "sha256": "c12a85411aba72339b26271b78c8b7f7c1d3f4d6b4ca034f97867029265c5e51"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_2_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_2_all(r)",
+    "sha256": "0fd79e6818e3f9ef141c910a5e487f9be2af89f0b37d08a8698512cf9cb0a4dc"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_300_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_300_all(r)",
+    "sha256": "8a162cd04a4a95bb881db0c2b1ed35002bbccbf503ad555773522dfde9539f32"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_301_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_301_all(r)",
+    "sha256": "04f3024729b246d39db989eb2f29e05243e3b54572abc2c0cfb48a5e3a44c11e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_302_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_302_all(r)",
+    "sha256": "17df8ce75a6bd95791836953279473aa6fff7834a4f25ff871c17cdf42041bef"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_303_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_303_all(r)",
+    "sha256": "160c53cc6e3be3c9ae068809721bd0fcb45d8806eccafe874bbccadd58adfc9c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_304_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_304_all(r)",
+    "sha256": "5c3fa7a24626b0bc3aa77cd69f1272e9525ef5f6dc79b3a36d4bdf0cdfb08b3a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_305_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_305_all(r)",
+    "sha256": "75afb0c334a5d1ca1c7b52a16782d6d19a4e2599166509cb809f205a64c6feb6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_306_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_306_all(r)",
+    "sha256": "1b5e2dd51a26bec30fe838f7e0e00961be50ea9c56dab21f0e8228c71fef60db"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_307_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_307_all(r)",
+    "sha256": "296614c0766475fa4bb7e67dc3b1b198f839ae49499b3365e79773cac56dffc1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_308_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_308_all(r)",
+    "sha256": "66feddd1ebdb0e41bf2c05bf9a4bf38aa1d15fbd37019976fa99988f523a693f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_309_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_309_all(r)",
+    "sha256": "262ef8adc2b2b1976e1e3a3e3ea1dfe15d53368872751b3ce6f22309aa5f92a7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_30_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_30_all(r)",
+    "sha256": "5aa9e84f44a2268886726ac0dd4f7e38d56b9ce3654dd3bb9743e26896c544d1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_310_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_310_all(r)",
+    "sha256": "f77fae2e114d9d5babf54b311b9b442080bbbf9640460d8bc06d8ab9e0a393da"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_311_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_311_all(r)",
+    "sha256": "0e40933ef988ee174cf30b9e1a327e4078ee27ea44bf81923ead21e3cf454a48"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_312_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_312_all(r)",
+    "sha256": "e009e8ffdbc409e3d5f357a7c75d9541f4f06cda3b50af81ad12bc11c3fe66fd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_313_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_313_all(r)",
+    "sha256": "6b3f5575281788ceb48ba046b473c54fff939953e7b8cc0af69fc57724b475ee"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_314_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_314_all(r)",
+    "sha256": "4a616555394e6dc2dbb30edca36e1bd3cec9fcb8606e06cc61f30f723b44cb0c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_315_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_315_all(r)",
+    "sha256": "6c4f309b2c68cbaec289f7038bc6e721d56b95a50d22c75c3dfde48169c68d7a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_316_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_316_all(r)",
+    "sha256": "2b21e4ec2dd0fc1d612cf2a533ea2a18ff2e361677d967122fcaa0f28921021a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_317_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_317_all(r)",
+    "sha256": "175c6c7af4a24aea654a472891fc3ce6c8623351bfbf99cbf4570feb7688db17"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_318_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_318_all(r)",
+    "sha256": "f8c59abe94a6b05a3718dc807e145a141ede425d743a7c71d2b20904440657e2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_319_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_319_all(r)",
+    "sha256": "b23f33ad6490976704b63ead00b733870b9fad6829bc2585fa8cb36e052260af"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_31_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_31_all(r)",
+    "sha256": "e6b9c59f66478893bbd6cb41ca0f23cfb5ad85028f221df60df4425cf07f3bcd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_320_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_320_all(r)",
+    "sha256": "6ad26569f923fd9b1cbc496a38e6c45910be2249bea57b8701c26301fa7f038a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_321_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_321_all(r)",
+    "sha256": "7aa7f095747c76eef44ee41e604bce0f6c9c6700f16dde0b6358da3e400931b2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_322_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_322_all(r)",
+    "sha256": "0004ef5b555715eb7dad5b56ae0d703ba8a4b1008e7be3c14a775f062f81631b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_323_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_323_all(r)",
+    "sha256": "c0b5b883fce9d9b3ed21038b513d5c2320695eb0ef1aa322d1ca74e45fd71b95"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_324_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_324_all(r)",
+    "sha256": "564d4ec59e4ad1a2aba37c6fa281efc9bcb8f595a69f7c773132d3f309eeb034"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_325_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_325_all(r)",
+    "sha256": "7dfd7eaf5482fd1e7c701f4a046e69bac15b72904efbdc122e7ac6e62f52c000"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_326_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_326_all(r)",
+    "sha256": "5707060f4282f4e59c6e407f7a1b4e710dda2ae26a0daabdc39c13c99f2202e8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_327_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_327_all(r)",
+    "sha256": "ec13d61392ec70dd697f29a6b1d2df09efd4c93c52536dd77876e0773997ca68"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_328_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_328_all(r)",
+    "sha256": "6664174719e3b7d2c0466df0265d304ad2fb01b0da244c3f0ac15ffd5b48efac"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_32_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_32_all(r)",
+    "sha256": "137f7079474fa8116ab36182c5d2e529f74093b0c60d1bbc689737c1a4bcbac0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_335_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_335_all(r)",
+    "sha256": "8590137b2c8e11150420c67834e2f3f9051bff1b88d381a06a7986cf20aba5a3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_336_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_336_all(r)",
+    "sha256": "275a2fd2d580ac74965b96f2ee16029d2b8eff00faedc8cbd7873d0aaf50a773"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_337_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_337_all(r)",
+    "sha256": "4d08b4954941aa0d414ce32a017ea725eff45422d75c7666a7b72fff2a4923c9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_338_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_338_all(r)",
+    "sha256": "8db9d02ecf9ff1a224169465d77982342cedf0987c49ab5b055c83efbf4e6cec"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_339_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_339_all(r)",
+    "sha256": "f60ae9200d398be7deee21731a37a1301d354c2cec75c20b15956d337e73250a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_33_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_33_all(r)",
+    "sha256": "89ae715b4df13f6ff19abd65e34674695809b33fb373534f0d9cf4f5f57a271c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_340_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_340_all(r)",
+    "sha256": "b77f20e335be792ed5ff6a364ef0607cf347deef9b96c77999f230e4a9cc1f9f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_341_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_341_all(r)",
+    "sha256": "e7eb6ee2cf9794f99ef3e80bb6e425a201b0ee11eec362fff4bbcf108bc92fb9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_342_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_342_all(r)",
+    "sha256": "ace3d58488956791bac6e1900a2996c3158815c9dd3af73aeb2c8b6dcd8a4942"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_343_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_343_all(r)",
+    "sha256": "47d1bfd820e578b1a1526651563554db80d889ed444c9498c61f7f7b43bd6caa"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_344_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_344_all(r)",
+    "sha256": "9becc41ce46470312b5a3a81e9178a33eb4590873499e4d4fcc7a6a9a63c1978"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_34_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_34_all(r)",
+    "sha256": "9d16829b0c17b0f46365cea535340a56b2eb9c9da37fdeb452ea7f4d40b82310"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_35_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_35_all(r)",
+    "sha256": "5979fead5fcb7fb23715bc2ce0678c9837a8c3ce9d8b3ae6b7bf48117d5056b1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_36_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_36_all(r)",
+    "sha256": "4400369827c2e6230d2379af0ca19c8dee12c2d7e27ff986563e36a1b068650a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_37_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_37_all(r)",
+    "sha256": "dd069585a9b8a9abcbb4d454fd7dc89f8c4ce54884e2606d06c60beceef93446"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_38_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_38_all(r)",
+    "sha256": "a517c6d9b2ae93a18658116556482926ddd73644b87621546175ba3910799c8f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_39_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_39_all(r)",
+    "sha256": "f1e851af0d7ef18764c544cb66f8e76e744763f7ffe6eab96ba853b7b51e5470"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_3_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_3_all(r)",
+    "sha256": "30ede7ca7ef7d0ea5d15861d71c2a5171d3a2fd41afb5dc208893c4cefb46f9c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_40_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_40_all(r)",
+    "sha256": "52c37f26a5fded9aa2544a505496874356d227735377ee83d6d0298389544516"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_41_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_41_all(r)",
+    "sha256": "9157bf93f24f0f601d53850b5e3170b913a7cf3c75e704b26d3f30c3fa0d329d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_42_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_42_all(r)",
+    "sha256": "05c461ee7e9cd354efe659c1852bd321169308f76ba5bb29f7a7631acf963046"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_43_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_43_all(r)",
+    "sha256": "5750fda200a653a014d241b74c9dedc14f2804743faade0368fd91925962795a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_44_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_44_all(r)",
+    "sha256": "08fd69856575a9ce4b4aa84cefdaa6fd70b05e2c2453d1ec18273f2da8cf5f11"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_45_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_45_all(r)",
+    "sha256": "1bb53cdd346d7080aa49e1b693cabc5d802ca74c0c8bb54f5c8853527ae83da2"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_46_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_46_all(r)",
+    "sha256": "397460cc7bb6a93c1c2ee67cfaf7d251f310e0672af93607049a3ee78eefd646"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_47_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_47_all(r)",
+    "sha256": "aec51b14107e7b07f7c627ab467754330faf556b56cc97563cd5ac31d4ba256b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_48_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_48_all(r)",
+    "sha256": "6ac9978388f3df892a9b2f3f775ce61b3596bb5b558ba0c72ea9d2f9453d9fcb"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_49_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_49_all(r)",
+    "sha256": "63d664b63e3a7da1a327232488d7c8f5ebfc2a8cc05fb537970160028219c50b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_4_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_4_all(r)",
+    "sha256": "5d512e394014dc5707753c6f724acb024d0c445769794a85b893689b2a757fc3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_50_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_50_all(r)",
+    "sha256": "8a8e5b23f13dbd4820cd8ff4a670f5792b3e7e3c4591fb1b8d3e33eb86046af1"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_51_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_51_all(r)",
+    "sha256": "21a34eb18937686fa7225c66e051876f4f4939f111a392082e85b5b9b7d639e6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_52_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_52_all(r)",
+    "sha256": "069e5b77384f8e41c6406438ca31d12b02dd625ea786e2fd7931d0dd0a1217e0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_53_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_53_all(r)",
+    "sha256": "9485feb1cf9c119dbaa5497fd639187ad08192e6de474e21cab2cf95a17969dd"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_54_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_54_all(r)",
+    "sha256": "0305fa94e143e94dc04c67c0f20a155d2f5897d63af414f191ca93d0bbb0a071"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_55_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_55_all(r)",
+    "sha256": "11111e7f0aab841b8a99b1a8732a4a779225abc4582f106a28401e1f48b8b363"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_56_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_56_all(r)",
+    "sha256": "6b9f70e0320721139f49009f2f92fd2be94960de9d19eadeb6e3815ea85f8bac"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_57_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_57_all(r)",
+    "sha256": "52dd1085d91c56cc77d07997d373b272e9e5d2570e4d991f458a69ceebed83e8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_58_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_58_all(r)",
+    "sha256": "badaa9b15822c8c536e1c50c56ebfe149b032fb91fed47adba73dcdf7103284f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_59_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_59_all(r)",
+    "sha256": "577bdead2aca2254545eab7a944bddd450899222855e8a9102a0c53d5fa5d6e4"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_5_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_5_all(r)",
+    "sha256": "97e468badc99d4eccb53fc3cc0a1eaa0621b7d0acfbedf2962bff34acc5dd08b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_60_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_60_all(r)",
+    "sha256": "2fddd2e695ad709166e61aa712aa0d0112575abf11641d397b389678f05fec1b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_61_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_61_all(r)",
+    "sha256": "762b30e70f3505d9677d7c8c0e1aa3b9e8d1573d0e218edaf3223981b948f7ec"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_62_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_62_all(r)",
+    "sha256": "d2b4e35c6a8bdd77f6401382ef442e34c6ca84e5e73d8044ca637d9634d9fb43"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_63_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_63_all(r)",
+    "sha256": "025adc240737feb9e97706ed09ac3206b8a49aa834e8137ad4d90db94c3285b9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_64_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_64_all(r)",
+    "sha256": "014557db2cf4338b0f4aaff4c477d383a80cd7f4ee31fb85178e272e54e5e989"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_65_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_65_all(r)",
+    "sha256": "550da77f20ec95ef0f70546d36a6ecc9f2acdf467e317d8aa4567d67315ec3ce"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_66_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_66_all(r)",
+    "sha256": "a660659da1d278a9416ee9be444104128a3d21f1aa33596eb4a5033898be1762"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_67_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_67_all(r)",
+    "sha256": "11f35c7b272d8af54ccd36c8d5e7dd280278e8f4111e151b5e40c9746490b060"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_68_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_68_all(r)",
+    "sha256": "fc74ce3fc9e10d6e0d4e0b6d36f9c844200f8eeb03d377780113e327d6f5a35f"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_69_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_69_all(r)",
+    "sha256": "8706a1380725e746f399847fc3e11cd6759d5a3f15f4bf2dbfefa87599e8cfbc"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_6_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_6_all(r)",
+    "sha256": "aa51ee63304c35bdad6b218da3eb0c139f198c49e56683aac46f93b9f52968a7"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_70_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_70_all(r)",
+    "sha256": "b11463cc731e6c45ccc1504bb4bccbaca081d0788c8b0be04f30f240c84ffb9a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_71_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_71_all(r)",
+    "sha256": "9dd57e8fbb2ca5da65f50cf996eec469ef2edfca446fe5ebdaca81040e665d23"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_72_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_72_all(r)",
+    "sha256": "a65e8c0109e9d4ef69d1df2c365359d0aa15c9b8919b3397146790adde15a525"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_73_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_73_all(r)",
+    "sha256": "0432bfcc6d5a540ce28855d1f8e6acafe5222bd7f40605b0a18bf3544ec236f8"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_74_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_74_all(r)",
+    "sha256": "5a707cb82691c99b7e4f16ad0f7ee81767c842b5821fd03188de7a3d20a0e6db"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_75_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_75_all(r)",
+    "sha256": "252f76a78778646c9a4c7209f3a4a684cf376243275d4e76c6f20a0cc24244f6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_79_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_79_all(r)",
+    "sha256": "a884fb33074828b95ebb4e1f31653dfd17d26ed8cb82b06f09af5c89cba4f20c"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_7_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_7_all(r)",
+    "sha256": "2dd2d64f834f97c47b46dcb0bb29c5d259713cd66ba0c73d146fb8efa347a04b"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_81_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_81_all(r)",
+    "sha256": "54172bda97d42c9738a5ddbfe8df82b5cce022092237baf2befa4b9ffd633bb0"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_83_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_83_all(r)",
+    "sha256": "221adfb05c4da40e912357f124510910d23539705f8c44c57a108d598092b03d"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_84_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_84_all(r)",
+    "sha256": "d813cdb02a6f5b0352e8cf27623715e832ab1578ac3372e4f103dc4013ed1d2a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_85_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_85_all(r)",
+    "sha256": "216c5a9289f5cab6e8f6ecc900243d80f1b165b2f84075816337d052aec9bb59"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_86_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_86_all(r)",
+    "sha256": "7367de5599d49cfe4c6276e343d5a3b812dbfc881648485e5518beb103e5a56e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_87_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_87_all(r)",
+    "sha256": "4b9f0f1f8414d5bb325c186eed6976dd223e3e966b02faf8b88f38db6b9e5210"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_88_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_88_all(r)",
+    "sha256": "993d0e5c8529d3ef1013fb7b263b2077b89366671a321ee98f6797eb2eca8257"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_89_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_89_all(r)",
+    "sha256": "fed49399d5c4c59a295ca493851f15c82c0574adf64cbe9bd3ecce7b87550824"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_8_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_8_all(r)",
+    "sha256": "3815e3b5ff4af917340db4b42f5ebf0b1a16372ec7cb9c394ad2901e9b498119"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_90_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_90_all(r)",
+    "sha256": "6c68942ee30cd38c0e7f030b2923f791ce0fd600f07c549aa0656d71313afc4e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_91_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_91_all(r)",
+    "sha256": "1e8d799a7daba8ba9d760209225eff03649e00781f64ad4b4c95eaf603db879e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_92_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_92_all(r)",
+    "sha256": "cf2c6c4290ac712108557bc411c6d5737d42bf9ca404a3ca5ff633e06e1aa734"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_93_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_93_all(r)",
+    "sha256": "bb7b70f54b29fb5ee607c4931fcef2453ee14f4309aeb2bf6b2f947b9913f371"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_94_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_94_all(r)",
+    "sha256": "d6f0ceece3ddfa11dc755185b829575c292d1d6eaaa040e51e99e4302f96540e"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_95_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_95_all(r)",
+    "sha256": "cec0454b4eec47f44aee80d695aa6e3cb57870a9b071cddc01001d59e1a901c9"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_96_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_96_all(r)",
+    "sha256": "3219e598386de8a9fecc47a110b77d3740e277f0f144ee0a2e83cf25b8b960c6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_97_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_97_all(r)",
+    "sha256": "c290843e2fa5a07b1ceaa26d1ed4019f2ff6512ad85a0e7f812ba02127e5cdb6"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_98_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_98_all(r)",
+    "sha256": "2b33756bb3f53d5c1f195105ad6e26dadeaf94c7a2553d11b77b04f0ab2ef2a3"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_99_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_99_all(r)",
+    "sha256": "94003aaca7f64e61a2c44102611d0f015d0af036a8d39f5da37cfa3d2331d39a"
+  },
+  {
+    "group": "vqsv6_sprites",
+    "source": "exe/VQSV Liet Hoa Rebuild/app/modules/spr/original/spr_9_all(r)",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv6_sprites/spr_9_all(r)",
+    "sha256": "ccecc8c8b023637ff92c18c259d6777397dfe28be1ba99fb1f58d408f8ba54e8"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s2.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s2.data",
+    "sha256": "fb2f3e8fbaaab78b518efb91778962ce844006645366c2193ba498fcc5eac7c6"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/boss.d",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/boss.d",
+    "sha256": "3f9997b1e61e2ded60b3f7a44fef51ef614f4b00d007f9c95fb5a3bc8b474221"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/4.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/4.png",
+    "sha256": "8ba8afcade2b8847b53a42f4bc49edf6c44d90ffd744ae392926f8938df75ac8"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s0.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s0.png",
+    "sha256": "99c814fa13d8532ca61e66212a14a1d7442bdf4dbdf47bf0fa4c3d67f62abd86"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s5.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s5.png",
+    "sha256": "ec0ae0ab29a9d132a532f8722c4bf92b8976d217c518e1f236bc9cf7f9cc5505"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s3.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s3.png",
+    "sha256": "97ebc37f0e891809d3c5ecbcdcc058509936d43dda8962e54d5d0434d1dd6515"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s4.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s4.data",
+    "sha256": "a4ea34ef7e91d714beb1c7ae024a83610f6980a19c5bc7c4d3157fba7709da26"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/2.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/2.png",
+    "sha256": "b85a6c1cf956027bc713a5ccfb21a30a72e6419d4203c919162f31849f57c6cb"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s4.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s4.png",
+    "sha256": "3c9afc85e0be4fbfb81ac5c2610038dbafe7f6bb3d8a86b5ac0465640cc582e0"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s0.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s0.data",
+    "sha256": "f237934f00716127a8a10a1608a3d4f2bc444dff63952d2b0f82b60bdf73a905"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/3.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/3.png",
+    "sha256": "02fa5b183ea74d664267ce4dd9ae71104eae8e0f2e391a020f2186bff0ceb067"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s1.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s1.data",
+    "sha256": "b3d2cb4efcd368f417fa3ced956bfcef202b0c0299c6e59d4ab38d9a452469ff"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/0.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/0.png",
+    "sha256": "0529935591a462c243a85918585a1bbd9a6032ebb34a975016be45bb1aefcb7f"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s1.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s1.png",
+    "sha256": "a8a6b6cacffdd1bd1655f07cf029d6a77e93068246f354db6f95ad5a78e4a06e"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s5.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s5.data",
+    "sha256": "99953b5b6da00a84b5772102d7566847ea7b16bd72c3aabfd275abe22a5cd151"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s2.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s2.png",
+    "sha256": "f4933d1a1269f5ce77081884e418f10ff6b205c25a767faeebf38a3eb9f34d2a"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/s3.data",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/s3.data",
+    "sha256": "082a5b0b5b5b0475086887f64017e1788281e6f9fbe6c98c82294f05b043d06d"
+  },
+  {
+    "group": "vqsv5_battle",
+    "source": "data/battle/1.png",
+    "path": "reference_vqsv_fix_2_7/effect_sources/vqsv5_battle/1.png",
+    "sha256": "a4de25b821f0f51d1c59598c1d45c06fd16dab90e8dfac13fea0fa6a7de12244"
+  }
+]

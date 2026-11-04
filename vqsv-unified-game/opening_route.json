@@ -1,0 +1,62 @@
+{
+  "route_id": "opening_merge_candidate_v1",
+  "status": "reference_only_superseded",
+  "superseded_reason": "The selected direction is a new story and a new world assembled from both games' source tiles and terrain; the old map-to-map route is not the main route.",
+  "maps": [
+    {
+      "id": "vqsv5:0",
+      "source": "vqsv5",
+      "source_map_id": 0,
+      "role": "opening_town_candidate",
+      "source_asset": "assets/vqsv5/maps/json/map_00.json"
+    },
+    {
+      "id": "vqsv5:1",
+      "source": "vqsv5",
+      "source_map_id": 1,
+      "role": "nearby_town_candidate",
+      "source_asset": "assets/vqsv5/maps/json/map_01.json"
+    },
+    {
+      "id": "vqsv6:0",
+      "source": "vqsv6",
+      "source_map_id": 0,
+      "role": "arrival_area_candidate",
+      "source_asset": "vqsv6_maps/map_0.json",
+      "dimensions_tiles": [23, 23],
+      "tile_size_px": 16
+    }
+  ],
+  "connections": [
+    {
+      "from": "vqsv5:0",
+      "to": "vqsv5:1",
+      "kind": "original_transition_to_be_verified",
+      "source_trigger_tile": null,
+      "destination_spawn_tile": null
+    },
+    {
+      "from": "vqsv5:1",
+      "to": "vqsv6:0",
+      "kind": "new_story_handoff",
+      "trigger": {
+        "type": "story_flag",
+        "flag": "vqsv5_chapter_end"
+      },
+      "source_trigger_tile": [13, 13],
+      "destination_spawn_tile": [11, 11],
+      "coordinate_status": "prototype_candidate",
+      "coordinate_evidence": {
+        "vqsv5_source": "map_01 collision value at [13,13] is 0; open central plaza",
+        "vqsv6_destination": "map_0 kind-2 sparse layer has no record at [11,11]; collision semantics remain unverified"
+      },
+      "provenance": "new integration design, not an original transition"
+    }
+  ],
+  "coordinate_policy": "Use tile-grid coordinates per source map. Keep VQSV5 20px and VQSV6 16px scales independent.",
+  "open_items": [
+    "Confirm that VQSV6 map 0 is the Neil opening area by tracing the original start state.",
+    "Decode original VQSV5 transition/NPC records before treating either VQSV5 connection as original behavior.",
+    "Confirm VQSV6 collision semantics at [11,11] and map tile/object IDs to image resources before rendering the arrival map."
+  ]
+}

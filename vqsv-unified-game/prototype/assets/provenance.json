@@ -1,0 +1,20 @@
+{
+  "tilesets/tileset_00.png": { "source": "VQSV5 assets/vqsv5/maps/tilesets/tileset_00.png", "role": "village buildings and trees", "confidence": "source confirmed" },
+  "tilesets/tileset_00.json": { "source": "VQSV5 assets/vqsv5/maps/tilesets/tileset_00.json", "role": "tile crop coordinates", "confidence": "source confirmed" },
+  "tilesets/tileset_04.png": { "source": "VQSV5 assets/vqsv5/maps/tilesets/tileset_04.png", "role": "grass, path, rocks and forest terrain", "confidence": "source confirmed" },
+  "tilesets/tileset_04.json": { "source": "VQSV5 assets/vqsv5/maps/tilesets/tileset_04.json", "role": "tile crop coordinates", "confidence": "source confirmed" },
+  "tilesets/village_prop_24.png": { "source": "vqsv5/images/data/npc0/24.png", "role": "village notice board", "confidence": "source sprite; placement is new" },
+  "tilesets/village_prop_25.png": { "source": "vqsv5/images/data/npc0/25.png", "role": "village plant", "confidence": "source sprite; placement is new" },
+  "tilesets/village_prop_36.png": { "source": "vqsv5/images/data/npc0/36.png", "role": "broadleaf village tree", "confidence": "source sprite; placement is new" },
+  "characters/kael_walk_sheet.png": { "source": "Original generated pixel-art sprite sheet based on Chapter 1 character description in Kich_Ban_Cot_Truyen_VQSV_Tron_Bo.docx", "role": "Kael protagonist with four facing directions and four walk poses per direction", "confidence": "new project art; visual interpretation of the written story" },
+  "characters/kael_pixel_v2.png": { "source": "Generated using prior Kael sheet and VQSV5 NPC contact sheet as visual references", "role": "Kael prototype sprite adapted to NPC pixel-art proportions", "confidence": "new project art; identity details are design interpretations" },
+  "world/world_map_concept.png": { "source": "Generated from the existing world overview and opening village pixel art as visual references", "role": "illustrated world map backdrop", "confidence": "concept art; region placement and details are design proposals, not playable source map geometry" },
+  "characters/elder_candidate.png": { "source": "vqsv5/images/data/npc0/31.png", "role": "temporary village elder candidate", "confidence": "visual candidate; character mapping unverified" },
+  "characters/villager_74.png": { "source": "vqsv5/images/data/npc0/74.png", "role": "prototype pet caretaker", "confidence": "source image; role and dialogue created for this story, original character identity unverified" },
+  "characters/villager_66.png": { "source": "vqsv5/images/data/npc0/66.png", "role": "prototype villager", "confidence": "source image; role and dialogue created for this story, original character identity unverified" },
+  "characters/villager_75.png": { "source": "vqsv5/images/data/npc0/75.png", "role": "prototype forest scout", "confidence": "source image; role and dialogue created for this story, original character identity unverified" },
+  "pets/electric_cat_candidate.png": { "source": "vqsv6/images/data/img/img_540.png", "role": "temporary visual candidate for story pet Lôi Miêu", "confidence": "source record is VQSV6 Điện Miêu (db[78] -> sprite[154] -> img_540); name and element match the story concept, but a canonical identity link is not confirmed" },
+  "pets/corrupted_beast_placeholder.png": { "source": "vqsv6/images/data/img/img_514.png", "role": "temporary corrupted opponent", "confidence": "source record is VQSV6 Tà Vân Khuyển Thần (db[24] -> sprite[100] -> img_514); corrupted-opponent role is a prototype placeholder" },
+  "pets/vqsv6/*.png": { "source": "VQSV6 images/data/img, selected by prototype/data/pet_roster_v1.json", "role": "source portraits in the pet book", "confidence": "DB to sprite and image table join; stats and evolution details remain under investigation" },
+  "pets/vqsv5/atlas_*/pose_*.png": { "source": "VQSV5 data/npc2 atlas images and .data metadata", "role": "composed animation frames in the pet book", "confidence": "species name and atlas/form mapping decoded from data.d and t.class; frame parts and transforms decoded from metadata and ah.class; sequence purpose remains unresolved" }
+}

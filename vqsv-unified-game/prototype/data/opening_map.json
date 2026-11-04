@@ -1,0 +1,1086 @@
+{
+  "id": "slice01-border-village",
+  "title": "Làng biên giới sương mù",
+  "width": 24,
+  "height": 18,
+  "tileSize": 20,
+  "ground": {
+    "tileset": 4,
+    "tile": 25,
+    "step": 2
+  },
+  "groundVariation": [],
+  "groundDecor": [
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 2,
+      "y": 4
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 3,
+      "y": 5
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 8,
+      "y": 4
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 9,
+      "y": 5
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 14,
+      "y": 4
+    },
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 15,
+      "y": 6
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 20,
+      "y": 4
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 21,
+      "y": 6
+    },
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 3,
+      "y": 8
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 9,
+      "y": 9
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 14,
+      "y": 9
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 20,
+      "y": 9
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 2,
+      "y": 12
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 6,
+      "y": 12
+    },
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 9,
+      "y": 14
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 14,
+      "y": 15
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 19,
+      "y": 12
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 21,
+      "y": 12
+    },
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 6,
+      "y": 15
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 18,
+      "y": 15
+    }
+  ],
+  "paths": [
+    {
+      "x": 1,
+      "y": 10,
+      "width": 22,
+      "height": 1,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 3,
+      "y": 8,
+      "width": 4,
+      "height": 2,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 18,
+      "y": 7,
+      "width": 1,
+      "height": 4,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 10,
+      "y": 9,
+      "width": 4,
+      "height": 3,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 11,
+      "y": 11,
+      "width": 2,
+      "height": 7,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 7,
+      "y": 11,
+      "width": 5,
+      "height": 1,
+      "tileset": 4,
+      "tile": 23
+    },
+    {
+      "x": 13,
+      "y": 12,
+      "width": 5,
+      "height": 1,
+      "tileset": 4,
+      "tile": 23
+    }
+  ],
+  "objects": [
+    {
+      "tileset": 0,
+      "tile": 2,
+      "x": 3,
+      "y": 3
+    },
+    {
+      "tileset": 0,
+      "tile": 2,
+      "x": 5,
+      "y": 3,
+      "flip": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 3,
+      "x": 3,
+      "y": 7,
+      "solid": [
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 3,
+      "x": 5,
+      "y": 7,
+      "flip": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 2,
+      "x": 17,
+      "y": 2
+    },
+    {
+      "tileset": 0,
+      "tile": 2,
+      "x": 19,
+      "y": 2,
+      "flip": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 3,
+      "x": 17,
+      "y": 6,
+      "solid": [
+        [
+          17,
+          5
+        ],
+        [
+          18,
+          5
+        ],
+        [
+          19,
+          5
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          17,
+          6
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          19,
+          6
+        ],
+        [
+          20,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 3,
+      "x": 19,
+      "y": 6,
+      "flip": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 0,
+      "y": 2,
+      "solid": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 3,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 3,
+      "y": 2,
+      "solid": [
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 7,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 7,
+      "y": 2,
+      "solid": [
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 9,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 9,
+      "y": 2,
+      "solid": [
+        [
+          9,
+          1
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          10,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 12,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 12,
+      "y": 2,
+      "solid": [
+        [
+          12,
+          1
+        ],
+        [
+          13,
+          1
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          13,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 15,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 15,
+      "y": 2,
+      "solid": [
+        [
+          15,
+          1
+        ],
+        [
+          16,
+          1
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          16,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 20,
+      "y": 0
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 20,
+      "y": 2,
+      "solid": [
+        [
+          20,
+          1
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          21,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 22,
+      "y": 1
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 22,
+      "y": 3,
+      "solid": [
+        [
+          22,
+          2
+        ],
+        [
+          23,
+          2
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          23,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 0,
+      "y": 3
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 0,
+      "y": 5,
+      "solid": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 1,
+      "y": 6
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 1,
+      "y": 8,
+      "solid": [
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 0,
+      "y": 12
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 0,
+      "y": 14,
+      "solid": [
+        [
+          0,
+          13
+        ],
+        [
+          1,
+          13
+        ],
+        [
+          0,
+          14
+        ],
+        [
+          1,
+          14
+        ]
+      ]
+    },
+    {
+      "asset": "tilesets/village_prop_36.png",
+      "x": 3,
+      "y": 17,
+      "solid": [
+        [
+          3,
+          16
+        ],
+        [
+          4,
+          16
+        ],
+        [
+          3,
+          17
+        ],
+        [
+          4,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 6,
+      "y": 14
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 6,
+      "y": 16,
+      "solid": [
+        [
+          6,
+          15
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          6,
+          16
+        ],
+        [
+          7,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 9,
+      "y": 15
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 9,
+      "y": 17,
+      "solid": [
+        [
+          9,
+          16
+        ],
+        [
+          10,
+          16
+        ],
+        [
+          9,
+          17
+        ],
+        [
+          10,
+          17
+        ]
+      ]
+    },
+    {
+      "asset": "tilesets/village_prop_36.png",
+      "x": 15,
+      "y": 17,
+      "solid": [
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          15,
+          17
+        ],
+        [
+          16,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 18,
+      "y": 14
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 18,
+      "y": 16,
+      "solid": [
+        [
+          18,
+          15
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          18,
+          16
+        ],
+        [
+          19,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 21,
+      "y": 15
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 21,
+      "y": 17,
+      "solid": [
+        [
+          21,
+          16
+        ],
+        [
+          22,
+          16
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          22,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 22,
+      "y": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 22,
+      "y": 6,
+      "solid": [
+        [
+          22,
+          5
+        ],
+        [
+          23,
+          5
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          23,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 22,
+      "y": 7
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 22,
+      "y": 9,
+      "solid": [
+        [
+          22,
+          8
+        ],
+        [
+          23,
+          8
+        ],
+        [
+          22,
+          9
+        ],
+        [
+          23,
+          9
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 22,
+      "y": 12
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 22,
+      "y": 14,
+      "solid": [
+        [
+          22,
+          13
+        ],
+        [
+          23,
+          13
+        ],
+        [
+          22,
+          14
+        ],
+        [
+          23,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 2,
+      "y": 7,
+      "solid": [
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 8,
+      "y": 8,
+      "solid": [
+        [
+          8,
+          8
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 15,
+      "y": 8,
+      "solid": [
+        [
+          15,
+          8
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 20,
+      "y": 8,
+      "solid": [
+        [
+          20,
+          8
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 5,
+      "y": 14,
+      "solid": [
+        [
+          5,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 2,
+      "x": 18,
+      "y": 13,
+      "solid": [
+        [
+          18,
+          13
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 2,
+      "y": 13,
+      "solid": [
+        [
+          2,
+          13
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 8,
+      "y": 14,
+      "solid": [
+        [
+          8,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 15,
+      "y": 13,
+      "solid": [
+        [
+          15,
+          13
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 20,
+      "y": 14,
+      "solid": [
+        [
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "asset": "tilesets/village_prop_24.png",
+      "x": 8,
+      "y": 7
+    },
+    {
+      "asset": "tilesets/village_prop_25.png",
+      "x": 15,
+      "y": 6,
+      "scale": 0.5
+    }
+  ],
+  "entities": {
+    "player": {
+      "x": 11,
+      "y": 11,
+      "asset": "characters/kael_pixel_v2.png",
+      "name": "Kael"
+    },
+    "elder": {
+      "x": 11,
+      "y": 8,
+      "asset": "characters/elder_candidate.png",
+      "name": "Người gác làng"
+    },
+    "encounter": {
+      "x": 20,
+      "y": 10,
+      "name": "Dấu vết Trăng Huyết"
+    },
+    "villagers": [
+      {
+        "id": "herbalist",
+        "name": "Người chăm sóc pet",
+        "x": 8,
+        "y": 11,
+        "asset": "characters/villager_74.png",
+        "dialogue": [
+          "Lôi Miêu cần nghỉ ngơi sau chuyến đi dài.",
+          "Hãy chăm sóc nhau nhé, Kael. Ngoài rừng đang có sương dày."
+        ]
+      },
+      {
+        "id": "villager",
+        "name": "Dân làng",
+        "x": 6,
+        "y": 12,
+        "asset": "characters/villager_66.png",
+        "dialogue": [
+          "Buổi tối ở làng yên tĩnh hơn mọi khi.",
+          "Nếu cháu nghe thấy tiếng động lạ, hãy báo người gác làng."
+        ]
+      },
+      {
+        "id": "scout",
+        "name": "Người đi rừng",
+        "x": 17,
+        "y": 12,
+        "asset": "characters/villager_75.png",
+        "dialogue": [
+          "Sương mù đang tràn xuống con đường phía đông.",
+          "Ta thấy những dấu vết lạ gần bìa rừng. Cẩn thận nhé."
+        ]
+      }
+    ]
+  }
+}

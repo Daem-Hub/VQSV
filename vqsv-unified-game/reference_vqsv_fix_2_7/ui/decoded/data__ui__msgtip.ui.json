@@ -1,0 +1,119 @@
+{
+  "format": "ui_layout",
+  "header": {
+    "magic_or_flags": -1,
+    "version": 1
+  },
+  "root": {
+    "type": "root_container",
+    "h": 0,
+    "id": 0,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h_px": 0,
+    "navigation": [],
+    "styles": [],
+    "children": [
+      {
+        "type": "visual",
+        "id": 1,
+        "x": 51,
+        "y": 134,
+        "w": 150,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": 0,
+        "image_ref": null,
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": 32768,
+        "alt_image_ref": {
+          "id": 124,
+          "mode": 2
+        },
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 2,
+        "x": 56,
+        "y": 137,
+        "w": 138,
+        "h": -1,
+        "text": "",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -16777216,
+        "image_ref": null,
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914315,
+        "alt_image_ref": null,
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 3,
+        "x": 218,
+        "y": 298,
+        "w": 23,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": 0,
+        "image_ref": null,
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": 32768,
+        "alt_image_ref": {
+          "id": 133,
+          "mode": 2
+        },
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 4,
+        "x": 1,
+        "y": 298,
+        "w": 23,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": 0,
+        "image_ref": null,
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": 32768,
+        "alt_image_ref": {
+          "id": 75,
+          "mode": 2
+        },
+        "a_byte": -1,
+        "b_byte": -1
+      }
+    ]
+  },
+  "bytes_consumed": 215,
+  "bytes_total": 215
+}

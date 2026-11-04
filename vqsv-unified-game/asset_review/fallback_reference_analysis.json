@@ -1,0 +1,20 @@
+{
+  "fallback_sha256": "508c7d6e04fee71e258a1947f12c1ed523a5fa8e071d807896bc3a024756573c",
+  "evidence_symbols": [
+    "vbd_VqsvBattleAnimationTables_effectRow",
+    "$this.$p7EffectRow = vbd_VqsvBattleAnimationTables_effectRow",
+    "effect.mid",
+    "speffect.mid",
+    "bufDebuf.mid"
+  ],
+  "effect_rows_original": 70,
+  "effect_rows_fix": 70,
+  "skill_rows_linked": 70,
+  "different_skill_rows": 61,
+  "save_bytes_base64": 4096,
+  "save_bytes_decoded": 3072,
+  "save_ends_with_newline": false,
+  "save_declared_actors": 108,
+  "save_actor_rows_present": 51,
+  "save_note": "Input ends mid-line and actor count does not match; do not import as a complete save."
+}

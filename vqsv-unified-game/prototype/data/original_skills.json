@@ -1,0 +1,5406 @@
+{
+  "records": [
+    {
+      "id": "vqsv5-skill-0",
+      "game": "VQSV5",
+      "source_index": 0,
+      "name": "Triền Nhiễu",
+      "source_label": "Cỏ Hệ Kỹ năng bậc 1",
+      "raw_fields": [
+        15,
+        10,
+        4,
+        5
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-1",
+      "game": "VQSV5",
+      "source_index": 1,
+      "name": "Phong Lợi Tiêm Thứ",
+      "source_label": "Cỏ Hệ Kỹ năng bậc 2",
+      "raw_fields": [
+        18,
+        13,
+        8,
+        5
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-2",
+      "game": "VQSV5",
+      "source_index": 2,
+      "name": "Bạo Tạc Chủng Tử",
+      "source_label": "Cỏ Hệ Kỹ năng bậc 3",
+      "raw_fields": [
+        21,
+        16,
+        12,
+        5
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-3",
+      "game": "VQSV5",
+      "source_index": 3,
+      "name": "Phi Diệp Đao Phong",
+      "source_label": "Cỏ Hệ Kỹ năng bậc 4",
+      "raw_fields": [
+        23,
+        19,
+        16,
+        5
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-4",
+      "game": "VQSV5",
+      "source_index": 4,
+      "name": "Thực Vật Phong Bạo",
+      "source_label": "Cỏ Hệ Kỹ năng bậc 5",
+      "raw_fields": [
+        27,
+        25,
+        24,
+        5
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-5",
+      "game": "VQSV5",
+      "source_index": 5,
+      "name": "Thiết Chuy",
+      "source_label": "Kim Loại Hệ Kỹ năng bậc 1",
+      "raw_fields": [
+        13,
+        10,
+        4,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-6",
+      "game": "VQSV5",
+      "source_index": 6,
+      "name": "Thiết Phù Đồ",
+      "source_label": "Kim Loại Hệ Kỹ năng bậc 2",
+      "raw_fields": [
+        16,
+        13,
+        8,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-7",
+      "game": "VQSV5",
+      "source_index": 7,
+      "name": "Bạo Liệt Vũ",
+      "source_label": "Kim Loại Hệ Kỹ năng bậc 3",
+      "raw_fields": [
+        19,
+        16,
+        12,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-8",
+      "game": "VQSV5",
+      "source_index": 8,
+      "name": "Toản Thạch Thiết Cát",
+      "source_label": "Kim Loại Hệ Kỹ năng bậc 4",
+      "raw_fields": [
+        21,
+        19,
+        16,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-9",
+      "game": "VQSV5",
+      "source_index": 9,
+      "name": "Kim Loại Liệt Trảm",
+      "source_label": "Kim Loại Hệ Kỹ năng bậc 5",
+      "raw_fields": [
+        25,
+        25,
+        24,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-10",
+      "game": "VQSV5",
+      "source_index": 10,
+      "name": "Phi Tường Trảm",
+      "source_label": "Phi Hành Hệ Kỹ năng bậc 1",
+      "raw_fields": [
+        13,
+        10,
+        4,
+        4
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-11",
+      "game": "VQSV5",
+      "source_index": 11,
+      "name": "Bạo Phong Toàn Trận",
+      "source_label": "Phi Hành Hệ Kỹ năng bậc 2",
+      "raw_fields": [
+        16,
+        13,
+        8,
+        4
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-12",
+      "game": "VQSV5",
+      "source_index": 12,
+      "name": "Tật Phong Tốc Hàng",
+      "source_label": "Phi Hành Hệ Kỹ năng bậc 3",
+      "raw_fields": [
+        19,
+        16,
+        12,
+        4
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-13",
+      "game": "VQSV5",
+      "source_index": 13,
+      "name": "Thánh Linh Khoan Thứ",
+      "source_label": "Phi Hành Hệ Kỹ năng bậc 4",
+      "raw_fields": [
+        21,
+        19,
+        16,
+        4
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-14",
+      "game": "VQSV5",
+      "source_index": 14,
+      "name": "Thiên Nộ",
+      "source_label": "Phi Hành hệ kỹ năng bậc 5",
+      "raw_fields": [
+        25,
+        25,
+        24,
+        4
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-15",
+      "game": "VQSV5",
+      "source_index": 15,
+      "name": "Phác Giảo",
+      "source_label": "Mãnh Thú hệ Kỹ năng bậc 1",
+      "raw_fields": [
+        13,
+        10,
+        4,
+        2
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-16",
+      "game": "VQSV5",
+      "source_index": 16,
+      "name": "Tê Liệt Kích",
+      "source_label": "Mãnh Thú hệ Kỹ năng bậc 2",
+      "raw_fields": [
+        16,
+        13,
+        8,
+        2
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-17",
+      "game": "VQSV5",
+      "source_index": 17,
+      "name": "Nộ Ý Cuồng Bạo",
+      "source_label": "Mãnh Thú hệ Kỹ năng bậc 3",
+      "raw_fields": [
+        19,
+        16,
+        12,
+        2
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-18",
+      "game": "VQSV5",
+      "source_index": 18,
+      "name": "Tứ Ngược Trùng Phong",
+      "source_label": "Mãnh Thú hệ Kỹ năng bậc 4",
+      "raw_fields": [
+        21,
+        19,
+        16,
+        2
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-19",
+      "game": "VQSV5",
+      "source_index": 19,
+      "name": "Cuồng Bạo Tê Hống",
+      "source_label": "Mãnh Thú hệ Kỹ năng bậc 5",
+      "raw_fields": [
+        25,
+        25,
+        24,
+        2
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-20",
+      "game": "VQSV5",
+      "source_index": 20,
+      "name": "Thủy Trụ",
+      "source_label": "Hải Dương hệ Kỹ năng bậc 1",
+      "raw_fields": [
+        13,
+        10,
+        4,
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-21",
+      "game": "VQSV5",
+      "source_index": 21,
+      "name": "Tiên Xạ Thủy Lãng",
+      "source_label": "Hải Dương hệ Kỹ năng bậc 2",
+      "raw_fields": [
+        16,
+        13,
+        8,
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-22",
+      "game": "VQSV5",
+      "source_index": 22,
+      "name": "Thủy Cầu Áp Sát",
+      "source_label": "Hải Dương hệ Kỹ năng bậc 3",
+      "raw_fields": [
+        19,
+        16,
+        12,
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-23",
+      "game": "VQSV5",
+      "source_index": 23,
+      "name": "Phún Xạ Thủy Trụ",
+      "source_label": "Hải Dương hệ Kỹ năng bậc 4",
+      "raw_fields": [
+        21,
+        19,
+        16,
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-24",
+      "game": "VQSV5",
+      "source_index": 24,
+      "name": "Hải Thần Phục Cừu",
+      "source_label": "Hải Dương hệ Kỹ năng bậc 5",
+      "raw_fields": [
+        25,
+        25,
+        24,
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-25",
+      "game": "VQSV5",
+      "source_index": 25,
+      "name": "Công Kích thông dụng",
+      "source_label": "Kỹ năng công kích cơ bản",
+      "raw_fields": [
+        8,
+        0,
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-26",
+      "game": "VQSV5",
+      "source_index": 26,
+      "name": "Tàn quân",
+      "source_label": "Giảm 25% độ trung thành của sủng vật công kích kẻ địch",
+      "raw_fields": [
+        18,
+        40,
+        100,
+        25
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-27",
+      "game": "VQSV5",
+      "source_index": 27,
+      "name": "Trị liệu sơ cấp",
+      "source_label": "Hồi phục 70 điểm sinh mệnh",
+      "raw_fields": [
+        7,
+        10
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-28",
+      "game": "VQSV5",
+      "source_index": 28,
+      "name": "Trị liệu chuyên nghiệp",
+      "source_label": "Hồi phục 200 điểm sinh mệnh",
+      "raw_fields": [
+        20,
+        10
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-29",
+      "game": "VQSV5",
+      "source_index": 29,
+      "name": "Tử Vong Chi Xúc",
+      "source_label": "Tiêu hao toàn bộ năng lượng hiện tại một lần duy nhất cũng như chuyển hóa thương tổn",
+      "raw_fields": [
+        2,
+        1
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-30",
+      "game": "VQSV5",
+      "source_index": 30,
+      "name": "Kỹ năng Phong Bế",
+      "source_label": "3 hiệp giao đấu không thể sử dụng nhiều hơn 3 kỹ năng công kích",
+      "raw_fields": [
+        8,
+        50,
+        100,
+        6
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-31",
+      "game": "VQSV5",
+      "source_index": 31,
+      "name": "Độc Dịch Công Kích",
+      "source_label": "Nâng cao hiệu quả Hủ Thực của sủng vật Thực Vật hệ",
+      "raw_fields": [
+        3
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-32",
+      "game": "VQSV5",
+      "source_index": 32,
+      "name": "Tiêm Nha Lợi Xỉ",
+      "source_label": "Kéo dài hiệp đấu duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-33",
+      "game": "VQSV5",
+      "source_index": 33,
+      "name": "Cương Cân Thiết Cốt",
+      "source_label": "Nâng cao hiệu quả phòng ngự của sủng vật Kim Loại hệ",
+      "raw_fields": [
+        80,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-34",
+      "game": "VQSV5",
+      "source_index": 34,
+      "name": "Tinh Thần Công Kích",
+      "source_label": "Sủng vật Phi Hành hệ công kích đồng thời có thể giảm bớt năng lượng đối thủ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-35",
+      "game": "VQSV5",
+      "source_index": 35,
+      "name": "Triều Tịch Năng Lượng",
+      "source_label": "Sủng vật Hải Dương hệ công kích có thể giảm một phần tiêu hao năng lượng",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-36",
+      "game": "VQSV5",
+      "source_index": 36,
+      "name": "Kinh nghiệm đa dạng",
+      "source_label": "Đạt được 2 lần kinh nghiệm (có thể đồng thời sử dụng kinh nghiệm phong phú)",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-37",
+      "game": "VQSV5",
+      "source_index": 37,
+      "name": "Kinh nghiệm phong phú",
+      "source_label": "Đạt được 3 lần kinh nghiệm (có thể đồng thời sử dụng nhiều kinh nghiệm hơn)",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-38",
+      "game": "VQSV5",
+      "source_index": 38,
+      "name": "Trọng Sinh Chi Tâm",
+      "source_label": "Sau khi tử vong có 70% tỷ lệ hồi sinh",
+      "raw_fields": [
+        50,
+        60
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-39",
+      "game": "VQSV5",
+      "source_index": 39,
+      "name": "Hạnh Vận Chi Tinh",
+      "source_label": "Nâng cao tỷ lệ gặp được sủng vật hiếm",
+      "raw_fields": [
+        70
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-40",
+      "game": "VQSV5",
+      "source_index": 40,
+      "name": "Đồng bạn trung thành",
+      "source_label": "Lòng trung thành của sủng vật vĩnh viễn không giảm",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-41",
+      "game": "VQSV5",
+      "source_index": 41,
+      "name": "Thân Hòa Thiên Sử",
+      "source_label": "Bắt được kẻ địch thất bại cũng không chạy trốn [bắt sủng chuyên dụng]",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-42",
+      "game": "VQSV5",
+      "source_index": 42,
+      "name": "Đào tẩu chuyên nghiệp",
+      "source_label": "Chạy trốn nhất định thành công",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-43",
+      "game": "VQSV5",
+      "source_index": 43,
+      "name": "Hoa Thảo Ý Chí",
+      "source_label": "Chiến đấu trên khu hoa viên là thế mạnh có lợi cho sủng vật Thực Vật hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-44",
+      "game": "VQSV5",
+      "source_index": 44,
+      "name": "Kim Loại Ý Chí",
+      "source_label": "Chiến đấu ở khu di tích là thế mạnh có lợi cho sủng vật Kim Loại hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-45",
+      "game": "VQSV5",
+      "source_index": 45,
+      "name": "Phi Hành Ý Chí",
+      "source_label": "Chiến đấu trên không trung là thế mạnh có lợi cho sủng vật Phi Hành hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-46",
+      "game": "VQSV5",
+      "source_index": 46,
+      "name": "Mãnh Thú Ý Chí",
+      "source_label": "Chiến đấu ở vùng đồng bằng là thế mạnh có lợi cho sủng vật Mãnh Thú hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-47",
+      "game": "VQSV5",
+      "source_index": 47,
+      "name": "Hải Dương Ý Chí",
+      "source_label": "Chiến đấu trên đại dương là thế mạnh có lợi cho sủng vật Hải Dương hệ",
+      "raw_fields": [
+        0,
+        0
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv5-skill-48",
+      "game": "VQSV5",
+      "source_index": 48,
+      "name": "Thế Thân Mộc Ngẫu",
+      "source_label": "Đã bị công kích giảm 30% tỷ lệ thương tổn ",
+      "raw_fields": [
+        30
+      ],
+      "note": "Số liệu gốc chưa giải nghĩa; chưa nối pet hoặc hiệu ứng."
+    },
+    {
+      "id": "vqsv6-skill-0",
+      "game": "VQSV6",
+      "source_index": 0,
+      "name": "Hỏa trảo",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        0,
+        117,
+        529,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-1",
+      "game": "VQSV6",
+      "source_index": 1,
+      "name": "Dương viêm",
+      "description": "Thương tổn thấp tăng thêm hiệu quả đốt cháy, mỗi hiệp sẽ giảm bớt trị số sinh mạng nhất định, duy trì liên tục 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        0,
+        118,
+        530,
+        50,
+        0,
+        45,
+        2,
+        0,
+        4,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-2",
+      "game": "VQSV6",
+      "source_index": 2,
+      "name": "Diễm kích",
+      "description": "Thương tổn thấp, cũng có 10% xác suất lâm vào trạng thái Mê Muội 2 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        0,
+        119,
+        531,
+        100,
+        0,
+        45,
+        2,
+        1,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          14,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          2,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          20,
+          3,
+          1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-3",
+      "game": "VQSV6",
+      "source_index": 3,
+      "name": "Hỏa Vân triệu",
+      "description": "Thương tổn thấp, nếu đối phương đang cháy thì sẽ gia tăng được thương tổn trên người đối phương.",
+      "max_uses": 30,
+      "raw_fields": [
+        0,
+        120,
+        532,
+        100,
+        1,
+        30,
+        0,
+        -1,
+        120,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          4,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-4",
+      "game": "VQSV6",
+      "source_index": 4,
+      "name": "Thiên Hỏa tế",
+      "description": "Tăng khả năng phòng ngự 30%, vòng chiến đấu tiếp theo sẽ gia tăng thương tổn.",
+      "max_uses": 10,
+      "raw_fields": [
+        0,
+        121,
+        533,
+        0,
+        1,
+        10,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          30,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-5",
+      "game": "VQSV6",
+      "source_index": 5,
+      "name": "Viêm lôi phá",
+      "description": "Khả năng phòng ngự giảm xuống 50%, Gia tăng tỷ lệ thương tổn 50%, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        0,
+        122,
+        534,
+        0,
+        1,
+        10,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-6",
+      "game": "VQSV6",
+      "source_index": 6,
+      "name": "Hỏa diễm đao",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        0,
+        123,
+        535,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          5,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-7",
+      "game": "VQSV6",
+      "source_index": 7,
+      "name": "Chước nhiệt chi xúc",
+      "description": "Thương tổn thấp làm tăng hiệu quả đốt cháy, mỗi hiệp giảm bớt được trị số sinh mạng nhất định, duy trì liên tục 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        0,
+        124,
+        536,
+        75,
+        2,
+        30,
+        2,
+        0,
+        3,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          6,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-8",
+      "game": "VQSV6",
+      "source_index": 8,
+      "name": "Liệt diễm phong bạo",
+      "description": "Thương tổn cao, cũng có 20% xác suất lâm vào trạng thái Mê Muội 2 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        0,
+        125,
+        537,
+        200,
+        3,
+        15,
+        2,
+        1,
+        20,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          14,
+          0,
+          0,
+          -1,
+          1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          7,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          20,
+          3,
+          1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-9",
+      "game": "VQSV6",
+      "source_index": 9,
+      "name": "Vĩnh hằng hỏa ảnh",
+      "description": "Thương tổn cao, nếu kẻ địch đang cháy thì tỷ lệ thương tổn trên người sẽ gia tăng.",
+      "max_uses": 15,
+      "raw_fields": [
+        0,
+        126,
+        538,
+        200,
+        3,
+        15,
+        0,
+        -1,
+        250,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          20,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          20,
+          8,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-10",
+      "game": "VQSV6",
+      "source_index": 10,
+      "name": "Diệp Toàn",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        1,
+        127,
+        539,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-11",
+      "game": "VQSV6",
+      "source_index": 11,
+      "name": "Quang phản",
+      "description": "Thương tổn thấp, có thể khôi phục trị số sinh mạng nhất định.",
+      "max_uses": 45,
+      "raw_fields": [
+        1,
+        128,
+        540,
+        90,
+        0,
+        45,
+        0,
+        -1,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          25,
+          9,
+          5,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-12",
+      "game": "VQSV6",
+      "source_index": 12,
+      "name": "Đằng Phược",
+      "description": "Thương tổn thấp, cũng đem Quấn Quanh 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        1,
+        129,
+        541,
+        50,
+        0,
+        45,
+        2,
+        2,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          3,
+          3,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-13",
+      "game": "VQSV6",
+      "source_index": 13,
+      "name": "Thảo Chủng",
+      "description": "Thương tổn thấp, kẻ địch rơi vào trạng thái Thực Loại, sau 2 hiệp tạo thành thương tổn tương đối cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        1,
+        130,
+        542,
+        50,
+        1,
+        30,
+        2,
+        3,
+        150,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          4,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-14",
+      "game": "VQSV6",
+      "source_index": 14,
+      "name": "Đằng chi bích lũy",
+      "description": "Gia tăng khả năng phòng ngự 30% thương tổn cũng dội ngược trở lại, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        1,
+        131,
+        543,
+        0,
+        1,
+        10,
+        1,
+        2,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          5,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-15",
+      "game": "VQSV6",
+      "source_index": 15,
+      "name": "Thảo nguyện thuật",
+      "description": "Mỗi hiệp khôi phục trị số sinh mạng nhất định, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        1,
+        132,
+        544,
+        0,
+        1,
+        10,
+        1,
+        3,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          33,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          33,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-16",
+      "game": "VQSV6",
+      "source_index": 16,
+      "name": "Châm Diệp Trảm",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        1,
+        133,
+        545,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          7,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-17",
+      "game": "VQSV6",
+      "source_index": 17,
+      "name": "Diệp chi ân huệ",
+      "description": "Thương tổn ở mức độ trung bình, cũng có thể khôi phục trị số sinh mạng nhất định.",
+      "max_uses": 30,
+      "raw_fields": [
+        1,
+        134,
+        546,
+        130,
+        2,
+        30,
+        0,
+        -1,
+        40,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          8,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          25,
+          9,
+          5,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-18",
+      "game": "VQSV6",
+      "source_index": 18,
+      "name": "Đằng mạn triền nhiễu",
+      "description": "Thương tổn tương đối cao, cũng đem Quấn Quanh 3 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        1,
+        135,
+        547,
+        150,
+        3,
+        15,
+        2,
+        2,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          10,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-19",
+      "game": "VQSV6",
+      "source_index": 19,
+      "name": "Quang hợp hiệu ứng",
+      "description": "Thương tổn tương đối cao, kẻ địch rơi vào trạng thái Thực Loại, sau 2 hiệp tạo thành Thương tổn cao.",
+      "max_uses": 15,
+      "raw_fields": [
+        1,
+        136,
+        548,
+        150,
+        3,
+        15,
+        2,
+        3,
+        200,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          21,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          21,
+          11,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-20",
+      "game": "VQSV6",
+      "source_index": 20,
+      "name": "Hất bụi",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        2,
+        137,
+        549,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-21",
+      "game": "VQSV6",
+      "source_index": 21,
+      "name": "Thổ thuẫn",
+      "description": "Thương tổn thấp, có khả năng tự gia tăng phòng ngự 10%(có thể chất chồng).",
+      "max_uses": 45,
+      "raw_fields": [
+        2,
+        138,
+        550,
+        80,
+        0,
+        45,
+        1,
+        4,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          5,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          1,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          5,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          22,
+          2,
+          0,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-22",
+      "game": "VQSV6",
+      "source_index": 22,
+      "name": "Bão cát",
+      "description": "Thương tổn thấp cũng có 25% xác suất lâm vào trạng thái Mê Muội 2 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        2,
+        139,
+        551,
+        50,
+        0,
+        45,
+        2,
+        1,
+        25,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          3,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          22,
+          4,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-23",
+      "game": "VQSV6",
+      "source_index": 23,
+      "name": "Nham băng",
+      "description": "Thương tổn thấp, kẻ địch rơi vào trạng thái Mê Muội, tạo thành thương tổn cực lớn.",
+      "max_uses": 30,
+      "raw_fields": [
+        2,
+        140,
+        552,
+        100,
+        1,
+        30,
+        0,
+        -1,
+        250,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          5,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-24",
+      "game": "VQSV6",
+      "source_index": 24,
+      "name": "Người bảo vệ Địa Giới",
+      "description": "Giải phóng những vùng có trạng thái dị thường, mỗi hiệp khôi phục trị số sinh mạng nhất định, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        2,
+        141,
+        553,
+        0,
+        1,
+        10,
+        1,
+        13,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          6,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-25",
+      "game": "VQSV6",
+      "source_index": 25,
+      "name": "Thạch phu thuật",
+      "description": "Giải phóng những vùng có trạng thái dị thường, 3 hiệp có khả năng miễn dịch ở những nơi có trạng thái dị thường.",
+      "max_uses": 10,
+      "raw_fields": [
+        2,
+        142,
+        554,
+        0,
+        1,
+        10,
+        1,
+        14,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-26",
+      "game": "VQSV6",
+      "source_index": 26,
+      "name": "Nham bạo",
+      "description": "Thương tổn ở mức độ trung bình.",
+      "max_uses": 30,
+      "raw_fields": [
+        2,
+        143,
+        555,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          6,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-27",
+      "game": "VQSV6",
+      "source_index": 27,
+      "name": "Hàng rào cát đá",
+      "description": "Thương tổn thấp, khả năng tự gia tăng phòng ngự 10%(có thể chất chồng).",
+      "max_uses": 30,
+      "raw_fields": [
+        2,
+        144,
+        556,
+        100,
+        2,
+        30,
+        1,
+        4,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          7,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          32,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-28",
+      "game": "VQSV6",
+      "source_index": 28,
+      "name": "Bão cát",
+      "description": "Thương tổn ở mức độ trung bình cũng có 25% xác suất lâm vào trạng thái Mê Muội 2 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        2,
+        145,
+        557,
+        150,
+        3,
+        15,
+        2,
+        1,
+        25,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          5,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          22,
+          4,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-29",
+      "game": "VQSV6",
+      "source_index": 29,
+      "name": "Thổ Chi Loạn Vũ",
+      "description": "Thương tổn tương đối cao, kẻ địch rơi vào trạng thái Mê Muội, Gia tăng tỷ lệ thương tổn.",
+      "max_uses": 15,
+      "raw_fields": [
+        2,
+        146,
+        558,
+        180,
+        3,
+        15,
+        0,
+        -1,
+        300,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          22,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          22,
+          8,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-30",
+      "game": "VQSV6",
+      "source_index": 30,
+      "name": "Bong bóng",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        3,
+        147,
+        559,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-31",
+      "game": "VQSV6",
+      "source_index": 31,
+      "name": "Băng lao",
+      "description": "Thương tổn thấp cũng làm giảm tỉ lệ đánh trúng mục tiêu, duy trì liên tục 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        3,
+        148,
+        560,
+        60,
+        0,
+        45,
+        2,
+        4,
+        1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          31,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-32",
+      "game": "VQSV6",
+      "source_index": 32,
+      "name": "Tuyết ảnh",
+      "description": "Thương tổn thấp cũng làm giảm hiệu quả công kích kẻ địch 10% Linh Xảo, duy trì liên tục 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        3,
+        149,
+        561,
+        60,
+        0,
+        45,
+        2,
+        5,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          2,
+          9,
+          -1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-33",
+      "game": "VQSV6",
+      "source_index": 33,
+      "name": "Thủy trụ",
+      "description": "Thương tổn thấp cũng làm giảm hiệu quả công kích kẻ địch 10% thương tổn, duy trì liên tục 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        3,
+        150,
+        562,
+        100,
+        1,
+        30,
+        2,
+        6,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          3,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-34",
+      "game": "VQSV6",
+      "source_index": 34,
+      "name": "Thuật cầu nguyện",
+      "description": "30% xác suất bắn ngược thương tổn, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        3,
+        151,
+        563,
+        0,
+        1,
+        10,
+        1,
+        5,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          4,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-35",
+      "game": "VQSV6",
+      "source_index": 35,
+      "name": "Thủy bích",
+      "description": "50% xác suất gây thương tổn cho kẻ địch bị giảm phân nửa, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        3,
+        152,
+        564,
+        0,
+        1,
+        10,
+        1,
+        6,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          17,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-36",
+      "game": "VQSV6",
+      "source_index": 36,
+      "name": "Bạo Phong Tuyết",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        3,
+        153,
+        565,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          5,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-37",
+      "game": "VQSV6",
+      "source_index": 37,
+      "name": "Lá chắn gió tuyết",
+      "description": "Thương tổn thấp cũng làm giảm tỉ lệ đánh trúng mục tiêu, duy trì liên tục 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        3,
+        154,
+        566,
+        100,
+        2,
+        30,
+        2,
+        4,
+        2,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          6,
+          4,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          31,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          6,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-38",
+      "game": "VQSV6",
+      "source_index": 38,
+      "name": "Băng Phong Hãm Tịnh",
+      "description": "Thương tổn tương đối cao cũng làm giảm hiệu quả công kích kẻ địch 10% Linh Xảo, duy trì liên tục 3 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        3,
+        155,
+        567,
+        150,
+        3,
+        15,
+        2,
+        5,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          7,
+          4,
+          -1,
+          0,
+          0,
+          1,
+          7,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-39",
+      "game": "VQSV6",
+      "source_index": 39,
+      "name": "Ray lạnh",
+      "description": "Thương tổn tương đối cao cũng làm giảm hiệu quả công kích kẻ địch 10% thương tổn, duy trì liên tục 3 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        3,
+        156,
+        568,
+        150,
+        3,
+        15,
+        2,
+        6,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          23,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          23,
+          8,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-40",
+      "game": "VQSV6",
+      "source_index": 40,
+      "name": "Điện giật",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        4,
+        157,
+        569,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-41",
+      "game": "VQSV6",
+      "source_index": 41,
+      "name": "Lôi thiểm",
+      "description": "Thương tổn thấp cũng làm giảm 10% xác suất làm kẻ địch Tê Liệt 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        4,
+        158,
+        570,
+        90,
+        0,
+        45,
+        2,
+        10,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          1,
+          8,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-42",
+      "game": "VQSV6",
+      "source_index": 42,
+      "name": "Nạp điện",
+      "description": "Thương tổn thấp, khả năng tự Linh Xảo gia tăng 5%.",
+      "max_uses": 45,
+      "raw_fields": [
+        4,
+        159,
+        571,
+        90,
+        0,
+        45,
+        1,
+        7,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          0,
+          3,
+          -1,
+          0,
+          1,
+          0,
+          32,
+          0,
+          1,
+          -1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-43",
+      "game": "VQSV6",
+      "source_index": 43,
+      "name": "Sóng điện từ",
+      "description": "Thương tổn thấp cũng có thể làm giảm mặt lợi ích của bản thân đối với kẻ địch.",
+      "max_uses": 30,
+      "raw_fields": [
+        4,
+        160,
+        572,
+        100,
+        1,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          3,
+          4,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-44",
+      "game": "VQSV6",
+      "source_index": 44,
+      "name": "Đoạt mệnh cao áp",
+      "description": "Số lần tiêu hao kỹ năng tăng gấp bội, Gia tăng tỷ lệ thương tổn 30%, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        4,
+        161,
+        573,
+        0,
+        1,
+        10,
+        1,
+        8,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          19,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          27,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          19,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-45",
+      "game": "VQSV6",
+      "source_index": 45,
+      "name": "Điện năng chuyển đổi",
+      "description": "Linh Xảo gia tăng 50%, phòng ngự giảm xuống 50%, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        4,
+        162,
+        574,
+        0,
+        1,
+        10,
+        1,
+        9,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          19,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          27,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          19,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-46",
+      "game": "VQSV6",
+      "source_index": 46,
+      "name": "Tia lửa điện",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        4,
+        163,
+        575,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          4,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-47",
+      "game": "VQSV6",
+      "source_index": 47,
+      "name": "Chùm sấm sét",
+      "description": "Thương tổn ở mức độ trung bình cũng giảm 10% xác suất làm kẻ địch Tê Liệt 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        4,
+        164,
+        576,
+        130,
+        2,
+        30,
+        2,
+        10,
+        10,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          5,
+          10,
+          -1,
+          0,
+          0,
+          1,
+          4,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-48",
+      "game": "VQSV6",
+      "source_index": 48,
+      "name": "Điện quang thạch hỏa",
+      "description": "Thương tổn ở mức độ trung bình, Linh Xảo gia tăng 5%.",
+      "max_uses": 15,
+      "raw_fields": [
+        4,
+        165,
+        577,
+        130,
+        3,
+        15,
+        1,
+        7,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          4,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          32,
+          0,
+          1,
+          -1,
+          0,
+          1,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-49",
+      "game": "VQSV6",
+      "source_index": 49,
+      "name": "Cảm ứng điện từ",
+      "description": "Thương tổn cao cũng có thể làm giảm mặt lợi ích của bản thân đối với kẻ địch.",
+      "max_uses": 15,
+      "raw_fields": [
+        4,
+        166,
+        578,
+        180,
+        3,
+        15,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          24,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          24,
+          6,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-50",
+      "game": "VQSV6",
+      "source_index": 50,
+      "name": "Ảnh thứ",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        5,
+        167,
+        579,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          0,
+          5,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-51",
+      "game": "VQSV6",
+      "source_index": 51,
+      "name": "Chú oán",
+      "description": "Thương tổn thấp cũng làm giảm hiệu quả công kích kẻ địch 20% phòng ngự, duy trì liên tục 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        5,
+        168,
+        580,
+        80,
+        0,
+        45,
+        2,
+        7,
+        20,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          1,
+          4,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-52",
+      "game": "VQSV6",
+      "source_index": 52,
+      "name": "Quỷ độc",
+      "description": "Thương tổn thấp cũng có một ít xác suất khôi phục giá trị sinh mệnh.",
+      "max_uses": 45,
+      "raw_fields": [
+        5,
+        169,
+        581,
+        80,
+        0,
+        45,
+        0,
+        -1,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          2,
+          7,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          25,
+          3,
+          4,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-53",
+      "game": "VQSV6",
+      "source_index": 53,
+      "name": "Cơn ác mộng",
+      "description": "Thương tổn nhất định, giá trị sinh mệnh kẻ địch càng thấp càng thương tổn cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        5,
+        170,
+        582,
+        200,
+        1,
+        30,
+        0,
+        -1,
+        200,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          2,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          4,
+          2,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-54",
+      "game": "VQSV6",
+      "source_index": 54,
+      "name": "Mị ảnh",
+      "description": "40% xác suất lực công kích của kẻ địch bị dội ngược trở lại, duy trì liên tục 4 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        5,
+        171,
+        583,
+        0,
+        1,
+        10,
+        2,
+        8,
+        40,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          25,
+          5,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-55",
+      "game": "VQSV6",
+      "source_index": 55,
+      "name": "Hỗn loạn",
+      "description": "Không bị khống chế, có thể tự do hành động.",
+      "max_uses": 10,
+      "raw_fields": [
+        5,
+        172,
+        584,
+        0,
+        1,
+        10,
+        2,
+        9,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          1,
+          12,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          1,
+          12,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-56",
+      "game": "VQSV6",
+      "source_index": 56,
+      "name": "Độc ảnh thứ",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        5,
+        173,
+        585,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          6,
+          3,
+          -1,
+          0,
+          0,
+          1,
+          8,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          9,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-57",
+      "game": "VQSV6",
+      "source_index": 57,
+      "name": "Chú Phược Quỷ Lao",
+      "description": "Thương tổn ở mức độ trung bình cũng làm giảm hiệu quả công kích kẻ địch 20% phòng ngự, duy trì liên tục 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        5,
+        174,
+        586,
+        120,
+        2,
+        30,
+        2,
+        7,
+        20,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          14,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          7,
+          3,
+          -1,
+          0,
+          0,
+          1,
+          14,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-58",
+      "game": "VQSV6",
+      "source_index": 58,
+      "name": "Quỷ độc tín ngưỡng",
+      "description": "Thương tổn thấp cũng có một ít xác suất khôi phục giá trị sinh mệnh.",
+      "max_uses": 15,
+      "raw_fields": [
+        5,
+        175,
+        587,
+        100,
+        3,
+        15,
+        0,
+        -1,
+        8,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          13,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          8,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          13,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          25,
+          9,
+          5,
+          -1,
+          0,
+          1,
+          1,
+          10,
+          0,
+          -1,
+          -1,
+          1
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-59",
+      "game": "VQSV6",
+      "source_index": 59,
+      "name": "Lời nguyền cuối cùng",
+      "description": "Xuất hiện thương tổn, giá trị sinh mạng của kẻ địch càng thấp, thương tổn càng cao.",
+      "max_uses": 15,
+      "raw_fields": [
+        5,
+        176,
+        588,
+        250,
+        3,
+        15,
+        0,
+        -1,
+        250,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          25,
+          2,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          25,
+          10,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-60",
+      "game": "VQSV6",
+      "source_index": 60,
+      "name": "Phong nhận",
+      "description": "Thương tổn thấp.",
+      "max_uses": 45,
+      "raw_fields": [
+        6,
+        177,
+        589,
+        100,
+        0,
+        45,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-61",
+      "game": "VQSV6",
+      "source_index": 61,
+      "name": "Phong áp",
+      "description": "Thương tổn thấp cũng làm giảm hiệu quả công kích kẻ địch 5% Linh Xảo, duy trì liên tục 3 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        6,
+        178,
+        590,
+        80,
+        0,
+        45,
+        2,
+        5,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-62",
+      "game": "VQSV6",
+      "source_index": 62,
+      "name": "Thuận phong",
+      "description": "Thương tổn thấp, lực lượng tự gia tăng 5%, duy trì liên tục 2 hiệp.",
+      "max_uses": 45,
+      "raw_fields": [
+        6,
+        179,
+        591,
+        80,
+        0,
+        45,
+        1,
+        10,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          2,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-63",
+      "game": "VQSV6",
+      "source_index": 63,
+      "name": "Long quyển",
+      "description": "Thương tổn thấp, có 5% xác suất tiếp tục công kích lần nữa.",
+      "max_uses": 30,
+      "raw_fields": [
+        6,
+        180,
+        592,
+        100,
+        1,
+        30,
+        0,
+        -1,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          3,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-64",
+      "game": "VQSV6",
+      "source_index": 64,
+      "name": "Nghịch Phong Đoạt",
+      "description": "Sử dụng Thâu Thủ đối với kẻ địch để lấy tất cả những trạng thái có lợi sang mình, duy trì liên tục 3 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        6,
+        181,
+        593,
+        0,
+        1,
+        10,
+        1,
+        11,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          1,
+          1,
+          18,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          34,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          1,
+          18,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-65",
+      "game": "VQSV6",
+      "source_index": 65,
+      "name": "Vũ Liệt Thuật",
+      "description": "Mỗi hiệp công kích hai lần, duy trì liên tục 2 hiệp.",
+      "max_uses": 10,
+      "raw_fields": [
+        6,
+        182,
+        594,
+        0,
+        1,
+        10,
+        1,
+        12,
+        -1,
+        1
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          1,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          32,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          1,
+          16,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-66",
+      "game": "VQSV6",
+      "source_index": 66,
+      "name": "Yến Hồi Thiểm",
+      "description": "Tỷ lệ thương tổn gia tăng khá cao.",
+      "max_uses": 30,
+      "raw_fields": [
+        6,
+        183,
+        595,
+        150,
+        2,
+        30,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          4,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-67",
+      "game": "VQSV6",
+      "source_index": 67,
+      "name": "Phong Chi Tuyền Qua",
+      "description": "Thương tổn ở mức độ trung bình cũng làm giảm hiệu quả công kích kẻ địch 5% nhanh nhẹn, duy trì liên tục 3 hiệp.",
+      "max_uses": 30,
+      "raw_fields": [
+        6,
+        184,
+        596,
+        110,
+        2,
+        30,
+        2,
+        5,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          5,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          11,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-68",
+      "game": "VQSV6",
+      "source_index": 68,
+      "name": "Phong Chi Tí Hữu",
+      "description": "Thương tổn ở mức độ trung bình, lực lượng tự gia tăng 55, duy trì liên tục 2 hiệp.",
+      "max_uses": 15,
+      "raw_fields": [
+        6,
+        185,
+        597,
+        110,
+        3,
+        15,
+        1,
+        10,
+        5,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          6,
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          15,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    },
+    {
+      "id": "vqsv6-skill-69",
+      "game": "VQSV6",
+      "source_index": 69,
+      "name": "Phi Yến Hoàn Sào",
+      "description": "Thương tổn tương đối cao, có 8% xác suất tiếp tục công kích lần nữa.",
+      "max_uses": 15,
+      "raw_fields": [
+        6,
+        186,
+        598,
+        150,
+        3,
+        15,
+        0,
+        -1,
+        8,
+        0
+      ],
+      "note": "Tên, mô tả và số lần từ màn chọn kỹ năng gốc; hiệu ứng chưa nối.",
+      "effect_source_rows": {
+        "vqsv6_original": [
+          0,
+          0,
+          26,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "fix_2_7": [
+          0,
+          0,
+          26,
+          7,
+          -1,
+          -1,
+          0
+        ],
+        "note": "Dòng được bản fallback tra theo mã kỹ năng; ý nghĩa các byte và animation chưa xác minh."
+      }
+    }
+  ],
+  "effects": [
+    {
+      "id": "vqsv5-battle-s0",
+      "source": "data/battle/s0.data + s0.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s0/pose_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_3.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s0/pose_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_6.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_7.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s0/pose_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_11.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_17.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s0/pose_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_19.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_20.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_22.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_23.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_24.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_25.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_26.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_27.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s0/pose_28.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_29.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_30.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_31.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_32.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_33.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_34.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_35.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_36.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_37.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s0/pose_38.png",
+            "duration_ticks": 3
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    },
+    {
+      "id": "vqsv5-battle-s1",
+      "source": "data/battle/s1.data + s1.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s1/pose_0.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_3.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_4.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s1/pose_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_11.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s1/pose_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_15.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s1/pose_16.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_19.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_20.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s1/pose_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_22.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_23.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_24.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_25.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_26.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s1/pose_15.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    },
+    {
+      "id": "vqsv5-battle-s2",
+      "source": "data/battle/s2.data + s2.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s2/pose_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_4.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s2/pose_5.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_13.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s2/pose_21.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_22.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_23.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_24.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_25.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s2/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_18.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_19.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_20.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s2/pose_26.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_27.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_28.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_29.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_30.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_31.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_32.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s2/pose_33.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    },
+    {
+      "id": "vqsv5-battle-s3",
+      "source": "data/battle/s3.data + s3.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s3/pose_0.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_2.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_4.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s3/pose_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_6.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_7.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_9.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s3/pose_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_11.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_12.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_13.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_14.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_15.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_16.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_19.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s3/pose_20.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_22.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_23.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_24.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_25.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_26.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_27.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s3/pose_28.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_29.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_30.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_31.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_32.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_33.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s3/pose_34.png",
+            "duration_ticks": 1
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    },
+    {
+      "id": "vqsv5-battle-s4",
+      "source": "data/battle/s4.data + s4.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s4/pose_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_1.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_3.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_5.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s4/pose_6.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_8.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_9.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_10.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_11.png",
+            "duration_ticks": 1
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s4/pose_12.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_13.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_14.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_15.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_16.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_13.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s4/pose_17.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_18.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_19.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_20.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_21.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_22.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_23.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_24.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s4/pose_25.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_26.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_27.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_28.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_29.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_30.png",
+            "duration_ticks": 1
+          },
+          {
+            "image": "assets/effects/vqsv5/s4/pose_31.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    },
+    {
+      "id": "vqsv5-battle-s5",
+      "source": "data/battle/s5.data + s5.png",
+      "sequences": [
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_0.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_1.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_2.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_3.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_4.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_5.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_6.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_7.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_8.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_9.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_10.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_11.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_12.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_13.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_14.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_15.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_16.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_17.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_18.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_19.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_20.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_21.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_22.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_23.png",
+            "duration_ticks": 4
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_24.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_25.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_26.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_27.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_28.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_29.png",
+            "duration_ticks": 3
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_30.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_31.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_32.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_33.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_34.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_35.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_36.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_37.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_38.png",
+            "duration_ticks": 3
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_39.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_40.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_41.png",
+            "duration_ticks": 4
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_42.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_43.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_44.png",
+            "duration_ticks": 4
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_45.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_46.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_47.png",
+            "duration_ticks": 2
+          }
+        ],
+        [
+          {
+            "image": "assets/effects/vqsv5/s5/pose_48.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_49.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_50.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_51.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_52.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_53.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_54.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_55.png",
+            "duration_ticks": 2
+          },
+          {
+            "image": "assets/effects/vqsv5/s5/pose_56.png",
+            "duration_ticks": 2
+          }
+        ]
+      ],
+      "note": "Hiệu ứng nguồn; chưa xác minh gắn với kỹ năng nào."
+    }
+  ],
+  "frame_duration_ms_per_tick": 60,
+  "notes": "Thời gian khung là ước lượng. Chưa gán hiệu ứng hoặc dữ liệu chiến đấu chưa giải nghĩa cho pet."
+}

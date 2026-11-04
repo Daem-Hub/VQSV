@@ -1,0 +1,317 @@
+{
+  "format": "ui_layout",
+  "header": {
+    "magic_or_flags": -1,
+    "version": 1
+  },
+  "root": {
+    "type": "root_container",
+    "h": 0,
+    "id": 0,
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h_px": 0,
+    "navigation": [],
+    "styles": [
+      {
+        "style_id": 0,
+        "enabled": true,
+        "depth": 6,
+        "text_count": 6,
+        "h": 0,
+        "i": 0,
+        "texts": [
+          {
+            "id": 5,
+            "text": "UDcmd0"
+          },
+          {
+            "id": 6,
+            "text": "UDcmd1"
+          },
+          {
+            "id": 7,
+            "text": "UDcmd2"
+          },
+          {
+            "id": 8,
+            "text": "UDcmd3"
+          },
+          {
+            "id": 10,
+            "text": "UDcmd4"
+          },
+          {
+            "id": 9,
+            "text": "UDcmd5"
+          }
+        ],
+        "range_groups": []
+      }
+    ],
+    "children": [
+      {
+        "type": "visual",
+        "id": 1,
+        "x": 70,
+        "y": 94,
+        "w": 95,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": -1,
+        "f_color": 0,
+        "g_color": -16777216,
+        "image_ref": null,
+        "j_color": -3738625,
+        "k_color": 16711680,
+        "l_color": -3738625,
+        "alt_image_ref": null,
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 2,
+        "x": 70,
+        "y": 102,
+        "w": 95,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": -1,
+        "f_color": 0,
+        "g_color": -16777216,
+        "image_ref": null,
+        "j_color": -4266254,
+        "k_color": 16711680,
+        "l_color": -4266254,
+        "alt_image_ref": null,
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 3,
+        "x": 70,
+        "y": 206,
+        "w": 95,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": -1,
+        "f_color": 0,
+        "g_color": -16777216,
+        "image_ref": null,
+        "j_color": -9649413,
+        "k_color": 16711680,
+        "l_color": -9649413,
+        "alt_image_ref": null,
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 4,
+        "x": 70,
+        "y": 91,
+        "w": 62,
+        "h": -1,
+        "text": "",
+        "b": 0,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": 0,
+        "image_ref": null,
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": 32768,
+        "alt_image_ref": {
+          "id": 81,
+          "mode": 2
+        },
+        "a_byte": -1,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 5,
+        "x": 99,
+        "y": 104,
+        "w": 40,
+        "h": -1,
+        "text": "Đạo cụ",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 6,
+        "x": 99,
+        "y": 122,
+        "w": 40,
+        "h": -1,
+        "text": "Chiến đấu",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 7,
+        "x": 99,
+        "y": 139,
+        "w": 40,
+        "h": -1,
+        "text": "Vật phẩm trang sức",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 8,
+        "x": 99,
+        "y": 156,
+        "w": 40,
+        "h": -1,
+        "text": "Phóng sinh",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 9,
+        "x": 99,
+        "y": 190,
+        "w": 40,
+        "h": -1,
+        "text": "Tiến hóa",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      },
+      {
+        "type": "visual",
+        "id": 10,
+        "x": 99,
+        "y": 173,
+        "w": 40,
+        "h": -1,
+        "text": "Kỹ năng",
+        "b": 4,
+        "c": 0,
+        "d": false,
+        "e_color": 16777215,
+        "f_color": 0,
+        "g_color": -1103604,
+        "image_ref": {
+          "id": 66,
+          "mode": 2
+        },
+        "j_color": 16753920,
+        "k_color": 16711680,
+        "l_color": -14914158,
+        "alt_image_ref": {
+          "id": 67,
+          "mode": 2
+        },
+        "a_byte": 0,
+        "b_byte": -1
+      }
+    ]
+  },
+  "bytes_consumed": 731,
+  "bytes_total": 731
+}

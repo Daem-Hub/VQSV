@@ -1,0 +1,37 @@
+{
+  "manifest_version": 1,
+  "source_root": "D:\\TOAN BO FILE\\Download\\game",
+  "items": [
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\BAO_CAO_TAI_NGUYEN.md",
+      "size_bytes": 3073,
+      "sha256": "5bbb85047d6357a9d0b8b9b30c22d276d09add86045c4a78e3df3b0f87d191e7"
+    },
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\vqsv5.jar",
+      "size_bytes": 1062639,
+      "sha256": "454871ddde57ab5891ff1a255d64464b01f76f7d4f10b3fc38f0361f2efb2567"
+    },
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\vqsv-6.jar",
+      "size_bytes": 1044053,
+      "sha256": "530750232610754f38975ee87545e2b75a3f822f54c6527cbce1d2da56cce455"
+    },
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\files.zip",
+      "size_bytes": 5367241,
+      "sha256": "aebf609687aa0121253d015708b520c41ca474d3d5052eb3741eba16a30e52aa"
+    },
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\vqsv_assets.zip",
+      "size_bytes": 1931660,
+      "sha256": "3a17e87d32c855ebb10c07e88d767a925ba70ec5eb9c6e24bc64ff40689f7c64"
+    },
+    {
+      "path": "D:\\TOAN BO FILE\\Download\\game\\files.zip!vqsv5_maps_giai_ma.zip",
+      "size_bytes": 3946359,
+      "sha256": "fe100ca2028e527506aa3652d0da8c8da1a616c9a9044dadc019ff81b0b45a4e",
+      "note": "Nested archive containing decoded VQSV5 maps and format document"
+    }
+  ]
+}

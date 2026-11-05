@@ -38,6 +38,17 @@
     #teamMenu:not([hidden]), #ballMenu:not([hidden]) { display: grid; gap: 5px; }
     #ballMenu { position: absolute; left: 16%; bottom: calc(100% + 4px); width: min(330px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
     #ballList { display: grid; gap: 4px; }
+    #extraSkills { display: grid; gap: 5px; }
+    #extraSkills:empty { display: none; }
+    #skillLearn { width: min(460px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
+    #skillLearn::backdrop { background: #07110dcc; }
+    .learn-content { padding: 18px; display: grid; gap: 8px; }
+    .learn-content h2 { margin: 0; color: #f3dc9a; font-size: 18px; }
+    .learn-content p { margin: 0; color: #c9d8c8; font-size: 13px; line-height: 1.45; }
+    #skillLearnList { display: grid; gap: 6px; }
+    #skillLearnList button { display: grid; gap: 2px; text-align: left; background: #f2deb0; color: #433522; font-size: 13px; }
+    #skillLearnList small { font-weight: 400; color: #6b5838; font-size: 11px; line-height: 1.35; }
+    .learn-skip { background: #354f3c; color: #fff; }
     #ballList button { padding: 6px 8px; display: flex; justify-content: space-between; gap: 6px; font-size: 12px; background: #f5e5bc; color: #433522; }
     #teamList { display: grid; gap: 4px; }
     #teamList button { padding: 5px 7px; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 7px; text-align: left; font-size: 12px; background: #f5e5bc; color: #433522; }
@@ -87,6 +98,7 @@
           <div id="fightMenu" hidden aria-label="Bảng kỹ năng Lôi Miêu">
             <div class="skill-heading"><span id="skillHeading">Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
             <button id="attackButton" type="button"><span id="skillLabel">1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
+            <div id="extraSkills"></div>
             <button id="basicButton" type="button"><span id="basicLabel">3 · Vồ nhanh</span><span>Không giới hạn</span></button>
             <button id="guardButton" type="button"><span>2 · Phòng thủ</span><span>Không giới hạn</span></button>
           </div>
@@ -144,6 +156,14 @@
       <p class="journal-subtitle">Chương 1 · Làng biên giới sương mù</p>
       <section class="quest-card"><h3>Dấu vết trong sương</h3><p>Gặp người gác làng, theo dấu vết lạ và cùng Lôi Miêu bảo vệ ngôi làng.</p><ol id="questSteps"></ol></section>
       <section class="quest-card" style="margin-top:10px"><h3>Thảo dược cho Lôi Miêu · Nhiệm vụ phụ</h3><p id="herbQuestText"></p></section>
+    </div>
+  </dialog>
+  <dialog id="skillLearn" aria-labelledby="skillLearnTitle">
+    <div class="learn-content">
+      <h2 id="skillLearnTitle">Có thể học tập kỹ năng mới</h2>
+      <p id="skillLearnText"></p>
+      <div id="skillLearnList"></div>
+      <button id="skillLearnSkip" type="button" class="learn-skip">Để sau</button>
     </div>
   </dialog>
   <dialog id="petBook" aria-labelledby="petBookTitle">
@@ -270,20 +290,43 @@
     }
     function sourceSkill(row) {
       const skill = STATS.skills[row];
-      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses };
+      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses, description: skill.description };
+    }
+    // Skill learning (game/i.java G()/H()/X(), game/k.java aq()).
+    function skillSlots(level) { return Math.min(5, Math.floor(level / 10) + 1); }
+    function levelTier(level) { let tier = 0; (STATS.rules.level_tiers || [5, 10, 20, 30, 40]).forEach((threshold, i) => { if (level >= threshold) tier = i; }); return tier; }
+    function learnableSkills(record, level, known) {
+      const base = record.element_id * 10;
+      if (level <= 5) return known.includes(base) ? [] : [base];
+      const limit = STATS.skill_curves[record.skill_curve_row][levelTier(level)];
+      const rows = [];
+      for (let row = base; row < base + 10; row++) if (STATS.skills[row].unlock_tier <= limit && !known.includes(row)) rows.push(row);
+      return rows;
+    }
+    function wildSkillRows(record, level) {
+      const known = [record.element_id * 10];
+      if (level <= 5 || levelTier(level) < 1) return known;
+      const pool = learnableSkills(record, level, known);
+      while (known.length < skillSlots(level) && pool.length) known.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+      return known;
+    }
+    function validSkillRows(record, rows) {
+      const base = record.element_id * 10;
+      return Array.isArray(rows) && rows.length && rows.every(row => Number.isInteger(row) && row >= base && row < base + 10) ? [...new Set(rows)].slice(0, 5) : [base];
     }
     // A combatant built from a VQSV6 DB record: stats at a level, first element skill (known at level <= 5).
-    function vqsv6Combatant(petId, level, quality) {
+    function vqsv6Combatant(petId, level, quality, skillRows) {
       const record = STAT_BY_ID.get(petId);
       quality = quality || record.default_quality;
       const stats = statsAt(record, level, quality);
+      const skills = validSkillRows(record, skillRows).map(sourceSkill);
       return { stats, level, elementId: record.element_id, element: record.element, col22: record.advantage_flag_col22,
-        skill: sourceSkill(record.element_id * 10), hp: stats.hp, max: stats.hp, quality, petId, name: record.name };
+        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name };
     }
     function buildTeam() {
       // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
       const leadProgress = progressOf("loi-mieu", BATTLE_LEVEL);
-      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", leadProgress.level), portrait: "assets/pets/electric_cat_candidate.png", progressKey: "loi-mieu", exp: leadProgress.exp };
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", leadProgress.level, undefined, leadProgress.skills), portrait: "assets/pets/electric_cat_candidate.png", progressKey: "loi-mieu", exp: leadProgress.exp };
       lead.name = "Lôi Miêu";
       lead.subtitle = `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
       const reserves = (window.VQSVPetTeam?.ids() || []).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
@@ -291,8 +334,8 @@
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
         const own = info.kind === "vqsv6" ? progressOf(info.id, best ? best.level : BATTLE_LEVEL) : null;
-        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality), progressKey: info.id, exp: own.exp }
-          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
+        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills), progressKey: info.id, exp: own.exp }
+          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, skills: [], hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
@@ -301,12 +344,12 @@
       // A caught species keeps the stronger of its stored progress and the newly caught individual.
       const stored = progress[enemy.petId];
       if (!stored || stored.level < enemy.level || (stored.level === enemy.level && (stored.quality || 0) < enemy.quality)) {
-        progress[enemy.petId] = { level: enemy.level, exp: 0, quality: enemy.quality };
+        progress[enemy.petId] = { level: enemy.level, exp: 0, quality: enemy.quality, ...(enemy.skills ? { skills: enemy.skills.map(skill => skill.row) } : {}) };
         saveProgress();
       }
     }
     function buildWild(wild) {
-      const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality);
+      const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality, wild.skills || wildSkillRows(STAT_BY_ID.get(wild.petId), wild.level));
       return { ...enemy, image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
     }
     function randInt(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
@@ -422,7 +465,8 @@
         document.getElementById("sparkUses").textContent = `${pet.skill.uses} / ${pet.skill.max}`;
       }
       document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}`;
-      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || busy;
+      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || !pet.skill.power || busy;
+      renderExtraSkills(pet, busy);
       document.getElementById("basicButton").disabled = busy;
       document.getElementById("guardButton").disabled = busy;
       for (const id of ["fightButton", "itemButton", "captureButton"]) document.getElementById(id).disabled = state.mode === "battle" && state.battle.mustSwitch;
@@ -804,6 +848,68 @@
       ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(0, 0, 2.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
       ctx.restore();
     }
+    // Skill slots 2-5. Non-damage skills (power 0) need decoded status effects, so they stay disabled.
+    function renderExtraSkills(pet, busy) {
+      const box = document.getElementById("extraSkills");
+      if (!box.replaceChildren) return;
+      box.replaceChildren();
+      (pet.skills || []).slice(1).forEach((skill, i) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? ` · ${skill.power}%` : " · chưa hỗ trợ"}`;
+        const uses = document.createElement("span"); uses.textContent = `${skill.uses} / ${skill.max}`;
+        button.append(name, uses);
+        button.disabled = busy || skill.uses <= 0 || !skill.power;
+        button.title = skill.description || "";
+        button.addEventListener("click", () => action(false, "skill", i + 1));
+        box.append(button);
+      });
+    }
+    // After a reward, offer new skills to every participant with a free slot (game/k.java aq()).
+    const learnDialog = document.getElementById("skillLearn");
+    let learnQueue = [];
+    function queueSkillLearning(members) {
+      learnQueue = members.filter(member => member.progressKey && STAT_BY_ID.has(member.petId)).map(member => {
+        const known = member.skills.map(skill => skill.row);
+        const options = known.length < skillSlots(member.level) ? learnableSkills(STAT_BY_ID.get(member.petId), member.level, known) : [];
+        return { member, options };
+      }).filter(item => item.options.length);
+      showNextLearn();
+    }
+    function showNextLearn() {
+      if (!learnDialog.showModal) { learnQueue = []; return; }
+      const item = learnQueue[0];
+      if (!item) { if (learnDialog.open) learnDialog.close(); return; }
+      const { member, options } = item;
+      document.getElementById("skillLearnText").textContent = `${member.name} (cấp ${member.level}) có ${member.skills.length}/${skillSlots(member.level)} ô kỹ năng. Chọn một kỹ năng ${member.element} để học:`;
+      const list = document.getElementById("skillLearnList");
+      list.replaceChildren();
+      for (const row of options) {
+        const skill = STATS.skills[row];
+        const button = document.createElement("button");
+        button.type = "button";
+        const title = document.createElement("span");
+        title.textContent = `${skill.name} · ${skill.power_percent ? `sức mạnh ${skill.power_percent}%` : "không gây sát thương"} · ${skill.max_uses} lần`;
+        const desc = document.createElement("small");
+        desc.textContent = `${skill.description || ""}${skill.power_percent ? "" : " (Hiệu ứng chưa có trong prototype.)"}`;
+        button.append(title, desc);
+        button.addEventListener("click", () => learnSkill(member, row));
+        list.append(button);
+      }
+      if (!learnDialog.open) learnDialog.showModal();
+    }
+    function learnSkill(member, row) {
+      if (!member.skills.some(skill => skill.row === row) && member.skills.length < skillSlots(member.level)) {
+        member.skills.push(sourceSkill(row));
+        member.skill = member.skills[0];
+        progress[member.progressKey] = { ...progress[member.progressKey], level: member.level, exp: member.exp, skills: member.skills.map(skill => skill.row) };
+        saveProgress();
+        statusEl.textContent = `${member.name} đã học ${STATS.skills[row].name}`;
+      }
+      learnQueue.shift();
+      showNextLearn();
+    }
+    function skipLearn() { learnQueue.shift(); showNextLearn(); }
     function renderBallMenu() {
       const list = document.getElementById("ballList");
       list.replaceChildren();
@@ -886,7 +992,7 @@
         const image = document.createElement("img"); image.src = pet.portrait; image.alt = "";
         const label = document.createElement("span"); label.textContent = pet.name;
         const sub = document.createElement("small");
-        const level = `Cấp ${pet.level}${pet.progressKey && pet.level < LEVEL_CAP ? ` · KN ${pet.exp}/${expToReach(pet.level + 1)}` : ""}`;
+        const level = `${pet.skills?.length ? `${pet.skills.length} kỹ năng · ` : ""}Cấp ${pet.level}${pet.progressKey && pet.level < LEVEL_CAP ? ` · KN ${pet.exp}/${expToReach(pet.level + 1)}` : ""}`;
         sub.textContent = `${index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`)} · ${level}`;
         label.append(sub);
         const hp = document.createElement("span"); hp.textContent = `${pet.hp}/${pet.max}`;
@@ -1048,12 +1154,14 @@
       }
     }
     // One round: the faster side acts first (game/a.java Q() sorts by speed).
-    function action(guard, move = "skill") {
+    function action(guard, move = "skill", slot = 0) {
       const battle = state.battle;
       if (state.mode !== "battle" || battle.mustSwitch || activePet().hp <= 0 || battle.pendingUntil) return;
       const pet = activePet();
-      if (!guard && move === "skill" && !pet.skill) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
-      if (!guard && move === "skill" && pet.skill.uses <= 0) { battle.message = `${pet.skill.name} đã hết lượt dùng.`; return; }
+      const chosen = pet.skills?.[slot];
+      if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
+      if (!guard && move === "skill" && chosen.uses <= 0) { battle.message = `${chosen.name} đã hết lượt dùng.`; return; }
+      if (!guard && move === "skill" && !chosen.power) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
       fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true;
       const now = performance.now();
       battle.message = "";
@@ -1068,9 +1176,10 @@
         battle.guardAt = at; battle.skill = "guard";
         battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
       } else {
-        const skill = move === "skill" ? pet.skill : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: BASIC_POWER };
+        const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: BASIC_POWER };
         if (move === "skill") skill.uses--;
-        battle.skill = pet.kind === "lead" && move === "skill" ? "spark" : move;
+        // The extracted Điện giật sprite only plays for that skill; other moves use the slash effect.
+        battle.skill = move === "skill" && skill.row === 40 ? "spark" : move;
         battle.attackAt = at;
         const result = rollDamage(pet, battle.enemy, skill.power);
         battle.enemy.hp = Math.max(0, battle.enemy.hp - result.damage);
@@ -1081,6 +1190,7 @@
     }
     function updateBattle(now) {
       if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
+      if (learnDialog.open) return; // wait for the skill choice
       state.battle.pendingUntil = 0;
       if (state.battle.captured === true) { finishWild("caught"); return; }
       if (state.battle.enemy.hp <= 0 && !state.battle.rewarded) { awardExperience(now); return; }
@@ -1110,20 +1220,23 @@
         if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
       }
       saveProgress();
+      queueSkillLearning(members);
       battle.message = `${battle.wild ? battle.enemy.name : "Sinh vật"} gục ngã! ${lines.join(" ")}`;
       battle.pendingUntil = now + 2200;
       updateGuidance();
     }
     function enemyStrike(at) {
       const battle = state.battle, pet = activePet(), enemy = battle.enemy;
-      const useSkill = enemy.skill.uses > 0;
-      if (useSkill) enemy.skill.uses--;
-      const result = rollDamage(enemy, pet, useSkill ? enemy.skill.power : BASIC_POWER);
+      const usable = enemy.skills.filter(skill => skill.uses > 0 && skill.power > 0);
+      const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : null;
+      const useSkill = !!picked;
+      if (picked) picked.uses--;
+      const result = rollDamage(enemy, pet, picked ? picked.power : BASIC_POWER);
       if (battle.guard) result.damage = Math.max(1, Math.trunc(result.damage * GUARD_PCT / 100));
       pet.hp = Math.max(0, pet.hp - result.damage);
       battle.enemyAt = at + 180;
       battle.enemyActed = true;
-      battle.message += `${battle.message ? " " : ""}Sinh vật dùng ${useSkill ? enemy.skill.name : "Đòn thường"}, ${hitText(result)}${battle.guard ? " (đã thủ)" : ""}.`;
+      battle.message += `${battle.message ? " " : ""}${battle.wild ? enemy.name : "Sinh vật"} dùng ${useSkill ? picked.name : "Đòn thường"}, ${hitText(result)}${battle.guard ? " (đã thủ)" : ""}.`;
     }
     function enemyCounter() {
       enemyStrike(performance.now());
@@ -1206,7 +1319,7 @@
     }
     window.addEventListener("keydown", e => {
       const key = e.key.toLowerCase();
-      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open) return;
+      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open || learnDialog.open) return;
       if (e.target instanceof Element && e.target.closest("button, input, select, textarea")) return;
       // preventDefault: the dialogs move focus to a text field, which would otherwise receive the typed letter.
       if (key === "p" && !e.repeat) { e.preventDefault(); if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
@@ -1247,6 +1360,8 @@
     document.getElementById("loadGame").addEventListener("click", loadGame);
     document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil && !state.battle.mustSwitch) { fightMenu.hidden = !fightMenu.hidden; teamMenu.hidden = true; ballMenu.hidden = true; } });
     document.getElementById("attackButton").addEventListener("click", () => action(false, "skill"));
+    document.getElementById("skillLearnSkip").addEventListener("click", skipLearn);
+    learnDialog.addEventListener("cancel", event => { event.preventDefault(); skipLearn(); });
     document.getElementById("basicButton").addEventListener("click", () => action(false, "basic"));
     document.getElementById("guardButton").addEventListener("click", () => action(true));
     document.getElementById("captureButton").addEventListener("click", () => toggleBallMenu());

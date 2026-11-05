@@ -150,6 +150,12 @@ out = {
         "level_factor": [105, 100, 80, 60, 40, 20, 5],
         "note": "level_factor index: 0 if participant level < enemy level, else min(participant - enemy, 6), with equal level using index 1.",
     },
+    "skill_learning": {
+        "slots": "min(5, level / 10 + 1)  (game/k.java aq(): F() < 5 && F() < level / 10 + 1)",
+        "candidates": "rows element*10 .. element*10+9 with unlock_tier <= skill_curves[pet.skill_curve_row][tier], tier from level_tiers; level <= 5 knows only element*10",
+        "wild": "game/a.java + i.H(): wild pets get element*10, then (from tier 1) random candidates until level / 10 + 1 skills",
+    },
+    "skill_curves": db[8],
     "wild_areas": wild_areas,
     "skills": skill_records,
     "pets": pets,

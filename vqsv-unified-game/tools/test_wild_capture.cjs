@@ -106,4 +106,38 @@ assert.equal(run('gainExp(activePet(), 999)'), 0);
 // A catch stores the individual's level/quality as the species' progress unless a stronger one exists.
 run('progress = {}; recordWildCatch({ petId: "vqsv6-db-78", level: 7, quality: 2 }); recordWildCatch({ petId: "vqsv6-db-78", level: 6, quality: 2 })');
 assert.deepEqual(JSON.parse(JSON.stringify(run('progress["vqsv6-db-78"]'))), { level: 7, exp: 0, quality: 2 });
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction and experience passed.');
+// Skill learning (game/i.java G()/H(), game/k.java aq()): slots = min(5, level/10 + 1).
+assert.deepEqual([5, 9, 10, 19, 20, 40, 70].map(l => run(`skillSlots(${l})`)), [1, 1, 2, 2, 3, 5, 5]);
+// Điện Miêu uses skill curve row 2 = [0, 0, 1, 2, 3]; Điện skills are rows 40-49.
+const learn = (level, known) => JSON.parse(JSON.stringify(run(`learnableSkills(STAT_BY_ID.get("vqsv6-db-78"), ${level}, ${JSON.stringify(known)})`)));
+assert.deepEqual(learn(5, []), [40]);
+assert.deepEqual(learn(5, [40]), []);
+assert.deepEqual(learn(10, [40]), [41, 42]);
+assert.deepEqual(learn(20, [40, 41]), [42, 43, 44, 45]);
+assert.deepEqual(learn(30, [40]), [41, 42, 43, 44, 45, 46, 47]);
+assert.deepEqual(learn(40, [40]), [41, 42, 43, 44, 45, 46, 47, 48, 49]);
+// Wild pets: only the first element skill up to level 9, then random picks up to the slot count.
+assert.deepEqual(JSON.parse(JSON.stringify(run('wildSkillRows(STAT_BY_ID.get("vqsv6-db-78"), 7)'))), [40]);
+for (let i = 0; i < 30; i++) {
+  const rows = JSON.parse(JSON.stringify(run('wildSkillRows(STAT_BY_ID.get("vqsv6-db-78"), 25)')));
+  assert.equal(rows.length, 3); assert.equal(rows[0], 40); assert.equal(new Set(rows).size, 3);
+  assert(rows.every(r => r >= 40 && r <= 45));
+}
+// A level-10 Lôi Miêu with one skill learns Lôi thiểm (row 41, 90%) and uses it from slot 2.
+run('progress = { "loi-mieu": { level: 10, exp: 0 } }; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"');
+assert.equal(run('activePet().skills.length'), 1);
+run('learnSkill(activePet(), 41)');
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'].skills, [40, 41]);
+run('learnSkill(activePet(), 42)'); // no free slot at level 10: ignored
+assert.equal(run('activePet().skills.length'), 2);
+run('Math.random = () => 0.99; state.battle.enemy.stats.speed = 0; action(false, "skill", 1)');
+assert.match(run('state.battle.message'), /Lôi Miêu dùng Lôi thiểm/);
+assert.equal(run('activePet().skills[1].uses'), 44);
+assert.equal(run('state.battle.skill'), 'skill');
+// Saved skills come back in the next battle; a power-0 skill is refused rather than dealing 1 damage.
+run('progress["loi-mieu"].skills = [40, 44]; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"');
+assert.equal(run('activePet().skills[1].name'), 'Đoạt mệnh cao áp');
+run('action(false, "skill", 1)');
+assert.match(run('state.battle.message'), /chưa được hỗ trợ/);
+assert.equal(run('state.battle.pendingUntil'), 0);
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience and skill learning passed.');

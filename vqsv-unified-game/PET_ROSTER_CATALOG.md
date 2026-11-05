@@ -123,7 +123,29 @@ Bảng `data.d` cho phép nối từng tên với đúng dạng trong atlas; m�
 
 ## Tham khảo gameplay ngoài
 
-### Đối chiếu mẫu VQSV_FIX_2.7
+### Chỉ số và công thức chiến đấu VQSV6 (đã giải mã)
+
+Nguồn: mã dịch ngược VQSV_FIX_2.7 (`db.mid` giống từng byte bản VQSV6): `game/i.java` (pet), `game/a.java` (trận). Script dựng lại: `python tools/decode_vqsv6_pet_stats.py` → `prototype/data/vqsv6_pet_stats.json` và [CSV chỉ số 100 pet](asset_review/vqsv6_pet_stats.csv).
+
+| Cột bảng 0 | Ý nghĩa | Bằng chứng |
+|---:|---|---|
+| 3 | Hạng (quality) mặc định 1–5 | `i.a(...)`: khi không truyền hạng, lấy ngẫu nhiên trong [cột 3, cột 3] |
+| 4 | Số sao tối đa hiển thị | Màn trạng thái `k.java` ẩn sao có chỉ số lớn hơn cột 4 − 1 |
+| 5–7 | HP = (c5 + c6 × cấp + c7) × hạng% / 100 | `i.a(...)`, `i.W()`; chỉ số 1 là HP (thuốc hồi/so sánh với HP tối đa) |
+| 8–10 | Công = (c8 + c9 × cấp + c10) × hạng% / 100 | Sát thương = Công người đánh − Thủ người nhận (`i.C()`) |
+| 11–13 | Thủ = (c11 + c12 × cấp / 10 + c13) × hạng% / 100 | như trên |
+| 14–16 | Tốc = (c14 + c15 × cấp / 10 + c16) × hạng% / 100 | `a.Q()` xếp lượt theo Tốc giảm dần; chí mạng 5% + Tốc/2 |
+| 18 | Dòng đường học kỹ năng trong bảng 8 | `i.G()` |
+| 22 | Cờ áp dụng khắc hệ | `i.a(i)`: nếu chỉ một bên có giá trị 2 thì chỉ hệ số có lợi cho bên đó được tính |
+
+- Hạng%: `[90, 95, 100, 110, 125]` cho hạng 1–5. Phép chia là chia nguyên kiểu Java.
+- Sát thương: (Công − Thủ) → chí mạng ×1,5 → × sức mạnh kỹ năng% (bảng 1 cột 3) → khắc hệ ×3 / bị khắc ×0,6 → lệch ±1 → tối thiểu 1.
+- Vòng khắc hệ: Hỏa → Mộc → Thổ → Thủy → Hỏa; Quỷ → Phong → Điện → Quỷ.
+- Kỹ năng: bảng 1 có 70 dòng, mỗi hệ 10 dòng (`hệ × 10 … hệ × 10 + 9`). Cột 3 sức mạnh %, cột 4 bậc mở khóa, cột 5 số lần dùng. Tới cấp 5 pet chỉ biết dòng đầu của hệ; từ cấp 5 trở đi mở thêm khi cột 4 ≤ `bảng8[cột 18][bậc cấp]`, bậc cấp theo ngưỡng `[5, 10, 20, 30, 40]`.
+- Kiểm chứng chéo: Điện Miêu (hệ Điện) ở cấp 5 chỉ biết **Điện giật**, sức mạnh 100%, 45 lần, trùng với kỹ năng prototype đã lấy từ bản FIX 2.7.
+- Chưa giải: hiệu ứng trạng thái của kỹ năng (bảng 1 cột 6–9), buff ở bảng 2–7, ý nghĩa đầy đủ của cột 22 ngoài phép khắc hệ. Chỉ số VQSV5 vẫn chưa giải (không có mã dịch ngược VQSV5).
+
+## Đối chiếu mẫu VQSV_FIX_2.7
 
 File `db.mid` trong `VQSV_FIX_2.7.zip` giống từng byte với `data/script/db.mid` của `vqsv-6.jar` đang dùng. Mã Java dịch ngược được lưu tại `reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/` để đối chiếu; đây là mã dịch ngược và có thể không tái hiện hoàn chỉnh mã nguồn ban đầu.
 
@@ -144,6 +166,6 @@ Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của g
 
 1. Giải quan hệ giữa 34 mục `monN` và 102 dòng pet `data.d`, kiểm tra hai dòng dùng chung hình.
 2. Giải schema chỉ số/hệ của VQSV5 và `monType.d` trước khi dùng trong chiến đấu.
-3. Giải nghĩa 19 trường còn lại và 8 bảng số phụ của VQSV6 để chuẩn hóa chỉ số/kỹ năng và điều kiện tiến hóa; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
+3. Chỉ số, khắc hệ và kỹ năng VQSV6 đã giải (mục trên); còn hiệu ứng trạng thái kỹ năng và các bảng buff 2–7; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
 4. Đánh dấu loài trùng, dạng tiến hóa, pet độc quyền và boss; rồi mới chuẩn hóa chỉ số/điều kiện bắt.
 5. Khóa một roster nhỏ cho lát đầu: Lôi Miêu, một đối thủ bị tha hóa, sau đó thêm pet tuyển chọn từ hai nguồn.

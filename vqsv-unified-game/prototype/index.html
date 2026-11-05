@@ -83,7 +83,7 @@
         <div id="battleControls" hidden aria-label="Lệnh chiến đấu">
           <div id="fightMenu" hidden aria-label="Bảng kỹ năng Lôi Miêu">
             <div class="skill-heading"><span id="skillHeading">Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
-            <button id="attackButton" type="button"><span>1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
+            <button id="attackButton" type="button"><span id="skillLabel">1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
             <button id="basicButton" type="button"><span id="basicLabel">3 · Vồ nhanh</span><span>Không giới hạn</span></button>
             <button id="guardButton" type="button"><span>2 · Phòng thủ</span><span>Không giới hạn</span></button>
           </div>
@@ -107,7 +107,7 @@
         <p class="objective"><strong>Mục tiêu</strong><br><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></p>
         <p><strong>Di chuyển</strong><br>WASD hoặc phím mũi tên · giữ phím để đi liên tục</p>
         <p><strong>Tương tác</strong><br>E hoặc Enter khi đứng gần nhân vật/điểm sáng</p>
-        <p><strong>Trong trận</strong><br>1: Điện giật · 2: thủ · 3: Vồ nhanh · 4: đổi pet</p>
+        <p><strong>Trong trận</strong><br>1: kỹ năng hệ · 2: thủ · 3: đòn thường · 4: đổi pet</p>
         <p id="battleHint" class="battle-controls-hint" hidden aria-live="polite"></p>
         <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
         <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
@@ -181,10 +181,17 @@
     const herbQuestText = document.getElementById("herbQuestText");
     const S = 20;
     const STEP_MS = 220;
-    const SKILLS = { spark: { name: "Điện giật", damage: 16, uses: 45 }, basic: { name: "Vồ nhanh", damage: 10 }, tackle: { name: "Đòn thường", damage: 10 } };
-    // Trial values for reserve pets: the source stat fields of both games are still undecoded.
-    const RESERVE_HP = 40;
-    const LEAD_HP = 60;
+    // Combat follows the VQSV6 formulas decoded in tools/decode_vqsv6_pet_stats.py
+    // (data/vqsv6_pet_stats.json). Values marked TRIAL are prototype design, not source data.
+    const STATS = window.VQSVBootstrap?.vqsv6Stats;
+    const STAT_BY_ID = new Map((STATS?.pets || []).map(pet => [pet.pet_id, pet]));
+    const QUALITY_PCT = STATS?.rules?.quality_percent || [90, 95, 100, 110, 125];
+    const BEATS = {0: 1, 1: 2, 2: 3, 3: 0, 5: 6, 6: 4, 4: 5};
+    const BATTLE_LEVEL = 5;                 // TRIAL: level of Kael's team in the opening battle
+    const ENEMY = { petId: "vqsv6-db-24", level: 3 };  // TRIAL: placeholder corrupted pet, lowered level for chapter 1
+    const BASIC_POWER = 70;                 // TRIAL: Vồ nhanh / Đòn thường, unlimited uses
+    const GUARD_PCT = 40;                   // TRIAL: damage taken while guarding
+    const VQSV5_TRIAL_STATS = { hp: 90, attack: 22, defense: 10, speed: 5 }; // TRIAL: VQSV5 stats undecoded
     const teamMenu = document.getElementById("teamMenu");
     const spriteCache = new Map();
     function cachedImage(path) {
@@ -192,19 +199,70 @@
       if (!spriteCache.has(path)) { const image = new Image(); image.src = path; spriteCache.set(path, image); }
       return spriteCache.get(path);
     }
+    function statsAt(record, level, quality = record.default_quality) {
+      const pct = QUALITY_PCT[quality - 1], g = record.growth;
+      return {
+        hp: Math.trunc((g.hp[0] + g.hp[1] * level + g.hp[2]) * pct / 100),
+        attack: Math.trunc((g.attack[0] + g.attack[1] * level + g.attack[2]) * pct / 100),
+        defense: Math.trunc((g.defense[0] + Math.trunc(g.defense[1] * level / 10) + g.defense[2]) * pct / 100),
+        speed: Math.trunc((g.speed[0] + Math.trunc(g.speed[1] * level / 10) + g.speed[2]) * pct / 100)
+      };
+    }
+    function sourceSkill(row) {
+      const skill = STATS.skills[row];
+      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses };
+    }
+    // A combatant built from a VQSV6 DB record: stats at a level, first element skill (known at level <= 5).
+    function vqsv6Combatant(petId, level) {
+      const record = STAT_BY_ID.get(petId);
+      const stats = statsAt(record, level);
+      return { stats, level, elementId: record.element_id, element: record.element, col22: record.advantage_flag_col22,
+        skill: sourceSkill(record.element_id * 10), hp: stats.hp, max: stats.hp };
+    }
     function buildTeam() {
-      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", subtitle: "ĐỒNG HÀNH CỦA KAEL", hp: LEAD_HP, max: LEAD_HP, portrait: "assets/pets/electric_cat_candidate.png" };
+      // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", BATTLE_LEVEL), portrait: "assets/pets/electric_cat_candidate.png" };
+      lead.subtitle = `KAEL · CẤP ${BATTLE_LEVEL} · ${lead.element.toUpperCase()}`;
       const reserves = (window.VQSVPetTeam?.ids() || []).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
         // Warm the sprite cache so switching in does not flash an empty frame.
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
-        return { ...info, subtitle: `${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}`, hp: RESERVE_HP, max: RESERVE_HP };
+        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? vqsv6Combatant(info.id, BATTLE_LEVEL)
+          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
+        return { ...info, ...combat, subtitle: `CẤP ${BATTLE_LEVEL} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
+    }
+    function buildEnemy() {
+      const enemy = vqsv6Combatant(ENEMY.petId, ENEMY.level);
+      return { ...enemy, name: "Sinh vật", subtitle: `TRĂNG HUYẾT · CẤP ${ENEMY.level} · ${enemy.element.toUpperCase()}` };
+    }
+    // game/i.java b(i) + C() + a(i): (atk - def) * power%, crit 5% + speed/2 (x1.5), element x3 / x0.6, +-1 jitter, min 1.
+    function elementMultiplier(attacker, defender) {
+      if (attacker.elementId == null || defender.elementId == null) return 0;
+      const attFlag = attacker.col22 === 2, defFlag = defender.col22 === 2;
+      const allowUp = attFlag || !defFlag, allowDown = defFlag || !attFlag;
+      if (allowUp && BEATS[attacker.elementId] === defender.elementId) return 1;
+      if (allowDown && BEATS[defender.elementId] === attacker.elementId) return -1;
+      return 0;
+    }
+    function rollDamage(attacker, defender, power) {
+      let damage = attacker.stats.attack - defender.stats.defense;
+      const crit = Math.random() * 100 < 5 + attacker.stats.speed / 2;
+      if (crit) damage = Math.trunc(damage * 3 / 2);
+      damage = Math.trunc(damage * power / 100);
+      const effect = elementMultiplier(attacker, defender);
+      if (effect > 0) damage *= 3; else if (effect < 0) damage = Math.trunc(damage * 60 / 100);
+      if (damage <= 0) damage = 1;
+      else if (Math.trunc(damage * 2 / 100) <= 0) damage += Math.random() < .5 ? 1 : -1;
+      return { damage: Math.max(1, damage), crit, effect };
+    }
+    function hitText(result) {
+      return `${result.damage} sát thương${result.crit ? " (chí mạng)" : ""}${result.effect > 0 ? " · khắc hệ ×3" : result.effect < 0 ? " · bị khắc hệ ×0,6" : ""}`;
     }
     function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle() { return { team: buildTeam(), active: 0, mustSwitch: false, enemyHp: 48, turn: 0, guard: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, sparkUses: SKILLS.spark.uses, potions: 2, message: "Một sinh vật lạ chặn lối đi." }; }
+    function newBattle() { return { team: buildTeam(), enemy: buildEnemy(), active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, potions: 2, message: "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -259,10 +317,13 @@
       const isLead = pet.kind === "lead";
       const busy = !!state.battle.pendingUntil || state.battle.mustSwitch;
       document.getElementById("skillHeading").textContent = `Kỹ năng · ${pet.name}`;
-      document.getElementById("sparkUses").textContent = `${state.battle.sparkUses} / ${SKILLS.spark.uses}`;
-      document.getElementById("attackButton").hidden = !isLead;
-      document.getElementById("basicLabel").textContent = `3 · ${isLead ? SKILLS.basic.name : SKILLS.tackle.name}`;
-      document.getElementById("attackButton").disabled = state.battle.sparkUses <= 0 || busy;
+      document.getElementById("attackButton").hidden = !pet.skill;
+      if (pet.skill) {
+        document.getElementById("skillLabel").textContent = `1 · ${pet.skill.name}`;
+        document.getElementById("sparkUses").textContent = `${pet.skill.uses} / ${pet.skill.max}`;
+      }
+      document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}`;
+      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || busy;
       document.getElementById("basicButton").disabled = busy;
       document.getElementById("guardButton").disabled = busy;
       for (const id of ["fightButton", "itemButton", "captureButton"]) document.getElementById(id).disabled = state.mode === "battle" && state.battle.mustSwitch;
@@ -552,7 +613,7 @@
       ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(330, 247, 117, 30, 0, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "#102528e8"; roundRect(207, 12, 66, 25, 6, true);
       ctx.textAlign = "center"; ctx.font = "bold 10px system-ui"; ctx.fillStyle = "#eadba6"; ctx.fillText(`LƯỢT ${state.battle.turn + 1}`, 240, 29); ctx.textAlign = "left";
-      battlePanel(12, 12, "SỦNG VẬT THA HÓA", "ĐỐI THỦ · TRĂNG HUYẾT", state.battle.enemyHp, 48, "#dc8e7f");
+      battlePanel(12, 12, "SỦNG VẬT THA HÓA", state.battle.enemy.subtitle, state.battle.enemy.hp, state.battle.enemy.max, "#dc8e7f");
       const heroAttack = now - state.battle.attackAt;
       const enemyAttack = now - state.battle.enemyAt;
       const guard = now - state.battle.guardAt;
@@ -571,7 +632,7 @@
         const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
         ctx.drawImage(image, 140 - image.width * scale / 2, 138 - image.height * scale / 2, image.width * scale, image.height * scale);
       }
-      if (attackPulse > 0 && state.battle.skill === "basic") {
+      if (attackPulse > 0 && state.battle.skill && !["spark", "guard"].includes(state.battle.skill)) {
         ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
         for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(128 + i * 12, 114); ctx.lineTo(151 + i * 12, 146); ctx.stroke(); }
         ctx.restore();
@@ -661,7 +722,7 @@
       if (state.mode !== "battle" || battle.pendingUntil || index === battle.active || !battle.team[index] || battle.team[index].hp <= 0) return;
       const forced = battle.mustSwitch;
       const previous = activePet();
-      battle.active = index; battle.mustSwitch = false; battle.guard = false;
+      battle.active = index; battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
       battle.switchedAt = performance.now(); battle.skill = null;
       teamMenu.hidden = true;
       const next = activePet();
@@ -794,73 +855,93 @@
         updateGuidance();
       }
     }
-    function action(guard, skillId = "spark") {
-      if (state.mode !== "battle" || state.battle.mustSwitch || activePet().hp <= 0 || state.battle.pendingUntil) return;
+    // One round: the faster side acts first (game/a.java Q() sorts by speed).
+    function action(guard, move = "skill") {
+      const battle = state.battle;
+      if (state.mode !== "battle" || battle.mustSwitch || activePet().hp <= 0 || battle.pendingUntil) return;
       const pet = activePet();
-      if (!guard && pet.kind !== "lead" && skillId === "spark") { state.battle.message = `${pet.name} không có kỹ năng Điện giật.`; return; }
-      if (!guard && pet.kind !== "lead" && skillId === "basic") skillId = "tackle";
-      if (!guard && skillId === "spark" && state.battle.sparkUses <= 0) { state.battle.message = "Điện giật đã hết lượt dùng."; return; }
+      if (!guard && move === "skill" && !pet.skill) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
+      if (!guard && move === "skill" && pet.skill.uses <= 0) { battle.message = `${pet.skill.name} đã hết lượt dùng.`; return; }
       fightMenu.hidden = true; teamMenu.hidden = true;
       const now = performance.now();
-      if (guard) {
-        state.battle.guard = true;
-        state.battle.guardAt = now;
-        state.battle.skill = "guard";
-        state.battle.message = `${pet.name} thủ thế, chờ đòn tấn công.`;
-      } else {
-        const skill = SKILLS[skillId];
-        if (!skill) return;
-        if (skillId === "spark") state.battle.sparkUses--;
-        state.battle.skill = skillId;
-        state.battle.attackAt = now;
-        state.battle.enemyHp = Math.max(0, state.battle.enemyHp - skill.damage);
-        state.battle.message = `${pet.name} dùng ${skill.name}, gây ${skill.damage} sát thương!`;
+      battle.message = "";
+      battle.enemyActed = false;
+      if (guard) battle.guard = true;
+      if (battle.enemy.stats.speed > pet.stats.speed) {
+        enemyStrike(now);
+        if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
-      state.battle.pendingUntil = now + 650;
+      const at = battle.enemyActed ? now + 420 : now;
+      if (guard) {
+        battle.guardAt = at; battle.skill = "guard";
+        battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
+      } else {
+        const skill = move === "skill" ? pet.skill : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: BASIC_POWER };
+        if (move === "skill") skill.uses--;
+        battle.skill = pet.kind === "lead" && move === "skill" ? "spark" : move;
+        battle.attackAt = at;
+        const result = rollDamage(pet, battle.enemy, skill.power);
+        battle.enemy.hp = Math.max(0, battle.enemy.hp - result.damage);
+        battle.message += `${battle.message ? " " : ""}${pet.name} dùng ${skill.name}, ${hitText(result)}!`;
+      }
+      battle.pendingUntil = at + 650;
       updateGuidance();
     }
     function updateBattle(now) {
       if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
       state.battle.pendingUntil = 0;
-      if (state.battle.enemyHp <= 0) {
+      if (state.battle.enemy.hp <= 0) {
         state.mode = "ending";
         statusEl.textContent = "Hoàn tất lát prototype · Chương 1";
         updateGuidance();
         return;
       }
-      enemyCounter();
+      if (!state.battle.enemyActed) enemyCounter();
+      state.battle.guard = false;
+      state.battle.turn++;
       updateGuidance();
     }
+    function enemyStrike(at) {
+      const battle = state.battle, pet = activePet(), enemy = battle.enemy;
+      const useSkill = enemy.skill.uses > 0;
+      if (useSkill) enemy.skill.uses--;
+      const result = rollDamage(enemy, pet, useSkill ? enemy.skill.power : BASIC_POWER);
+      if (battle.guard) result.damage = Math.max(1, Math.trunc(result.damage * GUARD_PCT / 100));
+      pet.hp = Math.max(0, pet.hp - result.damage);
+      battle.enemyAt = at + 180;
+      battle.enemyActed = true;
+      battle.message += `${battle.message ? " " : ""}Sinh vật dùng ${useSkill ? enemy.skill.name : "Đòn thường"}, ${hitText(result)}${battle.guard ? " (đã thủ)" : ""}.`;
+    }
     function enemyCounter() {
-      const now = performance.now();
-      state.battle.turn++;
-      const damage = state.battle.guard ? 5 : 12;
+      enemyStrike(performance.now());
+      handleFaint();
+    }
+    function handleFaint() {
       const pet = activePet();
-      pet.hp = Math.max(0, pet.hp - damage);
+      if (pet.hp > 0) return;
+      state.battle.pendingUntil = 0;
       state.battle.guard = false;
-      state.battle.enemyAt = now + 180;
-      state.battle.message += ` Sinh vật phản công ${damage} sát thương.`;
-      if (pet.hp <= 0 && state.battle.team.some(member => member.hp > 0)) {
+      if (state.battle.team.some(member => member.hp > 0)) {
         state.battle.mustSwitch = true;
         state.battle.message += ` ${pet.name} kiệt sức! Chọn pet khác.`;
         toggleTeamMenu(true);
         return;
       }
-      if (pet.hp <= 0) {
-        state.mode = "defeat";
-        statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
-        updateGuidance();
-      }
+      state.mode = "defeat";
+      statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
+      updateGuidance();
     }
     function usePotion() {
       if (state.mode !== "battle" || state.battle.pendingUntil || state.battle.mustSwitch) return;
       const pet = activePet();
       if (!state.battle.potions) { state.battle.message = "Đã hết thuốc thử."; return; }
       if (pet.hp >= pet.max) { state.battle.message = `${pet.name} đang đầy máu.`; return; }
-      const recovered = Math.min(20, pet.max - pet.hp);
+      // TRIAL: potion restores 30% of max HP.
+      const recovered = Math.min(Math.round(pet.max * .3), pet.max - pet.hp);
       state.battle.potions--;
       pet.hp += recovered;
       state.battle.message = `Dùng thuốc thử: ${pet.name} hồi ${recovered} HP.`;
+      state.battle.turn++;
       enemyCounter();
       updateGuidance();
     }
@@ -921,7 +1002,7 @@
       if (["a", "arrowleft"].includes(key)) setMove(-1, 0);
       if (["d", "arrowright"].includes(key)) setMove(1, 0);
       if (!e.repeat && ["e", "enter"].includes(key)) interact();
-      if (!e.repeat && key === "1") action(false);
+      if (!e.repeat && key === "1") action(false, "skill");
       if (!e.repeat && key === "2") action(true);
       if (!e.repeat && key === "3") action(false, "basic");
       if (!e.repeat && key === "4") toggleTeamMenu();
@@ -948,7 +1029,7 @@
     document.getElementById("saveGame").addEventListener("click", saveGame);
     document.getElementById("loadGame").addEventListener("click", loadGame);
     document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil && !state.battle.mustSwitch) { fightMenu.hidden = !fightMenu.hidden; teamMenu.hidden = true; } });
-    document.getElementById("attackButton").addEventListener("click", () => action(false));
+    document.getElementById("attackButton").addEventListener("click", () => action(false, "skill"));
     document.getElementById("basicButton").addEventListener("click", () => action(false, "basic"));
     document.getElementById("guardButton").addEventListener("click", () => action(true));
     document.getElementById("captureButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) state.battle.message = "Chưa thể bắt pet trong trận cốt truyện này."; });

@@ -14,6 +14,8 @@
   const atlases = bootstrap?.vqsv5Animations?.atlases || {};
   const tickMs = bootstrap?.vqsv5Animations?.frame_duration_ms_per_tick || 60;
   const byId = new Map(roster.map(pet => [pet.pet_id, pet]));
+  const stats = bootstrap?.vqsv6Stats || { pets: [], skills: [] };
+  const statById = new Map(stats.pets.map(pet => [pet.pet_id, pet]));
   const storageKey = "vqsv-unified-pet-collection-v1";
   let saved = new Set();
   let storageAvailable = true;
@@ -113,6 +115,22 @@
     });
     detail.append(teamButton);
     if (entry.kind === "vqsv6") {
+      const stat = statById.get(entry.key);
+      if (stat) {
+        const lv5 = stat.stats_at_default_quality["5"], lv30 = stat.stats_at_default_quality["30"];
+        const table = node("table", undefined, "pet-stats");
+        const head = node("tr"); ["", "HP", "Công", "Thủ", "Tốc"].forEach(text => head.append(node("th", text)));
+        table.append(head);
+        for (const [label, values] of [["Cấp 5", lv5], ["Cấp 30", lv30]]) {
+          const row = node("tr"); row.append(node("th", label));
+          [values.hp, values.attack, values.defense, values.speed].forEach(value => row.append(node("td", String(value))));
+          table.append(row);
+        }
+        detail.append(node("p", `Hạng mặc định ${stat.default_quality}/${stat.max_quality_stars} sao · chỉ số theo công thức VQSV6 gốc.`));
+        detail.append(table);
+        const skills = (stat.skills_at_level["30"] || []).map(row => stats.skills[row]?.name).filter(Boolean);
+        if (skills.length) detail.append(node("p", `Kỹ năng hệ (tới cấp 30): ${skills.join(", ")}.`));
+      }
       if (entry.key === "vqsv6-db-78") detail.append(node("p", "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện."));
       const evolution = entry.pet.evolution;
       const target = evolution && byId.get(evolution.target_pet_id);

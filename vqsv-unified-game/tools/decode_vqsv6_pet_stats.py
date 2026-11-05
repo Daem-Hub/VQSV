@@ -36,6 +36,15 @@ reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/:
   (current pet col 20 + 12) and the quantity is current pet col 21. On success the new pet keeps level, exp and
   skills, takes full HP, and keeps its quality when >= the target's default quality (otherwise the target's).
 
+- game/k.java a(table, kind)/b(): shop rows come from db.mid table 4 (balls and consumables) and table 3
+  (materials). Item row: [name, icon, description, price, currency, effect type, p1, p2, p3]; currency 0 =
+  kim tiền, 1 and 2 = huy hiệu (game/j.java b(): only 0 uses gold). Village price = col 3; in battle the
+  price is doubled; selling returns price / 2 in the item's own currency (table 4 only).
+- game/i.java w(row)/x(row): item effect types: 1 heal (max * p1 / 100 + p2), 2 restore p1 skill uses,
+  3 heal and restore p3 uses, 4 revive (hp = max * p1 / 100 + p2, uses +p3), 5 clear debuffs; types 0, 7-10
+  (balls, repel, egg items) cannot be used as battle items. Tị quái hàn (type 10) repels 500 steps (col 6).
+- game/k.java N[]: the new-game gifts are 2000 kim tiền, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch, 2 huy hiệu.
+
 Writes prototype/data/vqsv6_pet_stats.json and asset_review/vqsv6_pet_stats.csv.
 """
 import csv
@@ -165,6 +174,15 @@ out = {
         "materials": {str(row): {"name": names[db[3][row][0]], "description": names[db[3][row][2]], "price": db[3][row][3]} for row in range(12, 17)},
         "carries_over": ["level", "exp", "skills", "quality (kept if >= target default, else target default)"],
         "heals": "full HP on the new form",
+    },
+    "shop": {
+        "currencies": {"0": "kim tiền", "1": "huy hiệu", "2": "huy hiệu"},
+        "battle_price_multiplier": 2,
+        "sell_price_divisor": 2,
+        "starter_gifts": {"gold": 2000, "badges": 2, "items": {"1": 5, "4": 5, "11": 2}},
+        "items": [{"row": i, "table": 4, "name": names[r[0]], "description": names[r[2]], "price": r[3], "currency": r[4], "effect_type": r[5], "p1": r[6] if len(r) > 6 else 0, "p2": r[7] if len(r) > 7 else 0, "p3": r[8] if len(r) > 8 else 0} for i, r in enumerate(db[4])],
+        "materials": [{"row": i, "table": 3, "name": names[db[3][i][0]], "description": names[db[3][i][2]], "price": db[3][i][3], "currency": db[3][i][4]} for i in range(12, 17)],
+        "not_implemented": "Table 3 rows 0-11 (held relics) and row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item).",
     },
     "skill_curves": db[8],
     "status_effects": {

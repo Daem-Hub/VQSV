@@ -38,6 +38,40 @@
     #teamMenu:not([hidden]), #ballMenu:not([hidden]) { display: grid; gap: 5px; }
     #ballMenu { position: absolute; left: 16%; bottom: calc(100% + 4px); width: min(330px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
     #ballList { display: grid; gap: 4px; }
+    #itemMenu { position: absolute; left: 32%; bottom: calc(100% + 4px); width: min(340px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
+    #itemMenu:not([hidden]) { display: grid; gap: 5px; }
+    #itemList { display: grid; gap: 4px; max-height: 190px; overflow: auto; }
+    #itemList button { padding: 6px 8px; display: flex; justify-content: space-between; gap: 6px; font-size: 12px; background: #f5e5bc; color: #433522; text-align: left; }
+    #itemList button small { font-weight: 400; color: #6b5838; }
+    #shopDialog, #bagDialog { width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0; color: #eef4e7; background: #1c2a24; border: 1px solid #7b895e; border-radius: 14px; }
+    #shopDialog::backdrop, #bagDialog::backdrop { background: #07110dcc; }
+    .shop { padding: 18px; display: grid; gap: 10px; }
+    .shop-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; }
+    .shop-header h2 { margin: 0; color: #f3dc9a; font-size: 20px; }
+    .shop-header p { margin: 2px 0 0; color: #b6c7b4; font-size: 12px; }
+    #closeShop, #closeBag { width: 38px; padding: 7px; background: #354f3c; color: #fff; }
+    .shop-wallet { margin: 0; padding: 8px 10px; border-radius: 8px; background: #26372d; color: #f4dc91; font-size: 13px; font-weight: 700; }
+    .shop-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .shop-tabs button { background: #354f3c; color: #fff; }
+    .shop-tabs button[aria-pressed="true"] { background: #e7c66c; color: #10151b; }
+    .shop-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+    .shop-list { display: grid; gap: 5px; max-height: 360px; overflow: auto; padding-right: 3px; }
+    .shop-list button { display: flex; justify-content: space-between; gap: 8px; text-align: left; padding: 8px 10px; background: #26372d; color: #eef4e7; font-size: 13px; font-weight: 600; }
+    .shop-list button[aria-pressed="true"] { outline: 2px solid #e4c66e; }
+    .shop-list small { color: #bacbb6; font-weight: 400; white-space: nowrap; }
+    .shop-detail { padding: 12px; border: 1px solid #4b6550; border-radius: 9px; background: #243a2d; font-size: 13px; line-height: 1.5; display: grid; gap: 8px; }
+    .shop-detail h3 { margin: 0; color: #f6e5aa; font-size: 16px; }
+    .shop-detail p { margin: 0; color: #cfddc9; }
+    .shop-qty { display: grid; grid-template-columns: 38px 1fr 38px; gap: 6px; align-items: center; }
+    .shop-qty button { padding: 6px; }
+    .shop-qty output { text-align: center; font-weight: 700; color: #fff; }
+    .shop-detail .shop-confirm { background: #9fd0c1; }
+    .shop-detail .shop-confirm:disabled { opacity: .55; cursor: not-allowed; }
+    .shop-message { color: #f4dc91; min-height: 1.4em; }
+    .bag-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 7px; background: #26372d; font-size: 13px; font-weight: 600; }
+    .bag-row button { width: auto; padding: 5px 12px; background: #9fd0c1; }
+    .bag-row button:disabled { opacity: .5; cursor: not-allowed; }
+    @media (max-width: 640px) { .shop-layout { grid-template-columns: 1fr; } }
     #extraSkills { display: grid; gap: 5px; }
     #extraSkills:empty { display: none; }
     #skillLearn { width: min(460px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
@@ -108,6 +142,11 @@
             <p id="teamNote" class="team-note"></p>
             <button id="teamBookButton" type="button" class="team-book">Xem sổ pet</button>
           </div>
+          <div id="itemMenu" hidden aria-label="Đạo cụ">
+            <div class="skill-heading"><span id="itemHeading">Đạo cụ</span><span>Số lượng</span></div>
+            <div id="itemList"></div>
+            <p id="itemNote" class="team-note"></p>
+          </div>
           <div id="ballMenu" hidden aria-label="Chọn cầu bắt pet">
             <div class="skill-heading"><span>Chọn cầu</span><span>Tỉ lệ bắt</span></div>
             <div id="ballList"></div>
@@ -118,7 +157,7 @@
             <button id="captureButton" type="button"><span class="battle-icon">◉</span><span>Bắt pet</span></button>
             <button id="itemButton" type="button"><span class="battle-icon">✚</span><span>Đạo cụ</span></button>
             <button id="teamButton" type="button"><span class="battle-icon">◆</span><span>Sủng vật</span></button>
-            <button id="shopButton" type="button" disabled title="Cửa hàng chưa được xây dựng"><span class="battle-icon">▣</span><span>Thương điếm</span></button>
+            <button id="shopButton" type="button" title="Thương điếm (giá gấp đôi trong trận)"><span class="battle-icon">▣</span><span>Thương điếm</span></button>
             <button id="fleeButton" type="button"><span class="battle-icon">➜</span><span>Chạy trốn</span></button>
           </div>
         </div>
@@ -132,8 +171,11 @@
         <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
         <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
         <p id="saveStatus" aria-live="polite"></p>
+        <p><strong>Ví</strong><br><span id="walletStatus"></span></p>
         <p><strong>Nguyên liệu tiến hóa</strong><br><span id="stoneStatus"></span></p>
         <p><strong>Sổ pet</strong><br>Nhấn P để xem hình, hệ và hoạt ảnh đã trích</p>
+        <button id="openShop" type="button">Thương điếm · B</button>
+        <button id="openBag" type="button">Túi đồ · I</button>
         <button id="openQuestJournal" type="button">Nhật ký nhiệm vụ · J</button>
         <button id="openWorldAtlas" type="button">Bản đồ thế giới · M</button>
         <button id="openPetBook" type="button">Mở sổ pet</button>
@@ -157,6 +199,22 @@
       <p class="journal-subtitle">Chương 1 · Làng biên giới sương mù</p>
       <section class="quest-card"><h3>Dấu vết trong sương</h3><p>Gặp người gác làng, theo dấu vết lạ và cùng Lôi Miêu bảo vệ ngôi làng.</p><ol id="questSteps"></ol></section>
       <section class="quest-card" style="margin-top:10px"><h3>Thảo dược cho Lôi Miêu · Nhiệm vụ phụ</h3><p id="herbQuestText"></p></section>
+    </div>
+  </dialog>
+  <dialog id="shopDialog" aria-labelledby="shopTitle">
+    <div class="shop">
+      <header class="shop-header"><div><h2 id="shopTitle">Thương điếm</h2><p id="shopSubtitle"></p></div><button id="closeShop" type="button" aria-label="Đóng cửa hàng">✕</button></header>
+      <p id="shopWallet" class="shop-wallet"></p>
+      <div class="shop-tabs"><button id="shopTabBuy" type="button" aria-pressed="true">Mua</button><button id="shopTabSell" type="button" aria-pressed="false">Bán</button></div>
+      <div class="shop-layout"><div id="shopList" class="shop-list"></div><section id="shopDetail" class="shop-detail" aria-live="polite"></section></div>
+    </div>
+  </dialog>
+  <dialog id="bagDialog" aria-labelledby="bagTitle">
+    <div class="shop">
+      <header class="shop-header"><div><h2 id="bagTitle">Túi đồ</h2><p>Đạo cụ và nguyên liệu Kael đang giữ</p></div><button id="closeBag" type="button" aria-label="Đóng túi đồ">✕</button></header>
+      <p id="bagWallet" class="shop-wallet"></p>
+      <div id="bagList" class="shop-list"></div>
+      <p id="bagNote" class="team-note"></p>
     </div>
   </dialog>
   <dialog id="skillLearn" aria-labelledby="skillLearnTitle">
@@ -225,15 +283,43 @@
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
     const ENCOUNTER_CHANCE = 1 / 14;        // TRIAL: per completed step on a wild map
     const ENCOUNTER_GRACE_STEPS = 6;        // TRIAL: safe steps after any battle
-    const BAG_KEY = "vqsv-unified-bag-v1";
-    const BAG_START = { 1: 5, 2: 2 };       // TRIAL: Phong ấn cầu x5, Cao cấp cầu x2; topped up when returning to the village
     const CAPTURE = STATS?.capture;
+    const SHOP = STATS?.shop;
+    const BAG_KEY = "vqsv-unified-bag-v1";
+    const WALLET_KEY = "vqsv-unified-wallet-v1";
+    const BAG_ROWS = 15;                    // db.mid table 4 rows: 0-3 balls, 4-12 consumables, 13 repel, 14 egg item (unused)
+    const STACK_MAX = 99;                   // TRIAL: per-item stack limit
+    // Source new-game gifts: 2000 kim tiền, 2 huy hiệu, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch.
+    // The 2 Cao cấp cầu are a prototype addition (TRIAL).
+    const BAG_START = { 1: 5, 2: 2, 4: 5, 11: 2 };
     const teamMenu = document.getElementById("teamMenu");
     const ballMenu = document.getElementById("ballMenu");
+    const itemMenu = document.getElementById("itemMenu");
     let bag = { ...BAG_START };
-    try { const raw = JSON.parse(localStorage.getItem(BAG_KEY) || "null"); if (raw && typeof raw === "object") bag = { 1: Number(raw[1]) || 0, 2: Number(raw[2]) || 0 }; } catch (_) {}
+    try {
+      const raw = JSON.parse(localStorage.getItem(BAG_KEY) || "null");
+      if (raw && typeof raw === "object") { bag = {}; for (let row = 0; row < BAG_ROWS; row++) bag[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
+    } catch (_) {}
+    let wallet = { gold: SHOP?.starter_gifts?.gold ?? 2000, badges: SHOP?.starter_gifts?.badges ?? 2, rewarded: {} };
+    try {
+      const raw = JSON.parse(localStorage.getItem(WALLET_KEY) || "null");
+      if (raw && typeof raw === "object") wallet = { gold: Math.max(0, Math.floor(Number(raw.gold) || 0)), badges: Math.max(0, Math.floor(Number(raw.badges) || 0)), rewarded: raw.rewarded && typeof raw.rewarded === "object" ? { ...raw.rewarded } : {} };
+    } catch (_) {}
     function saveBag() { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch (_) {} }
-    function topUpBag() { let changed = false; for (const [ball, count] of Object.entries(BAG_START)) if ((bag[ball] || 0) < count) { bag[ball] = count; changed = true; } if (changed) saveBag(); return changed; }
+    function saveWallet() { try { localStorage.setItem(WALLET_KEY, JSON.stringify(wallet)); } catch (_) {} }
+    let repelSteps = 0;                     // Tị quái hàn: steps left without wild encounters (session only)
+    function walletText() { return `Kim tiền ${wallet.gold} · Huy hiệu ${wallet.badges}${repelSteps > 0 ? ` · Tị quái hàn còn ${repelSteps} bước` : ""}`; }
+    function updateWallet() {
+      for (const id of ["walletStatus", "shopWallet", "bagWallet"]) { const el = document.getElementById(id); if (el) el.textContent = walletText(); }
+    }
+    function addGold(amount) { wallet.gold += amount; saveWallet(); updateWallet(); }
+    // TRIAL rewards: the source game gives gold from quests and map coins, never from battles.
+    function goldReward(level) { return 15 * level + Math.floor(Math.random() * (5 * level + 1)); }
+    function grantOnce(key, apply) {
+      if (wallet.rewarded[key]) return false;
+      wallet.rewarded[key] = true; apply(); saveWallet(); saveBag(); updateWallet();
+      return true;
+    }
     let wildSteps = 0;
     // Experience follows game/i.java A() and game/a.java h(); progress is kept per pet in this browser.
     const EXP = STATS?.experience;
@@ -339,6 +425,113 @@
       },
       evolve: evolvePet
     };
+    // ---- Shop (game/k.java a()/b(), game/j.java b(), game/i.java w()/x()): prices come from db.mid tables 3 and 4. ----
+    const CATALOG = [
+      ...(SHOP?.items || []).filter(item => item.row !== 14).map(item => ({ ...item, id: `item-${item.row}`, store: "bag" })),
+      ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" }))
+    ];
+    const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
+    const itemEntry = row => catalogById.get(`item-${row}`);
+    const countOf = entry => (entry.store === "bag" ? bag[entry.row] : stones[entry.row]) || 0;
+    function setCount(entry, amount) {
+      if (entry.store === "bag") { bag[entry.row] = amount; saveBag(); } else { stones[entry.row] = amount; saveStones(); updateStones(); }
+    }
+    const currencyName = entry => (entry.currency === 0 ? "kim tiền" : "huy hiệu");
+    const balanceOf = entry => (entry.currency === 0 ? wallet.gold : wallet.badges);
+    function adjustBalance(entry, delta) { if (entry.currency === 0) wallet.gold += delta; else wallet.badges += delta; saveWallet(); updateWallet(); }
+    // In battle every price is doubled (game/k.java b(): price << 1).
+    const priceOf = (entry, inBattle) => entry.price * (inBattle ? SHOP.battle_price_multiplier : 1);
+    function buyItem(id, quantity, inBattle = state.mode === "battle") {
+      const entry = catalogById.get(id);
+      quantity = Math.floor(Number(quantity));
+      if (!entry || !(quantity >= 1)) return { ok: false, message: "Không có mặt hàng này." };
+      if (countOf(entry) + quantity > STACK_MAX) return { ok: false, message: `Mỗi loại chỉ giữ tối đa ${STACK_MAX} cái.` };
+      const total = priceOf(entry, inBattle) * quantity;
+      if (balanceOf(entry) < total) return { ok: false, message: `${entry.currency === 0 ? "Kim tiền" : "Huy hiệu"} chưa đủ (cần ${total}, đang có ${balanceOf(entry)}).` };
+      adjustBalance(entry, -total);
+      setCount(entry, countOf(entry) + quantity);
+      return { ok: true, total, message: `Đã mua ${entry.name} × ${quantity} (${total} ${currencyName(entry)}).` };
+    }
+    // Selling (game/k.java aZ()): table 4 items only, for price / 2 in the item's own currency, in the village only.
+    function sellItem(id, quantity) {
+      const entry = catalogById.get(id);
+      quantity = Math.floor(Number(quantity));
+      if (state.mode === "battle") return { ok: false, message: "Chỉ bán được đồ ở làng." };
+      if (!entry || entry.store !== "bag" || !(quantity >= 1)) return { ok: false, message: "Không bán được mặt hàng này." };
+      if (countOf(entry) < quantity) return { ok: false, message: `Chỉ có ${countOf(entry)} ${entry.name}.` };
+      const total = Math.trunc(entry.price * quantity / SHOP.sell_price_divisor);
+      setCount(entry, countOf(entry) - quantity);
+      adjustBalance(entry, total);
+      return { ok: true, total, message: `Đã bán ${entry.name} × ${quantity} (nhận ${total} ${currencyName(entry)}).` };
+    }
+    // ---- Battle items (game/i.java w()/x(): effect types 1 heal, 2 skill uses, 3 both, 4 revive, 5 cleanse). ----
+    const BATTLE_ITEM_TYPES = [1, 2, 3, 4, 5];
+    function battleItems() { return CATALOG.filter(entry => entry.store === "bag" && BATTLE_ITEM_TYPES.includes(entry.effect_type) && (bag[entry.row] || 0) > 0); }
+    const usesMissing = target => (target.skills || []).some(skill => skill.uses < skill.max);
+    function itemTargetProblem(entry, target) {
+      const alive = target.hp > 0;
+      if (entry.effect_type === 4) return alive ? "vẫn còn sức chiến đấu" : "";
+      if (!alive) return "đã kiệt sức";
+      switch (entry.effect_type) {
+        case 1: return target.hp >= target.max ? "đang đầy máu" : "";
+        case 2: return !(target.skills || []).length ? "không có kỹ năng" : usesMissing(target) ? "" : "đã đầy số lần kỹ năng";
+        case 3: return target.hp >= target.max && !usesMissing(target) ? "đã đầy HP và kỹ năng" : "";
+        case 5: return Object.keys(target.debuffs || {}).length ? "" : "không có trạng thái bất lợi";
+      }
+      return "không dùng được";
+    }
+    function restoreUses(target, amount) { for (const skill of target.skills || []) skill.uses = Math.min(skill.max, skill.uses + amount); }
+    function applyItemEffect(entry, target) {
+      const heal = Math.trunc(target.max * entry.p1 / 100) + entry.p2;
+      switch (entry.effect_type) {
+        case 1: { const before = target.hp; target.hp = Math.min(target.max, target.hp + heal); return `${target.name} hồi ${target.hp - before} HP`; }
+        case 2: restoreUses(target, entry.p1); return `${target.name} hồi ${entry.p1} lần mỗi kỹ năng`;
+        case 3: { const before = target.hp; target.hp = Math.min(target.max, target.hp + heal); restoreUses(target, entry.p3); return `${target.name} hồi ${target.hp - before} HP và ${entry.p3} lần mỗi kỹ năng`; }
+        case 4: target.hp = Math.min(target.max, heal); restoreUses(target, entry.p3); return `${target.name} hồi sinh với ${target.hp} HP`;
+        case 5: target.debuffs = {}; return `${target.name} được giải trừ trạng thái bất lợi`;
+      }
+      return "";
+    }
+    function useBattleItem(row, index) {
+      const battle = state.battle;
+      if (state.mode !== "battle" || battle.pendingUntil || battle.mustSwitch) return false;
+      const entry = itemEntry(row), target = battle.team[index];
+      if (!entry || !target || !BATTLE_ITEM_TYPES.includes(entry.effect_type)) return false;
+      if (!(bag[row] > 0)) { battle.message = `Không còn ${entry.name}.`; return false; }
+      if (activePet().debuffs?.[2]) { battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể dùng đạo cụ.`; return false; }
+      const problem = itemTargetProblem(entry, target);
+      if (problem) { battle.message = `${entry.name}: ${target.name} ${problem}.`; return false; }
+      bag[row]--; saveBag();
+      itemMenu.hidden = true;
+      battle.message = `Kael dùng ${entry.name}: ${applyItemEffect(entry, target)}.`;
+      battle.turn++;
+      enemyCounter();
+      if (state.mode === "battle" && !battle.mustSwitch) { endRound(); handleFaint(); }
+      updateGuidance();
+      return true;
+    }
+    // Tị quái hàn (type 10): no wild encounters for p1 steps; usable only outside battle.
+    function useRepel() {
+      const entry = itemEntry(13);
+      if (!entry || state.mode !== "explore" || !(bag[13] > 0)) return false;
+      bag[13]--; saveBag();
+      repelSteps = entry.p1;
+      statusEl.textContent = `Đã dùng ${entry.name}: không gặp pet hoang dã trong ${repelSteps} bước`;
+      updateWallet();
+      return true;
+    }
+    function effectText(entry) {
+      switch (entry.effect_type) {
+        case 1: return `Hồi ${entry.p1}% HP tối đa${entry.p2 ? ` + ${entry.p2}` : ""}.`;
+        case 2: return `Hồi ${entry.p1} lần dùng cho mỗi kỹ năng.`;
+        case 3: return `Hồi ${entry.p1}% HP${entry.p2 ? ` + ${entry.p2}` : ""} và ${entry.p3} lần dùng mỗi kỹ năng.`;
+        case 4: return `Hồi sinh pet kiệt sức với ${entry.p1}% HP${entry.p2 ? ` + ${entry.p2}` : ""} và ${entry.p3} lần dùng mỗi kỹ năng.`;
+        case 5: return "Xóa mọi trạng thái bất lợi.";
+        case 10: return `Không gặp pet hoang dã trong ${entry.p1} bước (dùng trong Túi đồ).`;
+        case 0: return entry.row <= 3 ? `Tỉ lệ bắt cơ bản ${entry.p1 >= 9999 ? "100%" : `${entry.p1}%`}.` : "";
+      }
+      return "";
+    }
     // Adds experience and returns the levels gained (game/i.java g() + w()).
     function gainExp(member, amount) {
       const entry = { ...progressOf(member.progressKey, member.level) };
@@ -626,7 +819,7 @@
     function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, potions: 2, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
+    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -670,6 +863,7 @@
       state.mode = "explore";
       statusEl.textContent = "Đang khám phá · Làng biên giới";
       updateStones();
+      updateWallet();
       updateGuidance();
       requestAnimationFrame(loop);
     }
@@ -677,7 +871,7 @@
     function updateGuidance() {
       battleControls.hidden = state.mode !== "battle";
       battleHint.hidden = state.mode !== "battle";
-      if (state.mode !== "battle") { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; }
+      if (state.mode !== "battle") { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; }
       const pet = activePet();
       const isLead = pet.kind === "lead";
       const busy = !!state.battle.pendingUntil || state.battle.mustSwitch;
@@ -695,9 +889,11 @@
       for (const id of ["fightButton", "itemButton", "captureButton"]) document.getElementById(id).disabled = state.mode === "battle" && state.battle.mustSwitch;
       if (!teamMenu.hidden) renderTeamMenu();
       if (!ballMenu.hidden) renderBallMenu();
-      if (state.mode === "battle") battleHint.textContent = `Thuốc thử: ${state.battle.potions} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0}`;
+      if (!itemMenu.hidden) renderItemMenu();
+      if (state.mode === "battle") battleHint.textContent = `Kim tiền ${wallet.gold} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0} · Đạo cụ hồi phục: ${battleItems().reduce((sum, entry) => sum + bag[entry.row], 0)}`;
+      updateWallet();
       if (state.mode === "battle") objectiveEl.textContent = state.battle.mustSwitch ? `${pet.name} kiệt sức. Chọn pet khác trong Sủng vật.` : state.battle.wild ? "Đánh yếu pet hoang dã rồi chọn Bắt pet: HP càng thấp càng dễ bắt." : "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
-      else if (WILD_MAP_AREAS[assets.map.id] && state.mode === "explore") objectiveEl.textContent = "Đi trong rừng để gặp pet hoang dã và bắt chúng; về làng để nhận thêm cầu.";
+      else if (WILD_MAP_AREAS[assets.map.id] && state.mode === "explore") objectiveEl.textContent = "Đi trong rừng để gặp pet hoang dã và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.";
       else if (state.mode === "ending") objectiveEl.textContent = "La bàn đã thức tỉnh. Anh có thể chơi lại từ đầu.";
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
       else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
@@ -1141,7 +1337,7 @@
     function renderBallMenu() {
       const list = document.getElementById("ballList");
       list.replaceChildren();
-      for (const index of [1, 2]) {
+      for (const index of [0, 1, 2, 3].filter(i => i === 1 || i === 2 || bag[i] > 0)) {
         const ball = CAPTURE.balls[index];
         const button = document.createElement("button");
         button.type = "button";
@@ -1158,7 +1354,7 @@
       if (state.mode !== "battle" || state.battle.mustSwitch || (state.battle.pendingUntil && open)) return;
       if (!state.battle.wild) { state.battle.message = "Trận chiến này không cho bắt sủng vật"; return; }
       ballMenu.hidden = !open;
-      if (open) { fightMenu.hidden = true; teamMenu.hidden = true; renderBallMenu(); }
+      if (open) { fightMenu.hidden = true; teamMenu.hidden = true; itemMenu.hidden = true; renderBallMenu(); }
     }
     function attemptCapture(ballIndex) {
       const battle = state.battle;
@@ -1187,6 +1383,9 @@
       if (result === "caught" || result === "win") {
         const found = rollStoneDrops(enemy.level);
         if (found.length) text += ` · nhặt được ${found.join(", ")}`;
+        const gold = goldReward(enemy.level);
+        addGold(gold);
+        text += ` · +${gold} kim tiền`;
       }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = text;
@@ -1194,6 +1393,7 @@
     }
     function maybeEncounter() {
       if (state.mode !== "explore" || !state.spokeToElder || !WILD_MAP_AREAS[assets.map.id]) return;
+      if (repelSteps > 0) { if (--repelSteps === 0) { statusEl.textContent = "Tị quái hàn đã hết tác dụng"; } updateWallet(); return; }
       if (++wildSteps <= ENCOUNTER_GRACE_STEPS || Math.random() >= ENCOUNTER_CHANCE) return;
       startWildBattle();
     }
@@ -1241,7 +1441,7 @@
     function toggleTeamMenu(open = teamMenu.hidden) {
       if (state.mode !== "battle" || (state.battle.pendingUntil && open)) return;
       teamMenu.hidden = !open;
-      if (open) { fightMenu.hidden = true; ballMenu.hidden = true; renderTeamMenu(); }
+      if (open) { fightMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; renderTeamMenu(); }
     }
     function switchPet(index) {
       const battle = state.battle;
@@ -1358,7 +1558,9 @@
           if (state.activeNpc.id === "elder") state.spokeToElder = true;
           if (state.activeNpc.id === "herbalist") {
             if (state.herbQuest.stage === "unstarted") { state.herbQuest.stage = "active"; statusEl.textContent = "Nhiệm vụ phụ · Tìm 3 khóm thảo dược"; }
-            else if (state.herbQuest.stage === "active" && state.herbQuest.collected.length === HERBS.length) { state.herbQuest.stage = "done"; statusEl.textContent = "Hoàn thành · Thảo dược cho Lôi Miêu"; }
+            else if (state.herbQuest.stage === "active" && state.herbQuest.collected.length === HERBS.length) { state.herbQuest.stage = "done"; statusEl.textContent = "Hoàn thành · Thảo dược cho Lôi Miêu";
+              // TRIAL reward, granted once per browser save: 300 kim tiền, 1 huy hiệu, 2 Bánh Sandwich.
+              if (grantOnce("herb", () => { wallet.gold += 300; wallet.badges += 1; bag[4] = Math.min(STACK_MAX, (bag[4] || 0) + 2); })) statusEl.textContent += " · +300 kim tiền, +1 huy hiệu, +2 Bánh Sandwich"; }
           }
           state.activeNpc = null; state.mode = "explore";
         }
@@ -1376,7 +1578,6 @@
       if (link && state.spokeToElder && assets.maps?.[link.target]) {
         assets.map = assets.maps[link.target];
         wildSteps = 0;
-        if (link.target === "slice01-border-village" && topUpBag()) saveStatus.textContent = "Người chăm sóc pet bổ sung cầu bắt pet cho Kael.";
         state.player = {x:link.spawnX,y:link.spawnY,visualX:link.spawnX,visualY:link.spawnY,faceX:1,faceY:0,step:null,inputDir:null};
         statusEl.textContent = `Đang khám phá · ${assets.map.title}`; updateGuidance(); return;
       }
@@ -1396,7 +1597,7 @@
       if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
       if (!guard && move === "skill" && chosen.uses <= 0) { battle.message = `${chosen.name} đã hết lượt dùng.`; return; }
       if (!guard && move === "skill" && chosen.noDamage && !chosen.effect) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
-      fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true;
+      fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true;
       const now = performance.now();
       battle.message = "";
       battle.enemyActed = false;
@@ -1430,6 +1631,7 @@
       if (state.battle.enemy.hp <= 0) {
         state.mode = "ending";
         statusEl.textContent = "Hoàn tất lát prototype · Chương 1";
+        if (grantOnce("story", () => { wallet.gold += 200; })) statusEl.textContent += " · +200 kim tiền";
         updateGuidance();
         return;
       }
@@ -1490,21 +1692,50 @@
       statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
       updateGuidance();
     }
-    function usePotion() {
-      if (state.mode !== "battle" || state.battle.pendingUntil || state.battle.mustSwitch) return;
-      const pet = activePet();
-      if (!state.battle.potions) { state.battle.message = "Đã hết thuốc thử."; return; }
-      if (pet.hp >= pet.max) { state.battle.message = `${pet.name} đang đầy máu.`; return; }
-      if (pet.debuffs?.[2]) { state.battle.message = `${pet.name} đang bị ${DEBUFF(2).name}, không thể dùng đạo cụ.`; return; }
-      // TRIAL: potion restores 30% of max HP.
-      const recovered = Math.min(Math.round(pet.max * .3), pet.max - pet.hp);
-      state.battle.potions--;
-      pet.hp += recovered;
-      state.battle.message = `Dùng thuốc thử: ${pet.name} hồi ${recovered} HP.`;
-      state.battle.turn++;
-      enemyCounter();
-      if (state.mode === "battle" && !state.battle.mustSwitch) { endRound(); handleFaint(); }
-      updateGuidance();
+    // Two-step battle item menu: pick an item, then the pet that receives it (using it costs the turn).
+    let itemPick = null;
+    function renderItemMenu() {
+      const list = document.getElementById("itemList"), heading = document.getElementById("itemHeading"), note = document.getElementById("itemNote");
+      list.replaceChildren();
+      if (itemPick === null) {
+        heading.textContent = "Đạo cụ";
+        const items = battleItems();
+        for (const entry of items) {
+          const button = document.createElement("button");
+          button.type = "button";
+          const name = document.createElement("span"); name.textContent = entry.name;
+          const count = document.createElement("span"); count.textContent = `×${bag[entry.row]}`;
+          button.append(name, count);
+          button.title = `${entry.description} ${effectText(entry)}`;
+          button.addEventListener("click", () => { itemPick = entry.row; renderItemMenu(); });
+          list.append(button);
+        }
+        note.textContent = items.length ? "Chọn đạo cụ, rồi chọn pet nhận. Dùng đạo cụ mất một lượt." : "Hết đạo cụ dùng được. Mở Thương điếm để mua (giá gấp đôi trong trận).";
+        return;
+      }
+      const entry = itemEntry(itemPick);
+      heading.textContent = `${entry.name} → chọn pet`;
+      state.battle.team.forEach((pet, index) => {
+        const problem = itemTargetProblem(entry, pet);
+        const button = document.createElement("button");
+        button.type = "button";
+        const name = document.createElement("span"); name.textContent = pet.name;
+        const info = document.createElement("small"); info.textContent = problem ? problem : `${pet.hp}/${pet.max}`;
+        button.append(name, info);
+        button.disabled = !!problem;
+        button.addEventListener("click", () => useBattleItem(itemPick, index));
+        list.append(button);
+      });
+      const back = document.createElement("button");
+      back.type = "button"; back.textContent = "← Chọn lại đạo cụ";
+      back.addEventListener("click", () => { itemPick = null; renderItemMenu(); });
+      list.append(back);
+      note.textContent = effectText(entry);
+    }
+    function toggleItemMenu(open = itemMenu.hidden) {
+      if (state.mode !== "battle" || state.battle.mustSwitch || (state.battle.pendingUntil && open)) return;
+      itemMenu.hidden = !open; itemPick = null;
+      if (open) { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; renderItemMenu(); }
     }
     function fleeBattle() {
       if (state.mode !== "battle" || state.battle.pendingUntil) return;
@@ -1513,6 +1744,101 @@
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";
       updateGuidance();
+    }
+    // ---- Shop and bag dialogs ----
+    const shopDialog = document.getElementById("shopDialog"), bagDialog = document.getElementById("bagDialog");
+    let shopMode = "buy", shopSelected = null, shopQty = 1, shopMessage = "";
+    function shopContext() {
+      if (state.mode === "battle") return "battle";
+      return state.mode === "explore" && assets.map?.id === "slice01-border-village" ? "village" : null;
+    }
+    function openShop() {
+      const context = shopContext();
+      if (!shopDialog.showModal || state.mode === "loading") return;
+      if (!context) { statusEl.textContent = "Thương điếm chỉ mở ở làng biên giới hoặc trong trận"; return; }
+      if (context === "battle" && (state.battle.pendingUntil || state.battle.mustSwitch)) return;
+      state.player.inputDir = null;
+      shopMode = "buy"; shopSelected = null; shopQty = 1; shopMessage = "";
+      if (!shopDialog.open) shopDialog.showModal();
+      renderShop();
+    }
+    function shopEntries() {
+      return shopMode === "buy" ? CATALOG : CATALOG.filter(entry => entry.store === "bag" && countOf(entry) > 0 && entry.row <= 13);
+    }
+    function renderShop() {
+      const inBattle = state.mode === "battle";
+      const list = document.getElementById("shopList"), detail = document.getElementById("shopDetail");
+      document.getElementById("shopSubtitle").textContent = inBattle ? "Giá gấp đôi trong trận; không bán lại được." : "Giá niêm yết; bán lại được một nửa giá.";
+      document.getElementById("shopTabSell").disabled = inBattle;
+      if (inBattle) shopMode = "buy";
+      for (const [id, mode] of [["shopTabBuy", "buy"], ["shopTabSell", "sell"]]) document.getElementById(id).setAttribute("aria-pressed", String(shopMode === mode));
+      updateWallet();
+      const entries = shopEntries();
+      if (!entries.some(entry => entry.id === shopSelected)) shopSelected = entries[0]?.id || null;
+      list.replaceChildren(); detail.replaceChildren();
+      for (const entry of entries) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(entry.id === shopSelected));
+        const name = document.createElement("span"); name.textContent = entry.name;
+        const info = document.createElement("small");
+        info.textContent = shopMode === "buy" ? `${priceOf(entry, inBattle)} ${currencyName(entry)} · có ${countOf(entry)}` : `+${Math.trunc(entry.price / SHOP.sell_price_divisor)} ${currencyName(entry)} · có ${countOf(entry)}`;
+        button.append(name, info);
+        button.addEventListener("click", () => { shopSelected = entry.id; shopQty = 1; shopMessage = ""; renderShop(); });
+        list.append(button);
+      }
+      const entry = catalogById.get(shopSelected);
+      if (!entry) { const p = document.createElement("p"); p.textContent = shopMode === "sell" ? "Chưa có đồ nào để bán." : "Không có mặt hàng."; detail.append(p); return; }
+      const limit = shopMode === "buy" ? Math.max(1, STACK_MAX - countOf(entry)) : Math.max(1, countOf(entry));
+      shopQty = Math.max(1, Math.min(limit, shopQty));
+      const unit = shopMode === "buy" ? priceOf(entry, inBattle) : Math.trunc(entry.price / SHOP.sell_price_divisor);
+      const total = shopMode === "buy" ? unit * shopQty : Math.trunc(entry.price * shopQty / SHOP.sell_price_divisor);
+      const title = document.createElement("h3"); title.textContent = entry.name;
+      const desc = document.createElement("p"); desc.textContent = `${entry.description} ${effectText(entry)}`.trim();
+      const owned = document.createElement("p"); owned.textContent = `Đang có: ${countOf(entry)} · ${shopMode === "buy" ? "giá" : "bán được"} ${shopMode === "buy" ? unit : Math.trunc(entry.price / SHOP.sell_price_divisor)} ${currencyName(entry)}/cái`;
+      const qty = document.createElement("div"); qty.className = "shop-qty";
+      const minus = document.createElement("button"); minus.type = "button"; minus.textContent = "−"; minus.setAttribute("aria-label", "Giảm số lượng");
+      const out = document.createElement("output"); out.textContent = `${shopQty} cái · ${total} ${currencyName(entry)}`;
+      const plus = document.createElement("button"); plus.type = "button"; plus.textContent = "+"; plus.setAttribute("aria-label", "Tăng số lượng");
+      minus.addEventListener("click", () => { shopQty = Math.max(1, shopQty - 1); renderShop(); });
+      plus.addEventListener("click", () => { shopQty = Math.min(limit, shopQty + 1); renderShop(); });
+      qty.append(minus, out, plus);
+      const confirm = document.createElement("button"); confirm.type = "button"; confirm.className = "shop-confirm";
+      confirm.textContent = shopMode === "buy" ? `Mua ${shopQty}` : `Bán ${shopQty}`;
+      confirm.addEventListener("click", () => {
+        const result = shopMode === "buy" ? buyItem(entry.id, shopQty, inBattle) : sellItem(entry.id, shopQty);
+        shopMessage = result.message; if (result.ok) shopQty = 1;
+        renderShop();
+      });
+      const message = document.createElement("p"); message.className = "shop-message"; message.textContent = shopMessage;
+      detail.append(title, desc, owned, qty, confirm, message);
+    }
+    function openBag() {
+      if (!bagDialog.showModal || state.mode === "loading") return;
+      state.player.inputDir = null;
+      if (!bagDialog.open) bagDialog.showModal();
+      renderBag();
+    }
+    function renderBag() {
+      const list = document.getElementById("bagList"), note = document.getElementById("bagNote");
+      updateWallet();
+      list.replaceChildren();
+      const owned = CATALOG.filter(entry => countOf(entry) > 0);
+      if (!owned.length) { const p = document.createElement("p"); p.textContent = "Túi đang trống."; list.append(p); }
+      for (const entry of owned) {
+        const row = document.createElement("div");
+        row.className = "bag-row";
+        const name = document.createElement("span"); name.textContent = `${entry.name} ×${countOf(entry)}`;
+        row.append(name);
+        if (entry.row === 13 && entry.store === "bag") {
+          const use = document.createElement("button"); use.type = "button"; use.textContent = "Dùng"; use.disabled = state.mode !== "explore";
+          use.addEventListener("click", () => { useRepel(); renderBag(); });
+          row.append(use);
+        }
+        row.title = `${entry.description} ${effectText(entry)}`;
+        list.append(row);
+      }
+      note.textContent = "Đạo cụ hồi phục dùng trong trận qua nút Đạo cụ; nguyên liệu dùng để tiến hóa trong Sổ pet.";
     }
     function reset() {
       if (assets.maps?.["slice01-border-village"]) assets.map = assets.maps["slice01-border-village"];
@@ -1554,12 +1880,14 @@
     }
     window.addEventListener("keydown", e => {
       const key = e.key.toLowerCase();
-      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open || learnDialog.open) return;
+      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open || learnDialog.open || shopDialog.open || bagDialog.open) return;
       if (e.target instanceof Element && e.target.closest("button, input, select, textarea")) return;
       // preventDefault: the dialogs move focus to a text field, which would otherwise receive the typed letter.
       if (key === "p" && !e.repeat) { e.preventDefault(); if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
       if (key === "j" && !e.repeat) { e.preventDefault(); openQuestJournal(); return; }
       if (key === "m" && !e.repeat) { e.preventDefault(); openMap(); return; }
+      if (key === "b" && !e.repeat) { e.preventDefault(); openShop(); return; }
+      if (key === "i" && !e.repeat) { e.preventDefault(); openBag(); return; }
       if (["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(key)) e.preventDefault();
       if (["w", "arrowup"].includes(key)) setMove(0, -1);
       if (["s", "arrowdown"].includes(key)) setMove(0, 1);
@@ -1591,16 +1919,24 @@
       state.player.inputDir = null; window.openWorldAtlas();
     }
     document.getElementById("openWorldAtlas").addEventListener("click", openMap);
+    document.getElementById("openShop").addEventListener("click", openShop);
+    document.getElementById("openBag").addEventListener("click", openBag);
+    document.getElementById("shopButton").addEventListener("click", openShop);
+    document.getElementById("closeShop").addEventListener("click", () => shopDialog.close());
+    document.getElementById("closeBag").addEventListener("click", () => bagDialog.close());
+    for (const [id, mode] of [["shopTabBuy", "buy"], ["shopTabSell", "sell"]]) document.getElementById(id).addEventListener("click", () => { shopMode = mode; shopSelected = null; shopQty = 1; shopMessage = ""; renderShop(); });
+    shopDialog.addEventListener("close", () => updateGuidance());
+    bagDialog.addEventListener("close", () => updateGuidance());
     document.getElementById("saveGame").addEventListener("click", saveGame);
     document.getElementById("loadGame").addEventListener("click", loadGame);
-    document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil && !state.battle.mustSwitch) { fightMenu.hidden = !fightMenu.hidden; teamMenu.hidden = true; ballMenu.hidden = true; } });
+    document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil && !state.battle.mustSwitch) { fightMenu.hidden = !fightMenu.hidden; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; } });
     document.getElementById("attackButton").addEventListener("click", () => action(false, "skill"));
     document.getElementById("skillLearnSkip").addEventListener("click", skipLearn);
     learnDialog.addEventListener("cancel", event => { event.preventDefault(); skipLearn(); });
     document.getElementById("basicButton").addEventListener("click", () => action(false, "basic"));
     document.getElementById("guardButton").addEventListener("click", () => action(true));
     document.getElementById("captureButton").addEventListener("click", () => toggleBallMenu());
-    document.getElementById("itemButton").addEventListener("click", usePotion);
+    document.getElementById("itemButton").addEventListener("click", () => toggleItemMenu());
     document.getElementById("teamButton").addEventListener("click", () => toggleTeamMenu());
     document.getElementById("teamBookButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
     document.getElementById("fleeButton").addEventListener("click", fleeBattle);

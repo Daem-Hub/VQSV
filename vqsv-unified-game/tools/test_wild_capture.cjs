@@ -69,11 +69,9 @@ assert.deepEqual(catches, [{ id: 'vqsv6-db-86', level: 5, quality: 1 }]);
 assert.match(element('status').textContent, /Đã bắt Độc Ba Lợi/);
 assert.equal(JSON.parse(store.get('vqsv-unified-bag-v1'))[1], 0);
 
-// Story battle refuses capture; returning to the village restocks balls.
+// Story battle refuses capture.
 run('state.battle = newBattle(); state.mode = "battle"; toggleBallMenu(true)');
 assert.match(run('state.battle.message'), /không cho bắt sủng vật/);
-assert.equal(run('topUpBag()'), true);
-assert.equal(run('bag[1]'), 5);
 // Experience (game/a.java h, game/i.java A): Độc Ba Lợi L5 quality 1 -> (50 + 50) * 10 / 10 + 400 = 500.
 run('progress = {}');
 const reward = (count, level) => run(`expReward({ level: 5, quality: 1 }, ${count}, ${level})`);
@@ -182,7 +180,7 @@ assert.equal(run('effStats(state.battle.enemy).defense'), def - Math.trunc(run('
 fresh(); run('activePet().debuffs[1] = { turns: 2, value: 0 }; action(false, "skill", 0)');
 assert.match(run('state.battle.message'), /không thể hành động/);
 assert.equal(run('state.battle.enemy.hp'), run('state.battle.enemy.max'));
-fresh(); run('activePet().debuffs[2] = { turns: 3, value: 0 }; activePet().hp = 10; usePotion()');
+fresh(); run('activePet().debuffs[2] = { turns: 3, value: 0 }; activePet().hp = 10; bag[5] = 1; useBattleItem(5, 0)');
 assert.match(run('state.battle.message'), /không thể dùng đạo cụ/);
 run('fleeBattle()'); assert.equal(run('state.mode'), 'battle');
 // At most 3 statuses per side; Thạch Phu (buff 14) clears debuffs and blocks new ones.
@@ -265,4 +263,93 @@ assert.equal(JSON.parse(store.get('vqsv-unified-stones-v1'))[12], 3);
 run('Math.random = () => 0; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; finishWild("win")');
 assert.match(element('status').textContent, /nhặt được Tinh Nguyên Thạch, Hồn Tinh Thạch/);
 assert.match(element('stoneStatus').textContent, /Tinh Nguyên Thạch ×\d+/);
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects and evolution passed.');
+// ---- Shop and items (game/k.java a()/b(), game/j.java b(), game/i.java w()/x()) ----
+const reset3 = () => { teamIds.length = 0; run('bag = { 1: 5, 2: 2, 4: 5, 11: 2 }; stones = { 12: 0, 13: 0, 14: 0, 15: 0, 16: 0 }; wallet = { gold: 2000, badges: 2, rewarded: {} }; progress = {}; repelSteps = 0; state.mode = "explore"; state.battle = newBattle()'); };
+reset3();
+// Source starter gifts: 2000 kim tiền, 2 huy hiệu, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch.
+assert.equal(run('wallet.gold'), 2000); assert.equal(run('wallet.badges'), 2);
+assert.equal(run('bag[1] + "," + bag[4] + "," + bag[11]'), '5,5,2');
+// Buying: Tinh Nguyên Thạch = 1000 kim tiền; the second one is unaffordable.
+let buy = JSON.parse(JSON.stringify(run('buyItem("stone-12", 1)')));
+assert.equal(buy.ok, true); assert.equal(buy.total, 1000);
+assert.equal(run('wallet.gold'), 1000); assert.equal(run('stones[12]'), 1);
+buy = JSON.parse(JSON.stringify(run('buyItem("stone-12", 2)')));
+assert.equal(buy.ok, false); assert.match(buy.message, /Kim tiền chưa đủ \(cần 2000, đang có 1000\)/);
+assert.equal(run('stones[12]'), 1);
+// Badge currency: Hồn Tinh Thạch = 2 huy hiệu.
+assert.equal(JSON.parse(JSON.stringify(run('buyItem("stone-15", 1)'))).ok, true);
+assert.equal(run('wallet.badges'), 0); assert.equal(run('stones[15]'), 1);
+assert.match(run('buyItem("stone-13", 1).message'), /Huy hiệu chưa đủ/);
+// Battle prices are doubled (Bánh Sandwich 100 -> 200); the village price is unchanged.
+run('wallet.gold = 1000');
+assert.equal(run('buyItem("item-4", 1, true).total'), 200);
+assert.equal(run('buyItem("item-4", 1, false).total'), 100);
+assert.equal(run('wallet.gold'), 700);
+assert.equal(run('bag[4]'), 7);
+// Stack limit and bad input.
+run('bag[4] = 98; wallet.gold = 10000');
+assert.match(run('buyItem("item-4", 2).message'), /tối đa 99/);
+assert.equal(run('buyItem("item-999", 1).ok'), false);
+assert.equal(run('buyItem("item-4", 0).ok'), false);
+// Selling returns half the price in the item's currency, village only, table 4 items only.
+reset3();
+assert.equal(run('sellItem("item-4", 2).total'), 100);
+assert.equal(run('wallet.gold'), 2100); assert.equal(run('bag[4]'), 3);
+assert.equal(run('sellItem("item-4", 9).ok'), false);
+run('stones[12] = 1'); assert.equal(run('sellItem("stone-12", 1).ok'), false);
+run('state.mode = "battle"'); assert.match(run('sellItem("item-4", 1).message'), /Chỉ bán được đồ ở làng/);
+// Wallet and bag are persisted.
+assert.equal(JSON.parse(store.get('vqsv-unified-wallet-v1')).gold, 2100);
+assert.equal(JSON.parse(store.get('vqsv-unified-bag-v1'))[4], 3);
+// Battle items: Chocolate (full heal), Năng lượng Thạch (+25 uses), Khôi phục tề (HP and uses), Vạn năng dược, Sinh mệnh thạch (revive).
+teamIds.push('vqsv6-db-61');
+const duel = () => { reset3(); teamIds.push('vqsv6-db-61'); run('state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []; Math.random = () => 0.99'); };
+duel(); run('bag[5] = 1; activePet().hp = 10; useBattleItem(5, 0)');
+assert.match(run('state.battle.message'), /Kael dùng Chocolate: Lôi Miêu hồi 105 HP\./);
+assert.equal(run('bag[5]'), 0);
+assert.equal(run('state.battle.turn'), 1);
+duel(); run('bag[6] = 1; activePet().skills[0].uses = 30; useBattleItem(6, 0)');
+assert.equal(run('activePet().skills[0].uses'), 45);
+assert.match(run('state.battle.message'), /hồi 25 lần mỗi kỹ năng/);
+duel(); run('bag[8] = 1; activePet().hp = 20; activePet().skills[0].uses = 10; useBattleItem(8, 0)');
+assert.equal(run('activePet().skills[0].uses'), 30);
+assert.match(run('state.battle.message'), /Khôi phục tề: Lôi Miêu hồi 95 HP và 20 lần mỗi kỹ năng/);
+duel(); run('bag[10] = 1; useBattleItem(10, 0)');
+assert.match(run('state.battle.message'), /Vạn năng dược: Lôi Miêu không có trạng thái bất lợi\./);
+assert.equal(run('bag[10]'), 1);
+run('activePet().debuffs[5] = { turns: 3, value: 10 }; useBattleItem(10, 0)');
+assert.match(run('state.battle.message'), /được giải trừ trạng thái bất lợi/);
+assert.equal(run('Object.keys(activePet().debuffs).length'), 0);
+// Revive: Sinh mệnh thạch (row 11) = 50% max HP + 50 and +20 uses, only for fainted pets.
+duel(); run('useBattleItem(11, 1)');
+assert.match(run('state.battle.message'), /Sinh mệnh thạch: vqsv6-db-61 vẫn còn sức chiến đấu/);
+assert.equal(run('bag[11]'), 2);
+run('state.battle.team[1].hp = 0; state.battle.team[1].skills[0].uses = 0; useBattleItem(11, 1)');
+assert.equal(run('state.battle.team[1].hp'), Math.trunc(run('state.battle.team[1].max') * 50 / 100) + 50);
+assert.equal(run('state.battle.team[1].skills[0].uses'), 20);
+assert.equal(run('bag[11]'), 1);
+// A healing item never lands without effect on an unaffected target; a team of one cannot pick a missing target.
+duel(); assert.equal(run('useBattleItem(4, 5)'), false);
+assert.equal(run('bag[4]'), 5);
+// Master ball (Tất Trung Cầu) always catches; Đại sư cầu only shows once owned.
+duel(); run('bag[0] = 1; state.battle.enemy.hp = state.battle.enemy.max; attemptCapture(0)');
+assert.equal(run('state.battle.captured'), true);
+assert.equal(run('bag[0]'), 0);
+// Repel (Tị quái hàn, row 13): 500 steps without wild encounters, only outside battle.
+reset3(); run('bag[13] = 1; state.spokeToElder = true; assets.map = maps["ryan-phong-loi-forest"]; wildSteps = 100; Math.random = () => 0');
+run('state.mode = "battle"'); assert.equal(run('useRepel()'), false); run('state.mode = "explore"');
+assert.equal(run('useRepel()'), true);
+assert.equal(run('repelSteps'), 500); assert.equal(run('bag[13]'), 0);
+for (let i = 0; i < 10; i++) run('maybeEncounter()');
+assert.equal(run('state.mode'), 'explore'); assert.equal(run('repelSteps'), 490);
+run('repelSteps = 1; maybeEncounter()'); assert.equal(run('repelSteps'), 0);
+assert.match(element('status').textContent, /Tị quái hàn đã hết tác dụng/);
+run('maybeEncounter()'); assert.equal(run('state.mode'), 'battle');
+// Battle rewards: gold on wild wins/catches (TRIAL 15 per level + up to 5 per level), one-time quest rewards.
+reset3(); run('Math.random = () => 0; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; finishWild("win")');
+assert.equal(run('wallet.gold'), 2075);
+assert.match(element('status').textContent, /\+75 kim tiền/);
+assert.equal(run('grantOnce("herb", () => { wallet.gold += 300; })'), true);
+assert.equal(run('grantOnce("herb", () => { wallet.gold += 300; })'), false);
+assert.equal(run('wallet.gold'), 2375);
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop and items passed.');

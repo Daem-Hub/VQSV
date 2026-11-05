@@ -171,6 +171,249 @@
   ],
   "heals": "full HP on the new form"
  },
+ "shop": {
+  "currencies": {
+   "0": "kim tiền",
+   "1": "huy hiệu",
+   "2": "huy hiệu"
+  },
+  "battle_price_multiplier": 2,
+  "sell_price_divisor": 2,
+  "starter_gifts": {
+   "gold": 2000,
+   "badges": 2,
+   "items": {
+    "1": 5,
+    "4": 5,
+    "11": 2
+   }
+  },
+  "items": [
+   {
+    "row": 0,
+    "table": 4,
+    "name": "Tất Trung Cầu",
+    "description": "Bất luận là sủng vật hoang dã nào thì xác suất bắt được là 100%.",
+    "price": 2,
+    "currency": 2,
+    "effect_type": 0,
+    "p1": 9999,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 1,
+    "table": 4,
+    "name": "Phong ấn cầu",
+    "description": "Cầu thông thường có được nhiều sủng vật;",
+    "price": 50,
+    "currency": 0,
+    "effect_type": 0,
+    "p1": 100,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 2,
+    "table": 4,
+    "name": "Cao cấp cầu",
+    "description": "Cầu may mắn bắt được sủng vật hiếm;",
+    "price": 200,
+    "currency": 0,
+    "effect_type": 0,
+    "p1": 140,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 3,
+    "table": 4,
+    "name": "Đại sư cầu",
+    "description": "Chỉ một số ít sủng vật cần phải có cầu cao cấp mới bắt được;",
+    "price": 1,
+    "currency": 1,
+    "effect_type": 0,
+    "p1": 200,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 4,
+    "table": 4,
+    "name": "Bánh Sandwich",
+    "description": "Khôi phục một phần trị số sinh mạng sủng vật;",
+    "price": 100,
+    "currency": 0,
+    "effect_type": 1,
+    "p1": 50,
+    "p2": 50,
+    "p3": 0
+   },
+   {
+    "row": 5,
+    "table": 4,
+    "name": "Chocolate",
+    "description": "Khôi phục toàn bộ trị số sinh mạng sủng vật;",
+    "price": 250,
+    "currency": 0,
+    "effect_type": 1,
+    "p1": 100,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 6,
+    "table": 4,
+    "name": "Năng lượng Thạch",
+    "description": "Khôi phục một phần giá trị kỹ năng của sủng vật;",
+    "price": 100,
+    "currency": 0,
+    "effect_type": 2,
+    "p1": 25,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 7,
+    "table": 4,
+    "name": "Tụ Năng Thạch",
+    "description": "Khôi phục toàn bộ giá trị kỹ năng của sủng vật;",
+    "price": 250,
+    "currency": 0,
+    "effect_type": 2,
+    "p1": 45,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 8,
+    "table": 4,
+    "name": "Khôi phục tề",
+    "description": "Khôi phục một phần trị số sinh mạng cùng giá trị kỹ năng;",
+    "price": 250,
+    "currency": 0,
+    "effect_type": 3,
+    "p1": 50,
+    "p2": 50,
+    "p3": 20
+   },
+   {
+    "row": 9,
+    "table": 4,
+    "name": "Siêu năng tề",
+    "description": "Khôi phục toàn bộ trị số sinh mạng cùng giá trị kỹ năng;",
+    "price": 500,
+    "currency": 0,
+    "effect_type": 3,
+    "p1": 100,
+    "p2": 0,
+    "p3": 45
+   },
+   {
+    "row": 10,
+    "table": 4,
+    "name": "Vạn năng dược",
+    "description": "Loại bỏ bớt sủng vật;",
+    "price": 50,
+    "currency": 0,
+    "effect_type": 5,
+    "p1": 0,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 11,
+    "table": 4,
+    "name": "Sinh mệnh thạch",
+    "description": "Khi sủng vật sống lại, trị số sinh mạng cùng kỹ năng sẽ được khôi phục;",
+    "price": 300,
+    "currency": 0,
+    "effect_type": 4,
+    "p1": 50,
+    "p2": 50,
+    "p3": 20
+   },
+   {
+    "row": 12,
+    "table": 4,
+    "name": "Linh Hồn Thạch",
+    "description": "Sủng vật sống lại, khôi phục toàn bộ trị số sinh mạng cùng kỹ năng;",
+    "price": 750,
+    "currency": 0,
+    "effect_type": 4,
+    "p1": 100,
+    "p2": 0,
+    "p3": 45
+   },
+   {
+    "row": 13,
+    "table": 4,
+    "name": "Tị quái hàn",
+    "description": "Trong thời gian ngắn không gặp kẻ địch",
+    "price": 300,
+    "currency": 0,
+    "effect_type": 10,
+    "p1": 500,
+    "p2": 0,
+    "p3": 0
+   },
+   {
+    "row": 14,
+    "table": 4,
+    "name": "Gia tốc dược",
+    "description": "Lập tức cho ấp trứng, không cần chờ đợi, sẽ nhanh chóng được thấy sủng vật mới.",
+    "price": 1,
+    "currency": 1,
+    "effect_type": 9,
+    "p1": 0,
+    "p2": 0,
+    "p3": 0
+   }
+  ],
+  "materials": [
+   {
+    "row": 12,
+    "table": 3,
+    "name": "Tinh Nguyên Thạch",
+    "description": "Tài liệu liên quan đến tiến hóa;",
+    "price": 1000,
+    "currency": 0
+   },
+   {
+    "row": 13,
+    "table": 3,
+    "name": "Thiên Giới Tinh Thạch",
+    "description": "Tài liệu liên quan tiến hóa bậc cao;",
+    "price": 2,
+    "currency": 1
+   },
+   {
+    "row": 14,
+    "table": 3,
+    "name": "Thiên Địa Thần Thạch",
+    "description": "Tài liệu liên quan đến tiến hóa bậc cao hiếm có;",
+    "price": 10,
+    "currency": 1
+   },
+   {
+    "row": 15,
+    "table": 3,
+    "name": "Hồn Tinh Thạch",
+    "description": "Tài liệu liên quan đến dị hoá;",
+    "price": 2,
+    "currency": 1
+   },
+   {
+    "row": 16,
+    "table": 3,
+    "name": "Quỷ Thần Tinh Thạch",
+    "description": "Tài liệu liên quan đến dị hóa bậc cao hiếm có;",
+    "price": 10,
+    "currency": 1
+   }
+  ],
+  "not_implemented": "Table 3 rows 0-11 (held relics) and row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item)."
+ },
  "skill_curves": [
   [
    0,

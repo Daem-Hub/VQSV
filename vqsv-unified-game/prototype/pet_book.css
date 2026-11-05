@@ -8,6 +8,9 @@
 .pet-book-filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.4fr; gap: 10px; margin-bottom: 14px; }
 .pet-collection-status { color: #c3d0c1; font-size: 12px; line-height: 1.45; }
 .pet-collect { margin: 0 0 8px; background: #e7c66c; }
+.pet-team { margin: 0 0 8px; background: #9fd0c1; }
+.pet-team[aria-pressed="true"] { background: #e4a58d; }
+.pet-team:disabled { opacity: .6; cursor: not-allowed; }
 .pet-book-filters label { display: grid; gap: 5px; color: #c3d0c1; font-size: 12px; }
 .pet-book-filters input, .pet-book-filters select, .pet-sequence { width: 100%; padding: 9px 10px; color: #eef5e9; background: #21372a; border: 1px solid #506857; border-radius: 7px; font: inherit; }
 .pet-book-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; }

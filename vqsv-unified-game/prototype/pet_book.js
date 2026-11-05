@@ -21,6 +21,20 @@
     const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
     if (Array.isArray(data)) saved = new Set(data.filter(id => typeof id === "string" && byId.has(id)));
   } catch (_) { storageAvailable = false; }
+  // Reserve team for the trial battle. Lôi Miêu is always Kael's lead pet, so the
+  // Điện Miêu reference record cannot be added as a duplicate reserve.
+  const teamKey = "vqsv-unified-pet-team-v1";
+  const TEAM_MAX = 2;
+  const LEAD_REFERENCE_ID = "vqsv6-db-78";
+  let team = [];
+  try {
+    const data = JSON.parse(localStorage.getItem(teamKey) || "[]");
+    if (Array.isArray(data)) team = [...new Set(data.filter(id => typeof id === "string" && byId.has(id) && id !== LEAD_REFERENCE_ID))].slice(0, TEAM_MAX);
+  } catch (_) { storageAvailable = false; }
+  function persistTeam() {
+    try { localStorage.setItem(teamKey, JSON.stringify(team)); storageAvailable = true; }
+    catch (_) { storageAvailable = false; }
+  }
   function persistCollection() {
     try { localStorage.setItem(storageKey, JSON.stringify([...saved])); storageAvailable = true; }
     catch (_) { storageAvailable = false; }
@@ -85,6 +99,19 @@
       render();
     });
     detail.append(collect);
+    const inTeam = team.includes(entry.key);
+    const teamButton = node("button", inTeam ? "Rút khỏi đội" : `Đưa vào đội (${team.length}/${TEAM_MAX})`, "pet-team");
+    teamButton.type = "button";
+    teamButton.setAttribute("aria-pressed", String(inTeam));
+    if (entry.key === LEAD_REFERENCE_ID) { teamButton.disabled = true; teamButton.textContent = "Hình của Lôi Miêu · luôn trong đội"; }
+    else if (!inTeam && team.length >= TEAM_MAX) { teamButton.disabled = true; teamButton.textContent = `Đội đã đủ ${TEAM_MAX} pet dự bị`; }
+    teamButton.addEventListener("click", () => {
+      if (team.includes(entry.key)) team = team.filter(id => id !== entry.key);
+      else if (team.length < TEAM_MAX) team.push(entry.key);
+      persistTeam();
+      render();
+    });
+    detail.append(teamButton);
     if (entry.kind === "vqsv6") {
       if (entry.key === "vqsv6-db-78") detail.append(node("p", "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện."));
       const evolution = entry.pet.evolution;
@@ -138,7 +165,8 @@
     if (!visible.some(entry => entry.key === selected)) selected = visible[0]?.key || null;
     grid.replaceChildren();
     count.textContent = `${visible.length} pet · có thể tìm theo tên, hệ hoặc mã nguồn`;
-    collectionStatus.textContent = `Đã gom ${saved.size} pet · Bộ sưu tập dùng để lựa chọn thử, chưa đưa pet vào trận.` + (storageAvailable ? " Lưu trên trình duyệt này." : " Không thể lưu trên trình duyệt này; lựa chọn chỉ giữ trong phiên hiện tại.");
+    const teamNames = team.map(id => byId.get(id)?.display_name).filter(Boolean);
+    collectionStatus.textContent = `Đã gom ${saved.size} pet · Đội: Lôi Miêu${teamNames.length ? " + " + teamNames.join(", ") : ""} (${team.length}/${TEAM_MAX} dự bị, đổi được trong trận; thay đổi áp dụng từ trận sau).` + (storageAvailable ? " Lưu trên trình duyệt này." : " Không thể lưu trên trình duyệt này; lựa chọn chỉ giữ trong phiên hiện tại.");
     if (!visible.length) grid.append(node("p", "Không tìm thấy mục phù hợp.", "pet-empty"));
     for (const entry of visible) {
       const button = node("button", undefined, "pet-card");
@@ -148,7 +176,7 @@
       image.src = portrait(entry);
       image.alt = "";
       image.loading = "lazy";
-      button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}`));
+      button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}`));
       button.addEventListener("click", () => { selected = entry.key; render(); });
       grid.append(button);
     }
@@ -171,6 +199,21 @@
   materialFilter.addEventListener("change", render);
   document.getElementById("closePetBook").addEventListener("click", () => book.close());
   book.addEventListener("close", stopAnimation);
+  // Battle-side access to the reserve team. Only names, elements and source graphics are
+  // exposed; combat numbers are assigned by the battle as clearly-marked trial values.
+  window.VQSVPetTeam = {
+    max: TEAM_MAX,
+    ids: () => [...team],
+    info(id) {
+      const entry = entries.find(item => item.key === id);
+      if (!entry) return null;
+      return {
+        id, kind: entry.kind, name: entry.name, element: entry.pet.element || null, portrait: portrait(entry),
+        image: entry.kind === "vqsv6" ? `assets/pets/vqsv6/${entry.pet.source_ids.image_id}.png` : null,
+        sequences: entry.kind === "vqsv5" && entry.atlas ? entry.pet.animation.sequence_ids.map(sequenceId => entry.atlas.sequences[sequenceId] || []) : []
+      };
+    }
+  };
   window.openPetBook = () => {
     if (!book.open) { book.showModal(); render(); search.focus(); }
   };

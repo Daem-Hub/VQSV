@@ -214,6 +214,36 @@
     function saveBag() { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch (_) {} }
     function topUpBag() { let changed = false; for (const [ball, count] of Object.entries(BAG_START)) if ((bag[ball] || 0) < count) { bag[ball] = count; changed = true; } if (changed) saveBag(); return changed; }
     let wildSteps = 0;
+    // Experience follows game/i.java A() and game/a.java h(); progress is kept per pet in this browser.
+    const EXP = STATS?.experience;
+    const PROGRESS_KEY = "vqsv-unified-pet-progress-v1";
+    const LEVEL_CAP = EXP?.level_cap || 50;
+    function expToReach(level) { return 15 * level * level - 200; }
+    let progress = {};
+    try { const raw = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); if (raw && typeof raw === "object") progress = raw; } catch (_) {}
+    function saveProgress() { try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (_) {} }
+    function progressOf(key, fallbackLevel) {
+      const entry = progress[key];
+      return entry && Number.isInteger(entry.level) && entry.level >= 1 && entry.level <= LEVEL_CAP && Number.isInteger(entry.exp) && entry.exp >= 0 ? entry : { level: fallbackLevel, exp: 0 };
+    }
+    function expReward(enemy, participantCount, participantLevel) {
+      const base = Math.trunc((2 * enemy.level * enemy.level + 50) * EXP.reward_quality_factor[enemy.quality - 1] / 10) + 400;
+      const diff = participantLevel - enemy.level;
+      const factor = EXP.level_factor[diff >= 6 ? 6 : diff > 0 ? diff : diff === 0 ? 1 : 0];
+      return Math.trunc(Math.trunc(base / participantCount) * EXP.participant_bonus[participantCount - 1] * factor / 1000);
+    }
+    // Adds experience and returns the levels gained (game/i.java g() + w()).
+    function gainExp(member, amount) {
+      const entry = { ...progressOf(member.progressKey, member.level) };
+      const before = entry.level;
+      if (entry.level >= LEVEL_CAP) return 0;
+      entry.exp += amount;
+      while (entry.level < LEVEL_CAP && entry.exp >= expToReach(entry.level + 1)) { entry.exp -= expToReach(entry.level + 1); entry.level++; }
+      if (entry.level >= LEVEL_CAP) entry.exp = 0;
+      progress[member.progressKey] = { ...progress[member.progressKey], level: entry.level, exp: entry.exp };
+      member.level = entry.level; member.exp = entry.exp;
+      return entry.level - before;
+    }
     const spriteCache = new Map();
     function cachedImage(path) {
       if (!path) return null;
@@ -243,18 +273,28 @@
     }
     function buildTeam() {
       // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
-      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", BATTLE_LEVEL), portrait: "assets/pets/electric_cat_candidate.png" };
+      const leadProgress = progressOf("loi-mieu", BATTLE_LEVEL);
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", leadProgress.level), portrait: "assets/pets/electric_cat_candidate.png", progressKey: "loi-mieu", exp: leadProgress.exp };
       lead.name = "Lôi Miêu";
-      lead.subtitle = `KAEL · CẤP ${BATTLE_LEVEL} · ${lead.element.toUpperCase()}`;
+      lead.subtitle = `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
       const reserves = (window.VQSVPetTeam?.ids() || []).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
         // Warm the sprite cache so switching in does not flash an empty frame.
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
-        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? vqsv6Combatant(info.id, best ? best.level : BATTLE_LEVEL, best?.quality)
+        const own = info.kind === "vqsv6" ? progressOf(info.id, best ? best.level : BATTLE_LEVEL) : null;
+        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality), progressKey: info.id, exp: own.exp }
           : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
+    }
+    function recordWildCatch(enemy) {
+      // A caught species keeps the stronger of its stored progress and the newly caught individual.
+      const stored = progress[enemy.petId];
+      if (!stored || stored.level < enemy.level || (stored.level === enemy.level && (stored.quality || 0) < enemy.quality)) {
+        progress[enemy.petId] = { level: enemy.level, exp: 0, quality: enemy.quality };
+        saveProgress();
+      }
     }
     function buildWild(wild) {
       const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality);
@@ -312,7 +352,7 @@
     function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, potions: 2, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
+    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, potions: 2, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -676,9 +716,9 @@
       const idleHero = Math.sin(now / 180 + 1) * 2;
       const sinceCapture = now - state.battle.captureAt;
       const capturing = sinceCapture >= 0 && sinceCapture < 1400;
-      const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : 1;
+      const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : state.battle.rewarded ? .3 : 1;
       if (state.battle.wild) drawFitted(cachedImage(state.battle.enemy.image), 82 + enemyPulse * 22 + enemyShake, 70 + idleEnemy, 114, 112, enemyAlpha);
-      else ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96);
+      else { ctx.save(); ctx.globalAlpha = enemyAlpha; ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96); ctx.restore(); }
       if (capturing) drawCaptureBall(sinceCapture);
       drawActivePet(304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94, now, heroAttack);
       if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
@@ -701,6 +741,11 @@
       }
       const pet = activePet();
       battlePanel(276, 200, pet.name.toUpperCase(), pet.subtitle, pet.hp, pet.max, "#a6dfcf");
+      if (pet.progressKey) {
+        const need = expToReach(pet.level + 1);
+        ctx.fillStyle = "#101d24"; ctx.fillRect(305, 250, 156, 3);
+        ctx.fillStyle = "#e8c45a"; ctx.fillRect(305, 250, pet.level >= LEVEL_CAP ? 156 : Math.max(0, Math.min(156, 156 * pet.exp / need)), 3);
+      }
       drawTeamPips(278, 192);
       ctx.fillStyle = "#e8d8ae"; roundRect(8, 260, 464, 47, 5, true);
       ctx.strokeStyle = "#846b49"; ctx.lineWidth = 2; roundRect(8, 260, 464, 47, 5, false);
@@ -790,6 +835,7 @@
       const enemy = state.battle.enemy;
       let text = "";
       if (result === "caught") {
+        recordWildCatch(enemy);
         const { addedToTeam } = window.VQSVPetTeam.recordCatch(enemy.petId, enemy.level, enemy.quality);
         text = `Đã bắt ${enemy.name} (cấp ${enemy.level}, hạng ${enemy.quality})${addedToTeam ? " · đã vào đội" : " · xem trong sổ pet"}`;
       } else if (result === "win") text = `Đã đánh bại ${enemy.name} hoang dã`;
@@ -831,7 +877,8 @@
         const image = document.createElement("img"); image.src = pet.portrait; image.alt = "";
         const label = document.createElement("span"); label.textContent = pet.name;
         const sub = document.createElement("small");
-        sub.textContent = index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`);
+        const level = `Cấp ${pet.level}${pet.progressKey && pet.level < LEVEL_CAP ? ` · KN ${pet.exp}/${expToReach(pet.level + 1)}` : ""}`;
+        sub.textContent = `${index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`)} · ${level}`;
         label.append(sub);
         const hp = document.createElement("span"); hp.textContent = `${pet.hp}/${pet.max}`;
         button.append(image, label, hp);
@@ -854,7 +901,7 @@
       if (state.mode !== "battle" || battle.pendingUntil || index === battle.active || !battle.team[index] || battle.team[index].hp <= 0) return;
       const forced = battle.mustSwitch;
       const previous = activePet();
-      battle.active = index; battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
+      battle.active = index; battle.participants.add(index); battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
       battle.switchedAt = performance.now(); battle.skill = null;
       teamMenu.hidden = true;
       const next = activePet();
@@ -1027,6 +1074,7 @@
       if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
       state.battle.pendingUntil = 0;
       if (state.battle.captured === true) { finishWild("caught"); return; }
+      if (state.battle.enemy.hp <= 0 && !state.battle.rewarded) { awardExperience(now); return; }
       if (state.battle.enemy.hp <= 0 && state.battle.wild) { finishWild("win"); return; }
       if (state.battle.enemy.hp <= 0) {
         state.mode = "ending";
@@ -1037,6 +1085,24 @@
       if (!state.battle.enemyActed) enemyCounter();
       state.battle.guard = false;
       state.battle.turn++;
+      updateGuidance();
+    }
+    // game/a.java h(): every pet that entered the field shares the reward; then pause so the result can be read.
+    function awardExperience(now) {
+      const battle = state.battle;
+      battle.rewarded = true;
+      const members = [...battle.participants].map(index => battle.team[index]);
+      const lines = [];
+      for (const member of members) {
+        if (!member.progressKey) { lines.push(`${member.name} (VQSV5) chưa nhận kinh nghiệm vì chỉ số chưa giải.`); continue; }
+        const amount = expReward(battle.enemy, members.length, member.level);
+        const gained = gainExp(member, amount);
+        lines.push(`${member.name} +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
+        if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
+      }
+      saveProgress();
+      battle.message = `${battle.wild ? battle.enemy.name : "Sinh vật"} gục ngã! ${lines.join(" ")}`;
+      battle.pendingUntil = now + 2200;
       updateGuidance();
     }
     function enemyStrike(at) {

@@ -59,10 +59,17 @@ assert.equal(vm.runInContext('state.mode', context), 'battle');
 assert.equal(enemyHp(), 5);
 element('attackButton').listeners.click();
 finishAction();
+// Reward (game/a.java h): enemy L3 quality 3 -> (2*9 + 50) * 12 / 10 + 400 = 481; Lôi Miêu L5 is 2 levels above -> 80%: 384 exp.
+// Level 6 needs 15*36 - 200 = 340, so Lôi Miêu reaches level 6 with 44 exp left.
+assert.equal(vm.runInContext('state.mode', context), 'battle');
+assert.match(vm.runInContext('state.battle.message', context), /Lôi Miêu \+384 KN, lên cấp 6!/);
+assert.deepEqual(JSON.parse(JSON.stringify(vm.runInContext('progress["loi-mieu"]', context))), { level: 6, exp: 44 });
+clock += 2300; vm.runInContext('updateBattle(performance.now())', context);
 assert.equal(vm.runInContext('state.mode', context), 'ending');
 assert.equal(element('battleControls').hidden, true);
 assert.match(element('objective').textContent, /thức tỉnh/);
 element('restart').listeners.click();
+vm.runInContext('progress = {}', context); // keep the later checks at the level-5 baseline
 assert.equal(vm.runInContext('state.player.x', context), 1);
 assert.match(element('objective').textContent, /người gác làng/);
 vm.runInContext('state.spokeToElder=true; state.player.x=3; state.player.y=3; interact()', context);

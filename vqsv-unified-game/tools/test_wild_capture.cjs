@@ -73,4 +73,31 @@ run('state.battle = newBattle(); state.mode = "battle"; toggleBallMenu(true)');
 assert.match(run('state.battle.message'), /không cho bắt sủng vật/);
 assert.equal(run('topUpBag()'), true);
 assert.equal(run('bag[1]'), 5);
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use and story restriction passed.');
+// Experience (game/a.java h, game/i.java A): Độc Ba Lợi L5 quality 1 -> (50 + 50) * 10 / 10 + 400 = 500.
+run('progress = {}');
+const reward = (count, level) => run(`expReward({ level: 5, quality: 1 }, ${count}, ${level})`);
+assert.equal(reward(1, 5), 500);            // equal level: 100%
+assert.equal(reward(1, 3), 525);            // lower than enemy: 105%
+assert.equal(reward(1, 7), 400);            // +2 levels: 80%
+assert.equal(reward(1, 20), 25);            // +6 or more: 5%
+assert.equal(reward(2, 5), 300);            // 500 / 2 * 12 / 10: shared with a participant bonus
+assert.equal(run('expToReach(6)'), 340);
+// One win at level 5 gives 500 exp: level 6 (340) leaves 160, short of level 7 (535).
+run('state.battle = newBattle({ petId: "vqsv6-db-86", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.hp = 0; state.battle.pendingUntil = 1; updateBattle(2)');
+assert.equal(run('state.mode'), 'battle');
+assert.match(run('state.battle.message'), /Lôi Miêu \+500 KN, lên cấp 6!/);
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'], { level: 6, exp: 160 });
+clock += 2300; run('updateBattle(performance.now())');
+assert.equal(run('state.mode'), 'explore');
+// The next battle builds Lôi Miêu at level 6 with stats from the decoded growth formula.
+run('state.battle = newBattle()');
+assert.equal(run('activePet().level'), 6);
+assert.equal(run('activePet().max'), run('statsAt(STAT_BY_ID.get("vqsv6-db-78"), 6).hp'));
+// Large gains roll over several levels and stop at the level-50 cap.
+run('gainExp(activePet(), 10000000)');
+assert.equal(run('activePet().level'), 50);
+assert.equal(run('gainExp(activePet(), 999)'), 0);
+// A catch stores the individual's level/quality as the species' progress unless a stronger one exists.
+run('progress = {}; recordWildCatch({ petId: "vqsv6-db-78", level: 7, quality: 2 }); recordWildCatch({ petId: "vqsv6-db-78", level: 6, quality: 2 })');
+assert.deepEqual(JSON.parse(JSON.stringify(run('progress["vqsv6-db-78"]'))), { level: 7, exp: 0, quality: 2 });
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction and experience passed.');

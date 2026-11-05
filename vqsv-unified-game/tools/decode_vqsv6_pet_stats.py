@@ -25,6 +25,12 @@ reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/:
   * [1000,500,1,1000][pet col22] / 1000; level >= 20 caps at [0,15,35,65][ball]; clamp 1..100;
   success when random(100) < rate.
 
+- game/i.java  A(L) = 15*L*L - 200 is the experience needed to reach level L from L-1 (v(), w());
+  level cap 50 (u()); level-up recomputes stats, refills HP (W() -> h()) and skill uses.
+- game/a.java  h(enemy): reward = ((2*L*L + 50) * [10,11,12,13,15][quality-1] / 10 + 400) for enemy level L;
+  each participant gets reward / n * [10,12,13,14,15,16][n-1] * levelFactor / 1000 where n = participants,
+  levelFactor = 105 below the enemy level, 100 equal or +1, then 80, 60, 40, 20 for +2..+5, and 5 at +6 or more.
+
 Writes prototype/data/vqsv6_pet_stats.json and asset_review/vqsv6_pet_stats.csv.
 """
 import csv
@@ -135,6 +141,14 @@ out = {
         "col22_factor_permille": [1000, 500, 1, 1000],
         "level20_cap_by_ball": [0, 15, 35, 65],
         "note": "Ball 0 (Tất Trung Cầu) always 100. Status factor needs decoded status effects; prototype uses 1.0.",
+    },
+    "experience": {
+        "to_reach_level": "15 * L * L - 200",
+        "level_cap": 50,
+        "reward_quality_factor": [10, 11, 12, 13, 15],
+        "participant_bonus": [10, 12, 13, 14, 15, 16],
+        "level_factor": [105, 100, 80, 60, 40, 20, 5],
+        "note": "level_factor index: 0 if participant level < enemy level, else min(participant - enemy, 6), with equal level using index 1.",
     },
     "wild_areas": wild_areas,
     "skills": skill_records,

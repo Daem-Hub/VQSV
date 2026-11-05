@@ -96,6 +96,35 @@
   ],
   "note": "Ball 0 (Tất Trung Cầu) always 100. Status factor needs decoded status effects; prototype uses 1.0."
  },
+ "experience": {
+  "to_reach_level": "15 * L * L - 200",
+  "level_cap": 50,
+  "reward_quality_factor": [
+   10,
+   11,
+   12,
+   13,
+   15
+  ],
+  "participant_bonus": [
+   10,
+   12,
+   13,
+   14,
+   15,
+   16
+  ],
+  "level_factor": [
+   105,
+   100,
+   80,
+   60,
+   40,
+   20,
+   5
+  ],
+  "note": "level_factor index: 0 if participant level < enemy level, else min(participant - enemy, 6), with equal level using index 1."
+ },
  "wild_areas": [
   {
    "area": "1-1",

@@ -407,4 +407,98 @@ assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu
 run('progress["vqsv6-db-61"].skills = [40, 41]');
 assert.deepEqual(J('skillState("vqsv6-db-61", "vqsv6-db-61").known'), [30]);
 teamIds.length = 0;
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop, items and skill management passed.');
+// ---- Held items (db.mid table 3 rows 0-11; game/i.java f(byte), game/a.java) ----
+const heldBattle = (item, extra = '') => { reset3(); run(`progress["loi-mieu"] = { level: 5, exp: 0${item === null ? '' : `, item: ${item}`} }; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []; Math.random = () => 0.99; ${extra}`); };
+// Shop: relics cost 5 huy hiệu each (the starter wallet has 2).
+reset3();
+assert.equal(J('SHOP.relics.length'), 12);
+assert.match(run('buyItem("stone-1", 1).message'), /Huy hiệu chưa đủ \(cần 5, đang có 2\)/);
+run('wallet.badges = 11');
+assert.equal(run('buyItem("stone-1", 2).ok'), true);
+assert.equal(run('wallet.badges'), 1); assert.equal(run('stones[1]'), 2);
+// Equip and unequip: the item moves between the bag and the pet, one per pet, never in battle.
+reset3(); run('stones[1] = 1; stones[2] = 1');
+let eq = J('window.VQSVItems.equip("loi-mieu", "vqsv6-db-78", 1)');
+assert.equal(eq.ok, true); assert.match(eq.message, /Đã đeo Hồng Sắc Hải Loa\./);
+assert.equal(run('stones[1]'), 0); assert.equal(run('progress["loi-mieu"].item'), 1);
+eq = J('window.VQSVItems.equip("loi-mieu", "vqsv6-db-78", 2)');
+assert.equal(eq.ok, true); assert.match(eq.message, /trả Hồng Sắc Hải Loa về túi/);
+assert.equal(run('stones[1]'), 1); assert.equal(run('stones[2]'), 0); assert.equal(run('progress["loi-mieu"].item'), 2);
+assert.equal(J('window.VQSVItems.options("vqsv6-db-78")')[0].held.name, 'Quy Xác Toái Phiến');
+assert.equal(J('window.VQSVItems.equip("loi-mieu", "vqsv6-db-78", 5)').ok, false); // none owned
+run('state.mode = "battle"');
+assert.match(J('window.VQSVItems.unequip("loi-mieu", "vqsv6-db-78")').message, /không thể trong trận/);
+run('state.mode = "explore"');
+assert.equal(J('window.VQSVItems.unequip("loi-mieu", "vqsv6-db-78")').ok, true);
+assert.equal(run('stones[2]'), 1); assert.equal(run('progress["loi-mieu"].item'), undefined);
+assert.equal(J('window.VQSVItems.unequip("loi-mieu", "vqsv6-db-78")').ok, false);
+assert.equal(JSON.parse(store.get('vqsv-unified-stones-v1'))[2], 1);
+// The item shows in the next battle and survives an evolution.
+reset3(); run('stones[3] = 1; progress["loi-mieu"] = { level: 12, exp: 0 }; window.VQSVItems.equip("loi-mieu", "vqsv6-db-78", 3); stones[12] = 1; evolvePet("loi-mieu", "vqsv6-db-78"); state.battle = newBattle()');
+assert.equal(run('activePet().petId'), 'vqsv6-db-79'); assert.equal(run('activePet().item'), 3);
+// Stat items: 1 attack +10%, 0 attack +100% at HP <= 30%, 2 defense +15%.
+heldBattle(null); const plainAttack = run('effStats(activePet()).attack'), plainDefense = run('effStats(activePet()).defense');
+heldBattle(1); assert.equal(run('effStats(activePet()).attack'), plainAttack + Math.trunc(run('activePet().stats.attack') / 10));
+heldBattle(2); assert.equal(run('effStats(activePet()).defense'), plainDefense + Math.trunc(run('activePet().stats.defense') * 15 / 100));
+heldBattle(0); assert.equal(run('effStats(activePet()).attack'), plainAttack);
+run('activePet().hp = Math.trunc(activePet().max * 30 / 100)');
+assert.equal(run('effStats(activePet()).attack'), plainAttack + run('activePet().stats.attack'));
+run('activePet().hp = Math.trunc(activePet().max * 30 / 100) + 1'); assert.equal(run('effStats(activePet()).attack'), plainAttack);
+// Crit +10 points (Viễn Cổ Long Cốt): speed 5 gives 7.5%, with the item 17.5%.
+heldBattle(null, 'Math.random = () => 0.12'); assert.equal(run('rollDamage(activePet(), state.battle.enemy, 100).crit'), false);
+heldBattle(4, 'Math.random = () => 0.12'); assert.equal(run('rollDamage(activePet(), state.battle.enemy, 100).crit'), true);
+// Miss rule: clamp(2 * level gap, 0, 20)%; item 9 removes it; Mục lowers the attacker level by its parameter.
+heldBattle(null, 'state.battle.enemy.level = 20; Math.random = () => 0.1; action(false, "skill", 0)');
+assert.match(run('state.battle.message'), /Lôi Miêu dùng Điện giật nhưng đánh trượt/);
+assert.equal(run('state.battle.enemy.hp'), run('state.battle.enemy.max'));
+heldBattle(9, 'state.battle.enemy.level = 20; Math.random = () => 0.1; action(false, "skill", 0)');
+assert.equal(run('state.battle.enemy.hp') < run('state.battle.enemy.max'), true);
+heldBattle(null, 'state.battle.enemy.level = 8; Math.random = () => 0.05; action(false, "skill", 0)'); // gap 3 -> 6% miss
+assert.match(run('state.battle.message'), /nhưng đánh trượt/);
+heldBattle(null, 'state.battle.enemy.level = 8; Math.random = () => 0.07; action(false, "skill", 0)');
+assert.doesNotMatch(run('state.battle.message'), /nhưng đánh trượt/);
+heldBattle(null, 'activePet().debuffs[4] = { turns: 3, value: 2 }; Math.random = () => 0.03; action(false, "skill", 0)'); // equal level + Mục 2 -> 4%
+assert.match(run('state.battle.message'), /nhưng đánh trượt/);
+heldBattle(null, 'activePet().debuffs[4] = { turns: 3, value: 2 }; Math.random = () => 0.05; action(false, "skill", 0)');
+assert.doesNotMatch(run('state.battle.message'), /nhưng đánh trượt/);
+// Item 8 (Hấp Huyết Đằng Mạn): 10% chance to heal 20% of the damage dealt.
+heldBattle(8, 'activePet().hp = 50; Math.random = () => 0.05; action(false, "skill", 0)');
+assert.match(run('state.battle.message'), /hút máu \+\d+ HP/);
+heldBattle(8, 'activePet().hp = 50; Math.random = () => 0.5; action(false, "skill", 0)');
+assert.doesNotMatch(run('state.battle.message'), /hút máu/);
+// Item 10 (Cảm Lãm Chi Diệp): the target is never taken below 10 HP by the holder.
+heldBattle(10, 'state.battle.enemy.hp = 12; action(false, "skill", 0)');
+assert.equal(run('state.battle.enemy.hp'), 10);
+heldBattle(null, 'state.battle.enemy.hp = 12; action(false, "skill", 0)');
+assert.equal(run('state.battle.enemy.hp'), 0);
+// Item 3 (Ô Nha Uế): debuffs land with chance x 80%; 85 rolls miss, 50 rolls land; without it always-on debuffs always land.
+heldBattle(3); run('Math.random = () => 0.85'); assert.equal(run('debuffLands(activePet(), -1)'), false); assert.equal(run('debuffLands(activePet(), 10)'), false);
+run('Math.random = () => 0.5'); assert.equal(run('debuffLands(activePet(), -1)'), true);
+run('Math.random = () => 0.09'); assert.equal(run('debuffLands(activePet(), 10)'), false); // 9 >= 10 * 0.8
+run('Math.random = () => 0.05'); assert.equal(run('debuffLands(activePet(), 10)'), true);
+heldBattle(null); run('Math.random = () => 0.99'); assert.equal(run('debuffLands(activePet(), -1)'), true);
+// Item 7 (Linh Trùng Thi Hài): the holder acts first even against a faster enemy.
+heldBattle(null, 'state.battle.enemy.stats.speed = 99; state.battle.enemy.skills = []; action(false, "skill", 0)');
+assert.match(run("state.battle.message"), /^Khốc Tị Mộc Linh dùng/);
+heldBattle(7, 'state.battle.enemy.stats.speed = 99; state.battle.enemy.skills = []; action(false, "skill", 0)');
+assert.match(run('state.battle.message'), /^Lôi Miêu dùng/);
+// Item 11 (Sủng vật lôi đạt): capture rate +20% for the pet in battle.
+heldBattle(null, 'state.battle.enemy.hp = state.battle.enemy.max'); const noRelic = run('captureRate(1, state.battle.enemy)');
+heldBattle(11, 'state.battle.enemy.hp = state.battle.enemy.max'); assert.equal(run('captureRate(1, state.battle.enemy)'), Math.trunc(noRelic * 120 / 100));
+// Items 5 and 6 (experience): holder +20%; a living holder that did not fight still gets a full share.
+const win = (extra = '') => { run(`state.battle.enemy.hp = 0; state.battle.pendingUntil = 1; ${extra} updateBattle(2)`); return run('state.battle.message'); };
+heldBattle(null); assert.match(win(), /Lôi Miêu \+500 KN/);
+heldBattle(5); assert.match(win(), /Lôi Miêu \+600 KN/);
+reset3(); teamIds.push('vqsv6-db-61');
+run('progress["vqsv6-db-61"] = { level: 5, exp: 0, item: 6 }; progress["loi-mieu"] = { level: 5, exp: 0 }; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; Math.random = () => 0.99');
+assert.equal(run('state.battle.team[1].item'), 6);
+assert.match(win(), /Lôi Miêu \+500 KN.*\(Ký Cư Giải Xác\) \+500 KN/);
+assert.equal(run('progress["vqsv6-db-61"].exp'), 160);
+teamIds.length = 0;
+// TRIAL badge source: the first visit to each higher-level region gives 1 huy hiệu, once.
+reset3(); run('state.spokeToElder = true; assets.maps = maps; assets.map = maps["ryan-forest-stream"]; state.player.x = 22; state.player.y = 10; interact()');
+assert.equal(run('assets.map.id'), 'ryan-lakeside'); assert.equal(run('wallet.badges'), 3);
+assert.match(element('status').textContent, /\+1 huy hiệu/);
+run('state.player.x = 1; state.player.y = 10; interact(); state.player.x = 22; state.player.y = 10; interact()');
+assert.equal(run('assets.map.id'), 'ryan-lakeside'); assert.equal(run('wallet.badges'), 3);
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop, items, skill management and held items passed.');

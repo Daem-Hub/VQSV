@@ -45,6 +45,14 @@ reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/:
   (balls, repel, egg items) cannot be used as battle items. Tị quái hàn (type 10) repels 500 steps (col 6).
 - game/k.java N[]: the new-game gifts are 2000 kim tiền, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch, 2 huy hiệu.
 
+- Held items (db.mid table 3 rows 0-11; a pet's d[5] holds the row, game/i.java f(byte)): 0 attack +p2% while
+  HP <= p1% (C(), a(byte)); 1 attack +p1%; 2 defense +p1%; 3 resist: debuffs on the holder land with chance
+  x (100 - p1) / 100 (b(i)); 4 crit +p1 points (b(i)); 5 exp +p1% (game/a.java h()); 6 shares exp without fighting
+  (h()); 7 acts first (Q()); 8 on a damaging hit, p1% chance to heal p2% of the damage (a.java); 9 never misses;
+  10 the target's HP never drops under p1 (R()); 11 capture rate +p1% (m()).
+- game/a.java (attack resolution): hit chance fails with miss% = clamp(2 * (target level - attacker level), 0, 20);
+  Mục (debuff 4) lowers the attacker's effective level by its parameter; held item 9 sets miss% to 0.
+
 Writes prototype/data/vqsv6_pet_stats.json and asset_review/vqsv6_pet_stats.csv.
 """
 import csv
@@ -182,7 +190,8 @@ out = {
         "starter_gifts": {"gold": 2000, "badges": 2, "items": {"1": 5, "4": 5, "11": 2}},
         "items": [{"row": i, "table": 4, "name": names[r[0]], "description": names[r[2]], "price": r[3], "currency": r[4], "effect_type": r[5], "p1": r[6] if len(r) > 6 else 0, "p2": r[7] if len(r) > 7 else 0, "p3": r[8] if len(r) > 8 else 0} for i, r in enumerate(db[4])],
         "materials": [{"row": i, "table": 3, "name": names[db[3][i][0]], "description": names[db[3][i][2]], "price": db[3][i][3], "currency": db[3][i][4]} for i in range(12, 17)],
-        "not_implemented": "Table 3 rows 0-11 (held relics) and row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item).",
+        "relics": [{"row": i, "table": 3, "name": names[db[3][i][0]], "description": names[db[3][i][2]], "price": db[3][i][3], "currency": db[3][i][4], "p1": db[3][i][5] if len(db[3][i]) > 5 else 0, "p2": db[3][i][6] if len(db[3][i]) > 6 else 0} for i in range(0, 12)],
+        "not_implemented": "Table 3 row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item).",
     },
     "skill_curves": db[8],
     "status_effects": {

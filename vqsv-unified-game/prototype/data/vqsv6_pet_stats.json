@@ -412,7 +412,129 @@
     "currency": 1
    }
   ],
-  "not_implemented": "Table 3 rows 0-11 (held relics) and row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item)."
+  "relics": [
+   {
+    "row": 0,
+    "table": 3,
+    "name": "Mạn Đà La Thạch",
+    "description": "Sủng vật hiện tại trị số sinh mạng thấp hơn 30%, gia tăng lực công kích 100%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 30,
+    "p2": 100
+   },
+   {
+    "row": 1,
+    "table": 3,
+    "name": "Hồng Sắc Hải Loa",
+    "description": "Sủng vật gia tăng lực công kích 10%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 10,
+    "p2": 0
+   },
+   {
+    "row": 2,
+    "table": 3,
+    "name": "Quy Xác Toái Phiến",
+    "description": "Sủng vật Gia tăng khả năng phòng ngự 15%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 15,
+    "p2": 0
+   },
+   {
+    "row": 3,
+    "table": 3,
+    "name": "Ô Nha Uế",
+    "description": "Gia tăng sức đối kháng 20%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 20,
+    "p2": 0
+   },
+   {
+    "row": 4,
+    "table": 3,
+    "name": "Viễn Cổ Long Cốt",
+    "description": "Sủng vật gia tăng tỉ số bạo kích 10%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 10,
+    "p2": 0
+   },
+   {
+    "row": 5,
+    "table": 3,
+    "name": "Mật Phong Sào",
+    "description": "Sau khi chiến đấu sủng vật lấy được giá trị kinh nghiệm 20%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 20,
+    "p2": 0
+   },
+   {
+    "row": 6,
+    "table": 3,
+    "name": "Ký Cư Giải Xác",
+    "description": "Mang theo đạo cụ sủng vật tuy không tham chiến cũng có thể đạt được giá trị kinh nghiệm tương ứng;",
+    "price": 5,
+    "currency": 1,
+    "p1": 100,
+    "p2": 0
+   },
+   {
+    "row": 7,
+    "table": 3,
+    "name": "Linh Trùng Thi Hài",
+    "description": "Giao tranh bắt đầu;",
+    "price": 5,
+    "currency": 1,
+    "p1": 0,
+    "p2": 0
+   },
+   {
+    "row": 8,
+    "table": 3,
+    "name": "Hấp Huyết Đằng Mạn",
+    "description": "Sủng vật công kích là cách tốt nhất để khôi phục lại một phần trị số sinh mạng;",
+    "price": 5,
+    "currency": 1,
+    "p1": 10,
+    "p2": 20
+   },
+   {
+    "row": 9,
+    "table": 3,
+    "name": "Cá Thờn Bơn",
+    "description": "Sủng vật công kích nhất định trúng mục tiêu;",
+    "price": 5,
+    "currency": 1,
+    "p1": 0,
+    "p2": 0
+   },
+   {
+    "row": 10,
+    "table": 3,
+    "name": "Cảm Lãm Chi Diệp",
+    "description": "Bất luận đối thủ đã bị thương thế nào, trị số sinh mạng cũng sẽ không thấp hơn 10 điểm (bắt được dùng);",
+    "price": 5,
+    "currency": 1,
+    "p1": 10,
+    "p2": 0
+   },
+   {
+    "row": 11,
+    "table": 3,
+    "name": "Sủng vật lôi đạt",
+    "description": "Gia tăng tỷ lệ bắt được sủng vật 20%;",
+    "price": 5,
+    "currency": 1,
+    "p1": 20,
+    "p2": 0
+   }
+  ],
+  "not_implemented": "Table 3 row 17 (golden key); table 4 row 14 (Gia tốc dược, egg item)."
  },
  "skill_curves": [
   [

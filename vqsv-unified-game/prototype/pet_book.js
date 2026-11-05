@@ -63,6 +63,7 @@
   let selected = "vqsv6-db-78";
   let evolveNote = "";
   let skillNote = "";
+  let itemNote = "";
   let skillPick = null;
   let timer = null;
 
@@ -148,6 +149,43 @@
     }
     if (options.length && skillNote) detail.append(node("p", skillNote, "pet-evolve-note"));
   }
+  // Held items: one per pet; equip from the bag, unequip back to it.
+  function appendItemManager(entry) {
+    const items = window.VQSVItems;
+    const options = items ? items.options(entry.key) : [];
+    for (const option of options) {
+      const box = node("div", undefined, "pet-skills");
+      box.append(node("h4", `Vật phẩm mang theo · ${option.label}`));
+      if (option.locked) box.append(node("p", `(${option.locked})`));
+      if (option.held) {
+        const row = node("div", undefined, "pet-skill-row");
+        const label = node("span", `${option.held.name}`);
+        label.title = option.held.description;
+        row.append(label);
+        const off = node("button", "Gỡ", "pet-skill-button");
+        off.type = "button"; off.disabled = !!option.locked;
+        off.addEventListener("click", () => { itemNote = items.unequip(option.key, entry.key).message; render(); });
+        row.append(off);
+        box.append(row, node("p", option.held.description, "pet-skill-hint"));
+      } else box.append(node("p", "Chưa mang vật phẩm nào.", "pet-skill-hint"));
+      if (option.owned.length) {
+        box.append(node("p", "Trong túi:", "pet-skill-hint"));
+        for (const owned of option.owned) {
+          const row = node("div", undefined, "pet-skill-row");
+          const label = node("span", `${owned.name} ×${owned.count}`);
+          label.title = owned.description;
+          row.append(label);
+          const on = node("button", option.held ? "Đổi" : "Mang", "pet-skill-button");
+          on.type = "button"; on.disabled = !!option.locked || option.held?.row === owned.row;
+          on.addEventListener("click", () => { itemNote = items.equip(option.key, entry.key, owned.row).message; render(); });
+          row.append(on);
+          box.append(row);
+        }
+      } else box.append(node("p", "Túi không có vật phẩm mang theo. Mua ở Thương điếm (5 huy hiệu mỗi món).", "pet-skill-hint"));
+      detail.append(box);
+    }
+    if (options.length && itemNote) detail.append(node("p", itemNote, "pet-evolve-note"));
+  }
   function renderDetail(entry) {
     stopAnimation();
     detail.replaceChildren();
@@ -207,6 +245,7 @@
       }
       if (entry.key === leadId()) detail.append(node("p", entry.key === LEAD_DEFAULT_ID ? "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện." : "Dạng hiện tại của Lôi Miêu (tiến hóa từ Điện Miêu theo dữ liệu nguồn)."));
       appendSkillManager(entry);
+      appendItemManager(entry);
       const evolution = entry.pet.evolution;
       const target = evolution && byId.get(evolution.target_pet_id);
       if (target) {
@@ -287,7 +326,7 @@
       image.alt = "";
       image.loading = "lazy";
       button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}${caughtOf(entry.key).length ? " · Đã bắt" : ""}`));
-      button.addEventListener("click", () => { selected = entry.key; evolveNote = ""; skillNote = ""; skillPick = null; render(); });
+      button.addEventListener("click", () => { selected = entry.key; evolveNote = ""; skillNote = ""; itemNote = ""; skillPick = null; render(); });
       grid.append(button);
     }
     renderDetail(visible.find(entry => entry.key === selected));

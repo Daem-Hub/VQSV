@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151b">
   <title>VQSV Unified — Lát thử 01</title>
   <link rel="stylesheet" href="pet_book.css">
   <link rel="stylesheet" href="world_atlas.css">
@@ -72,6 +73,15 @@
     .bag-row button { width: auto; padding: 5px 12px; background: #9fd0c1; }
     .bag-row button:disabled { opacity: .5; cursor: not-allowed; }
     @media (max-width: 640px) { .shop-layout { grid-template-columns: 1fr; } }
+    .touch-pad { display: none; }
+    @media (pointer: coarse), (max-width: 850px) {
+      .touch-pad { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; margin: 0; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none; }
+    }
+    .touch-dpad { display: grid; grid-template-columns: repeat(3, 64px); grid-template-rows: repeat(3, 64px); gap: 6px; }
+    .touch-dpad button, .touch-action { touch-action: none; border: 1px solid #536071; background: #2a3646; color: #f1f4f8; font-size: 22px; border-radius: 14px; padding: 0; }
+    .touch-dpad button:active, .touch-dpad button.pressed, .touch-action:active { background: #e7c66c; color: #10151b; }
+    .touch-action { height: 100%; min-height: 110px; display: grid; place-content: center; gap: 4px; font-size: 13px; }
+    .touch-action strong { font-size: 34px; }
     #extraSkills { display: grid; gap: 5px; }
     #extraSkills:empty { display: none; }
     #skillLearn { width: min(460px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
@@ -161,6 +171,15 @@
             <button id="fleeButton" type="button"><span class="battle-icon">➜</span><span>Chạy trốn</span></button>
           </div>
         </div>
+      </div>
+      <div id="touchPad" class="touch-pad" aria-label="Điều khiển cảm ứng">
+        <div class="touch-dpad">
+          <button id="touchUp" type="button" aria-label="Lên" style="grid-area: 1 / 2">▲</button>
+          <button id="touchLeft" type="button" aria-label="Trái" style="grid-area: 2 / 1">◀</button>
+          <button id="touchRight" type="button" aria-label="Phải" style="grid-area: 2 / 3">▶</button>
+          <button id="touchDown" type="button" aria-label="Xuống" style="grid-area: 3 / 2">▼</button>
+        </div>
+        <button id="touchAction" type="button" class="touch-action"><strong>E</strong><span>Nói chuyện · Tương tác</span></button>
       </div>
       <aside>
         <p class="objective"><strong>Mục tiêu</strong><br><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></p>
@@ -356,6 +375,11 @@
     // ---- Evolution (game/k.java bp(), game/i.java K()/u[]): needs the target's level gate and a material item. ----
     const ROSTER = new Map((window.VQSVBootstrap?.petRoster?.records || []).map(record => [record.pet_id, record]));
     const STONE_INFO = STATS?.evolution_rules?.materials || {};
+    // Held items ("vật phẩm mang theo"): db.mid table 3 rows 0-11. A pet holds one; the row is stored in its progress entry.
+    const RELIC_INFO = new Map((SHOP?.relics || []).map(relic => [relic.row, relic]));
+    const RELIC = row => RELIC_INFO.get(row);
+    const validItem = row => (Number.isInteger(row) && RELIC_INFO.has(row) ? row : null);
+    const TABLE3_ROWS = 17;
     const STONES_KEY = "vqsv-unified-stones-v1";
     const STONE_START = { 12: 2, 15: 1 };   // TRIAL: starter stones so evolution can be tried; the source game's material sources are unknown
     // TRIAL drop table (chance %, minimum wild level) for wins and catches against wild pets.
@@ -364,7 +388,7 @@
     let stones = { ...STONE_START };
     try {
       const raw = JSON.parse(localStorage.getItem(STONES_KEY) || "null");
-      if (raw && typeof raw === "object") { stones = {}; for (const row of Object.keys(STONE_INFO)) stones[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
+      if (raw && typeof raw === "object") { stones = {}; for (let row = 0; row < TABLE3_ROWS; row++) stones[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
     } catch (_) {}
     function saveStones() { try { localStorage.setItem(STONES_KEY, JSON.stringify(stones)); } catch (_) {} }
     function stoneText() {
@@ -410,7 +434,7 @@
       const currentRecord = STAT_BY_ID.get(speciesId), targetRecord = STAT_BY_ID.get(check.evo.target_pet_id);
       const currentQuality = check.entry.quality || currentRecord.default_quality;
       const quality = currentQuality >= targetRecord.default_quality ? currentQuality : targetRecord.default_quality;
-      const carried = { level: check.entry.level, exp: check.entry.exp, quality, skills: validSkillRows(targetRecord, check.entry.skills) };
+      const carried = { level: check.entry.level, exp: check.entry.exp, quality, skills: validSkillRows(targetRecord, check.entry.skills), ...(validItem(check.entry.item) !== null ? { item: validItem(check.entry.item) } : {}) };
       stones[check.row] -= check.quantity; saveStones(); updateStones();
       if (key === "loi-mieu") progress["loi-mieu"] = { ...carried, form: targetRecord.pet_id };
       else {
@@ -494,10 +518,51 @@
       forget: forgetSkill,
       learn: learnOrReplaceSkill
     };
+    // ---- Held items: one per pet, stored in the pet's progress entry; equipping moves the item from the bag to the pet. ----
+    function heldItemOf(key, speciesId) { return validItem(individualEntry(key, speciesId).item); }
+    function equipRelic(key, speciesId, row) {
+      if (state.mode === "battle") return { ok: false, message: "Chưa thể đổi vật phẩm mang theo: không thể trong trận." };
+      const relic = RELIC(row);
+      if (!relic || !STAT_BY_ID.has(speciesId)) return { ok: false, message: "Không có vật phẩm này." };
+      if (!(stones[row] > 0)) return { ok: false, message: `Không còn ${relic.name} trong túi.` };
+      const entry = individualEntry(key, speciesId), old = validItem(entry.item);
+      if (old === row) return { ok: false, message: "Pet đang mang vật phẩm này rồi." };
+      stones[row]--;
+      if (old !== null) stones[old] = (stones[old] || 0) + 1;
+      saveStones(); updateStones();
+      progress[key] = { ...entry, item: row };
+      saveProgress();
+      return { ok: true, message: `Đã đeo ${relic.name}${old !== null ? ` (trả ${RELIC(old).name} về túi)` : ""}.` };
+    }
+    function unequipRelic(key, speciesId) {
+      if (state.mode === "battle") return { ok: false, message: "Chưa thể đổi vật phẩm mang theo: không thể trong trận." };
+      const entry = individualEntry(key, speciesId), old = validItem(entry.item);
+      if (old === null) return { ok: false, message: "Pet không mang vật phẩm nào." };
+      stones[old] = (stones[old] || 0) + 1;
+      saveStones(); updateStones();
+      const { item, ...rest } = entry;
+      progress[key] = rest;
+      saveProgress();
+      return { ok: true, message: `Đã gỡ ${RELIC(old).name}, vật phẩm về túi.` };
+    }
+    window.VQSVItems = {
+      options(speciesId) {
+        return individualsOf(speciesId).map(individual => {
+          const held = heldItemOf(individual.key, speciesId);
+          const brief = row => ({ row, name: RELIC(row).name, description: RELIC(row).description });
+          return { key: individual.key, label: individual.label, locked: state.mode === "battle" ? "không thể đổi trong trận" : "",
+            held: held === null ? null : brief(held),
+            owned: [...RELIC_INFO.keys()].filter(row => (stones[row] || 0) > 0).map(row => ({ ...brief(row), count: stones[row] })) };
+        });
+      },
+      equip: equipRelic,
+      unequip: unequipRelic
+    };
     // ---- Shop (game/k.java a()/b(), game/j.java b(), game/i.java w()/x()): prices come from db.mid tables 3 and 4. ----
     const CATALOG = [
       ...(SHOP?.items || []).filter(item => item.row !== 14).map(item => ({ ...item, id: `item-${item.row}`, store: "bag" })),
-      ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" }))
+      ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
+      ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" }))
     ];
     const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
     const itemEntry = row => catalogById.get(`item-${row}`);
@@ -665,13 +730,13 @@
       return Array.isArray(rows) && rows.length && rows.every(row => Number.isInteger(row) && row >= base && row < base + 10) ? [...new Set(rows)].slice(0, 5) : [base];
     }
     // A combatant built from a VQSV6 DB record: stats at a level, first element skill (known at level <= 5).
-    function vqsv6Combatant(petId, level, quality, skillRows) {
+    function vqsv6Combatant(petId, level, quality, skillRows, item = null) {
       const record = STAT_BY_ID.get(petId);
       quality = quality || record.default_quality;
       const stats = statsAt(record, level, quality);
       const skills = validSkillRows(record, skillRows).map(sourceSkill);
       return { stats, level, elementId: record.element_id, element: record.element, col22: record.advantage_flag_col22,
-        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name, buffs: {}, debuffs: {} };
+        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name, buffs: {}, debuffs: {}, item: validItem(item) };
     }
     function buildTeam() {
       // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
@@ -680,7 +745,7 @@
       const form = leadForm();
       const evolved = form !== LEAD_DEFAULT_FORM;
       const formImage = evolved ? window.VQSVPetTeam?.info(form)?.image : null;
-      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant(form, leadProgress.level, leadProgress.quality, leadProgress.skills), portrait: formImage || "assets/pets/electric_cat_candidate.png", image: formImage || undefined, progressKey: "loi-mieu", exp: leadProgress.exp };
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant(form, leadProgress.level, leadProgress.quality, leadProgress.skills, leadProgress.item), portrait: formImage || "assets/pets/electric_cat_candidate.png", image: formImage || undefined, progressKey: "loi-mieu", exp: leadProgress.exp };
       if (formImage) cachedImage(formImage);
       lead.name = "Lôi Miêu";
       lead.subtitle = evolved ? `CẤP ${lead.level} · ${STAT_BY_ID.get(form).name.toUpperCase()}` : `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
@@ -689,7 +754,7 @@
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
         const own = info.kind === "vqsv6" ? progressOf(info.id, best ? best.level : BATTLE_LEVEL) : null;
-        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills), progressKey: info.id, exp: own.exp }
+        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
           : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, skills: [], buffs: {}, debuffs: {}, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
@@ -729,6 +794,8 @@
       rate = Math.trunc(rate * CAPTURE.quality_factor_percent[enemy.quality - 1] / 100);
       const statusIndex = enemy.buffs?.[10] ? 3 : enemy.buffs?.[2] ? 2 : enemy.buffs?.[1] ? 1 : 0;
       rate = Math.trunc(rate * [10, 11, 12, 12, 12][statusIndex] / 10);
+      const holder = state.battle?.team?.[state.battle.active];
+      if (holder?.item === 11) rate = Math.trunc(rate * (100 + RELIC(11).p1) / 100); // Sủng vật lôi đạt
       rate = Math.trunc(rate * CAPTURE.col22_factor_permille[enemy.col22] / 1000);
       if (enemy.level >= 20 && rate >= CAPTURE.level20_cap_by_ball[ballIndex]) rate = CAPTURE.level20_cap_by_ball[ballIndex];
       return Math.max(1, Math.min(100, rate));
@@ -756,6 +823,10 @@
       const s = c.stats, b = c.buffs || {}, d = c.debuffs || {};
       let attack = s.attack, defense = s.defense, speed = s.speed;
       if (b[10]) attack += pct(s.attack, b[10].value);
+      // Held items (game/i.java C()/a(byte)): 0 attack +100% at HP <= 30%, 1 attack +10%, 2 defense +15%.
+      if (c.item === 1) attack += pct(s.attack, RELIC(1).p1);
+      if (c.item === 0 && c.hp <= pct(c.max, RELIC(0).p1)) attack += pct(s.attack, RELIC(0).p2);
+      if (c.item === 2) defense += pct(s.defense, RELIC(2).p1);
       if (b[0]) defense += pct(s.defense, BUFF(0).param_a);
       if (b[1]) defense -= pct(s.defense, BUFF(1).param_a);
       if (b[2]) defense += pct(s.defense, BUFF(2).param_a);
@@ -794,7 +865,7 @@
     function rollDamage(attacker, defender, power) {
       const a = effStats(attacker), d = effStats(defender);
       let damage = a.attack - d.defense;
-      const crit = Math.random() * 100 < 5 + a.speed / 2;
+      const crit = Math.random() * 100 < 5 + a.speed / 2 + (attacker.item === 4 ? RELIC(4).p1 : 0);
       if (crit) damage = Math.trunc(damage * 3 / 2);
       const base = damage;
       damage = Math.trunc(damage * power / 100);
@@ -811,6 +882,12 @@
     // One actor's move: skip checks, damage, reflection and the skill's status effect.
     // TRIAL (no dedicated handler found in the decompiled code): Mê Muội skips the turn,
     // Tê Liệt skips 50% of turns, Mục makes attacks miss param x 10%, Quỷ Mị reflects param% of attacks.
+    // Ô Nha Uế (held item 3): debuffs on the holder land with chance x (100 - 20) / 100. The source formula multiplies the
+    // "always" marker -1 by that factor, which would block always-on debuffs; the prototype treats "always" as 100%.
+    function debuffLands(target, chance) {
+      if (target.item === 3) return Math.random() * 100 < (chance === -1 ? 100 : chance) * (100 - RELIC(3).p1) / 100;
+      return chance === -1 || Math.random() * 100 <= chance;
+    }
     function performMove(actor, target, skill, label) {
       const debuffs = actor.debuffs || {};
       if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
@@ -819,7 +896,10 @@
       if (skill.uses < 0) skill.uses = 0;
       let text = `${label} dùng ${skill.name}`;
       if (!skill.noDamage) {
-        if (debuffs[4] && Math.random() * 100 < debuffs[4].value * 10) return `${text} nhưng đánh trượt.`;
+        // game/a.java: miss% = clamp(2 * (target level - attacker level), 0, 20); Mục lowers the attacker's level by its
+        // parameter and the held item Cá Thờn Bơn (9) removes the miss chance.
+        const missPct = actor.item === 9 ? 0 : Math.max(0, Math.min(20, 2 * (target.level - (actor.level - (debuffs[4] ? debuffs[4].value : 0)))));
+        if (missPct > 0 && Math.random() * 100 < missPct) return `${text} nhưng đánh trượt.`;
         const hits = actor.buffs?.[12] ? 2 : 1;
         const parts = [];
         let last = null;
@@ -840,15 +920,20 @@
             continue;
           }
           target.hp = Math.max(0, target.hp - dealt);
+          if (actor.item === 10 && target.hp < RELIC(10).p1) target.hp = RELIC(10).p1; // Cảm Lãm Chi Diệp: leave the target at 10 HP
+          if (actor.item === 8 && actor.hp > 0 && Math.random() * 100 <= RELIC(8).p1) {
+            const heal = Math.min(actor.max - actor.hp, pct(dealt, RELIC(8).p2));
+            if (heal > 0) { actor.hp += heal; parts.push(`hút máu +${heal} HP`); }
+          }
           if (target.buffs?.[2]) { const back = Math.max(1, pct(dealt, BUFF(2).param_b)); actor.hp = Math.max(0, actor.hp - back); }
           parts.push(hitText({ ...result, damage: dealt }) + (target === activePet() && state.battle.guard ? " (đã thủ)" : ""));
         }
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
         if (skill.effect?.kind === "debuff" && last) {
           const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
-          if (chance === -1 || Math.random() * 100 <= chance) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
+          if (debuffLands(target, chance)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
         }
-      } else if (skill.effect?.kind === "debuff") text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
+      } else if (skill.effect?.kind === "debuff" && debuffLands(target, -1)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
       if (skill.effect?.kind === "buff") text += (text.endsWith(".") ? "" : ".") + applyBuff(actor, skill.effect.id, skill.effect.param).trimEnd();
       return text.endsWith(".") || text.endsWith("!") ? text : `${text}!`;
     }
@@ -1501,7 +1586,7 @@
         const label = document.createElement("span"); label.textContent = pet.name;
         const sub = document.createElement("small");
         const level = `${pet.skills?.length ? `${pet.skills.length} kỹ năng · ` : ""}Cấp ${pet.level}${pet.progressKey && pet.level < LEVEL_CAP ? ` · KN ${pet.exp}/${expToReach(pet.level + 1)}` : ""}`;
-        sub.textContent = `${index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`)} · ${level}`;
+        sub.textContent = `${pet.item != null ? `${RELIC(pet.item).name} · ` : ""}${index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`)} · ${level}`;
         label.append(sub);
         const hp = document.createElement("span"); hp.textContent = `${pet.hp}/${pet.max}`;
         button.append(image, label, hp);
@@ -1656,7 +1741,10 @@
         wildSteps = 0;
         state.player = {x:link.spawnX,y:link.spawnY,visualX:link.spawnX,visualY:link.spawnY,faceX:1,faceY:0,step:null,inputDir:null};
         const range = wildLevelRange(assets.map.id);
-        statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`; updateGuidance(); return;
+        statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`;
+        // TRIAL badge source: the first visit to each higher-level region gives 1 huy hiệu (the source sells them for real money).
+        if (assets.map.wildAreas && grantOnce(`region:${assets.map.id}`, () => { wallet.badges += 1; })) statusEl.textContent += " · +1 huy hiệu";
+        updateGuidance(); return;
       }
       if (point && state.spokeToElder && near(state.player, point)) {
         state.battle = newBattle();
@@ -1679,7 +1767,8 @@
       battle.message = "";
       battle.enemyActed = false;
       if (guard) battle.guard = true;
-      if (effStats(battle.enemy).speed > effStats(pet).speed) {
+      // Linh Trùng Thi Hài (held item 7) acts first (game/a.java Q()); otherwise the faster side goes first.
+      if (pet.item !== 7 && effStats(battle.enemy).speed > effStats(pet).speed) {
         enemyStrike(now);
         if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
@@ -1729,13 +1818,22 @@
       const lines = [];
       for (const member of members) {
         if (!member.progressKey) { lines.push(`${member.name} (VQSV5) chưa nhận kinh nghiệm vì chỉ số chưa giải.`); continue; }
-        const amount = expReward(battle.enemy, members.length, member.level);
+        let amount = expReward(battle.enemy, members.length, member.level);
+        if (member.item === 5) amount = Math.trunc(amount * (100 + RELIC(5).p1) / 100); // Mật Phong Sào
         const gained = gainExp(member, amount);
         lines.push(`${member.name} +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
         if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
       }
+      // Ký Cư Giải Xác (held item 6): a living holder that did not fight still earns a share.
+      const sharers = battle.team.filter((member, index) => member.item === 6 && member.progressKey && member.hp > 0 && !battle.participants.has(index));
+      for (const member of sharers) {
+        const amount = expReward(battle.enemy, members.length, member.level);
+        const gained = gainExp(member, amount);
+        lines.push(`${member.name} (Ký Cư Giải Xác) +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
+        if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
+      }
       saveProgress();
-      queueSkillLearning(members);
+      queueSkillLearning([...members, ...sharers]);
       battle.message = `${battle.wild ? battle.enemy.name : "Sinh vật"} gục ngã! ${lines.join(" ")}`;
       battle.pendingUntil = now + 2200;
       updateGuidance();
@@ -1986,6 +2084,18 @@
       if (["d", "arrowright"].includes(key)) releaseMove(1, 0);
     });
     window.addEventListener("blur", () => { state.player.inputDir = null; });
+    // On-screen controls for touch devices (the keyboard path above stays the same).
+    function bindTouchPad() {
+      const directions = { touchUp: [0, -1], touchDown: [0, 1], touchLeft: [-1, 0], touchRight: [1, 0] };
+      for (const [id, [dx, dy]] of Object.entries(directions)) {
+        const button = document.getElementById(id);
+        if (!button) continue;
+        button.addEventListener("pointerdown", event => { event.preventDefault?.(); setMove(dx, dy); });
+        for (const type of ["pointerup", "pointercancel", "pointerleave"]) button.addEventListener(type, event => { event.preventDefault?.(); releaseMove(dx, dy); });
+      }
+      document.getElementById("touchAction")?.addEventListener("pointerdown", event => { event.preventDefault?.(); interact(); });
+    }
+    bindTouchPad();
     document.getElementById("openPetBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); });
     document.getElementById("openSkillBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openSkillBook(); });
     document.getElementById("restart").addEventListener("click", reset);

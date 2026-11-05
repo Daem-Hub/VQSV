@@ -217,7 +217,9 @@
     // Experience follows game/i.java A() and game/a.java h(); progress is kept per pet in this browser.
     const EXP = STATS?.experience;
     const PROGRESS_KEY = "vqsv-unified-pet-progress-v1";
-    const LEVEL_CAP = EXP?.level_cap || 50;
+    // Unified-game design decision: level cap 70. The VQSV6 source caps at 50 (EXP.level_cap);
+    // levels 51-70 extend the same decoded exp curve and stat growth formulas.
+    const LEVEL_CAP = 70;
     function expToReach(level) { return 15 * level * level - 200; }
     let progress = {};
     try { const raw = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); if (raw && typeof raw === "object") progress = raw; } catch (_) {}
@@ -242,6 +244,13 @@
       if (entry.level >= LEVEL_CAP) entry.exp = 0;
       progress[member.progressKey] = { ...progress[member.progressKey], level: entry.level, exp: entry.exp };
       member.level = entry.level; member.exp = entry.exp;
+      // game/i.java w() -> W(): recompute stats at the new level, refill HP (h()) and skill uses.
+      const record = STAT_BY_ID.get(member.petId);
+      if (record && entry.level !== before) {
+        member.stats = statsAt(record, entry.level, member.quality);
+        member.max = member.hp = member.stats.hp;
+        if (member.skill) member.skill.uses = member.skill.max;
+      }
       return entry.level - before;
     }
     const spriteCache = new Map();

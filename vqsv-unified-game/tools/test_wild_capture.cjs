@@ -93,9 +93,15 @@ assert.equal(run('state.mode'), 'explore');
 run('state.battle = newBattle()');
 assert.equal(run('activePet().level'), 6);
 assert.equal(run('activePet().max'), run('statsAt(STAT_BY_ID.get("vqsv6-db-78"), 6).hp'));
-// Large gains roll over several levels and stop at the level-50 cap.
+// Large gains roll over several levels and stop at the unified level-70 cap (source game: 50).
 run('gainExp(activePet(), 10000000)');
-assert.equal(run('activePet().level'), 50);
+assert.equal(run('activePet().level'), 70);
+assert.equal(run('activePet().exp'), 0);
+assert.equal(run('activePet().max'), run('statsAt(STAT_BY_ID.get("vqsv6-db-78"), 70).hp'));
+// Exactly enough exp to go 50 -> 51 still levels up past the source cap.
+run('progress = {}; state.battle = newBattle(); progress["loi-mieu"] = { level: 50, exp: 0 }; state.battle = newBattle()');
+assert.equal(run('gainExp(activePet(), expToReach(51))'), 1);
+assert.equal(run('activePet().level'), 51);
 assert.equal(run('gainExp(activePet(), 999)'), 0);
 // A catch stores the individual's level/quality as the species' progress unless a stronger one exists.
 run('progress = {}; recordWildCatch({ petId: "vqsv6-db-78", level: 7, quality: 2 }); recordWildCatch({ petId: "vqsv6-db-78", level: 6, quality: 2 })');

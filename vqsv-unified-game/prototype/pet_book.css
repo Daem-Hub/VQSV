@@ -57,3 +57,10 @@
 .pet-evolve { margin: 0 0 8px; background: #d9a8f0; }
 .pet-evolve:disabled { opacity: .55; cursor: not-allowed; }
 .pet-evolve-note { padding: 8px; border: 1px solid #9a7bb8; border-radius: 7px; background: #3a2c4a; color: #f1dcff; }
+.pet-skills { margin: 8px 0; padding: 8px; border: 1px solid #4b6550; border-radius: 8px; background: #1d3226; }
+.pet-skills h4 { margin: 0 0 4px; color: #f6e5aa; font-size: 13px; }
+.pet-skills p { margin: 4px 0; font-size: 12px; }
+.pet-skill-hint { color: #b8caaf; }
+.pet-skill-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 3px 0; font-size: 12px; }
+.pet-skill-button { width: auto; padding: 3px 9px; font-size: 11px; background: #e4a58d; }
+.pet-skill-button:disabled { opacity: .45; cursor: not-allowed; }

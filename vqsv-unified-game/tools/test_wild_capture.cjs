@@ -352,4 +352,59 @@ assert.match(element('status').textContent, /\+75 kim tiền/);
 assert.equal(run('grantOnce("herb", () => { wallet.gold += 300; })'), true);
 assert.equal(run('grantOnce("herb", () => { wallet.gold += 300; })'), false);
 assert.equal(run('wallet.gold'), 2375);
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop and items passed.');
+// ---- Skill management (design: the source game never removes skills) ----
+const J = js => JSON.parse(JSON.stringify(run(js)));
+reset3();
+run('progress["loi-mieu"] = { level: 30, exp: 0, skills: [40, 41, 42, 43] }');
+let opts = J('window.VQSVSkills.options("vqsv6-db-78")');
+assert.equal(opts.length, 1);
+assert.equal(opts[0].slots, 4); assert.equal(opts[0].full, true);
+assert.deepEqual(opts[0].known.map(k => k.row), [40, 41, 42, 43]);
+assert.deepEqual(opts[0].learnable.map(k => k.row), [44, 45, 46, 47]);
+// Unowned species have nothing to manage.
+assert.deepEqual(J('window.VQSVSkills.options("vqsv6-db-33")'), []);
+// Full slots: learning needs a skill to replace, and the replacement keeps its slot.
+let r = J('window.VQSVSkills.learn("loi-mieu", "vqsv6-db-78", 44)');
+assert.equal(r.ok, false); assert.match(r.message, /Các ô kỹ năng đã đầy/);
+r = J('window.VQSVSkills.learn("loi-mieu", "vqsv6-db-78", 44, 42)');
+assert.equal(r.ok, true); assert.equal(r.message, 'Đã quên Nạp điện và học Đoạt mệnh cao áp.');
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'].skills, [40, 41, 44, 43]);
+// Forgetting frees a slot; the forgotten skill can be learned again; the next learn uses the free slot.
+r = J('window.VQSVSkills.forget("loi-mieu", "vqsv6-db-78", 41)');
+assert.equal(r.ok, true); assert.equal(r.message, 'Đã quên Lôi thiểm.');
+opts = J('window.VQSVSkills.options("vqsv6-db-78")');
+assert.equal(opts[0].full, false);
+assert.deepEqual(opts[0].learnable.map(k => k.row), [41, 42, 45, 46, 47]);
+r = J('window.VQSVSkills.learn("loi-mieu", "vqsv6-db-78", 45)');
+assert.equal(r.ok, true); assert.equal(r.message, 'Đã học Điện năng chuyển đổi.');
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'].skills, [40, 44, 43, 45]);
+// The next battle uses the new skill set, with fresh use counts.
+run('state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 })');
+assert.deepEqual(J('activePet().skills.map(skill => skill.name)'), ['Điện giật', 'Đoạt mệnh cao áp', 'Sóng điện từ', 'Điện năng chuyển đổi']);
+// Rules: only skills the pet could learn at its level, never the last skill, never unknown skills, never in battle.
+r = J('window.VQSVSkills.learn("loi-mieu", "vqsv6-db-78", 49)');
+assert.equal(r.ok, false); assert.match(r.message, /chưa thể học kỹ năng này/);
+r = J('window.VQSVSkills.forget("loi-mieu", "vqsv6-db-78", 42)');
+assert.equal(r.ok, false); assert.match(r.message, /không biết kỹ năng này/);
+run('progress["loi-mieu"].skills = [40]');
+r = J('window.VQSVSkills.forget("loi-mieu", "vqsv6-db-78", 40)');
+assert.equal(r.ok, false); assert.match(r.message, /ít nhất một kỹ năng/);
+run('progress["loi-mieu"].skills = [40, 41]; state.mode = "battle"');
+r = J('window.VQSVSkills.forget("loi-mieu", "vqsv6-db-78", 41)');
+assert.equal(r.ok, false); assert.match(r.message, /không thể đổi kỹ năng trong trận/);
+assert.equal(J('window.VQSVSkills.options("vqsv6-db-78")')[0].locked, 'không thể đổi kỹ năng trong trận');
+run('state.mode = "explore"');
+// Reserve pets work the same way (Thủy thủ chim cánh cụt: Thủy skills are rows 30-39) and the lead is independent of them.
+teamIds.push('vqsv6-db-61');
+run('progress["vqsv6-db-61"] = { level: 20, exp: 0, skills: [30, 31, 32] }');
+opts = J('window.VQSVSkills.options("vqsv6-db-61")');
+assert.equal(opts.length, 1); assert.equal(opts[0].label.length > 0, true); assert.equal(opts[0].slots, 3);
+r = J('window.VQSVSkills.forget("vqsv6-db-61", "vqsv6-db-61", 31)');
+assert.equal(r.ok, true);
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['vqsv6-db-61'].skills, [30, 32]);
+assert.deepEqual(JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'].skills, [40, 41]);
+// Skills of another element are rejected as a stored selection and fall back to the first skill of the element.
+run('progress["vqsv6-db-61"].skills = [40, 41]');
+assert.deepEqual(J('skillState("vqsv6-db-61", "vqsv6-db-61").known'), [30]);
+teamIds.length = 0;
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop, items and skill management passed.');

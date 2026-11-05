@@ -62,6 +62,8 @@
   });
   let selected = "vqsv6-db-78";
   let evolveNote = "";
+  let skillNote = "";
+  let skillPick = null;
   let timer = null;
 
   function normalized(value) {
@@ -94,6 +96,57 @@
       timer = setTimeout(frame, Math.max(1, item.duration_ticks) * tickMs);
     }
     frame();
+  }
+  // Skill manager: forget skills and learn or replace skills for each individual of this species you own.
+  function appendSkillManager(entry) {
+    const skills = window.VQSVSkills;
+    const options = skills ? skills.options(entry.key) : [];
+    for (const option of options) {
+      const box = node("div", undefined, "pet-skills");
+      box.append(node("h4", `Kỹ năng · ${option.label}`));
+      box.append(node("p", `Cấp ${option.level}: ${option.known.length}/${option.slots} ô.${option.locked ? ` (${option.locked})` : ""}`));
+      const picking = skillPick && skillPick.key === option.key ? skillPick.row : null;
+      for (const skill of option.known) {
+        const row = node("div", undefined, "pet-skill-row");
+        row.append(node("span", `${skill.name}${skill.power ? ` · ${skill.power}%` : " · hiệu ứng"}`));
+        const act = node("button", picking !== null ? "Thay" : "Quên", "pet-skill-button");
+        act.type = "button";
+        act.disabled = !!option.locked || (picking === null && option.known.length <= 1);
+        act.addEventListener("click", () => {
+          const result = picking !== null ? skills.learn(option.key, entry.key, picking, skill.row) : skills.forget(option.key, entry.key, skill.row);
+          skillNote = result.message; skillPick = null; render();
+        });
+        row.append(act);
+        box.append(row);
+      }
+      if (picking !== null) {
+        const info = option.learnable.find(skill => skill.row === picking);
+        box.append(node("p", `Chọn kỹ năng bị thay bởi ${info ? info.name : "kỹ năng mới"}:`, "pet-skill-hint"));
+        const cancel = node("button", "Hủy", "pet-skill-button");
+        cancel.type = "button";
+        cancel.addEventListener("click", () => { skillPick = null; render(); });
+        box.append(cancel);
+      } else if (option.learnable.length) {
+        box.append(node("p", option.full ? "Có thể học (thay một kỹ năng đang biết):" : "Có thể học:", "pet-skill-hint"));
+        for (const skill of option.learnable) {
+          const row = node("div", undefined, "pet-skill-row");
+          const label = node("span", `${skill.name}${skill.power ? ` · ${skill.power}%` : " · hiệu ứng"}`);
+          label.title = skill.description;
+          row.append(label);
+          const act = node("button", option.full ? "Thay…" : "Học", "pet-skill-button");
+          act.type = "button";
+          act.disabled = !!option.locked;
+          act.addEventListener("click", () => {
+            if (option.full) { skillPick = { key: option.key, row: skill.row }; skillNote = ""; render(); return; }
+            skillNote = skills.learn(option.key, entry.key, skill.row).message; render();
+          });
+          row.append(act);
+          box.append(row);
+        }
+      }
+      detail.append(box);
+    }
+    if (options.length && skillNote) detail.append(node("p", skillNote, "pet-evolve-note"));
   }
   function renderDetail(entry) {
     stopAnimation();
@@ -153,6 +206,7 @@
         if (skills.length) detail.append(node("p", `Kỹ năng hệ (tới cấp 30): ${skills.join(", ")}.`));
       }
       if (entry.key === leadId()) detail.append(node("p", entry.key === LEAD_DEFAULT_ID ? "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện." : "Dạng hiện tại của Lôi Miêu (tiến hóa từ Điện Miêu theo dữ liệu nguồn)."));
+      appendSkillManager(entry);
       const evolution = entry.pet.evolution;
       const target = evolution && byId.get(evolution.target_pet_id);
       if (target) {
@@ -233,7 +287,7 @@
       image.alt = "";
       image.loading = "lazy";
       button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}${caughtOf(entry.key).length ? " · Đã bắt" : ""}`));
-      button.addEventListener("click", () => { selected = entry.key; evolveNote = ""; render(); });
+      button.addEventListener("click", () => { selected = entry.key; evolveNote = ""; skillNote = ""; skillPick = null; render(); });
       grid.append(button);
     }
     renderDetail(visible.find(entry => entry.key === selected));

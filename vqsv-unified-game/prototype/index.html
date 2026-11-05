@@ -425,6 +425,63 @@
       },
       evolve: evolvePet
     };
+    // ---- Skill management: forget and replace. The source game only ever adds skills (game/i.java g()/H()), so this is a
+    // unified-game design (TRIAL): free, out of battle, a pet keeps at least one skill, and every replacement still has to
+    // be a skill that pet could learn at its level (same element pool, unlock tiers, slot count). ----
+    function individualEntry(key, speciesId) {
+      const best = key === "loi-mieu" ? null : window.VQSVPetTeam?.caughtBest?.(speciesId);
+      return progressOf(key, best ? best.level : BATTLE_LEVEL);
+    }
+    function skillState(key, speciesId) {
+      const record = STAT_BY_ID.get(speciesId);
+      if (!record) return null;
+      const entry = individualEntry(key, speciesId);
+      const known = validSkillRows(record, entry.skills);
+      return { record, entry, known, slots: skillSlots(entry.level), learnable: learnableSkills(record, entry.level, known) };
+    }
+    function storeSkills(key, state_, rows) {
+      progress[key] = { ...state_.entry, skills: rows };
+      saveProgress();
+    }
+    function skillBrief(row) { const skill = STATS.skills[row]; return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, description: skill.description || "" }; }
+    function skillLock() { return state.mode === "battle" ? "không thể đổi kỹ năng trong trận" : ""; }
+    function forgetSkill(key, speciesId, row) {
+      const current = skillState(key, speciesId);
+      if (!current) return { ok: false, message: "Không có dữ liệu kỹ năng." };
+      if (skillLock()) return { ok: false, message: `Chưa thể quên kỹ năng: ${skillLock()}.` };
+      if (!current.known.includes(row)) return { ok: false, message: "Pet không biết kỹ năng này." };
+      if (current.known.length <= 1) return { ok: false, message: "Pet phải giữ lại ít nhất một kỹ năng." };
+      storeSkills(key, current, current.known.filter(known => known !== row));
+      return { ok: true, message: `Đã quên ${STATS.skills[row].name}.` };
+    }
+    // Learns a skill into a free slot, or into the slot of `replaceRow` when every slot is taken.
+    function learnOrReplaceSkill(key, speciesId, row, replaceRow = null) {
+      const current = skillState(key, speciesId);
+      if (!current) return { ok: false, message: "Không có dữ liệu kỹ năng." };
+      if (skillLock()) return { ok: false, message: `Chưa thể học kỹ năng: ${skillLock()}.` };
+      if (!current.learnable.includes(row)) return { ok: false, message: "Pet chưa thể học kỹ năng này ở cấp hiện tại." };
+      const name = STATS.skills[row].name;
+      if (current.known.length < current.slots) {
+        storeSkills(key, current, [...current.known, row]);
+        return { ok: true, message: `Đã học ${name}.` };
+      }
+      if (!current.known.includes(replaceRow)) return { ok: false, message: "Các ô kỹ năng đã đầy: hãy chọn kỹ năng cần thay." };
+      const old = STATS.skills[replaceRow].name;
+      storeSkills(key, current, current.known.map(known => (known === replaceRow ? row : known)));
+      return { ok: true, message: `Đã quên ${old} và học ${name}.` };
+    }
+    window.VQSVSkills = {
+      options(speciesId) {
+        return individualsOf(speciesId).map(individual => {
+          const current = skillState(individual.key, speciesId);
+          if (!current) return null;
+          return { key: individual.key, label: individual.label, level: current.entry.level, slots: current.slots, locked: skillLock(),
+            known: current.known.map(skillBrief), learnable: current.learnable.map(skillBrief), full: current.known.length >= current.slots };
+        }).filter(Boolean);
+      },
+      forget: forgetSkill,
+      learn: learnOrReplaceSkill
+    };
     // ---- Shop (game/k.java a()/b(), game/j.java b(), game/i.java w()/x()): prices come from db.mid tables 3 and 4. ----
     const CATALOG = [
       ...(SHOP?.items || []).filter(item => item.row !== 14).map(item => ({ ...item, id: `item-${item.row}`, store: "bag" })),

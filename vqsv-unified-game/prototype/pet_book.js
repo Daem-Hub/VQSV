@@ -33,6 +33,18 @@
     const data = JSON.parse(localStorage.getItem(teamKey) || "[]");
     if (Array.isArray(data)) team = [...new Set(data.filter(id => typeof id === "string" && byId.has(id) && id !== LEAD_REFERENCE_ID))].slice(0, TEAM_MAX);
   } catch (_) { storageAvailable = false; }
+  // Pets caught in wild battles: one record per catch, with the level and quality rolled in battle.
+  const caughtKey = "vqsv-unified-caught-pets-v1";
+  let caught = [];
+  try {
+    const data = JSON.parse(localStorage.getItem(caughtKey) || "[]");
+    if (Array.isArray(data)) caught = data.filter(item => item && byId.has(item.pet_id) && Number.isInteger(item.level) && Number.isInteger(item.quality));
+  } catch (_) { storageAvailable = false; }
+  function persistCaught() {
+    try { localStorage.setItem(caughtKey, JSON.stringify(caught)); storageAvailable = true; }
+    catch (_) { storageAvailable = false; }
+  }
+  function caughtOf(id) { return caught.filter(item => item.pet_id === id); }
   function persistTeam() {
     try { localStorage.setItem(teamKey, JSON.stringify(team)); storageAvailable = true; }
     catch (_) { storageAvailable = false; }
@@ -101,6 +113,11 @@
       render();
     });
     detail.append(collect);
+    const mine = caughtOf(entry.key);
+    if (mine.length) {
+      const best = mine.reduce((a, b) => (b.level > a.level || (b.level === a.level && b.quality > a.quality) ? b : a));
+      detail.append(node("p", `Đã bắt ${mine.length} con · tốt nhất cấp ${best.level}, hạng ${best.quality}. Khi vào đội, pet dùng cấp và hạng này.`));
+    }
     const inTeam = team.includes(entry.key);
     const teamButton = node("button", inTeam ? "Rút khỏi đội" : `Đưa vào đội (${team.length}/${TEAM_MAX})`, "pet-team");
     teamButton.type = "button";
@@ -175,7 +192,7 @@
     const visible = entries.filter(entry => {
       const sourceMatch = source.value === "all" || source.value === entry.kind;
       const elementMatch = element.value === "all" || entry.element === element.value;
-      const collectionMatch = collectionFilter.value === "all" || saved.has(entry.key);
+      const collectionMatch = collectionFilter.value === "all" || (collectionFilter.value === "caught" ? caughtOf(entry.key).length > 0 : saved.has(entry.key));
       const materialMatch = materialFilter.value === "all" || entry.pet.evolution?.material?.name === materialFilter.value;
       const text = [entry.name, entry.element, entry.key, entry.kind, entry.atlasId || "", entry.pet?.source_ids.db_id || ""].join(" ");
       return sourceMatch && elementMatch && collectionMatch && materialMatch && (!query || normalized(text).includes(query));
@@ -194,7 +211,7 @@
       image.src = portrait(entry);
       image.alt = "";
       image.loading = "lazy";
-      button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}`));
+      button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}${caughtOf(entry.key).length ? " · Đã bắt" : ""}`));
       button.addEventListener("click", () => { selected = entry.key; render(); });
       grid.append(button);
     }
@@ -222,6 +239,21 @@
   window.VQSVPetTeam = {
     max: TEAM_MAX,
     ids: () => [...team],
+    caughtBest(id) {
+      const mine = caughtOf(id);
+      return mine.length ? mine.reduce((a, b) => (b.level > a.level || (b.level === a.level && b.quality > a.quality) ? b : a)) : null;
+    },
+    caughtCount: () => caught.length,
+    // Record a catch; also adds the species to the collection and to a free team slot.
+    recordCatch(id, level, quality) {
+      if (!byId.has(id)) return { addedToTeam: false };
+      caught.push({ pet_id: id, level, quality, caught_at: new Date().toISOString() });
+      saved.add(id);
+      let addedToTeam = false;
+      if (id !== LEAD_REFERENCE_ID && !team.includes(id) && team.length < TEAM_MAX) { team.push(id); addedToTeam = true; persistTeam(); }
+      persistCaught(); persistCollection();
+      return { addedToTeam };
+    },
     info(id) {
       const entry = entries.find(item => item.key === id);
       if (!entry) return null;

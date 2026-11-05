@@ -17,6 +17,14 @@ reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/:
   table1[row][4] <= table8[column18][tier], tier from level thresholds [5,10,20,30,40].
 - game/k.java  status screen: column 4 is the number of quality stars shown (max quality).
 
+- game/l.java  petArea.mid: row = [map, sub-area, tuple count (-1 = no wild pets), level min, level max,
+  then tuples (pet row, terrain 0 land / 2 water, quality min, quality max)]; encounter level and quality
+  are uniform random in those ranges.
+- game/a.java  m(ball): capture rate. Tất Trung Cầu = 100; otherwise HP <= 15% -> 85, <= 50% -> 45, else 20;
+  * ball table4 col6 / 100; * [110,100,95,80,70][quality-1] / 100; * status factor [10,11,12,12,12] / 10;
+  * [1000,500,1,1000][pet col22] / 1000; level >= 20 caps at [0,15,35,65][ball]; clamp 1..100;
+  success when random(100) < rate.
+
 Writes prototype/data/vqsv6_pet_stats.json and asset_review/vqsv6_pet_stats.csv.
 """
 import csv
@@ -95,6 +103,19 @@ for row_index, r in enumerate(db[0]):
         "skills_at_level": {str(L): skills_known(r, L) for L in (5, 10, 20, 30, 40)},
     })
 
+wild_areas = []
+for r in tables["pet_area_mid_tables"][0]["rows"]:
+    if r[2] == -1:
+        continue
+    tuples = [r[5 + i * 4: 9 + i * 4] for i in range((len(r) - 5) // 4)]
+    wild_areas.append({"area": f"{r[0]}-{r[1]}", "level_range": [r[3], r[4]], "pets": [
+        {"pet_id": f"vqsv6-db-{db[0][row][0]}", "name": names[db[0][row][0]], "terrain": terrain, "quality_range": [qmin, qmax]}
+        for row, terrain, qmin, qmax in tuples]})
+
+balls = []
+for index, r in enumerate(db[4][:4]):
+    balls.append({"ball_index": index, "name": names[r[0]], "description": names[r[2]], "price": r[3], "rate_percent": r[6]})
+
 out = {
     "source": "vqsv6 data/script/db.mid tables 0, 1, 8; formulas from decompiled VQSV_FIX_2.7 game/i.java and game/a.java",
     "confidence": "Stat formulas, turn order, damage, crit, element multipliers and skill pools are read directly from decompiled code. "
@@ -107,6 +128,15 @@ out = {
         "element_beats": {elements[a]: elements[b] for a, b in BEATS.items()},
         "column22_rule": "if exactly one side has col22 == 2, only that side's favourable multiplier applies",
     },
+    "capture": {
+        "balls": balls,
+        "hp_band_rate": [[15, 85], [50, 45], [100, 20]],
+        "quality_factor_percent": [110, 100, 95, 80, 70],
+        "col22_factor_permille": [1000, 500, 1, 1000],
+        "level20_cap_by_ball": [0, 15, 35, 65],
+        "note": "Ball 0 (Tất Trung Cầu) always 100. Status factor needs decoded status effects; prototype uses 1.0.",
+    },
+    "wild_areas": wild_areas,
     "skills": skill_records,
     "pets": pets,
 }

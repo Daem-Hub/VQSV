@@ -8,7 +8,7 @@ let clock = 1000, cropX = null, cropY = null, drawX = null;
 const ctx = new Proxy({ drawImage: (...args) => { if (args.length === 9) { cropX = args[1]; cropY = args[2]; drawX = args[5]; } } }, { get: (t,k) => k in t ? t[k] : () => {}, set: (t,k,v) => (t[k] = v, true) });
 const els = {};
 const element = id => els[id] ||= { textContent:'', hidden:false, addEventListener() {}, getContext: () => ctx };
-const context = vm.createContext({document:{getElementById:element}, window:{addEventListener() {}}, Element:class {}, performance:{now:()=>clock}, console});
+const context = vm.createContext({document:{getElementById:element}, window:{addEventListener() {},VQSVBootstrap:require('./bootstrap_for_tests.cjs')}, Element:class {}, performance:{now:()=>clock}, console});
 vm.runInContext(code, context);
 vm.runInContext('assets.map={width:8,height:4,objects:[{solid:[[4,1]]}],entities:{player:{x:1,y:1},elder:{x:7,y:3},encounter:{x:7,y:2}}}; reset(); setMove(1,0)',context);
 clock += 110; vm.runInContext('updatePlayer(performance.now())',context);

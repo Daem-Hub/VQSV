@@ -30,6 +30,1460 @@
   },
   "column22_rule": "if exactly one side has col22 == 2, only that side's favourable multiplier applies"
  },
+ "capture": {
+  "balls": [
+   {
+    "ball_index": 0,
+    "name": "Tất Trung Cầu",
+    "description": "Bất luận là sủng vật hoang dã nào thì xác suất bắt được là 100%.",
+    "price": 2,
+    "rate_percent": 9999
+   },
+   {
+    "ball_index": 1,
+    "name": "Phong ấn cầu",
+    "description": "Cầu thông thường có được nhiều sủng vật;",
+    "price": 50,
+    "rate_percent": 100
+   },
+   {
+    "ball_index": 2,
+    "name": "Cao cấp cầu",
+    "description": "Cầu may mắn bắt được sủng vật hiếm;",
+    "price": 200,
+    "rate_percent": 140
+   },
+   {
+    "ball_index": 3,
+    "name": "Đại sư cầu",
+    "description": "Chỉ một số ít sủng vật cần phải có cầu cao cấp mới bắt được;",
+    "price": 1,
+    "rate_percent": 200
+   }
+  ],
+  "hp_band_rate": [
+   [
+    15,
+    85
+   ],
+   [
+    50,
+    45
+   ],
+   [
+    100,
+    20
+   ]
+  ],
+  "quality_factor_percent": [
+   110,
+   100,
+   95,
+   80,
+   70
+  ],
+  "col22_factor_permille": [
+   1000,
+   500,
+   1,
+   1000
+  ],
+  "level20_cap_by_ball": [
+   0,
+   15,
+   35,
+   65
+  ],
+  "note": "Ball 0 (Tất Trung Cầu) always 100. Status factor needs decoded status effects; prototype uses 1.0."
+ },
+ "wild_areas": [
+  {
+   "area": "1-1",
+   "level_range": [
+    5,
+    5
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-33",
+     "name": "Khốc Tị Mộc Linh",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      1
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-86",
+     "name": "Độc Ba Lợi",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "area": "1-2",
+   "level_range": [
+    5,
+    5
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-33",
+     "name": "Khốc Tị Mộc Linh",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-11",
+     "name": "Bom tinh nghịch",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "area": "1-3",
+   "level_range": [
+    5,
+    6
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-11",
+     "name": "Bom tinh nghịch",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-14",
+     "name": "Hỏa Diễm Hồ",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "1-4",
+   "level_range": [
+    6,
+    7
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-86",
+     "name": "Độc Ba Lợi",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-78",
+     "name": "Điện Miêu",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "1-6",
+   "level_range": [
+    7,
+    8
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-98",
+     "name": "Lắc lắc",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-86",
+     "name": "Độc Ba Lợi",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-0",
+   "level_range": [
+    8,
+    9
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-58",
+     "name": "Tuyết Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-101",
+     "name": "Hải âu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-70",
+     "name": "Tấn Cá Kiếm",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-72",
+     "name": "Độc Giác Kim Ngư",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-2",
+   "level_range": [
+    9,
+    10
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-58",
+     "name": "Tuyết Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-101",
+     "name": "Hải âu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-69",
+     "name": "Phi Thứ Hải Mã",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-67",
+     "name": "Cá Đèn Lồng",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-3",
+   "level_range": [
+    9,
+    12
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-58",
+     "name": "Tuyết Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-75",
+     "name": "Lôi Vân Miêu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-67",
+     "name": "Cá Đèn Lồng",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-70",
+     "name": "Tấn Cá Kiếm",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-4",
+   "level_range": [
+    11,
+    13
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-75",
+     "name": "Lôi Vân Miêu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-65",
+     "name": "Cá Miệng Rộng",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-69",
+     "name": "Phi Thứ Hải Mã",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-5",
+   "level_range": [
+    12,
+    14
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-75",
+     "name": "Lôi Vân Miêu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-67",
+     "name": "Cá Đèn Lồng",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-72",
+     "name": "Độc Giác Kim Ngư",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-6",
+   "level_range": [
+    13,
+    15
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-33",
+     "name": "Khốc Tị Mộc Linh",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-38",
+     "name": "Cương Tán Ma Cô",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "2-7",
+   "level_range": [
+    14,
+    16
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-92",
+     "name": "Túi quỷ",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-42",
+     "name": "Kim Chỉ Ốc",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-0",
+   "level_range": [
+    15,
+    17
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-34",
+     "name": "La Phục Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-32",
+     "name": "Khẩu Đại Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-1",
+   "level_range": [
+    15,
+    19
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-32",
+     "name": "Khẩu Đại Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-38",
+     "name": "Cương Tán Ma Cô",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-2",
+   "level_range": [
+    17,
+    19
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-38",
+     "name": "Cương Tán Ma Cô",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-32",
+     "name": "Khẩu Đại Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-34",
+     "name": "La Phục Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-4",
+   "level_range": [
+    19,
+    21
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-36",
+     "name": "Tây Quan Tiểu Hương Trư",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-34",
+     "name": "La Phục Thảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-72",
+     "name": "Độc Giác Kim Ngư",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-5",
+   "level_range": [
+    20,
+    22
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-49",
+     "name": "Bạch Châm Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-19",
+     "name": "Ly Ngưu Ngưu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "3-7",
+   "level_range": [
+    21,
+    23
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-19",
+     "name": "Ly Ngưu Ngưu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-43",
+     "name": "Mèo YeDoon",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-0",
+   "level_range": [
+    22,
+    24
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-47",
+     "name": "Nham Nham Quy",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-65",
+     "name": "Cá Miệng Rộng",
+     "terrain": 2,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-1",
+   "level_range": [
+    26,
+    29
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-29",
+     "name": "Tiên Nhân Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-47",
+     "name": "Nham Nham Quy",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-2",
+   "level_range": [
+    22,
+    25
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-42",
+     "name": "Kim Chỉ Ốc",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-45",
+     "name": "Toản Địa Khâu Dẫn",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-3",
+   "level_range": [
+    24,
+    27
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-43",
+     "name": "Mèo YeDoon",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-45",
+     "name": "Toản Địa Khâu Dẫn",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-4",
+   "level_range": [
+    25,
+    28
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-89",
+     "name": "Đan nhãn thú",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-53",
+     "name": "Thổ Lang Chu Chu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-6",
+   "level_range": [
+    27,
+    30
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-29",
+     "name": "Tiên Nhân Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-53",
+     "name": "Thổ Lang Chu Chu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-7",
+   "level_range": [
+    28,
+    31
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-29",
+     "name": "Tiên Nhân Cầu Bảo Bảo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-53",
+     "name": "Thổ Lang Chu Chu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-9",
+   "level_range": [
+    29,
+    32
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-47",
+     "name": "Nham Nham Quy",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-48",
+     "name": "Kiếm Giáp Hạn Quy",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-10",
+   "level_range": [
+    31,
+    34
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-30",
+     "name": "Tiên Nhân Chưởng Thú",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-54",
+     "name": "Độc Lang Chu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-51",
+     "name": "Nham Sơn Long",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-55",
+     "name": "Sừng tê giác bạo long",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-11",
+   "level_range": [
+    32,
+    35
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-54",
+     "name": "Độc Lang Chu",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-48",
+     "name": "Kiếm Giáp Hạn Quy",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "4-12",
+   "level_range": [
+    31,
+    34
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-45",
+     "name": "Toản Địa Khâu Dẫn",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-46",
+     "name": "Toái nham Khâu Dẫn",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "area": "5-0",
+   "level_range": [
+    31,
+    34
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-14",
+     "name": "Hỏa Diễm Hồ",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-24",
+     "name": "Tà Vân Khuyển Thần",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "5-4",
+   "level_range": [
+    32,
+    35
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-14",
+     "name": "Hỏa Diễm Hồ",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-24",
+     "name": "Tà Vân Khuyển Thần",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "5-6",
+   "level_range": [
+    32,
+    36
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-21",
+     "name": "Nhiệt Bạo Phong Tốc Khuyển",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-13",
+     "name": "Hắc Thán Báo",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-88",
+     "name": "Kịch Độc Khủng Thú",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-92",
+     "name": "Túi quỷ",
+     "terrain": 0,
+     "quality_range": [
+      1,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-1",
+   "level_range": [
+    43,
+    46
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-23",
+     "name": "Hỏa Diễm Tường Vân Khuyển",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-35",
+     "name": "La phục Oa Oa",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-99",
+     "name": "Chim xanh",
+     "terrain": 1,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-3",
+   "level_range": [
+    37,
+    40
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-77",
+     "name": "Thân Sĩ Miêu",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-80",
+     "name": "Phù Du Điện Long",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-4",
+   "level_range": [
+    38,
+    41
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-74",
+     "name": "Lôi Quang Hầu",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-80",
+     "name": "Phù Du Điện Long",
+     "terrain": 1,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-5",
+   "level_range": [
+    36,
+    39
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-26",
+     "name": "Diệp Tán Oa",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-79",
+     "name": "Thiểm Điện Miêu",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-101",
+     "name": "Hải âu",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-6",
+   "level_range": [
+    35,
+    38
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-79",
+     "name": "Thiểm Điện Miêu",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-101",
+     "name": "Hải âu",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-61",
+     "name": "Thủy thủ chim cánh cụt",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-7",
+   "level_range": [
+    39,
+    42
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-23",
+     "name": "Hỏa Diễm Tường Vân Khuyển",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-11",
+     "name": "Bom tinh nghịch",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-99",
+     "name": "Chim xanh",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-103",
+     "name": "Hồng nhạn",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-8",
+   "level_range": [
+    41,
+    44
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-98",
+     "name": "Lắc lắc",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-101",
+     "name": "Hải âu",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-103",
+     "name": "Hồng nhạn",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-9",
+   "level_range": [
+    42,
+    45
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-102",
+     "name": "Dực thần",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-103",
+     "name": "Hồng nhạn",
+     "terrain": 1,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-107",
+     "name": "Quáng thạch dực long",
+     "terrain": 1,
+     "quality_range": [
+      3,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-10",
+   "level_range": [
+    40,
+    43
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-44",
+     "name": "Thỏ Di Lặc Bunny",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-36",
+     "name": "Tây Quan Tiểu Hương Trư",
+     "terrain": 0,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-99",
+     "name": "Chim xanh",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-16",
+     "name": "Long bảo bối",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-11",
+   "level_range": [
+    40,
+    43
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-93",
+     "name": "Thi Đại Quỷ",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-94",
+     "name": "Kính ma",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-107",
+     "name": "Quáng thạch dực long",
+     "terrain": 1,
+     "quality_range": [
+      3,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "area": "7-12",
+   "level_range": [
+    41,
+    44
+   ],
+   "pets": [
+    {
+     "pet_id": "vqsv6-db-90",
+     "name": "Độc nhãn quái",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      4
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-94",
+     "name": "Kính ma",
+     "terrain": 0,
+     "quality_range": [
+      3,
+      5
+     ]
+    },
+    {
+     "pet_id": "vqsv6-db-103",
+     "name": "Hồng nhạn",
+     "terrain": 1,
+     "quality_range": [
+      2,
+      4
+     ]
+    }
+   ]
+  }
+ ],
  "skills": [
   {
    "skill_id": "vqsv6-skill-0",

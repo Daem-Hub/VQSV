@@ -13,9 +13,8 @@ function element(id) { return elements[id] ||= { textContent: '', hidden: false,
 const listeners = {};
 let petBookOpened = 0;
 let clock = 1000;
-const context = vm.createContext({ document: { getElementById: element }, window: { addEventListener: (event, fn) => { listeners[event] = fn; }, openPetBook: () => { petBookOpened++; } }, Element: class {}, performance: { now: () => clock }, console });
+const context = vm.createContext({ document: { getElementById: element }, window: { VQSVBootstrap: require('./bootstrap_for_tests.cjs'), addEventListener: (event, fn) => { listeners[event] = fn; }, openPetBook: () => { petBookOpened++; } }, Element: class {}, performance: { now: () => clock }, console });
 vm.runInContext(code, context);
-const finishAction = () => { clock += 651; vm.runInContext('updateBattle(performance.now())', context); };
 vm.runInContext('assets.map = {entities:{player:{x:1,y:1},elder:{x:1,y:2},encounter:{x:3,y:3}}}; state.mode="explore"; reset()', context);
 assert.match(element('objective').textContent, /người gác làng/);
 vm.runInContext('interact(); interact(); interact(); interact(); interact()', context);
@@ -27,26 +26,38 @@ assert.equal(element('battleControls').hidden, false);
 assert.equal(element('fightMenu').hidden, true);
 element('fightButton').listeners.click();
 assert.equal(element('fightMenu').hidden, false);
+// Fix randomness: 0.99 means no crit and a -1 jitter, so every hit below is deterministic.
+vm.runInContext('Math.random = () => 0.99', context);
+const finishAction = () => { clock += 1100; vm.runInContext('updateBattle(performance.now())', context); };
 vm.runInContext('assets.pets={hero:{},enemy:{}}; drawBattle()', context);
 assert(drawnText.includes('LƯỢT 1'));
-assert(drawnText.includes('48 / 48'));
-assert(drawnText.includes('60 / 60'));
+// Decoded VQSV6 stats: Tà Vân Khuyển Thần L3 (HP 62, atk 31, def 6, spd 8) vs Điện Miêu L5 (HP 115, atk 26, def 15, spd 5).
+assert(drawnText.includes('62 / 62'));
+assert(drawnText.includes('115 / 115'));
 const key = (key, repeat) => listeners.keydown({ key, repeat, target: {}, preventDefault() {} });
+const enemyHp = () => vm.runInContext('state.battle.enemy.hp', context);
+const leadHp = () => vm.runInContext('state.battle.team[0].hp', context);
+const sparkUses = () => vm.runInContext('state.battle.team[0].skill.uses', context);
 key('1', true);
-assert.equal(vm.runInContext('state.battle.enemyHp', context), 48);
+assert.equal(enemyHp(), 62);
 element('attackButton').listeners.click();
 assert.equal(element('fightMenu').hidden, true);
-assert.equal(vm.runInContext('state.battle.sparkUses', context), 44);
+assert.equal(sparkUses(), 44);
+// The faster enemy strikes first: Hỏa trảo (31 - 15) - 1 = 15; then Điện giật (26 - 6) - 1 = 19.
+assert.equal(leadHp(), 100);
+assert.equal(enemyHp(), 43);
+assert.match(vm.runInContext('state.battle.message', context), /^Sinh vật dùng Hỏa trảo, 15 sát thương\. Lôi Miêu dùng Điện giật, 19 sát thương!$/);
 element('attackButton').listeners.click();
-assert.equal(vm.runInContext('state.battle.sparkUses', context), 44);
+assert.equal(sparkUses(), 44);
 vm.runInContext('assets.skillEffects = [{image:{width:20,height:20,marker:"source-vfx"}, duration_ticks:2}]', context);
-clock += 100; vm.runInContext('drawBattle()', context);
+clock += 500; vm.runInContext('drawBattle()', context);
 assert(drawnImages.some(image => image.marker === 'source-vfx'));
 finishAction();
-element('attackButton').listeners.click();
-finishAction();
-element('attackButton').listeners.click();
+assert.equal(vm.runInContext('state.battle.turn', context), 1);
+for (let i = 0; i < 2; i++) { element('attackButton').listeners.click(); finishAction(); }
 assert.equal(vm.runInContext('state.mode', context), 'battle');
+assert.equal(enemyHp(), 5);
+element('attackButton').listeners.click();
 finishAction();
 assert.equal(vm.runInContext('state.mode', context), 'ending');
 assert.equal(element('battleControls').hidden, true);
@@ -56,33 +67,39 @@ assert.equal(vm.runInContext('state.player.x', context), 1);
 assert.match(element('objective').textContent, /người gác làng/);
 vm.runInContext('state.spokeToElder=true; state.player.x=3; state.player.y=3; interact()', context);
 element('captureButton').listeners.click();
-assert.match(vm.runInContext('state.battle.message', context), /Chưa thể bắt/);
+assert.match(vm.runInContext('state.battle.message', context), /không cho bắt sủng vật/);
 assert.equal(vm.runInContext('state.battle.turn', context), 0);
-element('teamButton').listeners.click();
+element('teamBookButton').listeners.click();
 assert.equal(petBookOpened, 1);
 element('itemButton').listeners.click();
 assert.equal(vm.runInContext('state.battle.potions', context), 2);
+assert.match(vm.runInContext('state.battle.message', context), /đầy máu/);
 element('attackButton').listeners.click();
 finishAction();
-assert.equal(vm.runInContext('state.battle.heroHp', context), 48);
+assert.equal(leadHp(), 100);
 element('itemButton').listeners.click();
 assert.equal(vm.runInContext('state.battle.potions', context), 1);
-assert.equal(vm.runInContext('state.battle.heroHp', context), 48);
+// Potion restores 30% of 115 (capped at max), then the enemy counters for 15.
+assert.equal(leadHp(), 100);
 assert.equal(vm.runInContext('state.battle.turn', context), 2);
 element('fleeButton').listeners.click();
 assert.equal(vm.runInContext('state.mode', context), 'explore');
 assert.equal(vm.runInContext('state.battle.potions', context), 2);
 vm.runInContext('interact()', context);
 element('basicButton').listeners.click();
-assert.equal(vm.runInContext('state.battle.enemyHp', context), 38);
+// Vồ nhanh is a 70% trial move: (20 * 70 / 100) - 1 = 13.
+assert.equal(enemyHp(), 49);
 assert.equal(vm.runInContext('state.battle.skill', context), 'basic');
-clock += 100; vm.runInContext('drawBattle()', context);
+clock += 500; vm.runInContext('drawBattle()', context);
 finishAction();
 element('fleeButton').listeners.click();
 vm.runInContext('interact()', context);
-for (let i = 0; i < 5; i++) { element('guardButton').listeners.click(); finishAction(); }
+// Guarding takes 40% of 15 = 6 per round; 115 HP lasts 19 guarded rounds.
+for (let i = 0; i < 18; i++) { element('guardButton').listeners.click(); finishAction(); }
 assert.equal(vm.runInContext('state.mode', context), 'battle');
-for (let i = 0; i < 7; i++) { element('guardButton').listeners.click(); finishAction(); }
+assert.equal(leadHp(), 7);
+element('guardButton').listeners.click(); finishAction();
+element('guardButton').listeners.click(); finishAction();
 assert.equal(vm.runInContext('state.mode', context), 'defeat');
 assert.equal(element('battleControls').hidden, true);
-console.log('Opening flow: dialogue, replay, objective, battle buttons and held-key handling passed.');
+console.log('Opening flow: dialogue, replay, objective, decoded-stat battle, buttons and held-key handling passed.');

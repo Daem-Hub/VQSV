@@ -6,7 +6,7 @@ class El { constructor(){this.textContent='';this.hidden=false;this.open=false;t
 const els={};const el=id=>els[id]||=new El();
 const storage=new Map(); const localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
 const map=JSON.parse(fs.readFileSync(path.join(root,'data/opening_map.json'),'utf8'));
-const ctx=vm.createContext({document:{getElementById:el,createElement:()=>new El()},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,localStorage,map});
+const ctx=vm.createContext({document:{getElementById:el,createElement:()=>new El()},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,map});
 vm.runInContext(code,ctx);vm.runInContext('assets.map=map; reset(); openQuestJournal()',ctx);
 assert.equal(el('questJournal').open,true);assert.deepEqual(el('questSteps').children.map(x=>x.className),['current','pending','pending']);
 el('questJournal').close();vm.runInContext('state.spokeToElder=true; saveGame(); reset(); loadGame(); openQuestJournal()',ctx);

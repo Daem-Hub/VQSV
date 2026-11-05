@@ -5,7 +5,7 @@ class El {constructor(){this.hidden=false;this.open=false;this.children=[];this.
 const els={}; const el=id=>els[id]||=new El(), storage=new Map();
 const localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
 const map=JSON.parse(fs.readFileSync(path.join(root,'data/opening_map.json'),'utf8'));
-const ctx=vm.createContext({document:{getElementById:el,createElement:()=>new El()},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,localStorage,map});
+const ctx=vm.createContext({document:{getElementById:el,createElement:()=>new El()},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,map});
 vm.runInContext(code,ctx);vm.runInContext('assets.map=map; reset()',ctx);
 const blocked=new Set(map.objects.flatMap(o=>o.solid||[]).map(([x,y])=>`${x},${y}`));
 for(const npc of [map.entities.elder,...map.entities.villagers]) blocked.add(`${npc.x},${npc.y}`);

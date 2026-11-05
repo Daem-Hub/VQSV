@@ -143,6 +143,8 @@ Nguồn: mã dịch ngược VQSV_FIX_2.7 (`db.mid` giống từng byte bản VQ
 - Vòng khắc hệ: Hỏa → Mộc → Thổ → Thủy → Hỏa; Quỷ → Phong → Điện → Quỷ.
 - Kỹ năng: bảng 1 có 70 dòng, mỗi hệ 10 dòng (`hệ × 10 … hệ × 10 + 9`). Cột 3 sức mạnh %, cột 4 bậc mở khóa, cột 5 số lần dùng. Tới cấp 5 pet chỉ biết dòng đầu của hệ; từ cấp 5 trở đi mở thêm khi cột 4 ≤ `bảng8[cột 18][bậc cấp]`, bậc cấp theo ngưỡng `[5, 10, 20, 30, 40]`.
 - Kiểm chứng chéo: Điện Miêu (hệ Điện) ở cấp 5 chỉ biết **Điện giật**, sức mạnh 100%, 45 lần, trùng với kỹ năng prototype đã lấy từ bản FIX 2.7.
+- **Gặp pet hoang dã** (`game/l.java`): mỗi dòng `petArea.mid` là `[map, khu, số cụm (−1 = không có), cấp tối thiểu, cấp tối đa]` rồi các cụm `[dòng pet, địa hình (0 cạn, 2 nước), hạng tối thiểu, hạng tối đa]`; cấp và hạng bốc ngẫu nhiên đều trong dải. Như vậy cách nối cột đầu cụm với **chỉ số dòng** bảng pet (ghi ở mục petArea phía trên) đã được xác nhận bằng code.
+- **Bắt pet** (`game/a.java` hàm `m(cầu)`): Tất Trung Cầu luôn 100%; còn lại HP ≤ 15% → 85, ≤ 50% → 45, còn lại → 20; × cột 6 bảng 4 của cầu (Phong ấn 100, Cao cấp 140, Đại sư 200) / 100; × `[110, 100, 95, 80, 70][hạng − 1]` / 100; × hệ số trạng thái `[10, 11, 12, 12, 12]` / 10; × `[1000, 500, 1, 1000][cột 22]` / 1000; pet cấp ≥ 20 bị chặn ở `[0, 15, 35, 65][cầu]`; kẹp 1–100; thành công khi `random(100) < tỉ lệ`. Prototype dùng hệ số trạng thái 1 vì hiệu ứng trạng thái chưa giải.
 - Chưa giải: hiệu ứng trạng thái của kỹ năng (bảng 1 cột 6–9), buff ở bảng 2–7, ý nghĩa đầy đủ của cột 22 ngoài phép khắc hệ. Chỉ số VQSV5 vẫn chưa giải (không có mã dịch ngược VQSV5).
 
 ## Đối chiếu mẫu VQSV_FIX_2.7

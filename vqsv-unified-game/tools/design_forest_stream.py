@@ -10,7 +10,8 @@ m={'id':'ryan-forest-stream','title':'Suối Sấm Phong Lôi','width':24,'heigh
    'bridge':{'x':9,'y':9,'width':5,'height':3},
    'paths':[{'x':0,'y':9,'width':24,'height':3},{'x':4,'y':7,'width':3,'height':3}, {'x':17,'y':11,'width':3,'height':4}],
    'objects':[],'entities':{'player':{'x':1,'y':10},'villagers':[]},
-   'links':[{'x':0,'y':10,'target':'ryan-phong-loi-forest','spawnX':22,'spawnY':10,'label':'Rừng Rậm Phong Lôi'}]}
+   'links':[{'x':0,'y':10,'target':'ryan-phong-loi-forest','spawnX':22,'spawnY':10,'label':'Rừng Rậm Phong Lôi'},
+            {'x':23,'y':10,'target':'ryan-lakeside','spawnX':1,'spawnY':10,'label':'Hồ Sương Mù'}]}
 for x,y in [(0,3),(3,2),(6,3),(15,2),(18,3),(21,2),(0,7),(6,7),(16,7),(21,7),
             (0,14),(3,16),(6,14),(15,16),(19,15),(22,16)]:
     cells=[[xx,yy] for yy in (y-1,y) for xx in (x,x+1) if 0<=xx<24 and 0<=yy<18]
@@ -27,6 +28,6 @@ while queue:
     x,y=queue.popleft()
     for p in ((x+1,y),(x-1,y),(x,y+1),(x,y-1)):
         if 0<=p[0]<24 and 0<=p[1]<18 and p not in blocked and p not in seen: seen.add(p); queue.append(p)
-assert (0,10) in seen and (22,10) in seen and (18,14) in seen
+assert (0,10) in seen and (22,10) in seen and (23,10) in seen and (18,14) in seen
 (root/'prototype/data/forest_stream_map.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'Forest stream created: {len(seen)} reachable cells')

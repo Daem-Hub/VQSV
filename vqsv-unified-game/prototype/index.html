@@ -281,6 +281,18 @@
     const VQSV5_TRIAL_STATS = { hp: 90, attack: 22, defense: 10, speed: 5 }; // TRIAL: VQSV5 stats undecoded
     // Wild encounters use petArea.mid rows; which source area feeds which prototype map is a TRIAL choice.
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
+    // Newer regions carry their own `wildAreas` in the map data (see tools/design_wild_maps.py).
+    const areaKeys = mapId => assets.maps?.[mapId]?.wildAreas || WILD_MAP_AREAS[mapId] || [];
+    function wildAreasOf(mapId) { const keys = areaKeys(mapId); return (STATS?.wild_areas || []).filter(area => keys.includes(area.area)); }
+    function wildLevelRange(mapId) {
+      const areas = wildAreasOf(mapId);
+      return areas.length ? [Math.min(...areas.map(area => area.level_range[0])), Math.max(...areas.map(area => area.level_range[1]))] : null;
+    }
+    // Water pets (terrain 2 in petArea.mid) appear while crossing a map's bridge; everything else is land.
+    function terrainAt(x, y) {
+      const bridge = assets.map?.bridge;
+      return bridge && x >= bridge.x && x < bridge.x + bridge.width && y >= bridge.y && y < bridge.y + bridge.height ? 2 : 0;
+    }
     const ENCOUNTER_CHANCE = 1 / 14;        // TRIAL: per completed step on a wild map
     const ENCOUNTER_GRACE_STEPS = 6;        // TRIAL: safe steps after any battle
     const CAPTURE = STATS?.capture;
@@ -696,12 +708,14 @@
       return { ...enemy, image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
     }
     function randInt(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
-    function rollWild(mapId) {
-      const keys = WILD_MAP_AREAS[mapId] || [];
-      const areas = (STATS?.wild_areas || []).filter(area => keys.includes(area.area));
-      if (!areas.length) return null;
-      const area = areas[randInt(0, areas.length - 1)];
-      const land = area.pets.filter(pet => pet.terrain === 0 && STAT_BY_ID.has(pet.pet_id));
+    function rollWild(mapId, terrain = 0) {
+      const areas = wildAreasOf(mapId);
+      const usable = (area, wanted) => area.pets.filter(pet => pet.terrain === wanted && STAT_BY_ID.has(pet.pet_id));
+      let candidates = terrain === 2 ? areas.filter(area => usable(area, 2).length) : [];
+      if (!candidates.length) { terrain = 0; candidates = areas; }
+      if (!candidates.length) return null;
+      const area = candidates[randInt(0, candidates.length - 1)];
+      const land = usable(area, terrain);
       if (!land.length) return null;
       const pick = land[randInt(0, land.length - 1)];
       return { petId: pick.pet_id, area: area.area, level: randInt(...area.level_range), quality: randInt(...pick.quality_range) };
@@ -950,7 +964,10 @@
       if (state.mode === "battle") battleHint.textContent = `Kim tiền ${wallet.gold} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0} · Đạo cụ hồi phục: ${battleItems().reduce((sum, entry) => sum + bag[entry.row], 0)}`;
       updateWallet();
       if (state.mode === "battle") objectiveEl.textContent = state.battle.mustSwitch ? `${pet.name} kiệt sức. Chọn pet khác trong Sủng vật.` : state.battle.wild ? "Đánh yếu pet hoang dã rồi chọn Bắt pet: HP càng thấp càng dễ bắt." : "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
-      else if (WILD_MAP_AREAS[assets.map.id] && state.mode === "explore") objectiveEl.textContent = "Đi trong rừng để gặp pet hoang dã và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.";
+      else if (areaKeys(assets.map.id).length && state.mode === "explore") {
+        const range = wildLevelRange(assets.map.id);
+        objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.`;
+      }
       else if (state.mode === "ending") objectiveEl.textContent = "La bàn đã thức tỉnh. Anh có thể chơi lại từ đầu.";
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
       else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
@@ -1025,6 +1042,8 @@
       mist.addColorStop(1, "#cfe7f21c");
       ctx.fillStyle = mist;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Regions beyond the forest carry a colour tint so they read as different places with the shared tiles.
+      if (m.tint) { ctx.fillStyle = m.tint; ctx.fillRect(0, 0, canvas.width, canvas.height); }
     }
     function drawForeground(depthY) {
       for (const obj of [...assets.map.objects].sort((a, b) => a.y - b.y || a.x - b.x)) {
@@ -1449,10 +1468,10 @@
       updateGuidance();
     }
     function maybeEncounter() {
-      if (state.mode !== "explore" || !state.spokeToElder || !WILD_MAP_AREAS[assets.map.id]) return;
+      if (state.mode !== "explore" || !state.spokeToElder || !areaKeys(assets.map.id).length) return;
       if (repelSteps > 0) { if (--repelSteps === 0) { statusEl.textContent = "Tị quái hàn đã hết tác dụng"; } updateWallet(); return; }
       if (++wildSteps <= ENCOUNTER_GRACE_STEPS || Math.random() >= ENCOUNTER_CHANCE) return;
-      startWildBattle();
+      startWildBattle(rollWild(assets.map.id, terrainAt(state.player.x, state.player.y)));
     }
     function startWildBattle(wild = rollWild(assets.map.id)) {
       if (!wild) return;
@@ -1636,7 +1655,8 @@
         assets.map = assets.maps[link.target];
         wildSteps = 0;
         state.player = {x:link.spawnX,y:link.spawnY,visualX:link.spawnX,visualY:link.spawnY,faceX:1,faceY:0,step:null,inputDir:null};
-        statusEl.textContent = `Đang khám phá · ${assets.map.title}`; updateGuidance(); return;
+        const range = wildLevelRange(assets.map.id);
+        statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`; updateGuidance(); return;
       }
       if (point && state.spokeToElder && near(state.player, point)) {
         state.battle = newBattle();

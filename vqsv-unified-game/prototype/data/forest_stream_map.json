@@ -657,6 +657,14 @@
       "spawnX": 22,
       "spawnY": 10,
       "label": "Rừng Rậm Phong Lôi"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "target": "ryan-lakeside",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Hồ Sương Mù"
     }
   ]
 }

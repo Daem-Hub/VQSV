@@ -160,6 +160,209 @@
    3
   ]
  ],
+ "status_effects": {
+  "source": "skill col6 = 1 -> self buff row col7 of table 6; col6 = 2 -> debuff row col7 of table 7 on the target; col8 = parameter; col9 = 1 -> no damage (game/i.java a(byte,int,int), b(i), q(int), c()/d())",
+  "chance_skill_rows": [
+   2,
+   8,
+   22,
+   28,
+   41,
+   47
+  ],
+  "chance_note": "Only these skills roll col8 as the percent chance to apply their debuff (game/i.java b(i) switch); others always apply.",
+  "max_per_side": 3,
+  "buffs": [
+   {
+    "id": 0,
+    "name": "Súc Lực",
+    "description": "Sự chuyển hướng không công kích, nhưng cải thiện khả năng phòng ngự, những đợt công kích tiếp theo sẽ làm gia tăng thương tổn.",
+    "duration": 2,
+    "param_a": 30,
+    "param_b": 190
+   },
+   {
+    "id": 1,
+    "name": "Phá Phủ",
+    "description": "Gia tăng thương tổn, khả năng phòng ngự giảm, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 50,
+    "param_b": 50
+   },
+   {
+    "id": 2,
+    "name": "Kinh Cức",
+    "description": "Khả năng phòng ngự tự gia tăng, công kích ngược lại đối thủ tạo thành thương tổn, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 30,
+    "param_b": 10
+   },
+   {
+    "id": 3,
+    "name": "Khôi phục",
+    "description": "Mỗi hiệp khôi phục trị số sinh mạng nhất định, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 5,
+    "param_b": -1
+   },
+   {
+    "id": 4,
+    "name": "Phòng ngự",
+    "description": "Gia tăng giá trị phòng ngự, duy trì liên tục Y hiệp.",
+    "duration": 2,
+    "param_a": -1,
+    "param_b": -1
+   },
+   {
+    "id": 5,
+    "name": "Vô hình",
+    "description": "Công kích của đối thủ sẽ có một phần tỷ lệ dội ngược lại chính mình, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 30,
+    "param_b": -1
+   },
+   {
+    "id": 6,
+    "name": "Kiên nhẫn",
+    "description": "Cơ hội tiếp xúc để công kích kẻ thù tỷ lệ chỉ là một nửa, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 50,
+    "param_b": -1
+   },
+   {
+    "id": 7,
+    "name": "Linh Xảo",
+    "description": "Gia tăng giá trị Linh Xảo, duy trì liên tục Y hiệp.",
+    "duration": 2,
+    "param_a": -1,
+    "param_b": -1
+   },
+   {
+    "id": 8,
+    "name": "Điện áp",
+    "description": "Gia tăng tiêu hao giá trị kỹ năng, làm gia tăng thương tổn, duy trì liên tục Y hiệp.",
+    "duration": 4,
+    "param_a": 30,
+    "param_b": -1
+   },
+   {
+    "id": 9,
+    "name": "Hỏa Thạch",
+    "description": "Gia tăng giá trị Linh Xảo, phòng ngự giá trị giảm xuống, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": 50,
+    "param_b": 50
+   },
+   {
+    "id": 10,
+    "name": "Man Lực",
+    "description": "Lực lượng giá trị Gia tăng, duy trì liên tục Y hiệp.",
+    "duration": 2,
+    "param_a": -1,
+    "param_b": -1
+   },
+   {
+    "id": 11,
+    "name": "Thâu Thủ",
+    "description": "Trạng thái thuận lợi của đối thủ sẽ được chuyển qua cho bạn, duy trì liên tục Y hiệp.",
+    "duration": 3,
+    "param_a": -1,
+    "param_b": -1
+   },
+   {
+    "id": 12,
+    "name": "Gia Tốc",
+    "description": "Mỗi hiệp công kích 2 lần, duy trì liên tục Y hiệp, lần thứ hai không cần lựa chọn kỹ năng, lặp lại kỹ năng lần trước đó, hơn nữa không cần thiết hao tổn kỹ năng.",
+    "duration": 2,
+    "param_a": -1,
+    "param_b": -1
+   },
+   {
+    "id": 13,
+    "name": "Thạch Hóa",
+    "description": "Giải phóng các trạng thái dị thường, mỗi hiệp khôi phục 20% hạn mức cao nhất của trị số sinh mạng, duy trì liên tục 3 hiệp.",
+    "duration": 3,
+    "param_a": 20,
+    "param_b": -1
+   },
+   {
+    "id": 14,
+    "name": "Thạch Phu",
+    "description": "Giải phóng các trạng thái dị thường, sẽ có 3 hiệp miễn dịch ở những nơi có trạng thái dị thường.",
+    "duration": 3,
+    "param_a": -1,
+    "param_b": -1
+   }
+  ],
+  "debuffs": [
+   {
+    "id": 0,
+    "name": "Gieo Hạt",
+    "description": "Mỗi hiệp giảm bớt X điểm trị số sinh mạng, duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 1,
+    "name": "Mê Muội",
+    "description": "Gia tăng tốc độ công kích đối thủ có thể sử dụng đạo cụ, duy trì liên tục Y hiệp.",
+    "duration": 2
+   },
+   {
+    "id": 2,
+    "name": "Quấn Quanh",
+    "description": "Gia tăng tốc độ, sủng vật không thể thay thế, bạn cũng không thể trốn chạy, không thể sử dụng đạo cụ, ...duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 3,
+    "name": "Thực Loại",
+    "description": "Sau Y hiệp đã bị X đả thương, nếu tử vong thì hiệu quả Thực Loại biến mất.",
+    "duration": 3
+   },
+   {
+    "id": 4,
+    "name": "Mục",
+    "description": "Hiệu quả giảm chỉ duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 5,
+    "name": "Chậm Chạp",
+    "description": "Giá trị tạm thời giảm xuống, duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 6,
+    "name": "Nhụt Chí",
+    "description": "Tỉ suất thương tổn giảm xuống, duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 7,
+    "name": "Phòng Ngự",
+    "description": "Giá trị phòng ngự giảm xuống, duy trì liên tục Y hiệp.",
+    "duration": 3
+   },
+   {
+    "id": 8,
+    "name": "Quỷ Mị",
+    "description": "Lợi dụng sự công kích của đối thủ mới có thể chính mình công kích được đối phương.",
+    "duration": 4
+   },
+   {
+    "id": 9,
+    "name": "Hỗn Loạn",
+    "description": "Không thể thay đổi sủng vật của mình, duy trì liên tục Y hiệp.",
+    "duration": 1
+   },
+   {
+    "id": 10,
+    "name": "Tê Liệt",
+    "description": "Mỗi lần hành động lại mất không ít thời gian chờ đợi.",
+    "duration": 4
+   }
+  ]
+ },
  "wild_areas": [
   {
    "area": "1-1",

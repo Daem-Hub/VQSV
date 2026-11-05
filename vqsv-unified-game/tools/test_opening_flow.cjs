@@ -46,7 +46,7 @@ assert.equal(sparkUses(), 44);
 // The faster enemy strikes first: Hỏa trảo (31 - 15) - 1 = 15; then Điện giật (26 - 6) - 1 = 19.
 assert.equal(leadHp(), 100);
 assert.equal(enemyHp(), 43);
-assert.match(vm.runInContext('state.battle.message', context), /^Sinh vật dùng Hỏa trảo, 15 sát thương\. Lôi Miêu dùng Điện giật, 19 sát thương!$/);
+assert.match(vm.runInContext('state.battle.message', context), /^Sinh vật dùng Hỏa trảo, 15 sát thương! Lôi Miêu dùng Điện giật, 19 sát thương!$/);
 element('attackButton').listeners.click();
 assert.equal(sparkUses(), 44);
 vm.runInContext('assets.skillEffects = [{image:{width:20,height:20,marker:"source-vfx"}, duration_ticks:2}]', context);

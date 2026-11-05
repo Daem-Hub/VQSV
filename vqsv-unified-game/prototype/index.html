@@ -290,7 +290,10 @@
     }
     function sourceSkill(row) {
       const skill = STATS.skills[row];
-      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses, description: skill.description };
+      const f = skill.raw_fields;
+      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses, description: skill.description,
+        effect: f[6] === 1 ? { kind: "buff", id: f[7], param: f[8] } : f[6] === 2 ? { kind: "debuff", id: f[7], param: f[8] } : null,
+        noDamage: f[9] === 1 || skill.power_percent === 0 };
     }
     // Skill learning (game/i.java G()/H()/X(), game/k.java aq()).
     function skillSlots(level) { return Math.min(5, Math.floor(level / 10) + 1); }
@@ -321,7 +324,7 @@
       const stats = statsAt(record, level, quality);
       const skills = validSkillRows(record, skillRows).map(sourceSkill);
       return { stats, level, elementId: record.element_id, element: record.element, col22: record.advantage_flag_col22,
-        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name };
+        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name, buffs: {}, debuffs: {} };
     }
     function buildTeam() {
       // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
@@ -335,7 +338,7 @@
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
         const own = info.kind === "vqsv6" ? progressOf(info.id, best ? best.level : BATTLE_LEVEL) : null;
         const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills), progressKey: info.id, exp: own.exp }
-          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, skills: [], hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
+          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, skills: [], buffs: {}, debuffs: {}, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
@@ -370,6 +373,8 @@
       let rate = enemy.hp <= enemy.max * 15 / 100 ? 85 : enemy.hp <= enemy.max * 50 / 100 ? 45 : 20;
       rate = Math.trunc(rate * ball.rate_percent / 100);
       rate = Math.trunc(rate * CAPTURE.quality_factor_percent[enemy.quality - 1] / 100);
+      const statusIndex = enemy.buffs?.[10] ? 3 : enemy.buffs?.[2] ? 2 : enemy.buffs?.[1] ? 1 : 0;
+      rate = Math.trunc(rate * [10, 11, 12, 12, 12][statusIndex] / 10);
       rate = Math.trunc(rate * CAPTURE.col22_factor_permille[enemy.col22] / 1000);
       if (enemy.level >= 20 && rate >= CAPTURE.level20_cap_by_ball[ballIndex]) rate = CAPTURE.level20_cap_by_ball[ballIndex];
       return Math.max(1, Math.min(100, rate));
@@ -387,16 +392,143 @@
       if (allowDown && BEATS[defender.elementId] === attacker.elementId) return -1;
       return 0;
     }
+    // ---- Status effects (tables 6/7 of db.mid; game/i.java a(byte,int,int), b(i), q(int)). ----
+    const EFFECTS = STATS?.status_effects;
+    const BUFF = id => EFFECTS.buffs[id];
+    const DEBUFF = id => EFFECTS.debuffs[id];
+    const pct = (value, percent) => Math.trunc(value * percent / 100);
+    // Stats after buffs/debuffs; the source keeps base stats in d[] and adjusted ones in e[].
+    function effStats(c) {
+      const s = c.stats, b = c.buffs || {}, d = c.debuffs || {};
+      let attack = s.attack, defense = s.defense, speed = s.speed;
+      if (b[10]) attack += pct(s.attack, b[10].value);
+      if (b[0]) defense += pct(s.defense, BUFF(0).param_a);
+      if (b[1]) defense -= pct(s.defense, BUFF(1).param_a);
+      if (b[2]) defense += pct(s.defense, BUFF(2).param_a);
+      if (b[4]) defense += pct(s.defense, b[4].value);
+      if (b[7]) speed += pct(s.speed, b[7].value);
+      if (b[9]) { speed += pct(s.speed, BUFF(9).param_a); defense -= pct(s.defense, BUFF(9).param_b); }
+      if (d[5]) speed -= pct(s.speed, d[5].value);
+      if (d[7]) defense -= pct(s.defense, d[7].value);
+      return { attack, defense: Math.max(0, defense), speed: Math.max(0, speed) };
+    }
+    function statusCount(map) { return Object.keys(map).length; }
+    function applyBuff(c, id, param) {
+      if (!c.buffs[id] && statusCount(c.buffs) >= EFFECTS.max_per_side) return "";
+      const entry = { turns: BUFF(id).duration, value: param > 0 ? param : BUFF(id).param_a };
+      if (id === 0) entry.bonus = true; // Súc Lực: next damaging hit adds param_b% of the base damage
+      if (id === 11) { // Thâu Thủ: take every buff the opponent has
+        const foe = c === state.battle.enemy ? activePet() : state.battle.enemy;
+        for (const [key, value] of Object.entries(foe.buffs)) if (statusCount(c.buffs) < EFFECTS.max_per_side || c.buffs[key]) c.buffs[key] = value;
+        foe.buffs = {};
+        return ` ${c.name} cướp trạng thái có lợi của đối thủ!`;
+      }
+      if (id === 13 || id === 14) c.debuffs = {};
+      if (id === 13) { const heal = pct(c.max, BUFF(13).param_a); c.hp = Math.min(c.max, c.hp + heal); }
+      c.buffs[id] = entry;
+      return ` ${c.name} được ${BUFF(id).name}.`;
+    }
+    function applyDebuff(target, id, param, baseDamage, skillRow) {
+      if (target.hp <= 0 || target.buffs?.[14]) return "";
+      if (!target.debuffs[id] && statusCount(target.debuffs) >= EFFECTS.max_per_side) return "";
+      const entry = { turns: DEBUFF(id).duration, skillRow, param };
+      if (id === 0 || id === 3) entry.value = baseDamage;
+      else entry.value = param;
+      target.debuffs[id] = entry;
+      return ` ${target.name} bị ${DEBUFF(id).name}.`;
+    }
     function rollDamage(attacker, defender, power) {
-      let damage = attacker.stats.attack - defender.stats.defense;
-      const crit = Math.random() * 100 < 5 + attacker.stats.speed / 2;
+      const a = effStats(attacker), d = effStats(defender);
+      let damage = a.attack - d.defense;
+      const crit = Math.random() * 100 < 5 + a.speed / 2;
       if (crit) damage = Math.trunc(damage * 3 / 2);
+      const base = damage;
       damage = Math.trunc(damage * power / 100);
+      if (attacker.buffs?.[0]?.bonus && power > 0) { damage += pct(Math.max(0, base), BUFF(0).param_b); delete attacker.buffs[0]; }
+      if (attacker.buffs?.[1]) damage += pct(damage, BUFF(1).param_b);
+      if (attacker.buffs?.[8]) damage += pct(damage, BUFF(8).param_a);
+      if (attacker.debuffs?.[6]) damage -= pct(damage, attacker.debuffs[6].value);
       const effect = elementMultiplier(attacker, defender);
       if (effect > 0) damage *= 3; else if (effect < 0) damage = Math.trunc(damage * 60 / 100);
       if (damage <= 0) damage = 1;
       else if (Math.trunc(damage * 2 / 100) <= 0) damage += Math.random() < .5 ? 1 : -1;
-      return { damage: Math.max(1, damage), crit, effect };
+      return { damage: Math.max(1, damage), crit, effect, base: Math.max(1, base) };
+    }
+    // One actor's move: skip checks, damage, reflection and the skill's status effect.
+    // TRIAL (no dedicated handler found in the decompiled code): Mê Muội skips the turn,
+    // Tê Liệt skips 50% of turns, Mục makes attacks miss param x 10%, Quỷ Mị reflects param% of attacks.
+    function performMove(actor, target, skill, label) {
+      const debuffs = actor.debuffs || {};
+      if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
+      if (debuffs[10] && Math.random() < .5) return `${label} bị ${DEBUFF(10).name}, chậm mất lượt.`;
+      if (skill.row != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
+      if (skill.uses < 0) skill.uses = 0;
+      let text = `${label} dùng ${skill.name}`;
+      if (!skill.noDamage) {
+        if (debuffs[4] && Math.random() * 100 < debuffs[4].value * 10) return `${text} nhưng đánh trượt.`;
+        const hits = actor.buffs?.[12] ? 2 : 1;
+        const parts = [];
+        let last = null;
+        for (let i = 0; i < hits && target.hp > 0; i++) {
+          const result = rollDamage(actor, target, skill.power);
+          last = result;
+          let dealt = result.damage;
+          if (target === activePet() && state.battle.guard) dealt = Math.max(1, pct(dealt, GUARD_PCT));
+          if (target.buffs?.[6] && Math.random() * 100 < BUFF(6).param_a) dealt = Math.max(1, Math.trunc(dealt / 2));
+          if (debuffs[8] && Math.random() * 100 < (debuffs[8].param > 0 ? debuffs[8].param : 40)) {
+            actor.hp = Math.max(0, actor.hp - dealt);
+            parts.push(`bị ${DEBUFF(8).name} dội ngược ${dealt} sát thương`);
+            continue;
+          }
+          if (target.buffs?.[5] && Math.random() * 100 < BUFF(5).param_a) {
+            actor.hp = Math.max(0, actor.hp - dealt);
+            parts.push(`${target.name} ${BUFF(5).name} dội ngược ${dealt}`);
+            continue;
+          }
+          target.hp = Math.max(0, target.hp - dealt);
+          if (target.buffs?.[2]) { const back = Math.max(1, pct(dealt, BUFF(2).param_b)); actor.hp = Math.max(0, actor.hp - back); }
+          parts.push(hitText({ ...result, damage: dealt }) + (target === activePet() && state.battle.guard ? " (đã thủ)" : ""));
+        }
+        text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
+        if (skill.effect?.kind === "debuff" && last) {
+          const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
+          if (chance === -1 || Math.random() * 100 <= chance) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
+        }
+      } else if (skill.effect?.kind === "debuff") text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
+      if (skill.effect?.kind === "buff") text += (text.endsWith(".") ? "" : ".") + applyBuff(actor, skill.effect.id, skill.effect.param).trimEnd();
+      return text.endsWith(".") || text.endsWith("!") ? text : `${text}!`;
+    }
+    // End of a round: damage over time, regeneration, then durations count down (game/i.java q(), c(), d()).
+    function tickStatuses(c, label) {
+      const notes = [];
+      if (c.hp <= 0) return notes;
+      const d = c.debuffs, b = c.buffs;
+      if (d[0]) { const loss = Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
+      if (d[3] && d[3].turns <= 1) { const loss = Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8])); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
+      if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
+      if (b[13] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(13).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
+      for (const map of [d, b]) for (const key of Object.keys(map)) if (--map[key].turns <= 0) delete map[key];
+      return notes;
+    }
+    function endRound() {
+      const battle = state.battle;
+      const notes = [...tickStatuses(activePet(), activePet().name), ...tickStatuses(battle.enemy, battle.wild ? battle.enemy.name : "Sinh vật")];
+      if (notes.length) battle.message += ` ${notes.join(". ")}.`;
+    }
+    function statusLabels(c) {
+      return [...Object.entries(c.buffs || {}).map(([id, v]) => `▲${BUFF(id).name} ${v.turns}`), ...Object.entries(c.debuffs || {}).map(([id, v]) => `▼${DEBUFF(id).name} ${v.turns}`)];
+    }
+    function drawStatuses(c, x, y) {
+      const labels = statusLabels(c);
+      ctx.font = "bold 8px system-ui";
+      let cx = x;
+      for (const label of labels) {
+        const w = ctx.measureText(label).width + 8;
+        ctx.fillStyle = label.startsWith("▲") ? "#2f6b55e6" : "#7a3434e6";
+        roundRect(cx, y, w, 12, 3, true);
+        ctx.fillStyle = "#f6f1df"; ctx.fillText(label, cx + 4, y + 9);
+        cx += w + 3;
+      }
     }
     function hitText(result) {
       return `${result.damage} sát thương${result.crit ? " (chí mạng)" : ""}${result.effect > 0 ? " · khắc hệ ×3" : result.effect < 0 ? " · bị khắc hệ ×0,6" : ""}`;
@@ -465,7 +597,7 @@
         document.getElementById("sparkUses").textContent = `${pet.skill.uses} / ${pet.skill.max}`;
       }
       document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}`;
-      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || !pet.skill.power || busy;
+      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || (pet.skill.noDamage && !pet.skill.effect) || busy;
       renderExtraSkills(pet, busy);
       document.getElementById("basicButton").disabled = busy;
       document.getElementById("guardButton").disabled = busy;
@@ -734,14 +866,17 @@
       ctx.textAlign = "right"; ctx.fillText(`${hp} / ${max}`, x + 181, y + 46); ctx.textAlign = "left";
     }
     function battleMessage(text) {
-      ctx.font = "12px system-ui";
-      const words = text.split(" "); let line = ""; let y = 279;
-      for (const word of words) {
-        const next = line ? `${line} ${word}` : word;
-        if (ctx.measureText(next).width > 430 && line) { ctx.fillText(line, 25, y); line = word; y += 16; }
-        else line = next;
+      // Long status-heavy rounds fall back to a smaller font so three lines fit the box.
+      for (const [size, gap, top] of [[12, 16, 279], [10, 12, 274], [9, 10, 272]]) {
+        ctx.font = `${size}px system-ui`;
+        const lines = []; let line = "";
+        for (const word of text.split(" ")) {
+          const next = line ? `${line} ${word}` : word;
+          if (ctx.measureText(next).width > 430 && line) { lines.push(line); line = word; } else line = next;
+        }
+        if (line) lines.push(line);
+        if (lines.length * gap <= 34 || size === 9) { lines.slice(0, 4).forEach((l, i) => ctx.fillText(l, 25, top + i * gap)); return; }
       }
-      if (line) ctx.fillText(line, 25, y);
     }
     function drawBattle() {
       const now = performance.now();
@@ -800,6 +935,8 @@
         ctx.fillStyle = "#e8c45a"; ctx.fillRect(305, 250, pet.level >= LEVEL_CAP ? 156 : Math.max(0, Math.min(156, 156 * pet.exp / need)), 3);
       }
       drawTeamPips(278, 192);
+      drawStatuses(pet, 316, 186);
+      drawStatuses(state.battle.enemy, 14, 70);
       ctx.fillStyle = "#e8d8ae"; roundRect(8, 260, 464, 47, 5, true);
       ctx.strokeStyle = "#846b49"; ctx.lineWidth = 2; roundRect(8, 260, 464, 47, 5, false);
       ctx.fillStyle = "#473b29"; battleMessage(state.battle.message);
@@ -856,10 +993,10 @@
       (pet.skills || []).slice(1).forEach((skill, i) => {
         const button = document.createElement("button");
         button.type = "button";
-        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? ` · ${skill.power}%` : " · chưa hỗ trợ"}`;
+        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? ` · ${skill.power}%` : skill.effect ? " · hiệu ứng" : " · chưa hỗ trợ"}`;
         const uses = document.createElement("span"); uses.textContent = `${skill.uses} / ${skill.max}`;
         button.append(name, uses);
-        button.disabled = busy || skill.uses <= 0 || !skill.power;
+        button.disabled = busy || skill.uses <= 0 || (skill.noDamage && !skill.effect);
         button.title = skill.description || "";
         button.addEventListener("click", () => action(false, "skill", i + 1));
         box.append(button);
@@ -1015,6 +1152,8 @@
       const battle = state.battle;
       if (state.mode !== "battle" || battle.pendingUntil || index === battle.active || !battle.team[index] || battle.team[index].hp <= 0) return;
       const forced = battle.mustSwitch;
+      const bound = activePet().debuffs?.[2] ? DEBUFF(2) : activePet().debuffs?.[9] ? DEBUFF(9) : null;
+      if (!forced && bound) { battle.message = `${activePet().name} đang bị ${bound.name}, không thể đổi pet.`; teamMenu.hidden = true; updateGuidance(); return; }
       const previous = activePet();
       battle.active = index; battle.participants.add(index); battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
       battle.switchedAt = performance.now(); battle.skill = null;
@@ -1161,13 +1300,13 @@
       const chosen = pet.skills?.[slot];
       if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
       if (!guard && move === "skill" && chosen.uses <= 0) { battle.message = `${chosen.name} đã hết lượt dùng.`; return; }
-      if (!guard && move === "skill" && !chosen.power) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
+      if (!guard && move === "skill" && chosen.noDamage && !chosen.effect) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
       fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true;
       const now = performance.now();
       battle.message = "";
       battle.enemyActed = false;
       if (guard) battle.guard = true;
-      if (battle.enemy.stats.speed > pet.stats.speed) {
+      if (effStats(battle.enemy).speed > effStats(pet).speed) {
         enemyStrike(now);
         if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
@@ -1177,13 +1316,11 @@
         battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
       } else {
         const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: BASIC_POWER };
-        if (move === "skill") skill.uses--;
         // The extracted Điện giật sprite only plays for that skill; other moves use the slash effect.
         battle.skill = move === "skill" && skill.row === 40 ? "spark" : move;
         battle.attackAt = at;
-        const result = rollDamage(pet, battle.enemy, skill.power);
-        battle.enemy.hp = Math.max(0, battle.enemy.hp - result.damage);
-        battle.message += `${battle.message ? " " : ""}${pet.name} dùng ${skill.name}, ${hitText(result)}!`;
+        battle.message += `${battle.message ? " " : ""}${performMove(pet, battle.enemy, skill, pet.name)}`;
+        if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
       battle.pendingUntil = at + 650;
       updateGuidance();
@@ -1202,8 +1339,12 @@
         return;
       }
       if (!state.battle.enemyActed) enemyCounter();
+      if (state.mode !== "battle" || state.battle.mustSwitch) { state.battle.guard = false; updateGuidance(); return; }
+      endRound();
       state.battle.guard = false;
       state.battle.turn++;
+      if (state.battle.enemy.hp <= 0) { state.battle.pendingUntil = now + 900; updateGuidance(); return; }
+      handleFaint();
       updateGuidance();
     }
     // game/a.java h(): every pet that entered the field shares the reward; then pause so the result can be read.
@@ -1227,16 +1368,12 @@
     }
     function enemyStrike(at) {
       const battle = state.battle, pet = activePet(), enemy = battle.enemy;
-      const usable = enemy.skills.filter(skill => skill.uses > 0 && skill.power > 0);
-      const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : null;
-      const useSkill = !!picked;
-      if (picked) picked.uses--;
-      const result = rollDamage(enemy, pet, picked ? picked.power : BASIC_POWER);
-      if (battle.guard) result.damage = Math.max(1, Math.trunc(result.damage * GUARD_PCT / 100));
-      pet.hp = Math.max(0, pet.hp - result.damage);
+      // Enemy AI: any skill with uses left; a status-only skill is skipped while its status is already active.
+      const usable = enemy.skills.filter(skill => skill.uses > 0 && (!skill.noDamage || (skill.effect && !(skill.effect.kind === "buff" ? enemy.buffs[skill.effect.id] : pet.debuffs[skill.effect.id]))));
+      const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : { name: "Đòn thường", power: BASIC_POWER };
       battle.enemyAt = at + 180;
       battle.enemyActed = true;
-      battle.message += `${battle.message ? " " : ""}${battle.wild ? enemy.name : "Sinh vật"} dùng ${useSkill ? picked.name : "Đòn thường"}, ${hitText(result)}${battle.guard ? " (đã thủ)" : ""}.`;
+      battle.message += `${battle.message ? " " : ""}${performMove(enemy, pet, picked, battle.wild ? enemy.name : "Sinh vật")}`;
     }
     function enemyCounter() {
       enemyStrike(performance.now());
@@ -1263,6 +1400,7 @@
       const pet = activePet();
       if (!state.battle.potions) { state.battle.message = "Đã hết thuốc thử."; return; }
       if (pet.hp >= pet.max) { state.battle.message = `${pet.name} đang đầy máu.`; return; }
+      if (pet.debuffs?.[2]) { state.battle.message = `${pet.name} đang bị ${DEBUFF(2).name}, không thể dùng đạo cụ.`; return; }
       // TRIAL: potion restores 30% of max HP.
       const recovered = Math.min(Math.round(pet.max * .3), pet.max - pet.hp);
       state.battle.potions--;
@@ -1270,10 +1408,12 @@
       state.battle.message = `Dùng thuốc thử: ${pet.name} hồi ${recovered} HP.`;
       state.battle.turn++;
       enemyCounter();
+      if (state.mode === "battle" && !state.battle.mustSwitch) { endRound(); handleFaint(); }
       updateGuidance();
     }
     function fleeBattle() {
       if (state.mode !== "battle" || state.battle.pendingUntil) return;
+      if (activePet().debuffs?.[2] && !state.battle.mustSwitch) { state.battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể chạy trốn.`; return; }
       if (state.battle.wild) { finishWild("flee"); return; }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";

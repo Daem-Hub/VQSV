@@ -134,10 +134,64 @@ run('Math.random = () => 0.99; state.battle.enemy.stats.speed = 0; action(false,
 assert.match(run('state.battle.message'), /Lôi Miêu dùng Lôi thiểm/);
 assert.equal(run('activePet().skills[1].uses'), 44);
 assert.equal(run('state.battle.skill'), 'skill');
-// Saved skills come back in the next battle; a power-0 skill is refused rather than dealing 1 damage.
+// Saved skills come back in the next battle; the power-0 skill Đoạt mệnh cao áp now applies its buff without damage.
 run('progress["loi-mieu"].skills = [40, 44]; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"');
 assert.equal(run('activePet().skills[1].name'), 'Đoạt mệnh cao áp');
+const enemyFull = run('state.battle.enemy.hp');
 run('action(false, "skill", 1)');
-assert.match(run('state.battle.message'), /chưa được hỗ trợ/);
-assert.equal(run('state.battle.pendingUntil'), 0);
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience and skill learning passed.');
+assert.match(run('state.battle.message'), /Lôi Miêu dùng Đoạt mệnh cao áp\. Lôi Miêu được Điện áp\./);
+assert.equal(run('state.battle.enemy.hp'), enemyFull);
+
+// ---- Status effects (tables 6/7; game/i.java a(byte,int,int), b(i), q(int)) ----
+const fresh = () => run('progress = {}; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []');
+const tick = () => { clock += 1200; run('updateBattle(performance.now())'); };
+// Điện áp (buff 8): +30% damage and double skill-use cost for 4 rounds.
+// Random 0.99: no crit, -1 jitter. Lôi Miêu L5 (atk 26) vs Khốc Tị Mộc Linh: plain = (26 - def) - 1; with Điện áp the
+// pre-jitter damage gains 30% (game/i.java: damage += damage * w[8][1] / 100).
+fresh(); run('Math.random = () => 0.99; action(false, "skill", 0)');
+const plain = run('state.battle.enemy.max - state.battle.enemy.hp');
+const raw = plain + 1;
+fresh(); run('Math.random = () => 0.99; activePet().buffs[8] = { turns: 4, value: 30 }; action(false, "skill", 0)');
+assert.equal(run('state.battle.enemy.max - state.battle.enemy.hp'), raw + Math.trunc(raw * 30 / 100) - 1);
+fresh(); run('Math.random = () => 0.99; activePet().buffs[8] = { turns: 4, value: 30 }; action(false, "skill", 0)');
+assert.equal(run('activePet().skills[0].uses'), 43);
+// Lôi thiểm (row 41): 10% chance to apply Tê Liệt; random 0.05 applies it, 0.5 does not.
+fresh(); run('activePet().skills.push(sourceSkill(41)); Math.random = () => 0.05; action(false, "skill", 1)');
+assert.equal(run('!!state.battle.enemy.debuffs[10]'), true);
+assert.equal(run('state.battle.enemy.debuffs[10].turns'), 4);
+fresh(); run('activePet().skills.push(sourceSkill(41)); Math.random = () => 0.5; action(false, "skill", 1)');
+assert.equal(run('!!state.battle.enemy.debuffs[10]'), false);
+// Dương viêm (row 1, burn = Gieo Hạt): always applies; each round costs base damage / col8 (4), for 3 rounds.
+fresh(); run('Math.random = () => 0.99; activePet().skills.push(sourceSkill(1)); action(false, "skill", 1)');
+const burn = run('state.battle.enemy.debuffs[0]');
+assert.equal(burn.turns, 3);
+const hpAfterHit = run('state.battle.enemy.hp');
+tick();
+assert.equal(run('state.battle.enemy.hp'), hpAfterHit - Math.max(1, Math.trunc(burn.value / 4)));
+assert.equal(run('state.battle.enemy.debuffs[0].turns'), 2);
+assert.match(run('state.battle.message'), /mất \d+ HP vì Gieo Hạt/);
+// Statuses expire after their duration.
+for (let i = 0; i < 2; i++) { run('state.battle.pendingUntil = 1'); tick(); }
+assert.equal(run('!!state.battle.enemy.debuffs[0]'), false);
+// Chú oán (row 51): defense -20% while active.
+fresh(); const def = run('effStats(state.battle.enemy).defense');
+run('applyDebuff(state.battle.enemy, 7, 20, 0, 51)');
+assert.equal(run('effStats(state.battle.enemy).defense'), def - Math.trunc(run('state.battle.enemy.stats.defense') * 20 / 100));
+// Mê Muội (TRIAL: skip the turn); Quấn Quanh blocks items, switching and fleeing.
+fresh(); run('activePet().debuffs[1] = { turns: 2, value: 0 }; action(false, "skill", 0)');
+assert.match(run('state.battle.message'), /không thể hành động/);
+assert.equal(run('state.battle.enemy.hp'), run('state.battle.enemy.max'));
+fresh(); run('activePet().debuffs[2] = { turns: 3, value: 0 }; activePet().hp = 10; usePotion()');
+assert.match(run('state.battle.message'), /không thể dùng đạo cụ/);
+run('fleeBattle()'); assert.equal(run('state.mode'), 'battle');
+// At most 3 statuses per side; Thạch Phu (buff 14) clears debuffs and blocks new ones.
+fresh(); run('for (const id of [0, 5, 6]) applyDebuff(state.battle.enemy, id, 10, 10, 1); applyDebuff(state.battle.enemy, 7, 20, 0, 51)');
+assert.equal(run('Object.keys(state.battle.enemy.debuffs).length'), 3);
+run('applyBuff(state.battle.enemy, 14, -1); applyDebuff(state.battle.enemy, 7, 20, 0, 51)');
+assert.equal(run('Object.keys(state.battle.enemy.debuffs).length'), 0);
+// Capture status factor (game/a.java m()): a target with Man Lực (buff 10) is x1.2 easier.
+run('state.battle.enemy.hp = state.battle.enemy.max');
+const base1 = run('captureRate(1, state.battle.enemy)');
+run('state.battle.enemy.buffs[10] = { turns: 2, value: 5 }');
+assert.equal(run('captureRate(1, state.battle.enemy)'), Math.trunc(base1 * 12 / 10));
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning and status effects passed.');

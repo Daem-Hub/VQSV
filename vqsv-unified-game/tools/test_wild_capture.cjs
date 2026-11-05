@@ -10,7 +10,8 @@ function element(id) { return elements[id] ||= { textContent: '', hidden: true, 
 const store = new Map();
 const localStorage = { getItem: k => store.get(k) ?? null, setItem: (k, v) => store.set(k, v) };
 const catches = [];
-const VQSVPetTeam = { ids: () => [], caughtBest: () => null, info: id => ({ id, image: `assets/pets/vqsv6/${id}.png` }), recordCatch: (id, level, quality) => { catches.push({ id, level, quality }); return { addedToTeam: true }; } };
+const teamIds = [], replaced = [];
+const VQSVPetTeam = { ids: () => teamIds, replaceSpecies: (a, b) => { replaced.push([a, b]); const i = teamIds.indexOf(a); if (i >= 0) teamIds[i] = b; }, caughtBest: () => null, info: id => ({ id, kind: "vqsv6", name: id, element: null, sequences: [], image: `assets/pets/vqsv6/${id}.png` }), recordCatch: (id, level, quality) => { catches.push({ id, level, quality }); return { addedToTeam: true }; } };
 let clock = 1000;
 const ctx = vm.createContext({ document: { getElementById: element, createElement: () => ({ append() {}, addEventListener() {}, setAttribute() {} }) }, window: { addEventListener() {}, VQSVBootstrap: require('./bootstrap_for_tests.cjs'), VQSVPetTeam }, Image: class {}, Element: class {}, performance: { now: () => clock }, console, localStorage });
 vm.runInContext(code, ctx);
@@ -194,4 +195,74 @@ run('state.battle.enemy.hp = state.battle.enemy.max');
 const base1 = run('captureRate(1, state.battle.enemy)');
 run('state.battle.enemy.buffs[10] = { turns: 2, value: 5 }');
 assert.equal(run('captureRate(1, state.battle.enemy)'), Math.trunc(base1 * 12 / 10));
-console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning and status effects passed.');
+// ---- Evolution (game/k.java bp(), game/i.java K()): level gate + material, keeps level/exp/skills, quality rule ----
+const evo = (key, id) => JSON.parse(JSON.stringify(run(`evolutionCheck(${JSON.stringify(key)}, ${JSON.stringify(id)})`)));
+const fresh2 = () => run('progress = {}; stones = { 12: 1, 13: 0, 14: 0, 15: 1, 16: 0 }; state.mode = "explore"; state.battle = newBattle()');
+// Lôi Miêu (Điện Miêu db-78 -> Thiểm Điện Miêu db-79): level 12 and 1 Tinh Nguyên Thạch.
+fresh2();
+let check = evo('loi-mieu', 'vqsv6-db-78');
+assert.equal(check.ok, false);
+assert.match(check.reason, /cần cấp 12 \(đang cấp 5\)/);
+run('progress["loi-mieu"] = { level: 12, exp: 77, skills: [40, 41] }; stones[12] = 0');
+check = evo('loi-mieu', 'vqsv6-db-78');
+assert.match(check.reason, /thiếu Tinh Nguyên Thạch \(0\/1\)/);
+run('stones[12] = 1; state.mode = "battle"');
+assert.match(evo('loi-mieu', 'vqsv6-db-78').reason, /không thể trong trận/);
+run('state.mode = "explore"');
+let result = JSON.parse(JSON.stringify(run('evolvePet("loi-mieu", "vqsv6-db-78")')));
+assert.equal(result.ok, true);
+assert.match(result.message, /^Lôi Miêu tiến hóa thành Thiểm Điện Miêu! HP \d+→\d+/);
+assert.equal(run('stones[12]'), 0);
+assert.equal(run('leadForm()'), 'vqsv6-db-79');
+let saved = JSON.parse(store.get('vqsv-unified-pet-progress-v1'))['loi-mieu'];
+assert.equal(saved.form, 'vqsv6-db-79'); assert.equal(saved.level, 12); assert.equal(saved.exp, 77);
+assert.deepEqual(saved.skills, [40, 41]);
+// Quality: Điện Miêu default 2; the target's default quality applies only when it is higher.
+assert.equal(saved.quality, Math.max(2, run('STAT_BY_ID.get("vqsv6-db-79").default_quality')));
+// The next battle uses the evolved record's stats, keeps the name and carries skills.
+run('state.battle = newBattle()');
+assert.equal(run('activePet().name'), 'Lôi Miêu');
+assert.equal(run('activePet().petId'), 'vqsv6-db-79');
+assert.equal(run('activePet().max'), run('statsAt(STAT_BY_ID.get("vqsv6-db-79"), 12, activePet().quality).hp'));
+assert.deepEqual(JSON.parse(JSON.stringify(run('activePet().skills.map(skill => skill.row)'))), [40, 41]);
+assert.match(run('activePet().subtitle'), /^CẤP 12 · /);
+assert.equal(run('activePet().image'), 'assets/pets/vqsv6/' + run('window.VQSVPetTeam.info("vqsv6-db-79").image').split('/').pop());
+// A second evolution is checked against the new form's own data (Thiểm Điện Miêu has a further form needing level 30).
+check = evo('loi-mieu', 'vqsv6-db-79');
+assert.equal(check.ok === false, true);
+// Reserve pet: Long bảo bối (db-16) -> Phệ Hỏa Thú (db-17) moves progress and the team slot.
+fresh2(); teamIds.length = 0; teamIds.push('vqsv6-db-16'); replaced.length = 0;
+run('progress["vqsv6-db-16"] = { level: 14, exp: 5, quality: 1, skills: [0, 1] }');
+assert.equal(JSON.parse(JSON.stringify(run('window.VQSVEvolution.options("vqsv6-db-16")')))[0].ok, true);
+result = JSON.parse(JSON.stringify(run('window.VQSVEvolution.evolve("vqsv6-db-16", "vqsv6-db-16")')));
+assert.equal(result.ok, true);
+assert.equal(run('progress["vqsv6-db-16"]'), undefined);
+assert.equal(run('progress["vqsv6-db-17"].level'), 14);
+assert.deepEqual(JSON.parse(JSON.stringify(run('progress["vqsv6-db-17"].skills'))), [0, 1]);
+assert.deepEqual(replaced, [['vqsv6-db-16', 'vqsv6-db-17']]);
+assert.deepEqual(teamIds, ['vqsv6-db-17']);
+// Same species already owned blocks the evolution instead of overwriting a pet.
+fresh2(); teamIds.length = 0; teamIds.push('vqsv6-db-16');
+run('progress["vqsv6-db-16"] = { level: 14, exp: 0 }; progress["vqsv6-db-17"] = { level: 3, exp: 0 }');
+assert.match(evo('vqsv6-db-16', 'vqsv6-db-16').reason, /đã có Phệ Hỏa Thú/);
+// Mutation (dị hóa): level 5 gate with Hồn Tinh Thạch (Nhiệt Bạo Phong Tốc Khuyển db-21 -> db-22).
+fresh2(); teamIds.length = 0; teamIds.push('vqsv6-db-21');
+run('progress["vqsv6-db-21"] = { level: 5, exp: 0 }');
+result = JSON.parse(JSON.stringify(run('evolvePet("vqsv6-db-21", "vqsv6-db-21")')));
+assert.equal(result.ok, true); assert.match(result.message, /dị hóa thành/);
+assert.equal(run('stones[15]'), 0);
+// A pet without a source evolution reports it.
+fresh2(); assert.match(evo('vqsv6-db-33', 'vqsv6-db-33').reason, /Chưa có dạng tiếp theo/);
+// Stone drops (TRIAL table): Math.random = 0 grants every stone whose level gate is met.
+fresh2(); run('Math.random = () => 0');
+assert.deepEqual(JSON.parse(JSON.stringify(run('rollStoneDrops(5)'))), ['Tinh Nguyên Thạch', 'Hồn Tinh Thạch']);
+assert.equal(run('stones[12]'), 2);
+assert.equal(run('rollStoneDrops(45).length'), 5);
+run('Math.random = () => 0.999');
+assert.equal(run('rollStoneDrops(45).length'), 0);
+assert.equal(JSON.parse(store.get('vqsv-unified-stones-v1'))[12], 3);
+// A win over a wild pet reports drops in the status text.
+run('Math.random = () => 0; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; finishWild("win")');
+assert.match(element('status').textContent, /nhặt được Tinh Nguyên Thạch, Hồn Tinh Thạch/);
+assert.match(element('stoneStatus').textContent, /Tinh Nguyên Thạch ×\d+/);
+console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects and evolution passed.');

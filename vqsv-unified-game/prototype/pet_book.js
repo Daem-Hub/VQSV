@@ -27,11 +27,13 @@
   // Điện Miêu reference record cannot be added as a duplicate reserve.
   const teamKey = "vqsv-unified-pet-team-v1";
   const TEAM_MAX = 2;
-  const LEAD_REFERENCE_ID = "vqsv6-db-78";
+  // The lead pet's current species: Điện Miêu at first, its evolved form afterwards (index.html owns the lead).
+  const LEAD_DEFAULT_ID = "vqsv6-db-78";
+  const leadId = () => window.VQSVEvolution?.leadForm?.() || LEAD_DEFAULT_ID;
   let team = [];
   try {
     const data = JSON.parse(localStorage.getItem(teamKey) || "[]");
-    if (Array.isArray(data)) team = [...new Set(data.filter(id => typeof id === "string" && byId.has(id) && id !== LEAD_REFERENCE_ID))].slice(0, TEAM_MAX);
+    if (Array.isArray(data)) team = [...new Set(data.filter(id => typeof id === "string" && byId.has(id)))].slice(0, TEAM_MAX);
   } catch (_) { storageAvailable = false; }
   // Pets caught in wild battles: one record per catch, with the level and quality rolled in battle.
   const caughtKey = "vqsv-unified-caught-pets-v1";
@@ -59,6 +61,7 @@
     return { kind, key: pet.pet_id, name: pet.display_name, element: pet.element || "Chưa rõ hệ", atlasId, atlas: atlasId ? atlases[atlasId] : null, pet };
   });
   let selected = "vqsv6-db-78";
+  let evolveNote = "";
   let timer = null;
 
   function normalized(value) {
@@ -97,6 +100,7 @@
     detail.replaceChildren();
     if (!entry) { detail.append(node("p", "Không có pet phù hợp.")); return; }
     detail.append(node("h3", entry.name));
+    if (evolveNote) detail.append(node("p", evolveNote, "pet-evolve-note"));
     detail.append(node("p", entry.kind === "vqsv6" ? `VQSV6 · ${entry.element} · Mã ${entry.pet.source_ids.db_id}` : `VQSV5 · Mã ${entry.pet.source_ids.db_id} · Hình ${entry.atlasId}, dạng ${entry.pet.source_ids.form_index + 1}`));
     const box = node("div", undefined, "pet-preview");
     const image = document.createElement("img");
@@ -122,7 +126,7 @@
     const teamButton = node("button", inTeam ? "Rút khỏi đội" : `Đưa vào đội (${team.length}/${TEAM_MAX})`, "pet-team");
     teamButton.type = "button";
     teamButton.setAttribute("aria-pressed", String(inTeam));
-    if (entry.key === LEAD_REFERENCE_ID) { teamButton.disabled = true; teamButton.textContent = "Hình của Lôi Miêu · luôn trong đội"; }
+    if (entry.key === leadId()) { teamButton.disabled = true; teamButton.textContent = "Hình của Lôi Miêu · luôn trong đội"; }
     else if (!inTeam && team.length >= TEAM_MAX) { teamButton.disabled = true; teamButton.textContent = `Đội đã đủ ${TEAM_MAX} pet dự bị`; }
     teamButton.addEventListener("click", () => {
       if (team.includes(entry.key)) team = team.filter(id => id !== entry.key);
@@ -148,7 +152,7 @@
         const skills = (stat.skills_at_level["30"] || []).map(row => stats.skills[row]?.name).filter(Boolean);
         if (skills.length) detail.append(node("p", `Kỹ năng hệ (tới cấp 30): ${skills.join(", ")}.`));
       }
-      if (entry.key === "vqsv6-db-78") detail.append(node("p", "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện."));
+      if (entry.key === leadId()) detail.append(node("p", entry.key === LEAD_DEFAULT_ID ? "Đang dùng làm hình tham khảo cho Lôi Miêu trong truyện." : "Dạng hiện tại của Lôi Miêu (tiến hóa từ Điện Miêu theo dữ liệu nguồn)."));
       const evolution = entry.pet.evolution;
       const target = evolution && byId.get(evolution.target_pet_id);
       if (target) {
@@ -157,6 +161,23 @@
         detail.append(node("p", `${label} → ${target.display_name} (theo game VQSV6 gốc).`));
         if (evolution.minimum_level != null && evolution.material) {
           detail.append(node("p", `Điều kiện gốc: cấp ${evolution.minimum_level}, ${evolution.material.quantity} ${evolution.material.name}. Điều kiện trong game hợp nhất chưa chốt.`));
+        }
+        const evolution_ = window.VQSVEvolution;
+        if (evolution_ && evolution.material) {
+          detail.append(node("p", `Nguyên liệu đang có: ${evolution_.stoneText()}.`));
+          for (const option of evolution_.options(entry.key)) {
+            detail.append(node("p", `${option.label} · cấp ${option.level}: ${option.ok ? "đủ điều kiện" : option.reason}.`));
+            const go = node("button", `${option.verb} ${option.label}`, "pet-evolve");
+            go.type = "button";
+            go.disabled = !option.ok;
+            go.addEventListener("click", () => {
+              const result = evolution_.evolve(option.key, entry.key);
+              evolveNote = result.message;
+              if (result.ok) selected = result.targetId;
+              render();
+            });
+            detail.append(go);
+          }
         }
         const viewTarget = node("button", `Xem ${target.display_name}`, "pet-target");
         viewTarget.type = "button";
@@ -212,7 +233,7 @@
       image.alt = "";
       image.loading = "lazy";
       button.append(image, node("span", entry.name), node("small", `${entry.kind === "vqsv6" ? entry.element : `VQSV5 · #${entry.pet.source_ids.db_id}`}${saved.has(entry.key) ? " · Đã gom" : ""}${team.includes(entry.key) ? " · Trong đội" : ""}${caughtOf(entry.key).length ? " · Đã bắt" : ""}`));
-      button.addEventListener("click", () => { selected = entry.key; render(); });
+      button.addEventListener("click", () => { selected = entry.key; evolveNote = ""; render(); });
       grid.append(button);
     }
     renderDetail(visible.find(entry => entry.key === selected));
@@ -244,13 +265,27 @@
       return mine.length ? mine.reduce((a, b) => (b.level > a.level || (b.level === a.level && b.quality > a.quality) ? b : a)) : null;
     },
     caughtCount: () => caught.length,
+    // An evolved reserve pet changes species: swap it in the team, add the new form to the collection and move one catch record.
+    replaceSpecies(oldId, newId) {
+      if (!byId.has(newId)) return;
+      team = [...new Set(team.map(id => id === oldId ? newId : id).filter(id => id !== leadId()))].slice(0, TEAM_MAX);
+      saved.add(newId);
+      const mine = caughtOf(oldId);
+      if (mine.length) {
+        const best = mine.reduce((a, b) => (b.level > a.level || (b.level === a.level && b.quality > a.quality) ? b : a));
+        caught.splice(caught.indexOf(best), 1);
+        caught.push({ ...best, pet_id: newId });
+        persistCaught();
+      }
+      persistTeam(); persistCollection();
+    },
     // Record a catch; also adds the species to the collection and to a free team slot.
     recordCatch(id, level, quality) {
       if (!byId.has(id)) return { addedToTeam: false };
       caught.push({ pet_id: id, level, quality, caught_at: new Date().toISOString() });
       saved.add(id);
       let addedToTeam = false;
-      if (id !== LEAD_REFERENCE_ID && !team.includes(id) && team.length < TEAM_MAX) { team.push(id); addedToTeam = true; persistTeam(); }
+      if (id !== leadId() && !team.includes(id) && team.length < TEAM_MAX) { team.push(id); addedToTeam = true; persistTeam(); }
       persistCaught(); persistCollection();
       return { addedToTeam };
     },

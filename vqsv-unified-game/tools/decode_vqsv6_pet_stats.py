@@ -31,6 +31,11 @@ reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/:
   each participant gets reward / n * [10,12,13,14,15,16][n-1] * levelFactor / 1000 where n = participants,
   levelFactor = 105 below the enemy level, 100 equal or +1, then 80, 60, 40, 20 for +2..+5, and 5 at +6 or more.
 
+- game/k.java bp(), game/i.java K()/u[]: evolution target = table-0 col 19 (row index); the target's col 2
+  (1 evolution, 2 evolution, 3 mutation) picks the level gate u = [12, 30, 5]; the material is item table-3 row
+  (current pet col 20 + 12) and the quantity is current pet col 21. On success the new pet keeps level, exp and
+  skills, takes full HP, and keeps its quality when >= the target's default quality (otherwise the target's).
+
 Writes prototype/data/vqsv6_pet_stats.json and asset_review/vqsv6_pet_stats.csv.
 """
 import csv
@@ -154,6 +159,12 @@ out = {
         "slots": "min(5, level / 10 + 1)  (game/k.java aq(): F() < 5 && F() < level / 10 + 1)",
         "candidates": "rows element*10 .. element*10+9 with unlock_tier <= skill_curves[pet.skill_curve_row][tier], tier from level_tiers; level <= 5 knows only element*10",
         "wild": "game/a.java + i.H(): wild pets get element*10, then (from tier 1) random candidates until level / 10 + 1 skills",
+    },
+    "evolution_rules": {
+        "level_gate_by_target_kind": {"1": 12, "2": 30, "3": 5},
+        "materials": {str(row): {"name": names[db[3][row][0]], "description": names[db[3][row][2]], "price": db[3][row][3]} for row in range(12, 17)},
+        "carries_over": ["level", "exp", "skills", "quality (kept if >= target default, else target default)"],
+        "heals": "full HP on the new form",
     },
     "skill_curves": db[8],
     "status_effects": {

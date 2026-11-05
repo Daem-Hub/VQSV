@@ -130,6 +130,47 @@
   "candidates": "rows element*10 .. element*10+9 with unlock_tier <= skill_curves[pet.skill_curve_row][tier], tier from level_tiers; level <= 5 knows only element*10",
   "wild": "game/a.java + i.H(): wild pets get element*10, then (from tier 1) random candidates until level / 10 + 1 skills"
  },
+ "evolution_rules": {
+  "level_gate_by_target_kind": {
+   "1": 12,
+   "2": 30,
+   "3": 5
+  },
+  "materials": {
+   "12": {
+    "name": "Tinh Nguyên Thạch",
+    "description": "Tài liệu liên quan đến tiến hóa;",
+    "price": 1000
+   },
+   "13": {
+    "name": "Thiên Giới Tinh Thạch",
+    "description": "Tài liệu liên quan tiến hóa bậc cao;",
+    "price": 2
+   },
+   "14": {
+    "name": "Thiên Địa Thần Thạch",
+    "description": "Tài liệu liên quan đến tiến hóa bậc cao hiếm có;",
+    "price": 10
+   },
+   "15": {
+    "name": "Hồn Tinh Thạch",
+    "description": "Tài liệu liên quan đến dị hoá;",
+    "price": 2
+   },
+   "16": {
+    "name": "Quỷ Thần Tinh Thạch",
+    "description": "Tài liệu liên quan đến dị hóa bậc cao hiếm có;",
+    "price": 10
+   }
+  },
+  "carries_over": [
+   "level",
+   "exp",
+   "skills",
+   "quality (kept if >= target default, else target default)"
+  ],
+  "heals": "full HP on the new form"
+ },
  "skill_curves": [
   [
    0,

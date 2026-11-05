@@ -54,3 +54,6 @@
 .pet-stats { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
 .pet-stats th, .pet-stats td { padding: 3px 4px; border-bottom: 1px solid #3d5a45; text-align: right; color: #e6efe1; }
 .pet-stats th:first-child { text-align: left; color: #b8caaf; font-weight: 600; }
+.pet-evolve { margin: 0 0 8px; background: #d9a8f0; }
+.pet-evolve:disabled { opacity: .55; cursor: not-allowed; }
+.pet-evolve-note { padding: 8px; border: 1px solid #9a7bb8; border-radius: 7px; background: #3a2c4a; color: #f1dcff; }

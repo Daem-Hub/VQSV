@@ -132,6 +132,7 @@
         <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
         <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
         <p id="saveStatus" aria-live="polite"></p>
+        <p><strong>Nguyên liệu tiến hóa</strong><br><span id="stoneStatus"></span></p>
         <p><strong>Sổ pet</strong><br>Nhấn P để xem hình, hệ và hoạt ảnh đã trích</p>
         <button id="openQuestJournal" type="button">Nhật ký nhiệm vụ · J</button>
         <button id="openWorldAtlas" type="button">Bản đồ thế giới · M</button>
@@ -254,6 +255,90 @@
       const factor = EXP.level_factor[diff >= 6 ? 6 : diff > 0 ? diff : diff === 0 ? 1 : 0];
       return Math.trunc(Math.trunc(base / participantCount) * EXP.participant_bonus[participantCount - 1] * factor / 1000);
     }
+    // ---- Evolution (game/k.java bp(), game/i.java K()/u[]): needs the target's level gate and a material item. ----
+    const ROSTER = new Map((window.VQSVBootstrap?.petRoster?.records || []).map(record => [record.pet_id, record]));
+    const STONE_INFO = STATS?.evolution_rules?.materials || {};
+    const STONES_KEY = "vqsv-unified-stones-v1";
+    const STONE_START = { 12: 2, 15: 1 };   // TRIAL: starter stones so evolution can be tried; the source game's material sources are unknown
+    // TRIAL drop table (chance %, minimum wild level) for wins and catches against wild pets.
+    const STONE_DROPS = [{ row: 12, chance: 25, minLevel: 1 }, { row: 15, chance: 12, minLevel: 1 }, { row: 13, chance: 10, minLevel: 25 }, { row: 16, chance: 4, minLevel: 30 }, { row: 14, chance: 5, minLevel: 40 }];
+    const LEAD_DEFAULT_FORM = "vqsv6-db-78";
+    let stones = { ...STONE_START };
+    try {
+      const raw = JSON.parse(localStorage.getItem(STONES_KEY) || "null");
+      if (raw && typeof raw === "object") { stones = {}; for (const row of Object.keys(STONE_INFO)) stones[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
+    } catch (_) {}
+    function saveStones() { try { localStorage.setItem(STONES_KEY, JSON.stringify(stones)); } catch (_) {} }
+    function stoneText() {
+      const parts = Object.keys(STONE_INFO).filter(row => stones[row] > 0).map(row => `${STONE_INFO[row].name} ×${stones[row]}`);
+      return parts.length ? parts.join(", ") : "Chưa có";
+    }
+    function updateStones() { const el = document.getElementById("stoneStatus"); if (el) el.textContent = stoneText(); }
+    function rollStoneDrops(enemyLevel) {
+      const got = [];
+      for (const drop of STONE_DROPS) {
+        if (enemyLevel >= drop.minLevel && Math.random() * 100 < drop.chance) { stones[drop.row] = (stones[drop.row] || 0) + 1; got.push(STONE_INFO[drop.row].name); }
+      }
+      if (got.length) { saveStones(); updateStones(); }
+      return got;
+    }
+    function leadForm() { const form = progress["loi-mieu"]?.form; return STAT_BY_ID.has(form) ? form : LEAD_DEFAULT_FORM; }
+    function evolutionKind(targetId) { return ROSTER.get(targetId)?.raw_fields?.[2] === 3 ? "dị hóa" : "tiến hóa"; }
+    function individualsOf(speciesId) {
+      const list = [];
+      if (leadForm() === speciesId) list.push({ key: "loi-mieu", label: "Lôi Miêu (pet của Kael)" });
+      if (progress[speciesId] || (window.VQSVPetTeam?.ids?.() || []).includes(speciesId)) list.push({ key: speciesId, label: STAT_BY_ID.get(speciesId)?.name || speciesId });
+      return list;
+    }
+    function evolutionCheck(key, speciesId) {
+      const evo = ROSTER.get(speciesId)?.evolution;
+      if (!evo) return { ok: false, reason: "Chưa có dạng tiếp theo trong dữ liệu nguồn." };
+      if (!STAT_BY_ID.has(evo.target_pet_id) || !STAT_BY_ID.has(speciesId)) return { ok: false, reason: "Dạng tiếp theo chưa có dữ liệu chiến đấu." };
+      const best = key === "loi-mieu" ? null : window.VQSVPetTeam?.caughtBest?.(speciesId);
+      const entry = progressOf(key, best ? best.level : BATTLE_LEVEL);
+      const row = evo.material.table_row, quantity = evo.material.quantity, have = stones[row] || 0;
+      const targetName = STAT_BY_ID.get(evo.target_pet_id).name;
+      const reasons = [];
+      if (entry.level < evo.minimum_level) reasons.push(`cần cấp ${evo.minimum_level} (đang cấp ${entry.level})`);
+      if (have < quantity) reasons.push(`thiếu ${evo.material.name} (${have}/${quantity})`);
+      if ((key === "loi-mieu" ? (window.VQSVPetTeam?.ids?.() || []).includes(evo.target_pet_id) : false) || progress[evo.target_pet_id]) reasons.push(`đã có ${targetName} (mỗi loài giữ một cá thể trong prototype)`);
+      if (state.mode === "battle") reasons.push("không thể trong trận");
+      return { ok: !reasons.length, reason: reasons.join(", "), entry, evo, row, quantity, have, targetName };
+    }
+    // Moves a pet to its next form: keeps level, exp and skills, full HP, quality = max(current, target default).
+    function evolvePet(key, speciesId) {
+      const check = evolutionCheck(key, speciesId);
+      if (!check.ok) return { ok: false, message: `Chưa thể ${evolutionKind(check.evo?.target_pet_id)}: ${check.reason}.` };
+      const currentRecord = STAT_BY_ID.get(speciesId), targetRecord = STAT_BY_ID.get(check.evo.target_pet_id);
+      const currentQuality = check.entry.quality || currentRecord.default_quality;
+      const quality = currentQuality >= targetRecord.default_quality ? currentQuality : targetRecord.default_quality;
+      const carried = { level: check.entry.level, exp: check.entry.exp, quality, skills: validSkillRows(targetRecord, check.entry.skills) };
+      stones[check.row] -= check.quantity; saveStones(); updateStones();
+      if (key === "loi-mieu") progress["loi-mieu"] = { ...carried, form: targetRecord.pet_id };
+      else {
+        delete progress[speciesId];
+        progress[targetRecord.pet_id] = carried;
+        window.VQSVPetTeam?.replaceSpecies?.(speciesId, targetRecord.pet_id);
+      }
+      saveProgress();
+      const before = statsAt(currentRecord, carried.level, currentQuality), after = statsAt(targetRecord, carried.level, quality);
+      const name = key === "loi-mieu" ? "Lôi Miêu" : currentRecord.name;
+      const kind = evolutionKind(targetRecord.pet_id);
+      statusEl.textContent = `${name} đã ${kind} thành ${targetRecord.name}`;
+      return { ok: true, targetId: targetRecord.pet_id, before, after, quality,
+        message: `${name} ${kind} thành ${targetRecord.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}.` };
+    }
+    window.VQSVEvolution = {
+      leadForm,
+      stoneText,
+      options(speciesId) {
+        return individualsOf(speciesId).map(individual => {
+          const check = evolutionCheck(individual.key, speciesId);
+          return { key: individual.key, label: individual.label, level: check.entry?.level, ok: check.ok, reason: check.reason, verb: check.evo ? (evolutionKind(check.evo.target_pet_id) === "dị hóa" ? "Dị hóa" : "Tiến hóa") : "Tiến hóa", targetName: check.targetName };
+        });
+      },
+      evolve: evolvePet
+    };
     // Adds experience and returns the levels gained (game/i.java g() + w()).
     function gainExp(member, amount) {
       const entry = { ...progressOf(member.progressKey, member.level) };
@@ -329,10 +414,15 @@
     function buildTeam() {
       // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
       const leadProgress = progressOf("loi-mieu", BATTLE_LEVEL);
-      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant("vqsv6-db-78", leadProgress.level, undefined, leadProgress.skills), portrait: "assets/pets/electric_cat_candidate.png", progressKey: "loi-mieu", exp: leadProgress.exp };
+      // After an evolution the lead keeps the name Lôi Miêu but uses the evolved record and its source image.
+      const form = leadForm();
+      const evolved = form !== LEAD_DEFAULT_FORM;
+      const formImage = evolved ? window.VQSVPetTeam?.info(form)?.image : null;
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant(form, leadProgress.level, leadProgress.quality, leadProgress.skills), portrait: formImage || "assets/pets/electric_cat_candidate.png", image: formImage || undefined, progressKey: "loi-mieu", exp: leadProgress.exp };
+      if (formImage) cachedImage(formImage);
       lead.name = "Lôi Miêu";
-      lead.subtitle = `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
-      const reserves = (window.VQSVPetTeam?.ids() || []).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
+      lead.subtitle = evolved ? `CẤP ${lead.level} · ${STAT_BY_ID.get(form).name.toUpperCase()}` : `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
+      const reserves = (window.VQSVPetTeam?.ids() || []).filter(id => id !== form).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
         // Warm the sprite cache so switching in does not flash an empty frame.
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
@@ -579,6 +669,7 @@
       await Promise.all(jobs);
       state.mode = "explore";
       statusEl.textContent = "Đang khám phá · Làng biên giới";
+      updateStones();
       updateGuidance();
       requestAnimationFrame(loop);
     }
@@ -960,11 +1051,11 @@
       const pet = activePet();
       const switched = now - (state.battle.switchedAt || -10000);
       const alpha = switched >= 0 && switched < 300 ? switched / 300 : 1;
-      if (pet.kind === "lead") { ctx.save(); ctx.globalAlpha = alpha; ctx.drawImage(assets.pets.hero, x, y, w, h); ctx.restore(); return; }
+      if (pet.kind === "lead" && !pet.image) { ctx.save(); ctx.globalAlpha = alpha; ctx.drawImage(assets.pets.hero, x, y, w, h); ctx.restore(); return; }
       // Reserve sprites are bottom-anchored, so lift their box clear of the HP panel below.
       // Box bottom sits at y=184, just above the team pips and HP panel.
       x -= 14; w += 28; h = 110; y = 184 - h + (y - 151);
-      if (pet.kind === "vqsv6") { drawFitted(cachedImage(pet.image), x, y, w, h, alpha); return; }
+      if (pet.kind === "vqsv6" || pet.image) { drawFitted(cachedImage(pet.image), x, y, w, h, alpha); return; }
       // VQSV5: loop the first source sequence; play the second one briefly when attacking.
       // Which source sequence means idle/attack is not verified; this is a presentation choice.
       const attacking = sinceAttack >= 0 && sinceAttack < 480 && state.battle.skill !== "guard";
@@ -1093,6 +1184,10 @@
       } else if (result === "win") text = `Đã đánh bại ${enemy.name} hoang dã`;
       else if (result === "lose") text = "Đội kiệt sức · Kael rút về bìa rừng";
       else text = "Đã rút lui khỏi pet hoang dã";
+      if (result === "caught" || result === "win") {
+        const found = rollStoneDrops(enemy.level);
+        if (found.length) text += ` · nhặt được ${found.join(", ")}`;
+      }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = text;
       updateGuidance();

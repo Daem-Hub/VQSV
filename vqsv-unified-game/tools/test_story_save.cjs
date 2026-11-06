@@ -6,7 +6,7 @@ const map=JSON.parse(fs.readFileSync(path.join(root,'data/opening_map.json'),'ut
 const els={}; const element=id=>els[id]||={textContent:'',hidden:false,addEventListener(){},getContext(){return {}}};
 const storage=new Map(); let deny=false;
 const localStorage={getItem(k){if(deny)throw Error('blocked'); return storage.get(k)||null;},setItem(k,v){if(deny)throw Error('blocked'); storage.set(k,v);}};
-const ctx=vm.createContext({document:{getElementById:element},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,localStorage,map});
+const ctx=vm.createContext({document:{getElementById:element},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,map});
 vm.runInContext(code,ctx); vm.runInContext('assets.map=map; reset()',ctx);
 vm.runInContext('loadGame()',ctx); assert.match(element('saveStatus').textContent,/Chưa có/);
 vm.runInContext('state.player.x=12; state.player.y=11; state.player.faceX=0; state.player.faceY=-1; state.spokeToElder=true; saveGame()',ctx);

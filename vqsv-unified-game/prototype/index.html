@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11151b">
   <title>VQSV Unified — Lát thử 01</title>
   <link rel="stylesheet" href="pet_book.css">
   <link rel="stylesheet" href="world_atlas.css">
@@ -34,6 +35,72 @@
     #fightMenu:not([hidden]) { display: grid; gap: 5px; }
     .skill-heading { display: flex; justify-content: space-between; padding: 2px 5px; color: #493923; font-size: 11px; font-weight: 700; }
     #fightMenu button { padding: 7px; display: flex; justify-content: space-between; gap: 4px; font-size: 12px; background: #f5e5bc; color: #433522; }
+    #teamMenu { position: absolute; right: 0; bottom: calc(100% + 4px); width: min(360px, 80%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
+    #teamMenu:not([hidden]), #ballMenu:not([hidden]) { display: grid; gap: 5px; }
+    #ballMenu { position: absolute; left: 16%; bottom: calc(100% + 4px); width: min(330px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
+    #ballList { display: grid; gap: 4px; }
+    #itemMenu { position: absolute; left: 32%; bottom: calc(100% + 4px); width: min(340px, 75%); padding: 7px; border: 2px solid #735c3b; border-radius: 6px; background: #d1ba86; }
+    #itemMenu:not([hidden]) { display: grid; gap: 5px; }
+    #itemList { display: grid; gap: 4px; max-height: 190px; overflow: auto; }
+    #itemList button { padding: 6px 8px; display: flex; justify-content: space-between; gap: 6px; font-size: 12px; background: #f5e5bc; color: #433522; text-align: left; }
+    #itemList button small { font-weight: 400; color: #6b5838; }
+    #shopDialog, #bagDialog { width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0; color: #eef4e7; background: #1c2a24; border: 1px solid #7b895e; border-radius: 14px; }
+    #shopDialog::backdrop, #bagDialog::backdrop { background: #07110dcc; }
+    .shop { padding: 18px; display: grid; gap: 10px; }
+    .shop-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; }
+    .shop-header h2 { margin: 0; color: #f3dc9a; font-size: 20px; }
+    .shop-header p { margin: 2px 0 0; color: #b6c7b4; font-size: 12px; }
+    #closeShop, #closeBag { width: 38px; padding: 7px; background: #354f3c; color: #fff; }
+    .shop-wallet { margin: 0; padding: 8px 10px; border-radius: 8px; background: #26372d; color: #f4dc91; font-size: 13px; font-weight: 700; }
+    .shop-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .shop-tabs button { background: #354f3c; color: #fff; }
+    .shop-tabs button[aria-pressed="true"] { background: #e7c66c; color: #10151b; }
+    .shop-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+    .shop-list { display: grid; gap: 5px; max-height: 360px; overflow: auto; padding-right: 3px; }
+    .shop-list button { display: flex; justify-content: space-between; gap: 8px; text-align: left; padding: 8px 10px; background: #26372d; color: #eef4e7; font-size: 13px; font-weight: 600; }
+    .shop-list button[aria-pressed="true"] { outline: 2px solid #e4c66e; }
+    .shop-list small { color: #bacbb6; font-weight: 400; white-space: nowrap; }
+    .shop-detail { padding: 12px; border: 1px solid #4b6550; border-radius: 9px; background: #243a2d; font-size: 13px; line-height: 1.5; display: grid; gap: 8px; }
+    .shop-detail h3 { margin: 0; color: #f6e5aa; font-size: 16px; }
+    .shop-detail p { margin: 0; color: #cfddc9; }
+    .shop-qty { display: grid; grid-template-columns: 38px 1fr 38px; gap: 6px; align-items: center; }
+    .shop-qty button { padding: 6px; }
+    .shop-qty output { text-align: center; font-weight: 700; color: #fff; }
+    .shop-detail .shop-confirm { background: #9fd0c1; }
+    .shop-detail .shop-confirm:disabled { opacity: .55; cursor: not-allowed; }
+    .shop-message { color: #f4dc91; min-height: 1.4em; }
+    .bag-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 7px; background: #26372d; font-size: 13px; font-weight: 600; }
+    .bag-row button { width: auto; padding: 5px 12px; background: #9fd0c1; }
+    .bag-row button:disabled { opacity: .5; cursor: not-allowed; }
+    @media (max-width: 640px) { .shop-layout { grid-template-columns: 1fr; } }
+    .touch-pad { display: none; }
+    @media (pointer: coarse), (max-width: 850px) {
+      .touch-pad { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; margin: 0; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none; }
+    }
+    .touch-dpad { display: grid; grid-template-columns: repeat(3, 64px); grid-template-rows: repeat(3, 64px); gap: 6px; }
+    .touch-dpad button, .touch-action { touch-action: none; border: 1px solid #536071; background: #2a3646; color: #f1f4f8; font-size: 22px; border-radius: 14px; padding: 0; }
+    .touch-dpad button:active, .touch-dpad button.pressed, .touch-action:active { background: #e7c66c; color: #10151b; }
+    .touch-action { height: 100%; min-height: 110px; display: grid; place-content: center; gap: 4px; font-size: 13px; }
+    .touch-action strong { font-size: 34px; }
+    #extraSkills { display: grid; gap: 5px; }
+    #extraSkills:empty { display: none; }
+    #skillLearn { width: min(460px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
+    #skillLearn::backdrop { background: #07110dcc; }
+    .learn-content { padding: 18px; display: grid; gap: 8px; }
+    .learn-content h2 { margin: 0; color: #f3dc9a; font-size: 18px; }
+    .learn-content p { margin: 0; color: #c9d8c8; font-size: 13px; line-height: 1.45; }
+    #skillLearnList { display: grid; gap: 6px; }
+    #skillLearnList button { display: grid; gap: 2px; text-align: left; background: #f2deb0; color: #433522; font-size: 13px; }
+    #skillLearnList small { font-weight: 400; color: #6b5838; font-size: 11px; line-height: 1.35; }
+    .learn-skip { background: #354f3c; color: #fff; }
+    #ballList button { padding: 6px 8px; display: flex; justify-content: space-between; gap: 6px; font-size: 12px; background: #f5e5bc; color: #433522; }
+    #teamList { display: grid; gap: 4px; }
+    #teamList button { padding: 5px 7px; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 7px; text-align: left; font-size: 12px; background: #f5e5bc; color: #433522; }
+    #teamList button[aria-current="true"] { outline: 2px solid #4f8d74; }
+    #teamList img { width: 34px; height: 34px; object-fit: contain; image-rendering: pixelated; }
+    #teamList small { display: block; color: #7a6646; font-weight: 400; font-size: 10px; }
+    .team-note { margin: 0; color: #5a4a30; font-size: 11px; line-height: 1.35; }
+    #teamMenu .team-book { padding: 6px; font-size: 12px; background: #b9d5c5; color: #24362d; }
     .battle-controls-hint { color: #bfccc2; font-size: 11px; line-height: 1.4; }
     button { width: 100%; border: 0; border-radius: 7px; padding: 9px 10px; color: #10151b; background: #e7c66c; font: inherit; font-weight: 700; cursor: pointer; }
     button:hover { background: #f2d989; }
@@ -73,31 +140,61 @@
         <canvas id="game" width="480" height="360" aria-label="Bản thử game VQSV Unified"></canvas>
         <div id="battleControls" hidden aria-label="Lệnh chiến đấu">
           <div id="fightMenu" hidden aria-label="Bảng kỹ năng Lôi Miêu">
-            <div class="skill-heading"><span>Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
-            <button id="attackButton" type="button"><span>1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
-            <button id="basicButton" type="button"><span>3 · Vồ nhanh</span><span>Không giới hạn</span></button>
+            <div class="skill-heading"><span id="skillHeading">Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
+            <button id="attackButton" type="button"><span id="skillLabel">1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
+            <div id="extraSkills"></div>
+            <button id="basicButton" type="button"><span id="basicLabel">3 · Vồ nhanh</span><span>Không giới hạn</span></button>
             <button id="guardButton" type="button"><span>2 · Phòng thủ</span><span>Không giới hạn</span></button>
+          </div>
+          <div id="teamMenu" hidden aria-label="Đổi sủng vật">
+            <div class="skill-heading"><span id="teamHeading">Đội hình</span><span>HP</span></div>
+            <div id="teamList"></div>
+            <p id="teamNote" class="team-note"></p>
+            <button id="teamBookButton" type="button" class="team-book">Xem sổ pet</button>
+          </div>
+          <div id="itemMenu" hidden aria-label="Đạo cụ">
+            <div class="skill-heading"><span id="itemHeading">Đạo cụ</span><span>Số lượng</span></div>
+            <div id="itemList"></div>
+            <p id="itemNote" class="team-note"></p>
+          </div>
+          <div id="ballMenu" hidden aria-label="Chọn cầu bắt pet">
+            <div class="skill-heading"><span>Chọn cầu</span><span>Tỉ lệ bắt</span></div>
+            <div id="ballList"></div>
+            <p id="ballNote" class="team-note"></p>
           </div>
           <div class="battle-command-row">
             <button id="fightButton" type="button"><span class="battle-icon">✦</span><span>Chiến đấu</span></button>
             <button id="captureButton" type="button"><span class="battle-icon">◉</span><span>Bắt pet</span></button>
             <button id="itemButton" type="button"><span class="battle-icon">✚</span><span>Đạo cụ</span></button>
             <button id="teamButton" type="button"><span class="battle-icon">◆</span><span>Sủng vật</span></button>
-            <button id="shopButton" type="button" disabled title="Cửa hàng chưa được xây dựng"><span class="battle-icon">▣</span><span>Thương điếm</span></button>
+            <button id="shopButton" type="button" title="Thương điếm (giá gấp đôi trong trận)"><span class="battle-icon">▣</span><span>Thương điếm</span></button>
             <button id="fleeButton" type="button"><span class="battle-icon">➜</span><span>Chạy trốn</span></button>
           </div>
         </div>
+      </div>
+      <div id="touchPad" class="touch-pad" aria-label="Điều khiển cảm ứng">
+        <div class="touch-dpad">
+          <button id="touchUp" type="button" aria-label="Lên" style="grid-area: 1 / 2">▲</button>
+          <button id="touchLeft" type="button" aria-label="Trái" style="grid-area: 2 / 1">◀</button>
+          <button id="touchRight" type="button" aria-label="Phải" style="grid-area: 2 / 3">▶</button>
+          <button id="touchDown" type="button" aria-label="Xuống" style="grid-area: 3 / 2">▼</button>
+        </div>
+        <button id="touchAction" type="button" class="touch-action"><strong>E</strong><span>Nói chuyện · Tương tác</span></button>
       </div>
       <aside>
         <p class="objective"><strong>Mục tiêu</strong><br><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></p>
         <p><strong>Di chuyển</strong><br>WASD hoặc phím mũi tên · giữ phím để đi liên tục</p>
         <p><strong>Tương tác</strong><br>E hoặc Enter khi đứng gần nhân vật/điểm sáng</p>
-        <p><strong>Trong trận</strong><br>1: Điện giật · 2: thủ · 3: Vồ nhanh</p>
+        <p><strong>Trong trận</strong><br>1: kỹ năng hệ · 2: thủ · 3: đòn thường · 4: đổi pet · 5: bắt pet</p>
         <p id="battleHint" class="battle-controls-hint" hidden aria-live="polite"></p>
         <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
         <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
         <p id="saveStatus" aria-live="polite"></p>
+        <p><strong>Ví</strong><br><span id="walletStatus"></span></p>
+        <p><strong>Nguyên liệu tiến hóa</strong><br><span id="stoneStatus"></span></p>
         <p><strong>Sổ pet</strong><br>Nhấn P để xem hình, hệ và hoạt ảnh đã trích</p>
+        <button id="openShop" type="button">Thương điếm · B</button>
+        <button id="openBag" type="button">Túi đồ · I</button>
         <button id="openQuestJournal" type="button">Nhật ký nhiệm vụ · J</button>
         <button id="openWorldAtlas" type="button">Bản đồ thế giới · M</button>
         <button id="openPetBook" type="button">Mở sổ pet</button>
@@ -123,6 +220,30 @@
       <section class="quest-card" style="margin-top:10px"><h3>Thảo dược cho Lôi Miêu · Nhiệm vụ phụ</h3><p id="herbQuestText"></p></section>
     </div>
   </dialog>
+  <dialog id="shopDialog" aria-labelledby="shopTitle">
+    <div class="shop">
+      <header class="shop-header"><div><h2 id="shopTitle">Thương điếm</h2><p id="shopSubtitle"></p></div><button id="closeShop" type="button" aria-label="Đóng cửa hàng">✕</button></header>
+      <p id="shopWallet" class="shop-wallet"></p>
+      <div class="shop-tabs"><button id="shopTabBuy" type="button" aria-pressed="true">Mua</button><button id="shopTabSell" type="button" aria-pressed="false">Bán</button></div>
+      <div class="shop-layout"><div id="shopList" class="shop-list"></div><section id="shopDetail" class="shop-detail" aria-live="polite"></section></div>
+    </div>
+  </dialog>
+  <dialog id="bagDialog" aria-labelledby="bagTitle">
+    <div class="shop">
+      <header class="shop-header"><div><h2 id="bagTitle">Túi đồ</h2><p>Đạo cụ và nguyên liệu Kael đang giữ</p></div><button id="closeBag" type="button" aria-label="Đóng túi đồ">✕</button></header>
+      <p id="bagWallet" class="shop-wallet"></p>
+      <div id="bagList" class="shop-list"></div>
+      <p id="bagNote" class="team-note"></p>
+    </div>
+  </dialog>
+  <dialog id="skillLearn" aria-labelledby="skillLearnTitle">
+    <div class="learn-content">
+      <h2 id="skillLearnTitle">Có thể học tập kỹ năng mới</h2>
+      <p id="skillLearnText"></p>
+      <div id="skillLearnList"></div>
+      <button id="skillLearnSkip" type="button" class="learn-skip">Để sau</button>
+    </div>
+  </dialog>
   <dialog id="petBook" aria-labelledby="petBookTitle">
     <div class="pet-book">
       <header class="pet-book-header"><div><h2 id="petBookTitle">Sổ pet</h2><p>Khám phá pet và hình ảnh từ hai game</p></div><button id="closePetBook" type="button" aria-label="Đóng sổ pet">✕</button></header>
@@ -130,7 +251,7 @@
         <label>Tìm pet<input id="petSearch" type="search" placeholder="Tên, hệ hoặc mã…" autocomplete="off"></label>
         <label>Nguồn<select id="petSource"><option value="all">Cả hai game</option><option value="vqsv6">VQSV6</option><option value="vqsv5">VQSV5</option></select></label>
         <label>Hệ<select id="petElement"><option value="all">Tất cả hệ</option></select></label>
-        <label>Bộ sưu tập<select id="petCollectionFilter"><option value="all">Tất cả pet</option><option value="saved">Pet đã gom</option></select></label>
+        <label>Bộ sưu tập<select id="petCollectionFilter"><option value="all">Tất cả pet</option><option value="saved">Pet đã gom</option><option value="caught">Pet đã bắt</option></select></label>
         <label>Nguyên liệu gốc<select id="petMaterialFilter"><option value="all">Tất cả nguyên liệu</option></select></label>
       </div>
       <p id="petCollectionStatus" class="pet-collection-status" aria-live="polite"></p>
@@ -166,10 +287,805 @@
     const herbQuestText = document.getElementById("herbQuestText");
     const S = 20;
     const STEP_MS = 220;
-    const SKILLS = { spark: { name: "Điện giật", damage: 16, uses: 45 }, basic: { name: "Vồ nhanh", damage: 10 } };
+    // Combat follows the VQSV6 formulas decoded in tools/decode_vqsv6_pet_stats.py
+    // (data/vqsv6_pet_stats.json). Values marked TRIAL are prototype design, not source data.
+    const STATS = window.VQSVBootstrap?.vqsv6Stats;
+    const STAT_BY_ID = new Map((STATS?.pets || []).map(pet => [pet.pet_id, pet]));
+    const QUALITY_PCT = STATS?.rules?.quality_percent || [90, 95, 100, 110, 125];
+    const BEATS = {0: 1, 1: 2, 2: 3, 3: 0, 5: 6, 6: 4, 4: 5};
+    const BATTLE_LEVEL = 5;                 // TRIAL: level of Kael's team in the opening battle
+    const ENEMY = { petId: "vqsv6-db-24", level: 3 };  // TRIAL: placeholder corrupted pet, lowered level for chapter 1
+    const BASIC_POWER = 70;                 // TRIAL: Vồ nhanh / Đòn thường, unlimited uses
+    const GUARD_PCT = 40;                   // TRIAL: damage taken while guarding
+    // ---- VQSV5 pets (tools/decode_vqsv5_pet_stats.py): stats and skills come from data.d. The two games use different
+    // damage formulas, so the unified battle scales a VQSV5 pet to the VQSV6 level curve (TRIAL, see calibration()). ----
+    const STATS5 = window.VQSVBootstrap?.vqsv5Stats;
+    const STAT5_BY_ID = new Map((STATS5?.pets || []).map(pet => [pet.pet_id, pet]));
+    const V5_TIER1_POWER = 15;              // source power of a tier-1 type skill; = 100% in the unified battle (TRIAL)
+    const V5_BASIC_POWER = Math.round((STATS5?.skills?.[STATS5.rules?.basic_skill_id]?.power ?? 8) / V5_TIER1_POWER * 100);
+    function rawStats5(record, level) {
+      const g = record.growth, at = key => g[key][0] + Math.trunc(g[key][1] * level / 10);
+      return { hp: at("hp"), sp: at("sp"), agility: at("agility"), attack: at("attack"), defense: at("defense") };
+    }
+    // Ratio of the average VQSV6 pet to the average VQSV5 pet at a level, per stat (cached).
+    const calibrationCache = new Map();
+    function calibration(level) {
+      if (calibrationCache.has(level)) return calibrationCache.get(level);
+      const mean = (items, pick) => items.reduce((sum, item) => sum + pick(item), 0) / items.length;
+      const six = STATS.pets.map(pet => statsAt(pet, level)), five = STATS5.pets.map(pet => rawStats5(pet, level));
+      const k = { hp: mean(six, x => x.hp) / mean(five, x => x.hp), attack: mean(six, x => x.attack) / mean(five, x => x.attack),
+        defense: mean(six, x => x.defense) / mean(five, x => x.defense), speed: mean(six, x => x.speed) / mean(five, x => x.agility) };
+      calibrationCache.set(level, k);
+      return k;
+    }
+    function unifiedStats5(record, level) {
+      const raw = rawStats5(record, level), k = calibration(level);
+      return { hp: Math.max(1, Math.round(raw.hp * k.hp)), attack: Math.max(1, Math.round(raw.attack * k.attack)),
+        defense: Math.max(0, Math.round(raw.defense * k.defense)), speed: Math.max(1, Math.round(raw.agility * k.speed)) };
+    }
+    // Type skills unlock automatically at levels 7/14/21/28/35 (game ak.a(al)); each is capped by SP / cost uses (TRIAL).
+    function skills5(record, level) {
+      const sp = rawStats5(record, level).sp;
+      return record.skill_slots.filter(slot => slot.level > 0 && slot.level <= level).map(slot => {
+        const skill = STATS5.skills[slot.skill_id], uses = Math.max(1, Math.trunc(sp / Math.max(1, skill.sp_cost)));
+        return { row: null, v5Id: skill.skill_id, name: skill.name, power: Math.round(skill.power / V5_TIER1_POWER * 100), uses, max: uses, description: skill.label, effect: null, noDamage: false };
+      });
+    }
+    function vqsv5Combatant(petId, level) {
+      const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level);
+      return { stats, level, elementId: null, element: record.type, col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
+        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER };
+    }
+    // Wild encounters use petArea.mid rows; which source area feeds which prototype map is a TRIAL choice.
+    const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
+    // Newer regions carry their own `wildAreas` in the map data (see tools/design_wild_maps.py).
+    const areaKeys = mapId => assets.maps?.[mapId]?.wildAreas || WILD_MAP_AREAS[mapId] || [];
+    function wildAreasOf(mapId) { const keys = areaKeys(mapId); return (STATS?.wild_areas || []).filter(area => keys.includes(area.area)); }
+    function wildLevelRange(mapId) {
+      const areas = wildAreasOf(mapId);
+      return areas.length ? [Math.min(...areas.map(area => area.level_range[0])), Math.max(...areas.map(area => area.level_range[1]))] : null;
+    }
+    // Water pets (terrain 2 in petArea.mid) appear while crossing a map's bridge; everything else is land.
+    function terrainAt(x, y) {
+      const bridge = assets.map?.bridge;
+      return bridge && x >= bridge.x && x < bridge.x + bridge.width && y >= bridge.y && y < bridge.y + bridge.height ? 2 : 0;
+    }
+    const ENCOUNTER_CHANCE = 1 / 14;        // TRIAL: per completed step on a wild map
+    const ENCOUNTER_GRACE_STEPS = 6;        // TRIAL: safe steps after any battle
+    const CAPTURE = STATS?.capture;
+    const SHOP = STATS?.shop;
+    const BAG_KEY = "vqsv-unified-bag-v1";
+    const WALLET_KEY = "vqsv-unified-wallet-v1";
+    const BAG_ROWS = 15;                    // db.mid table 4 rows: 0-3 balls, 4-12 consumables, 13 repel, 14 egg item (unused)
+    const STACK_MAX = 99;                   // TRIAL: per-item stack limit
+    // Source new-game gifts: 2000 kim tiền, 2 huy hiệu, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch.
+    // The 2 Cao cấp cầu are a prototype addition (TRIAL).
+    const BAG_START = { 1: 5, 2: 2, 4: 5, 11: 2 };
+    const teamMenu = document.getElementById("teamMenu");
+    const ballMenu = document.getElementById("ballMenu");
+    const itemMenu = document.getElementById("itemMenu");
+    let bag = { ...BAG_START };
+    try {
+      const raw = JSON.parse(localStorage.getItem(BAG_KEY) || "null");
+      if (raw && typeof raw === "object") { bag = {}; for (let row = 0; row < BAG_ROWS; row++) bag[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
+    } catch (_) {}
+    let wallet = { gold: SHOP?.starter_gifts?.gold ?? 2000, badges: SHOP?.starter_gifts?.badges ?? 2, rewarded: {} };
+    try {
+      const raw = JSON.parse(localStorage.getItem(WALLET_KEY) || "null");
+      if (raw && typeof raw === "object") wallet = { gold: Math.max(0, Math.floor(Number(raw.gold) || 0)), badges: Math.max(0, Math.floor(Number(raw.badges) || 0)), rewarded: raw.rewarded && typeof raw.rewarded === "object" ? { ...raw.rewarded } : {} };
+    } catch (_) {}
+    function saveBag() { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch (_) {} }
+    function saveWallet() { try { localStorage.setItem(WALLET_KEY, JSON.stringify(wallet)); } catch (_) {} }
+    let repelSteps = 0;                     // Tị quái hàn: steps left without wild encounters (session only)
+    function walletText() { return `Kim tiền ${wallet.gold} · Huy hiệu ${wallet.badges}${repelSteps > 0 ? ` · Tị quái hàn còn ${repelSteps} bước` : ""}`; }
+    function updateWallet() {
+      for (const id of ["walletStatus", "shopWallet", "bagWallet"]) { const el = document.getElementById(id); if (el) el.textContent = walletText(); }
+    }
+    function addGold(amount) { wallet.gold += amount; saveWallet(); updateWallet(); }
+    // TRIAL rewards: the source game gives gold from quests and map coins, never from battles.
+    function goldReward(level) { return 15 * level + Math.floor(Math.random() * (5 * level + 1)); }
+    function grantOnce(key, apply) {
+      if (wallet.rewarded[key]) return false;
+      wallet.rewarded[key] = true; apply(); saveWallet(); saveBag(); updateWallet();
+      return true;
+    }
+    let wildSteps = 0;
+    // Experience follows game/i.java A() and game/a.java h(); progress is kept per pet in this browser.
+    const EXP = STATS?.experience;
+    const PROGRESS_KEY = "vqsv-unified-pet-progress-v1";
+    // Unified-game design decision: level cap 70. The VQSV6 source caps at 50 (EXP.level_cap);
+    // levels 51-70 extend the same decoded exp curve and stat growth formulas.
+    const LEVEL_CAP = 70;
+    function expToReach(level) { return 15 * level * level - 200; }
+    let progress = {};
+    try { const raw = JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}"); if (raw && typeof raw === "object") progress = raw; } catch (_) {}
+    function saveProgress() { try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (_) {} }
+    function progressOf(key, fallbackLevel) {
+      const entry = progress[key];
+      return entry && Number.isInteger(entry.level) && entry.level >= 1 && entry.level <= LEVEL_CAP && Number.isInteger(entry.exp) && entry.exp >= 0 ? entry : { level: fallbackLevel, exp: 0 };
+    }
+    function expReward(enemy, participantCount, participantLevel) {
+      const base = Math.trunc((2 * enemy.level * enemy.level + 50) * EXP.reward_quality_factor[enemy.quality - 1] / 10) + 400;
+      const diff = participantLevel - enemy.level;
+      const factor = EXP.level_factor[diff >= 6 ? 6 : diff > 0 ? diff : diff === 0 ? 1 : 0];
+      return Math.trunc(Math.trunc(base / participantCount) * EXP.participant_bonus[participantCount - 1] * factor / 1000);
+    }
+    // ---- Evolution (game/k.java bp(), game/i.java K()/u[]): needs the target's level gate and a material item. ----
+    const ROSTER = new Map((window.VQSVBootstrap?.petRoster?.records || []).map(record => [record.pet_id, record]));
+    const STONE_INFO = STATS?.evolution_rules?.materials || {};
+    // Held items ("vật phẩm mang theo"): db.mid table 3 rows 0-11. A pet holds one; the row is stored in its progress entry.
+    const RELIC_INFO = new Map((SHOP?.relics || []).map(relic => [relic.row, relic]));
+    const RELIC = row => RELIC_INFO.get(row);
+    const validItem = row => (Number.isInteger(row) && RELIC_INFO.has(row) ? row : null);
+    const TABLE3_ROWS = 17;
+    const STONES_KEY = "vqsv-unified-stones-v1";
+    const STONE_START = { 12: 2, 15: 1 };   // TRIAL: starter stones so evolution can be tried; the source game's material sources are unknown
+    // TRIAL drop table (chance %, minimum wild level) for wins and catches against wild pets.
+    const STONE_DROPS = [{ row: 12, chance: 25, minLevel: 1 }, { row: 15, chance: 12, minLevel: 1 }, { row: 13, chance: 10, minLevel: 25 }, { row: 16, chance: 4, minLevel: 30 }, { row: 14, chance: 5, minLevel: 40 }];
+    const LEAD_DEFAULT_FORM = "vqsv6-db-78";
+    let stones = { ...STONE_START };
+    try {
+      const raw = JSON.parse(localStorage.getItem(STONES_KEY) || "null");
+      if (raw && typeof raw === "object") { stones = {}; for (let row = 0; row < TABLE3_ROWS; row++) stones[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
+    } catch (_) {}
+    function saveStones() { try { localStorage.setItem(STONES_KEY, JSON.stringify(stones)); } catch (_) {} }
+    // VQSV5 evolution materials (items 16-30 and the mutation item 34 of vqsv5.jar), counted by source item id.
+    const ITEMS5 = new Map((STATS5?.items || []).map(item => [item.item_id, item]));
+    const MATS5_KEY = "vqsv-unified-mats5-v1";
+    const RANK_GATES5 = STATS5?.evolution_rules?.level_gate_by_rank || {};
+    const MUTATION_ITEM5 = STATS5?.evolution_rules?.mutation_item_id;
+    // TRIAL drops: the source game does not say where materials 26-30 and 34 come from (they are not sold).
+    const MAT5_DROPS = [{ id: 34, chance: 4, minLevel: 15 }, ...[26, 27, 28, 29, 30].map(id => ({ id, chance: 5, minLevel: 25 }))];
+    let mats5 = {};
+    for (const id of ITEMS5.keys()) mats5[id] = 0;
+    try {
+      const raw = JSON.parse(localStorage.getItem(MATS5_KEY) || "null");
+      if (raw && typeof raw === "object") for (const id of ITEMS5.keys()) mats5[id] = Math.max(0, Math.floor(Number(raw[id]) || 0));
+    } catch (_) {}
+    function saveMats5() { try { localStorage.setItem(MATS5_KEY, JSON.stringify(mats5)); } catch (_) {} }
+    function stoneText() {
+      const parts = Object.keys(STONE_INFO).filter(row => stones[row] > 0).map(row => `${STONE_INFO[row].name} ×${stones[row]}`);
+      for (const [id, item] of ITEMS5) if (mats5[id] > 0) parts.push(`${item.name} ×${mats5[id]}`);
+      return parts.length ? parts.join(", ") : "Chưa có";
+    }
+    function updateStones() { const el = document.getElementById("stoneStatus"); if (el) el.textContent = stoneText(); }
+    function rollStoneDrops(enemyLevel) {
+      const got = [];
+      for (const drop of STONE_DROPS) {
+        if (enemyLevel >= drop.minLevel && Math.random() * 100 < drop.chance) { stones[drop.row] = (stones[drop.row] || 0) + 1; got.push(STONE_INFO[drop.row].name); }
+      }
+      for (const drop of MAT5_DROPS) {
+        if (ITEMS5.has(drop.id) && enemyLevel >= drop.minLevel && Math.random() * 100 < drop.chance) { mats5[drop.id] = Math.min(STACK_MAX, (mats5[drop.id] || 0) + 1); got.push(ITEMS5.get(drop.id).name); }
+      }
+      if (got.length) { saveStones(); saveMats5(); updateStones(); }
+      return got;
+    }
+    function leadForm() { const form = progress["loi-mieu"]?.form; return STAT_BY_ID.has(form) ? form : LEAD_DEFAULT_FORM; }
+    function evolutionKind(targetId) { return ROSTER.get(targetId)?.raw_fields?.[2] === 3 ? "dị hóa" : "tiến hóa"; }
+    function individualsOf(speciesId) {
+      const list = [];
+      if (leadForm() === speciesId) list.push({ key: "loi-mieu", label: "Lôi Miêu (pet của Kael)" });
+      if (progress[speciesId] || (window.VQSVPetTeam?.ids?.() || []).includes(speciesId)) list.push({ key: speciesId, label: STAT_BY_ID.get(speciesId)?.name || STAT5_BY_ID.get(speciesId)?.name || speciesId });
+      return list;
+    }
+    // ---- VQSV5 evolution (ak.E(), ak.d(int), ak.b(byte,byte)): level gate by rank, listed materials (consumed), a per-pet counter,
+    // and a mutation that replaces the normal evolution when one "Dị hoá tài liệu" is spent as well. ----
+    const evolutionCounter5 = (entry, record) => (Number.isInteger(entry.evoLeft) ? entry.evoLeft : record.evolution_points);
+    function evolutionCheck5(key, speciesId, mode = "evolution") {
+      const record = STAT5_BY_ID.get(speciesId), evo = record?.evolution;
+      if (!evo) return { ok: false, v5: true, reason: "Đã là dạng cuối: không có dạng tiếp theo trong dữ liệu nguồn." };
+      const best = window.VQSVPetTeam?.caughtBest?.(speciesId);
+      const entry = progressOf(key, best ? best.level : BATTLE_LEVEL);
+      const targetId = mode === "mutation" ? evo.mutation_target_pet_id : evo.target_pet_id;
+      if (!targetId) return { ok: false, v5: true, reason: "Pet này không có dạng dị hóa." };
+      const target = STAT5_BY_ID.get(targetId), gate = RANK_GATES5[record.rank] || 0, left = evolutionCounter5(entry, record);
+      const reasons = [];
+      if (gate && entry.level < gate) reasons.push(`cần cấp ${gate} (đang cấp ${entry.level})`);
+      if (!(left > 0)) reasons.push("đã hết lượt tiến hóa");
+      for (const material of evo.materials) { const have = mats5[material.item_id] || 0; if (have < material.quantity) reasons.push(`thiếu ${material.name} (${have}/${material.quantity})`); }
+      if (mode === "mutation" && !(mats5[MUTATION_ITEM5] > 0)) reasons.push(`thiếu ${ITEMS5.get(MUTATION_ITEM5)?.name || "vật liệu dị hóa"} (0/1)`);
+      if (progress[targetId] || (window.VQSVPetTeam?.ids?.() || []).includes(targetId)) reasons.push(`đã có ${target.name} (mỗi loài giữ một cá thể trong prototype)`);
+      if (state.mode === "battle") reasons.push("không thể trong trận");
+      return { ok: !reasons.length, v5: true, reason: reasons.join(", "), entry, record, evo, target, targetId, left, mode, gate, targetName: target.name };
+    }
+    function evolvePet5(key, speciesId, mode) {
+      const check = evolutionCheck5(key, speciesId, mode);
+      const verb = mode === "mutation" ? "dị hóa" : "tiến hóa";
+      if (!check.ok) return { ok: false, message: `Chưa thể ${verb}: ${check.reason}.` };
+      for (const material of check.evo.materials) mats5[material.item_id] -= material.quantity;
+      if (mode === "mutation") mats5[MUTATION_ITEM5] -= 1;
+      saveMats5(); updateStones();
+      const left = mode === "mutation" ? 0 : check.left - 1;
+      delete progress[speciesId];
+      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left };
+      window.VQSVPetTeam?.replaceSpecies?.(speciesId, check.targetId);
+      saveProgress();
+      const before = unifiedStats5(check.record, check.entry.level), after = unifiedStats5(check.target, check.entry.level);
+      statusEl.textContent = `${check.record.name} đã ${verb} thành ${check.target.name}`;
+      return { ok: true, targetId: check.targetId, before, after, left,
+        message: `${check.record.name} ${verb} thành ${check.target.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}. Còn ${left} lần tiến hóa.` };
+    }
+    function evolutionCheck(key, speciesId) {
+      const evo = ROSTER.get(speciesId)?.evolution;
+      if (!evo) return { ok: false, reason: "Chưa có dạng tiếp theo trong dữ liệu nguồn." };
+      if (!STAT_BY_ID.has(evo.target_pet_id) || !STAT_BY_ID.has(speciesId)) return { ok: false, reason: "Dạng tiếp theo chưa có dữ liệu chiến đấu." };
+      const best = key === "loi-mieu" ? null : window.VQSVPetTeam?.caughtBest?.(speciesId);
+      const entry = progressOf(key, best ? best.level : BATTLE_LEVEL);
+      const row = evo.material.table_row, quantity = evo.material.quantity, have = stones[row] || 0;
+      const targetName = STAT_BY_ID.get(evo.target_pet_id).name;
+      const reasons = [];
+      if (entry.level < evo.minimum_level) reasons.push(`cần cấp ${evo.minimum_level} (đang cấp ${entry.level})`);
+      if (have < quantity) reasons.push(`thiếu ${evo.material.name} (${have}/${quantity})`);
+      if ((key === "loi-mieu" ? (window.VQSVPetTeam?.ids?.() || []).includes(evo.target_pet_id) : false) || progress[evo.target_pet_id]) reasons.push(`đã có ${targetName} (mỗi loài giữ một cá thể trong prototype)`);
+      if (state.mode === "battle") reasons.push("không thể trong trận");
+      return { ok: !reasons.length, reason: reasons.join(", "), entry, evo, row, quantity, have, targetName };
+    }
+    // Moves a pet to its next form: keeps level, exp and skills, full HP, quality = max(current, target default).
+    function evolvePet(key, speciesId, mode = "evolution") {
+      if (STAT5_BY_ID.has(speciesId)) return evolvePet5(key, speciesId, mode);
+      const check = evolutionCheck(key, speciesId);
+      if (!check.ok) return { ok: false, message: `Chưa thể ${evolutionKind(check.evo?.target_pet_id)}: ${check.reason}.` };
+      const currentRecord = STAT_BY_ID.get(speciesId), targetRecord = STAT_BY_ID.get(check.evo.target_pet_id);
+      const currentQuality = check.entry.quality || currentRecord.default_quality;
+      const quality = currentQuality >= targetRecord.default_quality ? currentQuality : targetRecord.default_quality;
+      const carried = { level: check.entry.level, exp: check.entry.exp, quality, skills: validSkillRows(targetRecord, check.entry.skills), ...(validItem(check.entry.item) !== null ? { item: validItem(check.entry.item) } : {}) };
+      stones[check.row] -= check.quantity; saveStones(); updateStones();
+      if (key === "loi-mieu") progress["loi-mieu"] = { ...carried, form: targetRecord.pet_id };
+      else {
+        delete progress[speciesId];
+        progress[targetRecord.pet_id] = carried;
+        window.VQSVPetTeam?.replaceSpecies?.(speciesId, targetRecord.pet_id);
+      }
+      saveProgress();
+      const before = statsAt(currentRecord, carried.level, currentQuality), after = statsAt(targetRecord, carried.level, quality);
+      const name = key === "loi-mieu" ? "Lôi Miêu" : currentRecord.name;
+      const kind = evolutionKind(targetRecord.pet_id);
+      statusEl.textContent = `${name} đã ${kind} thành ${targetRecord.name}`;
+      return { ok: true, targetId: targetRecord.pet_id, before, after, quality,
+        message: `${name} ${kind} thành ${targetRecord.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}.` };
+    }
+    window.VQSVEvolution = {
+      leadForm,
+      stoneText,
+      options(speciesId) {
+        if (STAT5_BY_ID.has(speciesId)) {
+          const record = STAT5_BY_ID.get(speciesId), modes = record.evolution?.mutation_target_pet_id ? ["evolution", "mutation"] : ["evolution"];
+          return individualsOf(speciesId).flatMap(individual => modes.map(mode => {
+            const check = evolutionCheck5(individual.key, speciesId, mode);
+            return { key: individual.key, label: individual.label, level: check.entry?.level ?? individualEntry(individual.key, speciesId).level, ok: check.ok, reason: check.reason,
+              verb: mode === "mutation" ? "Dị hóa" : "Tiến hóa", targetName: check.targetName, mode };
+          }));
+        }
+        return individualsOf(speciesId).map(individual => {
+          const check = evolutionCheck(individual.key, speciesId);
+          return { key: individual.key, label: individual.label, level: check.entry?.level, ok: check.ok, reason: check.reason, verb: check.evo ? (evolutionKind(check.evo.target_pet_id) === "dị hóa" ? "Dị hóa" : "Tiến hóa") : "Tiến hóa", targetName: check.targetName };
+        });
+      },
+      evolve: evolvePet
+    };
+    // ---- Skill management: forget and replace. The source game only ever adds skills (game/i.java g()/H()), so this is a
+    // unified-game design (TRIAL): free, out of battle, a pet keeps at least one skill, and every replacement still has to
+    // be a skill that pet could learn at its level (same element pool, unlock tiers, slot count). ----
+    function individualEntry(key, speciesId) {
+      const best = key === "loi-mieu" ? null : window.VQSVPetTeam?.caughtBest?.(speciesId);
+      return progressOf(key, best ? best.level : BATTLE_LEVEL);
+    }
+    function skillState(key, speciesId) {
+      const record = STAT_BY_ID.get(speciesId);
+      if (!record) return null;
+      const entry = individualEntry(key, speciesId);
+      const known = validSkillRows(record, entry.skills);
+      return { record, entry, known, slots: skillSlots(entry.level), learnable: learnableSkills(record, entry.level, known) };
+    }
+    function storeSkills(key, state_, rows) {
+      progress[key] = { ...state_.entry, skills: rows };
+      saveProgress();
+    }
+    function skillBrief(row) { const skill = STATS.skills[row]; return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, description: skill.description || "" }; }
+    function skillLock() { return state.mode === "battle" ? "không thể đổi kỹ năng trong trận" : ""; }
+    function forgetSkill(key, speciesId, row) {
+      const current = skillState(key, speciesId);
+      if (!current) return { ok: false, message: "Không có dữ liệu kỹ năng." };
+      if (skillLock()) return { ok: false, message: `Chưa thể quên kỹ năng: ${skillLock()}.` };
+      if (!current.known.includes(row)) return { ok: false, message: "Pet không biết kỹ năng này." };
+      if (current.known.length <= 1) return { ok: false, message: "Pet phải giữ lại ít nhất một kỹ năng." };
+      storeSkills(key, current, current.known.filter(known => known !== row));
+      return { ok: true, message: `Đã quên ${STATS.skills[row].name}.` };
+    }
+    // Learns a skill into a free slot, or into the slot of `replaceRow` when every slot is taken.
+    function learnOrReplaceSkill(key, speciesId, row, replaceRow = null) {
+      const current = skillState(key, speciesId);
+      if (!current) return { ok: false, message: "Không có dữ liệu kỹ năng." };
+      if (skillLock()) return { ok: false, message: `Chưa thể học kỹ năng: ${skillLock()}.` };
+      if (!current.learnable.includes(row)) return { ok: false, message: "Pet chưa thể học kỹ năng này ở cấp hiện tại." };
+      const name = STATS.skills[row].name;
+      if (current.known.length < current.slots) {
+        storeSkills(key, current, [...current.known, row]);
+        return { ok: true, message: `Đã học ${name}.` };
+      }
+      if (!current.known.includes(replaceRow)) return { ok: false, message: "Các ô kỹ năng đã đầy: hãy chọn kỹ năng cần thay." };
+      const old = STATS.skills[replaceRow].name;
+      storeSkills(key, current, current.known.map(known => (known === replaceRow ? row : known)));
+      return { ok: true, message: `Đã quên ${old} và học ${name}.` };
+    }
+    window.VQSVSkills = {
+      options(speciesId) {
+        return individualsOf(speciesId).map(individual => {
+          const current = skillState(individual.key, speciesId);
+          if (!current) return null;
+          return { key: individual.key, label: individual.label, level: current.entry.level, slots: current.slots, locked: skillLock(),
+            known: current.known.map(skillBrief), learnable: current.learnable.map(skillBrief), full: current.known.length >= current.slots };
+        }).filter(Boolean);
+      },
+      forget: forgetSkill,
+      learn: learnOrReplaceSkill
+    };
+    // ---- Held items: one per pet, stored in the pet's progress entry; equipping moves the item from the bag to the pet. ----
+    function heldItemOf(key, speciesId) { return validItem(individualEntry(key, speciesId).item); }
+    function equipRelic(key, speciesId, row) {
+      if (state.mode === "battle") return { ok: false, message: "Chưa thể đổi vật phẩm mang theo: không thể trong trận." };
+      const relic = RELIC(row);
+      if (!relic || !STAT_BY_ID.has(speciesId)) return { ok: false, message: "Không có vật phẩm này." };
+      if (!(stones[row] > 0)) return { ok: false, message: `Không còn ${relic.name} trong túi.` };
+      const entry = individualEntry(key, speciesId), old = validItem(entry.item);
+      if (old === row) return { ok: false, message: "Pet đang mang vật phẩm này rồi." };
+      stones[row]--;
+      if (old !== null) stones[old] = (stones[old] || 0) + 1;
+      saveStones(); updateStones();
+      progress[key] = { ...entry, item: row };
+      saveProgress();
+      return { ok: true, message: `Đã đeo ${relic.name}${old !== null ? ` (trả ${RELIC(old).name} về túi)` : ""}.` };
+    }
+    function unequipRelic(key, speciesId) {
+      if (state.mode === "battle") return { ok: false, message: "Chưa thể đổi vật phẩm mang theo: không thể trong trận." };
+      const entry = individualEntry(key, speciesId), old = validItem(entry.item);
+      if (old === null) return { ok: false, message: "Pet không mang vật phẩm nào." };
+      stones[old] = (stones[old] || 0) + 1;
+      saveStones(); updateStones();
+      const { item, ...rest } = entry;
+      progress[key] = rest;
+      saveProgress();
+      return { ok: true, message: `Đã gỡ ${RELIC(old).name}, vật phẩm về túi.` };
+    }
+    window.VQSVItems = {
+      options(speciesId) {
+        return individualsOf(speciesId).map(individual => {
+          const held = heldItemOf(individual.key, speciesId);
+          const brief = row => ({ row, name: RELIC(row).name, description: RELIC(row).description });
+          return { key: individual.key, label: individual.label, locked: state.mode === "battle" ? "không thể đổi trong trận" : "",
+            held: held === null ? null : brief(held),
+            owned: [...RELIC_INFO.keys()].filter(row => (stones[row] || 0) > 0).map(row => ({ ...brief(row), count: stones[row] })) };
+        });
+      },
+      equip: equipRelic,
+      unequip: unequipRelic
+    };
+    // ---- Shop (game/k.java a()/b(), game/j.java b(), game/i.java w()/x()): prices come from db.mid tables 3 and 4. ----
+    const CATALOG = [
+      ...(SHOP?.items || []).filter(item => item.row !== 14).map(item => ({ ...item, id: `item-${item.row}`, store: "bag" })),
+      ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
+      ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
+      // VQSV5 evolution materials sold by the source shop (shop.d, items 16-25, kim tiền only).
+      ...(STATS5?.items || []).filter(item => item.sold).map(item => ({ row: item.item_id, table: "vqsv5", name: `${item.name} (VQSV5)`, description: item.description, price: item.price, currency: 0, id: `mat5-${item.item_id}`, store: "mats5" }))
+    ];
+    const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
+    const itemEntry = row => catalogById.get(`item-${row}`);
+    const countOf = entry => (entry.store === "bag" ? bag[entry.row] : entry.store === "mats5" ? mats5[entry.row] : stones[entry.row]) || 0;
+    function setCount(entry, amount) {
+      if (entry.store === "bag") { bag[entry.row] = amount; saveBag(); }
+      else if (entry.store === "mats5") { mats5[entry.row] = amount; saveMats5(); updateStones(); }
+      else { stones[entry.row] = amount; saveStones(); updateStones(); }
+    }
+    const currencyName = entry => (entry.currency === 0 ? "kim tiền" : "huy hiệu");
+    const balanceOf = entry => (entry.currency === 0 ? wallet.gold : wallet.badges);
+    function adjustBalance(entry, delta) { if (entry.currency === 0) wallet.gold += delta; else wallet.badges += delta; saveWallet(); updateWallet(); }
+    // In battle every price is doubled (game/k.java b(): price << 1).
+    const priceOf = (entry, inBattle) => entry.price * (inBattle ? SHOP.battle_price_multiplier : 1);
+    function buyItem(id, quantity, inBattle = state.mode === "battle") {
+      const entry = catalogById.get(id);
+      quantity = Math.floor(Number(quantity));
+      if (!entry || !(quantity >= 1)) return { ok: false, message: "Không có mặt hàng này." };
+      if (countOf(entry) + quantity > STACK_MAX) return { ok: false, message: `Mỗi loại chỉ giữ tối đa ${STACK_MAX} cái.` };
+      const total = priceOf(entry, inBattle) * quantity;
+      if (balanceOf(entry) < total) return { ok: false, message: `${entry.currency === 0 ? "Kim tiền" : "Huy hiệu"} chưa đủ (cần ${total}, đang có ${balanceOf(entry)}).` };
+      adjustBalance(entry, -total);
+      setCount(entry, countOf(entry) + quantity);
+      return { ok: true, total, message: `Đã mua ${entry.name} × ${quantity} (${total} ${currencyName(entry)}).` };
+    }
+    // Selling (game/k.java aZ()): table 4 items only, for price / 2 in the item's own currency, in the village only.
+    function sellItem(id, quantity) {
+      const entry = catalogById.get(id);
+      quantity = Math.floor(Number(quantity));
+      if (state.mode === "battle") return { ok: false, message: "Chỉ bán được đồ ở làng." };
+      if (!entry || entry.store !== "bag" || !(quantity >= 1)) return { ok: false, message: "Không bán được mặt hàng này." };
+      if (countOf(entry) < quantity) return { ok: false, message: `Chỉ có ${countOf(entry)} ${entry.name}.` };
+      const total = Math.trunc(entry.price * quantity / SHOP.sell_price_divisor);
+      setCount(entry, countOf(entry) - quantity);
+      adjustBalance(entry, total);
+      return { ok: true, total, message: `Đã bán ${entry.name} × ${quantity} (nhận ${total} ${currencyName(entry)}).` };
+    }
+    // ---- Battle items (game/i.java w()/x(): effect types 1 heal, 2 skill uses, 3 both, 4 revive, 5 cleanse). ----
+    const BATTLE_ITEM_TYPES = [1, 2, 3, 4, 5];
+    function battleItems() { return CATALOG.filter(entry => entry.store === "bag" && BATTLE_ITEM_TYPES.includes(entry.effect_type) && (bag[entry.row] || 0) > 0); }
+    const usesMissing = target => (target.skills || []).some(skill => skill.uses < skill.max);
+    function itemTargetProblem(entry, target) {
+      const alive = target.hp > 0;
+      if (entry.effect_type === 4) return alive ? "vẫn còn sức chiến đấu" : "";
+      if (!alive) return "đã kiệt sức";
+      switch (entry.effect_type) {
+        case 1: return target.hp >= target.max ? "đang đầy máu" : "";
+        case 2: return !(target.skills || []).length ? "không có kỹ năng" : usesMissing(target) ? "" : "đã đầy số lần kỹ năng";
+        case 3: return target.hp >= target.max && !usesMissing(target) ? "đã đầy HP và kỹ năng" : "";
+        case 5: return Object.keys(target.debuffs || {}).length ? "" : "không có trạng thái bất lợi";
+      }
+      return "không dùng được";
+    }
+    function restoreUses(target, amount) { for (const skill of target.skills || []) skill.uses = Math.min(skill.max, skill.uses + amount); }
+    function applyItemEffect(entry, target) {
+      const heal = Math.trunc(target.max * entry.p1 / 100) + entry.p2;
+      switch (entry.effect_type) {
+        case 1: { const before = target.hp; target.hp = Math.min(target.max, target.hp + heal); return `${target.name} hồi ${target.hp - before} HP`; }
+        case 2: restoreUses(target, entry.p1); return `${target.name} hồi ${entry.p1} lần mỗi kỹ năng`;
+        case 3: { const before = target.hp; target.hp = Math.min(target.max, target.hp + heal); restoreUses(target, entry.p3); return `${target.name} hồi ${target.hp - before} HP và ${entry.p3} lần mỗi kỹ năng`; }
+        case 4: target.hp = Math.min(target.max, heal); restoreUses(target, entry.p3); return `${target.name} hồi sinh với ${target.hp} HP`;
+        case 5: target.debuffs = {}; return `${target.name} được giải trừ trạng thái bất lợi`;
+      }
+      return "";
+    }
+    function useBattleItem(row, index) {
+      const battle = state.battle;
+      if (state.mode !== "battle" || battle.pendingUntil || battle.mustSwitch) return false;
+      const entry = itemEntry(row), target = battle.team[index];
+      if (!entry || !target || !BATTLE_ITEM_TYPES.includes(entry.effect_type)) return false;
+      if (!(bag[row] > 0)) { battle.message = `Không còn ${entry.name}.`; return false; }
+      if (activePet().debuffs?.[2]) { battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể dùng đạo cụ.`; return false; }
+      const problem = itemTargetProblem(entry, target);
+      if (problem) { battle.message = `${entry.name}: ${target.name} ${problem}.`; return false; }
+      bag[row]--; saveBag();
+      itemMenu.hidden = true;
+      battle.message = `Kael dùng ${entry.name}: ${applyItemEffect(entry, target)}.`;
+      battle.turn++;
+      enemyCounter();
+      if (state.mode === "battle" && !battle.mustSwitch) { endRound(); handleFaint(); }
+      updateGuidance();
+      return true;
+    }
+    // Tị quái hàn (type 10): no wild encounters for p1 steps; usable only outside battle.
+    function useRepel() {
+      const entry = itemEntry(13);
+      if (!entry || state.mode !== "explore" || !(bag[13] > 0)) return false;
+      bag[13]--; saveBag();
+      repelSteps = entry.p1;
+      statusEl.textContent = `Đã dùng ${entry.name}: không gặp pet hoang dã trong ${repelSteps} bước`;
+      updateWallet();
+      return true;
+    }
+    function effectText(entry) {
+      switch (entry.effect_type) {
+        case 1: return `Hồi ${entry.p1}% HP tối đa${entry.p2 ? ` + ${entry.p2}` : ""}.`;
+        case 2: return `Hồi ${entry.p1} lần dùng cho mỗi kỹ năng.`;
+        case 3: return `Hồi ${entry.p1}% HP${entry.p2 ? ` + ${entry.p2}` : ""} và ${entry.p3} lần dùng mỗi kỹ năng.`;
+        case 4: return `Hồi sinh pet kiệt sức với ${entry.p1}% HP${entry.p2 ? ` + ${entry.p2}` : ""} và ${entry.p3} lần dùng mỗi kỹ năng.`;
+        case 5: return "Xóa mọi trạng thái bất lợi.";
+        case 10: return `Không gặp pet hoang dã trong ${entry.p1} bước (dùng trong Túi đồ).`;
+        case 0: return entry.row <= 3 ? `Tỉ lệ bắt cơ bản ${entry.p1 >= 9999 ? "100%" : `${entry.p1}%`}.` : "";
+      }
+      return "";
+    }
+    // Adds experience and returns the levels gained (game/i.java g() + w()).
+    function gainExp(member, amount) {
+      const entry = { ...progressOf(member.progressKey, member.level) };
+      const before = entry.level;
+      if (entry.level >= LEVEL_CAP) return 0;
+      entry.exp += amount;
+      while (entry.level < LEVEL_CAP && entry.exp >= expToReach(entry.level + 1)) { entry.exp -= expToReach(entry.level + 1); entry.level++; }
+      if (entry.level >= LEVEL_CAP) entry.exp = 0;
+      progress[member.progressKey] = { ...progress[member.progressKey], level: entry.level, exp: entry.exp };
+      member.level = entry.level; member.exp = entry.exp;
+      // game/i.java w() -> W(): recompute stats at the new level, refill HP (h()) and skill uses.
+      if (member.v5 && entry.level !== before) {
+        const fresh = vqsv5Combatant(member.petId, entry.level);
+        Object.assign(member, { stats: fresh.stats, max: fresh.max, hp: fresh.max, skills: fresh.skills, skill: fresh.skills[0] });
+      }
+      const record = STAT_BY_ID.get(member.petId);
+      if (record && entry.level !== before) {
+        member.stats = statsAt(record, entry.level, member.quality);
+        member.max = member.hp = member.stats.hp;
+        if (member.skill) member.skill.uses = member.skill.max;
+      }
+      return entry.level - before;
+    }
+    const spriteCache = new Map();
+    function cachedImage(path) {
+      if (!path) return null;
+      if (!spriteCache.has(path)) { const image = new Image(); image.src = path; spriteCache.set(path, image); }
+      return spriteCache.get(path);
+    }
+    function statsAt(record, level, quality = record.default_quality) {
+      const pct = QUALITY_PCT[quality - 1], g = record.growth;
+      return {
+        hp: Math.trunc((g.hp[0] + g.hp[1] * level + g.hp[2]) * pct / 100),
+        attack: Math.trunc((g.attack[0] + g.attack[1] * level + g.attack[2]) * pct / 100),
+        defense: Math.trunc((g.defense[0] + Math.trunc(g.defense[1] * level / 10) + g.defense[2]) * pct / 100),
+        speed: Math.trunc((g.speed[0] + Math.trunc(g.speed[1] * level / 10) + g.speed[2]) * pct / 100)
+      };
+    }
+    function sourceSkill(row) {
+      const skill = STATS.skills[row];
+      const f = skill.raw_fields;
+      return { row, name: skill.name, power: skill.power_percent, uses: skill.max_uses, max: skill.max_uses, description: skill.description,
+        effect: f[6] === 1 ? { kind: "buff", id: f[7], param: f[8] } : f[6] === 2 ? { kind: "debuff", id: f[7], param: f[8] } : null,
+        noDamage: f[9] === 1 || skill.power_percent === 0 };
+    }
+    // Skill learning (game/i.java G()/H()/X(), game/k.java aq()).
+    function skillSlots(level) { return Math.min(5, Math.floor(level / 10) + 1); }
+    function levelTier(level) { let tier = 0; (STATS.rules.level_tiers || [5, 10, 20, 30, 40]).forEach((threshold, i) => { if (level >= threshold) tier = i; }); return tier; }
+    function learnableSkills(record, level, known) {
+      const base = record.element_id * 10;
+      if (level <= 5) return known.includes(base) ? [] : [base];
+      const limit = STATS.skill_curves[record.skill_curve_row][levelTier(level)];
+      const rows = [];
+      for (let row = base; row < base + 10; row++) if (STATS.skills[row].unlock_tier <= limit && !known.includes(row)) rows.push(row);
+      return rows;
+    }
+    function wildSkillRows(record, level) {
+      const known = [record.element_id * 10];
+      if (level <= 5 || levelTier(level) < 1) return known;
+      const pool = learnableSkills(record, level, known);
+      while (known.length < skillSlots(level) && pool.length) known.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+      return known;
+    }
+    function validSkillRows(record, rows) {
+      const base = record.element_id * 10;
+      return Array.isArray(rows) && rows.length && rows.every(row => Number.isInteger(row) && row >= base && row < base + 10) ? [...new Set(rows)].slice(0, 5) : [base];
+    }
+    // A combatant built from a VQSV6 DB record: stats at a level, first element skill (known at level <= 5).
+    function vqsv6Combatant(petId, level, quality, skillRows, item = null) {
+      const record = STAT_BY_ID.get(petId);
+      quality = quality || record.default_quality;
+      const stats = statsAt(record, level, quality);
+      const skills = validSkillRows(record, skillRows).map(sourceSkill);
+      return { stats, level, elementId: record.element_id, element: record.element, col22: record.advantage_flag_col22,
+        skills, skill: skills[0], hp: stats.hp, max: stats.hp, quality, petId, name: record.name, buffs: {}, debuffs: {}, item: validItem(item) };
+    }
+    function buildTeam() {
+      // Lôi Miêu borrows Điện Miêu's record (vqsv6-db-78); the story link is a design choice, not a source alias.
+      const leadProgress = progressOf("loi-mieu", BATTLE_LEVEL);
+      // After an evolution the lead keeps the name Lôi Miêu but uses the evolved record and its source image.
+      const form = leadForm();
+      const evolved = form !== LEAD_DEFAULT_FORM;
+      const formImage = evolved ? window.VQSVPetTeam?.info(form)?.image : null;
+      const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant(form, leadProgress.level, leadProgress.quality, leadProgress.skills, leadProgress.item), portrait: formImage || "assets/pets/electric_cat_candidate.png", image: formImage || undefined, progressKey: "loi-mieu", exp: leadProgress.exp };
+      if (formImage) cachedImage(formImage);
+      lead.name = "Lôi Miêu";
+      lead.subtitle = evolved ? `CẤP ${lead.level} · ${STAT_BY_ID.get(form).name.toUpperCase()}` : `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
+      const reserves = (window.VQSVPetTeam?.ids() || []).filter(id => id !== form).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
+        // Warm the sprite cache so switching in does not flash an empty frame.
+        cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
+        const best = window.VQSVPetTeam.caughtBest?.(info.id);
+        const own = progressOf(info.id, best ? best.level : BATTLE_LEVEL);
+        const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
+          : { ...vqsv5Combatant(info.id, own.level), progressKey: info.id, exp: own.exp };
+        return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
+      });
+      return [lead, ...reserves];
+    }
+    function recordWildCatch(enemy) {
+      // A caught species keeps the stronger of its stored progress and the newly caught individual.
+      const stored = progress[enemy.petId];
+      if (!stored || stored.level < enemy.level || (stored.level === enemy.level && (stored.quality || 0) < enemy.quality)) {
+        progress[enemy.petId] = { level: enemy.level, exp: 0, quality: enemy.quality, ...(enemy.skills ? { skills: enemy.skills.map(skill => skill.row) } : {}) };
+        saveProgress();
+      }
+    }
+    function buildWild(wild) {
+      const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality, wild.skills || wildSkillRows(STAT_BY_ID.get(wild.petId), wild.level));
+      return { ...enemy, image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
+    }
+    function randInt(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
+    function rollWild(mapId, terrain = 0) {
+      const areas = wildAreasOf(mapId);
+      const usable = (area, wanted) => area.pets.filter(pet => pet.terrain === wanted && STAT_BY_ID.has(pet.pet_id));
+      let candidates = terrain === 2 ? areas.filter(area => usable(area, 2).length) : [];
+      if (!candidates.length) { terrain = 0; candidates = areas; }
+      if (!candidates.length) return null;
+      const area = candidates[randInt(0, candidates.length - 1)];
+      const land = usable(area, terrain);
+      if (!land.length) return null;
+      const pick = land[randInt(0, land.length - 1)];
+      return { petId: pick.pet_id, area: area.area, level: randInt(...area.level_range), quality: randInt(...pick.quality_range) };
+    }
+    // game/a.java m(ball): capture chance in percent for the current wild enemy.
+    function captureRate(ballIndex, enemy) {
+      const ball = CAPTURE.balls[ballIndex];
+      if (ballIndex === 0) return 100;
+      let rate = enemy.hp <= enemy.max * 15 / 100 ? 85 : enemy.hp <= enemy.max * 50 / 100 ? 45 : 20;
+      rate = Math.trunc(rate * ball.rate_percent / 100);
+      rate = Math.trunc(rate * CAPTURE.quality_factor_percent[enemy.quality - 1] / 100);
+      const statusIndex = enemy.buffs?.[10] ? 3 : enemy.buffs?.[2] ? 2 : enemy.buffs?.[1] ? 1 : 0;
+      rate = Math.trunc(rate * [10, 11, 12, 12, 12][statusIndex] / 10);
+      const holder = state.battle?.team?.[state.battle.active];
+      if (holder?.item === 11) rate = Math.trunc(rate * (100 + RELIC(11).p1) / 100); // Sủng vật lôi đạt
+      rate = Math.trunc(rate * CAPTURE.col22_factor_permille[enemy.col22] / 1000);
+      if (enemy.level >= 20 && rate >= CAPTURE.level20_cap_by_ball[ballIndex]) rate = CAPTURE.level20_cap_by_ball[ballIndex];
+      return Math.max(1, Math.min(100, rate));
+    }
+    function buildEnemy() {
+      const enemy = vqsv6Combatant(ENEMY.petId, ENEMY.level);
+      return { ...enemy, name: "Sinh vật", subtitle: `TRĂNG HUYẾT · CẤP ${ENEMY.level} · ${enemy.element.toUpperCase()}` };
+    }
+    // game/i.java b(i) + C() + a(i): (atk - def) * power%, crit 5% + speed/2 (x1.5), element x3 / x0.6, +-1 jitter, min 1.
+    function elementMultiplier(attacker, defender) {
+      if (attacker.elementId == null || defender.elementId == null) return 0;
+      const attFlag = attacker.col22 === 2, defFlag = defender.col22 === 2;
+      const allowUp = attFlag || !defFlag, allowDown = defFlag || !attFlag;
+      if (allowUp && BEATS[attacker.elementId] === defender.elementId) return 1;
+      if (allowDown && BEATS[defender.elementId] === attacker.elementId) return -1;
+      return 0;
+    }
+    // ---- Status effects (tables 6/7 of db.mid; game/i.java a(byte,int,int), b(i), q(int)). ----
+    const EFFECTS = STATS?.status_effects;
+    const BUFF = id => EFFECTS.buffs[id];
+    const DEBUFF = id => EFFECTS.debuffs[id];
+    const pct = (value, percent) => Math.trunc(value * percent / 100);
+    // Stats after buffs/debuffs; the source keeps base stats in d[] and adjusted ones in e[].
+    function effStats(c) {
+      const s = c.stats, b = c.buffs || {}, d = c.debuffs || {};
+      let attack = s.attack, defense = s.defense, speed = s.speed;
+      if (b[10]) attack += pct(s.attack, b[10].value);
+      // Held items (game/i.java C()/a(byte)): 0 attack +100% at HP <= 30%, 1 attack +10%, 2 defense +15%.
+      if (c.item === 1) attack += pct(s.attack, RELIC(1).p1);
+      if (c.item === 0 && c.hp <= pct(c.max, RELIC(0).p1)) attack += pct(s.attack, RELIC(0).p2);
+      if (c.item === 2) defense += pct(s.defense, RELIC(2).p1);
+      if (b[0]) defense += pct(s.defense, BUFF(0).param_a);
+      if (b[1]) defense -= pct(s.defense, BUFF(1).param_a);
+      if (b[2]) defense += pct(s.defense, BUFF(2).param_a);
+      if (b[4]) defense += pct(s.defense, b[4].value);
+      if (b[7]) speed += pct(s.speed, b[7].value);
+      if (b[9]) { speed += pct(s.speed, BUFF(9).param_a); defense -= pct(s.defense, BUFF(9).param_b); }
+      if (d[5]) speed -= pct(s.speed, d[5].value);
+      if (d[7]) defense -= pct(s.defense, d[7].value);
+      return { attack, defense: Math.max(0, defense), speed: Math.max(0, speed) };
+    }
+    function statusCount(map) { return Object.keys(map).length; }
+    function applyBuff(c, id, param) {
+      if (!c.buffs[id] && statusCount(c.buffs) >= EFFECTS.max_per_side) return "";
+      const entry = { turns: BUFF(id).duration, value: param > 0 ? param : BUFF(id).param_a };
+      if (id === 0) entry.bonus = true; // Súc Lực: next damaging hit adds param_b% of the base damage
+      if (id === 11) { // Thâu Thủ: take every buff the opponent has
+        const foe = c === state.battle.enemy ? activePet() : state.battle.enemy;
+        for (const [key, value] of Object.entries(foe.buffs)) if (statusCount(c.buffs) < EFFECTS.max_per_side || c.buffs[key]) c.buffs[key] = value;
+        foe.buffs = {};
+        return ` ${c.name} cướp trạng thái có lợi của đối thủ!`;
+      }
+      if (id === 13 || id === 14) c.debuffs = {};
+      if (id === 13) { const heal = pct(c.max, BUFF(13).param_a); c.hp = Math.min(c.max, c.hp + heal); }
+      c.buffs[id] = entry;
+      return ` ${c.name} được ${BUFF(id).name}.`;
+    }
+    function applyDebuff(target, id, param, baseDamage, skillRow) {
+      if (target.hp <= 0 || target.buffs?.[14]) return "";
+      if (!target.debuffs[id] && statusCount(target.debuffs) >= EFFECTS.max_per_side) return "";
+      const entry = { turns: DEBUFF(id).duration, skillRow, param };
+      if (id === 0 || id === 3) entry.value = baseDamage;
+      else entry.value = param;
+      target.debuffs[id] = entry;
+      return ` ${target.name} bị ${DEBUFF(id).name}.`;
+    }
+    function rollDamage(attacker, defender, power) {
+      const a = effStats(attacker), d = effStats(defender);
+      let damage = a.attack - d.defense;
+      const crit = Math.random() * 100 < 5 + a.speed / 2 + (attacker.item === 4 ? RELIC(4).p1 : 0);
+      if (crit) damage = Math.trunc(damage * 3 / 2);
+      const base = damage;
+      damage = Math.trunc(damage * power / 100);
+      if (attacker.buffs?.[0]?.bonus && power > 0) { damage += pct(Math.max(0, base), BUFF(0).param_b); delete attacker.buffs[0]; }
+      if (attacker.buffs?.[1]) damage += pct(damage, BUFF(1).param_b);
+      if (attacker.buffs?.[8]) damage += pct(damage, BUFF(8).param_a);
+      if (attacker.debuffs?.[6]) damage -= pct(damage, attacker.debuffs[6].value);
+      const effect = elementMultiplier(attacker, defender);
+      if (effect > 0) damage *= 3; else if (effect < 0) damage = Math.trunc(damage * 60 / 100);
+      if (damage <= 0) damage = 1;
+      else if (Math.trunc(damage * 2 / 100) <= 0) damage += Math.random() < .5 ? 1 : -1;
+      return { damage: Math.max(1, damage), crit, effect, base: Math.max(1, base) };
+    }
+    // One actor's move: skip checks, damage, reflection and the skill's status effect.
+    // TRIAL (no dedicated handler found in the decompiled code): Mê Muội skips the turn,
+    // Tê Liệt skips 50% of turns, Mục makes attacks miss param x 10%, Quỷ Mị reflects param% of attacks.
+    // Ô Nha Uế (held item 3): debuffs on the holder land with chance x (100 - 20) / 100. The source formula multiplies the
+    // "always" marker -1 by that factor, which would block always-on debuffs; the prototype treats "always" as 100%.
+    function debuffLands(target, chance) {
+      if (target.item === 3) return Math.random() * 100 < (chance === -1 ? 100 : chance) * (100 - RELIC(3).p1) / 100;
+      return chance === -1 || Math.random() * 100 <= chance;
+    }
+    function performMove(actor, target, skill, label) {
+      const debuffs = actor.debuffs || {};
+      if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
+      if (debuffs[10] && Math.random() < .5) return `${label} bị ${DEBUFF(10).name}, chậm mất lượt.`;
+      if (skill.uses != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
+      if (skill.uses < 0) skill.uses = 0;
+      let text = `${label} dùng ${skill.name}`;
+      if (!skill.noDamage) {
+        // game/a.java: miss% = clamp(2 * (target level - attacker level), 0, 20); Mục lowers the attacker's level by its
+        // parameter and the held item Cá Thờn Bơn (9) removes the miss chance.
+        const missPct = actor.item === 9 ? 0 : Math.max(0, Math.min(20, 2 * (target.level - (actor.level - (debuffs[4] ? debuffs[4].value : 0)))));
+        if (missPct > 0 && Math.random() * 100 < missPct) return `${text} nhưng đánh trượt.`;
+        const hits = actor.buffs?.[12] ? 2 : 1;
+        const parts = [];
+        let last = null;
+        for (let i = 0; i < hits && target.hp > 0; i++) {
+          const result = rollDamage(actor, target, skill.power);
+          last = result;
+          let dealt = result.damage;
+          if (target === activePet() && state.battle.guard) dealt = Math.max(1, pct(dealt, GUARD_PCT));
+          if (target.buffs?.[6] && Math.random() * 100 < BUFF(6).param_a) dealt = Math.max(1, Math.trunc(dealt / 2));
+          if (debuffs[8] && Math.random() * 100 < (debuffs[8].param > 0 ? debuffs[8].param : 40)) {
+            actor.hp = Math.max(0, actor.hp - dealt);
+            parts.push(`bị ${DEBUFF(8).name} dội ngược ${dealt} sát thương`);
+            continue;
+          }
+          if (target.buffs?.[5] && Math.random() * 100 < BUFF(5).param_a) {
+            actor.hp = Math.max(0, actor.hp - dealt);
+            parts.push(`${target.name} ${BUFF(5).name} dội ngược ${dealt}`);
+            continue;
+          }
+          target.hp = Math.max(0, target.hp - dealt);
+          if (actor.item === 10 && target.hp < RELIC(10).p1) target.hp = RELIC(10).p1; // Cảm Lãm Chi Diệp: leave the target at 10 HP
+          if (actor.item === 8 && actor.hp > 0 && Math.random() * 100 <= RELIC(8).p1) {
+            const heal = Math.min(actor.max - actor.hp, pct(dealt, RELIC(8).p2));
+            if (heal > 0) { actor.hp += heal; parts.push(`hút máu +${heal} HP`); }
+          }
+          if (target.buffs?.[2]) { const back = Math.max(1, pct(dealt, BUFF(2).param_b)); actor.hp = Math.max(0, actor.hp - back); }
+          parts.push(hitText({ ...result, damage: dealt }) + (target === activePet() && state.battle.guard ? " (đã thủ)" : ""));
+        }
+        text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
+        if (skill.effect?.kind === "debuff" && last) {
+          const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
+          if (debuffLands(target, chance)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
+        }
+      } else if (skill.effect?.kind === "debuff" && debuffLands(target, -1)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
+      if (skill.effect?.kind === "buff") text += (text.endsWith(".") ? "" : ".") + applyBuff(actor, skill.effect.id, skill.effect.param).trimEnd();
+      return text.endsWith(".") || text.endsWith("!") ? text : `${text}!`;
+    }
+    // End of a round: damage over time, regeneration, then durations count down (game/i.java q(), c(), d()).
+    function tickStatuses(c, label) {
+      const notes = [];
+      if (c.hp <= 0) return notes;
+      const d = c.debuffs, b = c.buffs;
+      if (d[0]) { const loss = Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
+      if (d[3] && d[3].turns <= 1) { const loss = Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8])); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
+      if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
+      if (b[13] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(13).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
+      for (const map of [d, b]) for (const key of Object.keys(map)) if (--map[key].turns <= 0) delete map[key];
+      return notes;
+    }
+    function endRound() {
+      const battle = state.battle;
+      const notes = [...tickStatuses(activePet(), activePet().name), ...tickStatuses(battle.enemy, battle.wild ? battle.enemy.name : "Sinh vật")];
+      if (notes.length) battle.message += ` ${notes.join(". ")}.`;
+    }
+    function statusLabels(c) {
+      return [...Object.entries(c.buffs || {}).map(([id, v]) => `▲${BUFF(id).name} ${v.turns}`), ...Object.entries(c.debuffs || {}).map(([id, v]) => `▼${DEBUFF(id).name} ${v.turns}`)];
+    }
+    function drawStatuses(c, x, y) {
+      const labels = statusLabels(c);
+      ctx.font = "bold 8px system-ui";
+      let cx = x;
+      for (const label of labels) {
+        const w = ctx.measureText(label).width + 8;
+        ctx.fillStyle = label.startsWith("▲") ? "#2f6b55e6" : "#7a3434e6";
+        roundRect(cx, y, w, 12, 3, true);
+        ctx.fillStyle = "#f6f1df"; ctx.fillText(label, cx + 4, y + 9);
+        cx += w + 3;
+      }
+    }
+    function hitText(result) {
+      return `${result.damage} sát thương${result.crit ? " (chí mạng)" : ""}${result.effect > 0 ? " · khắc hệ ×3" : result.effect < 0 ? " · bị khắc hệ ×0,6" : ""}`;
+    }
+    function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle() { return { heroHp: 60, enemyHp: 48, turn: 0, guard: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, sparkUses: SKILLS.spark.uses, potions: 2, message: "Một sinh vật lạ chặn lối đi." }; }
+    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -212,6 +1128,8 @@
       await Promise.all(jobs);
       state.mode = "explore";
       statusEl.textContent = "Đang khám phá · Làng biên giới";
+      updateStones();
+      updateWallet();
       updateGuidance();
       requestAnimationFrame(loop);
     }
@@ -219,13 +1137,32 @@
     function updateGuidance() {
       battleControls.hidden = state.mode !== "battle";
       battleHint.hidden = state.mode !== "battle";
-      if (state.mode !== "battle") fightMenu.hidden = true;
-      document.getElementById("sparkUses").textContent = `${state.battle.sparkUses} / ${SKILLS.spark.uses}`;
-      document.getElementById("attackButton").disabled = state.battle.sparkUses <= 0 || !!state.battle.pendingUntil;
-      document.getElementById("basicButton").disabled = !!state.battle.pendingUntil;
-      document.getElementById("guardButton").disabled = !!state.battle.pendingUntil;
-      if (state.mode === "battle") battleHint.textContent = `Thuốc thử: ${state.battle.potions} · Bắt pet và cửa hàng đang phát triển.`;
-      if (state.mode === "battle") objectiveEl.textContent = "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
+      if (state.mode !== "battle") { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; }
+      const pet = activePet();
+      const isLead = pet.kind === "lead";
+      const busy = !!state.battle.pendingUntil || state.battle.mustSwitch;
+      document.getElementById("skillHeading").textContent = `Kỹ năng · ${pet.name}`;
+      document.getElementById("attackButton").hidden = !pet.skill;
+      if (pet.skill) {
+        document.getElementById("skillLabel").textContent = `1 · ${pet.skill.name}`;
+        document.getElementById("sparkUses").textContent = `${pet.skill.uses} / ${pet.skill.max}`;
+      }
+      document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}`;
+      document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || (pet.skill.noDamage && !pet.skill.effect) || busy;
+      renderExtraSkills(pet, busy);
+      document.getElementById("basicButton").disabled = busy;
+      document.getElementById("guardButton").disabled = busy;
+      for (const id of ["fightButton", "itemButton", "captureButton"]) document.getElementById(id).disabled = state.mode === "battle" && state.battle.mustSwitch;
+      if (!teamMenu.hidden) renderTeamMenu();
+      if (!ballMenu.hidden) renderBallMenu();
+      if (!itemMenu.hidden) renderItemMenu();
+      if (state.mode === "battle") battleHint.textContent = `Kim tiền ${wallet.gold} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0} · Đạo cụ hồi phục: ${battleItems().reduce((sum, entry) => sum + bag[entry.row], 0)}`;
+      updateWallet();
+      if (state.mode === "battle") objectiveEl.textContent = state.battle.mustSwitch ? `${pet.name} kiệt sức. Chọn pet khác trong Sủng vật.` : state.battle.wild ? "Đánh yếu pet hoang dã rồi chọn Bắt pet: HP càng thấp càng dễ bắt." : "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
+      else if (areaKeys(assets.map.id).length && state.mode === "explore") {
+        const range = wildLevelRange(assets.map.id);
+        objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.`;
+      }
       else if (state.mode === "ending") objectiveEl.textContent = "La bàn đã thức tỉnh. Anh có thể chơi lại từ đầu.";
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
       else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
@@ -300,6 +1237,8 @@
       mist.addColorStop(1, "#cfe7f21c");
       ctx.fillStyle = mist;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Regions beyond the forest carry a colour tint so they read as different places with the shared tiles.
+      if (m.tint) { ctx.fillStyle = m.tint; ctx.fillRect(0, 0, canvas.width, canvas.height); }
     }
     function drawForeground(depthY) {
       for (const obj of [...assets.map.objects].sort((a, b) => a.y - b.y || a.x - b.x)) {
@@ -485,14 +1424,17 @@
       ctx.textAlign = "right"; ctx.fillText(`${hp} / ${max}`, x + 181, y + 46); ctx.textAlign = "left";
     }
     function battleMessage(text) {
-      ctx.font = "12px system-ui";
-      const words = text.split(" "); let line = ""; let y = 279;
-      for (const word of words) {
-        const next = line ? `${line} ${word}` : word;
-        if (ctx.measureText(next).width > 430 && line) { ctx.fillText(line, 25, y); line = word; y += 16; }
-        else line = next;
+      // Long status-heavy rounds fall back to a smaller font so three lines fit the box.
+      for (const [size, gap, top] of [[12, 16, 279], [10, 12, 274], [9, 10, 272]]) {
+        ctx.font = `${size}px system-ui`;
+        const lines = []; let line = "";
+        for (const word of text.split(" ")) {
+          const next = line ? `${line} ${word}` : word;
+          if (ctx.measureText(next).width > 430 && line) { lines.push(line); line = word; } else line = next;
+        }
+        if (line) lines.push(line);
+        if (lines.length * gap <= 34 || size === 9) { lines.slice(0, 4).forEach((l, i) => ctx.fillText(l, 25, top + i * gap)); return; }
       }
-      if (line) ctx.fillText(line, 25, y);
     }
     function drawBattle() {
       const now = performance.now();
@@ -509,7 +1451,7 @@
       ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(330, 247, 117, 30, 0, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "#102528e8"; roundRect(207, 12, 66, 25, 6, true);
       ctx.textAlign = "center"; ctx.font = "bold 10px system-ui"; ctx.fillStyle = "#eadba6"; ctx.fillText(`LƯỢT ${state.battle.turn + 1}`, 240, 29); ctx.textAlign = "left";
-      battlePanel(12, 12, "SỦNG VẬT THA HÓA", "ĐỐI THỦ · TRĂNG HUYẾT", state.battle.enemyHp, 48, "#dc8e7f");
+      battlePanel(12, 12, state.battle.wild ? state.battle.enemy.name.toUpperCase() : "SỦNG VẬT THA HÓA", state.battle.enemy.subtitle, state.battle.enemy.hp, state.battle.enemy.max, "#dc8e7f");
       const heroAttack = now - state.battle.attackAt;
       const enemyAttack = now - state.battle.enemyAt;
       const guard = now - state.battle.guardAt;
@@ -518,8 +1460,13 @@
       const enemyShake = heroAttack >= 0 && heroAttack < 240 ? Math.sin(heroAttack / 28) * (1 - heroAttack / 240) * 5 : 0;
       const idleEnemy = Math.sin(now / 210) * 2;
       const idleHero = Math.sin(now / 180 + 1) * 2;
-      ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96);
-      ctx.drawImage(assets.pets.hero, 304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94);
+      const sinceCapture = now - state.battle.captureAt;
+      const capturing = sinceCapture >= 0 && sinceCapture < 1400;
+      const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : state.battle.rewarded ? .3 : 1;
+      if (state.battle.wild) drawFitted(cachedImage(state.battle.enemy.image), 82 + enemyPulse * 22 + enemyShake, 70 + idleEnemy, 114, 112, enemyAlpha);
+      else { ctx.save(); ctx.globalAlpha = enemyAlpha; ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96); ctx.restore(); }
+      if (capturing) drawCaptureBall(sinceCapture);
+      drawActivePet(304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94, now, heroAttack);
       if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
         let elapsed = heroAttack;
         let chosen = assets.skillEffects[assets.skillEffects.length - 1];
@@ -528,7 +1475,7 @@
         const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
         ctx.drawImage(image, 140 - image.width * scale / 2, 138 - image.height * scale / 2, image.width * scale, image.height * scale);
       }
-      if (attackPulse > 0 && state.battle.skill === "basic") {
+      if (attackPulse > 0 && state.battle.skill && !["spark", "guard"].includes(state.battle.skill)) {
         ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
         for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(128 + i * 12, 114); ctx.lineTo(151 + i * 12, 146); ctx.stroke(); }
         ctx.restore();
@@ -538,10 +1485,249 @@
         ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.ellipse(350, 198, 57, 54, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
       }
-      battlePanel(276, 200, "LÔI MIÊU", "ĐỒNG HÀNH CỦA KAEL", state.battle.heroHp, 60, "#a6dfcf");
+      const pet = activePet();
+      battlePanel(276, 200, pet.name.toUpperCase(), pet.subtitle, pet.hp, pet.max, "#a6dfcf");
+      if (pet.progressKey) {
+        const need = expToReach(pet.level + 1);
+        ctx.fillStyle = "#101d24"; ctx.fillRect(305, 250, 156, 3);
+        ctx.fillStyle = "#e8c45a"; ctx.fillRect(305, 250, pet.level >= LEVEL_CAP ? 156 : Math.max(0, Math.min(156, 156 * pet.exp / need)), 3);
+      }
+      drawTeamPips(278, 192);
+      drawStatuses(pet, 316, 186);
+      drawStatuses(state.battle.enemy, 14, 70);
       ctx.fillStyle = "#e8d8ae"; roundRect(8, 260, 464, 47, 5, true);
       ctx.strokeStyle = "#846b49"; ctx.lineWidth = 2; roundRect(8, 260, 464, 47, 5, false);
       ctx.fillStyle = "#473b29"; battleMessage(state.battle.message);
+    }
+    // Fit a sprite inside the box at an integer scale (pixel art stays crisp), anchored to the bottom.
+    function drawFitted(image, x, y, w, h, alpha = 1) {
+      if (!image?.complete || !image.naturalWidth) return;
+      const scale = Math.max(1, Math.floor(Math.min(w / image.naturalWidth, h / image.naturalHeight))) || Math.min(w / image.naturalWidth, h / image.naturalHeight);
+      const dw = image.naturalWidth * scale, dh = image.naturalHeight * scale;
+      ctx.save(); ctx.globalAlpha = alpha;
+      ctx.drawImage(image, Math.round(x + (w - dw) / 2), Math.round(y + h - dh), dw, dh);
+      ctx.restore();
+    }
+    function sequenceFrame(sequence, elapsed) {
+      const total = sequence.reduce((sum, frame) => sum + Math.max(1, frame.duration_ticks) * 60, 0);
+      let t = elapsed % total;
+      for (const frame of sequence) { const d = Math.max(1, frame.duration_ticks) * 60; if (t < d) return frame; t -= d; }
+      return sequence[sequence.length - 1];
+    }
+    function drawActivePet(x, y, w, h, now, sinceAttack) {
+      const pet = activePet();
+      const switched = now - (state.battle.switchedAt || -10000);
+      const alpha = switched >= 0 && switched < 300 ? switched / 300 : 1;
+      if (pet.kind === "lead" && !pet.image) { ctx.save(); ctx.globalAlpha = alpha; ctx.drawImage(assets.pets.hero, x, y, w, h); ctx.restore(); return; }
+      // Reserve sprites are bottom-anchored, so lift their box clear of the HP panel below.
+      // Box bottom sits at y=184, just above the team pips and HP panel.
+      x -= 14; w += 28; h = 110; y = 184 - h + (y - 151);
+      if (pet.kind === "vqsv6" || pet.image) { drawFitted(cachedImage(pet.image), x, y, w, h, alpha); return; }
+      // VQSV5: loop the first source sequence; play the second one briefly when attacking.
+      // Which source sequence means idle/attack is not verified; this is a presentation choice.
+      const attacking = sinceAttack >= 0 && sinceAttack < 480 && state.battle.skill !== "guard";
+      const sequence = (attacking ? pet.sequences[1] : pet.sequences[0]) || pet.sequences[0] || [];
+      if (!sequence.length) return;
+      drawFitted(cachedImage(sequenceFrame(sequence, attacking ? sinceAttack : now).image), x, y, w, h, alpha);
+    }
+    // A thrown ball arcs from Kael's side, then wobbles on the enemy; it pops open on a failed catch.
+    function drawCaptureBall(t) {
+      const flight = Math.min(1, t / 450);
+      let x = 330 + (139 - 330) * flight, y = 200 + (150 - 200) * flight - Math.sin(flight * Math.PI) * 70;
+      if (t > 450) x += Math.sin((t - 450) / 70) * (state.battle.captured === false && t > 1000 ? 0 : 3);
+      if (state.battle.captured === false && t > 1000) return;
+      ctx.save(); ctx.translate(x, y);
+      ctx.fillStyle = "#e04848"; ctx.beginPath(); ctx.arc(0, 0, 8, Math.PI, 0); ctx.fill();
+      ctx.fillStyle = "#f4f1e8"; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI); ctx.fill();
+      ctx.strokeStyle = "#222"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.moveTo(-8, 0); ctx.lineTo(8, 0); ctx.stroke();
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(0, 0, 2.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    // Skill slots 2-5. Non-damage skills (power 0) need decoded status effects, so they stay disabled.
+    function renderExtraSkills(pet, busy) {
+      const box = document.getElementById("extraSkills");
+      if (!box.replaceChildren) return;
+      box.replaceChildren();
+      (pet.skills || []).slice(1).forEach((skill, i) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? ` · ${skill.power}%` : skill.effect ? " · hiệu ứng" : " · chưa hỗ trợ"}`;
+        const uses = document.createElement("span"); uses.textContent = `${skill.uses} / ${skill.max}`;
+        button.append(name, uses);
+        button.disabled = busy || skill.uses <= 0 || (skill.noDamage && !skill.effect);
+        button.title = skill.description || "";
+        button.addEventListener("click", () => action(false, "skill", i + 1));
+        box.append(button);
+      });
+    }
+    // After a reward, offer new skills to every participant with a free slot (game/k.java aq()).
+    const learnDialog = document.getElementById("skillLearn");
+    let learnQueue = [];
+    function queueSkillLearning(members) {
+      learnQueue = members.filter(member => member.progressKey && STAT_BY_ID.has(member.petId)).map(member => {
+        const known = member.skills.map(skill => skill.row);
+        const options = known.length < skillSlots(member.level) ? learnableSkills(STAT_BY_ID.get(member.petId), member.level, known) : [];
+        return { member, options };
+      }).filter(item => item.options.length);
+      showNextLearn();
+    }
+    function showNextLearn() {
+      if (!learnDialog.showModal) { learnQueue = []; return; }
+      const item = learnQueue[0];
+      if (!item) { if (learnDialog.open) learnDialog.close(); return; }
+      const { member, options } = item;
+      document.getElementById("skillLearnText").textContent = `${member.name} (cấp ${member.level}) có ${member.skills.length}/${skillSlots(member.level)} ô kỹ năng. Chọn một kỹ năng ${member.element} để học:`;
+      const list = document.getElementById("skillLearnList");
+      list.replaceChildren();
+      for (const row of options) {
+        const skill = STATS.skills[row];
+        const button = document.createElement("button");
+        button.type = "button";
+        const title = document.createElement("span");
+        title.textContent = `${skill.name} · ${skill.power_percent ? `sức mạnh ${skill.power_percent}%` : "không gây sát thương"} · ${skill.max_uses} lần`;
+        const desc = document.createElement("small");
+        desc.textContent = `${skill.description || ""}${skill.power_percent ? "" : " (Hiệu ứng chưa có trong prototype.)"}`;
+        button.append(title, desc);
+        button.addEventListener("click", () => learnSkill(member, row));
+        list.append(button);
+      }
+      if (!learnDialog.open) learnDialog.showModal();
+    }
+    function learnSkill(member, row) {
+      if (!member.skills.some(skill => skill.row === row) && member.skills.length < skillSlots(member.level)) {
+        member.skills.push(sourceSkill(row));
+        member.skill = member.skills[0];
+        progress[member.progressKey] = { ...progress[member.progressKey], level: member.level, exp: member.exp, skills: member.skills.map(skill => skill.row) };
+        saveProgress();
+        statusEl.textContent = `${member.name} đã học ${STATS.skills[row].name}`;
+      }
+      learnQueue.shift();
+      showNextLearn();
+    }
+    function skipLearn() { learnQueue.shift(); showNextLearn(); }
+    function renderBallMenu() {
+      const list = document.getElementById("ballList");
+      list.replaceChildren();
+      for (const index of [0, 1, 2, 3].filter(i => i === 1 || i === 2 || bag[i] > 0)) {
+        const ball = CAPTURE.balls[index];
+        const button = document.createElement("button");
+        button.type = "button";
+        const label = document.createElement("span"); label.textContent = `${ball.name} ×${bag[index] || 0}`;
+        const rate = document.createElement("span"); rate.textContent = `${captureRate(index, state.battle.enemy)}%`;
+        button.append(label, rate);
+        button.disabled = !(bag[index] > 0) || !!state.battle.pendingUntil;
+        button.addEventListener("click", () => attemptCapture(index));
+        list.append(button);
+      }
+      document.getElementById("ballNote").textContent = "Tỉ lệ theo công thức VQSV6 gốc: HP ≤15% → 85, ≤50% → 45, còn lại 20; nhân loại cầu và hạng pet. Ném cầu mất một lượt.";
+    }
+    function toggleBallMenu(open = ballMenu.hidden) {
+      if (state.mode !== "battle" || state.battle.mustSwitch || (state.battle.pendingUntil && open)) return;
+      if (!state.battle.wild) { state.battle.message = "Trận chiến này không cho bắt sủng vật"; return; }
+      ballMenu.hidden = !open;
+      if (open) { fightMenu.hidden = true; teamMenu.hidden = true; itemMenu.hidden = true; renderBallMenu(); }
+    }
+    function attemptCapture(ballIndex) {
+      const battle = state.battle;
+      if (state.mode !== "battle" || !battle.wild || battle.pendingUntil || battle.mustSwitch || !(bag[ballIndex] > 0)) return;
+      const rate = captureRate(ballIndex, battle.enemy);
+      bag[ballIndex]--; saveBag();
+      ballMenu.hidden = true;
+      const now = performance.now();
+      battle.captureAt = now; battle.enemyActed = false; battle.skill = null;
+      battle.captured = Math.random() * 100 < rate;
+      const ball = CAPTURE.balls[ballIndex].name;
+      battle.message = battle.captured ? `Kael ném ${ball}… Bắt thành công ${battle.enemy.name}!` : `Kael ném ${ball}… ${battle.enemy.name} thoát ra! (tỉ lệ ${rate}%)`;
+      battle.pendingUntil = now + (battle.captured ? 1500 : 1150);
+      updateGuidance();
+    }
+    function finishWild(result) {
+      const enemy = state.battle.enemy;
+      let text = "";
+      if (result === "caught") {
+        recordWildCatch(enemy);
+        const { addedToTeam } = window.VQSVPetTeam.recordCatch(enemy.petId, enemy.level, enemy.quality);
+        text = `Đã bắt ${enemy.name} (cấp ${enemy.level}, hạng ${enemy.quality})${addedToTeam ? " · đã vào đội" : " · xem trong sổ pet"}`;
+      } else if (result === "win") text = `Đã đánh bại ${enemy.name} hoang dã`;
+      else if (result === "lose") text = "Đội kiệt sức · Kael rút về bìa rừng";
+      else text = "Đã rút lui khỏi pet hoang dã";
+      if (result === "caught" || result === "win") {
+        const found = rollStoneDrops(enemy.level);
+        if (found.length) text += ` · nhặt được ${found.join(", ")}`;
+        const gold = goldReward(enemy.level);
+        addGold(gold);
+        text += ` · +${gold} kim tiền`;
+      }
+      state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
+      statusEl.textContent = text;
+      updateGuidance();
+    }
+    function maybeEncounter() {
+      if (state.mode !== "explore" || !state.spokeToElder || !areaKeys(assets.map.id).length) return;
+      if (repelSteps > 0) { if (--repelSteps === 0) { statusEl.textContent = "Tị quái hàn đã hết tác dụng"; } updateWallet(); return; }
+      if (++wildSteps <= ENCOUNTER_GRACE_STEPS || Math.random() >= ENCOUNTER_CHANCE) return;
+      startWildBattle(rollWild(assets.map.id, terrainAt(state.player.x, state.player.y)));
+    }
+    function startWildBattle(wild = rollWild(assets.map.id)) {
+      if (!wild) return;
+      const player = state.player;
+      player.inputDir = null; player.step = null; player.visualX = player.x; player.visualY = player.y;
+      state.battle = newBattle(wild); state.mode = "battle";
+      statusEl.textContent = `Chạm trán · ${state.battle.enemy.name} hoang dã`;
+      updateGuidance();
+    }
+    function drawTeamPips(x, y) {
+      const team = state.battle.team;
+      if (team.length < 2) return;
+      team.forEach((pet, index) => {
+        ctx.fillStyle = pet.hp <= 0 ? "#6b5552" : index === state.battle.active ? "#f0d482" : "#a6dfcf";
+        ctx.beginPath(); ctx.arc(x + 6 + index * 12, y, 4, 0, Math.PI * 2); ctx.fill();
+      });
+    }
+    function renderTeamMenu() {
+      const list = document.getElementById("teamList");
+      const battle = state.battle;
+      list.replaceChildren();
+      document.getElementById("teamHeading").textContent = battle.mustSwitch ? "Chọn pet ra trận" : `Đội hình · ${battle.team.length} pet`;
+      battle.team.forEach((pet, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        const image = document.createElement("img"); image.src = pet.portrait; image.alt = "";
+        const label = document.createElement("span"); label.textContent = pet.name;
+        const sub = document.createElement("small");
+        const level = `${pet.skills?.length ? `${pet.skills.length} kỹ năng · ` : ""}Cấp ${pet.level}${pet.progressKey && pet.level < LEVEL_CAP ? ` · KN ${pet.exp}/${expToReach(pet.level + 1)}` : ""}`;
+        sub.textContent = `${pet.item != null ? `${RELIC(pet.item).name} · ` : ""}${index === battle.active ? "Đang chiến đấu" : pet.hp <= 0 ? "Kiệt sức" : (pet.kind === "lead" ? "Pet của Kael" : `${pet.element || "Chưa rõ hệ"} · ${pet.kind.toUpperCase()}`)} · ${level}`;
+        label.append(sub);
+        const hp = document.createElement("span"); hp.textContent = `${pet.hp}/${pet.max}`;
+        button.append(image, label, hp);
+        button.setAttribute("aria-current", String(index === battle.active));
+        button.disabled = index === battle.active || pet.hp <= 0 || !!battle.pendingUntil;
+        button.addEventListener("click", () => switchPet(index));
+        list.append(button);
+      });
+      document.getElementById("teamNote").textContent = battle.team.length < 2
+        ? "Chưa có pet dự bị. Mở sổ pet, chọn pet rồi bấm “Đưa vào đội” (tối đa 2); áp dụng từ trận sau."
+        : "Đổi pet mất một lượt (trừ khi pet đang ra trận đã kiệt sức). HP pet dự bị là giá trị thử nghiệm.";
+    }
+    function toggleTeamMenu(open = teamMenu.hidden) {
+      if (state.mode !== "battle" || (state.battle.pendingUntil && open)) return;
+      teamMenu.hidden = !open;
+      if (open) { fightMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; renderTeamMenu(); }
+    }
+    function switchPet(index) {
+      const battle = state.battle;
+      if (state.mode !== "battle" || battle.pendingUntil || index === battle.active || !battle.team[index] || battle.team[index].hp <= 0) return;
+      const forced = battle.mustSwitch;
+      const bound = activePet().debuffs?.[2] ? DEBUFF(2) : activePet().debuffs?.[9] ? DEBUFF(9) : null;
+      if (!forced && bound) { battle.message = `${activePet().name} đang bị ${bound.name}, không thể đổi pet.`; teamMenu.hidden = true; updateGuidance(); return; }
+      const previous = activePet();
+      battle.active = index; battle.participants.add(index); battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
+      battle.switchedAt = performance.now(); battle.skill = null;
+      teamMenu.hidden = true;
+      const next = activePet();
+      if (forced) battle.message = `Kael gọi ${next.name} ra trận!`;
+      else { battle.message = `Kael gọi ${previous.name} về và đưa ${next.name} ra trận.`; battle.pendingUntil = performance.now() + 650; }
+      updateGuidance();
     }
     function drawEnding() {
       drawMap();
@@ -619,6 +1805,8 @@
         const nextStart = step.startedAt + STEP_MS;
         player.step = null;
         completed++;
+        maybeEncounter();
+        if (state.mode !== "explore") return;
         if (player.inputDir) startStep(nextStart);
       }
       // Do not fast-forward across the map after a long background-tab pause.
@@ -641,7 +1829,9 @@
           if (state.activeNpc.id === "elder") state.spokeToElder = true;
           if (state.activeNpc.id === "herbalist") {
             if (state.herbQuest.stage === "unstarted") { state.herbQuest.stage = "active"; statusEl.textContent = "Nhiệm vụ phụ · Tìm 3 khóm thảo dược"; }
-            else if (state.herbQuest.stage === "active" && state.herbQuest.collected.length === HERBS.length) { state.herbQuest.stage = "done"; statusEl.textContent = "Hoàn thành · Thảo dược cho Lôi Miêu"; }
+            else if (state.herbQuest.stage === "active" && state.herbQuest.collected.length === HERBS.length) { state.herbQuest.stage = "done"; statusEl.textContent = "Hoàn thành · Thảo dược cho Lôi Miêu";
+              // TRIAL reward, granted once per browser save: 300 kim tiền, 1 huy hiệu, 2 Bánh Sandwich.
+              if (grantOnce("herb", () => { wallet.gold += 300; wallet.badges += 1; bag[4] = Math.min(STACK_MAX, (bag[4] || 0) + 2); })) statusEl.textContent += " · +300 kim tiền, +1 huy hiệu, +2 Bánh Sandwich"; }
           }
           state.activeNpc = null; state.mode = "explore";
         }
@@ -658,79 +1848,282 @@
       const link = nearbyLink();
       if (link && state.spokeToElder && assets.maps?.[link.target]) {
         assets.map = assets.maps[link.target];
+        wildSteps = 0;
         state.player = {x:link.spawnX,y:link.spawnY,visualX:link.spawnX,visualY:link.spawnY,faceX:1,faceY:0,step:null,inputDir:null};
-        statusEl.textContent = `Đang khám phá · ${assets.map.title}`; updateGuidance(); return;
+        const range = wildLevelRange(assets.map.id);
+        statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`;
+        // TRIAL badge source: the first visit to each higher-level region gives 1 huy hiệu (the source sells them for real money).
+        if (assets.map.wildAreas && grantOnce(`region:${assets.map.id}`, () => { wallet.badges += 1; })) statusEl.textContent += " · +1 huy hiệu";
+        updateGuidance(); return;
       }
       if (point && state.spokeToElder && near(state.player, point)) {
+        state.battle = newBattle();
         state.mode = "battle";
         statusEl.textContent = "Chiến đấu · Lôi Miêu";
         updateGuidance();
       }
     }
-    function action(guard, skillId = "spark") {
-      if (state.mode !== "battle" || state.battle.heroHp <= 0 || state.battle.pendingUntil) return;
-      if (!guard && skillId === "spark" && state.battle.sparkUses <= 0) { state.battle.message = "Điện giật đã hết lượt dùng."; return; }
-      fightMenu.hidden = true;
+    // One round: the faster side acts first (game/a.java Q() sorts by speed).
+    function action(guard, move = "skill", slot = 0) {
+      const battle = state.battle;
+      if (state.mode !== "battle" || battle.mustSwitch || activePet().hp <= 0 || battle.pendingUntil) return;
+      const pet = activePet();
+      const chosen = pet.skills?.[slot];
+      if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
+      if (!guard && move === "skill" && chosen.uses <= 0) { battle.message = `${chosen.name} đã hết lượt dùng.`; return; }
+      if (!guard && move === "skill" && chosen.noDamage && !chosen.effect) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
+      fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true;
       const now = performance.now();
-      if (guard) {
-        state.battle.guard = true;
-        state.battle.guardAt = now;
-        state.battle.skill = "guard";
-        state.battle.message = "Lôi Miêu thủ thế, chờ đòn tấn công.";
-      } else {
-        const skill = SKILLS[skillId];
-        if (!skill) return;
-        if (skillId === "spark") state.battle.sparkUses--;
-        state.battle.skill = skillId;
-        state.battle.attackAt = now;
-        state.battle.enemyHp = Math.max(0, state.battle.enemyHp - skill.damage);
-        state.battle.message = `Lôi Miêu dùng ${skill.name}, gây ${skill.damage} sát thương!`;
+      battle.message = "";
+      battle.enemyActed = false;
+      if (guard) battle.guard = true;
+      // Linh Trùng Thi Hài (held item 7) acts first (game/a.java Q()); otherwise the faster side goes first.
+      if (pet.item !== 7 && effStats(battle.enemy).speed > effStats(pet).speed) {
+        enemyStrike(now);
+        if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
-      state.battle.pendingUntil = now + 650;
+      const at = battle.enemyActed ? now + 420 : now;
+      if (guard) {
+        battle.guardAt = at; battle.skill = "guard";
+        battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
+      } else {
+        const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: pet.basicPower ?? BASIC_POWER };
+        // The extracted Điện giật sprite only plays for that skill; other moves use the slash effect.
+        battle.skill = move === "skill" && skill.row === 40 ? "spark" : move;
+        battle.attackAt = at;
+        battle.message += `${battle.message ? " " : ""}${performMove(pet, battle.enemy, skill, pet.name)}`;
+        if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
+      }
+      battle.pendingUntil = at + 650;
       updateGuidance();
     }
     function updateBattle(now) {
       if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
+      if (learnDialog.open) return; // wait for the skill choice
       state.battle.pendingUntil = 0;
-      if (state.battle.enemyHp <= 0) {
+      if (state.battle.captured === true) { finishWild("caught"); return; }
+      if (state.battle.enemy.hp <= 0 && !state.battle.rewarded) { awardExperience(now); return; }
+      if (state.battle.enemy.hp <= 0 && state.battle.wild) { finishWild("win"); return; }
+      if (state.battle.enemy.hp <= 0) {
         state.mode = "ending";
         statusEl.textContent = "Hoàn tất lát prototype · Chương 1";
+        if (grantOnce("story", () => { wallet.gold += 200; })) statusEl.textContent += " · +200 kim tiền";
         updateGuidance();
         return;
       }
-      enemyCounter();
+      if (!state.battle.enemyActed) enemyCounter();
+      if (state.mode !== "battle" || state.battle.mustSwitch) { state.battle.guard = false; updateGuidance(); return; }
+      endRound();
+      state.battle.guard = false;
+      state.battle.turn++;
+      if (state.battle.enemy.hp <= 0) { state.battle.pendingUntil = now + 900; updateGuidance(); return; }
+      handleFaint();
       updateGuidance();
+    }
+    // game/a.java h(): every pet that entered the field shares the reward; then pause so the result can be read.
+    function awardExperience(now) {
+      const battle = state.battle;
+      battle.rewarded = true;
+      const members = [...battle.participants].map(index => battle.team[index]);
+      const lines = [];
+      for (const member of members) {
+        if (!member.progressKey) { lines.push(`${member.name} (VQSV5) chưa nhận kinh nghiệm vì chỉ số chưa giải.`); continue; }
+        let amount = expReward(battle.enemy, members.length, member.level);
+        if (member.item === 5) amount = Math.trunc(amount * (100 + RELIC(5).p1) / 100); // Mật Phong Sào
+        const gained = gainExp(member, amount);
+        lines.push(`${member.name} +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
+        if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
+      }
+      // Ký Cư Giải Xác (held item 6): a living holder that did not fight still earns a share.
+      const sharers = battle.team.filter((member, index) => member.item === 6 && member.progressKey && member.hp > 0 && !battle.participants.has(index));
+      for (const member of sharers) {
+        const amount = expReward(battle.enemy, members.length, member.level);
+        const gained = gainExp(member, amount);
+        lines.push(`${member.name} (Ký Cư Giải Xác) +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
+        if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
+      }
+      saveProgress();
+      queueSkillLearning([...members, ...sharers]);
+      battle.message = `${battle.wild ? battle.enemy.name : "Sinh vật"} gục ngã! ${lines.join(" ")}`;
+      battle.pendingUntil = now + 2200;
+      updateGuidance();
+    }
+    function enemyStrike(at) {
+      const battle = state.battle, pet = activePet(), enemy = battle.enemy;
+      // Enemy AI: any skill with uses left; a status-only skill is skipped while its status is already active.
+      const usable = enemy.skills.filter(skill => skill.uses > 0 && (!skill.noDamage || (skill.effect && !(skill.effect.kind === "buff" ? enemy.buffs[skill.effect.id] : pet.debuffs[skill.effect.id]))));
+      const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : { name: "Đòn thường", power: BASIC_POWER };
+      battle.enemyAt = at + 180;
+      battle.enemyActed = true;
+      battle.message += `${battle.message ? " " : ""}${performMove(enemy, pet, picked, battle.wild ? enemy.name : "Sinh vật")}`;
     }
     function enemyCounter() {
-      const now = performance.now();
-      state.battle.turn++;
-      const damage = state.battle.guard ? 5 : 12;
-      state.battle.heroHp = Math.max(0, state.battle.heroHp - damage);
-      state.battle.guard = false;
-      state.battle.enemyAt = now + 180;
-      state.battle.message += ` Sinh vật phản công ${damage} sát thương.`;
-      if (state.battle.heroHp <= 0) {
-        state.mode = "defeat";
-        statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
-        updateGuidance();
-      }
+      enemyStrike(performance.now());
+      handleFaint();
     }
-    function usePotion() {
-      if (state.mode !== "battle" || state.battle.pendingUntil) return;
-      if (!state.battle.potions) { state.battle.message = "Đã hết thuốc thử."; return; }
-      if (state.battle.heroHp >= 60) { state.battle.message = "Lôi Miêu đang đầy máu."; return; }
-      const recovered = Math.min(20, 60 - state.battle.heroHp);
-      state.battle.potions--;
-      state.battle.heroHp += recovered;
-      state.battle.message = `Dùng thuốc thử: Lôi Miêu hồi ${recovered} HP.`;
-      enemyCounter();
+    function handleFaint() {
+      const pet = activePet();
+      if (pet.hp > 0) return;
+      state.battle.pendingUntil = 0;
+      state.battle.guard = false;
+      if (state.battle.team.some(member => member.hp > 0)) {
+        state.battle.mustSwitch = true;
+        state.battle.message += ` ${pet.name} kiệt sức! Chọn pet khác.`;
+        toggleTeamMenu(true);
+        return;
+      }
+      if (state.battle.wild) { finishWild("lose"); return; }
+      state.mode = "defeat";
+      statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
       updateGuidance();
+    }
+    // Two-step battle item menu: pick an item, then the pet that receives it (using it costs the turn).
+    let itemPick = null;
+    function renderItemMenu() {
+      const list = document.getElementById("itemList"), heading = document.getElementById("itemHeading"), note = document.getElementById("itemNote");
+      list.replaceChildren();
+      if (itemPick === null) {
+        heading.textContent = "Đạo cụ";
+        const items = battleItems();
+        for (const entry of items) {
+          const button = document.createElement("button");
+          button.type = "button";
+          const name = document.createElement("span"); name.textContent = entry.name;
+          const count = document.createElement("span"); count.textContent = `×${bag[entry.row]}`;
+          button.append(name, count);
+          button.title = `${entry.description} ${effectText(entry)}`;
+          button.addEventListener("click", () => { itemPick = entry.row; renderItemMenu(); });
+          list.append(button);
+        }
+        note.textContent = items.length ? "Chọn đạo cụ, rồi chọn pet nhận. Dùng đạo cụ mất một lượt." : "Hết đạo cụ dùng được. Mở Thương điếm để mua (giá gấp đôi trong trận).";
+        return;
+      }
+      const entry = itemEntry(itemPick);
+      heading.textContent = `${entry.name} → chọn pet`;
+      state.battle.team.forEach((pet, index) => {
+        const problem = itemTargetProblem(entry, pet);
+        const button = document.createElement("button");
+        button.type = "button";
+        const name = document.createElement("span"); name.textContent = pet.name;
+        const info = document.createElement("small"); info.textContent = problem ? problem : `${pet.hp}/${pet.max}`;
+        button.append(name, info);
+        button.disabled = !!problem;
+        button.addEventListener("click", () => useBattleItem(itemPick, index));
+        list.append(button);
+      });
+      const back = document.createElement("button");
+      back.type = "button"; back.textContent = "← Chọn lại đạo cụ";
+      back.addEventListener("click", () => { itemPick = null; renderItemMenu(); });
+      list.append(back);
+      note.textContent = effectText(entry);
+    }
+    function toggleItemMenu(open = itemMenu.hidden) {
+      if (state.mode !== "battle" || state.battle.mustSwitch || (state.battle.pendingUntil && open)) return;
+      itemMenu.hidden = !open; itemPick = null;
+      if (open) { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; renderItemMenu(); }
     }
     function fleeBattle() {
       if (state.mode !== "battle" || state.battle.pendingUntil) return;
-      state.battle = newBattle(); state.mode = "explore";
+      if (activePet().debuffs?.[2] && !state.battle.mustSwitch) { state.battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể chạy trốn.`; return; }
+      if (state.battle.wild) { finishWild("flee"); return; }
+      state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";
       updateGuidance();
+    }
+    // ---- Shop and bag dialogs ----
+    const shopDialog = document.getElementById("shopDialog"), bagDialog = document.getElementById("bagDialog");
+    let shopMode = "buy", shopSelected = null, shopQty = 1, shopMessage = "";
+    function shopContext() {
+      if (state.mode === "battle") return "battle";
+      return state.mode === "explore" && assets.map?.id === "slice01-border-village" ? "village" : null;
+    }
+    function openShop() {
+      const context = shopContext();
+      if (!shopDialog.showModal || state.mode === "loading") return;
+      if (!context) { statusEl.textContent = "Thương điếm chỉ mở ở làng biên giới hoặc trong trận"; return; }
+      if (context === "battle" && (state.battle.pendingUntil || state.battle.mustSwitch)) return;
+      state.player.inputDir = null;
+      shopMode = "buy"; shopSelected = null; shopQty = 1; shopMessage = "";
+      if (!shopDialog.open) shopDialog.showModal();
+      renderShop();
+    }
+    function shopEntries() {
+      return shopMode === "buy" ? CATALOG : CATALOG.filter(entry => entry.store === "bag" && countOf(entry) > 0 && entry.row <= 13);
+    }
+    function renderShop() {
+      const inBattle = state.mode === "battle";
+      const list = document.getElementById("shopList"), detail = document.getElementById("shopDetail");
+      document.getElementById("shopSubtitle").textContent = inBattle ? "Giá gấp đôi trong trận; không bán lại được." : "Giá niêm yết; bán lại được một nửa giá.";
+      document.getElementById("shopTabSell").disabled = inBattle;
+      if (inBattle) shopMode = "buy";
+      for (const [id, mode] of [["shopTabBuy", "buy"], ["shopTabSell", "sell"]]) document.getElementById(id).setAttribute("aria-pressed", String(shopMode === mode));
+      updateWallet();
+      const entries = shopEntries();
+      if (!entries.some(entry => entry.id === shopSelected)) shopSelected = entries[0]?.id || null;
+      list.replaceChildren(); detail.replaceChildren();
+      for (const entry of entries) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.setAttribute("aria-pressed", String(entry.id === shopSelected));
+        const name = document.createElement("span"); name.textContent = entry.name;
+        const info = document.createElement("small");
+        info.textContent = shopMode === "buy" ? `${priceOf(entry, inBattle)} ${currencyName(entry)} · có ${countOf(entry)}` : `+${Math.trunc(entry.price / SHOP.sell_price_divisor)} ${currencyName(entry)} · có ${countOf(entry)}`;
+        button.append(name, info);
+        button.addEventListener("click", () => { shopSelected = entry.id; shopQty = 1; shopMessage = ""; renderShop(); });
+        list.append(button);
+      }
+      const entry = catalogById.get(shopSelected);
+      if (!entry) { const p = document.createElement("p"); p.textContent = shopMode === "sell" ? "Chưa có đồ nào để bán." : "Không có mặt hàng."; detail.append(p); return; }
+      const limit = shopMode === "buy" ? Math.max(1, STACK_MAX - countOf(entry)) : Math.max(1, countOf(entry));
+      shopQty = Math.max(1, Math.min(limit, shopQty));
+      const unit = shopMode === "buy" ? priceOf(entry, inBattle) : Math.trunc(entry.price / SHOP.sell_price_divisor);
+      const total = shopMode === "buy" ? unit * shopQty : Math.trunc(entry.price * shopQty / SHOP.sell_price_divisor);
+      const title = document.createElement("h3"); title.textContent = entry.name;
+      const desc = document.createElement("p"); desc.textContent = `${entry.description} ${effectText(entry)}`.trim();
+      const owned = document.createElement("p"); owned.textContent = `Đang có: ${countOf(entry)} · ${shopMode === "buy" ? "giá" : "bán được"} ${shopMode === "buy" ? unit : Math.trunc(entry.price / SHOP.sell_price_divisor)} ${currencyName(entry)}/cái`;
+      const qty = document.createElement("div"); qty.className = "shop-qty";
+      const minus = document.createElement("button"); minus.type = "button"; minus.textContent = "−"; minus.setAttribute("aria-label", "Giảm số lượng");
+      const out = document.createElement("output"); out.textContent = `${shopQty} cái · ${total} ${currencyName(entry)}`;
+      const plus = document.createElement("button"); plus.type = "button"; plus.textContent = "+"; plus.setAttribute("aria-label", "Tăng số lượng");
+      minus.addEventListener("click", () => { shopQty = Math.max(1, shopQty - 1); renderShop(); });
+      plus.addEventListener("click", () => { shopQty = Math.min(limit, shopQty + 1); renderShop(); });
+      qty.append(minus, out, plus);
+      const confirm = document.createElement("button"); confirm.type = "button"; confirm.className = "shop-confirm";
+      confirm.textContent = shopMode === "buy" ? `Mua ${shopQty}` : `Bán ${shopQty}`;
+      confirm.addEventListener("click", () => {
+        const result = shopMode === "buy" ? buyItem(entry.id, shopQty, inBattle) : sellItem(entry.id, shopQty);
+        shopMessage = result.message; if (result.ok) shopQty = 1;
+        renderShop();
+      });
+      const message = document.createElement("p"); message.className = "shop-message"; message.textContent = shopMessage;
+      detail.append(title, desc, owned, qty, confirm, message);
+    }
+    function openBag() {
+      if (!bagDialog.showModal || state.mode === "loading") return;
+      state.player.inputDir = null;
+      if (!bagDialog.open) bagDialog.showModal();
+      renderBag();
+    }
+    function renderBag() {
+      const list = document.getElementById("bagList"), note = document.getElementById("bagNote");
+      updateWallet();
+      list.replaceChildren();
+      const owned = CATALOG.filter(entry => countOf(entry) > 0);
+      if (!owned.length) { const p = document.createElement("p"); p.textContent = "Túi đang trống."; list.append(p); }
+      for (const entry of owned) {
+        const row = document.createElement("div");
+        row.className = "bag-row";
+        const name = document.createElement("span"); name.textContent = `${entry.name} ×${countOf(entry)}`;
+        row.append(name);
+        if (entry.row === 13 && entry.store === "bag") {
+          const use = document.createElement("button"); use.type = "button"; use.textContent = "Dùng"; use.disabled = state.mode !== "explore";
+          use.addEventListener("click", () => { useRepel(); renderBag(); });
+          row.append(use);
+        }
+        row.title = `${entry.description} ${effectText(entry)}`;
+        list.append(row);
+      }
+      note.textContent = "Đạo cụ hồi phục dùng trong trận qua nút Đạo cụ; nguyên liệu dùng để tiến hóa trong Sổ pet.";
     }
     function reset() {
       if (assets.maps?.["slice01-border-village"]) assets.map = assets.maps["slice01-border-village"];
@@ -772,20 +2165,25 @@
     }
     window.addEventListener("keydown", e => {
       const key = e.key.toLowerCase();
-      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open) return;
+      if (document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open || learnDialog.open || shopDialog.open || bagDialog.open) return;
       if (e.target instanceof Element && e.target.closest("button, input, select, textarea")) return;
-      if (key === "p" && !e.repeat) { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
-      if (key === "j" && !e.repeat) { openQuestJournal(); return; }
-      if (key === "m" && !e.repeat) { openMap(); return; }
+      // preventDefault: the dialogs move focus to a text field, which would otherwise receive the typed letter.
+      if (key === "p" && !e.repeat) { e.preventDefault(); if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
+      if (key === "j" && !e.repeat) { e.preventDefault(); openQuestJournal(); return; }
+      if (key === "m" && !e.repeat) { e.preventDefault(); openMap(); return; }
+      if (key === "b" && !e.repeat) { e.preventDefault(); openShop(); return; }
+      if (key === "i" && !e.repeat) { e.preventDefault(); openBag(); return; }
       if (["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(key)) e.preventDefault();
       if (["w", "arrowup"].includes(key)) setMove(0, -1);
       if (["s", "arrowdown"].includes(key)) setMove(0, 1);
       if (["a", "arrowleft"].includes(key)) setMove(-1, 0);
       if (["d", "arrowright"].includes(key)) setMove(1, 0);
       if (!e.repeat && ["e", "enter"].includes(key)) interact();
-      if (!e.repeat && key === "1") action(false);
+      if (!e.repeat && key === "1") action(false, "skill");
       if (!e.repeat && key === "2") action(true);
       if (!e.repeat && key === "3") action(false, "basic");
+      if (!e.repeat && key === "4") toggleTeamMenu();
+      if (!e.repeat && key === "5") toggleBallMenu();
       if (!e.repeat && key === "r") reset();
     });
     window.addEventListener("keyup", e => {
@@ -796,6 +2194,18 @@
       if (["d", "arrowright"].includes(key)) releaseMove(1, 0);
     });
     window.addEventListener("blur", () => { state.player.inputDir = null; });
+    // On-screen controls for touch devices (the keyboard path above stays the same).
+    function bindTouchPad() {
+      const directions = { touchUp: [0, -1], touchDown: [0, 1], touchLeft: [-1, 0], touchRight: [1, 0] };
+      for (const [id, [dx, dy]] of Object.entries(directions)) {
+        const button = document.getElementById(id);
+        if (!button) continue;
+        button.addEventListener("pointerdown", event => { event.preventDefault?.(); setMove(dx, dy); });
+        for (const type of ["pointerup", "pointercancel", "pointerleave"]) button.addEventListener(type, event => { event.preventDefault?.(); releaseMove(dx, dy); });
+      }
+      document.getElementById("touchAction")?.addEventListener("pointerdown", event => { event.preventDefault?.(); interact(); });
+    }
+    bindTouchPad();
     document.getElementById("openPetBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); });
     document.getElementById("openSkillBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openSkillBook(); });
     document.getElementById("restart").addEventListener("click", reset);
@@ -806,15 +2216,26 @@
       state.player.inputDir = null; window.openWorldAtlas();
     }
     document.getElementById("openWorldAtlas").addEventListener("click", openMap);
+    document.getElementById("openShop").addEventListener("click", openShop);
+    document.getElementById("openBag").addEventListener("click", openBag);
+    document.getElementById("shopButton").addEventListener("click", openShop);
+    document.getElementById("closeShop").addEventListener("click", () => shopDialog.close());
+    document.getElementById("closeBag").addEventListener("click", () => bagDialog.close());
+    for (const [id, mode] of [["shopTabBuy", "buy"], ["shopTabSell", "sell"]]) document.getElementById(id).addEventListener("click", () => { shopMode = mode; shopSelected = null; shopQty = 1; shopMessage = ""; renderShop(); });
+    shopDialog.addEventListener("close", () => updateGuidance());
+    bagDialog.addEventListener("close", () => updateGuidance());
     document.getElementById("saveGame").addEventListener("click", saveGame);
     document.getElementById("loadGame").addEventListener("click", loadGame);
-    document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) fightMenu.hidden = !fightMenu.hidden; });
-    document.getElementById("attackButton").addEventListener("click", () => action(false));
+    document.getElementById("fightButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil && !state.battle.mustSwitch) { fightMenu.hidden = !fightMenu.hidden; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; } });
+    document.getElementById("attackButton").addEventListener("click", () => action(false, "skill"));
+    document.getElementById("skillLearnSkip").addEventListener("click", skipLearn);
+    learnDialog.addEventListener("cancel", event => { event.preventDefault(); skipLearn(); });
     document.getElementById("basicButton").addEventListener("click", () => action(false, "basic"));
     document.getElementById("guardButton").addEventListener("click", () => action(true));
-    document.getElementById("captureButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) state.battle.message = "Chưa thể bắt pet trong trận cốt truyện này."; });
-    document.getElementById("itemButton").addEventListener("click", usePotion);
-    document.getElementById("teamButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
+    document.getElementById("captureButton").addEventListener("click", () => toggleBallMenu());
+    document.getElementById("itemButton").addEventListener("click", () => toggleItemMenu());
+    document.getElementById("teamButton").addEventListener("click", () => toggleTeamMenu());
+    document.getElementById("teamBookButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
     document.getElementById("fleeButton").addEventListener("click", fleeBattle);
     loadData().catch(err => { statusEl.textContent = "Không nạp được prototype"; errorEl.textContent = err.message; console.error(err); });
   </script>

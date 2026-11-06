@@ -1,0 +1,395 @@
+{
+  "id": "ryan-ashfield",
+  "title": "Bãi Tro Núi Lửa",
+  "width": 24,
+  "height": 18,
+  "tileSize": 20,
+  "ground": {
+    "tileset": 4,
+    "tile": 23,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 21,
+      "y": 15
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 12,
+      "y": 12
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 0,
+      "y": 8
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 23,
+      "y": 2
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 9,
+      "y": 2
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 1,
+      "y": 14
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 1,
+      "y": 8
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 5,
+      "y": 15
+    }
+  ],
+  "paths": [
+    {
+      "x": 0,
+      "y": 9,
+      "width": 24,
+      "height": 3
+    }
+  ],
+  "objects": [
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 6,
+      "y": 0,
+      "solid": [
+        [
+          6,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 5,
+      "y": 7,
+      "solid": [
+        [
+          5,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 1,
+      "y": 4,
+      "solid": [
+        [
+          1,
+          4
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 7,
+      "y": 3,
+      "solid": [
+        [
+          7,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 7,
+      "y": 6,
+      "solid": [
+        [
+          7,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 10,
+      "y": 7,
+      "solid": [
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 23,
+      "y": 16,
+      "solid": [
+        [
+          23,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 7,
+      "y": 14,
+      "solid": [
+        [
+          7,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 15,
+      "y": 2,
+      "solid": [
+        [
+          15,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 22,
+      "y": 14,
+      "solid": [
+        [
+          22,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 2,
+      "y": 15,
+      "solid": [
+        [
+          2,
+          15
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 6,
+      "y": 4,
+      "solid": [
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 19,
+      "y": 0,
+      "solid": [
+        [
+          19,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 16,
+      "y": 15,
+      "solid": [
+        [
+          16,
+          15
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 3,
+      "y": 3,
+      "solid": [
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 1,
+      "y": 2,
+      "solid": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 23,
+      "y": 17,
+      "solid": [
+        [
+          23,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 12,
+      "y": 16,
+      "solid": [
+        [
+          12,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 5,
+      "y": 17,
+      "solid": [
+        [
+          5,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 2,
+      "y": 7,
+      "solid": [
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 9,
+      "y": 5,
+      "solid": [
+        [
+          9,
+          5
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 12,
+      "y": 15,
+      "solid": [
+        [
+          12,
+          15
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 14,
+      "y": 2,
+      "solid": [
+        [
+          14,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 15,
+      "y": 4,
+      "solid": [
+        [
+          15,
+          4
+        ]
+      ]
+    }
+  ],
+  "entities": {
+    "player": {
+      "x": 1,
+      "y": 10
+    },
+    "villagers": []
+  },
+  "tint": "#ff4a2a30",
+  "wildAreas": [
+    "4-10",
+    "4-11",
+    "4-12",
+    "5-0",
+    "5-4",
+    "5-6"
+  ],
+  "links": [
+    {
+      "x": 0,
+      "y": 10,
+      "target": "ryan-canyon",
+      "spawnX": 22,
+      "spawnY": 10,
+      "label": "Hẻm Núi Đá"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "target": "ryan-skyridge",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Dải Mây Cao"
+    }
+  ]
+}

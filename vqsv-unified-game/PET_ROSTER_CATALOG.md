@@ -123,7 +123,39 @@ Bảng `data.d` cho phép nối từng tên với đúng dạng trong atlas; m�
 
 ## Tham khảo gameplay ngoài
 
-### Đối chiếu mẫu VQSV_FIX_2.7
+### Chỉ số và công thức chiến đấu VQSV6 (đã giải mã)
+
+Nguồn: mã dịch ngược VQSV_FIX_2.7 (`db.mid` giống từng byte bản VQSV6): `game/i.java` (pet), `game/a.java` (trận). Script dựng lại: `python tools/decode_vqsv6_pet_stats.py` → `prototype/data/vqsv6_pet_stats.json` và [CSV chỉ số 100 pet](asset_review/vqsv6_pet_stats.csv).
+
+| Cột bảng 0 | Ý nghĩa | Bằng chứng |
+|---:|---|---|
+| 3 | Hạng (quality) mặc định 1–5 | `i.a(...)`: khi không truyền hạng, lấy ngẫu nhiên trong [cột 3, cột 3] |
+| 4 | Số sao tối đa hiển thị | Màn trạng thái `k.java` ẩn sao có chỉ số lớn hơn cột 4 − 1 |
+| 5–7 | HP = (c5 + c6 × cấp + c7) × hạng% / 100 | `i.a(...)`, `i.W()`; chỉ số 1 là HP (thuốc hồi/so sánh với HP tối đa) |
+| 8–10 | Công = (c8 + c9 × cấp + c10) × hạng% / 100 | Sát thương = Công người đánh − Thủ người nhận (`i.C()`) |
+| 11–13 | Thủ = (c11 + c12 × cấp / 10 + c13) × hạng% / 100 | như trên |
+| 14–16 | Tốc = (c14 + c15 × cấp / 10 + c16) × hạng% / 100 | `a.Q()` xếp lượt theo Tốc giảm dần; chí mạng 5% + Tốc/2 |
+| 18 | Dòng đường học kỹ năng trong bảng 8 | `i.G()` |
+| 22 | Cờ áp dụng khắc hệ | `i.a(i)`: nếu chỉ một bên có giá trị 2 thì chỉ hệ số có lợi cho bên đó được tính |
+
+- Hạng%: `[90, 95, 100, 110, 125]` cho hạng 1–5. Phép chia là chia nguyên kiểu Java.
+- Sát thương: (Công − Thủ) → chí mạng ×1,5 → × sức mạnh kỹ năng% (bảng 1 cột 3) → khắc hệ ×3 / bị khắc ×0,6 → lệch ±1 → tối thiểu 1.
+- Vòng khắc hệ: Hỏa → Mộc → Thổ → Thủy → Hỏa; Quỷ → Phong → Điện → Quỷ.
+- Kỹ năng: bảng 1 có 70 dòng, mỗi hệ 10 dòng (`hệ × 10 … hệ × 10 + 9`). Cột 3 sức mạnh %, cột 4 bậc mở khóa, cột 5 số lần dùng. Tới cấp 5 pet chỉ biết dòng đầu của hệ; từ cấp 5 trở đi mở thêm khi cột 4 ≤ `bảng8[cột 18][bậc cấp]`, bậc cấp theo ngưỡng `[5, 10, 20, 30, 40]`.
+- Kiểm chứng chéo: Điện Miêu (hệ Điện) ở cấp 5 chỉ biết **Điện giật**, sức mạnh 100%, 45 lần, trùng với kỹ năng prototype đã lấy từ bản FIX 2.7.
+- **Gặp pet hoang dã** (`game/l.java`): mỗi dòng `petArea.mid` là `[map, khu, số cụm (−1 = không có), cấp tối thiểu, cấp tối đa]` rồi các cụm `[dòng pet, địa hình (0 cạn, 2 nước), hạng tối thiểu, hạng tối đa]`; cấp và hạng bốc ngẫu nhiên đều trong dải. Như vậy cách nối cột đầu cụm với **chỉ số dòng** bảng pet (ghi ở mục petArea phía trên) đã được xác nhận bằng code.
+- **Bắt pet** (`game/a.java` hàm `m(cầu)`): Tất Trung Cầu luôn 100%; còn lại HP ≤ 15% → 85, ≤ 50% → 45, còn lại → 20; × cột 6 bảng 4 của cầu (Phong ấn 100, Cao cấp 140, Đại sư 200) / 100; × `[110, 100, 95, 80, 70][hạng − 1]` / 100; × hệ số trạng thái `[10, 11, 12, 12, 12]` / 10; × `[1000, 500, 1, 1000][cột 22]` / 1000; pet cấp ≥ 20 bị chặn ở `[0, 15, 35, 65][cầu]`; kẹp 1–100; thành công khi `random(100) < tỉ lệ`. Prototype dùng hệ số trạng thái 1 vì hiệu ứng trạng thái chưa giải.
+- **Kinh nghiệm** (`game/i.java` `A()`, `w()`; `game/a.java` `h()`): lên cấp L cần `15·L² − 200`, tối đa cấp 50 trong game gốc (game hợp nhất chọn giới hạn **70**, kéo dài cùng công thức), lên cấp thì tính lại chỉ số và hồi đầy HP/số lần kỹ năng. Thưởng khi hạ đối thủ cấp L hạng q: `(2·L² + 50) · [10,11,12,13,15][q−1] / 10 + 400`; mỗi pet tham gia nhận `thưởng / n · [10,12,13,14,15,16][n−1] · hệ số cấp / 1000`, hệ số cấp `[105, 100, 80, 60, 40, 20, 5]` (thấp hơn đối thủ; bằng hoặc +1; +2…+5; ≥ +6).
+- **Vật phẩm mang theo** (bảng 3 dòng 0–11; pet cầm món có mã = `d[5]` của pet, kiểm tra bằng `game/i.java` `f(byte)`): 0 Mạn Đà La Thạch (HP ≤ cột 5% thì Công + cột 6%), 1 Hồng Sắc Hải Loa (Công + cột 5%), 2 Quy Xác Toái Phiến (Thủ + cột 5%), 3 Ô Nha Uế (trạng thái bất lợi lên pet nhân `(100 − cột 5)/100`), 4 Viễn Cổ Long Cốt (bạo kích + cột 5 điểm), 5 Mật Phong Sào (kinh nghiệm + cột 5%), 6 Ký Cư Giải Xác (chia kinh nghiệm dù không ra trận), 7 Linh Trùng Thi Hài (đi trước trong lượt, `game/a.java` `Q()`), 8 Hấp Huyết Đằng Mạn (cột 5% xác suất hồi cột 6% sát thương), 9 Cá Thờn Bơn (đòn luôn trúng), 10 Cảm Lãm Chi Diệp (HP đối thủ không dưới cột 5), 11 Sủng vật lôi đạt (tỉ lệ bắt + cột 5%). Giá 5 huy hiệu mỗi món.
+- **Đánh trượt** (`game/a.java`): `trượt% = clamp(2 × (cấp đối thủ − cấp người đánh), 0, 20)`; trạng thái Mục (bảng 7 dòng 4) trừ cấp người đánh đi `bảng 1 cột 8` của kỹ năng; Cá Thờn Bơn đặt trượt% = 0. Khác với giả định thử nghiệm trước đây, Mục không phải một xác suất trượt cố định.
+- **Quên/thay kỹ năng:** không có trong mã gốc; các phương thức `game/i.java` chỉ có `g(byte)` để thêm kỹ năng vào ô trống, và ô chỉ mở thêm theo cấp. Game hợp nhất thêm cơ chế quên và thay như quyết định thiết kế (miễn phí, giữ ít nhất một kỹ năng, kỹ năng mới vẫn phải nằm trong tập pet có thể học ở cấp hiện tại).
+- **Cửa hàng và đạo cụ** (`game/k.java` `a()`/`b()`/`O()`/`aZ()`, `game/j.java` `b()`, `game/i.java` `w()`/`x()`): hàng bán là bảng 4 (cầu và đạo cụ) và bảng 3 (nguyên liệu, vật mang theo). Mỗi dòng `[tên, biểu tượng, mô tả, giá, loại tiền, kiểu hiệu ứng, p1, p2, p3]`; loại tiền 0 là kim tiền, 1 và 2 là huy hiệu (chỉ loại 0 trừ kim tiền). Giá trong làng = cột 3; trong trận nhân đôi; bán lại = giá / 2 bằng chính loại tiền của món (chỉ bảng 4). Kiểu hiệu ứng đạo cụ: 1 hồi `HP tối đa·p1/100 + p2`; 2 hồi `p1` lần dùng mỗi kỹ năng; 3 hồi HP như kiểu 1 và `p3` lần dùng; 4 hồi sinh pet kiệt sức (HP như kiểu 1, thêm `p3` lần dùng); 5 xóa trạng thái bất lợi; 7–10 không dùng trong trận (Tị quái hàn kiểu 10: `p1 = 500` bước). Quà đầu game (`game/k.java` mảng `N`): 2000 kim tiền, 5 Phong ấn cầu, 5 Bánh Sandwich, 2 Sinh mệnh thạch, 2 huy hiệu. Nguồn kim tiền trong mã gốc là phần thưởng sự kiện và đồng xu trên map (`game/e.java` case 31, `game/h.java`), không có từ trận đấu.
+- **Tiến hóa** (`game/k.java` `bp()`, `game/i.java` `K()`, `u[]`): dạng đích = cột 19 của pet hiện tại; ngưỡng cấp theo cột 2 của dạng đích (1 và 2 tiến hóa, 3 dị hóa) qua `u = [12, 30, 5]`; nguyên liệu = dòng `cột 20 + 12` của bảng 3 (Tinh Nguyên Thạch, Thiên Giới Tinh Thạch, Thiên Địa Thần Thạch, Hồn Tinh Thạch, Quỷ Thần Tinh Thạch), số lượng = cột 21. Pet mới giữ cấp, kinh nghiệm và kỹ năng, hồi đầy HP, giữ hạng nếu không thấp hơn hạng mặc định của dạng đích. Nguồn nguyên liệu không có trong mã hay văn bản đã trích; prototype dùng bảng rơi thử nghiệm.
+- **Học kỹ năng** (`game/i.java` `G()`, `H()`, `X()`; `game/k.java` `aq()`): số ô = `min(5, cấp/10 + 1)`; ứng viên là các dòng `hệ×10 … hệ×10+9` có cột 4 ≤ `bảng8[cột 18 của pet][bậc]`, bậc theo ngưỡng `[5, 10, 20, 30, 40]`; tới cấp 5 chỉ biết dòng `hệ×10`. Pet hoang dã: có dòng đầu, rồi từ bậc 1 bốc ngẫu nhiên ứng viên cho tới `cấp/10 + 1` kỹ năng. Bảng 8 có 4 đường học: `[0,0,0,1,1]`, `[0,0,1,1,2]`, `[0,0,1,2,3]`, `[0,1,2,3,3]`.
+- **Hiệu ứng kỹ năng** (`game/i.java` `a(byte,int,int)`, `b(i)`, `q(int)`, `c()`, `d()`): bảng 1 cột 6 = loại (0 không, 1 trạng thái có lợi cho bản thân = dòng cột 7 của bảng 6, 2 trạng thái bất lợi cho đối thủ = dòng cột 7 của bảng 7), cột 8 = tham số, cột 9 = 1 không gây sát thương. Bảng 6 `[tên, mô tả, số hiệp, tham số A, tham số B]` (15 dòng), bảng 7 `[tên, mô tả, số hiệp]` (11 dòng). Chỉ các dòng kỹ năng 2, 8, 22, 28, 41, 47 dùng cột 8 làm tỉ lệ kích hoạt. Mỗi bên tối đa 3 trạng thái. Tê Liệt, Mê Muội, Mục, Quỷ Mị không có đoạn xử lý rõ trong mã dịch ngược; prototype làm theo mô tả và đánh dấu thử nghiệm.
+- Chưa giải: buff vật phẩm ở bảng 2–3 trong trận, ý nghĩa đầy đủ của cột 22 ngoài phép khắc hệ. Chỉ số VQSV5 đã giải ở mục riêng bên dưới.
+
+## Đối chiếu mẫu VQSV_FIX_2.7
 
 File `db.mid` trong `VQSV_FIX_2.7.zip` giống từng byte với `data/script/db.mid` của `vqsv-6.jar` đang dùng. Mã Java dịch ngược được lưu tại `reference_vqsv_fix_2_7/source_code/decoded/decompiled_source_cfr/` để đối chiếu; đây là mã dịch ngược và có thể không tái hiện hoàn chỉnh mã nguồn ban đầu.
 
@@ -136,6 +168,34 @@ Trong `game/l.java`, dữ liệu `petArea.mid` được tra theo vị trí, gồ
 - [Hồi Sinh VQSV 2.1](https://hoisinhvqsv.pages.dev/) là bản chạy trong trình duyệt được xem như tham khảo thứ cấp về trình bày và luồng chơi. Đoạn mở đầu có cảnh làng, lời thoại mời nhân vật dự Cuộc thi Chiến đấu Sủng vật Hoàng Gia, và lựa chọn nhảy tới mốc mười năm sau.
 - Dùng bản này để tham khảo nhịp hội thoại, giao diện và cách đưa người chơi vào hoạt động pet. Đây không phải nguồn xác nhận ID hay schema; tên, hệ, sprite và chỉ số pet tiếp tục bám vào dữ liệu game đã trích và kịch bản hợp nhất.
 
+## Chỉ số VQSV5 (đã giải mã từ vqsv5.jar)
+
+**Cách làm:** `vqsv5.jar` được dịch ngược bằng CFR 0.152 (cùng bản dùng cho mẫu FIX 2.7; SHA-1 của jar CFR tải từ Maven Central: `48ef4892cfe8feffddbbd0ff077735140557db74`) và tháo mã bằng `javap -p -c`. Tên bị làm rối nên nhiều trường trùng tên khác kiểu (lớp `al` có cả `byte[] b` lẫn `short[] b`); mọi kết luận dưới đây đã đối chiếu kiểu trường trong bytecode, không chỉ đọc mã CFR. Script dựng lại: `python tools/decode_vqsv5_pet_stats.py` → `prototype/data/vqsv5_pet_stats.json` và [CSV 102 pet](asset_review/vqsv5_pet_stats.csv).
+
+`data.d` được `ak.j()` đọc hết (40664/40664 byte) theo thứ tự: ma trận `p` (id kỹ năng theo ô × hệ), **ma trận `d` (bảng pet, 102 dòng × 15 byte)**, ma trận `n` (49 kỹ năng), 9 bảng chuỗi (nhãn và tên kỹ năng, tên hệ, tên pet, văn bản đồ vật, tên đồ vật, địa điểm, tên và mô tả đặc tính), ma trận `o` (pet được tìm thấy bằng cách nào), `e` (cặp hình), `q` (dòng tiến hóa: đích và nguyên liệu), chuỗi mô tả pet, bốn mảng byte (`a` là giá trị đặc tính), và hai ma trận của lớp `at`.
+
+| Cột `d[x]` | Ý nghĩa | Bằng chứng |
+|---:|---|---|
+| 0 và 7 | HP gốc và hệ số: `HP = c0 + c7 × cấp / 10` | `al` constructor: `S[2] = d[0] + d[7] * cấp / 10`; sát thương trừ vào `S[0]` (= `S[2]` lúc tạo) |
+| 1 và 8 | Giá trị kỹ năng (SP) gốc và hệ số | `S[3]`; dùng kỹ năng trừ `ak.n[kỹ năng][1]` vào `S[1]` |
+| 2 và 9 | Linh hoạt (tỉ lệ trúng) | `S[5]`; `trúng% = 92 + (linh hoạt người đánh − người nhận) / 2` (`ak.c`) |
+| 3 và 10 | Công | `S[6]` |
+| 4 và 11 | Thủ | `S[7]` |
+| 5 | Hạng 1–5 (hạng > 3 thì độ trung thành 120, còn lại 100) | `byte[4]`, `byte[6]` |
+| 6 | Hệ 0–4 (255 = không hệ); tên ở bảng `b` | `byte[3]`; 100/100 pet có mô tả "[khắc chế X hệ]" khớp bảng khắc hệ |
+| 12 | Số lần tiến hóa khởi đầu của cá thể mới (0–3); giảm 1 mỗi lần tiến hóa | `byte[5]`; bằng độ dài chuỗi tiến hóa của cả 52 dạng gốc |
+| 13–14 | Chưa giải nghĩa (c13 = 1 ở 5 pet, c14 luôn 0) | — |
+
+- **Sát thương** (`ak.b(z,z,al,al,int)`): `(Công × sức mạnh × (1000 − Thủ × 5) / 10000 − Thủ / 10 − cấp / (2 × sức mạnh) + 6 − (cấp − 1) / 10) × (4 × clamp(chênh cấp, −10, 10) + 100) / 100`, rồi nhân `(thưởng% − 30 nếu thủ + 100) / 100`; thưởng% gồm +20 (độ trung thành 120), −20 nếu hệ pet khác hệ phe và +30 khi thắng thế hệ (`ak.b(z,al,al)`); bạo kích ×1,5 theo đặc tính.
+- **Bảng khắc hệ** (hàm tạo `ak`): Thực Vật thắng Phi Hành, Kim Loại thắng Mãnh Thú, Phi Hành thắng Hải Dương, Mãnh Thú thắng Thực Vật, Hải Dương thắng Kim Loại (+30%).
+- **Kỹ năng:** ô 0 là kỹ năng 25 ("Công Kích thông dụng", sức mạnh 8, không tốn SP) từ cấp 0; ô k (1–5) mở ở cấp 7k với kỹ năng `hệ × 5 + (k − 1)` (`ak.a(al)`); bảng `n` mỗi dòng `[sức mạnh, chi phí SP, tỉ lệ hiệu ứng, tham số]`. Kỹ năng 26–48 là kỹ năng đặc biệt (hồi máu, phong bế, đặc tính bị động…), chưa giải hiệu ứng.
+- **Đặc tính** (`al.b(ak)`, bảng `a`): 13 đặc tính; đặc tính 1 và 2 đổi HP −15% và +15% khi pet mang chúng; mỗi pet có hai ô đặc tính chọn theo hệ.
+- **Tiến hóa** (`ak.E()`, `ak.d(int)`, `ak.b(byte,byte)`, `al.b(ak,int,int)`; bảng `ak.q`): mỗi dòng `q[loài] = [đích dị hóa, đích thường, vật phẩm, số lượng, vật phẩm, số lượng…]` (dòng có đích 0 hoặc trỏ về chính nó là chỗ giữ chỗ, 8 dòng). Cần mọi nguyên liệu trong túi, cấp tối thiểu theo hạng (hạng 1: 15, hạng 2: 25, hạng 3: 30, hạng ≥ 4: không) và bộ đếm tiến hóa của cá thể > 0. Thành công thì trừ nguyên liệu, giữ cấp, đổi loài, tính lại chỉ số, hồi đầy HP và SP, bộ đếm giảm 1. Dị hóa (4 pet) chỉ khả dụng khi có thêm 1 vật phẩm 34 "Dị hoá tài liệu", thay thế tiến hóa thường, trừ nguyên liệu như thường và thêm vật phẩm 34, và đưa bộ đếm về 0. Bảng `ak.o` là bảng *nguồn gốc* của sổ tay pet (254 = tiến hóa, 253 = dị hóa, 255 = nhiệm vụ, 252 = đấu trường, 251 = ấp trứng, giá trị khác là mã địa điểm), không phải đích tiến hóa; dùng nó để kiểm chứng chéo: đích thường của 46 dòng hợp lệ trùng đúng tập pet "từ tiến hóa", đích dị hóa trùng tập "từ dị hóa".
+- **Nguyên liệu và cửa hàng VQSV5** (`data/shop.d`, đọc hết 234/234 byte): hàng thứ hai bán vật phẩm 16–25 bằng kim tiền (500 hoặc 1000); vật phẩm 26–30 (Bay lượn thiên thạch, Cổ thụ chi hạch, Tinh khiết thủy tinh, Cổ kình chi tâm, Vương chi chứng minh) và 34 (Dị hoá tài liệu) không bán, nguồn gốc chưa rõ.
+- **Không tìm thấy** trong jar: trình nạp `monN.d` và `monType.d` (hai bảng đó có thể là dữ liệu thừa của bản này); `data/map/area.dat` có lệnh nạp nhưng chưa giải.
+
+Mức độ chắc chắn: công thức chỉ số, hệ, hạng, ô kỹ năng, chi phí SP, công thức sát thương và trúng đã đọc trực tiếp từ bytecode và có đối chiếu chéo bằng mô tả pet. Game hợp nhất không dùng nguyên công thức sát thương VQSV5 mà quy đổi chỉ số về thang VQSV6 (xem `prototype/README.md`).
+
 ## Quy tắc dữ liệu chung dự kiến
 
 Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của game hợp nhất và danh sách `source_ids` giữ nguyên mã gốc. Các trường chung gồm tên chuẩn, dạng/nhánh tiến hóa, hệ, chỉ số, kỹ năng, điều kiện bắt, nguồn ảnh/animation và mức độ xác minh. ID số trùng nhau giữa hai game không được gộp tự động; sprite tương tự cũng chưa đủ bằng chứng để coi là cùng loài.
@@ -143,7 +203,7 @@ Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của g
 ## Bước kế tiếp
 
 1. Giải quan hệ giữa 34 mục `monN` và 102 dòng pet `data.d`, kiểm tra hai dòng dùng chung hình.
-2. Giải schema chỉ số/hệ của VQSV5 và `monType.d` trước khi dùng trong chiến đấu.
-3. Giải nghĩa 19 trường còn lại và 8 bảng số phụ của VQSV6 để chuẩn hóa chỉ số/kỹ năng và điều kiện tiến hóa; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
+2. Giải đặc tính, quan hệ tiến hóa (`ak.o`) và kỹ năng đặc biệt 26–48 của VQSV5.
+3. Chỉ số, khắc hệ và kỹ năng VQSV6 đã giải (mục trên); còn hiệu ứng trạng thái kỹ năng và các bảng buff 2–7; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
 4. Đánh dấu loài trùng, dạng tiến hóa, pet độc quyền và boss; rồi mới chuẩn hóa chỉ số/điều kiện bắt.
 5. Khóa một roster nhỏ cho lát đầu: Lôi Miêu, một đối thủ bị tha hóa, sau đó thêm pet tuyển chọn từ hai nguồn.

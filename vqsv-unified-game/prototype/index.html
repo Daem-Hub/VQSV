@@ -297,7 +297,45 @@
     const ENEMY = { petId: "vqsv6-db-24", level: 3 };  // TRIAL: placeholder corrupted pet, lowered level for chapter 1
     const BASIC_POWER = 70;                 // TRIAL: Vồ nhanh / Đòn thường, unlimited uses
     const GUARD_PCT = 40;                   // TRIAL: damage taken while guarding
-    const VQSV5_TRIAL_STATS = { hp: 90, attack: 22, defense: 10, speed: 5 }; // TRIAL: VQSV5 stats undecoded
+    // ---- VQSV5 pets (tools/decode_vqsv5_pet_stats.py): stats and skills come from data.d. The two games use different
+    // damage formulas, so the unified battle scales a VQSV5 pet to the VQSV6 level curve (TRIAL, see calibration()). ----
+    const STATS5 = window.VQSVBootstrap?.vqsv5Stats;
+    const STAT5_BY_ID = new Map((STATS5?.pets || []).map(pet => [pet.pet_id, pet]));
+    const V5_TIER1_POWER = 15;              // source power of a tier-1 type skill; = 100% in the unified battle (TRIAL)
+    const V5_BASIC_POWER = Math.round((STATS5?.skills?.[STATS5.rules?.basic_skill_id]?.power ?? 8) / V5_TIER1_POWER * 100);
+    function rawStats5(record, level) {
+      const g = record.growth, at = key => g[key][0] + Math.trunc(g[key][1] * level / 10);
+      return { hp: at("hp"), sp: at("sp"), agility: at("agility"), attack: at("attack"), defense: at("defense") };
+    }
+    // Ratio of the average VQSV6 pet to the average VQSV5 pet at a level, per stat (cached).
+    const calibrationCache = new Map();
+    function calibration(level) {
+      if (calibrationCache.has(level)) return calibrationCache.get(level);
+      const mean = (items, pick) => items.reduce((sum, item) => sum + pick(item), 0) / items.length;
+      const six = STATS.pets.map(pet => statsAt(pet, level)), five = STATS5.pets.map(pet => rawStats5(pet, level));
+      const k = { hp: mean(six, x => x.hp) / mean(five, x => x.hp), attack: mean(six, x => x.attack) / mean(five, x => x.attack),
+        defense: mean(six, x => x.defense) / mean(five, x => x.defense), speed: mean(six, x => x.speed) / mean(five, x => x.agility) };
+      calibrationCache.set(level, k);
+      return k;
+    }
+    function unifiedStats5(record, level) {
+      const raw = rawStats5(record, level), k = calibration(level);
+      return { hp: Math.max(1, Math.round(raw.hp * k.hp)), attack: Math.max(1, Math.round(raw.attack * k.attack)),
+        defense: Math.max(0, Math.round(raw.defense * k.defense)), speed: Math.max(1, Math.round(raw.agility * k.speed)) };
+    }
+    // Type skills unlock automatically at levels 7/14/21/28/35 (game ak.a(al)); each is capped by SP / cost uses (TRIAL).
+    function skills5(record, level) {
+      const sp = rawStats5(record, level).sp;
+      return record.skill_slots.filter(slot => slot.level > 0 && slot.level <= level).map(slot => {
+        const skill = STATS5.skills[slot.skill_id], uses = Math.max(1, Math.trunc(sp / Math.max(1, skill.sp_cost)));
+        return { row: null, v5Id: skill.skill_id, name: skill.name, power: Math.round(skill.power / V5_TIER1_POWER * 100), uses, max: uses, description: skill.label, effect: null, noDamage: false };
+      });
+    }
+    function vqsv5Combatant(petId, level) {
+      const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level);
+      return { stats, level, elementId: null, element: record.type, col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
+        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER };
+    }
     // Wild encounters use petArea.mid rows; which source area feeds which prototype map is a TRIAL choice.
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
     // Newer regions carry their own `wildAreas` in the map data (see tools/design_wild_maps.py).
@@ -677,6 +715,10 @@
       progress[member.progressKey] = { ...progress[member.progressKey], level: entry.level, exp: entry.exp };
       member.level = entry.level; member.exp = entry.exp;
       // game/i.java w() -> W(): recompute stats at the new level, refill HP (h()) and skill uses.
+      if (member.v5 && entry.level !== before) {
+        const fresh = vqsv5Combatant(member.petId, entry.level);
+        Object.assign(member, { stats: fresh.stats, max: fresh.max, hp: fresh.max, skills: fresh.skills, skill: fresh.skills[0] });
+      }
       const record = STAT_BY_ID.get(member.petId);
       if (record && entry.level !== before) {
         member.stats = statsAt(record, entry.level, member.quality);
@@ -753,10 +795,10 @@
         // Warm the sprite cache so switching in does not flash an empty frame.
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
-        const own = info.kind === "vqsv6" ? progressOf(info.id, best ? best.level : BATTLE_LEVEL) : null;
+        const own = progressOf(info.id, best ? best.level : BATTLE_LEVEL);
         const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
-          : { stats: { ...VQSV5_TRIAL_STATS }, level: BATTLE_LEVEL, elementId: null, col22: 0, skill: null, skills: [], buffs: {}, debuffs: {}, hp: VQSV5_TRIAL_STATS.hp, max: VQSV5_TRIAL_STATS.hp, trialStats: true };
-        return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
+          : { ...vqsv5Combatant(info.id, own.level), progressKey: info.id, exp: own.exp };
+        return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
     }
@@ -892,7 +934,7 @@
       const debuffs = actor.debuffs || {};
       if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
       if (debuffs[10] && Math.random() < .5) return `${label} bị ${DEBUFF(10).name}, chậm mất lượt.`;
-      if (skill.row != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
+      if (skill.uses != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
       if (skill.uses < 0) skill.uses = 0;
       let text = `${label} dùng ${skill.name}`;
       if (!skill.noDamage) {
@@ -1777,7 +1819,7 @@
         battle.guardAt = at; battle.skill = "guard";
         battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
       } else {
-        const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: BASIC_POWER };
+        const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: pet.basicPower ?? BASIC_POWER };
         // The extracted Điện giật sprite only plays for that skill; other moves use the slash effect.
         battle.skill = move === "skill" && skill.row === 40 ? "spark" : move;
         battle.attackAt = at;

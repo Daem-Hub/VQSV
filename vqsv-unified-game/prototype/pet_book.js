@@ -14,6 +14,9 @@
   const atlases = bootstrap?.vqsv5Animations?.atlases || {};
   const tickMs = bootstrap?.vqsv5Animations?.frame_duration_ms_per_tick || 60;
   const byId = new Map(roster.map(pet => [pet.pet_id, pet]));
+  const stats5 = bootstrap?.vqsv5Stats || { pets: [], skills: [] };
+  const v5ById = new Map(stats5.pets.map(pet => [pet.pet_id, pet]));
+  const elementOf = pet => pet.element || v5ById.get(pet.pet_id)?.type || null;
   const stats = bootstrap?.vqsv6Stats || { pets: [], skills: [] };
   const statById = new Map(stats.pets.map(pet => [pet.pet_id, pet]));
   const storageKey = "vqsv-unified-pet-collection-v1";
@@ -58,7 +61,7 @@
   const entries = roster.map(pet => {
     const kind = pet.source_ids.game === "VQSV5" ? "vqsv5" : "vqsv6";
     const atlasId = kind === "vqsv5" ? String(pet.source_ids.atlas_id) : null;
-    return { kind, key: pet.pet_id, name: pet.display_name, element: pet.element || "Chưa rõ hệ", atlasId, atlas: atlasId ? atlases[atlasId] : null, pet };
+    return { kind, key: pet.pet_id, name: pet.display_name, element: elementOf(pet) || "Chưa rõ hệ", atlasId, atlas: atlasId ? atlases[atlasId] : null, pet };
   });
   let selected = "vqsv6-db-78";
   let evolveNote = "";
@@ -283,6 +286,22 @@
         detail.append(viewTarget);
       } else detail.append(node("p", "Chưa có dạng tiếp theo được nối trong bảng nguồn."));
     } else {
+      const rec5 = v5ById.get(entry.key);
+      if (rec5) {
+        detail.append(node("p", `${rec5.type || "Không thuộc hệ nào"} · hạng ${rec5.rank}/5 (chỉ số gốc VQSV5, chưa quy đổi)`));
+        const table = node("table", undefined, "pet-stats");
+        const head = node("tr"); ["", "HP", "KN", "Lhoạt", "Công", "Thủ"].forEach(text => head.append(node("th", text)));
+        table.append(head);
+        for (const level of ["5", "30"]) {
+          const values = rec5.stats_at[level], row = node("tr"); row.append(node("th", `Cấp ${level}`));
+          [values.hp, values.sp, values.agility, values.attack, values.defense].forEach(value => row.append(node("td", String(value))));
+          table.append(row);
+        }
+        detail.append(table);
+        const unlocks = rec5.skill_slots.filter(slot => slot.level > 0).map(slot => `cấp ${slot.level}: ${stats5.skills[slot.skill_id].name}`);
+        detail.append(node("p", unlocks.length ? `Kỹ năng tự học — ${unlocks.join("; ")}.` : "Pet không thuộc hệ nên không có kỹ năng hệ."));
+        detail.append(node("p", "KN = giá trị kỹ năng (SP), Lhoạt = linh hoạt (quyết định tỉ lệ trúng). Trong trận, chỉ số được quy đổi theo cấp để cân với pet VQSV6."));
+      }
       if (!entry.atlas) { detail.append(node("p", "Chưa tải được hình nguồn.")); return; }
       const label = node("label", "Xem hoạt ảnh");
       const select = document.createElement("select");
@@ -386,7 +405,7 @@
       const entry = entries.find(item => item.key === id);
       if (!entry) return null;
       return {
-        id, kind: entry.kind, name: entry.name, element: entry.pet.element || null, portrait: portrait(entry),
+        id, kind: entry.kind, name: entry.name, element: elementOf(entry.pet), portrait: portrait(entry),
         image: entry.kind === "vqsv6" ? `assets/pets/vqsv6/${entry.pet.source_ids.image_id}.png` : null,
         sequences: entry.kind === "vqsv5" && entry.atlas ? entry.pet.animation.sequence_ids.map(sequenceId => entry.atlas.sequences[sequenceId] || []) : []
       };

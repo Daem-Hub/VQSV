@@ -153,7 +153,7 @@ Nguồn: mã dịch ngược VQSV_FIX_2.7 (`db.mid` giống từng byte bản VQ
 - **Tiến hóa** (`game/k.java` `bp()`, `game/i.java` `K()`, `u[]`): dạng đích = cột 19 của pet hiện tại; ngưỡng cấp theo cột 2 của dạng đích (1 và 2 tiến hóa, 3 dị hóa) qua `u = [12, 30, 5]`; nguyên liệu = dòng `cột 20 + 12` của bảng 3 (Tinh Nguyên Thạch, Thiên Giới Tinh Thạch, Thiên Địa Thần Thạch, Hồn Tinh Thạch, Quỷ Thần Tinh Thạch), số lượng = cột 21. Pet mới giữ cấp, kinh nghiệm và kỹ năng, hồi đầy HP, giữ hạng nếu không thấp hơn hạng mặc định của dạng đích. Nguồn nguyên liệu không có trong mã hay văn bản đã trích; prototype dùng bảng rơi thử nghiệm.
 - **Học kỹ năng** (`game/i.java` `G()`, `H()`, `X()`; `game/k.java` `aq()`): số ô = `min(5, cấp/10 + 1)`; ứng viên là các dòng `hệ×10 … hệ×10+9` có cột 4 ≤ `bảng8[cột 18 của pet][bậc]`, bậc theo ngưỡng `[5, 10, 20, 30, 40]`; tới cấp 5 chỉ biết dòng `hệ×10`. Pet hoang dã: có dòng đầu, rồi từ bậc 1 bốc ngẫu nhiên ứng viên cho tới `cấp/10 + 1` kỹ năng. Bảng 8 có 4 đường học: `[0,0,0,1,1]`, `[0,0,1,1,2]`, `[0,0,1,2,3]`, `[0,1,2,3,3]`.
 - **Hiệu ứng kỹ năng** (`game/i.java` `a(byte,int,int)`, `b(i)`, `q(int)`, `c()`, `d()`): bảng 1 cột 6 = loại (0 không, 1 trạng thái có lợi cho bản thân = dòng cột 7 của bảng 6, 2 trạng thái bất lợi cho đối thủ = dòng cột 7 của bảng 7), cột 8 = tham số, cột 9 = 1 không gây sát thương. Bảng 6 `[tên, mô tả, số hiệp, tham số A, tham số B]` (15 dòng), bảng 7 `[tên, mô tả, số hiệp]` (11 dòng). Chỉ các dòng kỹ năng 2, 8, 22, 28, 41, 47 dùng cột 8 làm tỉ lệ kích hoạt. Mỗi bên tối đa 3 trạng thái. Tê Liệt, Mê Muội, Mục, Quỷ Mị không có đoạn xử lý rõ trong mã dịch ngược; prototype làm theo mô tả và đánh dấu thử nghiệm.
-- Chưa giải: buff vật phẩm ở bảng 2–3 trong trận, ý nghĩa đầy đủ của cột 22 ngoài phép khắc hệ. Chỉ số VQSV5 vẫn chưa giải (không có mã dịch ngược VQSV5).
+- Chưa giải: buff vật phẩm ở bảng 2–3 trong trận, ý nghĩa đầy đủ của cột 22 ngoài phép khắc hệ. Chỉ số VQSV5 đã giải ở mục riêng bên dưới.
 
 ## Đối chiếu mẫu VQSV_FIX_2.7
 
@@ -168,6 +168,31 @@ Trong `game/l.java`, dữ liệu `petArea.mid` được tra theo vị trí, gồ
 - [Hồi Sinh VQSV 2.1](https://hoisinhvqsv.pages.dev/) là bản chạy trong trình duyệt được xem như tham khảo thứ cấp về trình bày và luồng chơi. Đoạn mở đầu có cảnh làng, lời thoại mời nhân vật dự Cuộc thi Chiến đấu Sủng vật Hoàng Gia, và lựa chọn nhảy tới mốc mười năm sau.
 - Dùng bản này để tham khảo nhịp hội thoại, giao diện và cách đưa người chơi vào hoạt động pet. Đây không phải nguồn xác nhận ID hay schema; tên, hệ, sprite và chỉ số pet tiếp tục bám vào dữ liệu game đã trích và kịch bản hợp nhất.
 
+## Chỉ số VQSV5 (đã giải mã từ vqsv5.jar)
+
+**Cách làm:** `vqsv5.jar` được dịch ngược bằng CFR 0.152 (cùng bản dùng cho mẫu FIX 2.7; SHA-1 của jar CFR tải từ Maven Central: `48ef4892cfe8feffddbbd0ff077735140557db74`) và tháo mã bằng `javap -p -c`. Tên bị làm rối nên nhiều trường trùng tên khác kiểu (lớp `al` có cả `byte[] b` lẫn `short[] b`); mọi kết luận dưới đây đã đối chiếu kiểu trường trong bytecode, không chỉ đọc mã CFR. Script dựng lại: `python tools/decode_vqsv5_pet_stats.py` → `prototype/data/vqsv5_pet_stats.json` và [CSV 102 pet](asset_review/vqsv5_pet_stats.csv).
+
+`data.d` được `ak.j()` đọc hết (40664/40664 byte) theo thứ tự: ma trận `p` (id kỹ năng theo ô × hệ), **ma trận `d` (bảng pet, 102 dòng × 15 byte)**, ma trận `n` (49 kỹ năng), 9 bảng chuỗi (nhãn và tên kỹ năng, tên hệ, tên pet, văn bản đồ vật, tên đồ vật, địa điểm, tên và mô tả đặc tính), ma trận `o` (quan hệ tiến hóa thô), `e` (cặp hình), `q` (cặp kỹ năng thêm), chuỗi mô tả pet, bốn mảng byte (`a` là giá trị đặc tính), và hai ma trận của lớp `at`.
+
+| Cột `d[x]` | Ý nghĩa | Bằng chứng |
+|---:|---|---|
+| 0 và 7 | HP gốc và hệ số: `HP = c0 + c7 × cấp / 10` | `al` constructor: `S[2] = d[0] + d[7] * cấp / 10`; sát thương trừ vào `S[0]` (= `S[2]` lúc tạo) |
+| 1 và 8 | Giá trị kỹ năng (SP) gốc và hệ số | `S[3]`; dùng kỹ năng trừ `ak.n[kỹ năng][1]` vào `S[1]` |
+| 2 và 9 | Linh hoạt (tỉ lệ trúng) | `S[5]`; `trúng% = 92 + (linh hoạt người đánh − người nhận) / 2` (`ak.c`) |
+| 3 và 10 | Công | `S[6]` |
+| 4 và 11 | Thủ | `S[7]` |
+| 5 | Hạng 1–5 (hạng > 3 thì độ trung thành 120, còn lại 100) | `byte[4]`, `byte[6]` |
+| 6 | Hệ 0–4 (255 = không hệ); tên ở bảng `b` | `byte[3]`; 100/100 pet có mô tả "[khắc chế X hệ]" khớp bảng khắc hệ |
+| 12–14 | Chưa giải nghĩa (c12 ∈ 0–3 được dùng như một giá trị lăn ngẫu nhiên, c13 và c14 hầu như 0) | `al.b(ak,int)` |
+
+- **Sát thương** (`ak.b(z,z,al,al,int)`): `(Công × sức mạnh × (1000 − Thủ × 5) / 10000 − Thủ / 10 − cấp / (2 × sức mạnh) + 6 − (cấp − 1) / 10) × (4 × clamp(chênh cấp, −10, 10) + 100) / 100`, rồi nhân `(thưởng% − 30 nếu thủ + 100) / 100`; thưởng% gồm +20 (độ trung thành 120), −20 nếu hệ pet khác hệ phe và +30 khi thắng thế hệ (`ak.b(z,al,al)`); bạo kích ×1,5 theo đặc tính.
+- **Bảng khắc hệ** (hàm tạo `ak`): Thực Vật thắng Phi Hành, Kim Loại thắng Mãnh Thú, Phi Hành thắng Hải Dương, Mãnh Thú thắng Thực Vật, Hải Dương thắng Kim Loại (+30%).
+- **Kỹ năng:** ô 0 là kỹ năng 25 ("Công Kích thông dụng", sức mạnh 8, không tốn SP) từ cấp 0; ô k (1–5) mở ở cấp 7k với kỹ năng `hệ × 5 + (k − 1)` (`ak.a(al)`); bảng `n` mỗi dòng `[sức mạnh, chi phí SP, tỉ lệ hiệu ứng, tham số]`. Kỹ năng 26–48 là kỹ năng đặc biệt (hồi máu, phong bế, đặc tính bị động…), chưa giải hiệu ứng.
+- **Đặc tính** (`al.b(ak)`, bảng `a`): 13 đặc tính; đặc tính 1 và 2 đổi HP −15% và +15% khi pet mang chúng; mỗi pet có hai ô đặc tính chọn theo hệ.
+- **Không tìm thấy** trong jar: trình nạp `monN.d` và `monType.d` (hai bảng đó có thể là dữ liệu thừa của bản này); `data/map/area.dat` có lệnh nạp nhưng chưa giải.
+
+Mức độ chắc chắn: công thức chỉ số, hệ, hạng, ô kỹ năng, chi phí SP, công thức sát thương và trúng đã đọc trực tiếp từ bytecode và có đối chiếu chéo bằng mô tả pet. Game hợp nhất không dùng nguyên công thức sát thương VQSV5 mà quy đổi chỉ số về thang VQSV6 (xem `prototype/README.md`).
+
 ## Quy tắc dữ liệu chung dự kiến
 
 Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của game hợp nhất và danh sách `source_ids` giữ nguyên mã gốc. Các trường chung gồm tên chuẩn, dạng/nhánh tiến hóa, hệ, chỉ số, kỹ năng, điều kiện bắt, nguồn ảnh/animation và mức độ xác minh. ID số trùng nhau giữa hai game không được gộp tự động; sprite tương tự cũng chưa đủ bằng chứng để coi là cùng loài.
@@ -175,7 +200,7 @@ Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của g
 ## Bước kế tiếp
 
 1. Giải quan hệ giữa 34 mục `monN` và 102 dòng pet `data.d`, kiểm tra hai dòng dùng chung hình.
-2. Giải schema chỉ số/hệ của VQSV5 và `monType.d` trước khi dùng trong chiến đấu.
+2. Giải đặc tính, quan hệ tiến hóa (`ak.o`) và kỹ năng đặc biệt 26–48 của VQSV5.
 3. Chỉ số, khắc hệ và kỹ năng VQSV6 đã giải (mục trên); còn hiệu ứng trạng thái kỹ năng và các bảng buff 2–7; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
 4. Đánh dấu loài trùng, dạng tiến hóa, pet độc quyền và boss; rồi mới chuẩn hóa chỉ số/điều kiện bắt.
 5. Khóa một roster nhỏ cho lát đầu: Lôi Miêu, một đối thủ bị tha hóa, sau đó thêm pet tuyển chọn từ hai nguồn.

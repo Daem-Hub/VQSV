@@ -172,7 +172,7 @@ Trong `game/l.java`, dữ liệu `petArea.mid` được tra theo vị trí, gồ
 
 **Cách làm:** `vqsv5.jar` được dịch ngược bằng CFR 0.152 (cùng bản dùng cho mẫu FIX 2.7; SHA-1 của jar CFR tải từ Maven Central: `48ef4892cfe8feffddbbd0ff077735140557db74`) và tháo mã bằng `javap -p -c`. Tên bị làm rối nên nhiều trường trùng tên khác kiểu (lớp `al` có cả `byte[] b` lẫn `short[] b`); mọi kết luận dưới đây đã đối chiếu kiểu trường trong bytecode, không chỉ đọc mã CFR. Script dựng lại: `python tools/decode_vqsv5_pet_stats.py` → `prototype/data/vqsv5_pet_stats.json` và [CSV 102 pet](asset_review/vqsv5_pet_stats.csv).
 
-`data.d` được `ak.j()` đọc hết (40664/40664 byte) theo thứ tự: ma trận `p` (id kỹ năng theo ô × hệ), **ma trận `d` (bảng pet, 102 dòng × 15 byte)**, ma trận `n` (49 kỹ năng), 9 bảng chuỗi (nhãn và tên kỹ năng, tên hệ, tên pet, văn bản đồ vật, tên đồ vật, địa điểm, tên và mô tả đặc tính), ma trận `o` (quan hệ tiến hóa thô), `e` (cặp hình), `q` (cặp kỹ năng thêm), chuỗi mô tả pet, bốn mảng byte (`a` là giá trị đặc tính), và hai ma trận của lớp `at`.
+`data.d` được `ak.j()` đọc hết (40664/40664 byte) theo thứ tự: ma trận `p` (id kỹ năng theo ô × hệ), **ma trận `d` (bảng pet, 102 dòng × 15 byte)**, ma trận `n` (49 kỹ năng), 9 bảng chuỗi (nhãn và tên kỹ năng, tên hệ, tên pet, văn bản đồ vật, tên đồ vật, địa điểm, tên và mô tả đặc tính), ma trận `o` (pet được tìm thấy bằng cách nào), `e` (cặp hình), `q` (dòng tiến hóa: đích và nguyên liệu), chuỗi mô tả pet, bốn mảng byte (`a` là giá trị đặc tính), và hai ma trận của lớp `at`.
 
 | Cột `d[x]` | Ý nghĩa | Bằng chứng |
 |---:|---|---|
@@ -183,12 +183,15 @@ Trong `game/l.java`, dữ liệu `petArea.mid` được tra theo vị trí, gồ
 | 4 và 11 | Thủ | `S[7]` |
 | 5 | Hạng 1–5 (hạng > 3 thì độ trung thành 120, còn lại 100) | `byte[4]`, `byte[6]` |
 | 6 | Hệ 0–4 (255 = không hệ); tên ở bảng `b` | `byte[3]`; 100/100 pet có mô tả "[khắc chế X hệ]" khớp bảng khắc hệ |
-| 12–14 | Chưa giải nghĩa (c12 ∈ 0–3 được dùng như một giá trị lăn ngẫu nhiên, c13 và c14 hầu như 0) | `al.b(ak,int)` |
+| 12 | Số lần tiến hóa khởi đầu của cá thể mới (0–3); giảm 1 mỗi lần tiến hóa | `byte[5]`; bằng độ dài chuỗi tiến hóa của cả 52 dạng gốc |
+| 13–14 | Chưa giải nghĩa (c13 = 1 ở 5 pet, c14 luôn 0) | — |
 
 - **Sát thương** (`ak.b(z,z,al,al,int)`): `(Công × sức mạnh × (1000 − Thủ × 5) / 10000 − Thủ / 10 − cấp / (2 × sức mạnh) + 6 − (cấp − 1) / 10) × (4 × clamp(chênh cấp, −10, 10) + 100) / 100`, rồi nhân `(thưởng% − 30 nếu thủ + 100) / 100`; thưởng% gồm +20 (độ trung thành 120), −20 nếu hệ pet khác hệ phe và +30 khi thắng thế hệ (`ak.b(z,al,al)`); bạo kích ×1,5 theo đặc tính.
 - **Bảng khắc hệ** (hàm tạo `ak`): Thực Vật thắng Phi Hành, Kim Loại thắng Mãnh Thú, Phi Hành thắng Hải Dương, Mãnh Thú thắng Thực Vật, Hải Dương thắng Kim Loại (+30%).
 - **Kỹ năng:** ô 0 là kỹ năng 25 ("Công Kích thông dụng", sức mạnh 8, không tốn SP) từ cấp 0; ô k (1–5) mở ở cấp 7k với kỹ năng `hệ × 5 + (k − 1)` (`ak.a(al)`); bảng `n` mỗi dòng `[sức mạnh, chi phí SP, tỉ lệ hiệu ứng, tham số]`. Kỹ năng 26–48 là kỹ năng đặc biệt (hồi máu, phong bế, đặc tính bị động…), chưa giải hiệu ứng.
 - **Đặc tính** (`al.b(ak)`, bảng `a`): 13 đặc tính; đặc tính 1 và 2 đổi HP −15% và +15% khi pet mang chúng; mỗi pet có hai ô đặc tính chọn theo hệ.
+- **Tiến hóa** (`ak.E()`, `ak.d(int)`, `ak.b(byte,byte)`, `al.b(ak,int,int)`; bảng `ak.q`): mỗi dòng `q[loài] = [đích dị hóa, đích thường, vật phẩm, số lượng, vật phẩm, số lượng…]` (dòng có đích 0 hoặc trỏ về chính nó là chỗ giữ chỗ, 8 dòng). Cần mọi nguyên liệu trong túi, cấp tối thiểu theo hạng (hạng 1: 15, hạng 2: 25, hạng 3: 30, hạng ≥ 4: không) và bộ đếm tiến hóa của cá thể > 0. Thành công thì trừ nguyên liệu, giữ cấp, đổi loài, tính lại chỉ số, hồi đầy HP và SP, bộ đếm giảm 1. Dị hóa (4 pet) chỉ khả dụng khi có thêm 1 vật phẩm 34 "Dị hoá tài liệu", thay thế tiến hóa thường, trừ nguyên liệu như thường và thêm vật phẩm 34, và đưa bộ đếm về 0. Bảng `ak.o` là bảng *nguồn gốc* của sổ tay pet (254 = tiến hóa, 253 = dị hóa, 255 = nhiệm vụ, 252 = đấu trường, 251 = ấp trứng, giá trị khác là mã địa điểm), không phải đích tiến hóa; dùng nó để kiểm chứng chéo: đích thường của 46 dòng hợp lệ trùng đúng tập pet "từ tiến hóa", đích dị hóa trùng tập "từ dị hóa".
+- **Nguyên liệu và cửa hàng VQSV5** (`data/shop.d`, đọc hết 234/234 byte): hàng thứ hai bán vật phẩm 16–25 bằng kim tiền (500 hoặc 1000); vật phẩm 26–30 (Bay lượn thiên thạch, Cổ thụ chi hạch, Tinh khiết thủy tinh, Cổ kình chi tâm, Vương chi chứng minh) và 34 (Dị hoá tài liệu) không bán, nguồn gốc chưa rõ.
 - **Không tìm thấy** trong jar: trình nạp `monN.d` và `monType.d` (hai bảng đó có thể là dữ liệu thừa của bản này); `data/map/area.dat` có lệnh nạp nhưng chưa giải.
 
 Mức độ chắc chắn: công thức chỉ số, hệ, hạng, ô kỹ năng, chi phí SP, công thức sát thương và trúng đã đọc trực tiếp từ bytecode và có đối chiếu chéo bằng mô tả pet. Game hợp nhất không dùng nguyên công thức sát thương VQSV5 mà quy đổi chỉ số về thang VQSV6 (xem `prototype/README.md`).

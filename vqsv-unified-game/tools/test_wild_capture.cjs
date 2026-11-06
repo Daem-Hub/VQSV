@@ -255,7 +255,7 @@ fresh2(); assert.match(evo('vqsv6-db-33', 'vqsv6-db-33').reason, /Chưa có dạ
 fresh2(); run('Math.random = () => 0');
 assert.deepEqual(JSON.parse(JSON.stringify(run('rollStoneDrops(5)'))), ['Tinh Nguyên Thạch', 'Hồn Tinh Thạch']);
 assert.equal(run('stones[12]'), 2);
-assert.equal(run('rollStoneDrops(45).length'), 5);
+assert.equal(run('rollStoneDrops(45).length'), 11); // 5 VQSV6 stones + 6 VQSV5 materials (26-30 and the mutation item)
 run('Math.random = () => 0.999');
 assert.equal(run('rollStoneDrops(45).length'), 0);
 assert.equal(JSON.parse(store.get('vqsv-unified-stones-v1'))[12], 3);

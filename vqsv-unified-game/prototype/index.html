@@ -429,8 +429,23 @@
       if (raw && typeof raw === "object") { stones = {}; for (let row = 0; row < TABLE3_ROWS; row++) stones[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
     } catch (_) {}
     function saveStones() { try { localStorage.setItem(STONES_KEY, JSON.stringify(stones)); } catch (_) {} }
+    // VQSV5 evolution materials (items 16-30 and the mutation item 34 of vqsv5.jar), counted by source item id.
+    const ITEMS5 = new Map((STATS5?.items || []).map(item => [item.item_id, item]));
+    const MATS5_KEY = "vqsv-unified-mats5-v1";
+    const RANK_GATES5 = STATS5?.evolution_rules?.level_gate_by_rank || {};
+    const MUTATION_ITEM5 = STATS5?.evolution_rules?.mutation_item_id;
+    // TRIAL drops: the source game does not say where materials 26-30 and 34 come from (they are not sold).
+    const MAT5_DROPS = [{ id: 34, chance: 4, minLevel: 15 }, ...[26, 27, 28, 29, 30].map(id => ({ id, chance: 5, minLevel: 25 }))];
+    let mats5 = {};
+    for (const id of ITEMS5.keys()) mats5[id] = 0;
+    try {
+      const raw = JSON.parse(localStorage.getItem(MATS5_KEY) || "null");
+      if (raw && typeof raw === "object") for (const id of ITEMS5.keys()) mats5[id] = Math.max(0, Math.floor(Number(raw[id]) || 0));
+    } catch (_) {}
+    function saveMats5() { try { localStorage.setItem(MATS5_KEY, JSON.stringify(mats5)); } catch (_) {} }
     function stoneText() {
       const parts = Object.keys(STONE_INFO).filter(row => stones[row] > 0).map(row => `${STONE_INFO[row].name} ×${stones[row]}`);
+      for (const [id, item] of ITEMS5) if (mats5[id] > 0) parts.push(`${item.name} ×${mats5[id]}`);
       return parts.length ? parts.join(", ") : "Chưa có";
     }
     function updateStones() { const el = document.getElementById("stoneStatus"); if (el) el.textContent = stoneText(); }
@@ -439,7 +454,10 @@
       for (const drop of STONE_DROPS) {
         if (enemyLevel >= drop.minLevel && Math.random() * 100 < drop.chance) { stones[drop.row] = (stones[drop.row] || 0) + 1; got.push(STONE_INFO[drop.row].name); }
       }
-      if (got.length) { saveStones(); updateStones(); }
+      for (const drop of MAT5_DROPS) {
+        if (ITEMS5.has(drop.id) && enemyLevel >= drop.minLevel && Math.random() * 100 < drop.chance) { mats5[drop.id] = Math.min(STACK_MAX, (mats5[drop.id] || 0) + 1); got.push(ITEMS5.get(drop.id).name); }
+      }
+      if (got.length) { saveStones(); saveMats5(); updateStones(); }
       return got;
     }
     function leadForm() { const form = progress["loi-mieu"]?.form; return STAT_BY_ID.has(form) ? form : LEAD_DEFAULT_FORM; }
@@ -447,8 +465,45 @@
     function individualsOf(speciesId) {
       const list = [];
       if (leadForm() === speciesId) list.push({ key: "loi-mieu", label: "Lôi Miêu (pet của Kael)" });
-      if (progress[speciesId] || (window.VQSVPetTeam?.ids?.() || []).includes(speciesId)) list.push({ key: speciesId, label: STAT_BY_ID.get(speciesId)?.name || speciesId });
+      if (progress[speciesId] || (window.VQSVPetTeam?.ids?.() || []).includes(speciesId)) list.push({ key: speciesId, label: STAT_BY_ID.get(speciesId)?.name || STAT5_BY_ID.get(speciesId)?.name || speciesId });
       return list;
+    }
+    // ---- VQSV5 evolution (ak.E(), ak.d(int), ak.b(byte,byte)): level gate by rank, listed materials (consumed), a per-pet counter,
+    // and a mutation that replaces the normal evolution when one "Dị hoá tài liệu" is spent as well. ----
+    const evolutionCounter5 = (entry, record) => (Number.isInteger(entry.evoLeft) ? entry.evoLeft : record.evolution_points);
+    function evolutionCheck5(key, speciesId, mode = "evolution") {
+      const record = STAT5_BY_ID.get(speciesId), evo = record?.evolution;
+      if (!evo) return { ok: false, v5: true, reason: "Đã là dạng cuối: không có dạng tiếp theo trong dữ liệu nguồn." };
+      const best = window.VQSVPetTeam?.caughtBest?.(speciesId);
+      const entry = progressOf(key, best ? best.level : BATTLE_LEVEL);
+      const targetId = mode === "mutation" ? evo.mutation_target_pet_id : evo.target_pet_id;
+      if (!targetId) return { ok: false, v5: true, reason: "Pet này không có dạng dị hóa." };
+      const target = STAT5_BY_ID.get(targetId), gate = RANK_GATES5[record.rank] || 0, left = evolutionCounter5(entry, record);
+      const reasons = [];
+      if (gate && entry.level < gate) reasons.push(`cần cấp ${gate} (đang cấp ${entry.level})`);
+      if (!(left > 0)) reasons.push("đã hết lượt tiến hóa");
+      for (const material of evo.materials) { const have = mats5[material.item_id] || 0; if (have < material.quantity) reasons.push(`thiếu ${material.name} (${have}/${material.quantity})`); }
+      if (mode === "mutation" && !(mats5[MUTATION_ITEM5] > 0)) reasons.push(`thiếu ${ITEMS5.get(MUTATION_ITEM5)?.name || "vật liệu dị hóa"} (0/1)`);
+      if (progress[targetId] || (window.VQSVPetTeam?.ids?.() || []).includes(targetId)) reasons.push(`đã có ${target.name} (mỗi loài giữ một cá thể trong prototype)`);
+      if (state.mode === "battle") reasons.push("không thể trong trận");
+      return { ok: !reasons.length, v5: true, reason: reasons.join(", "), entry, record, evo, target, targetId, left, mode, gate, targetName: target.name };
+    }
+    function evolvePet5(key, speciesId, mode) {
+      const check = evolutionCheck5(key, speciesId, mode);
+      const verb = mode === "mutation" ? "dị hóa" : "tiến hóa";
+      if (!check.ok) return { ok: false, message: `Chưa thể ${verb}: ${check.reason}.` };
+      for (const material of check.evo.materials) mats5[material.item_id] -= material.quantity;
+      if (mode === "mutation") mats5[MUTATION_ITEM5] -= 1;
+      saveMats5(); updateStones();
+      const left = mode === "mutation" ? 0 : check.left - 1;
+      delete progress[speciesId];
+      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left };
+      window.VQSVPetTeam?.replaceSpecies?.(speciesId, check.targetId);
+      saveProgress();
+      const before = unifiedStats5(check.record, check.entry.level), after = unifiedStats5(check.target, check.entry.level);
+      statusEl.textContent = `${check.record.name} đã ${verb} thành ${check.target.name}`;
+      return { ok: true, targetId: check.targetId, before, after, left,
+        message: `${check.record.name} ${verb} thành ${check.target.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}. Còn ${left} lần tiến hóa.` };
     }
     function evolutionCheck(key, speciesId) {
       const evo = ROSTER.get(speciesId)?.evolution;
@@ -466,7 +521,8 @@
       return { ok: !reasons.length, reason: reasons.join(", "), entry, evo, row, quantity, have, targetName };
     }
     // Moves a pet to its next form: keeps level, exp and skills, full HP, quality = max(current, target default).
-    function evolvePet(key, speciesId) {
+    function evolvePet(key, speciesId, mode = "evolution") {
+      if (STAT5_BY_ID.has(speciesId)) return evolvePet5(key, speciesId, mode);
       const check = evolutionCheck(key, speciesId);
       if (!check.ok) return { ok: false, message: `Chưa thể ${evolutionKind(check.evo?.target_pet_id)}: ${check.reason}.` };
       const currentRecord = STAT_BY_ID.get(speciesId), targetRecord = STAT_BY_ID.get(check.evo.target_pet_id);
@@ -492,6 +548,14 @@
       leadForm,
       stoneText,
       options(speciesId) {
+        if (STAT5_BY_ID.has(speciesId)) {
+          const record = STAT5_BY_ID.get(speciesId), modes = record.evolution?.mutation_target_pet_id ? ["evolution", "mutation"] : ["evolution"];
+          return individualsOf(speciesId).flatMap(individual => modes.map(mode => {
+            const check = evolutionCheck5(individual.key, speciesId, mode);
+            return { key: individual.key, label: individual.label, level: check.entry?.level ?? individualEntry(individual.key, speciesId).level, ok: check.ok, reason: check.reason,
+              verb: mode === "mutation" ? "Dị hóa" : "Tiến hóa", targetName: check.targetName, mode };
+          }));
+        }
         return individualsOf(speciesId).map(individual => {
           const check = evolutionCheck(individual.key, speciesId);
           return { key: individual.key, label: individual.label, level: check.entry?.level, ok: check.ok, reason: check.reason, verb: check.evo ? (evolutionKind(check.evo.target_pet_id) === "dị hóa" ? "Dị hóa" : "Tiến hóa") : "Tiến hóa", targetName: check.targetName };
@@ -600,13 +664,17 @@
     const CATALOG = [
       ...(SHOP?.items || []).filter(item => item.row !== 14).map(item => ({ ...item, id: `item-${item.row}`, store: "bag" })),
       ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
-      ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" }))
+      ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
+      // VQSV5 evolution materials sold by the source shop (shop.d, items 16-25, kim tiền only).
+      ...(STATS5?.items || []).filter(item => item.sold).map(item => ({ row: item.item_id, table: "vqsv5", name: `${item.name} (VQSV5)`, description: item.description, price: item.price, currency: 0, id: `mat5-${item.item_id}`, store: "mats5" }))
     ];
     const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
     const itemEntry = row => catalogById.get(`item-${row}`);
-    const countOf = entry => (entry.store === "bag" ? bag[entry.row] : stones[entry.row]) || 0;
+    const countOf = entry => (entry.store === "bag" ? bag[entry.row] : entry.store === "mats5" ? mats5[entry.row] : stones[entry.row]) || 0;
     function setCount(entry, amount) {
-      if (entry.store === "bag") { bag[entry.row] = amount; saveBag(); } else { stones[entry.row] = amount; saveStones(); updateStones(); }
+      if (entry.store === "bag") { bag[entry.row] = amount; saveBag(); }
+      else if (entry.store === "mats5") { mats5[entry.row] = amount; saveMats5(); updateStones(); }
+      else { stones[entry.row] = amount; saveStones(); updateStones(); }
     }
     const currencyName = entry => (entry.currency === 0 ? "kim tiền" : "huy hiệu");
     const balanceOf = entry => (entry.currency === 0 ? wallet.gold : wallet.badges);

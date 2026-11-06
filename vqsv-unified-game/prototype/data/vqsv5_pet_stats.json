@@ -2,7 +2,7 @@
  "source": "vqsv5.jar data/data.d (ak.j()), formulas from class al and class ak",
  "confidence": {
   "direct": "Stat formulas, type ids, ranks, skill unlock slots, SP costs and the damage/hit formulas are read from bytecode.",
-  "unresolved": "Pet columns 12-14, the evolution matrix (ak.o), the extra skill pairs (ak.q), the byte tables ak.u/ak.e/ak.v and the special-skill effects (ids 26-48) are exported raw."
+  "unresolved": "Pet columns 13-14, the byte tables ak.u/ak.e/ak.v and the special-skill effects (ids 26-48) are exported raw or ignored. Column 12 is the initial evolution counter."
  },
  "rules": {
   "stats": "hp = c0 + c7*L/10; sp = c1 + c8*L/10; agility = c2 + c9*L/10; attack = c3 + c10*L/10; defense = c4 + c11*L/10",
@@ -42,6 +42,142 @@
   },
   "type_advantage_percent": 30
  },
+ "evolution_rules": {
+  "level_gate_by_rank": {
+   "1": 15,
+   "2": 25,
+   "3": 30
+  },
+  "mutation_item_id": 34,
+  "counter": "per-pet counter starts at c12 of the species, -1 per evolution, 0 after a mutation; evolving needs counter > 0",
+  "consumes": "all listed materials; a mutation also consumes one mutation item (id 34) and replaces the normal evolution",
+  "on_success": "level kept, target species stats recomputed with the same formulas, full HP and SP",
+  "validated": {
+   "valid_rows": 46,
+   "mutations": 4,
+   "base_forms": 52,
+   "checks": [
+    "targets == pets found by evolution (ak.o 254)",
+    "mutation targets == pets found by mutation (ak.o 253)",
+    "same type, rank + 1",
+    "initial counter == evolution chain length for every base form"
+   ]
+  }
+ },
+ "items": [
+  {
+   "item_id": 16,
+   "name": "Cứng cỏi thạch",
+   "description": "Tài liệu tiến hóa cơ bản của sủng vật Mãnh Thú hệ",
+   "price": 500,
+   "sold": true
+  },
+  {
+   "item_id": 17,
+   "name": "Thú hồn",
+   "description": "Tài liệu tiến hóa bậc cao của sủng vật Mãnh Thú hệ",
+   "price": 1000,
+   "sold": true
+  },
+  {
+   "item_id": 18,
+   "name": "Thụ chướng thạch",
+   "description": "Tài liệu tiến hóa cơ bản của sủng vật Thực Vật",
+   "price": 500,
+   "sold": true
+  },
+  {
+   "item_id": 19,
+   "name": "Chu quả",
+   "description": "Tài liệu tiến hóa bậc cao của sủng vật Thực Vật hệ",
+   "price": 1000,
+   "sold": true
+  },
+  {
+   "item_id": 20,
+   "name": "Bong bóng",
+   "description": "Tài liệu tiến hóa cơ bản của sủng vật Hải Dương hệ",
+   "price": 500,
+   "sold": true
+  },
+  {
+   "item_id": 21,
+   "name": "Biển sâu san hô",
+   "description": "Tài liệu tiến hóa bậc cao của sủng vật Hải Dương hệ",
+   "price": 1000,
+   "sold": true
+  },
+  {
+   "item_id": 22,
+   "name": "Cách không thạch",
+   "description": "Tài liệu tiến hóa cơ bản của sủng vật Phi Hành hệ",
+   "price": 500,
+   "sold": true
+  },
+  {
+   "item_id": 23,
+   "name": "Thiên vũ",
+   "description": "Tài liệu tiến hóa bậc cao của sủng vật Phi Hành hệ",
+   "price": 1000,
+   "sold": true
+  },
+  {
+   "item_id": 24,
+   "name": "Tinh nguyên thạch",
+   "description": "Tài liệu tiến hóa cơ bản của sủng vật Kim Loại hệ",
+   "price": 500,
+   "sold": true
+  },
+  {
+   "item_id": 25,
+   "name": "Bạch kim",
+   "description": "Tài liệu tiến hóa bậc cao của sủng vật Kim Loại hệ",
+   "price": 1000,
+   "sold": true
+  },
+  {
+   "item_id": 26,
+   "name": "Bay lượn thiên thạch",
+   "description": "Chuẩn bị tài liệu tiến hóa Bạch Kim Long",
+   "price": 0,
+   "sold": false
+  },
+  {
+   "item_id": 27,
+   "name": "Cổ thụ chi hạch",
+   "description": "Chuẩn bị tài liệu tiến hóa Cổ Thụ Chi Vương",
+   "price": 0,
+   "sold": false
+  },
+  {
+   "item_id": 28,
+   "name": "Tinh khiết thủy tinh",
+   "description": "Chuẩn bị tài liệu tiến hóa Thủy Tinh Hùng Sư",
+   "price": 0,
+   "sold": false
+  },
+  {
+   "item_id": 29,
+   "name": "Cổ kình chi tâm",
+   "description": "Chuẩn bị tài liệu tiến hóa Kình Ngư",
+   "price": 0,
+   "sold": false
+  },
+  {
+   "item_id": 30,
+   "name": "Vương chi chứng minh",
+   "description": "Chuẩn bị tài liệu tiến hóa Hổ Vương",
+   "price": 0,
+   "sold": false
+  },
+  {
+   "item_id": 34,
+   "name": "Dị hoá tài liệu",
+   "description": "Nghe nói sủng vật dị hóa có thể có được hình thái mạnh mẽ hơn để kiềm giữ đạo cụ",
+   "price": 0,
+   "sold": false
+  }
+ ],
  "type_names": [
   "Thực Vật hệ",
   "Kim Loại hệ",
@@ -972,8 +1108,22 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 3,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-1",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 3,
     "13": 0,
     "14": 0
    },
@@ -996,11 +1146,11 @@
    ],
    "atlas_id": 1,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     11,
     13
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     1,
     18,
@@ -1109,8 +1259,27 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-2",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 19,
+      "name": "Chu quả",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -1133,10 +1302,10 @@
    ],
    "atlas_id": 1,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     2,
     18,
@@ -1247,8 +1416,27 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-3",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 19,
+      "name": "Chu quả",
+      "quantity": 3
+     },
+     {
+      "item_id": 27,
+      "name": "Cổ thụ chi hạch",
+      "quantity": 1
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -1271,10 +1459,10 @@
    ],
    "atlas_id": 1,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     3,
     19,
@@ -1385,8 +1573,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -1409,10 +1599,10 @@
    ],
    "atlas_id": 2,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tính tình ôn hòa trưởng giả, khi tức giận sẽ tạo nên uy lực mạnh mẽ có sức hủy diệt to lớn. [khắc chế Phi Hành hệ]"
   },
   {
@@ -1516,8 +1706,22 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-5",
+    "mutation_target_pet_id": "vqsv5-db-6",
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -1540,12 +1744,12 @@
    ],
    "atlas_id": 3,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     12,
     14,
     16
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     6,
     5,
     18,
@@ -1654,8 +1858,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -1678,10 +1884,10 @@
    ],
    "atlas_id": 3,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Loài thực vật có đôi môi gợi cảm kỳ lạ. [khắc chế Phi Hành hệ]"
   },
   {
@@ -1785,8 +1991,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "mutation",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -1809,10 +2017,10 @@
    ],
    "atlas_id": 3,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     253
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Lợi dụng bề ngoài có 5 sắc màu hấp dẫn con mồi, sau đó xơi tái con mồi chỉ với một ngụm. [khắc chế Phi Hành hệ]"
   },
   {
@@ -1916,8 +2124,22 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-8",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -1940,12 +2162,12 @@
    ],
    "atlas_id": 4,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     13,
     16,
     17
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     8,
     18,
@@ -2054,8 +2276,27 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-9",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 19,
+      "name": "Chu quả",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -2078,10 +2319,10 @@
    ],
    "atlas_id": 4,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     9,
     18,
@@ -2192,8 +2433,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -2216,10 +2459,10 @@
    ],
    "atlas_id": 4,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Đóa hoa tiên nở rộ rất xinh đẹp trong xứ xở của Thực Vật hệ. [khắc chế Phi Hành hệ]"
   },
   {
@@ -2323,8 +2566,22 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-11",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -2347,12 +2604,12 @@
    ],
    "atlas_id": 5,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     11,
     12,
     13
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     11,
     18,
@@ -2461,8 +2718,27 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-12",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 18,
+      "name": "Thụ chướng thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 19,
+      "name": "Chu quả",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -2485,10 +2761,10 @@
    ],
    "atlas_id": 5,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     12,
     18,
@@ -2599,8 +2875,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -2623,10 +2901,10 @@
    ],
    "atlas_id": 5,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Gai độc quanh thân khi cần có khả năng tạo nên uy lực mạnh mẽ làm kẻ địch lập tức bị mất mạng. [khắc chế Phi Hành hệ]"
   },
   {
@@ -2730,8 +3008,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -2754,10 +3034,10 @@
    ],
    "atlas_id": 6,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tiểu cô nương rất mê bộ môn khiêu vũ. [khắc chế Phi Hành hệ]"
   },
   {
@@ -2861,8 +3141,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -2885,10 +3167,10 @@
    ],
    "atlas_id": 6,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     14,
     18,
@@ -2999,8 +3281,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -3023,10 +3307,10 @@
    ],
    "atlas_id": 4,
    "form_index": 3,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Nữ Vương Hoa Tiên khí chất bất phàm. [khắc chế Phi Hành hệ]"
   },
   {
@@ -3130,8 +3414,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -3154,10 +3440,10 @@
    ],
    "atlas_id": 6,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     16,
     19,
@@ -3266,8 +3552,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 3,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-18",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 3,
     "13": 0,
     "14": 0
    },
@@ -3290,10 +3590,10 @@
    ],
    "atlas_id": 7,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     18,
     24,
@@ -3402,8 +3702,27 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-19",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -3426,10 +3745,10 @@
    ],
    "atlas_id": 7,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     19,
     24,
@@ -3540,8 +3859,27 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-20",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 3
+     },
+     {
+      "item_id": 28,
+      "name": "Tinh khiết thủy tinh",
+      "quantity": 1
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -3564,10 +3902,10 @@
    ],
    "atlas_id": 8,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     20,
     25,
@@ -3678,8 +4016,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -3702,10 +4042,10 @@
    ],
    "atlas_id": 8,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Phát ra hào quang thần thánh của loài sư tử mạnh mẽ, Kim Loại hệ mạnh nhất! [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -3809,8 +4149,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-22",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -3833,12 +4187,12 @@
    ],
    "atlas_id": 9,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     6,
     10,
     22
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     22,
     24,
@@ -3947,8 +4301,27 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-23",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -3971,10 +4344,10 @@
    ],
    "atlas_id": 10,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     23,
     24,
@@ -4085,8 +4458,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -4109,10 +4484,10 @@
    ],
    "atlas_id": 11,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     0
    ],
@@ -4219,8 +4594,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -4243,10 +4620,10 @@
    ],
    "atlas_id": 11,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     24,
     25,
@@ -4355,8 +4732,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-26",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -4379,12 +4770,12 @@
    ],
    "atlas_id": 12,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     6,
     10,
     24
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     26,
     24,
@@ -4493,8 +4884,27 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-27",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -4517,10 +4927,10 @@
    ],
    "atlas_id": 12,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     27,
     24,
@@ -4631,8 +5041,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -4655,10 +5067,10 @@
    ],
    "atlas_id": 13,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tướng quân tay cầm trường thương công kích. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -4762,8 +5174,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -4786,10 +5200,10 @@
    ],
    "atlas_id": 13,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     28,
     25,
@@ -4898,8 +5312,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -4922,10 +5338,10 @@
    ],
    "atlas_id": 13,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tướng quân tiên phong trí dũng song toàn. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -5029,8 +5445,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-31",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -5053,12 +5483,12 @@
    ],
    "atlas_id": 14,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     5,
     20,
     23
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     31,
     24,
@@ -5167,8 +5597,27 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-32",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -5191,10 +5640,10 @@
    ],
    "atlas_id": 14,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     32,
     24,
@@ -5305,8 +5754,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -5329,10 +5780,10 @@
    ],
    "atlas_id": 14,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Người khổng lồ Taurus. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -5436,8 +5887,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -5460,10 +5913,10 @@
    ],
    "atlas_id": 14,
    "form_index": 3,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Sủng vật quanh thân tràn ngập từ tính. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -5567,8 +6020,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-35",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 24,
+      "name": "Tinh nguyên thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -5591,12 +6058,12 @@
    ],
    "atlas_id": 15,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     21,
     22,
     29
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     35,
     24,
@@ -5705,8 +6172,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -5729,10 +6198,10 @@
    ],
    "atlas_id": 16,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Đam mê bộ môn thể thao ngoài trời. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -5836,8 +6305,22 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 3,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-37",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 3,
     "13": 0,
     "14": 0
    },
@@ -5860,10 +6343,10 @@
    ],
    "atlas_id": 17,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     37,
     22,
@@ -5972,8 +6455,27 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-38",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -5996,10 +6498,10 @@
    ],
    "atlas_id": 17,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     38,
     22,
@@ -6110,8 +6612,27 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-39",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 3
+     },
+     {
+      "item_id": 26,
+      "name": "Bay lượn thiên thạch",
+      "quantity": 1
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -6134,10 +6655,10 @@
    ],
    "atlas_id": 18,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     39,
     23,
@@ -6248,8 +6769,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -6272,10 +6795,10 @@
    ],
    "atlas_id": 18,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Vua bầu trời, có được thực lực thần thánh. [khắc chế Hải Dương hệ]"
   },
   {
@@ -6379,8 +6902,22 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-41",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -6403,12 +6940,12 @@
    ],
    "atlas_id": 19,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     25,
     26,
     37
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     41,
     22,
@@ -6517,8 +7054,27 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-42",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -6541,10 +7097,10 @@
    ],
    "atlas_id": 19,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     42,
     22,
@@ -6655,8 +7211,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -6679,10 +7237,10 @@
    ],
    "atlas_id": 19,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Sư Thân Ưng Thú trong truyền thuyết (sự pha trộn giữa sư tử và chim ưng), dã thú dị thường hung mãnh. [khắc chế Hải Dương hệ]"
   },
   {
@@ -6786,8 +7344,22 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-44",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -6810,12 +7382,12 @@
    ],
    "atlas_id": 20,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     24,
     26,
     39
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     44,
     22,
@@ -6924,8 +7496,27 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-45",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -6948,10 +7539,10 @@
    ],
    "atlas_id": 20,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     45,
     22,
@@ -7062,8 +7653,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7086,10 +7679,10 @@
    ],
    "atlas_id": 21,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Áo choàng thần bí tạo nên sức hút cho những kẻ kiếm tìm. [khắc chế Hải Dương hệ]"
   },
   {
@@ -7193,8 +7786,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7217,10 +7812,10 @@
    ],
    "atlas_id": 22,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Thiên Mã cực mạnh ai nhìn cũng muốn gần. [khắc chế Hải Dương hệ]"
   },
   {
@@ -7324,8 +7919,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7348,12 +7945,12 @@
    ],
    "atlas_id": 22,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     24,
     25,
     28
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Đôi cánh kim loại vàng rất mạnh rất tốt. [khắc chế Hải Dương hệ]"
   },
   {
@@ -7457,8 +8054,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7481,10 +8080,10 @@
    ],
    "atlas_id": 23,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     48,
     23,
@@ -7593,8 +8192,27 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-50",
+    "mutation_target_pet_id": "vqsv5-db-51",
+    "materials": [
+     {
+      "item_id": 22,
+      "name": "Cách không thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -7617,11 +8235,11 @@
    ],
    "atlas_id": 24,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     25,
     26
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     51,
     50,
     22,
@@ -7732,8 +8350,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7756,10 +8376,10 @@
    ],
    "atlas_id": 24,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tiểu Điểu lông xù, tánh khí táo bạo. [khắc chế Hải Dương hệ]"
   },
   {
@@ -7863,8 +8483,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "mutation",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -7887,10 +8509,10 @@
    ],
    "atlas_id": 24,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     253
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Trạng thái đỉnh cao Mao Cầu, trưởng thành, trang trọng. [khắc chế Hải Dương hệ]"
   },
   {
@@ -7994,8 +8616,22 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 3,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-53",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 3,
     "13": 0,
     "14": 0
    },
@@ -8018,10 +8654,10 @@
    ],
    "atlas_id": 25,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     53,
     16,
@@ -8130,8 +8766,27 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-54",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 17,
+      "name": "Thú hồn",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -8154,10 +8809,10 @@
    ],
    "atlas_id": 25,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     54,
     16,
@@ -8268,8 +8923,27 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-55",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 17,
+      "name": "Thú hồn",
+      "quantity": 3
+     },
+     {
+      "item_id": 30,
+      "name": "Vương chi chứng minh",
+      "quantity": 1
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -8292,10 +8966,10 @@
    ],
    "atlas_id": 25,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     55,
     17,
@@ -8406,8 +9080,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -8430,10 +9106,10 @@
    ],
    "atlas_id": 25,
    "form_index": 3,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Lão hổ sáu tay, sức mạnh phi thường, là đại thủ lĩnh Hổ Tộc. [khắc chế Thực Vật hệ]"
   },
   {
@@ -8537,8 +9213,22 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-57",
+    "mutation_target_pet_id": "vqsv5-db-84",
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -8561,12 +9251,12 @@
    ],
    "atlas_id": 26,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     11,
     14,
     38
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     84,
     57,
     16,
@@ -8675,8 +9365,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -8699,10 +9391,10 @@
    ],
    "atlas_id": 26,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Ánh hào quang lấp lóe xung quanh. [khắc chế Thực Vật hệ]"
   },
   {
@@ -8806,8 +9498,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -8830,10 +9524,10 @@
    ],
    "atlas_id": 26,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Cầm trong tay Song Đao Đường Lang mạnh mẽ. [khắc chế Thực Vật hệ]"
   },
   {
@@ -8937,8 +9631,22 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-60",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -8961,12 +9669,12 @@
    ],
    "atlas_id": 27,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     12,
     15,
     39
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     60,
     16,
@@ -9075,8 +9783,27 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-61",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 2
+     },
+     {
+      "item_id": 17,
+      "name": "Thú hồn",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -9099,10 +9826,10 @@
    ],
    "atlas_id": 27,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     61,
     16,
@@ -9213,8 +9940,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -9237,10 +9966,10 @@
    ],
    "atlas_id": 27,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Heo rừng lão đại tánh khí táo bạo. [khắc chế Thực Vật hệ]"
   },
   {
@@ -9344,8 +10073,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -9368,10 +10099,10 @@
    ],
    "atlas_id": 27,
    "form_index": 3,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     62,
     17,
@@ -9480,8 +10211,22 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-64",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 16,
+      "name": "Cứng cỏi thạch",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -9504,11 +10249,11 @@
    ],
    "atlas_id": 28,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     17,
     20
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     64,
     16,
@@ -9617,8 +10362,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -9641,10 +10388,10 @@
    ],
    "atlas_id": 29,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Hàm răng móng vuốt 10 phần sắc bén. [khắc chế Thực Vật hệ]"
   },
   {
@@ -9748,8 +10495,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -9772,11 +10521,11 @@
    ],
    "atlas_id": 29,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     41,
     42
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Vương giả ẩn giấu trong bóng tối. [khắc chế Thực Vật hệ]"
   },
   {
@@ -9880,8 +10629,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -9904,10 +10655,10 @@
    ],
    "atlas_id": 30,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Hành Tây Dị Thú hoạt bát. [khắc chế Thực Vật hệ]"
   },
   {
@@ -10011,8 +10762,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -10035,12 +10788,12 @@
    ],
    "atlas_id": 31,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     18,
     20,
     41
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tốc độ rất nhanh, danh xưng là “ Lôi Điện ”. [khắc chế Thực Vật hệ]"
   },
   {
@@ -10144,8 +10897,22 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 3,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-69",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 3,
     "13": 0,
     "14": 0
    },
@@ -10168,10 +10935,10 @@
    ],
    "atlas_id": 32,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     69,
     20,
@@ -10280,8 +11047,27 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-70",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 2
+     },
+     {
+      "item_id": 21,
+      "name": "Biển sâu san hô",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -10304,10 +11090,10 @@
    ],
    "atlas_id": 33,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     70,
     20,
@@ -10418,8 +11204,27 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-71",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 21,
+      "name": "Biển sâu san hô",
+      "quantity": 3
+     },
+     {
+      "item_id": 29,
+      "name": "Cổ kình chi tâm",
+      "quantity": 1
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -10442,10 +11247,10 @@
    ],
    "atlas_id": 33,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     71,
     21,
@@ -10556,8 +11361,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -10580,10 +11387,10 @@
    ],
    "atlas_id": 34,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Cá Kình cuồng điên mang theo đầy đủ võ trang. [khắc chế Kim Loại hệ]"
   },
   {
@@ -10687,8 +11494,22 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-73",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -10711,12 +11532,12 @@
    ],
    "atlas_id": 35,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     29,
     48,
     53
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     73,
     20,
@@ -10825,8 +11646,27 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-74",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 3
+     },
+     {
+      "item_id": 21,
+      "name": "Biển sâu san hô",
+      "quantity": 1
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -10849,10 +11689,10 @@
    ],
    "atlas_id": 36,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     74,
     20,
@@ -10963,8 +11803,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -10987,10 +11829,10 @@
    ],
    "atlas_id": 37,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Đế Vương Tính cách quái gở. [khắc chế Kim Loại hệ]"
   },
   {
@@ -11094,8 +11936,22 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-76",
+    "mutation_target_pet_id": "vqsv5-db-77",
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -11118,12 +11974,12 @@
    ],
    "atlas_id": 38,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     36,
     37,
     53
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     77,
     76,
     20,
@@ -11232,8 +12088,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -11256,10 +12114,10 @@
    ],
    "atlas_id": 39,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Hải Quy thúc thúc 10 phần mị lực. [khắc chế Kim Loại hệ]"
   },
   {
@@ -11363,8 +12221,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "mutation",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -11387,10 +12247,10 @@
    ],
    "atlas_id": 40,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     253
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Ẩn dưới biển sâu thần bí là năng lượng bí ẩn của loài rùa. [khắc chế Kim Loại hệ]"
   },
   {
@@ -11494,8 +12354,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -11518,10 +12380,10 @@
    ],
    "atlas_id": 40,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     78,
     21,
@@ -11630,8 +12492,22 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 2,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-80",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 3
+     }
+    ],
+    "min_level": 15,
+    "kind": "evolution"
+   },
+   "found_by": "wild",
    "unresolved_fields": {
-    "12": 2,
     "13": 0,
     "14": 0
    },
@@ -11654,12 +12530,12 @@
    ],
    "atlas_id": 41,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     29,
     48,
     53
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     80,
     20,
@@ -11768,8 +12644,27 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-81",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 20,
+      "name": "Bong bóng",
+      "quantity": 2
+     },
+     {
+      "item_id": 21,
+      "name": "Biển sâu san hô",
+      "quantity": 2
+     }
+    ],
+    "min_level": 25,
+    "kind": "evolution"
+   },
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 1,
     "13": 0,
     "14": 0
    },
@@ -11792,10 +12687,10 @@
    ],
    "atlas_id": 41,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     81,
     20,
@@ -11906,8 +12801,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -11930,10 +12827,10 @@
    ],
    "atlas_id": 41,
    "form_index": 2,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Vì yêu thích những câu chuyện cổ tích mà từ chối trưởng thành. [khắc chế Kim Loại hệ]"
   },
   {
@@ -12037,8 +12934,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12061,10 +12960,10 @@
    ],
    "atlas_id": 42,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tiểu cá heo thực dụng, có thể ngồi, có thể chiến đấu. [khắc chế Kim Loại hệ]"
   },
   {
@@ -12168,8 +13067,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12192,10 +13093,10 @@
    ],
    "atlas_id": 42,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Cá heo luôn ôm giấc mộng được bay lên không trung. [khắc chế Kim Loại hệ]"
   },
   {
@@ -12299,8 +13200,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "mutation",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12323,10 +13226,10 @@
    ],
    "atlas_id": 26,
    "form_index": 3,
-   "evolution_raw": [
+   "origin_raw": [
     253
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Dị hoá đem lại sức mạnh phi thường cho sinh vật. [khắc chế Thực Vật hệ]"
   },
   {
@@ -12410,8 +13313,10 @@
      "skill_id": 25
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12434,10 +13339,10 @@
    ],
    "atlas_id": 43,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "U Linh hệ. [khắc chế 5 hệ khác]"
   },
   {
@@ -12521,8 +13426,10 @@
      "skill_id": 25
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12545,10 +13452,10 @@
    ],
    "atlas_id": 43,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "U Linh hệ. [khắc chế 5 hệ khác]"
   },
   {
@@ -12652,8 +13559,22 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-88",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 19,
+      "name": "Chu quả",
+      "quantity": 3
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 1,
     "13": 1,
     "14": 0
    },
@@ -12676,10 +13597,10 @@
    ],
    "atlas_id": 44,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     88,
     19,
@@ -12788,8 +13709,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12812,10 +13735,10 @@
    ],
    "atlas_id": 44,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Thụ Tinh thu hành nhiều năm, thực lực phi phàm. [khắc chế Phi Hành hệ]"
   },
   {
@@ -12919,8 +13842,10 @@
      "skill_id": 4
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -12943,10 +13868,10 @@
    ],
    "atlas_id": 45,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Có được ma lực mạnh mẽ nhất Ailulima. [khắc chế Phi Hành hệ]"
   },
   {
@@ -13050,8 +13975,22 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-91",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 25,
+      "name": "Bạch kim",
+      "quantity": 3
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 1,
     "13": 1,
     "14": 0
    },
@@ -13074,10 +14013,10 @@
    ],
    "atlas_id": 46,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     91,
     25,
@@ -13186,8 +14125,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -13210,10 +14151,10 @@
    ],
    "atlas_id": 46,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Toàn thân mặc bộ giáp Warrior mạnh mẽ. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -13317,8 +14258,10 @@
      "skill_id": 9
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -13341,10 +14284,10 @@
    ],
    "atlas_id": 47,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Có được lực hủy diệt đáng sợ. [khắc chế Mãnh Thú hệ]"
   },
   {
@@ -13448,8 +14391,22 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-94",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 23,
+      "name": "Thiên vũ",
+      "quantity": 3
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 1,
     "13": 1,
     "14": 0
    },
@@ -13472,10 +14429,10 @@
    ],
    "atlas_id": 48,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     94,
     23,
@@ -13584,8 +14541,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -13608,10 +14567,10 @@
    ],
    "atlas_id": 48,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Thiên Sứ là biểu tượng của sự uy nghi và quyền lực. [khắc chế Hải Dương hệ]"
   },
   {
@@ -13715,8 +14674,10 @@
      "skill_id": 14
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -13739,10 +14700,10 @@
    ],
    "atlas_id": 49,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Hóa thân Cửu Thiên Huyền Nữ. [khắc chế Hải Dương hệ]"
   },
   {
@@ -13846,8 +14807,22 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-97",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 17,
+      "name": "Thú hồn",
+      "quantity": 3
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 1,
     "13": 1,
     "14": 0
    },
@@ -13870,10 +14845,10 @@
    ],
    "atlas_id": 50,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     97,
     17,
@@ -13982,8 +14957,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -14006,10 +14983,10 @@
    ],
    "atlas_id": 50,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Vua bóng đêm cao ngạo. [khắc chế Thực Vật hệ]"
   },
   {
@@ -14113,8 +15090,10 @@
      "skill_id": 19
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -14137,10 +15116,10 @@
    ],
    "atlas_id": 51,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Vương tử Ngân Hồ Tộc uy phong lẫm liệt. [khắc chế Thực Vật hệ]"
   },
   {
@@ -14244,8 +15223,22 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 1,
+   "evolution": {
+    "target_pet_id": "vqsv5-db-100",
+    "mutation_target_pet_id": null,
+    "materials": [
+     {
+      "item_id": 21,
+      "name": "Biển sâu san hô",
+      "quantity": 3
+     }
+    ],
+    "min_level": 30,
+    "kind": "evolution"
+   },
+   "found_by": "egg",
    "unresolved_fields": {
-    "12": 1,
     "13": 1,
     "14": 0
    },
@@ -14268,10 +15261,10 @@
    ],
    "atlas_id": 52,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     251
    ],
-   "extra_skill_pairs_raw": [
+   "evolution_row_raw": [
     0,
     100,
     21,
@@ -14380,8 +15373,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "evolution",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -14404,10 +15399,10 @@
    ],
    "atlas_id": 52,
    "form_index": 1,
-   "evolution_raw": [
+   "origin_raw": [
     254
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Tồn tại mối nguy hiểm nhất chính trong đại dương. [khắc chế Kim Loại hệ]"
   },
   {
@@ -14511,8 +15506,10 @@
      "skill_id": 24
     }
    ],
+   "evolution_points": 0,
+   "evolution": null,
+   "found_by": "quest",
    "unresolved_fields": {
-    "12": 0,
     "13": 0,
     "14": 0
    },
@@ -14535,10 +15532,10 @@
    ],
    "atlas_id": 53,
    "form_index": 0,
-   "evolution_raw": [
+   "origin_raw": [
     255
    ],
-   "extra_skill_pairs_raw": [],
+   "evolution_row_raw": [],
    "description": "Ca sỹ xinh đẹp, tuyệt mỹ thiện lương. [khắc chế Kim Loại hệ] "
   }
  ]

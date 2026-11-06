@@ -152,6 +152,25 @@
     }
     if (options.length && skillNote) detail.append(node("p", skillNote, "pet-evolve-note"));
   }
+  // Evolution / mutation buttons for each individual of this species (VQSV6 and VQSV5 share the same API).
+  function appendEvolutionOptions(entry) {
+    const evolution_ = window.VQSVEvolution;
+    if (!evolution_) return;
+    detail.append(node("p", `Nguyên liệu đang có: ${evolution_.stoneText()}.`));
+    for (const option of evolution_.options(entry.key)) {
+      detail.append(node("p", `${option.label} · cấp ${option.level}${option.mode === "mutation" ? " · dị hóa" : ""}: ${option.ok ? "đủ điều kiện" : option.reason}.`));
+      const go = node("button", `${option.verb} ${option.label}`, "pet-evolve");
+      go.type = "button";
+      go.disabled = !option.ok;
+      go.addEventListener("click", () => {
+        const result = evolution_.evolve(option.key, entry.key, option.mode);
+        evolveNote = result.message;
+        if (result.ok) selected = result.targetId;
+        render();
+      });
+      detail.append(go);
+    }
+  }
   // Held items: one per pet; equip from the bag, unequip back to it.
   function appendItemManager(entry) {
     const items = window.VQSVItems;
@@ -258,23 +277,7 @@
         if (evolution.minimum_level != null && evolution.material) {
           detail.append(node("p", `Điều kiện gốc: cấp ${evolution.minimum_level}, ${evolution.material.quantity} ${evolution.material.name}. Điều kiện trong game hợp nhất chưa chốt.`));
         }
-        const evolution_ = window.VQSVEvolution;
-        if (evolution_ && evolution.material) {
-          detail.append(node("p", `Nguyên liệu đang có: ${evolution_.stoneText()}.`));
-          for (const option of evolution_.options(entry.key)) {
-            detail.append(node("p", `${option.label} · cấp ${option.level}: ${option.ok ? "đủ điều kiện" : option.reason}.`));
-            const go = node("button", `${option.verb} ${option.label}`, "pet-evolve");
-            go.type = "button";
-            go.disabled = !option.ok;
-            go.addEventListener("click", () => {
-              const result = evolution_.evolve(option.key, entry.key);
-              evolveNote = result.message;
-              if (result.ok) selected = result.targetId;
-              render();
-            });
-            detail.append(go);
-          }
-        }
+        if (evolution.material) appendEvolutionOptions(entry);
         const viewTarget = node("button", `Xem ${target.display_name}`, "pet-target");
         viewTarget.type = "button";
         viewTarget.addEventListener("click", () => {
@@ -301,6 +304,18 @@
         const unlocks = rec5.skill_slots.filter(slot => slot.level > 0).map(slot => `cấp ${slot.level}: ${stats5.skills[slot.skill_id].name}`);
         detail.append(node("p", unlocks.length ? `Kỹ năng tự học — ${unlocks.join("; ")}.` : "Pet không thuộc hệ nên không có kỹ năng hệ."));
         detail.append(node("p", "KN = giá trị kỹ năng (SP), Lhoạt = linh hoạt (quyết định tỉ lệ trúng). Trong trận, chỉ số được quy đổi theo cấp để cân với pet VQSV6."));
+        const evo5 = rec5.evolution;
+        if (evo5) {
+          const mats = evo5.materials.map(material => `${material.quantity} ${material.name}`).join(", ");
+          const gate = stats5.evolution_rules.level_gate_by_rank[String(rec5.rank)];
+          detail.append(node("p", `Tiến hóa → ${byId.get(evo5.target_pet_id)?.display_name || evo5.target_pet_id}: ${gate ? `cấp ${gate}` : "không yêu cầu cấp"}, ${mats}; pet mới có ${rec5.evolution_points} lần tiến hóa.`));
+          if (evo5.mutation_target_pet_id) detail.append(node("p", `Dị hóa → ${byId.get(evo5.mutation_target_pet_id)?.display_name || evo5.mutation_target_pet_id}: như trên và thêm 1 ${stats5.items.find(item => item.item_id === stats5.evolution_rules?.mutation_item_id)?.name || "vật liệu dị hóa"}.`));
+          appendEvolutionOptions(entry);
+          const viewTarget5 = node("button", `Xem ${byId.get(evo5.target_pet_id)?.display_name || "dạng tiếp theo"}`, "pet-target");
+          viewTarget5.type = "button";
+          viewTarget5.addEventListener("click", () => { selected = evo5.target_pet_id; search.value = ""; source.value = "all"; element.value = "all"; collectionFilter.value = "all"; materialFilter.value = "all"; render(); });
+          detail.append(viewTarget5);
+        } else detail.append(node("p", rec5.found_by === "evolution" || rec5.found_by === "mutation" ? "Đã là dạng cuối của chuỗi tiến hóa." : "Không có dạng tiếp theo."));
       }
       if (!entry.atlas) { detail.append(node("p", "Chưa tải được hình nguồn.")); return; }
       const label = node("label", "Xem hoạt ảnh");

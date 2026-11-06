@@ -9,7 +9,7 @@ strings = count byte + UTF-16BE strings, byte array = length byte + bytes). 4066
   matrix  ak.d      pet table, 102 rows x 15 bytes   <- the stats
   matrix  ak.n      skill table, 49 rows [power, cost, effect%, param]
   strings ak.m, n, b, j, f, i, g, k, l  (skill labels, skill names, type names, pet names, item texts, ..., trait names/texts)
-  matrix  ak.o, e, q  (evolution relations, sprite pairs, extra pet skill pairs)
+  matrix  ak.o, e, q  (o = how each pet is found, e = sprite pairs, q = evolution rows: targets and materials)
   strings ak.p     pet descriptions
   bytes   ak.a (trait values), ak.u, ak.e, ak.v
   matrix  at.b, g
@@ -32,6 +32,18 @@ Skills: slot 0 = skill 25 (basic attack) from level 0; slot k (1..5) unlocks at 
   = type * 5 + (k - 1) (ak.a(al)); using a skill costs ak.n[skill][1] of SP (ak.b(al,int)).
 HP traits (al.b(ak)): trait 1 -15% HP, trait 2 +15% HP via ak.a[1] / ak.a[2].
 
+Evolution (ak.E(), ak.d(int), ak.b(byte,byte), al.b(ak,int,int)):
+  ak.q[species] = [mutation target, normal target, item, qty, item, qty, ...]  (rows with target 0 or itself are placeholders)
+  ak.d(): every listed material must be in the bag, else "Tài liệu không đủ"; with a mutation target and one item 34
+  ("Dị hoá tài liệu") the mutation replaces the normal evolution.
+  ak.b(rank, level): level gate by rank, rank 1 needs level 15, rank 2 needs 25, rank 3 needs 30, higher ranks have none.
+  Success consumes the materials (ak.c(item, qty)) and, for a mutation, one item 34; the pet keeps its level, takes the
+  target species (stats are recomputed with the same formulas, full HP and SP) and its per-pet evolution counter
+  (initially c12 of the species, byte[5]) drops by 1, or to 0 for a mutation. Evolving needs counter > 0 (menu check).
+  ak.o[species] = how the pet is found: first byte 254 (-2) "Tiến hóa", 253 (-3) "Dị hóa", 255 (-1) quest, 251 (-5) egg, else place ids.
+  Materials come from data/shop.d: [matrix shops -> item ids][short rows (little endian): prices by item id], shop 1 sells
+  items 16-25 for 500 or 1000 gold; items 26-30 and 34 are not sold.
+
 Writes prototype/data/vqsv5_pet_stats.json and asset_review/vqsv5_pet_stats.csv.
 """
 import csv
@@ -40,6 +52,7 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SHOP_ITEM_RANGE = range(16, 26)
 BUNDLED = ROOT / "sources" / "game"
 SOURCE = Path(os.environ.get("VQSV_SOURCE_ROOT", str(BUNDLED if BUNDLED.exists() else Path(r"D:\TOAN BO FILE\Download\game"))))
 blob = (SOURCE / "vqsv5" / "raw_data" / "data" / "data.d").read_bytes()
@@ -92,6 +105,29 @@ assert len(pets_raw) == len(pet_names) == len(sprite_pairs) == len(descriptions)
 assert len(skills_raw) == len(skill_names) == len(skill_labels) == 49 and len(type_names) == 5
 
 signed = lambda value: value - 256 if value > 127 else value
+
+# ---- data/shop.d (ak.f: shops -> item ids; ak.c: little-endian short rows, c[0] = price by item id) ----
+shop_blob = (SOURCE / "vqsv5" / "raw_data" / "data" / "shop.d").read_bytes()
+if int.from_bytes(shop_blob[:2], "big") != len(shop_blob) - 2:
+    raise ValueError("Unexpected shop.d length header")
+shop = shop_blob[2:]
+spos = 0
+def sbyte():
+    global spos
+    spos += 1
+    return shop[spos - 1]
+shops = [[sbyte() for _ in range(sbyte())] for _ in range(sbyte())]
+def sshort():
+    global spos
+    value = shop[spos] | (shop[spos + 1] << 8)
+    spos += 2
+    return value - 65536 if value > 32767 else value
+price_rows = []
+for _ in range(signed(sbyte())):
+    price_rows.append([sshort() for _ in range(signed(sbyte()))])
+if spos != len(shop):
+    raise ValueError(f"shop.d not fully consumed: {spos} of {len(shop)}")
+sold_items = set(shops[1])
 LEVEL_UNLOCKS = [0, 7, 14, 21, 28, 35]   # ak.a(al): slot thresholds
 BASIC_SKILL = 25                         # slot 0
 TYPE_CHART = [[2, 3], [3, 4], [4, 0], [0, 1], [1, 2]]  # ak constructor: m[type] = [type it beats (+30%), second listed type]
@@ -122,6 +158,32 @@ for index, (name, label, row) in enumerate(zip(skill_names, skill_labels, skills
                    "param": row[3] if len(row) > 3 else None,
                    "note": "power/cost used by the damage and SP rules; chance/param belong to the skill's special effect (index 26-48 are special skills)"})
 
+# ---- evolution rows (ak.q) ----
+RANK_LEVEL_GATE = {1: 15, 2: 25, 3: 30}
+MUTATION_ITEM = 34
+def valid_row(species, row):
+    return bool(row) and row[1] not in (0, species) and len(row) >= 4 and len(row) % 2 == 0
+evo_rows = {species: row for species, row in enumerate(extra_skills) if valid_row(species, row)}
+normal_targets = {species: row[1] for species, row in evo_rows.items()}
+mutation_targets = {species: row[0] for species, row in evo_rows.items() if row[0] > 0}
+# Cross-checks: the origin table (ak.o) must agree with the targets, and the evolution counters with the chain lengths.
+origin_evolution = {i for i, row in enumerate(evolutions) if row and row[0] == 254}
+origin_mutation = {i for i, row in enumerate(evolutions) if row and row[0] == 253}
+assert set(normal_targets.values()) == origin_evolution and len(set(normal_targets.values())) == len(normal_targets)
+assert set(mutation_targets.values()) == origin_mutation
+assert all(pets_raw[t][6] == pets_raw[s][6] and pets_raw[t][5] == pets_raw[s][5] + 1 for s, t in normal_targets.items())
+def chain_length(species):
+    count = 0
+    while species in normal_targets:
+        species = normal_targets[species]; count += 1
+    return count
+base_forms = [i for i in range(len(pets_raw)) if i not in set(normal_targets.values()) | set(mutation_targets.values())]
+assert all(pets_raw[i][12] == chain_length(i) for i in base_forms), "evolution counters must equal chain lengths"
+material_ids = sorted({row[k] for row in evo_rows.values() for k in range(2, len(row) - 1, 2)} | {MUTATION_ITEM})
+assert all(item < len(item_names) for item in material_ids)
+items = [{"item_id": item, "name": item_names[item], "description": item_effects[item] if item < len(item_effects) else "",
+          "price": price_rows[0][item] if item < len(price_rows[0]) else 0, "sold": item in sold_items} for item in material_ids]
+
 pets = []
 for pet_id, (name, row, pair, description) in enumerate(zip(pet_names, pets_raw, sprite_pairs, descriptions)):
     type_id = row[6] if row[6] < len(type_names) else None
@@ -133,8 +195,16 @@ for pet_id, (name, row, pair, description) in enumerate(zip(pet_names, pets_raw,
         "growth_note": "stat = base + growth * level / 10 (integer division)",
         "stats_at": {str(level): stats_at(row, level) for level in (1, 5, 10, 20, 30, 50)},
         "skill_slots": slots_for(type_id),
-        "unresolved_fields": {"12": row[12], "13": row[13], "14": row[14]},
-        "raw_fields": row, "atlas_id": pair[0], "form_index": pair[1], "evolution_raw": evolutions[pet_id], "extra_skill_pairs_raw": extra_skills[pet_id],
+        "evolution_points": row[12],
+        "evolution": ({
+            "target_pet_id": f"vqsv5-db-{normal_targets[pet_id]}",
+            "mutation_target_pet_id": f"vqsv5-db-{mutation_targets[pet_id]}" if pet_id in mutation_targets else None,
+            "materials": [{"item_id": evo_rows[pet_id][k], "name": item_names[evo_rows[pet_id][k]], "quantity": evo_rows[pet_id][k + 1]} for k in range(2, len(evo_rows[pet_id]) - 1, 2)],
+            "min_level": RANK_LEVEL_GATE.get(row[5]), "kind": "evolution",
+        } if pet_id in evo_rows else None),
+        "found_by": {254: "evolution", 253: "mutation", 255: "quest", 252: "arena", 251: "egg"}.get(evolutions[pet_id][0] if evolutions[pet_id] else None, "wild"),
+        "unresolved_fields": {"13": row[13], "14": row[14]},
+        "raw_fields": row, "atlas_id": pair[0], "form_index": pair[1], "origin_raw": evolutions[pet_id], "evolution_row_raw": extra_skills[pet_id],
         "description": description,
     })
 
@@ -143,7 +213,7 @@ out = {
     "source": "vqsv5.jar data/data.d (ak.j()), formulas from class al and class ak",
     "confidence": {
         "direct": "Stat formulas, type ids, ranks, skill unlock slots, SP costs and the damage/hit formulas are read from bytecode.",
-        "unresolved": "Pet columns 12-14, the evolution matrix (ak.o), the extra skill pairs (ak.q), the byte tables ak.u/ak.e/ak.v and the special-skill effects (ids 26-48) are exported raw.",
+        "unresolved": "Pet columns 13-14, the byte tables ak.u/ak.e/ak.v and the special-skill effects (ids 26-48) are exported raw or ignored. Column 12 is the initial evolution counter.",
     },
     "rules": {
         "stats": "hp = c0 + c7*L/10; sp = c1 + c8*L/10; agility = c2 + c9*L/10; attack = c3 + c10*L/10; defense = c4 + c11*L/10",
@@ -153,6 +223,16 @@ out = {
         "type_chart": {type_names[t]: {"beats": type_names[TYPE_CHART[t][0]], "listed_second": type_names[TYPE_CHART[t][1]]} for t in range(5)},
         "type_advantage_percent": 30,
     },
+    "evolution_rules": {
+        "level_gate_by_rank": {str(k): v for k, v in RANK_LEVEL_GATE.items()}, "mutation_item_id": MUTATION_ITEM,
+        "counter": "per-pet counter starts at c12 of the species, -1 per evolution, 0 after a mutation; evolving needs counter > 0",
+        "consumes": "all listed materials; a mutation also consumes one mutation item (id 34) and replaces the normal evolution",
+        "on_success": "level kept, target species stats recomputed with the same formulas, full HP and SP",
+        "validated": {"valid_rows": len(evo_rows), "mutations": len(mutation_targets), "base_forms": len(base_forms),
+                      "checks": ["targets == pets found by evolution (ak.o 254)", "mutation targets == pets found by mutation (ak.o 253)", "same type, rank + 1",
+                                 "initial counter == evolution chain length for every base form"]},
+    },
+    "items": items,
     "type_names": type_names, "traits": traits, "skills": skills, "pets": pets,
 }
 (ROOT / "prototype" / "data" / "vqsv5_pet_stats.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -163,4 +243,5 @@ with (ROOT / "asset_review" / "vqsv5_pet_stats.csv").open("w", encoding="utf-8-s
         a, b = pet["stats_at"]["1"], pet["stats_at"]["30"]
         writer.writerow([pet["pet_id"], pet["name"], pet["type"] or "", pet["rank"], a["hp"], a["sp"], a["agility"], a["attack"], a["defense"],
                          b["hp"], b["sp"], b["agility"], b["attack"], b["defense"], ";".join(map(str, pet["raw_fields"]))])
-print(f"Decoded {len(pets)} pets, {len(skills)} skills, {len(traits)} traits; data.d fully consumed ({pos} bytes)")
+print(f"Decoded {len(pets)} pets, {len(skills)} skills, {len(traits)} traits; data.d fully consumed ({pos} bytes), shop.d ({spos} bytes)")
+print(f"Evolution: {len(evo_rows)} rows ({len(mutation_targets)} mutations), {len(items)} material items; cross-checks passed")

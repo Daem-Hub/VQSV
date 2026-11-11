@@ -427,10 +427,10 @@
       const raw = JSON.parse(localStorage.getItem(BAG_KEY) || "null");
       if (raw && typeof raw === "object") { bag = {}; for (let row = 0; row < BAG_ROWS; row++) bag[row] = Math.max(0, Math.floor(Number(raw[row]) || 0)); }
     } catch (_) {}
-    let wallet = { gold: SHOP?.starter_gifts?.gold ?? 2000, badges: SHOP?.starter_gifts?.badges ?? 2, rewarded: {} };
+    let wallet = { gold: SHOP?.starter_gifts?.gold ?? 2000, badges: SHOP?.starter_gifts?.badges ?? 2, rewarded: {}, medalsClaimed: 0 };
     try {
       const raw = JSON.parse(localStorage.getItem(WALLET_KEY) || "null");
-      if (raw && typeof raw === "object") wallet = { gold: Math.max(0, Math.floor(Number(raw.gold) || 0)), badges: Math.max(0, Math.floor(Number(raw.badges) || 0)), rewarded: raw.rewarded && typeof raw.rewarded === "object" ? { ...raw.rewarded } : {} };
+      if (raw && typeof raw === "object") wallet = { gold: Math.max(0, Math.floor(Number(raw.gold) || 0)), badges: Math.max(0, Math.floor(Number(raw.badges) || 0)), rewarded: raw.rewarded && typeof raw.rewarded === "object" ? { ...raw.rewarded } : {}, medalsClaimed: Math.max(0, Math.floor(Number(raw.medalsClaimed) || 0)) };
     } catch (_) {}
     function saveBag() { try { localStorage.setItem(BAG_KEY, JSON.stringify(bag)); } catch (_) {} }
     function saveWallet() { try { localStorage.setItem(WALLET_KEY, JSON.stringify(wallet)); } catch (_) {} }
@@ -503,6 +503,20 @@
       if (raw && typeof raw === "object") for (const id of ITEMS5.keys()) mats5[id] = Math.max(0, Math.floor(Number(raw[id]) || 0));
     } catch (_) {}
     function saveMats5() { try { localStorage.setItem(MATS5_KEY, JSON.stringify(mats5)); } catch (_) {} }
+    // ---- Trainer rank and medals (trainer_rules; as.b(boolean), event opcode 32): the rank comes from how many different species were caught,
+    // medals are paid out once per new species when handed in at the registry (here: the Túi). ----
+    const TRAINER5 = STATS5?.trainer_rules;
+    const speciesCaught5 = () => window.VQSVPetTeam?.speciesCaught?.() ?? 0;
+    function trainerRank5() { const n = speciesCaught5(); return 1 + (TRAINER5?.rank_species_thresholds || []).filter(limit => n >= limit).length; }
+    const pendingMedals5 = () => Math.max(0, speciesCaught5() - (wallet.medalsClaimed || 0));
+    function claimMedals5() {
+      const pending = pendingMedals5();
+      if (state.mode === "battle") return { ok: false, message: "Không thể nhận huy hiệu trong trận." };
+      if (!pending) return { ok: false, message: "Chưa có loài mới nào để đổi huy hiệu." };
+      wallet.badges += pending; wallet.medalsClaimed = speciesCaught5(); saveWallet(); updateWallet();
+      return { ok: true, amount: pending, message: `Đổi ${pending} loài mới lấy ${pending} huy hiệu.` };
+    }
+    window.VQSVTrainer = { rank: trainerRank5, species: speciesCaught5, pendingMedals: pendingMedals5, claim: claimMedals5 };
     // ---- Treasure boxes (decode_vqsv5_pet_stats.py: chest_rules; ak.c() items 32/33, data/box.d). A win gives a Bảo rương half of the time; the
     // key is sold by the shop; opening spends one of each and rolls a tier (70/15/10/5%) and then that tier's table. Table 2 holds the skill books. ----
     const CHEST5 = STATS5?.chest_rules;
@@ -640,8 +654,7 @@
       return { ok: true, targetId: targetRecord.pet_id, before, after, quality,
         message: `${name} ${kind} thành ${targetRecord.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}.` };
     }
-    // Skill books -> the two special slots of a VQSV5 pet (ak.h(al)). The trainer rank the source asks for (ak.u) is not enforced: the
-    // prototype has no trainer rank.
+    // Skill books -> the two special slots of a VQSV5 pet (ak.h(al)); the book's trainer rank (ak.u) must not exceed the player's.
     window.VQSVSpecials = {
       individuals: individualsOf,
       slots(key) { return passivesOf5(key).slice(); },
@@ -652,6 +665,7 @@
         if (!book || !STAT5_BY_ID.has(speciesId)) return { ok: false, message: "Không có sách kỹ năng này." };
         if (state.mode === "battle") return { ok: false, message: "Không thể học kỹ năng trong trận." };
         if (!(mats5[book.item_id] > 0)) return { ok: false, message: `Chưa có Sách ${book.name}.` };
+        if (book.trainer_rank > trainerRank5()) return { ok: false, message: `Cần huấn luyện sư bậc ${book.trainer_rank} để học ${STATS5.skills[skillId].name} (hiện tại bậc ${trainerRank5()}).` };
         const slots = passivesOf5(key).slice();
         if (slots.includes(skillId)) return { ok: false, message: `${STAT5_BY_ID.get(speciesId).name} đã có kỹ năng ${STATS5.skills[skillId].name}.` };
         let index = slots.indexOf(-1);
@@ -803,7 +817,9 @@
       ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
       ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
       // VQSV5 evolution materials sold by the source shop (shop.d, items 16-25, kim tiền only).
-      ...(STATS5?.skill_books || []).map(book => ({ row: book.item_id, table: "vqsv5", name: `Sách ${book.name} (VQSV5)`, description: book.description, price: book.price_medals, currency: 1, id: `mat5-${book.item_id}`, store: "mats5" })),
+      ...(STATS5?.skill_books || []).map(book => ({ row: book.item_id, table: "vqsv5", name: `Sách ${book.name} (VQSV5)`, description: `${book.description} (cần huấn luyện sư bậc ${book.trainer_rank})`, price: book.price_medals, currency: 1, id: `mat5-${book.item_id}`, store: "mats5", bookRank: book.trainer_rank })),
+      // Sold by an event script, not by a shop table: 1500 kim for one mutation item, one at a time (data/event map 43 script 7).
+      ...(STATS5?.script_sales || []).map(sale => ({ row: sale.item_id, table: "vqsv5", name: `${STATS5.items.find(item => item.item_id === sale.item_id).name} (VQSV5)`, description: STATS5.items.find(item => item.item_id === sale.item_id).description, price: sale.price, currency: 0, id: `mat5-${sale.item_id}`, store: "mats5", limit: sale.limit })),
       ...(STATS5?.items || []).filter(item => item.sold).map(item => ({ row: item.item_id, table: "vqsv5", name: `${item.name} (VQSV5)`, description: item.description, price: item.price, currency: 0, id: `mat5-${item.item_id}`, store: "mats5" }))
     ];
     const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
@@ -823,6 +839,8 @@
       const entry = catalogById.get(id);
       quantity = Math.floor(Number(quantity));
       if (!entry || !(quantity >= 1)) return { ok: false, message: "Không có mặt hàng này." };
+      if (entry.limit && countOf(entry) + quantity > entry.limit) return { ok: false, message: entry.limit === 1 ? `${entry.name}: rất mạnh nên chỉ bán một cái mỗi lần, bạn đã có rồi.` : `Mỗi loại chỉ giữ tối đa ${entry.limit} cái.` };
+      if (entry.bookRank && entry.bookRank > trainerRank5()) return { ok: false, message: `${entry.name} cần huấn luyện sư bậc ${entry.bookRank} (hiện tại bậc ${trainerRank5()}).` };
       if (countOf(entry) + quantity > STACK_MAX) return { ok: false, message: `Mỗi loại chỉ giữ tối đa ${STACK_MAX} cái.` };
       const total = priceOf(entry, inBattle) * quantity;
       if (balanceOf(entry) < total) return { ok: false, message: `${entry.currency === 0 ? "Kim tiền" : "Huy hiệu"} chưa đủ (cần ${total}, đang có ${balanceOf(entry)}).` };
@@ -2424,6 +2442,16 @@
         }
         row.title = `${entry.description} ${effectText(entry)}`;
         list.append(row);
+      }
+      if (TRAINER5) {
+        const row = document.createElement("div");
+        row.className = "bag-row";
+        const pending = pendingMedals5();
+        const label = document.createElement("span"); label.textContent = `Huấn luyện sư bậc ${trainerRank5()} · ${speciesCaught5()} loài đã bắt`;
+        const claim = document.createElement("button"); claim.type = "button"; claim.textContent = `Đổi huy hiệu (+${pending})`; claim.disabled = state.mode !== "explore" || !pending;
+        claim.addEventListener("click", () => { const result = claimMedals5(); renderBag(); document.getElementById("bagNote").textContent = result.message; });
+        row.title = "Bậc 2, 3, 4, 5 khi đã bắt 5, 10, 15, 30 loài. Mỗi loài mới đổi được 1 huy hiệu. Sách kỹ năng đòi bậc huấn luyện sư nhất định.";
+        row.append(label, claim); list.append(row);
       }
       if (CHEST5) {
         const counts = window.VQSVChest.counts(), row = document.createElement("div");

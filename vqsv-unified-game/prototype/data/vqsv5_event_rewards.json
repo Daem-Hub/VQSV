@@ -1,0 +1,7252 @@
+{
+ "source": "vqsv5.jar data/event, instruction set of class at (u())",
+ "confidence": "Lengths from bytecode plus empirical fixes (see decoder docstring); 385 of 386 scripts parse exactly. Item/gold/pet operands are read from the opcodes that call at.f() / ak.e() / ak.b(); the speaker/place names are guesses.",
+ "summary": {
+  "scripts": 386,
+  "parsed": 385,
+  "failed": [
+   {
+    "map": 2,
+    "script": 6,
+    "length": 529,
+    "stopped_at": 442
+   }
+  ],
+  "items_given": 34,
+  "skill_books_given": [
+   {
+    "map": 63,
+    "script": 8,
+    "item_id": 44,
+    "name": "Triều tịch năng lượng",
+    "quantity": 1
+   },
+   {
+    "map": 66,
+    "script": 9,
+    "item_id": 39,
+    "name": "Kỹ năng Phong Bế",
+    "quantity": 1
+   }
+  ]
+ },
+ "boss_rows": [
+  [
+   0,
+   26,
+   26,
+   100
+  ],
+  [
+   1,
+   26,
+   26,
+   100
+  ],
+  [
+   2,
+   26,
+   26,
+   100
+  ],
+  [
+   3,
+   26,
+   26,
+   100
+  ],
+  [
+   4,
+   26,
+   26,
+   100
+  ],
+  [
+   5,
+   26,
+   26,
+   100
+  ],
+  [
+   6,
+   26,
+   26,
+   100
+  ],
+  [
+   7,
+   26,
+   26,
+   100
+  ],
+  [
+   8,
+   26,
+   26,
+   100
+  ],
+  [
+   9,
+   26,
+   26,
+   100
+  ],
+  [
+   10,
+   26,
+   26,
+   100
+  ],
+  [
+   11,
+   26,
+   26,
+   100
+  ],
+  [
+   12,
+   26,
+   26,
+   100
+  ],
+  [
+   13,
+   26,
+   26,
+   100
+  ],
+  [
+   14,
+   26,
+   26,
+   100
+  ],
+  [
+   15,
+   26,
+   26,
+   100
+  ],
+  [
+   16,
+   26,
+   26,
+   100
+  ],
+  [
+   17,
+   26,
+   26,
+   100
+  ],
+  [
+   18,
+   26,
+   26,
+   100
+  ],
+  [
+   19,
+   26,
+   26,
+   100
+  ],
+  [
+   20,
+   26,
+   26,
+   100
+  ],
+  [
+   21,
+   26,
+   26,
+   100
+  ],
+  [
+   22,
+   26,
+   26,
+   100
+  ],
+  [
+   23,
+   26,
+   26,
+   100
+  ],
+  [
+   24,
+   26,
+   26,
+   100
+  ],
+  [
+   25,
+   26,
+   26,
+   100
+  ],
+  [
+   26,
+   26,
+   26,
+   100
+  ],
+  [
+   27,
+   26,
+   26,
+   100
+  ],
+  [
+   28,
+   26,
+   26,
+   100
+  ],
+  [
+   29,
+   26,
+   26,
+   100
+  ],
+  [
+   30,
+   26,
+   26,
+   100
+  ],
+  [
+   31,
+   26,
+   26,
+   100
+  ],
+  [
+   32,
+   26,
+   26,
+   100
+  ],
+  [
+   33,
+   26,
+   26,
+   100
+  ],
+  [
+   34,
+   26,
+   26,
+   100
+  ],
+  [
+   35,
+   26,
+   26,
+   50
+  ],
+  [
+   36,
+   26,
+   26,
+   100
+  ],
+  [
+   37,
+   26,
+   26,
+   100
+  ],
+  [
+   38,
+   26,
+   26,
+   100
+  ],
+  [
+   39,
+   26,
+   26,
+   100
+  ],
+  [
+   40,
+   26,
+   26,
+   100
+  ],
+  [
+   41,
+   26,
+   26,
+   100
+  ],
+  [
+   42,
+   26,
+   26,
+   100
+  ],
+  [
+   43,
+   26,
+   26,
+   100
+  ],
+  [
+   44,
+   26,
+   26,
+   100
+  ],
+  [
+   45,
+   26,
+   26,
+   100
+  ],
+  [
+   46,
+   26,
+   26,
+   100
+  ],
+  [
+   47,
+   26,
+   26,
+   100
+  ],
+  [
+   48,
+   26,
+   26,
+   100
+  ],
+  [
+   49,
+   26,
+   26,
+   100
+  ],
+  [
+   50,
+   26,
+   26,
+   100
+  ],
+  [
+   51,
+   26,
+   26,
+   100
+  ],
+  [
+   52,
+   26,
+   26,
+   100
+  ],
+  [
+   53,
+   26,
+   26,
+   100
+  ],
+  [
+   54,
+   26,
+   26,
+   100
+  ],
+  [
+   55,
+   26,
+   26,
+   100
+  ],
+  [
+   56,
+   26,
+   26,
+   100
+  ],
+  [
+   57,
+   26,
+   26,
+   100
+  ],
+  [
+   58,
+   26,
+   26,
+   100
+  ],
+  [
+   59,
+   26,
+   26,
+   100
+  ],
+  [
+   60,
+   26,
+   26,
+   100
+  ],
+  [
+   61,
+   26,
+   26,
+   100
+  ],
+  [
+   62,
+   26,
+   26,
+   100
+  ],
+  [
+   63,
+   26,
+   26,
+   100
+  ],
+  [
+   64,
+   26,
+   26,
+   100
+  ],
+  [
+   65,
+   26,
+   26,
+   100
+  ],
+  [
+   66,
+   26,
+   26,
+   100
+  ],
+  [
+   67,
+   26,
+   26,
+   100
+  ],
+  [
+   68,
+   26,
+   26,
+   100
+  ],
+  [
+   69,
+   26,
+   26,
+   100
+  ],
+  [
+   70,
+   26,
+   26,
+   100
+  ],
+  [
+   71,
+   26,
+   26,
+   100
+  ],
+  [
+   72,
+   26,
+   26,
+   100
+  ],
+  [
+   73,
+   26,
+   26,
+   100
+  ],
+  [
+   74,
+   26,
+   26,
+   100
+  ],
+  [
+   75,
+   26,
+   26,
+   100
+  ],
+  [
+   76,
+   26,
+   26,
+   100
+  ],
+  [
+   77,
+   26,
+   26,
+   100
+  ],
+  [
+   78,
+   26,
+   26,
+   100
+  ],
+  [
+   79,
+   26,
+   26,
+   100
+  ],
+  [
+   80,
+   26,
+   26,
+   100
+  ],
+  [
+   81,
+   26,
+   26,
+   100
+  ],
+  [
+   82,
+   26,
+   26,
+   100
+  ],
+  [
+   83,
+   26,
+   26,
+   100
+  ],
+  [
+   84,
+   26,
+   26,
+   100
+  ],
+  [
+   85,
+   26,
+   26,
+   100
+  ],
+  [
+   86,
+   26,
+   26,
+   100
+  ],
+  [
+   87,
+   26,
+   26,
+   100
+  ],
+  [
+   88,
+   26,
+   26,
+   100
+  ],
+  [
+   89,
+   26,
+   26,
+   100
+  ],
+  [
+   90,
+   26,
+   26,
+   100
+  ],
+  [
+   91,
+   26,
+   26,
+   100
+  ],
+  [
+   92,
+   26,
+   26,
+   100
+  ],
+  [
+   93,
+   26,
+   26,
+   100
+  ],
+  [
+   94,
+   26,
+   26,
+   100
+  ],
+  [
+   95,
+   26,
+   26,
+   100
+  ],
+  [
+   96,
+   26,
+   26,
+   100
+  ],
+  [
+   97,
+   26,
+   26,
+   100
+  ],
+  [
+   98,
+   26,
+   26,
+   100
+  ],
+  [
+   99,
+   26,
+   26,
+   100
+  ],
+  [
+   100,
+   26,
+   26,
+   100
+  ],
+  [
+   101,
+   26,
+   26,
+   100
+  ],
+  [
+   102,
+   26,
+   26,
+   100
+  ]
+ ],
+ "scripts": [
+  {
+   "map": 0,
+   "script": 0,
+   "place_guess": "Khu Quý tộc",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "呵呵，原来少爷要问饲养场的事啊，少爷你看，这里就是饲养场了。"
+  },
+  {
+   "map": 0,
+   "script": 1,
+   "place_guess": "Khu Quý tộc",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 0,
+   "script": 2,
+   "place_guess": "Khu Quý tộc",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "先把宠物蛋交给罗姆饲养吧。"
+  },
+  {
+   "map": 0,
+   "script": 3,
+   "place_guess": "Khu Quý tộc",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "一个人最多只能同时饲养5颗宠物蛋哦。"
+  },
+  {
+   "map": 0,
+   "script": 4,
+   "place_guess": "Khu Quý tộc",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 1,
+   "script": 0,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-13",
+     "name": "Quả Tử Tiểu Tả",
+     "level": 1
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 0,
+     "kind": "mode 1"
+    },
+    {
+     "id": 1,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "塞其！等一下！"
+  },
+  {
+   "map": 1,
+   "script": 1,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 1,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 28,
+   "first_text": "塞其快看！彩虹国立学院又开始#3招生#0了~哇塞~这可是#7黄金训练师#0的摇篮啊！"
+  },
+  {
+   "map": 1,
+   "script": 2,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 2,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "嗯，道具已经有了，现在就去#7城南的金属遗迹#0捉点宠物去吧。"
+  },
+  {
+   "map": 1,
+   "script": 3,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "先去北面的购物中心买点补品和封印球吧。"
+  },
+  {
+   "map": 1,
+   "script": 4,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "明天才开放学院的报名活动，请明日再来。"
+  },
+  {
+   "map": 1,
+   "script": 5,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 1,
+   "script": 6,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "塞其赶回了彩虹城"
+  },
+  {
+   "map": 1,
+   "script": 7,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "今天的人好多啊，到底发生了什么？"
+  },
+  {
+   "map": 1,
+   "script": 8,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 1,
+   "script": 9,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 1,
+   "script": 10,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 10,
+   "first_text": "（诶？那个不是金属遗迹里的东方哥哥吗？他怎么跑到彩虹城了？过去打声招呼吧。）"
+  },
+  {
+   "map": 1,
+   "script": 11,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-13",
+     "name": "Quả Tử Tiểu Tả",
+     "level": 1
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 0,
+     "kind": "mode 1"
+    },
+    {
+     "id": 1,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 8,
+   "first_text": "今天中午看样子我是走不开了。"
+  },
+  {
+   "map": 1,
+   "script": 12,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "items": [
+    {
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 10
+    },
+    {
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": 10
+    },
+    {
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 10
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "感谢您对宠物系列的支持！这是我们送给您的礼物！祝您游戏愉快！"
+  },
+  {
+   "map": 2,
+   "script": 0,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 6,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "好壮丽的校园啊！"
+  },
+  {
+   "map": 2,
+   "script": 1,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 7,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 14,
+   "first_text": "嗯~先自我介绍下吧。"
+  },
+  {
+   "map": 2,
+   "script": 2,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 9,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "呵呵，很晚了，快些回去休息吧，明天就是开学典礼了。"
+  },
+  {
+   "map": 2,
+   "script": 3,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 2,
+   "script": 4,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [
+    {
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    },
+    {
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "item_id": 33,
+     "name": "Cái chìa khóa",
+     "quantity": 4
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 11,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 17,
+   "first_text": "马上开始了，我也赶快过去吧！"
+  },
+  {
+   "map": 2,
+   "script": 5,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 12,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 13,
+   "first_text": "（诶？那个人好像是普罗校长。）"
+  },
+  {
+   "map": 2,
+   "script": 7,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": -10000,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "您好，我是来入学登记的。"
+  },
+  {
+   "map": 2,
+   "script": 8,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 29,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 11,
+   "first_text": "可恶，居然打不开！"
+  },
+  {
+   "map": 2,
+   "script": 9,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 2,
+   "script": 10,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "（用#3钥匙#0试一下吧。）"
+  },
+  {
+   "map": 2,
+   "script": 11,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 1,
+      "level": 12
+     },
+     {
+      "boss_row": 5,
+      "level": 12
+     },
+     {
+      "boss_row": 8,
+      "level": 12
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 2,
+   "script": 12,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 0,
+      "level": 10
+     },
+     {
+      "boss_row": 21,
+      "level": 10
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "失败是成功他妈，来战斗吧！"
+  },
+  {
+   "map": 2,
+   "script": 13,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 19,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "那不是洛克吗？"
+  },
+  {
+   "map": 3,
+   "script": 0,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 8,
+   "first_text": "欢迎新入学的新生，我是国家训练师联盟指派的监督员。"
+  },
+  {
+   "map": 3,
+   "script": 1,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "宠物只有在属于自己的#7地形#0上战斗才能发挥100%的能力。例如常见的#7金属系#0宠物就需要在#7遗迹#0地形才能发"
+  },
+  {
+   "map": 3,
+   "script": 2,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 14,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "（教室在那儿，快过去吧！）"
+  },
+  {
+   "map": 3,
+   "script": 3,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 17,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 18,
+   "first_text": "看来大家都到了，我也赶快过去吧。"
+  },
+  {
+   "map": 3,
+   "script": 4,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 28,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 20,
+   "first_text": "第二章神秘的转校生"
+  },
+  {
+   "map": 3,
+   "script": 5,
+   "place_guess": "Phòng học",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 65,
+      "level": 30
+     },
+     {
+      "boss_row": 47,
+      "level": 30
+     },
+     {
+      "boss_row": 41,
+      "level": 30
+     },
+     {
+      "boss_row": 23,
+      "level": 30
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 31,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 48,
+   "first_text": "放了它！"
+  },
+  {
+   "map": 4,
+   "script": 0,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "塞其出示了中级竞技场准考证"
+  },
+  {
+   "map": 4,
+   "script": 1,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 43,
+      "level": 12
+     }
+    ],
+    [
+     {
+      "boss_row": 34,
+      "level": 12
+     }
+    ],
+    [
+     {
+      "boss_row": 8,
+      "level": 13
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 23,
+   "first_text": "准备好了吗？"
+  },
+  {
+   "map": 4,
+   "script": 2,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 4,
+   "script": 3,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 27,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 16,
+   "first_text": "塞其，你来了！"
+  },
+  {
+   "map": 4,
+   "script": 4,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 36,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "塞其，好久不见了！选拔赛的事情准备的怎么样了？"
+  },
+  {
+   "map": 4,
+   "script": 5,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "越是丑陋的事物外表就越是光鲜。"
+  },
+  {
+   "map": 5,
+   "script": 0,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "这就是彭彭说的有很多#3金属系宠物#0的#7金属遗迹#0了，加油捕捉吧！"
+  },
+  {
+   "map": 5,
+   "script": 1,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [
+    {
+     "item_id": 9,
+     "name": "Phong ấn cầu",
+     "quantity": 2
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 2,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "已经捉到铁头了么，太好了！"
+  },
+  {
+   "map": 5,
+   "script": 2,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 3,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 19,
+   "first_text": "（诶？那个装束...是来看我比赛的那个神秘人！）"
+  },
+  {
+   "map": 5,
+   "script": 3,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "还没有找到宠物蛋，再去找找吧。"
+  },
+  {
+   "map": 5,
+   "script": 4,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "走过路过不要错过。"
+  },
+  {
+   "map": 5,
+   "script": 5,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 5,
+   "script": 6,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 2,
+      "level": 19
+     },
+     {
+      "boss_row": 31,
+      "level": 20
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 10,
+   "first_text": "阿帅，怎么了？"
+  },
+  {
+   "map": 5,
+   "script": 7,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "咔嚓~~~"
+  },
+  {
+   "map": 5,
+   "script": 8,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "咔嚓~~~"
+  },
+  {
+   "map": 5,
+   "script": 9,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "咔嚓~~~"
+  },
+  {
+   "map": 5,
+   "script": 10,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 2,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 8,
+   "first_text": "该死~又失败了，为什么总是捉不到宠物呢。"
+  },
+  {
+   "map": 5,
+   "script": 11,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "（一直在这儿的那个东方哥哥不见了...）"
+  },
+  {
+   "map": 5,
+   "script": 12,
+   "place_guess": "Kim Loại Di Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-22",
+     "name": "Thiết Giáp Xà",
+     "level": 10
+    },
+    {
+     "pet_id": "vqsv5-db-33",
+     "name": "Người điện",
+     "level": 30
+    }
+   ],
+   "bosses": [
+    [
+     {
+      "boss_row": 27,
+      "level": 30
+     },
+     {
+      "boss_row": 19,
+      "level": 30
+     },
+     {
+      "boss_row": 33,
+      "level": 30
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 32,
+     "kind": "mode 1"
+    },
+    {
+     "id": 33,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 13,
+   "first_text": "这家伙居然躲在这里了，我快去把铁甲蛇救出来吧！"
+  },
+  {
+   "map": 6,
+   "script": 0,
+   "place_guess": "Kim Loại Di Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "那就是金属遗迹里特殊的巨石吧。"
+  },
+  {
+   "map": 6,
+   "script": 1,
+   "place_guess": "Kim Loại Di Tích 2",
+   "items": [
+    {
+     "item_id": 58,
+     "name": "Thực Vật hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 4,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "那个难道就是宠物蛋么，好大啊！"
+  },
+  {
+   "map": 6,
+   "script": 2,
+   "place_guess": "Kim Loại Di Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "没必要再深入了，还是先去办正事吧！"
+  },
+  {
+   "map": 6,
+   "script": 3,
+   "place_guess": "Kim Loại Di Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "他们还跑的真快。"
+  },
+  {
+   "map": 6,
+   "script": 4,
+   "place_guess": "Kim Loại Di Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 7,
+   "script": 0,
+   "place_guess": "Khu quản lý Trường học sủng vật",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "我是学院孵化场的管理员，如果你要饲养宠物来找我就可以了。"
+  },
+  {
+   "map": 7,
+   "script": 1,
+   "place_guess": "Khu quản lý Trường học sủng vật",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 8,
+   "script": 0,
+   "place_guess": "Cầu Vồng Đấu trường sơ cấp",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 10,
+   "first_text": "上吧，我可爱的树怪！"
+  },
+  {
+   "map": 8,
+   "script": 1,
+   "place_guess": "Cầu Vồng Đấu trường sơ cấp",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "塞其出示了初级竞技场准考证"
+  },
+  {
+   "map": 8,
+   "script": 2,
+   "place_guess": "Cầu Vồng Đấu trường sơ cấp",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 5,
+      "level": 9
+     }
+    ],
+    [
+     {
+      "boss_row": 56,
+      "level": 10
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 8,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 18,
+   "first_text": "准备好了吗？"
+  },
+  {
+   "map": 9,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "虽然这儿是无条件开放的第一个门，却是比你以往去过的野外都凶险的地方，最好准备充分再进去哦！"
+  },
+  {
+   "map": 9,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "不错嘛！居然这么短时间就打通东门了！"
+  },
+  {
+   "map": 9,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 12,
+   "first_text": "真是奇怪，明明之前还在口袋的！"
+  },
+  {
+   "map": 9,
+   "script": 3,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 4,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 5,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 20,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "最近一段时间的宠物丢失事件应该和这些蒙面人有关，你回去向学校保安处报告下今天的情况吧。"
+  },
+  {
+   "map": 9,
+   "script": 6,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 7,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-34",
+     "name": "Đồng Cầu huynh đệ",
+     "level": 15
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 21,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 21,
+   "first_text": "是在这里丢的吗？"
+  },
+  {
+   "map": 9,
+   "script": 8,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-49",
+     "name": "Mao Cầu Điểu",
+     "level": 20
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 25,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 17,
+   "first_text": "（好多人聚在北门，难道又发生了什么事吗？）"
+  },
+  {
+   "map": 9,
+   "script": 9,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 10,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 11,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 41,
+      "level": 31
+     },
+     {
+      "boss_row": 58,
+      "level": 32
+     }
+    ],
+    [
+     {
+      "boss_row": 2,
+      "level": 32
+     },
+     {
+      "boss_row": 61,
+      "level": 33
+     }
+    ],
+    [
+     {
+      "boss_row": 11,
+      "level": 33
+     },
+     {
+      "boss_row": 62,
+      "level": 33
+     }
+    ],
+    [
+     {
+      "boss_row": 19,
+      "level": 35
+     },
+     {
+      "boss_row": 15,
+      "level": 35
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 37,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 8,
+   "first_text": "终于到这个时候了，让我看看你的实力吧！"
+  },
+  {
+   "map": 9,
+   "script": 12,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 13,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 14,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 9,
+   "script": 15,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 10,
+   "script": 0,
+   "place_guess": "Kim Loại Di Tích 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 10,
+   "script": 1,
+   "place_guess": "Kim Loại Di Tích 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 30,
+   "first_text": "阿帅，怎么了？"
+  },
+  {
+   "map": 11,
+   "script": 0,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "卡修叔叔应该就在这附近采药的，找找看吧。"
+  },
+  {
+   "map": 11,
+   "script": 1,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [
+    {
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 1,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "卡修叔叔，这是露西阿姨让我给你带的饭！"
+  },
+  {
+   "map": 11,
+   "script": 2,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "前面就是金属遗迹了，里面一定有很多金属宠物！"
+  },
+  {
+   "map": 11,
+   "script": 3,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 19,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "（阿帅真是急性子，我也快点进去吧。）"
+  },
+  {
+   "map": 11,
+   "script": 4,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 38,
+      "level": 24
+     },
+     {
+      "boss_row": 50,
+      "level": 24
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "嘿嘿，这回我有了飞行系的强大宠物！觉悟吧，塞其！"
+  },
+  {
+   "map": 11,
+   "script": 5,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 38,
+      "level": 24
+     },
+     {
+      "boss_row": 50,
+      "level": 24
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 11,
+   "script": 6,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 30,
+     "kind": "mode 1"
+    },
+    {
+     "id": 32,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "（诶？蓝色的宠物，还有一只铁甲蛇。应该就是那位女同学丢失的宠物吧！快过去看看）"
+  },
+  {
+   "map": 11,
+   "script": 7,
+   "place_guess": "Bên ngoài thành phía nam",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 8,
+      "level": 25
+     },
+     {
+      "boss_row": 2,
+      "level": 25
+     },
+     {
+      "boss_row": 33,
+      "level": 25
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 31,
+     "kind": "mode 1"
+    },
+    {
+     "id": 32,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "咔咔~呜呜~咕咕~"
+  },
+  {
+   "map": 12,
+   "script": 0,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 12,
+   "script": 1,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 12,
+   "script": 2,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "这东之高原还真是宽广啊。"
+  },
+  {
+   "map": 12,
+   "script": 3,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "怎么我总能碰到你..."
+  },
+  {
+   "map": 12,
+   "script": 4,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "来挑挑看吧。"
+  },
+  {
+   "map": 12,
+   "script": 5,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 8,
+   "first_text": "欢迎来到东之高原，我是国家训练师联盟指派的监督员。"
+  },
+  {
+   "map": 12,
+   "script": 6,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 1,
+      "level": 13
+     },
+     {
+      "boss_row": 7,
+      "level": 13
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "哼哼，我这回特意选择了#0植物系宠物#0，这下#7东之高原#0的#7花园地形#0就能为我所用啦！"
+  },
+  {
+   "map": 12,
+   "script": 7,
+   "place_guess": "Cao nguyên phía đông 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 2,
+      "level": 14
+     },
+     {
+      "boss_row": 6,
+      "level": 14
+     },
+     {
+      "boss_row": 11,
+      "level": 14
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 13,
+   "script": 0,
+   "place_guess": "Cao nguyên phía đông 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 4,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "那是！"
+  },
+  {
+   "map": 13,
+   "script": 1,
+   "place_guess": "Cao nguyên phía đông 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-52",
+     "name": "Hổ Thú",
+     "level": 10
+    }
+   ],
+   "bosses": [
+    [
+     {
+      "boss_row": 21,
+      "level": 11
+     },
+     {
+      "boss_row": 63,
+      "level": 12
+     },
+     {
+      "boss_row": 5,
+      "level": 12
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 4,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "你这个家伙，想干什么？"
+  },
+  {
+   "map": 13,
+   "script": 2,
+   "place_guess": "Cao nguyên phía đông 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 34,
+      "level": 12
+     },
+     {
+      "boss_row": 63,
+      "level": 12
+     },
+     {
+      "boss_row": 5,
+      "level": 12
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 5,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 9,
+   "first_text": "这个宠物蛋是我的，你们谁也别想拿走。"
+  },
+  {
+   "map": 13,
+   "script": 3,
+   "place_guess": "Cao nguyên phía đông 2",
+   "items": [
+    {
+     "item_id": 63,
+     "name": "Mãnh Thú hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 5,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "你把巨刺仙掌带来了吗？"
+  },
+  {
+   "map": 15,
+   "script": 0,
+   "place_guess": "Cao nguyên phía đông 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 10,
+      "level": 14
+     },
+     {
+      "boss_row": 26,
+      "level": 15
+     },
+     {
+      "boss_row": 57,
+      "level": 15
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 18,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "准备好了么，那就开始战斗吧。"
+  },
+  {
+   "map": 15,
+   "script": 1,
+   "place_guess": "Cao nguyên phía đông 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 15,
+   "script": 2,
+   "place_guess": "Cao nguyên phía đông 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "不错，果然是塞其第一个到达。"
+  },
+  {
+   "map": 16,
+   "script": 0,
+   "place_guess": "Rừng rậm phía tây 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 16,
+   "script": 1,
+   "place_guess": "Rừng rậm phía tây 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 16,
+   "script": 2,
+   "place_guess": "Rừng rậm phía tây 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "这里不够空旷，我们继续往里面走吧！"
+  },
+  {
+   "map": 17,
+   "script": 0,
+   "place_guess": "Rừng rậm phía tây 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 32,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "这个地方就可以了。"
+  },
+  {
+   "map": 17,
+   "script": 1,
+   "place_guess": "Rừng rậm phía tây 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "小兄弟，来看看有什么需要的。"
+  },
+  {
+   "map": 17,
+   "script": 2,
+   "place_guess": "Rừng rậm phía tây 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 12,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "（诶？那边有个宠物蛋还有个老爷爷，老爷爷看起来很忧郁的样子，过去看看吧。）"
+  },
+  {
+   "map": 17,
+   "script": 3,
+   "place_guess": "Rừng rậm phía tây 2",
+   "items": [
+    {
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": -10
+    },
+    {
+     "item_id": 13,
+     "name": "Mật tâm đường",
+     "quantity": -2
+    },
+    {
+     "item_id": 59,
+     "name": "Thực Vật hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 12,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "老爷爷上前将兴奋菇和蜜心糖喂给宠物蛋"
+  },
+  {
+   "map": 17,
+   "script": 4,
+   "place_guess": "Rừng rậm phía tây 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "太好了！你这么快就弄来了~快给我吧！"
+  },
+  {
+   "map": 18,
+   "script": 0,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "测试的老师在北面，请往北方前进吧。"
+  },
+  {
+   "map": 18,
+   "script": 1,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 18,
+   "script": 2,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "看！它在那，快追上去！"
+  },
+  {
+   "map": 18,
+   "script": 3,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "欢迎来到美丽的西之森林，我是宠物联盟特派在此地的监督员。"
+  },
+  {
+   "map": 18,
+   "script": 4,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 9,
+      "level": 26
+     },
+     {
+      "boss_row": 14,
+      "level": 26
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "最近我发现原来有些优质宠物可以从宠物蛋里孵化出来，前阵儿我得到了新的宠物，让我们切磋一下吧！"
+  },
+  {
+   "map": 18,
+   "script": 5,
+   "place_guess": "Rừng rậm phía tây 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 5,
+      "level": 26
+     },
+     {
+      "boss_row": 12,
+      "level": 26
+     },
+     {
+      "boss_row": 14,
+      "level": 26
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 19,
+   "script": 0,
+   "place_guess": "Rừng rậm phía tây 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "这里是森林的尽头，无路可走了。"
+  },
+  {
+   "map": 19,
+   "script": 1,
+   "place_guess": "Rừng rậm phía tây 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 19,
+   "script": 2,
+   "place_guess": "Rừng rậm phía tây 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 20,
+   "script": 0,
+   "place_guess": "Rừng rậm phía tây 5",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 57,
+      "level": 23
+     },
+     {
+      "boss_row": 11,
+      "level": 23
+     },
+     {
+      "boss_row": 61,
+      "level": 24
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "真没想到你居然能来到这里，看来天生就是做训练师的材料，让我看看你的实力吧。"
+  },
+  {
+   "map": 20,
+   "script": 1,
+   "place_guess": "Rừng rậm phía tây 5",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 21,
+   "script": 0,
+   "place_guess": "Nam Chi Phế Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 21,
+   "script": 1,
+   "place_guess": "Nam Chi Phế Tích 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 22,
+   "script": 0,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 22,
+   "script": 1,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 22,
+   "script": 2,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "欢迎来到南之废墟。"
+  },
+  {
+   "map": 22,
+   "script": 3,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 22,
+   "script": 4,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "来看看吧。"
+  },
+  {
+   "map": 23,
+   "script": 0,
+   "place_guess": "Nam Chi Phế Tích 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 22,
+      "level": 19
+     },
+     {
+      "boss_row": 8,
+      "level": 20
+     },
+     {
+      "boss_row": 35,
+      "level": 21
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "居然让本大爷老呆在这片废墟上，可恶！此刻我心情很不好，小子，快陪我活动活动筋骨！"
+  },
+  {
+   "map": 23,
+   "script": 1,
+   "place_guess": "Nam Chi Phế Tích 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 24,
+   "script": 0,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 24,
+   "script": 1,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 24,
+   "script": 2,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "我是宠物联盟特派在北之天空的监督员，有什么需要就来找我吧。"
+  },
+  {
+   "map": 24,
+   "script": 3,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [
+    {
+     "item_id": 62,
+     "name": "Bầu trời hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "（又获得了一个宠物蛋。）"
+  },
+  {
+   "map": 24,
+   "script": 4,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 42,
+      "level": 32
+     },
+     {
+      "boss_row": 38,
+      "level": 32
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "没想到能在凶险的北之天空见到你，塞其，让你看看我修炼的成果吧！"
+  },
+  {
+   "map": 24,
+   "script": 5,
+   "place_guess": "Bầu trời phương bắc 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 50,
+      "level": 35
+     },
+     {
+      "boss_row": 44,
+      "level": 35
+     },
+     {
+      "boss_row": 42,
+      "level": 35
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 25,
+   "script": 0,
+   "place_guess": "Bầu trời phương bắc 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "有什么需要帮助的吗？"
+  },
+  {
+   "map": 25,
+   "script": 1,
+   "place_guess": "Bầu trời phương bắc 2",
+   "items": [],
+   "kim_tien": -600,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-46",
+     "name": "Thiên Mã cánh bạc",
+     "level": 14
+    }
+   ],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "你想要买宠物吗？我这里可是有一只很稀有的飞行系宠物哦，只要600金哦，要不是缺钱我可是绝对不会卖的！"
+  },
+  {
+   "map": 26,
+   "script": 0,
+   "place_guess": "Bầu trời phương bắc 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 84,
+      "level": 29
+     },
+     {
+      "boss_row": 44,
+      "level": 30
+     },
+     {
+      "boss_row": 51,
+      "level": 30
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "快放了老师！"
+  },
+  {
+   "map": 27,
+   "script": 0,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 51,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "（现在普罗爷爷应该还在上课，我还是先去调查一下安琪儿说的那个神秘房间吧！）"
+  },
+  {
+   "map": 27,
+   "script": 1,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "（这也有个彩虹屋，不知道通往哪个传召室呢？过去看看吧！）"
+  },
+  {
+   "map": 27,
+   "script": 2,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "（那里应该就是北门老师说的#7通往北海的通道#0了，我赶快过去吧。）"
+  },
+  {
+   "map": 27,
+   "script": 3,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "（哼！你不满足我的要求我就不理你！）"
+  },
+  {
+   "map": 27,
+   "script": 4,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 69,
+      "level": 40
+     },
+     {
+      "boss_row": 69,
+      "level": 40
+     },
+     {
+      "boss_row": 70,
+      "level": 40
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "塞其上前开宝箱"
+  },
+  {
+   "map": 27,
+   "script": 5,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "这似乎是某种宠物进化的稀有材料，我还是好好收好，方便以后用吧！"
+  },
+  {
+   "map": 27,
+   "script": 6,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 11,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "发生了什么事情吗？"
+  },
+  {
+   "map": 27,
+   "script": 7,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-58",
+     "name": "Ngựa lưỡi liềm khổng lồ",
+     "level": 30
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 11,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "太好了！快把独角天马给我吧！"
+  },
+  {
+   "map": 28,
+   "script": 0,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 28,
+   "script": 1,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 38,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 14,
+   "first_text": "第三章 北海王国"
+  },
+  {
+   "map": 28,
+   "script": 2,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 28,
+   "script": 3,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 28,
+   "script": 4,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 29,
+   "script": 0,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "快看！那个地方就是进入旧校舍的隐蔽海域了！我们快进去吧！"
+  },
+  {
+   "map": 29,
+   "script": 1,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 29,
+   "script": 2,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 29,
+   "script": 3,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 29,
+   "script": 4,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 29,
+   "script": 5,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 30,
+   "script": 0,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 39,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 11,
+   "first_text": "哇！终于回到北海国立宠物学院啦！"
+  },
+  {
+   "map": 30,
+   "script": 1,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 9,
+   "first_text": "塞其~"
+  },
+  {
+   "map": 30,
+   "script": 2,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 77,
+      "level": 35
+     },
+     {
+      "boss_row": 73,
+      "level": 35
+     },
+     {
+      "boss_row": 71,
+      "level": 36
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "准备好了吗？"
+  },
+  {
+   "map": 30,
+   "script": 3,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 40,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "（那不是安琪儿吗？怎么一副严肃的样子？）"
+  },
+  {
+   "map": 30,
+   "script": 4,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 41,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "要说丢宠物，说真的我一点也不记得了。"
+  },
+  {
+   "map": 30,
+   "script": 5,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 30,
+   "script": 6,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "真的，真的，我听到了，购物中心后面那个房间有宠物的叫声。说不定就是失踪的宠物呢！"
+  },
+  {
+   "map": 30,
+   "script": 7,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 44,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 14,
+   "first_text": "他们说的废弃教室应该就是这儿了！"
+  },
+  {
+   "map": 30,
+   "script": 8,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 42,
+      "level": 61
+     },
+     {
+      "boss_row": 33,
+      "level": 62
+     },
+     {
+      "boss_row": 81,
+      "level": 62
+     }
+    ],
+    [
+     {
+      "boss_row": 74,
+      "level": 62
+     },
+     {
+      "boss_row": 48,
+      "level": 62
+     },
+     {
+      "boss_row": 67,
+      "level": 63
+     }
+    ],
+    [
+     {
+      "boss_row": 70,
+      "level": 63
+     },
+     {
+      "boss_row": 9,
+      "level": 64
+     },
+     {
+      "boss_row": 20,
+      "level": 64
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 56,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 20,
+   "first_text": "塞其选手，你准备好了吗？"
+  },
+  {
+   "map": 30,
+   "script": 9,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 30,
+   "script": 10,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 30,
+   "script": 11,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 8,
+   "first_text": "欢迎来到美丽的北海！"
+  },
+  {
+   "map": 30,
+   "script": 12,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "非常高兴迎来了这次比赛的最高潮——黄金训练师争夺赛！这回将由解决宠物失踪事件的英雄塞其挑战本次决赛的前三甲！让我们期待他"
+  },
+  {
+   "map": 30,
+   "script": 13,
+   "place_guess": "Học viện Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 24,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "（彩虹屋还真是散布世界各地呢！北海学院的彩虹屋又会通往什么地方呢？）"
+  },
+  {
+   "map": 31,
+   "script": 0,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 13,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "想不到这里的宠物居然这么厉害。我的道具已经不足以支持我前进了。"
+  },
+  {
+   "map": 31,
+   "script": 1,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-83",
+     "name": "Cá heo tốc độ",
+     "level": 35
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 13,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "嘻嘻，这下就没有问题啦~"
+  },
+  {
+   "map": 31,
+   "script": 2,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 26,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "竟然有人在凶险的北海北海域居住，想必是很特别的人吧！"
+  },
+  {
+   "map": 31,
+   "script": 3,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "items": [
+    {
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": -5
+    },
+    {
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": -5
+    },
+    {
+     "item_id": 15,
+     "name": "Nước hoa",
+     "quantity": -5
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "你已经凑齐我要的东西了吗？"
+  },
+  {
+   "map": 32,
+   "script": 0,
+   "place_guess": "Vực Nam Bắc Hải",
+   "items": [
+    {
+     "item_id": 69,
+     "name": "Hải Dương hệ trứng sủng vật ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 80,
+      "level": 50
+     },
+     {
+      "boss_row": 2,
+      "level": 51
+     },
+     {
+      "boss_row": 19,
+      "level": 52
+     },
+     {
+      "boss_row": 74,
+      "level": 53
+     },
+     {
+      "boss_row": 81,
+      "level": 54
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 19,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "面朝大海，春暖花开...真是好美的意境..."
+  },
+  {
+   "map": 32,
+   "script": 1,
+   "place_guess": "Vực Nam Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 45,
+      "level": 50
+     },
+     {
+      "boss_row": 3,
+      "level": 51
+     },
+     {
+      "boss_row": 81,
+      "level": 52
+     },
+     {
+      "boss_row": 74,
+      "level": 53
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 33,
+   "script": 0,
+   "place_guess": "Phòng học Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "找到了！快上去看看吧！"
+  },
+  {
+   "map": 33,
+   "script": 1,
+   "place_guess": "Phòng học Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬上去..."
+  },
+  {
+   "map": 33,
+   "script": 2,
+   "place_guess": "Phòng học Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 34,
+   "script": 0,
+   "place_guess": "Phòng học Bắc Hải 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 9,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 9,
+   "first_text": "（幽灵？过去看看吧。）"
+  },
+  {
+   "map": 34,
+   "script": 1,
+   "place_guess": "Phòng học Bắc Hải 2",
+   "items": [
+    {
+     "item_id": 31,
+     "name": "Trị hết chi tâm",
+     "quantity": -1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-29",
+     "name": "Đao Thương Tướng Quân",
+     "level": 30
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 9,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "太好了，这就是我要的治愈之心！"
+  },
+  {
+   "map": 34,
+   "script": 2,
+   "place_guess": "Phòng học Bắc Hải 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 35,
+   "script": 0,
+   "place_guess": "Khu trường cũ Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 81,
+      "level": 39
+     },
+     {
+      "boss_row": 65,
+      "level": 40
+     },
+     {
+      "boss_row": 71,
+      "level": 40
+     }
+    ],
+    [
+     {
+      "boss_row": 62,
+      "level": 60
+     },
+     {
+      "boss_row": 65,
+      "level": 60
+     },
+     {
+      "boss_row": 65,
+      "level": 60
+     },
+     {
+      "boss_row": 65,
+      "level": 60
+     },
+     {
+      "boss_row": 65,
+      "level": 60
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 43,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 56,
+   "first_text": "第四章真相"
+  },
+  {
+   "map": 35,
+   "script": 1,
+   "place_guess": "Khu trường cũ Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "金毛男，好累，赶快回去吧..."
+  },
+  {
+   "map": 35,
+   "script": 2,
+   "place_guess": "Khu trường cũ Bắc Hải 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 36,
+   "script": 0,
+   "place_guess": "Khu trường cũ Bắc Hải 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 65,
+      "level": 44
+     },
+     {
+      "boss_row": 3,
+      "level": 45
+     },
+     {
+      "boss_row": 33,
+      "level": 45
+     }
+    ],
+    [
+     {
+      "boss_row": 85,
+      "level": 48
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 27,
+   "first_text": "你们还想往什么地方逃？"
+  },
+  {
+   "map": 36,
+   "script": 1,
+   "place_guess": "Khu trường cũ Bắc Hải 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 6,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "呜~~~~呜~~~~！"
+  },
+  {
+   "map": 36,
+   "script": 2,
+   "place_guess": "Khu trường cũ Bắc Hải 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-68",
+     "name": "Tiểu Lam Kình",
+     "level": 10
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 7,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 11,
+   "first_text": "呜~~~~~~呜~~~~~~！"
+  },
+  {
+   "map": 37,
+   "script": 0,
+   "place_guess": "Khu trường cũ Bắc Hải 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 73,
+      "level": 44
+     },
+     {
+      "boss_row": 19,
+      "level": 44
+     },
+     {
+      "boss_row": 70,
+      "level": 45
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 48,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 8,
+   "first_text": "听说里面关着的那个蓝发女孩还是北海的大人物呢。"
+  },
+  {
+   "map": 37,
+   "script": 1,
+   "place_guess": "Khu trường cũ Bắc Hải 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "需要从下方的水道才能上岸"
+  },
+  {
+   "map": 38,
+   "script": 0,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 22,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "站住！什么人？居然到这里来，快回去吧，里面很危险！"
+  },
+  {
+   "map": 38,
+   "script": 1,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 38,
+   "script": 2,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 38,
+   "script": 3,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 38,
+   "script": 4,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "居然在这里也能遇见你，你真的是无处不在啊！"
+  },
+  {
+   "map": 38,
+   "script": 5,
+   "place_guess": "Rừng rậm u ám 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "请尽情选购吧。"
+  },
+  {
+   "map": 39,
+   "script": 0,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 23,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "（这儿就是20年前米罗大人和幽暗鬼王战斗过的地方啊！）"
+  },
+  {
+   "map": 39,
+   "script": 1,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 45,
+      "level": 52
+     },
+     {
+      "boss_row": 29,
+      "level": 53
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "等候多时了，爱得塞其！"
+  },
+  {
+   "map": 39,
+   "script": 2,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "我还是尽快赶快回学校参加试炼吧！"
+  },
+  {
+   "map": 39,
+   "script": 3,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "已经没进去的必要了，先回学校吧。"
+  },
+  {
+   "map": 39,
+   "script": 4,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 39,
+   "script": 5,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "欢迎来到幽暗森林，我是国家训练师联盟指派的监督员。"
+  },
+  {
+   "map": 39,
+   "script": 6,
+   "place_guess": "Rừng rậm u ám 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 31,
+      "level": 29
+     },
+     {
+      "boss_row": 54,
+      "level": 29
+     },
+     {
+      "boss_row": 65,
+      "level": 30
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 34,
+     "kind": "mode 1"
+    },
+    {
+     "id": 35,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "吼吼！！！！！"
+  },
+  {
+   "map": 40,
+   "script": 0,
+   "place_guess": "Rừng rậm u ám 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 1,
+      "level": 24
+     },
+     {
+      "boss_row": 31,
+      "level": 25
+     },
+     {
+      "boss_row": 53,
+      "level": 25
+     },
+     {
+      "boss_row": 61,
+      "level": 25
+     },
+     {
+      "boss_row": 67,
+      "level": 25
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 24,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 28,
+   "first_text": "真是奇怪！明明看他进到这里的，怎么不见了？"
+  },
+  {
+   "map": 40,
+   "script": 1,
+   "place_guess": "Rừng rậm u ám 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 65,
+      "level": 54
+     },
+     {
+      "boss_row": 78,
+      "level": 55
+     },
+     {
+      "boss_row": 24,
+      "level": 55
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "终于来了吗？"
+  },
+  {
+   "map": 40,
+   "script": 2,
+   "place_guess": "Rừng rậm u ám 3",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 41,
+   "script": 0,
+   "place_guess": "Rừng rậm u ám 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 16,
+      "level": 56
+     },
+     {
+      "boss_row": 84,
+      "level": 57
+     },
+     {
+      "boss_row": 20,
+      "level": 57
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "爱的塞其，恭候多时了！"
+  },
+  {
+   "map": 42,
+   "script": 0,
+   "place_guess": "Rừng rậm u ám 5",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 78,
+      "level": 58
+     },
+     {
+      "boss_row": 55,
+      "level": 59
+     },
+     {
+      "boss_row": 85,
+      "level": 60
+     }
+    ],
+    [
+     {
+      "boss_row": 33,
+      "level": 58
+     },
+     {
+      "boss_row": 86,
+      "level": 60
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 54,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 39,
+   "first_text": "塞其，你果然还是经过考验来了呀！"
+  },
+  {
+   "map": 43,
+   "script": 0,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "啊！哦，原来是只幽灵啊。"
+  },
+  {
+   "map": 43,
+   "script": 1,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 43,
+   "script": 2,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "在我这里可以寄存宠物，当然还可以将它们卖掉获得金钱哦。"
+  },
+  {
+   "map": 43,
+   "script": 3,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "欢迎光临！这里是#7双胞胎连锁商店#0～我们这里应有尽有，任何需要都能满足您哦！"
+  },
+  {
+   "map": 43,
+   "script": 4,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "我这里出售专用的技能卷轴，你可以用“宠物徽章”跟我交换。"
+  },
+  {
+   "map": 43,
+   "script": 5,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 12,
+   "first_text": "（不愧是一流的学院，如此顶级的购物中心都有，连#7宠物技能#0和#7进化道具#0都有。）"
+  },
+  {
+   "map": 43,
+   "script": 6,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "哦，又有宠物要进化了么，来看看吧。"
+  },
+  {
+   "map": 43,
+   "script": 7,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [
+    {
+     "item_id": 34,
+     "name": "Dị hoá tài liệu",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": -1500,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "每1500元交换一个#7异化道具#0，要好好利用它强化你的宠物哦~"
+  },
+  {
+   "map": 43,
+   "script": 8,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": -500,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 36,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "我知道一个很稀有宠物蛋的消息哦~要想打听消息吗？先给我500金吧~"
+  },
+  {
+   "map": 43,
+   "script": 9,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 12,
+      "level": 30
+     },
+     {
+      "boss_row": 19,
+      "level": 32
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "什么？你说想挑战我？哈哈，太好啦~但是你准备好了吗？"
+  },
+  {
+   "map": 43,
+   "script": 10,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [
+    {
+     "item_id": 65,
+     "name": "Thực Vật hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 15,
+      "level": 30
+     },
+     {
+      "boss_row": 23,
+      "level": 31
+     },
+     {
+      "boss_row": 45,
+      "level": 32
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 36,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "打败哥哥的人，让我来看看你的实力吧！"
+  },
+  {
+   "map": 44,
+   "script": 0,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 44,
+   "script": 1,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 44,
+   "script": 2,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 18,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "可恶~寻遍了全世界也难得能见到宠物蛋啊~为什么那些宠物只能孵化宠物蛋才能获得呢~~~~"
+  },
+  {
+   "map": 44,
+   "script": 3,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-17",
+     "name": "Bạch Liệt Sư",
+     "level": 14
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 18,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "什么？你说你已经搜集全了？快拿来给我看看！"
+  },
+  {
+   "map": 44,
+   "script": 4,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-66",
+     "name": "Dị Thú",
+     "level": 10
+    }
+   ],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 17,
+   "first_text": "为什么带我来这里呢？"
+  },
+  {
+   "map": 44,
+   "script": 5,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬了上去..."
+  },
+  {
+   "map": 44,
+   "script": 6,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 45,
+   "script": 0,
+   "place_guess": "Nhà dân",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "终于来了吗？"
+  },
+  {
+   "map": 45,
+   "script": 1,
+   "place_guess": "Nhà dân",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬上去..."
+  },
+  {
+   "map": 45,
+   "script": 2,
+   "place_guess": "Nhà dân",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 45,
+   "script": 3,
+   "place_guess": "Nhà dân",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "来挑挑看吧。"
+  },
+  {
+   "map": 46,
+   "script": 0,
+   "place_guess": "Hanabusa",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 16,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "据说植物系有个特别霸气的宠物，我研究了很久，只是一些道具和宠物没有让我的研究停滞不前了，你可以帮助我吗？"
+  },
+  {
+   "map": 46,
+   "script": 1,
+   "place_guess": "Hanabusa",
+   "items": [
+    {
+     "item_id": 19,
+     "name": "Chu quả",
+     "quantity": -2
+    },
+    {
+     "item_id": 18,
+     "name": "Thụ chướng thạch",
+     "quantity": -1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 16,
+     "kind": "mode 1"
+    },
+    {
+     "id": 17,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "啊，太好了！材料都有了~"
+  },
+  {
+   "map": 46,
+   "script": 2,
+   "place_guess": "Hanabusa",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-15",
+     "name": "Bá Vương Hoa",
+     "level": 24
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 17,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "原来真有这种东西存在啊~嘻嘻，我现在赶快试试吧！"
+  },
+  {
+   "map": 47,
+   "script": 0,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 13,
+   "first_text": "“彩虹杯训练师大赛”最激动人心的决赛现在开始！"
+  },
+  {
+   "map": 47,
+   "script": 1,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "items": [
+    {
+     "item_id": 9,
+     "name": "Phong ấn cầu",
+     "quantity": 2
+    },
+    {
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 3
+    }
+   ],
+   "kim_tien": 800,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 25,
+   "first_text": "看我的吧，山谷螳螂上！"
+  },
+  {
+   "map": 47,
+   "script": 2,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 34,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 11,
+   "first_text": "洛克，你在哪呢..."
+  },
+  {
+   "map": 47,
+   "script": 3,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "items": [
+    {
+     "item_id": 68,
+     "name": "Mãnh Thú hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 35,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "塞其向小玲说明了洛克的情况..."
+  },
+  {
+   "map": 48,
+   "script": 0,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-82",
+     "name": "Cá heo",
+     "level": 40
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 42,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 16,
+   "first_text": "（安琪儿在那）"
+  },
+  {
+   "map": 48,
+   "script": 1,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 13,
+   "first_text": "塞其~~~"
+  },
+  {
+   "map": 48,
+   "script": 2,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 49,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "终于逃出来了..."
+  },
+  {
+   "map": 48,
+   "script": 3,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 55,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 14,
+   "first_text": "（安琪儿在那儿，我快过去吧！）"
+  },
+  {
+   "map": 48,
+   "script": 4,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 48,
+   "script": 5,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 16,
+   "first_text": "欢迎来到北海，塞其！"
+  },
+  {
+   "map": 48,
+   "script": 6,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "得到船票"
+  },
+  {
+   "map": 48,
+   "script": 7,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 10,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "北海是世上最大的海了，所以里面有数不清的海洋系宠物，就是这样有人穷极一生也不能将他们捕捉完..."
+  },
+  {
+   "map": 48,
+   "script": 8,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [
+    {
+     "item_id": 64,
+     "name": "Hải Dương hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 10,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "太好了，你捉到帝企鹅了！和我交换吧！"
+  },
+  {
+   "map": 48,
+   "script": 9,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 48,
+   "script": 10,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 48,
+   "script": 11,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-83",
+     "name": "Cá heo tốc độ",
+     "level": 35
+    }
+   ],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 15,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "我一直在打听妹妹的下落。"
+  },
+  {
+   "map": 48,
+   "script": 12,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 81,
+      "level": 45
+     },
+     {
+      "boss_row": 78,
+      "level": 46
+     },
+     {
+      "boss_row": 71,
+      "level": 47
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "越过北海，我勇往直前！塞其，一路随你而来，真是让我学到了许多！"
+  },
+  {
+   "map": 48,
+   "script": 13,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 81,
+      "level": 45
+     },
+     {
+      "boss_row": 78,
+      "level": 46
+     },
+     {
+      "boss_row": 71,
+      "level": 47
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 48,
+   "script": 14,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 7,
+   "first_text": "欢迎来到北海，我是国家训练师联盟指派的监督员。"
+  },
+  {
+   "map": 49,
+   "script": 0,
+   "place_guess": "Thiên Không Thành 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 14,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 17,
+   "first_text": "（那个男孩子一直看着那个女孩子的背影，好像是想要表达什么...）"
+  },
+  {
+   "map": 49,
+   "script": 1,
+   "place_guess": "Thiên Không Thành 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-36",
+     "name": "Ấu Long",
+     "level": 14
+    }
+   ],
+   "bosses": [
+    [
+     {
+      "boss_row": 51,
+      "level": 38
+     },
+     {
+      "boss_row": 47,
+      "level": 39
+     },
+     {
+      "boss_row": 39,
+      "level": 40
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 15,
+   "first_text": "什么人！居然敢私闯天空城？"
+  },
+  {
+   "map": 49,
+   "script": 2,
+   "place_guess": "Thiên Không Thành 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "来挑挑看吧。"
+  },
+  {
+   "map": 49,
+   "script": 3,
+   "place_guess": "Thiên Không Thành 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "欢迎来到天空之城，请问您需要什么服务？"
+  },
+  {
+   "map": 50,
+   "script": 0,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 20,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "诶？你是怎么上来的？"
+  },
+  {
+   "map": 50,
+   "script": 1,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬下去...."
+  },
+  {
+   "map": 50,
+   "script": 2,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 3,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 4,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬了下去..."
+  },
+  {
+   "map": 50,
+   "script": 5,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 6,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬下去..."
+  },
+  {
+   "map": 50,
+   "script": 7,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓爬下去..."
+  },
+  {
+   "map": 50,
+   "script": 8,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 9,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 28,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "这里就是通往彩虹大殿的传送阵了，我刚刚已经为你开启了，快去挑战吧！"
+  },
+  {
+   "map": 50,
+   "script": 10,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 11,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 12,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 50,
+   "script": 13,
+   "place_guess": "Thiên Không Thành 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 51,
+   "script": 0,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "欢迎您，大地的客人，我会尽心尽力为您提供最优质的服务！"
+  },
+  {
+   "map": 51,
+   "script": 1,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "在我这里可以寄存宠物，当然还可以将它们卖掉获得金钱哦。"
+  },
+  {
+   "map": 51,
+   "script": 2,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "欢迎光临！这里是#7天空城购物中心#0～我们这里应有尽有，任何需要都能满足您哦！"
+  },
+  {
+   "map": 51,
+   "script": 3,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "我这里出售专用的技能卷轴，你可以用“宠物徽章”跟我交换。"
+  },
+  {
+   "map": 51,
+   "script": 4,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "哦，又有宠物要进化了么，来看看吧。"
+  },
+  {
+   "map": 51,
+   "script": 5,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "诶？四代宠物的主角都聚集在那里，我快过去看看吧！"
+  },
+  {
+   "map": 51,
+   "script": 6,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "塞其~能在这里看到你太好了~"
+  },
+  {
+   "map": 51,
+   "script": 7,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 84,
+      "level": 50
+     },
+     {
+      "boss_row": 78,
+      "level": 51
+     },
+     {
+      "boss_row": 97,
+      "level": 52
+     },
+     {
+      "boss_row": 100,
+      "level": 53
+     },
+     {
+      "boss_row": 89,
+      "level": 54
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我要出#75只50级以上的怪，里面还有一只五星宠哦#0，确定要挑战吗？"
+  },
+  {
+   "map": 51,
+   "script": 8,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 81,
+      "level": 55
+     },
+     {
+      "boss_row": 78,
+      "level": 56
+     },
+     {
+      "boss_row": 97,
+      "level": 57
+     },
+     {
+      "boss_row": 89,
+      "level": 58
+     },
+     {
+      "boss_row": 92,
+      "level": 59
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我要出#75只55级以上的怪，里面有两只五星宠#0，确定要现在挑战吗？"
+  },
+  {
+   "map": 51,
+   "script": 9,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 88,
+      "level": 60
+     },
+     {
+      "boss_row": 78,
+      "level": 61
+     },
+     {
+      "boss_row": 89,
+      "level": 62
+     },
+     {
+      "boss_row": 92,
+      "level": 63
+     },
+     {
+      "boss_row": 101,
+      "level": 64
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 4,
+   "first_text": "我要出#75只60级以上的怪，这次里面有三只五星宠#0，确定要挑战吗？"
+  },
+  {
+   "map": 51,
+   "script": 10,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 94,
+      "level": 65
+     },
+     {
+      "boss_row": 89,
+      "level": 66
+     },
+     {
+      "boss_row": 92,
+      "level": 67
+     },
+     {
+      "boss_row": 101,
+      "level": 68
+     },
+     {
+      "boss_row": 98,
+      "level": 69
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我要出#75只65级以上的怪，这次里面可是有四只五星宠哦#0，确定要挑战吗？"
+  },
+  {
+   "map": 51,
+   "script": 11,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-95",
+     "name": "Phi Thiên Huyền Nữ",
+     "level": 30
+    }
+   ],
+   "bosses": [
+    [
+     {
+      "boss_row": 89,
+      "level": 66
+     },
+     {
+      "boss_row": 92,
+      "level": 67
+     },
+     {
+      "boss_row": 101,
+      "level": 68
+     },
+     {
+      "boss_row": 98,
+      "level": 69
+     },
+     {
+      "boss_row": 95,
+      "level": 70
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 28,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 9,
+   "first_text": "是你一直指引我到这里的吧？请问你是？"
+  },
+  {
+   "map": 52,
+   "script": 0,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "咔嚓~~~"
+  },
+  {
+   "map": 52,
+   "script": 1,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "items": [
+    {
+     "item_id": 60,
+     "name": "Kim Loại hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "（太好了，又找到一个宠物蛋！）"
+  },
+  {
+   "map": 52,
+   "script": 2,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 18,
+      "level": 16
+     },
+     {
+      "boss_row": 23,
+      "level": 16
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "（前阵好好喂了宠物兴奋菇和蜜心糖，这样宠物忠诚度就没问题了~）"
+  },
+  {
+   "map": 52,
+   "script": 3,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 19,
+      "level": 18
+     },
+     {
+      "boss_row": 23,
+      "level": 18
+     },
+     {
+      "boss_row": 27,
+      "level": 18
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 53,
+   "script": 0,
+   "place_guess": "Khu trường cũ Bắc Hải 4",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 80,
+      "level": 45
+     },
+     {
+      "boss_row": 54,
+      "level": 45
+     },
+     {
+      "boss_row": 78,
+      "level": 46
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 6,
+     "kind": "mode 1"
+    },
+    {
+     "id": 7,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 11,
+   "first_text": "终于把那只蓝鲸骗到那里去了，这次它肯定逃不掉了。"
+  },
+  {
+   "map": 54,
+   "script": 0,
+   "place_guess": "Tắc Kỳ Gia",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 0,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 14,
+   "first_text": "我终于可以培养一只真正属于自己的宠物了！谢谢爷爷！"
+  },
+  {
+   "map": 54,
+   "script": 1,
+   "place_guess": "Tắc Kỳ Gia",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 10,
+   "first_text": "罗姆，你看！我找到了一个宠物蛋哦！"
+  },
+  {
+   "map": 54,
+   "script": 2,
+   "place_guess": "Tắc Kỳ Gia",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [
+    {
+     "pet_id": "vqsv5-db-4",
+     "name": "Cỏ thơm",
+     "level": 1
+    },
+    {
+     "pet_id": "vqsv5-db-25",
+     "name": "Binh lính Thiết Giáp",
+     "level": 1
+    },
+    {
+     "pet_id": "vqsv5-db-56",
+     "name": "Ngựa núi",
+     "level": 1
+    }
+   ],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 19,
+   "first_text": "看来今年又是我们家的塞其最厉害喽。"
+  },
+  {
+   "map": 54,
+   "script": 3,
+   "place_guess": "Tắc Kỳ Gia",
+   "items": [],
+   "kim_tien": 10000,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 5,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "第二天"
+  },
+  {
+   "map": 55,
+   "script": 0,
+   "place_guess": "Người hầu phòng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 29,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "塞其少爷好~您果然发现这里了！我身后这颗宠物蛋是老爷留给少爷的，不过需要少爷捕捉够40种宠物哦~"
+  },
+  {
+   "map": 55,
+   "script": 1,
+   "place_guess": "Người hầu phòng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "诶？房间里怎么多出了宠物蛋？过去看看吧！"
+  },
+  {
+   "map": 55,
+   "script": 2,
+   "place_guess": "Người hầu phòng",
+   "items": [
+    {
+     "item_id": 61,
+     "name": "Kim Loại hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 29,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "得到宠物蛋"
+  },
+  {
+   "map": 55,
+   "script": 3,
+   "place_guess": "Người hầu phòng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "我先帮少爷看看有没有满足条件吧！"
+  },
+  {
+   "map": 56,
+   "script": 0,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [
+    {
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 8,
+   "first_text": "姐姐，快看，是爱得家的天才贵公子塞其啊~"
+  },
+  {
+   "map": 56,
+   "script": 1,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "需要寄存服务吗？"
+  },
+  {
+   "map": 56,
+   "script": 2,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "我这儿的货品可是应有尽有哦~"
+  },
+  {
+   "map": 56,
+   "script": 3,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 56,
+   "script": 4,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "我这里出售专用的技能卷轴，你可以用“宠物徽章”跟我交换。"
+  },
+  {
+   "map": 56,
+   "script": 5,
+   "place_guess": "Trung Tâm Thương Mại",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "哦，又有宠物要进化了么，来看看吧。"
+  },
+  {
+   "map": 57,
+   "script": 0,
+   "place_guess": "Rừng rậm thần bí 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 33,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "我们快点追上去吧！"
+  },
+  {
+   "map": 57,
+   "script": 1,
+   "place_guess": "Rừng rậm thần bí 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 45,
+      "level": 30
+     },
+     {
+      "boss_row": 54,
+      "level": 31
+     },
+     {
+      "boss_row": 9,
+      "level": 31
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "什么人？"
+  },
+  {
+   "map": 57,
+   "script": 2,
+   "place_guess": "Rừng rậm thần bí 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 57,
+   "script": 3,
+   "place_guess": "Rừng rậm thần bí 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 57,
+   "script": 4,
+   "place_guess": "Rừng rậm thần bí 1",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 58,
+   "script": 0,
+   "place_guess": "Rừng rậm thần bí 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 16,
+   "first_text": "在米罗毁灭了幽暗鬼王入侵金属王国的计划后，人们迎来了期待已久的和平。但仍有幽暗系宠物不断侵扰人类的世界。"
+  },
+  {
+   "map": 58,
+   "script": 1,
+   "place_guess": "Rừng rậm thần bí 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 32,
+      "level": 32
+     },
+     {
+      "boss_row": 47,
+      "level": 32
+     },
+     {
+      "boss_row": 6,
+      "level": 33
+     }
+    ]
+   ],
+   "quests": [],
+   "text_lines": 13,
+   "first_text": "这些是特殊装置的宠物球，貌似是吸收里面宠物的精力的..."
+  },
+  {
+   "map": 58,
+   "script": 2,
+   "place_guess": "Rừng rậm thần bí 2",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 34,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "（脸红）死金毛男，你干嘛突然抓我的手！"
+  },
+  {
+   "map": 59,
+   "script": 0,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 6,
+   "first_text": "不愧是宠物训练师最好的学校！宿舍也好华丽！"
+  },
+  {
+   "map": 59,
+   "script": 1,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 10,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "次日"
+  },
+  {
+   "map": 59,
+   "script": 2,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 13,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "（嘻嘻，爷爷，我遇到和你一样热爱宠物的人了！）"
+  },
+  {
+   "map": 59,
+   "script": 3,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 16,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 13,
+   "first_text": "咦，那里发生了什么？"
+  },
+  {
+   "map": 59,
+   "script": 4,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 26,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 9,
+   "first_text": "当天晚上"
+  },
+  {
+   "map": 59,
+   "script": 5,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 30,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 4,
+   "first_text": "（安琪儿吗？真是个奇怪的女孩儿...）"
+  },
+  {
+   "map": 59,
+   "script": 6,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 35,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 21,
+   "first_text": "两人匆忙地赶回了宿舍"
+  },
+  {
+   "map": 59,
+   "script": 7,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 59,
+   "script": 8,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 30,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 12,
+   "first_text": "呜呜呜呜呜呜呜~~~~~~~~~"
+  },
+  {
+   "map": 59,
+   "script": 9,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "items": [
+    {
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 5
+    },
+    {
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    },
+    {
+     "item_id": 24,
+     "name": "Tinh nguyên thạch",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 33,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "塞其将装有铁甲蛇的宠物球交给女学生。"
+  },
+  {
+   "map": 60,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Kim Loại Di Tích",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 60,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Kim Loại Di Tích",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 53,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 17,
+   "first_text": "终章 新的开始"
+  },
+  {
+   "map": 60,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Kim Loại Di Tích",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 61,
+   "script": 0,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 45,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 5,
+   "first_text": "这里是..."
+  },
+  {
+   "map": 61,
+   "script": 1,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 46,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 24,
+   "first_text": "好像有很多宠物被关在里面呢。"
+  },
+  {
+   "map": 61,
+   "script": 2,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 47,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "现用以前被废弃的校区当据点，尽快壮大我们的实验室规模！--幽暗结社"
+  },
+  {
+   "map": 61,
+   "script": 3,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 50,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 32,
+   "first_text": "塞其！"
+  },
+  {
+   "map": 61,
+   "script": 4,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "（赶快找到机关把它们都放出来吧。）"
+  },
+  {
+   "map": 62,
+   "script": 0,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 38,
+   "first_text": "塞其！？"
+  },
+  {
+   "map": 62,
+   "script": 1,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 52,
+     "kind": "main"
+    }
+   ],
+   "text_lines": 1,
+   "first_text": "（果然是另一个实验室...我要赶快救出它们）"
+  },
+  {
+   "map": 62,
+   "script": 2,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其打开左边的开关"
+  },
+  {
+   "map": 62,
+   "script": 3,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其打开右边的开关"
+  },
+  {
+   "map": 62,
+   "script": 4,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其塞其打开上面的开关"
+  },
+  {
+   "map": 62,
+   "script": 5,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "（和北海的实验室不同，这里似乎没有什么特别的的花盆了...）"
+  },
+  {
+   "map": 63,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 63,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 63,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 63,
+   "script": 3,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 63,
+   "script": 4,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "你永远不会知道下一刻会发生什么，这种不确定的心动才是青春啊~我最喜欢赌鸟啦~要试试你的运气就跟我来吧~"
+  },
+  {
+   "map": 63,
+   "script": 5,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "如果你眼疾手快，就来试试我其乐无穷的弹弹球吧~"
+  },
+  {
+   "map": 63,
+   "script": 6,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢XX"
+  },
+  {
+   "map": 63,
+   "script": 7,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 2,
+   "first_text": "这个人，好像在很多画像上见过！"
+  },
+  {
+   "map": 63,
+   "script": 8,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "items": [
+    {
+     "item_id": 44,
+     "name": "Triều tịch năng lượng",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 2000,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 97,
+      "level": 50
+     },
+     {
+      "boss_row": 94,
+      "level": 51
+     },
+     {
+      "boss_row": 88,
+      "level": 52
+     },
+     {
+      "boss_row": 91,
+      "level": 53
+     },
+     {
+      "boss_row": 100,
+      "level": 54
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 28,
+     "kind": "mode 38"
+    }
+   ],
+   "text_lines": 6,
+   "first_text": "这里就是最后一个传召室了。要通过这里就拿出你的实力吧！"
+  },
+  {
+   "map": 64,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 64,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 64,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 64,
+   "script": 3,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 64,
+   "script": 4,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "你永远不会知道下一刻会发生什么，这种不确定的心动才是青春啊~我最喜欢赌鸟啦~要试试你的运气就跟我来吧~"
+  },
+  {
+   "map": 64,
+   "script": 5,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢玩XX"
+  },
+  {
+   "map": 64,
+   "script": 6,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "如果你眼疾手快，就来试试我其乐无穷的弹弹球吧~"
+  },
+  {
+   "map": 64,
+   "script": 7,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢XX"
+  },
+  {
+   "map": 64,
+   "script": 8,
+   "place_guess": "Phòng trung chuyển Kim",
+   "items": [
+    {
+     "item_id": 25,
+     "name": "Bạch kim",
+     "quantity": 1
+    },
+    {
+     "item_id": 23,
+     "name": "Thiên vũ",
+     "quantity": 1
+    },
+    {
+     "item_id": 21,
+     "name": "Biển sâu san hô",
+     "quantity": 1
+    },
+    {
+     "item_id": 19,
+     "name": "Chu quả",
+     "quantity": 1
+    },
+    {
+     "item_id": 17,
+     "name": "Thú hồn",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 3,
+      "level": 40
+     },
+     {
+      "boss_row": 20,
+      "level": 41
+     },
+     {
+      "boss_row": 55,
+      "level": 42
+     },
+     {
+      "boss_row": 39,
+      "level": 43
+     },
+     {
+      "boss_row": 71,
+      "level": 44
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 25,
+     "kind": "mode 1"
+    },
+    {
+     "id": 26,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "居然能到达这里，看来那个人的眼光果然不错~"
+  },
+  {
+   "map": 65,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 65,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 65,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "你永远不会知道下一刻会发生什么，这种不确定的心动才是青春啊~我最喜欢赌鸟啦~要试试你的运气就跟我来吧~"
+  },
+  {
+   "map": 65,
+   "script": 3,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "如果你眼疾手快，就来试试我其乐无穷的弹弹球吧~"
+  },
+  {
+   "map": 65,
+   "script": 4,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 1000,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 9,
+      "level": 30
+     },
+     {
+      "boss_row": 28,
+      "level": 31
+     },
+     {
+      "boss_row": 45,
+      "level": 32
+     },
+     {
+      "boss_row": 51,
+      "level": 33
+     },
+     {
+      "boss_row": 62,
+      "level": 34
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 23,
+     "kind": "mode 1"
+    },
+    {
+     "id": 24,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 7,
+   "first_text": "你就是打败姐姐的人吗？"
+  },
+  {
+   "map": 65,
+   "script": 5,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 65,
+   "script": 6,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 65,
+   "script": 7,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢玩XX"
+  },
+  {
+   "map": 65,
+   "script": 8,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢XX"
+  },
+  {
+   "map": 66,
+   "script": 0,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 11,
+   "first_text": "（这里就是传召室了吧，这种阵势又是要干什么呢？过去找晶晶问问吧！）"
+  },
+  {
+   "map": 66,
+   "script": 1,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "你永远不会知道下一刻会发生什么，这种不确定的心动才是青春啊~我最喜欢赌鸟啦~要试试你的运气就跟我来吧~"
+  },
+  {
+   "map": 66,
+   "script": 2,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢玩XX"
+  },
+  {
+   "map": 66,
+   "script": 3,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "如果你眼疾手快，就来试试我其乐无穷的弹弹球吧~"
+  },
+  {
+   "map": 66,
+   "script": 4,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 3,
+   "first_text": "我喜欢XX"
+  },
+  {
+   "map": 66,
+   "script": 5,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 66,
+   "script": 6,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 66,
+   "script": 7,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 66,
+   "script": 8,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 66,
+   "script": 9,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "items": [
+    {
+     "item_id": 39,
+     "name": "Kỹ năng Phong Bế",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [
+    [
+     {
+      "boss_row": 5,
+      "level": 20
+     },
+     {
+      "boss_row": 26,
+      "level": 21
+     },
+     {
+      "boss_row": 42,
+      "level": 22
+     },
+     {
+      "boss_row": 50,
+      "level": 23
+     },
+     {
+      "boss_row": 58,
+      "level": 24
+     }
+    ]
+   ],
+   "quests": [
+    {
+     "id": 20,
+     "kind": "mode 1"
+    },
+    {
+     "id": 21,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 9,
+   "first_text": "不愧是那个人看中的孩子啊，果然很厉害。那么现在你要向我挑战吗？"
+  },
+  {
+   "map": 67,
+   "script": 0,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 5,
+   "first_text": "亲爱的弟弟，这个宝箱还是让我取吧~打开的时候万一有危险怎么办？"
+  },
+  {
+   "map": 67,
+   "script": 1,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 8,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 10,
+   "first_text": "一灰哥哥，你看，有个看起来闪闪发光的贵公子呢，我们可以拜托他帮我们开宝箱啊~"
+  },
+  {
+   "map": 67,
+   "script": 2,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 8,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "啊，是花仙子~好可爱~"
+  },
+  {
+   "map": 67,
+   "script": 3,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 21,
+     "kind": "mode 1"
+    },
+    {
+     "id": 22,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "通往天空城的入口已打通"
+  },
+  {
+   "map": 67,
+   "script": 4,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 1,
+   "first_text": "塞其顺着藤蔓往上爬..."
+  },
+  {
+   "map": 67,
+   "script": 5,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [],
+   "text_lines": 0,
+   "first_text": null
+  },
+  {
+   "map": 67,
+   "script": 6,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 37,
+     "kind": "side"
+    }
+   ],
+   "text_lines": 2,
+   "first_text": "你听说过 #7纯净水晶#0和#7王之证明#0吗？这两个都是很难得的进化材料。"
+  },
+  {
+   "map": 67,
+   "script": 7,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "items": [
+    {
+     "item_id": 28,
+     "name": "Tinh khiết thủy tinh",
+     "quantity": -1
+    },
+    {
+     "item_id": 30,
+     "name": "Vương chi chứng minh",
+     "quantity": -1
+    },
+    {
+     "item_id": 66,
+     "name": "Kim Loại hệ",
+     "quantity": 1
+    }
+   ],
+   "kim_tien": 0,
+   "pets": [],
+   "bosses": [],
+   "quests": [
+    {
+     "id": 37,
+     "kind": "mode 1"
+    }
+   ],
+   "text_lines": 3,
+   "first_text": "这么稀有的材料你居然有！我用一只稀有的宠物蛋和你交换，要换吗？"
+  }
+ ]
+}

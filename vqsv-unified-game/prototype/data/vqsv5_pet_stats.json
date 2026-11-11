@@ -271,6 +271,26 @@
    "field chests (gold x100, medals or one item)"
   ]
  },
+ "trainer_rules": {
+  "rank_species_thresholds": [
+   5,
+   10,
+   15,
+   30
+  ],
+  "meaning": "rank 2/3/4/5 once species obtained >= 5/10/15/30 (k[103] > 4, 9, 14, 29)",
+  "medals": "one medal per new species since the last hand-in (k[104]); handed in at the registry NPC",
+  "book_gate": "a skill book needs trainer rank >= skill_books[].trainer_rank to be bought or learned"
+ },
+ "script_sales": [
+  {
+   "item_id": 34,
+   "price": 1500,
+   "limit": 1,
+   "currency": "kim tiền",
+   "evidence": "data/event map 43 script 7: choice, 1500 kim check (opcode 21 -15), item 34 given (opcode 18), 'only one at a time'"
+  }
+ ],
  "status_rules": {
   "single_status": "a combatant can carry one status; a new one only lands while none is active (ak.b(z,al,al,int): al3.b != 7 -> no)",
   "statuses": {

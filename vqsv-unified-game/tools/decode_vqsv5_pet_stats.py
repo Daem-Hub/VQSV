@@ -72,6 +72,11 @@ Where the skill books come from (ak.c(): items 32 "Bảo rương" and 33 "Cái c
   A result already held at 99 is empty. Script instructions can also grant items (opcode 18 of data/event) and gold (opcode 21, amount * 100);
   field chests grant gold * 100, medals or one item (at.java chest handler).
 
+Trainer rank and medals (as.b(boolean), at.g(int) = event opcode 32, ak.g()): every new species obtained adds 1 to the species count k[103] and to
+  the counter k[104]; the trainer rank l[3] starts at 1 and becomes 2, 3, 4, 5 once the species count passes 4, 9, 14, 29. Handing in at the
+  registry gives k[104] medals (kim "huy chương") and resets it. A skill book needs rank >= ak.u[skill - 26] to be bought or learned.
+Script sale (data/event map 43 script 7, see decode_vqsv5_events.py): 1500 kim buys one mutation item (34), at most one held at a time.
+
 Writes prototype/data/vqsv5_pet_stats.json and asset_review/vqsv5_pet_stats.csv.
 """
 import csv
@@ -361,6 +366,11 @@ out = {
         "inherited_on_evolution": True,
     },
     "chest_rules": chest_rules,
+    "trainer_rules": {"rank_species_thresholds": [5, 10, 15, 30], "meaning": "rank 2/3/4/5 once species obtained >= 5/10/15/30 (k[103] > 4, 9, 14, 29)",
+                      "medals": "one medal per new species since the last hand-in (k[104]); handed in at the registry NPC",
+                      "book_gate": "a skill book needs trainer rank >= skill_books[].trainer_rank to be bought or learned"},
+    "script_sales": [{"item_id": MUTATION_ITEM, "price": 1500, "limit": 1, "currency": "kim tiền",
+                      "evidence": "data/event map 43 script 7: choice, 1500 kim check (opcode 21 -15), item 34 given (opcode 18), 'only one at a time'"}],
     "status_rules": STATUS_RULES,
     "skill_books": skill_books,
     "items": items,

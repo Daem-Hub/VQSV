@@ -449,6 +449,7 @@
       return mine.length ? mine.reduce((a, b) => (b.level > a.level || (b.level === a.level && b.quality > a.quality) ? b : a)) : null;
     },
     caughtCount: () => caught.length,
+    speciesCaught: () => new Set(caught.map(item => item.pet_id)).size,
     // An evolved reserve pet changes species: swap it in the team, add the new form to the collection and move one catch record.
     replaceSpecies(oldId, newId) {
       if (!byId.has(newId)) return;

@@ -25,7 +25,8 @@ const els = {};
 const element = id => els[id] ||= { textContent: '', hidden: false, open: false, listeners: {}, addEventListener(event, fn) { this.listeners[event] = fn; }, getContext() { return {}; }, replaceChildren() {}, append() {}, setAttribute() {} };
 const store = new Map(), localStorage = { getItem: k => store.get(k) ?? null, setItem: (k, v) => store.set(k, v) };
 const teamIds = [];
-const VQSVPetTeam = { ids: () => teamIds, replaceSpecies() {}, caughtBest: () => null,
+let speciesCaught = 30;
+const VQSVPetTeam = { speciesCaught: () => speciesCaught, ids: () => teamIds, replaceSpecies() {}, caughtBest: () => null,
   info: id => ({ id, kind: id.startsWith('vqsv5') ? 'vqsv5' : 'vqsv6', name: id, element: null, sequences: [], image: `assets/pets/${id}.png` }), recordCatch: () => ({ addedToTeam: false }) };
 const ctx = vm.createContext({ document: { getElementById: element, createElement: () => ({ append() {}, addEventListener() {}, setAttribute() {}, replaceChildren() {} }) }, window: { addEventListener() {}, VQSVBootstrap: boot, VQSVPetTeam }, Image: class {}, Element: class {}, performance: { now: () => 1000 }, console, localStorage });
 vm.runInContext(code, ctx);
@@ -186,4 +187,28 @@ setup(['vqsv5-db-0'], 30, 'mats5[32] = 1; mats5[33] = 1; state.mode = "battle"')
 setup(['vqsv5-db-0'], 30, 'wallet.gold = 100');
 assert.equal(J('buyItem("mat5-33", 1, false).total'), 50); run('mats5[32] = 1; mats5[33] += 0; Math.random = () => 0.9001');
 assert.equal(J('window.VQSVChest.open()').tier, 2);
+// ---- Trainer rank, medals and the mutation-item sale (decoded from as.b(boolean), event opcode 32 and data/event map 43) ----
+assert.deepEqual(S5.trainer_rules.rank_species_thresholds, [5, 10, 15, 30]);
+for (const [n, rank] of [[0, 1], [4, 1], [5, 2], [9, 2], [10, 3], [14, 3], [15, 4], [29, 4], [30, 5]]) { speciesCaught = n; assert.equal(run('window.VQSVTrainer.rank()'), rank, `species ${n}`); }
+// Books need the rank: shop and learning both refuse a book above it.
+setup(['vqsv5-db-0'], 30, 'wallet.badges = 50; mats5[35] = 1; mats5[37] = 1'); speciesCaught = 4;
+r = J('buyItem("mat5-35", 1, false)'); assert.equal(r.ok, false); assert.match(r.message, /cần huấn luyện sư bậc 4 \(hiện tại bậc 1\)/); assert.equal(run('wallet.badges'), 50);
+assert.equal(J('buyItem("mat5-36", 1, false)').ok, true);
+r = J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26)'); assert.equal(r.ok, false); assert.match(r.message, /Cần huấn luyện sư bậc 4/); assert.equal(run('mats5[35]'), 1);
+speciesCaught = 15; assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26)').ok, true); assert.equal(J('buyItem("mat5-35", 1, false)').ok, true);
+speciesCaught = 30;
+// Medals: one per new species since the last hand-in.
+setup(['vqsv5-db-0'], 30, 'wallet.badges = 2; wallet.medalsClaimed = 0'); speciesCaught = 7;
+assert.equal(run('window.VQSVTrainer.pendingMedals()'), 7); r = J('window.VQSVTrainer.claim()'); assert.equal(r.ok, true); assert.equal(r.amount, 7); assert.equal(run('wallet.badges'), 9);
+assert.equal(J('window.VQSVTrainer.claim()').ok, false); speciesCaught = 9; assert.equal(run('window.VQSVTrainer.pendingMedals()'), 2);
+run('state.mode = "battle"'); assert.equal(J('window.VQSVTrainer.claim()').ok, false); run('state.mode = "explore"'); speciesCaught = 30;
+// The mutation item: 1500 kim from the Trung Tâm Thương Mại script, only one at a time.
+assert.deepEqual(S5.script_sales.map(x => [x.item_id, x.price, x.limit]), [[34, 1500, 1]]);
+setup(['vqsv5-db-0'], 30, 'wallet.gold = 3200');
+assert.equal(J('buyItem("mat5-34", 1, false).total'), 1500); assert.equal(run('mats5[34]'), 1); assert.equal(run('wallet.gold'), 1700);
+r = J('buyItem("mat5-34", 1, false)'); assert.equal(r.ok, false); assert.match(r.message, /chỉ bán một cái/); assert.equal(run('wallet.gold'), 1700);
+run('mats5[34] = 0; wallet.gold = 1400'); assert.equal(J('buyItem("mat5-34", 1, false)').ok, false); assert.equal(run('mats5[34]'), 0);
+const events = require('../prototype/data/vqsv5_event_rewards.json');
+assert.equal(events.summary.scripts, 386); assert(events.summary.parsed >= 385);
+assert.deepEqual(events.summary.skill_books_given.map(b => [b.map, b.item_id]), [[63, 44], [66, 39]]);
 console.log('VQSV5 specials: decoded skills, books, statuses, loyalty, passives, treasure boxes and battle rules passed.');

@@ -62,7 +62,7 @@ assert(stronger.reduce((a, b) => a + b) / stronger.length > weaker.reduce((a, b)
 
 // Battle: a VQSV5 reserve pet has decoded stats and the type skills it has unlocked.
 teamIds.push('vqsv5-db-0');
-run('progress = { "vqsv5-db-0": { level: 14, exp: 0 } }; Math.random = () => 0.99; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []');
+run('progress = { "vqsv5-db-0": { level: 14, exp: 0, traits: [3, 0] } }; Math.random = () => 0.99; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []');
 let pet = J('state.battle.team[1]');
 assert.equal(pet.v5, true); assert.equal(pet.progressKey, 'vqsv5-db-0'); assert.equal(pet.element, 'Thực Vật hệ');
 assert.deepEqual(pet.stats, J('unifiedStats5(STAT5_BY_ID.get("vqsv5-db-0"), 14)'));
@@ -149,7 +149,7 @@ run('state.mode = "explore"');
 // Next step (rank 2): level 25 and 2 Thụ chướng thạch + 2 Chu quả; the per-pet counter keeps counting down to 0 at the end of the chain.
 c = chk('vqsv5-db-1'); assert.match(c.reason, /cần cấp 25/); assert.match(c.reason, /thiếu Chu quả \(0\/2\)/); assert.equal(c.left, 2);
 run('progress["vqsv5-db-1"].level = 25; mats5[18] = 2; mats5[19] = 2'); r = J('evolvePet("vqsv5-db-1", "vqsv5-db-1")');
-assert.equal(r.ok, true); assert.equal(r.left, 1); assert.deepEqual(J('progress["vqsv5-db-2"]'), { level: 25, exp: 12, evoLeft: 1 });
+assert.equal(r.ok, true); assert.equal(r.left, 1); { const { traits, ...rest } = J('progress["vqsv5-db-2"]'); assert.deepEqual(rest, { level: 25, exp: 12, evoLeft: 1 }); }
 c = chk('vqsv5-db-2'); assert.match(c.reason, /cần cấp 30/);
 run('progress["vqsv5-db-2"].level = 30; mats5[19] = 3; mats5[27] = 1'); r = J('evolvePet("vqsv5-db-2", "vqsv5-db-2")');
 assert.equal(r.ok, true); assert.equal(r.left, 0); assert.match(r.message, /thành Cổ Thụ Chi Vương/);
@@ -178,4 +178,49 @@ assert.deepEqual(JSON.parse(store.get('vqsv-unified-mats5-v1'))['18'], 2);
 assert.match(run('stoneText()'), /Thụ chướng thạch ×2/); assert.match(run('stoneText()'), /Cổ thụ chi hạch ×1/);
 run('Math.random = () => 0'); const drops = J('rollStoneDrops(30)'); assert(drops.includes('Cổ thụ chi hạch') && drops.includes('Dị hoá tài liệu'));
 run('Math.random = () => 0.999'); assert.deepEqual(J('rollStoneDrops(30)'), []);
+
+// ---- Random traits ----
+assert.deepEqual(S5.traits.map(t => t.value), [0, -15, 15, 20, 6, 20, -20, 20, -20, 20, -20, 20, -20]);
+assert.deepEqual(S5.trait_rules.type_pairs['Hải Dương hệ'], [11, 12]);
+assert.deepEqual(S5.traits.map(t => t.effect?.kind || null), [null, 'hp_percent', 'hp_percent', 'dot_taken_percent', 'regen_percent', 'status_chance_delta', 'status_chance_delta', 'status_chance_delta', 'status_chance_delta', 'damage_halved_chance', 'damage_boost_chance', 'status_chance_delta', 'status_chance_delta']);
+const rollAt = (id, mode, r) => { run(`Math.random = () => ${r}`); return J(`rollTraits5(STAT5_BY_ID.get(${JSON.stringify(id)}), ${JSON.stringify(mode)})`); };
+assert.deepEqual(rollAt('vqsv5-db-0', 'fixed', 0), [4, 2]);
+assert.deepEqual(rollAt('vqsv5-db-0', 'random', 0), [3, 0]);
+assert.deepEqual(rollAt('vqsv5-db-0', 'random', 0.99), [4, 2]);
+assert.deepEqual(rollAt(flying.pet_id, 'random', 0.99), [8, 2]);
+assert.deepEqual(rollAt('vqsv5-db-0', 'lucky', 0.5), [4, 2]);
+assert.deepEqual(rollAt('vqsv5-db-0', 'lucky', 0.8), [3, 1]);
+const typeless = S5.pets.find(p => p.type_id === null);
+assert.deepEqual(rollAt(typeless.pet_id, 'random', 0.99), [0, 2]);
+// Traits are rolled once, saved with the individual, and carried through evolution.
+reset5(15, 'mats5[18] = 3; Math.random = () => 0.99');
+assert.deepEqual(J('ensureTraits5("vqsv5-db-0", "vqsv5-db-0")'), [4, 2]);
+run('Math.random = () => 0'); assert.deepEqual(J('ensureTraits5("vqsv5-db-0", "vqsv5-db-0")'), [4, 2]);
+assert.deepEqual(J('progress["vqsv5-db-0"].traits'), [4, 2]);
+assert.equal(J('window.VQSVEvolution.evolve("vqsv5-db-0", "vqsv5-db-0")').ok, true);
+assert.deepEqual(J('progress["vqsv5-db-1"].traits'), [4, 2]);
+run('progress["vqsv5-db-0"] = { level: 5, exp: 0, traits: [99, 1] }; Math.random = () => 0'); assert.deepEqual(J('ensureTraits5("vqsv5-db-0", "vqsv5-db-0")'), [3, 0]);
+// HP traits: +15% / -15% of the unified max HP, truncated.
+const baseHp = J('unifiedStats5(STAT5_BY_ID.get("vqsv5-db-0"), 20).hp');
+assert.equal(J('vqsv5Combatant("vqsv5-db-0", 20, [3, 2]).max'), baseHp + Math.trunc(baseHp * 15 / 100));
+assert.equal(J('vqsv5Combatant("vqsv5-db-0", 20, [3, 1]).max'), baseHp + Math.trunc(baseHp * -15 / 100));
+assert.equal(J('vqsv5Combatant("vqsv5-db-0", 20, [3, 0]).max'), baseHp);
+// Battle effects.
+const fighter = traits => `Object.assign(vqsv5Combatant("vqsv5-db-0", 20, ${JSON.stringify(traits)}), { hp: 1 })`;
+run(`globalThis.t1 = ${fighter([4, 0])}`);
+assert.match(J('tickStatuses(t1, "A").join()'), /hồi \d+ HP nhờ/);
+assert.equal(J('t1.hp'), 1 + Math.max(1, Math.trunc(J('t1.max') * 6 / 100)));
+run(`globalThis.t2 = ${fighter([3, 0])}; t2.hp = t2.max; t2.debuffs = { 0: { turns: 3, value: 100, skillRow: 8 } }`);
+const noTrait = J('(() => { const c = vqsv5Combatant("vqsv5-db-0", 20, []); c.debuffs = { 0: { turns: 3, value: 100, skillRow: 8 } }; const before = c.hp; tickStatuses(c, "B"); return before - c.hp; })()');
+const withTrait = J('(() => { const before = t2.hp; tickStatuses(t2, "A"); return before - t2.hp; })()');
+assert.equal(withTrait, noTrait + Math.trunc(noTrait * 20 / 100));
+// Status chances: traits 11/12 shift paralysis (+-20), 7/8 shift confinement; clamped 0..100; unchanged without traits.
+const lands = (traits, debuffId, chance, r) => { run(`Math.random = () => ${r}; globalThis.tg = Object.assign(vqsv5Combatant("vqsv5-db-0", 20, ${JSON.stringify(traits)}), { item: null })`); return J(`debuffLands(tg, ${chance}, ${debuffId})`); };
+assert.equal(lands([11, 0], 10, 50, 0.65), true);    // 65 < 70
+assert.equal(lands([12, 0], 10, 50, 0.35), false);   // 35 >= 30
+assert.equal(lands([0, 0], 10, 50, 0.45), true);     // unchanged: 45 <= 50
+assert.equal(lands([7, 0], 2, -1, 0.999), true);     // always (100%) stays clamped at 100
+assert.equal(lands([8, 0], 2, 90, 0.75), false);     // 90 - 20 = 70, 75 >= 70
+assert.equal(lands([8, 0], 2, 90, 0.65), true);
+assert.equal(lands([8, 0], 10, 90, 0.75), true);     // trait 8 only guards confinement (debuff 2)
 console.log('VQSV5 stats: formulas, types, skill slots, calibration, battle use and evolution passed.');

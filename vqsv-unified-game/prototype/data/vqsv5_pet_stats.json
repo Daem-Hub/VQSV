@@ -64,6 +64,49 @@
    ]
   }
  },
+ "trait_rules": {
+  "slots": 2,
+  "modes": {
+   "fixed": "slot0 = 2*type + 4, slot1 = 2",
+   "random": "slot0 = 2*type + 3 + rand(2), slot1 = rand(3)",
+   "lucky": "slot0 = 2*type + 3 + (rand(100) < 70 ? 1 : 0), slot1 = rand(100) < 70 ? 2 : rand(2)"
+  },
+  "wild_mode": "random; lucky when the lead pet knows skill 39 (Hạnh Vận Chi Tinh)",
+  "type_pairs": {
+   "Thực Vật hệ": [
+    3,
+    4
+   ],
+   "Kim Loại hệ": [
+    5,
+    6
+   ],
+   "Phi Hành hệ": [
+    7,
+    8
+   ],
+   "Mãnh Thú hệ": [
+    9,
+    10
+   ],
+   "Hải Dương hệ": [
+    11,
+    12
+   ]
+  },
+  "slot1_traits": {
+   "0": "none",
+   "1": "weak constitution (max HP -15%)",
+   "2": "strong constitution (max HP +15%)"
+  },
+  "halve_chance": 20,
+  "boost_chance": 20,
+  "dot_boost_percent": 20,
+  "regen_percent": 6,
+  "status_delta": 20,
+  "hp_percent": 15,
+  "inherited_on_evolution": true
+ },
  "items": [
   {
    "item_id": 16,
@@ -190,79 +233,149 @@
    "trait_id": 0,
    "name": "Không có tư chất thiên bẩm",
    "description": "",
-   "value": 0
+   "value": 0,
+   "effect": null
   },
   {
    "trait_id": 1,
    "name": "Khí lực suy yếu",
    "description": "Trời sinh thể chất suy yếu, sinh mệnh so với đồng loại có vẻ yếu hơn",
-   "value": -15
+   "value": -15,
+   "effect": {
+    "kind": "hp_percent",
+    "value": -15,
+    "evidence": "ak.b(al,int) adds n * a[1] / 100 to max HP"
+   }
   },
   {
    "trait_id": 2,
    "name": "Khí lực cường tráng",
    "description": "Có được thể chất cường tráng, sinh mệnh so với đồng loại có vẻ nhiều hơn",
-   "value": 15
+   "value": 15,
+   "effect": {
+    "kind": "hp_percent",
+    "value": 15,
+    "evidence": "ak.b(al,int) adds n * a[2] / 100 to max HP"
+   }
   },
   {
    "trait_id": 3,
    "name": "Cành cây khô héo",
    "description": "Thiêu đốt hoặc Hủ thực sẽ tạo nhiều thương tổn cho chính bản thân",
-   "value": 20
+   "value": 20,
+   "effect": {
+    "kind": "dot_taken_percent",
+    "value": 20,
+    "applies": "burn and rot damage over time",
+    "source_quirk": "tests al.a(3) instead of al.e(3), never fires as coded"
+   }
   },
   {
    "trait_id": 4,
    "name": "Hồi phục tự nhiên",
    "description": "Mỗi hiệp hồi phục giá trị sinh mệnh nhất định",
-   "value": 6
+   "value": 6,
+   "effect": {
+    "kind": "regen_percent",
+    "value": 6,
+    "evidence": "ak.a(z): heal max HP * a[4] / 100 at the end of the holder's turn"
+   }
   },
   {
    "trait_id": 5,
    "name": "Phá Toái Ngoại Xác",
    "description": "Cuộc công kích dễ dàng hơn khi tiến vào trạng thái Thạch Hóa",
-   "value": 20
+   "value": 20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": 20,
+    "status": "stone",
+    "evidence": "ak.b(al,al): status 0 chance + a[5]"
+   }
   },
   {
    "trait_id": 6,
    "name": "Kim Loại Ngoại Xác",
    "description": "Cuộc công kích không dễ dàng khi tiến vào trạng thái Thạch Hóa",
-   "value": -20
+   "value": -20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": -20,
+    "status": "stone",
+    "evidence": "ak.b(al,al): status 0 chance + a[6]"
+   }
   },
   {
    "trait_id": 7,
    "name": "Ý chí phân tán",
    "description": "Cuộc công kích dễ dàng hơn khi tiến vào trạng thái giam cầm",
-   "value": 20
+   "value": 20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": 20,
+    "status": "confinement",
+    "evidence": "ak.b(al,al): status 4 chance + a[7]"
+   }
   },
   {
    "trait_id": 8,
    "name": "Ý chí kiên định",
    "description": "Cuộc công kích không dễ dàng khi tiến vào trạng thái giam cầm",
-   "value": -20
+   "value": -20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": -20,
+    "status": "confinement",
+    "evidence": "ak.b(al,al): status 4 chance + a[8]"
+   }
   },
   {
    "trait_id": 9,
    "name": "Công kích hài hòa",
    "description": "Công kích có tỷ lệ thương tổn giảm",
-   "value": 20
+   "value": 20,
+   "effect": {
+    "kind": "damage_halved_chance",
+    "value": 20,
+    "evidence": "damage method: e(9) and rand(100) < a[9] -> damage >>= 1"
+   }
   },
   {
    "trait_id": 10,
    "name": "Công kích thô bạo",
    "description": "Công kích có tỷ lệ thương tổn bạo tăng",
-   "value": -20
+   "value": -20,
+   "effect": {
+    "kind": "damage_boost_chance",
+    "value": 20,
+    "source_value": -20,
+    "evidence": "damage method: e(10) and rand(100) < a[10] -> damage * 15 / 10",
+    "source_quirk": "a[10] is -20, so as coded the test can never pass"
+   }
   },
   {
    "trait_id": 11,
    "name": "Thủy chất đục",
    "description": "Cuộc công kích rất dễ dàng tiến vào trạng thái tê liệt và hủ thực",
-   "value": 20
+   "value": 20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": 20,
+    "status": "paralysis and rot",
+    "evidence": "ak.b(al,al): status 2 or 5 chance + a[11]"
+   }
   },
   {
    "trait_id": 12,
    "name": "Nước tinh khiết",
    "description": "Cuộc công kích có vẻ sẽ không tiến vào trạng thái tê liệt và hủ thực ",
-   "value": -20
+   "value": -20,
+   "effect": {
+    "kind": "status_chance_delta",
+    "value": -20,
+    "status": "paralysis and rot",
+    "evidence": "ak.b(al,al): status 2 or 5 chance + a[12]"
+   }
   }
  ],
  "skills": [

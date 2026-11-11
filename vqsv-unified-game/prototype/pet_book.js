@@ -304,6 +304,14 @@
         const unlocks = rec5.skill_slots.filter(slot => slot.level > 0).map(slot => `cấp ${slot.level}: ${stats5.skills[slot.skill_id].name}`);
         detail.append(node("p", unlocks.length ? `Kỹ năng tự học — ${unlocks.join("; ")}.` : "Pet không thuộc hệ nên không có kỹ năng hệ."));
         detail.append(node("p", "KN = giá trị kỹ năng (SP), Lhoạt = linh hoạt (quyết định tỉ lệ trúng). Trong trận, chỉ số được quy đổi theo cấp để cân với pet VQSV6."));
+        if (stats5.traits && stats5.trait_rules) {
+          const pair = stats5.trait_rules.type_pairs[rec5.type] || [];
+          const describe = id => `${stats5.traits[id].name} — ${stats5.traits[id].description}${[5, 6].includes(id) ? " (chưa có trạng thái Thạch Hóa của VQSV5 nên chưa áp dụng trong trận)" : ""}`;
+          const lines = pair.length ? pair.map(id => `• ${describe(id)}`) : ["• Pet không thuộc hệ nên không có đặc tính hệ."];
+          detail.append(node("p", `Đặc tính ngẫu nhiên khi gặp (ô 1, theo hệ): ${lines.join(" ")}. Ô 2: Khí lực suy yếu (HP −15%) / Khí lực cường tráng (HP +15%) / không có.`));
+          const mine = window.VQSVTraits?.of?.(rec5.pet_id);
+          if (mine) detail.append(node("p", `Đặc tính của cá thể bạn: ${mine.map(id => stats5.traits[id].name).join(" + ")}.`));
+        }
         const evo5 = rec5.evolution;
         if (evo5) {
           const mats = evo5.materials.map(material => `${material.quantity} ${material.name}`).join(", ");

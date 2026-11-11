@@ -193,6 +193,7 @@ Trong `game/l.java`, dữ liệu `petArea.mid` được tra theo vị trí, gồ
 - **Tiến hóa** (`ak.E()`, `ak.d(int)`, `ak.b(byte,byte)`, `al.b(ak,int,int)`; bảng `ak.q`): mỗi dòng `q[loài] = [đích dị hóa, đích thường, vật phẩm, số lượng, vật phẩm, số lượng…]` (dòng có đích 0 hoặc trỏ về chính nó là chỗ giữ chỗ, 8 dòng). Cần mọi nguyên liệu trong túi, cấp tối thiểu theo hạng (hạng 1: 15, hạng 2: 25, hạng 3: 30, hạng ≥ 4: không) và bộ đếm tiến hóa của cá thể > 0. Thành công thì trừ nguyên liệu, giữ cấp, đổi loài, tính lại chỉ số, hồi đầy HP và SP, bộ đếm giảm 1. Dị hóa (4 pet) chỉ khả dụng khi có thêm 1 vật phẩm 34 "Dị hoá tài liệu", thay thế tiến hóa thường, trừ nguyên liệu như thường và thêm vật phẩm 34, và đưa bộ đếm về 0. Bảng `ak.o` là bảng *nguồn gốc* của sổ tay pet (254 = tiến hóa, 253 = dị hóa, 255 = nhiệm vụ, 252 = đấu trường, 251 = ấp trứng, giá trị khác là mã địa điểm), không phải đích tiến hóa; dùng nó để kiểm chứng chéo: đích thường của 46 dòng hợp lệ trùng đúng tập pet "từ tiến hóa", đích dị hóa trùng tập "từ dị hóa".
 - **Nguyên liệu và cửa hàng VQSV5** (`data/shop.d`, đọc hết 234/234 byte): hàng thứ hai bán vật phẩm 16–25 bằng kim tiền (500 hoặc 1000); vật phẩm 26–30 (Bay lượn thiên thạch, Cổ thụ chi hạch, Tinh khiết thủy tinh, Cổ kình chi tâm, Vương chi chứng minh) và 34 (Dị hoá tài liệu) không bán, nguồn gốc chưa rõ.
 - **Không tìm thấy** trong jar: trình nạp `monN.d` và `monType.d` (hai bảng đó có thể là dữ liệu thừa của bản này); `data/map/area.dat` có lệnh nạp nhưng chưa giải.
+- **Đặc tính ngẫu nhiên** (`al` byte[16], byte[17]; `ak.a[]` giá trị): mỗi pet có hai ô. Ô 1 là một trong hai đặc tính của hệ (`2t+3`, `2t+4`), ô 2 là thể chất (0 không có, 1 HP −15%, 2 HP +15%). Ba cách sinh: cố định (ô 1 = `2t+4`, ô 2 = 2), ngẫu nhiên (hoang dã), may mắn (khi pet dẫn đầu có kỹ năng 39 Hạnh Vận Chi Tinh: 70% ra kết quả tốt). Tác dụng đọc từ bytecode: 3 Hỏa/Hủ thực gây thêm 20%, 4 hồi 6% HP mỗi hiệp, 5/6 ±20% Thạch Hóa, 7/8 ±20% giam cầm, 9 giảm nửa sát thương 20%, 10 tăng sát thương 20%, 11/12 ±20% tê liệt/hủ thực. Điểm lạ trong nguồn: đặc tính 3 kiểm tra `a(3)` thay vì `e(3)` nên có thể không bao giờ kích hoạt; giá trị đặc tính 10 là −20 dù mô tả nói tăng. Dữ liệu ở `trait_rules` và `traits[].effect` trong `vqsv5_pet_stats.json`.
 
 Mức độ chắc chắn: công thức chỉ số, hệ, hạng, ô kỹ năng, chi phí SP, công thức sát thương và trúng đã đọc trực tiếp từ bytecode và có đối chiếu chéo bằng mô tả pet. Game hợp nhất không dùng nguyên công thức sát thương VQSV5 mà quy đổi chỉ số về thang VQSV6 (xem `prototype/README.md`).
 
@@ -203,7 +204,7 @@ Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của g
 ## Bước kế tiếp
 
 1. Giải quan hệ giữa 34 mục `monN` và 102 dòng pet `data.d`, kiểm tra hai dòng dùng chung hình.
-2. Giải đặc tính, quan hệ tiến hóa (`ak.o`) và kỹ năng đặc biệt 26–48 của VQSV5.
+2. Hiệu ứng kỹ năng đặc biệt 26–48 của VQSV5 (đặc tính và tiến hóa đã giải).
 3. Chỉ số, khắc hệ và kỹ năng VQSV6 đã giải (mục trên); còn hiệu ứng trạng thái kỹ năng và các bảng buff 2–7; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
 4. Đánh dấu loài trùng, dạng tiến hóa, pet độc quyền và boss; rồi mới chuẩn hóa chỉ số/điều kiện bắt.
 5. Khóa một roster nhỏ cho lát đầu: Lôi Miêu, một đối thủ bị tha hóa, sau đó thêm pet tuyển chọn từ hai nguồn.

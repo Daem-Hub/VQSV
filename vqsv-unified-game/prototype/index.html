@@ -331,10 +331,36 @@
         return { row: null, v5Id: skill.skill_id, name: skill.name, power: Math.round(skill.power / V5_TIER1_POWER * 100), uses, max: uses, description: skill.label, effect: null, noDamage: false };
       });
     }
-    function vqsv5Combatant(petId, level) {
+    // ---- VQSV5 random traits (tools/decode_vqsv5_pet_stats.py, trait_rules): each pet carries two trait ids. Slot 0 is one of the
+    // two traits of its type (2t+3 / 2t+4), slot 1 a constitution trait (0 none, 1 HP -15%, 2 HP +15%). ----
+    const TRAITS5 = STATS5?.traits || [], TRAIT_RULES5 = STATS5?.trait_rules || {};
+    const rand5 = n => Math.floor(Math.random() * n);
+    const hasTrait = (c, id) => !!c.traits && c.traits.includes(id);
+    // mode "fixed" (starter pets), "random" (wild) or "lucky" (lead knows Hạnh Vận Chi Tinh: 70% towards the better roll).
+    function rollTraits5(record, mode = "random") {
+      const typed = Number.isInteger(record.type_id) && record.type_id >= 0 && record.type_id <= 4, base = typed ? 2 * record.type_id + 3 : 1;
+      if (mode === "fixed") return [typed ? base + 1 : 2, 2];
+      if (mode === "lucky") return [typed ? base + (rand5(100) < 70 ? 1 : 0) : 0, rand5(100) < 70 ? 2 : rand5(2)];
+      return [typed ? base + rand5(2) : 0, rand5(3)];
+    }
+    const validTraits5 = t => Array.isArray(t) && t.length === 2 && t.every(v => Number.isInteger(v) && v >= 0 && v < TRAITS5.length);
+    // Traits are rolled once per individual and saved with its progress; evolution keeps them.
+    function ensureTraits5(key, speciesId, mode = "random") {
+      const record = STAT5_BY_ID.get(speciesId);
+      if (!record) return [0, 0];
+      const entry = progress[key];
+      if (entry && validTraits5(entry.traits)) return entry.traits;
+      const traits = rollTraits5(record, mode);
+      progress[key] = { ...(entry || { level: BATTLE_LEVEL, exp: 0 }), traits };
+      saveProgress();
+      return traits;
+    }
+    function vqsv5Combatant(petId, level, traits = []) {
       const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level);
+      // ak.b(al,int): trait 1 / 2 changes max HP by -15% / +15% (Java integer division truncates toward zero).
+      for (const id of traits) if (id === 1 || id === 2) stats.hp = Math.max(1, stats.hp + Math.trunc(stats.hp * (TRAITS5[id]?.value || 0) / 100));
       return { stats, level, elementId: null, element: record.type, col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
-        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER };
+        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER, traits: [...traits] };
     }
     // Wild encounters use petArea.mid rows; which source area feeds which prototype map is a TRIAL choice.
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
@@ -497,7 +523,7 @@
       saveMats5(); updateStones();
       const left = mode === "mutation" ? 0 : check.left - 1;
       delete progress[speciesId];
-      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left };
+      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left, ...(validTraits5(check.entry.traits) ? { traits: check.entry.traits } : {}) };
       window.VQSVPetTeam?.replaceSpecies?.(speciesId, check.targetId);
       saveProgress();
       const before = unifiedStats5(check.record, check.entry.level), after = unifiedStats5(check.target, check.entry.level);
@@ -544,6 +570,11 @@
       return { ok: true, targetId: targetRecord.pet_id, before, after, quality,
         message: `${name} ${kind} thành ${targetRecord.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}.` };
     }
+    window.VQSVTraits = {
+      of(speciesId) { const traits = progress[speciesId]?.traits; return validTraits5(traits) ? traits : null; },
+      ensure: ensureTraits5,
+      names: ids => ids.map(id => TRAITS5[id]?.name),
+    };
     window.VQSVEvolution = {
       leadForm,
       stoneText,
@@ -784,7 +815,7 @@
       member.level = entry.level; member.exp = entry.exp;
       // game/i.java w() -> W(): recompute stats at the new level, refill HP (h()) and skill uses.
       if (member.v5 && entry.level !== before) {
-        const fresh = vqsv5Combatant(member.petId, entry.level);
+        const fresh = vqsv5Combatant(member.petId, entry.level, member.traits || []);
         Object.assign(member, { stats: fresh.stats, max: fresh.max, hp: fresh.max, skills: fresh.skills, skill: fresh.skills[0] });
       }
       const record = STAT_BY_ID.get(member.petId);
@@ -865,7 +896,7 @@
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
         const own = progressOf(info.id, best ? best.level : BATTLE_LEVEL);
         const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
-          : { ...vqsv5Combatant(info.id, own.level), progressKey: info.id, exp: own.exp };
+          : { ...vqsv5Combatant(info.id, own.level, ensureTraits5(info.id, info.id)), progressKey: info.id, exp: own.exp };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
@@ -994,7 +1025,20 @@
     // Tê Liệt skips 50% of turns, Mục makes attacks miss param x 10%, Quỷ Mị reflects param% of attacks.
     // Ô Nha Uế (held item 3): debuffs on the holder land with chance x (100 - 20) / 100. The source formula multiplies the
     // "always" marker -1 by that factor, which would block always-on debuffs; the prototype treats "always" as 100%.
-    function debuffLands(target, chance) {
+    // VQSV5 traits shift the chance of a status landing on the holder: 5/6 stone, 7/8 confinement (debuff 2), 11/12 paralysis and
+    // rot (debuffs 10 and 0). Traits 5/6 have no matching debuff in the unified data, so they only show in the pet book.
+    const TRAIT_DEBUFFS = { 2: [7, 8], 10: [11, 12], 0: [11, 12] };
+    function traitChanceDelta(target, debuffId) {
+      const ids = TRAIT_DEBUFFS[debuffId];
+      if (!ids || !target.traits) return 0;
+      return ids.reduce((sum, id) => sum + (hasTrait(target, id) ? TRAITS5[id].value : 0), 0);
+    }
+    function debuffLands(target, chance, debuffId) {
+      const delta = traitChanceDelta(target, debuffId);
+      if (delta) {
+        const base = Math.max(0, Math.min(100, (chance === -1 ? 100 : chance) + delta));
+        return Math.random() * 100 < (target.item === 3 ? base * (100 - RELIC(3).p1) / 100 : base);
+      }
       if (target.item === 3) return Math.random() * 100 < (chance === -1 ? 100 : chance) * (100 - RELIC(3).p1) / 100;
       return chance === -1 || Math.random() * 100 <= chance;
     }
@@ -1017,6 +1061,10 @@
           const result = rollDamage(actor, target, skill.power);
           last = result;
           let dealt = result.damage;
+          // Trait 9 halves the holder's outgoing damage 20% of the time; trait 10 multiplies it by 1.5 (interpretation, the
+          // source value of trait 10 is -20).
+          if (hasTrait(actor, 9) && Math.random() * 100 < TRAIT_RULES5.halve_chance) dealt = Math.max(1, Math.trunc(dealt / 2));
+          if (hasTrait(actor, 10) && Math.random() * 100 < TRAIT_RULES5.boost_chance) dealt = Math.trunc(dealt * 15 / 10);
           if (target === activePet() && state.battle.guard) dealt = Math.max(1, pct(dealt, GUARD_PCT));
           if (target.buffs?.[6] && Math.random() * 100 < BUFF(6).param_a) dealt = Math.max(1, Math.trunc(dealt / 2));
           if (debuffs[8] && Math.random() * 100 < (debuffs[8].param > 0 ? debuffs[8].param : 40)) {
@@ -1041,9 +1089,9 @@
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
         if (skill.effect?.kind === "debuff" && last) {
           const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
-          if (debuffLands(target, chance)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
+          if (debuffLands(target, chance, skill.effect.id)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
         }
-      } else if (skill.effect?.kind === "debuff" && debuffLands(target, -1)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
+      } else if (skill.effect?.kind === "debuff" && debuffLands(target, -1, skill.effect.id)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
       if (skill.effect?.kind === "buff") text += (text.endsWith(".") ? "" : ".") + applyBuff(actor, skill.effect.id, skill.effect.param).trimEnd();
       return text.endsWith(".") || text.endsWith("!") ? text : `${text}!`;
     }
@@ -1052,9 +1100,11 @@
       const notes = [];
       if (c.hp <= 0) return notes;
       const d = c.debuffs, b = c.buffs;
-      if (d[0]) { const loss = Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
-      if (d[3] && d[3].turns <= 1) { const loss = Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8])); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
+      const dotBoost = loss => (hasTrait(c, 3) ? loss + Math.trunc(loss * TRAIT_RULES5.dot_boost_percent / 100) : loss);
+      if (d[0]) { const loss = dotBoost(Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8])))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
+      if (d[3] && d[3].turns <= 1) { const loss = dotBoost(Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
       if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
+      if (hasTrait(c, 4) && c.hp > 0) { const heal = Math.min(c.max - c.hp, Math.max(1, pct(c.max, TRAIT_RULES5.regen_percent))); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP nhờ ${TRAITS5[4].name}`); } }
       if (b[13] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(13).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
       for (const map of [d, b]) for (const key of Object.keys(map)) if (--map[key].turns <= 0) delete map[key];
       return notes;

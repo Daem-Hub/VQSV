@@ -44,6 +44,17 @@ Evolution (ak.E(), ak.d(int), ak.b(byte,byte), al.b(ak,int,int)):
   Materials come from data/shop.d: [matrix shops -> item ids][short rows (little endian): prices by item id], shop 1 sells
   items 16-25 for 500 or 1000 gold; items 26-30 and 34 are not sold.
 
+Traits (al.e(int), the al constructor, ak.a[] values; class al byte[16] and byte[17] are the two trait slots):
+  mode -1 (fixed gift): slot0 = 2*type + 4, slot1 = 2
+  mode  0 (wild, random): slot0 = 2*type + 3 + rand(2), slot1 = rand(3)
+  mode  1 (wild when the lead pet knows skill 39): slot0 = 2*type + 3 + (rand(100) < 70 ? 1 : 0), slot1 = rand(100) < 70 ? 2 : rand(2)
+  Evolution does not change them (al.b(ak,int,int) leaves byte[16..17] alone), so they are properties of the individual.
+  Effects: 1/2 max HP -15% / +15% (ak.b(al,int)); 4 heals 6% of max HP at the end of the holder's turn (ak.a(z));
+  5-8 and 11-12 shift the chance of specific status effects landing on the holder by +20 / -20 (ak.b(al,al) and the skill code);
+  9 gives the holder's attacks a 20% chance of halved damage, 10 a boosted-damage chance (the stored value is -20, so as coded it
+  can never fire; the description says it should); 3 is described as taking more burn/rot damage (+20%) but the source tests
+  al.a(3) (a passive skill) instead of al.e(3), so as coded it never fires either.
+
 Writes prototype/data/vqsv5_pet_stats.json and asset_review/vqsv5_pet_stats.csv.
 """
 import csv
@@ -208,7 +219,23 @@ for pet_id, (name, row, pair, description) in enumerate(zip(pet_names, pets_raw,
         "description": description,
     })
 
-traits = [{"trait_id": i, "name": trait_names[i], "description": trait_texts[i], "value": signed(trait_values_raw[i])} for i in range(len(trait_names))]
+TRAIT_EFFECTS = {
+    1: {"kind": "hp_percent", "value": -15, "evidence": "ak.b(al,int) adds n * a[1] / 100 to max HP"},
+    2: {"kind": "hp_percent", "value": 15, "evidence": "ak.b(al,int) adds n * a[2] / 100 to max HP"},
+    3: {"kind": "dot_taken_percent", "value": 20, "applies": "burn and rot damage over time", "source_quirk": "tests al.a(3) instead of al.e(3), never fires as coded"},
+    4: {"kind": "regen_percent", "value": 6, "evidence": "ak.a(z): heal max HP * a[4] / 100 at the end of the holder's turn"},
+    5: {"kind": "status_chance_delta", "value": 20, "status": "stone", "evidence": "ak.b(al,al): status 0 chance + a[5]"},
+    6: {"kind": "status_chance_delta", "value": -20, "status": "stone", "evidence": "ak.b(al,al): status 0 chance + a[6]"},
+    7: {"kind": "status_chance_delta", "value": 20, "status": "confinement", "evidence": "ak.b(al,al): status 4 chance + a[7]"},
+    8: {"kind": "status_chance_delta", "value": -20, "status": "confinement", "evidence": "ak.b(al,al): status 4 chance + a[8]"},
+    9: {"kind": "damage_halved_chance", "value": 20, "evidence": "damage method: e(9) and rand(100) < a[9] -> damage >>= 1"},
+    10: {"kind": "damage_boost_chance", "value": 20, "source_value": -20, "evidence": "damage method: e(10) and rand(100) < a[10] -> damage * 15 / 10", "source_quirk": "a[10] is -20, so as coded the test can never pass"},
+    11: {"kind": "status_chance_delta", "value": 20, "status": "paralysis and rot", "evidence": "ak.b(al,al): status 2 or 5 chance + a[11]"},
+    12: {"kind": "status_chance_delta", "value": -20, "status": "paralysis and rot", "evidence": "ak.b(al,al): status 2 or 5 chance + a[12]"},
+}
+traits = [{"trait_id": i, "name": trait_names[i], "description": trait_texts[i], "value": signed(trait_values_raw[i]), "effect": TRAIT_EFFECTS.get(i)} for i in range(len(trait_names))]
+# Every pair of type traits must be [positive-chance, negative-chance] style values and every type has two traits (2t+3, 2t+4).
+assert all(2 * t + 4 < len(trait_names) for t in range(5)) and len(trait_names) == 13
 out = {
     "source": "vqsv5.jar data/data.d (ak.j()), formulas from class al and class ak",
     "confidence": {
@@ -231,6 +258,16 @@ out = {
         "validated": {"valid_rows": len(evo_rows), "mutations": len(mutation_targets), "base_forms": len(base_forms),
                       "checks": ["targets == pets found by evolution (ak.o 254)", "mutation targets == pets found by mutation (ak.o 253)", "same type, rank + 1",
                                  "initial counter == evolution chain length for every base form"]},
+    },
+    "trait_rules": {
+        "slots": 2,
+        "modes": {"fixed": "slot0 = 2*type + 4, slot1 = 2", "random": "slot0 = 2*type + 3 + rand(2), slot1 = rand(3)",
+                  "lucky": "slot0 = 2*type + 3 + (rand(100) < 70 ? 1 : 0), slot1 = rand(100) < 70 ? 2 : rand(2)"},
+        "wild_mode": "random; lucky when the lead pet knows skill 39 (Hạnh Vận Chi Tinh)",
+        "type_pairs": {type_names[t]: [2 * t + 3, 2 * t + 4] for t in range(5)},
+        "slot1_traits": {"0": "none", "1": "weak constitution (max HP -15%)", "2": "strong constitution (max HP +15%)"},
+        "halve_chance": 20, "boost_chance": 20, "dot_boost_percent": 20, "regen_percent": 6, "status_delta": 20, "hp_percent": 15,
+        "inherited_on_evolution": True,
     },
     "items": items,
     "type_names": type_names, "traits": traits, "skills": skills, "pets": pets,

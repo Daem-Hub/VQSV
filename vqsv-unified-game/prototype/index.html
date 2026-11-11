@@ -270,6 +270,7 @@
   <script src="pet_book.js"></script>
   <script src="skill_book.js"></script>
   <script src="world_atlas.js"></script>
+  <script type="module" src="skill_fx.js"></script>
   <script>
     const canvas = document.getElementById("game");
     const ctx = canvas.getContext("2d");
@@ -992,6 +993,7 @@
       if (id === 13 || id === 14) c.debuffs = {};
       if (id === 13) { const heal = pct(c.max, BUFF(13).param_a); c.hp = Math.min(c.max, c.hp + heal); }
       c.buffs[id] = entry;
+      fxStatus(c, "buff", id);
       return ` ${c.name} được ${BUFF(id).name}.`;
     }
     function applyDebuff(target, id, param, baseDamage, skillRow) {
@@ -1001,6 +1003,7 @@
       if (id === 0 || id === 3) entry.value = baseDamage;
       else entry.value = param;
       target.debuffs[id] = entry;
+      fxStatus(target, "debuff", id);
       return ` ${target.name} bị ${DEBUFF(id).name}.`;
     }
     function rollDamage(attacker, defender, power) {
@@ -1033,6 +1036,21 @@
       if (!ids || !target.traits) return 0;
       return ids.reduce((sum, id) => sum + (hasTrait(target, id) ? TRAITS5[id].value : 0), 0);
     }
+    // Battle skill effects (skill_fx.js, pixelfx). All calls are optional so the game still runs without the module.
+    let fxMoveAt = null;
+    const fxNow = () => (fxMoveAt != null ? fxMoveAt : performance.now());
+    function fxSprite(c) {
+      const battle = state.battle;
+      if (!battle) return {};
+      if (c === battle.enemy) return battle.wild ? { image: cachedImage(c.image), box: [114, 112] } : { image: assets.pets?.enemy, box: [94, 96] };
+      if (c.kind === "lead" && !c.image) return { image: assets.pets?.hero, box: [92, 94] };
+      const frames = c.sequences?.[0];
+      return { image: c.image ? cachedImage(c.image) : frames?.length ? cachedImage(frames[0].image) : null, box: [120, 110] };
+    }
+    function fxStatus(c, kind, id) {
+      if (!window.VQSVSkillFx || !state.battle) return;
+      window.VQSVSkillFx.status({ onEnemy: c === state.battle.enemy, kind, id: Number(id), startAt: fxNow(), ...fxSprite(c) });
+    }
     function debuffLands(target, chance, debuffId) {
       const delta = traitChanceDelta(target, debuffId);
       if (delta) {
@@ -1046,6 +1064,12 @@
       const debuffs = actor.debuffs || {};
       if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
       if (debuffs[10] && Math.random() < .5) return `${label} bị ${DEBUFF(10).name}, chậm mất lượt.`;
+      const battleNow = state.battle;
+      fxMoveAt = battleNow ? (actor === battleNow.enemy ? battleNow.enemyAt : battleNow.attackAt) : null;
+      try { return performMoveCore(actor, target, skill, label); } finally { fxMoveAt = null; }
+    }
+    function performMoveCore(actor, target, skill, label) {
+      const debuffs = actor.debuffs || {};
       if (skill.uses != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
       if (skill.uses < 0) skill.uses = 0;
       let text = `${label} dùng ${skill.name}`;
@@ -1086,6 +1110,11 @@
           if (target.buffs?.[2]) { const back = Math.max(1, pct(dealt, BUFF(2).param_b)); actor.hp = Math.max(0, actor.hp - back); }
           parts.push(hitText({ ...result, damage: dealt }) + (target === activePet() && state.battle.guard ? " (đã thủ)" : ""));
         }
+        if (window.VQSVSkillFx && state.battle && parts.length) {
+          // Basic attacks (no element skill) use the plain slash; the crit flash plays when any hit was critical.
+          const basic = skill.v5Id === 25 || (skill.row == null && skill.v5Id == null);
+          window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: fxMoveAt ?? performance.now(), crit: !!last?.crit });
+        }
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
         if (skill.effect?.kind === "debuff" && last) {
           const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
@@ -1103,8 +1132,8 @@
       const dotBoost = loss => (hasTrait(c, 3) ? loss + Math.trunc(loss * TRAIT_RULES5.dot_boost_percent / 100) : loss);
       if (d[0]) { const loss = dotBoost(Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8])))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
       if (d[3] && d[3].turns <= 1) { const loss = dotBoost(Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
-      if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
-      if (hasTrait(c, 4) && c.hp > 0) { const heal = Math.min(c.max - c.hp, Math.max(1, pct(c.max, TRAIT_RULES5.regen_percent))); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP nhờ ${TRAITS5[4].name}`); } }
+      if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); fxStatus(c, "buff", 3); } }
+      if (hasTrait(c, 4) && c.hp > 0) { const heal = Math.min(c.max - c.hp, Math.max(1, pct(c.max, TRAIT_RULES5.regen_percent))); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP nhờ ${TRAITS5[4].name}`); fxStatus(c, "buff", 3); } }
       if (b[13] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(13).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
       for (const map of [d, b]) for (const key of Object.keys(map)) if (--map[key].turns <= 0) delete map[key];
       return notes;
@@ -1135,7 +1164,8 @@
     function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
+    function newBattle(wild = null) { window.VQSVSkillFx?.clear(); return newBattleCore(wild); }
+    function newBattleCore(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -1517,23 +1547,27 @@
       else { ctx.save(); ctx.globalAlpha = enemyAlpha; ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96); ctx.restore(); }
       if (capturing) drawCaptureBall(sinceCapture);
       drawActivePet(304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94, now, heroAttack);
-      if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
-        let elapsed = heroAttack;
-        let chosen = assets.skillEffects[assets.skillEffects.length - 1];
-        for (const frame of assets.skillEffects) { if (elapsed < frame.duration_ticks * 60) { chosen = frame; break; } elapsed -= frame.duration_ticks * 60; }
-        const image = chosen.image;
-        const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
-        ctx.drawImage(image, 140 - image.width * scale / 2, 138 - image.height * scale / 2, image.width * scale, image.height * scale);
-      }
-      if (attackPulse > 0 && state.battle.skill && !["spark", "guard"].includes(state.battle.skill)) {
-        ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
-        for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(128 + i * 12, 114); ctx.lineTo(151 + i * 12, 146); ctx.stroke(); }
-        ctx.restore();
-      }
-      if (guard >= 0 && guard < 500) {
-        ctx.save(); ctx.globalAlpha = Math.max(0, 1 - guard / 500) * .75;
-        ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.ellipse(350, 198, 57, 54, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      if (window.VQSVSkillFx) window.VQSVSkillFx.draw(ctx, now);
+      else {
+        // Fallback when the pixelfx module did not load: the original slash lines, Điện giật sprite and guard ring.
+        if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
+          let elapsed = heroAttack;
+          let chosen = assets.skillEffects[assets.skillEffects.length - 1];
+          for (const frame of assets.skillEffects) { if (elapsed < frame.duration_ticks * 60) { chosen = frame; break; } elapsed -= frame.duration_ticks * 60; }
+          const image = chosen.image;
+          const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
+          ctx.drawImage(image, 140 - image.width * scale / 2, 138 - image.height * scale / 2, image.width * scale, image.height * scale);
+        }
+        if (attackPulse > 0 && state.battle.skill && !["spark", "guard"].includes(state.battle.skill)) {
+          ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
+          for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(128 + i * 12, 114); ctx.lineTo(151 + i * 12, 146); ctx.stroke(); }
+          ctx.restore();
+        }
+        if (guard >= 0 && guard < 500) {
+          ctx.save(); ctx.globalAlpha = Math.max(0, 1 - guard / 500) * .75;
+          ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.ellipse(350, 198, 57, 54, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+        }
       }
       const pet = activePet();
       battlePanel(276, 200, pet.name.toUpperCase(), pet.subtitle, pet.hp, pet.max, "#a6dfcf");
@@ -1935,6 +1969,7 @@
       const at = battle.enemyActed ? now + 420 : now;
       if (guard) {
         battle.guardAt = at; battle.skill = "guard";
+        window.VQSVSkillFx?.status({ onEnemy: false, kind: "buff", id: 4, startAt: at, ...fxSprite(pet) });
         battle.message += `${battle.message ? " " : ""}${pet.name} thủ thế.`;
       } else {
         const skill = move === "skill" ? chosen : { name: pet.kind === "lead" ? "Vồ nhanh" : "Đòn thường", power: pet.basicPower ?? BASIC_POWER };

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xem thử hiệu ứng kỹ năng</title>
+<style>
+:root{--bg:#161d1b;--fg:#ece3c4;--card:#243230;--line:#4b6058;--accent:#e8c45a}
+@media (prefers-color-scheme:light){:root{--bg:#f1ecdc;--fg:#2b2a22;--card:#e2dbc3;--line:#a89f7d;--accent:#8a5a14}}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:0 0 4px}p{margin:0 0 12px;opacity:.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px}
+.card canvas{width:100%;display:block;image-rendering:pixelated;border-radius:4px;background:#1c2a2c}
+.card b{display:block;margin:6px 0 4px}.row{display:flex;gap:6px;flex-wrap:wrap}
+button{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:4px 8px;cursor:pointer;font:inherit}
+button:hover{border-color:var(--accent);color:var(--accent)}
+h2{font-size:16px;margin:20px 0 8px}
+</style></head><body><main>
+<h1>Hiệu ứng kỹ năng (pixelfx)</h1>
+<p>Mỗi ô là một hệ: nhấn "Pet mình ra đòn" hoặc "Đối thủ ra đòn" để xem. Hiệu ứng trạng thái ở phần dưới. Hình pet trong ô chỉ là khối giữ chỗ.</p>
+<div class="grid" id="elements"></div>
+<h2>Trạng thái có lợi</h2><div class="grid" id="buffs"></div>
+<h2>Trạng thái bất lợi</h2><div class="grid" id="debuffs"></div>
+<script src="data/bootstrap.js"></script>
+<script type="module">
+import "./skill_fx.js";
+const fx = window.VQSVSkillFx;
+const S = window.VQSVBootstrap.vqsv6Stats.status_effects;
+const stage = (title) => {
+  const card = document.createElement("div"); card.className = "card";
+  const canvas = document.createElement("canvas"); canvas.width = 480; canvas.height = 360;
+  card.append(canvas); const b = document.createElement("b"); b.textContent = title; card.append(b);
+  const row = document.createElement("div"); row.className = "row"; card.append(row);
+  return { card, canvas, row, ctx: canvas.getContext("2d") };
+};
+const stages = [];
+const bg = ctx => { ctx.fillStyle = "#2c4a46"; ctx.fillRect(0, 0, 480, 360); ctx.fillStyle = "#354d3c"; ctx.fillRect(0, 196, 480, 164);
+  ctx.fillStyle = "#577453"; ctx.beginPath(); ctx.ellipse(139, 190, 90, 22, 0, 0, 7); ctx.fill(); ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(350, 190, 90, 22, 0, 0, 7); ctx.fill();
+  fitted(ctx, foeImg, 82, 70, 114, 112); fitted(ctx, heroImg, 290, 74, 120, 110); };
+const foeImg = new Image(), heroImg = new Image(); foeImg.src = "assets/pets/corrupted_beast_placeholder.png"; heroImg.src = "assets/pets/electric_cat_candidate.png";
+function fitted(ctx, img, x, y, w, h) {
+  if (!img.complete || !img.naturalWidth) return;
+  const k = Math.max(1, Math.floor(Math.min(w / img.naturalWidth, h / img.naturalHeight))) || 1, dw = img.naturalWidth * k, dh = img.naturalHeight * k;
+  ctx.imageSmoothingEnabled = false; ctx.drawImage(img, Math.round(x + (w - dw) / 2), Math.round(y + h - dh), dw, dh);
+}
+const live = new Map();
+function make(host, title, buttons) {
+  const s = stage(title); s.buttons = buttons; host.append(s.card);
+  for (const [label, fn] of buttons) { const b = document.createElement("button"); b.textContent = label; b.onclick = () => { s.clear = false; s.stamp = performance.now(); fn(s); }; s.row.append(b); }
+  stages.push(s); return s;
+}
+// One shared effect pool would mix stages together, so each stage owns the pool while it plays.
+function play(s, fn) { fx.clear(); fn(performance.now()); s.active = true; }
+const elementNames = [["fire", "Hỏa hệ"], ["leaf", "Mộc hệ"], ["earth", "Thổ hệ"], ["water", "Thủy hệ"], ["volt", "Điện hệ"], ["dark", "Quỷ hệ"], ["wind", "Phong hệ"], ["steel", "Kim Loại hệ"], ["beast", "Mãnh Thú hệ"], ["sea", "Hải Dương hệ"], ["plain", null]];
+const label = { fire: "Hỏa", leaf: "Mộc / Thực Vật", earth: "Thổ", water: "Thủy", volt: "Điện", dark: "Quỷ", wind: "Phong / Phi Hành", steel: "Kim Loại", beast: "Mãnh Thú", sea: "Hải Dương", plain: "Đòn thường" };
+let current = null;
+for (const [key, element] of elementNames) {
+  const s = make(document.getElementById("elements"), label[key], [
+    ["Pet mình ra đòn", s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t })); }],
+    ["Đối thủ ra đòn", s => { current = s; play(s, t => fx.cast({ fromEnemy: true, element, startAt: t })); }],
+    ["Chí mạng", s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t, crit: true })); }],
+  ]);
+}
+for (const [host, kind, table, fxTable] of [["buffs", "buff", S.buffs, fx.buffFx], ["debuffs", "debuff", S.debuffs, fx.debuffFx]]) {
+  table.forEach((entry, id) => {
+    if (!fxTable[id]) return;
+    make(document.getElementById(host), `${entry.name} (${fxTable[id].fx})`, [
+      ["Lên pet mình", s => { current = s; play(s, t => fx.status({ onEnemy: false, kind, id, startAt: t, image: heroImg, box: [120, 110] })); }],
+      ["Lên đối thủ", s => { current = s; play(s, t => fx.status({ onEnemy: true, kind, id, startAt: t, image: foeImg, box: [114, 112] })); }],
+    ]);
+  });
+}
+function frame(now) {
+  for (const s of stages) { s.ctx.setTransform(1, 0, 0, 1, 0, 0); bg(s.ctx); if (s === current) fx.draw(s.ctx, now); }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.__fxStages = stages; window.__setCurrent = s => { current = s; };
+</script></main></body></html>

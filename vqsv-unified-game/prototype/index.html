@@ -494,8 +494,8 @@
     const MATS5_KEY = "vqsv-unified-mats5-v1";
     const RANK_GATES5 = STATS5?.evolution_rules?.level_gate_by_rank || {};
     const MUTATION_ITEM5 = STATS5?.evolution_rules?.mutation_item_id;
-    // TRIAL drops: the source game does not say where materials 26-30 and 34 come from (they are not sold).
-    const MAT5_DROPS = [{ id: 34, chance: 4, minLevel: 15 }, ...[26, 27, 28, 29, 30].map(id => ({ id, chance: 5, minLevel: 25 }))];
+    // Materials 26-28, 30, 31 and 34 now come from treasure boxes (CHEST5 below). Only 29 (Cổ kình chi tâm) is in no source table, so it keeps a TRIAL drop.
+    const MAT5_DROPS = [{ id: 29, chance: 5, minLevel: 25 }];
     let mats5 = {};
     for (const id of ITEMS5.keys()) mats5[id] = 0;
     try {
@@ -503,6 +503,42 @@
       if (raw && typeof raw === "object") for (const id of ITEMS5.keys()) mats5[id] = Math.max(0, Math.floor(Number(raw[id]) || 0));
     } catch (_) {}
     function saveMats5() { try { localStorage.setItem(MATS5_KEY, JSON.stringify(mats5)); } catch (_) {} }
+    // ---- Treasure boxes (decode_vqsv5_pet_stats.py: chest_rules; ak.c() items 32/33, data/box.d). A win gives a Bảo rương half of the time; the
+    // key is sold by the shop; opening spends one of each and rolls a tier (70/15/10/5%) and then that tier's table. Table 2 holds the skill books. ----
+    const CHEST5 = STATS5?.chest_rules;
+    // TRIAL: table 0 and 1 hold VQSV5 shop consumables; they become the closest item of the unified bag, or kim tiền (price in the source) when none exists.
+    const CHEST5_GRANTS = { 0: { bag: 4 }, 1: { bag: 4 }, 3: { bag: 6 }, 6: { bag: 5 }, 10: { bag: 2 }, 14: { bag: 13 }, 12: { gold: 200 }, 13: { gold: 500 } };
+    const rand100 = () => Math.floor(Math.random() * 100);
+    function rollChestDrop5() {
+      if (!CHEST5 || !(Math.random() * 100 < CHEST5.win_drop_chance) || (mats5[CHEST5.chest_item] || 0) >= CHEST5.stack_max) return "";
+      mats5[CHEST5.chest_item] = (mats5[CHEST5.chest_item] || 0) + 1; saveMats5(); updateStones();
+      return `Nhận ${ITEMS5.get(CHEST5.chest_item).name} ×1.`;
+    }
+    function openChest5() {
+      if (!CHEST5) return { ok: false, message: "Chưa có dữ liệu bảo rương." };
+      if (state.mode === "battle") return { ok: false, message: "Không thể mở bảo rương trong trận." };
+      const chest = ITEMS5.get(CHEST5.chest_item), key = ITEMS5.get(CHEST5.key_item);
+      if (!(mats5[CHEST5.chest_item] > 0) || !(mats5[CHEST5.key_item] > 0)) return { ok: false, message: `Cần có cả ${chest.name} và ${key.name}.` };
+      mats5[CHEST5.chest_item] -= 1; mats5[CHEST5.key_item] -= 1;
+      const roll = rand100(), tier = roll < CHEST5.tier_thresholds[0] ? 0 : roll < CHEST5.tier_thresholds[1] ? 1 : roll < CHEST5.tier_thresholds[2] ? 2 : 3;
+      const pick = rand100(), entry = CHEST5.tiers[tier].find(item => pick < item.cumulative);
+      let id = entry?.item_id ?? null, message = `${chest.name} trống.`, got = null;
+      if (id != null && ITEMS5.has(id)) {
+        // Source: the mutation item is not given while one is held; nothing is given at the 99 cap.
+        if (id === CHEST5.mutation_item && mats5[id] > 0) id = null;
+        else if ((mats5[id] || 0) >= CHEST5.stack_max) id = null;
+        if (id != null) { mats5[id] = (mats5[id] || 0) + 1; got = ITEMS5.get(id).name; message = `Đạt được: ${got} ×1.`; }
+      } else if (id != null && CHEST5_GRANTS[id]) {
+        const grant = CHEST5_GRANTS[id];
+        if (grant.bag != null) {
+          const target = itemEntry(grant.bag);
+          if (target && countOf(target) < STACK_MAX) { setCount(target, countOf(target) + 1); got = target.name; message = `Đạt được: ${got} ×1.`; }
+        } else { wallet.gold += grant.gold; saveWallet(); updateWallet(); got = `${grant.gold} kim tiền`; message = `Đạt được: ${got}.`; }
+      }
+      saveMats5(); updateStones();
+      return { ok: true, tier, item: got, message };
+    }
+    window.VQSVChest = { open: openChest5, counts: () => ({ chest: mats5[CHEST5?.chest_item] || 0, key: mats5[CHEST5?.key_item] || 0 }), rules: CHEST5 };
     function stoneText() {
       const parts = Object.keys(STONE_INFO).filter(row => stones[row] > 0).map(row => `${STONE_INFO[row].name} ×${stones[row]}`);
       for (const [id, item] of ITEMS5) if (mats5[id] > 0) parts.push(`${item.name} ×${mats5[id]}`);
@@ -2204,6 +2240,8 @@
         lines.push(`${member.name} (Ký Cư Giải Xác) +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
         if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
       }
+      const chestLine = rollChestDrop5();
+      if (chestLine) lines.push(chestLine);
       saveProgress();
       queueSkillLearning([...members, ...sharers]);
       battle.message = `${battle.wild ? battle.enemy.name : "Sinh vật"} gục ngã! ${lines.join(" ")}`;
@@ -2386,6 +2424,15 @@
         }
         row.title = `${entry.description} ${effectText(entry)}`;
         list.append(row);
+      }
+      if (CHEST5) {
+        const counts = window.VQSVChest.counts(), row = document.createElement("div");
+        row.className = "bag-row";
+        const label = document.createElement("span"); label.textContent = `Bảo rương ×${counts.chest} · Cái chìa khóa ×${counts.key}`;
+        const open = document.createElement("button"); open.type = "button"; open.textContent = "Mở bảo rương"; open.disabled = state.mode !== "explore" || counts.chest < 1 || counts.key < 1;
+        open.addEventListener("click", () => { const result = openChest5(); renderBag(); document.getElementById("bagNote").textContent = result.message; });
+        row.title = "Thắng trận có 50% nhận Bảo rương; chìa khóa mua ở cửa hàng. Mở ra có thể có sách kỹ năng, nguyên liệu tiến hóa hoặc đạo cụ.";
+        row.append(label, open); list.append(row);
       }
       note.textContent = "Đạo cụ hồi phục dùng trong trận qua nút Đạo cụ; nguyên liệu dùng để tiến hóa trong Sổ pet.";
     }

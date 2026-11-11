@@ -107,8 +107,8 @@ assert.deepEqual(new Set(evoPets.filter(p => p.evolution.mutation_target_pet_id)
 const byId = new Map(S5.pets.map(p => [p.pet_id, p]));
 for (const pet of evoPets) { const target = byId.get(pet.evolution.target_pet_id); assert.equal(target.type_id, pet.type_id); assert.equal(target.rank, pet.rank + 1); }
 assert.deepEqual(S5.evolution_rules.level_gate_by_rank, { 1: 15, 2: 25, 3: 30 });
-assert.deepEqual(S5.items.filter(i => i.sold).map(i => [i.item_id, i.price]), [[16, 500], [17, 1000], [18, 500], [19, 1000], [20, 500], [21, 1000], [22, 500], [23, 1000], [24, 500], [25, 1000]]);
-assert.deepEqual(S5.items.filter(i => !i.sold).map(i => i.item_id), [26, 27, 28, 29, 30, 34]);
+assert.deepEqual(S5.items.filter(i => i.sold).map(i => [i.item_id, i.price]), [[16, 500], [17, 1000], [18, 500], [19, 1000], [20, 500], [21, 1000], [22, 500], [23, 1000], [24, 500], [25, 1000], [33, 50]]);
+assert.deepEqual(S5.items.filter(i => !i.sold).map(i => i.item_id), [26, 27, 28, 29, 30, 31, 32, 34]);
 // Thụ quái (rank 1) -> Bụi gai needs 3 Thụ chướng thạch (item 18) and level 15; the second step needs rank-2 level 25 and 2 + 2 materials.
 assert.deepEqual(byId.get('vqsv5-db-0').evolution.materials.map(m => [m.item_id, m.quantity]), [[18, 3]]);
 assert.equal(byId.get('vqsv5-db-0').evolution.min_level, 15); assert.equal(byId.get('vqsv5-db-1').evolution.min_level, 25); assert.equal(byId.get('vqsv5-db-2').evolution.min_level, 30);
@@ -176,7 +176,7 @@ reset5(15, 'mats5[18] = 3; progress["vqsv5-db-1"] = { level: 3, exp: 0 }'); asse
 reset5(15, 'mats5[18] = 2; mats5[27] = 1; saveMats5()');
 assert.deepEqual(JSON.parse(store.get('vqsv-unified-mats5-v1'))['18'], 2);
 assert.match(run('stoneText()'), /Thụ chướng thạch ×2/); assert.match(run('stoneText()'), /Cổ thụ chi hạch ×1/);
-run('Math.random = () => 0'); const drops = J('rollStoneDrops(30)'); assert(drops.includes('Cổ thụ chi hạch') && drops.includes('Dị hoá tài liệu'));
+run('Math.random = () => 0'); const drops = J('rollStoneDrops(30)'); assert(drops.includes('Cổ kình chi tâm') && !drops.includes('Cổ thụ chi hạch') && !drops.includes('Dị hoá tài liệu'));        // 26-28, 30, 34 now come from treasure boxes
 run('Math.random = () => 0.999'); assert.deepEqual(J('rollStoneDrops(30)'), []);
 
 // ---- Random traits ----

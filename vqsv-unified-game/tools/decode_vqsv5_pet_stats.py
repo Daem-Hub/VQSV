@@ -64,6 +64,14 @@ Special skills (ids 26-48, held in the two extra slots al.b[14], al.b[15]; ak.n 
   5 Hủ Thực (4, loses h*h + 4 HP each round with h = skill id + 1, or + n[31][0] = 3 with skill 31), 6 Phong Bế (4, cannot use skills above
   tier 3). Type skills carry [power, cost, chance, status] so Thực Vật -> 5, Kim Loại -> 0, Phi Hành -> 4, Mãnh Thú -> 2, Hải Dương -> 3.
 
+Where the skill books come from (ak.c(): items 32 "Bảo rương" and 33 "Cái chìa khóa", ak.f()/win code, data/box.d):
+  winning a battle gives one Bảo rương with 50% chance (while fewer than 99 are held). The key (item 33) is sold by the general shop (50 kim).
+  Using either with the other in the bag spends one of each and rolls: tier = rand(100) < 70 -> 0, < 85 -> 1, < 95 -> 2, else 3, then rand(100)
+  against the cumulative chances of box.d table [tier] ([item, cumulative %] pairs; 255 = empty). Table 2 holds the skill books 35, 41 and 51-55;
+  table 3 the evolution materials 26-28, 30, 31; table 1 the mutation item 34 (only if none is held), the box and key; table 0 shop consumables.
+  A result already held at 99 is empty. Script instructions can also grant items (opcode 18 of data/event) and gold (opcode 21, amount * 100);
+  field chests grant gold * 100, medals or one item (at.java chest handler).
+
 Writes prototype/data/vqsv5_pet_stats.json and asset_review/vqsv5_pet_stats.csv.
 """
 import csv
@@ -147,7 +155,7 @@ for _ in range(signed(sbyte())):
     price_rows.append([sshort() for _ in range(signed(sbyte()))])
 if spos != len(shop):
     raise ValueError(f"shop.d not fully consumed: {spos} of {len(shop)}")
-sold_items = set(shops[1])
+sold_items = set(shops[1]) | {33}          # item 33 (the chest key) is sold by the general shop, shops[0]
 LEVEL_UNLOCKS = [0, 7, 14, 21, 28, 35]   # ak.a(al): slot thresholds
 BASIC_SKILL = 25                         # slot 0
 TYPE_CHART = [[2, 3], [3, 4], [4, 0], [0, 1], [1, 2]]  # ak constructor: m[type] = [type it beats (+30%), second listed type]
@@ -247,10 +255,36 @@ def chain_length(species):
     return count
 base_forms = [i for i in range(len(pets_raw)) if i not in set(normal_targets.values()) | set(mutation_targets.values())]
 assert all(pets_raw[i][12] == chain_length(i) for i in base_forms), "evolution counters must equal chain lengths"
-material_ids = sorted({row[k] for row in evo_rows.values() for k in range(2, len(row) - 1, 2)} | {MUTATION_ITEM})
+material_ids = sorted({row[k] for row in evo_rows.values() for k in range(2, len(row) - 1, 2)} | {MUTATION_ITEM, 31, 32, 33})
 assert all(item < len(item_names) for item in material_ids)
 items = [{"item_id": item, "name": item_names[item], "description": item_effects[item] if item < len(item_effects) else "",
           "price": price_rows[0][item] if item < len(price_rows[0]) else 0, "sold": item in sold_items} for item in material_ids]
+
+# ---- data/box.d: treasure box tables (see docstring) ----
+box_blob = (SOURCE / "vqsv5" / "raw_data" / "data" / "box.d").read_bytes()
+if int.from_bytes(box_blob[:2], "big") != len(box_blob) - 2:
+    raise ValueError("Unexpected box.d length header")
+box = box_blob[2:]
+box_pos = 1
+box_tables = []
+for _ in range(box[0]):
+    length = box[box_pos]; row = list(box[box_pos + 1:box_pos + 1 + length]); box_pos += 1 + length
+    pairs = [(row[i], row[i + 1]) for i in range(0, len(row), 2)]
+    assert pairs[-1] == (255, 100) and [p[1] for p in pairs] == sorted(p[1] for p in pairs)
+    previous = 0; entries = []
+    for item, upto in pairs:
+        entries.append({"item_id": None if item == 255 else item, "chance": upto - previous, "cumulative": upto}); previous = upto
+    box_tables.append(entries)
+assert box_pos == len(box) and len(box_tables) == 4
+table_books = {e["item_id"] for e in box_tables[2] if e["item_id"] is not None}
+assert table_books <= set(range(35, 58)) and len(table_books) == 7
+chest_rules = {
+    "chest_item": 32, "key_item": 33, "key_price": price_rows[0][33], "win_drop_chance": 50, "stack_max": 99,
+    "tier_thresholds": [70, 85, 95], "tiers": box_tables,
+    "mutation_item": MUTATION_ITEM, "mutation_item_only_if_none_held": True,
+    "evidence": "ak.c() items 32/33; the victory code rolls rand(100) < 50 for item 32; box.d is read as pairs [item, cumulative %]",
+    "other_sources": ["data/event opcode 18 (item), opcode 21 (gold x100)", "field chests (gold x100, medals or one item)"],
+}
 
 pets = []
 for pet_id, (name, row, pair, description) in enumerate(zip(pet_names, pets_raw, sprite_pairs, descriptions)):
@@ -326,6 +360,7 @@ out = {
         "halve_chance": 20, "boost_chance": 20, "dot_boost_percent": 20, "regen_percent": 6, "status_delta": 20, "hp_percent": 15,
         "inherited_on_evolution": True,
     },
+    "chest_rules": chest_rules,
     "status_rules": STATUS_RULES,
     "skill_books": skill_books,
     "items": items,

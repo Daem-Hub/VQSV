@@ -154,4 +154,36 @@ assert.match(run('statusLabels(E).join()'), /▼Mị Hoặc 4/);
 // Skill 39 rolls traits in the lucky mode.
 setup(['vqsv5-db-0'], 20, 'progress["vqsv5-db-0"].passives = [39, -1]; delete progress["vqsv5-db-0"].traits; Math.random = () => 0.5'); assert.equal(run('teamLucky5()'), true);
 battle(); assert.deepEqual(J('progress["vqsv5-db-0"].traits'), [4, 2]);       // rand(100) = 50 < 70 for both slots
-console.log('VQSV5 specials: decoded skills, books, statuses, loyalty, passives and battle rules passed.');
+
+// ---- Treasure boxes: the source of skill books (data/box.d) ----
+const CR = S5.chest_rules;
+assert.deepEqual([CR.chest_item, CR.key_item, CR.key_price, CR.win_drop_chance], [32, 33, 50, 50]); assert.deepEqual(CR.tier_thresholds, [70, 85, 95]);
+assert.deepEqual(CR.tiers.map(t => t.reduce((n, e) => n + e.chance, 0)), [100, 100, 100, 100]);
+assert.deepEqual(CR.tiers[2].filter(e => e.item_id).map(e => e.item_id), [35, 41, 51, 52, 53, 54, 55]);
+assert.deepEqual(CR.tiers[3].filter(e => e.item_id).map(e => e.item_id), [26, 27, 28, 30, 31]); assert.deepEqual(CR.tiers[1].map(e => e.item_id), [13, 32, 33, 34, null]);
+assert.equal(J('catalogById.get("mat5-33").price'), 50); assert.equal(J('catalogById.get("mat5-32")'), undefined);   // the box is not sold
+// A won battle drops a box 50% of the time (below the 99 cap), shown in the reward text.
+const win = (r, held = 0) => { setup(['vqsv5-db-0'], 30, `mats5[32] = ${held}`); battle('state.battle.pendingUntil = 0; state.battle.enemy.hp = 0'); run(`Math.random = () => ${r}`); run('awardExperience(1000)'); return [run('mats5[32]'), run('state.battle.message')]; };
+let [count, text] = win(0.49); assert.equal(count, 1); assert.match(text, /Nhận Bảo rương ×1/);
+[count, text] = win(0.5); assert.equal(count, 0); assert.doesNotMatch(text, /Bảo rương/);
+[count] = win(0.1, 99); assert.equal(count, 99);
+// Opening: needs both items, not in battle; one of each is spent; tier by the first roll, entry by the second.
+const open = (rolls, extra = '') => { setup(['vqsv5-db-0'], 30, `mats5[32] = 2; mats5[33] = 2; ${extra}`); run(`globalThis.rolls = ${JSON.stringify(rolls)}; Math.random = () => rolls.shift() / 100 + 0.0001`); return J('window.VQSVChest.open()'); };
+let o = open([75, 20]); assert.equal(o.ok, true); assert.equal(o.tier, 1); assert.match(o.message, /Đạt được: Cái chìa khóa/); assert.equal(run('mats5[32]'), 1); assert.equal(run('mats5[33]'), 2);   // 1 box, 1 key + 1 won key
+o = open([96, 10]); assert.equal(o.tier, 3); assert.match(o.message, /Bay lượn thiên thạch/); assert.equal(run('mats5[26]'), 1);
+o = open([90, 14]); assert.equal(o.tier, 2); assert.match(o.message, /Sách Quân tâm tan rả/); assert.equal(run('mats5[35]'), 1);
+o = open([90, 74]); assert.match(o.message, /Sách /); assert.equal(run('mats5[55]'), 1);
+o = open([90, 80]); assert.equal(o.item, null); assert.match(o.message, /trống/);                                // 25% empty
+const bag4 = run('bag[4] || 0'); o = open([0, 24]); assert.equal(o.tier, 0); assert.match(o.message, /Đạt được: /); assert.equal(run('bag[4] || 0'), bag4 + 1);
+o = open([0, 85], 'wallet.gold = 100'); assert.equal(o.tier, 0); assert.equal(run('wallet.gold'), 100 + 200); assert.match(o.message, /200 kim tiền/);        // item 12 -> kim tiền
+// The mutation item is not given while one is held; a full stack is not exceeded.
+o = open([80, 70], 'mats5[34] = 1'); assert.equal(o.tier, 1); assert.equal(run('mats5[34]'), 1); assert.match(o.message, /trống/);
+o = open([80, 70]); assert.equal(run('mats5[34]'), 1); assert.match(o.message, /Dị hoá tài liệu/);
+o = open([90, 14], 'mats5[35] = 99'); assert.equal(run('mats5[35]'), 99); assert.match(o.message, /trống/);
+setup(['vqsv5-db-0'], 30, 'mats5[32] = 1'); o = J('window.VQSVChest.open()'); assert.equal(o.ok, false); assert.match(o.message, /Cần có cả Bảo rương và Cái chìa khóa/); assert.equal(run('mats5[32]'), 1);
+setup(['vqsv5-db-0'], 30, 'mats5[32] = 1; mats5[33] = 1; state.mode = "battle"'); assert.equal(J('window.VQSVChest.open()').ok, false); assert.equal(run('mats5[33]'), 1);
+// Full path: buy a key, win for a box, open for a book, learn it.
+setup(['vqsv5-db-0'], 30, 'wallet.gold = 100');
+assert.equal(J('buyItem("mat5-33", 1, false).total'), 50); run('mats5[32] = 1; mats5[33] += 0; Math.random = () => 0.9001');
+assert.equal(J('window.VQSVChest.open()').tier, 2);
+console.log('VQSV5 specials: decoded skills, books, statuses, loyalty, passives, treasure boxes and battle rules passed.');

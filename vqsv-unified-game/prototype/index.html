@@ -324,13 +324,39 @@
       return { hp: Math.max(1, Math.round(raw.hp * k.hp)), attack: Math.max(1, Math.round(raw.attack * k.attack)),
         defense: Math.max(0, Math.round(raw.defense * k.defense)), speed: Math.max(1, Math.round(raw.agility * k.speed)) };
     }
+    // ---- VQSV5 special skills 26-48 and statuses (tools/decode_vqsv5_pet_stats.py: skills[].special, status_rules, skill_books).
+    // A pet holds two "special" slots (al.b[14], al.b[15]) filled from skill books. 26-30 are moves, 31-48 are passive. ----
+    const SPECIAL5 = id => STATS5?.skills?.[id]?.special;
+    const STATUS5 = STATS5?.status_rules?.statuses || {};
+    const BOOKS5 = new Map((STATS5?.skill_books || []).map(book => [book.skill_id, book]));
+    const hasPassive = (c, id) => !!c.passives && c.passives.includes(id);
+    const validPassives5 = list => Array.isArray(list) && list.length === 2 && list.every(v => v === -1 || (Number.isInteger(v) && v >= 26 && v <= 48));
+    // TRIAL: the source gives every battle field a type; the prototype assigns one to each wild region. A pet whose type differs
+    // from the field deals 20% less (ak.b(z,al,al)) unless it knows the matching terrain skill 43-47. Maps not listed have no field type.
+    const TERRAIN5 = { "ryan-phong-loi-forest": 0, "ryan-forest-stream": 4, "ryan-canyon": 1, "ryan-lakeside": 4, "ryan-skyridge": 2, "ryan-meadow": 3, "ryan-highland": 3 };
+    const STATUS5_TURNS = { 0: 2, 2: 4, 3: 4, 4: 4, 5: 4, 6: 4 };
+    const LOYALTY_DISOBEY = 25;        // below 41 loyalty a pet ignores the order 25% of the time (ak.an())
+    // Loyalty term of the damage bonus (ak.b(z,al,al)): by = loyalty - 99; by > 1 ? +20 : by / 20 * 20 (Java division truncates).
+    const loyaltyBonus = loyalty => { const by = loyalty - 99; return by > 1 ? 20 : Math.trunc(by / 20) * 20; };
+    function skillTier5(c, skill) {
+      if (skill.v5Id != null) return skill.v5Id === 25 ? 0 : skill.v5Id < 25 ? skill.v5Id % 5 + 1 : (BOOKS5.get(skill.v5Id)?.trainer_rank || 0);
+      const index = (c.skills || []).indexOf(skill);
+      return index < 0 ? 0 : index + 1;
+    }
     // Type skills unlock automatically at levels 7/14/21/28/35 (game ak.a(al)); each is capped by SP / cost uses (TRIAL).
-    function skills5(record, level) {
+    // Skills 26-30 in the special slots are moves; their numbers come from ak.n.
+    function skills5(record, level, passives = []) {
       const sp = rawStats5(record, level).sp;
-      return record.skill_slots.filter(slot => slot.level > 0 && slot.level <= level).map(slot => {
-        const skill = STATS5.skills[slot.skill_id], uses = Math.max(1, Math.trunc(sp / Math.max(1, skill.sp_cost)));
-        return { row: null, v5Id: skill.skill_id, name: skill.name, power: Math.round(skill.power / V5_TIER1_POWER * 100), uses, max: uses, description: skill.label, effect: null, noDamage: false };
-      });
+      const make = skill => {
+        const special = SPECIAL5(skill.skill_id);
+        const uses = skill.skill_id === 29 ? 1 : Math.max(1, Math.trunc(sp / Math.max(1, skill.sp_cost)));
+        const noDamage = special?.kind === "heal" || special?.kind === "sacrifice";
+        return { row: null, v5Id: skill.skill_id, name: skill.name, power: noDamage ? 0 : Math.round(skill.power / V5_TIER1_POWER * 100), uses, max: uses, description: skill.label,
+          effect: noDamage ? { kind: "v5special", id: skill.skill_id } : null, noDamage, special: noDamage };
+      };
+      const list = record.skill_slots.filter(slot => slot.level > 0 && slot.level <= level).map(slot => make(STATS5.skills[slot.skill_id]));
+      for (const id of passives) if (id >= 26 && id <= 30) list.push(make(STATS5.skills[id]));
+      return list;
     }
     // ---- VQSV5 random traits (tools/decode_vqsv5_pet_stats.py, trait_rules): each pet carries two trait ids. Slot 0 is one of the
     // two traits of its type (2t+3 / 2t+4), slot 1 a constitution trait (0 none, 1 HP -15%, 2 HP +15%). ----
@@ -356,12 +382,17 @@
       saveProgress();
       return traits;
     }
-    function vqsv5Combatant(petId, level, traits = []) {
-      const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level);
+    const passivesOf5 = key => (validPassives5(progress[key]?.passives) ? progress[key].passives : [-1, -1]);
+    // Skill 39 (Hạnh Vận Chi Tinh): wild pets are created with the "lucky" trait mode when the lead of the team knows it. The unified lead is a
+    // VQSV6 pet, so the prototype checks every VQSV5 pet in the team (TRIAL).
+    const teamLucky5 = () => (window.VQSVPetTeam?.ids?.() || []).some(id => STAT5_BY_ID.has(id) && passivesOf5(id).includes(39));
+    function vqsv5Combatant(petId, level, traits = [], passives = []) {
+      const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level, passives);
       // ak.b(al,int): trait 1 / 2 changes max HP by -15% / +15% (Java integer division truncates toward zero).
       for (const id of traits) if (id === 1 || id === 2) stats.hp = Math.max(1, stats.hp + Math.trunc(stats.hp * (TRAITS5[id]?.value || 0) / 100));
       return { stats, level, elementId: null, element: record.type, col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
-        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER, traits: [...traits] };
+        quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER, traits: [...traits],
+        passives: [...passives], typeId: Number.isInteger(record.type_id) ? record.type_id : null, loyalty: record.rank > 3 ? 120 : 100, v5status: null };
     }
     // Wild encounters use petArea.mid rows; which source area feeds which prototype map is a TRIAL choice.
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
@@ -458,6 +489,8 @@
     function saveStones() { try { localStorage.setItem(STONES_KEY, JSON.stringify(stones)); } catch (_) {} }
     // VQSV5 evolution materials (items 16-30 and the mutation item 34 of vqsv5.jar), counted by source item id.
     const ITEMS5 = new Map((STATS5?.items || []).map(item => [item.item_id, item]));
+    // Skill books (items 35-57, sold for medals; the prototype's badge currency stands in for medals - TRIAL).
+    for (const book of STATS5?.skill_books || []) ITEMS5.set(book.item_id, { item_id: book.item_id, name: `Sách ${book.name}`, description: book.description, price: book.price_medals, sold: true, book: true, skill_id: book.skill_id });
     const MATS5_KEY = "vqsv-unified-mats5-v1";
     const RANK_GATES5 = STATS5?.evolution_rules?.level_gate_by_rank || {};
     const MUTATION_ITEM5 = STATS5?.evolution_rules?.mutation_item_id;
@@ -524,7 +557,7 @@
       saveMats5(); updateStones();
       const left = mode === "mutation" ? 0 : check.left - 1;
       delete progress[speciesId];
-      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left, ...(validTraits5(check.entry.traits) ? { traits: check.entry.traits } : {}) };
+      progress[check.targetId] = { level: check.entry.level, exp: check.entry.exp, evoLeft: left, ...(validTraits5(check.entry.traits) ? { traits: check.entry.traits } : {}), ...(validPassives5(check.entry.passives) ? { passives: check.entry.passives } : {}) };
       window.VQSVPetTeam?.replaceSpecies?.(speciesId, check.targetId);
       saveProgress();
       const before = unifiedStats5(check.record, check.entry.level), after = unifiedStats5(check.target, check.entry.level);
@@ -571,6 +604,42 @@
       return { ok: true, targetId: targetRecord.pet_id, before, after, quality,
         message: `${name} ${kind} thành ${targetRecord.name}! HP ${before.hp}→${after.hp}, Công ${before.attack}→${after.attack}, Thủ ${before.defense}→${after.defense}, Tốc ${before.speed}→${after.speed}.` };
     }
+    // Skill books -> the two special slots of a VQSV5 pet (ak.h(al)). The trainer rank the source asks for (ak.u) is not enforced: the
+    // prototype has no trainer rank.
+    window.VQSVSpecials = {
+      individuals: individualsOf,
+      slots(key) { return passivesOf5(key).slice(); },
+      books() { return (STATS5?.skill_books || []).map(book => ({ ...book, owned: mats5[book.item_id] || 0 })); },
+      describe(id) { const book = BOOKS5.get(id); return book ? { id, name: STATS5.skills[id].name, label: STATS5.skills[id].label, passive: book.passive, tier: book.trainer_rank } : null; },
+      learn(key, speciesId, skillId, replaceIndex = null) {
+        const book = BOOKS5.get(skillId);
+        if (!book || !STAT5_BY_ID.has(speciesId)) return { ok: false, message: "Không có sách kỹ năng này." };
+        if (state.mode === "battle") return { ok: false, message: "Không thể học kỹ năng trong trận." };
+        if (!(mats5[book.item_id] > 0)) return { ok: false, message: `Chưa có Sách ${book.name}.` };
+        const slots = passivesOf5(key).slice();
+        if (slots.includes(skillId)) return { ok: false, message: `${STAT5_BY_ID.get(speciesId).name} đã có kỹ năng ${STATS5.skills[skillId].name}.` };
+        let index = slots.indexOf(-1);
+        if (index < 0) {
+          if (replaceIndex !== 0 && replaceIndex !== 1) return { ok: false, needsReplace: true, message: "Hai ô kỹ năng đặc biệt đã đầy, chọn ô muốn thay." };
+          index = replaceIndex;
+        }
+        const replaced = slots[index];
+        slots[index] = skillId;
+        mats5[book.item_id] -= 1; saveMats5(); updateStones();
+        progress[key] = { ...(progress[key] || { level: BATTLE_LEVEL, exp: 0 }), passives: slots };
+        saveProgress();
+        return { ok: true, slots, message: `${STAT5_BY_ID.get(speciesId).name} học ${STATS5.skills[skillId].name}${replaced >= 0 ? ` (thay ${STATS5.skills[replaced].name})` : ""}.` };
+      },
+      forget(key, speciesId, index) {
+        const slots = passivesOf5(key).slice();
+        if (!(index === 0 || index === 1) || slots[index] < 0) return { ok: false, message: "Ô kỹ năng này đang trống." };
+        const name = STATS5.skills[slots[index]].name;
+        slots[index] = -1;
+        progress[key] = { ...(progress[key] || { level: BATTLE_LEVEL, exp: 0 }), passives: slots };
+        saveProgress();
+        return { ok: true, slots, message: `${STAT5_BY_ID.get(speciesId)?.name || "Pet"} quên ${name}.` };
+      },
+    };
     window.VQSVTraits = {
       of(speciesId) { const traits = progress[speciesId]?.traits; return validTraits5(traits) ? traits : null; },
       ensure: ensureTraits5,
@@ -698,6 +767,7 @@
       ...(SHOP?.materials || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
       ...(SHOP?.relics || []).map(item => ({ ...item, id: `stone-${item.row}`, store: "stones" })),
       // VQSV5 evolution materials sold by the source shop (shop.d, items 16-25, kim tiền only).
+      ...(STATS5?.skill_books || []).map(book => ({ row: book.item_id, table: "vqsv5", name: `Sách ${book.name} (VQSV5)`, description: book.description, price: book.price_medals, currency: 1, id: `mat5-${book.item_id}`, store: "mats5" })),
       ...(STATS5?.items || []).filter(item => item.sold).map(item => ({ row: item.item_id, table: "vqsv5", name: `${item.name} (VQSV5)`, description: item.description, price: item.price, currency: 0, id: `mat5-${item.item_id}`, store: "mats5" }))
     ];
     const catalogById = new Map(CATALOG.map(entry => [entry.id, entry]));
@@ -771,6 +841,7 @@
       if (!entry || !target || !BATTLE_ITEM_TYPES.includes(entry.effect_type)) return false;
       if (!(bag[row] > 0)) { battle.message = `Không còn ${entry.name}.`; return false; }
       if (activePet().debuffs?.[2]) { battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể dùng đạo cụ.`; return false; }
+      if (activePet().v5status?.id === 4) { battle.message = `${activePet().name} đang bị ${STATUS5[4].name}, không thể dùng đạo cụ.`; return false; }
       const problem = itemTargetProblem(entry, target);
       if (problem) { battle.message = `${entry.name}: ${target.name} ${problem}.`; return false; }
       bag[row]--; saveBag();
@@ -816,7 +887,7 @@
       member.level = entry.level; member.exp = entry.exp;
       // game/i.java w() -> W(): recompute stats at the new level, refill HP (h()) and skill uses.
       if (member.v5 && entry.level !== before) {
-        const fresh = vqsv5Combatant(member.petId, entry.level, member.traits || []);
+        const fresh = vqsv5Combatant(member.petId, entry.level, member.traits || [], member.passives || []);
         Object.assign(member, { stats: fresh.stats, max: fresh.max, hp: fresh.max, skills: fresh.skills, skill: fresh.skills[0] });
       }
       const record = STAT_BY_ID.get(member.petId);
@@ -897,7 +968,7 @@
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
         const own = progressOf(info.id, best ? best.level : BATTLE_LEVEL);
         const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
-          : { ...vqsv5Combatant(info.id, own.level, ensureTraits5(info.id, info.id)), progressKey: info.id, exp: own.exp };
+          : { ...vqsv5Combatant(info.id, own.level, ensureTraits5(info.id, info.id, teamLucky5() ? "lucky" : "random"), passivesOf5(info.id)), progressKey: info.id, exp: own.exp };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       });
       return [lead, ...reserves];
@@ -934,7 +1005,7 @@
       let rate = enemy.hp <= enemy.max * 15 / 100 ? 85 : enemy.hp <= enemy.max * 50 / 100 ? 45 : 20;
       rate = Math.trunc(rate * ball.rate_percent / 100);
       rate = Math.trunc(rate * CAPTURE.quality_factor_percent[enemy.quality - 1] / 100);
-      const statusIndex = enemy.buffs?.[10] ? 3 : enemy.buffs?.[2] ? 2 : enemy.buffs?.[1] ? 1 : 0;
+      const statusIndex = enemy.buffs?.[10] ? 3 : enemy.buffs?.[2] || enemy.v5status?.id === 3 ? 2 : enemy.buffs?.[1] ? 1 : 0;   // Mị Hoặc (VQSV5 status 3) makes a catch easier
       rate = Math.trunc(rate * [10, 11, 12, 12, 12][statusIndex] / 10);
       const holder = state.battle?.team?.[state.battle.active];
       if (holder?.item === 11) rate = Math.trunc(rate * (100 + RELIC(11).p1) / 100); // Sủng vật lôi đạt
@@ -1051,6 +1122,10 @@
       if (!window.VQSVSkillFx || !state.battle) return;
       window.VQSVSkillFx.status({ onEnemy: c === state.battle.enemy, kind, id: Number(id), startAt: fxNow(), ...fxSprite(c) });
     }
+    function fxStatus5(c, id) {
+      if (!window.VQSVSkillFx || !state.battle) return;
+      window.VQSVSkillFx.status({ onEnemy: c === state.battle.enemy, kind: "v5", id: Number(id), startAt: fxNow(), ...fxSprite(c) });
+    }
     function debuffLands(target, chance, debuffId) {
       const delta = traitChanceDelta(target, debuffId);
       if (delta) {
@@ -1060,18 +1135,103 @@
       if (target.item === 3) return Math.random() * 100 < (chance === -1 ? 100 : chance) * (100 - RELIC(3).p1) / 100;
       return chance === -1 || Math.random() * 100 <= chance;
     }
+    // ---- VQSV5 statuses (status_rules): one at a time, set by type skills and skill 30. Traits 5-8 and 11-12 shift the chance (ak.b(z,al,al,int)). ----
+    function setStatus5(attacker, target, id, skillId) {
+      const turns = id === 2 && hasPassive(attacker, 32) ? SPECIAL5(32).turns : STATUS5_TURNS[id];
+      target.v5status = { id, turns, h: id === 5 ? skillId + (hasPassive(attacker, 31) ? SPECIAL5(31).skill_offset : SPECIAL5(31).default_offset) : 0 };
+      fxStatus5(target, id);
+    }
+    function status5Lands(target, id, chance) {
+      if (target.v5status || target.hp <= 0 || chance <= 0) return false;
+      const pair = { 0: [5, 6], 4: [7, 8], 2: [11, 12], 5: [11, 12] }[id];
+      if (pair && target.traits) { if (hasTrait(target, pair[0])) chance += TRAITS5[pair[0]].value; else if (hasTrait(target, pair[1])) chance += TRAITS5[pair[1]].value; }
+      chance = Math.max(0, Math.min(100, chance));
+      if (target.item === 3) chance = chance * (100 - RELIC(3).p1) / 100;     // Ô Nha Uế guards the holder against every status
+      return Math.random() * 100 < chance;
+    }
+    // Extra effects of a hit by a VQSV5 skill: skill 26 lowers loyalty, type skills and skill 30 apply their status, passive 34 drains energy.
+    function hitEffects5(actor, target, skill) {
+      if (skill.v5Id == null || target.hp <= 0) return "";
+      const id = skill.v5Id, source = STATS5.skills[id];
+      let out = "";
+      if (id === 26 && !hasPassive(target, 40) && Math.random() * 100 < source.effect_chance) {
+        const before = target.loyalty ?? 100, lost = Math.trunc(before * source.param / 100);
+        target.loyalty = Math.max(0, before - lost);
+        out += ` Độ trung thành của ${target.name} giảm ${lost}.`;
+      }
+      const statusId = id < 25 ? source.param : id === 30 ? 6 : null;
+      if (statusId != null && STATUS5[statusId] && !(statusId === 6 && target.v5 && target.typeId == null) && status5Lands(target, statusId, source.effect_chance)) {
+        setStatus5(actor, target, statusId, id);
+        out += ` ${target.name} bị ${STATUS5[statusId].name}!`;
+      }
+      // TRIAL: the coded drain of passive 34 is max SP * 0 / 100; the prototype takes one use from a random skill of the target instead.
+      if (hasPassive(actor, 34) && actor.typeId === 2) {
+        const pool = (target.skills || []).filter(skill_ => skill_.uses > 0);
+        if (pool.length) { const hit = pool[Math.floor(Math.random() * pool.length)]; hit.uses--; out += ` ${target.name} mất 1 lượt ${hit.name}.`; }
+      }
+      return out;
+    }
+    // Damage modifiers from VQSV5 rules: loyalty (+20% at 120, negative below 80), field type, Thạch Hóa on the defender and skills 33 / 48.
+    function adjustDamage5(actor, target, dealt) {
+      let bonus = 0;
+      if (actor.loyalty != null) bonus += loyaltyBonus(actor.loyalty);
+      const terrain = state.battle?.terrain;
+      if (actor.v5 && actor.typeId != null && terrain != null && actor.typeId !== terrain && !hasPassive(actor, 43 + actor.typeId)) bonus -= 20;
+      if (bonus) dealt = Math.max(1, Math.trunc(dealt * (100 + bonus) / 100));
+      if (target.v5status?.id === 0) dealt = Math.max(1, Math.trunc(dealt * 70 / 100));
+      if (hasPassive(target, 33) && target.typeId === 1) dealt = Math.max(1, Math.trunc(dealt * SPECIAL5(33).percent / 100));
+      if (hasPassive(target, 48) && Math.random() * 100 < SPECIAL5(48).chance) dealt = Math.max(1, Math.trunc(dealt / 2));
+      return dealt;
+    }
+    // The moves 27 / 28 (heal) and 29 (spend all energy for damage).
+    function performSpecial5(actor, target, skill, label) {
+      const special = SPECIAL5(skill.v5Id), k = calibration(actor.level);
+      if (special.kind === "heal") {
+        const heal = Math.min(actor.max - actor.hp, Math.max(1, Math.round(special.amount * k.hp)));
+        actor.hp += Math.max(0, heal);
+        fxStatus(actor, "buff", 3);
+        return `${label} dùng ${skill.name}, hồi ${Math.max(0, heal)} HP.`;
+      }
+      // Tử Vong Chi Xúc: damage = attack * 2 + remaining SP, which is spent. The prototype's SP is the sum of the remaining uses x costs (TRIAL scale).
+      const spLeft = (actor.skills || []).reduce((sum, item) => sum + (item === skill ? 0 : item.uses * (STATS5.skills[item.v5Id]?.sp_cost || 0)), 0);
+      const damage = Math.max(1, Math.trunc(effStats(actor).attack * special.attack_multiplier + spLeft * k.attack));
+      for (const item of actor.skills || []) if (item !== skill) item.uses = 0;
+      target.hp = Math.max(0, target.hp - damage);
+      window.VQSVSkillFx?.cast({ fromEnemy: actor === state.battle?.enemy, element: actor.element, startAt: fxNow(), crit: true });
+      return `${label} dùng ${skill.name}, tiêu hao toàn bộ năng lượng và gây ${damage} sát thương!`;
+    }
+    // Skill 38 (Trọng Sinh Chi Tâm): once per battle a fallen holder gets back up with hp_percent of its max HP, chance from the data.
+    function reviveCheck5(c) {
+      if (!c || c.hp > 0 || c.revived || !hasPassive(c, 38)) return "";
+      const special = SPECIAL5(38);
+      c.revived = true;
+      if (Math.random() * 100 >= special.chance) return "";
+      c.hp = Math.max(1, Math.trunc(c.max * special.hp_percent / 100));
+      c.v5status = null;
+      fxStatus(c, "buff", 3);
+      return ` ${c.name} hồi sinh nhờ Trọng Sinh Chi Tâm (${c.hp} HP)!`;
+    }
     function performMove(actor, target, skill, label) {
       const debuffs = actor.debuffs || {};
       if (debuffs[1]) return `${label} đang ${DEBUFF(1).name}, không thể hành động.`;
       if (debuffs[10] && Math.random() < .5) return `${label} bị ${DEBUFF(10).name}, chậm mất lượt.`;
       const battleNow = state.battle;
       fxMoveAt = battleNow ? (actor === battleNow.enemy ? battleNow.enemyAt : battleNow.attackAt) : null;
-      try { return performMoveCore(actor, target, skill, label); } finally { fxMoveAt = null; }
+      try {
+        const message = performMoveCore(actor, target, skill, label);
+        return message + reviveCheck5(target) + reviveCheck5(actor);
+      } finally { fxMoveAt = null; }
     }
     function performMoveCore(actor, target, skill, label) {
       const debuffs = actor.debuffs || {};
-      if (skill.uses != null) skill.uses -= actor.buffs?.[8] ? 2 : 1;
+      if (actor.v5status?.id === 0) return `${label} đang ${STATUS5[0].name}, không thể hành động.`;
+      if ((actor.loyalty ?? 100) < 41 && Math.random() * 100 < LOYALTY_DISOBEY) return `${label} không nghe lệnh vì độ trung thành quá thấp.`;
+      if (actor.v5status?.id === 6 && skillTier5(actor, skill) > SPECIAL5(30).blocks_tier_above) return `${label} bị ${STATUS5[6].name}, không dùng được ${skill.name}.`;
+      // Passive 35: a Hải Dương pet pays only a fraction of the cost (cost * power / 100), so a use is spent with that probability.
+      const discount = skill.v5Id != null && skill.v5Id < 25 && actor.typeId === 4 && hasPassive(actor, 35);
+      if (skill.uses != null && !(discount && Math.random() * 100 >= STATS5.skills[skill.v5Id].power)) skill.uses -= actor.buffs?.[8] ? 2 : 1;
       if (skill.uses < 0) skill.uses = 0;
+      if (skill.special) return performSpecial5(actor, target, skill, label);
       let text = `${label} dùng ${skill.name}`;
       if (!skill.noDamage) {
         // game/a.java: miss% = clamp(2 * (target level - attacker level), 0, 20); Mục lowers the attacker's level by its
@@ -1089,6 +1249,7 @@
           // source value of trait 10 is -20).
           if (hasTrait(actor, 9) && Math.random() * 100 < TRAIT_RULES5.halve_chance) dealt = Math.max(1, Math.trunc(dealt / 2));
           if (hasTrait(actor, 10) && Math.random() * 100 < TRAIT_RULES5.boost_chance) dealt = Math.trunc(dealt * 15 / 10);
+          dealt = adjustDamage5(actor, target, dealt);
           if (target === activePet() && state.battle.guard) dealt = Math.max(1, pct(dealt, GUARD_PCT));
           if (target.buffs?.[6] && Math.random() * 100 < BUFF(6).param_a) dealt = Math.max(1, Math.trunc(dealt / 2));
           if (debuffs[8] && Math.random() * 100 < (debuffs[8].param > 0 ? debuffs[8].param : 40)) {
@@ -1116,6 +1277,8 @@
           window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: fxMoveAt ?? performance.now(), crit: !!last?.crit });
         }
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
+        const extra = hitEffects5(actor, target, skill);
+        if (extra) text += "." + extra.trimEnd();
         if (skill.effect?.kind === "debuff" && last) {
           const chance = EFFECTS.chance_skill_rows.includes(skill.row) ? skill.effect.param : -1;
           if (debuffLands(target, chance, skill.effect.id)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
@@ -1133,6 +1296,13 @@
       if (d[0]) { const loss = dotBoost(Math.max(1, Math.trunc(d[0].value / Math.max(1, STATS.skills[d[0].skillRow].raw_fields[8])))); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${DEBUFF(0).name}`); }
       if (d[3] && d[3].turns <= 1) { const loss = dotBoost(Math.max(1, pct(d[3].value, STATS.skills[d[3].skillRow].raw_fields[8]))); c.hp = Math.max(0, c.hp - loss); notes.push(`${DEBUFF(3).name} nổ, ${label} mất ${loss} HP`); }
       if (b[3] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(3).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); fxStatus(c, "buff", 3); } }
+      const st5 = c.v5status;
+      if (st5) {
+        // Tê Liệt: 10% of the current HP; Hủ Thực: h * h + 4. Trait 3 adds 20% to either (the source tests the wrong method for it).
+        let loss = st5.id === 2 ? Math.trunc(c.hp / 10) : st5.id === 5 ? st5.h * st5.h + 4 : 0;
+        if (loss > 0) { loss = dotBoost(loss); c.hp = Math.max(0, c.hp - loss); notes.push(`${label} mất ${loss} HP vì ${STATUS5[st5.id].name}`); }
+        if (--st5.turns <= 0) { c.v5status = null; notes.push(`${label} hết ${STATUS5[st5.id].name}`); }
+      }
       if (hasTrait(c, 4) && c.hp > 0) { const heal = Math.min(c.max - c.hp, Math.max(1, pct(c.max, TRAIT_RULES5.regen_percent))); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP nhờ ${TRAITS5[4].name}`); fxStatus(c, "buff", 3); } }
       if (b[13] && c.hp > 0) { const heal = Math.min(c.max - c.hp, pct(c.max, BUFF(13).param_a)); if (heal > 0) { c.hp += heal; notes.push(`${label} hồi ${heal} HP`); } }
       for (const map of [d, b]) for (const key of Object.keys(map)) if (--map[key].turns <= 0) delete map[key];
@@ -1141,10 +1311,12 @@
     function endRound() {
       const battle = state.battle;
       const notes = [...tickStatuses(activePet(), activePet().name), ...tickStatuses(battle.enemy, battle.wild ? battle.enemy.name : "Sinh vật")];
+      for (const c of [activePet(), battle.enemy]) { const note = reviveCheck5(c).trim(); if (note) notes.push(note.replace(/!$/, "")); }
       if (notes.length) battle.message += ` ${notes.join(". ")}.`;
     }
     function statusLabels(c) {
-      return [...Object.entries(c.buffs || {}).map(([id, v]) => `▲${BUFF(id).name} ${v.turns}`), ...Object.entries(c.debuffs || {}).map(([id, v]) => `▼${DEBUFF(id).name} ${v.turns}`)];
+      return [...Object.entries(c.buffs || {}).map(([id, v]) => `▲${BUFF(id).name} ${v.turns}`), ...Object.entries(c.debuffs || {}).map(([id, v]) => `▼${DEBUFF(id).name} ${v.turns}`),
+        ...(c.v5status ? [`▼${STATUS5[c.v5status.id].name} ${c.v5status.turns}`] : [])];
     }
     function drawStatuses(c, x, y) {
       const labels = statusLabels(c);
@@ -1165,7 +1337,8 @@
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
     function newBattle(wild = null) { window.VQSVSkillFx?.clear(); return newBattleCore(wild); }
-    function newBattleCore(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
+    function currentTerrain5() { try { return TERRAIN5[assets.map?.id] ?? null; } catch (_) { return null; } }   // assets is not ready yet during the very first newBattle()
+    function newBattleCore(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, terrain: currentTerrain5(), team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
@@ -1802,7 +1975,7 @@
       const battle = state.battle;
       if (state.mode !== "battle" || battle.pendingUntil || index === battle.active || !battle.team[index] || battle.team[index].hp <= 0) return;
       const forced = battle.mustSwitch;
-      const bound = activePet().debuffs?.[2] ? DEBUFF(2) : activePet().debuffs?.[9] ? DEBUFF(9) : null;
+      const bound = activePet().debuffs?.[2] ? DEBUFF(2) : activePet().debuffs?.[9] ? DEBUFF(9) : activePet().v5status?.id === 4 ? { name: STATUS5[4].name } : null;
       if (!forced && bound) { battle.message = `${activePet().name} đang bị ${bound.name}, không thể đổi pet.`; teamMenu.hidden = true; updateGuidance(); return; }
       const previous = activePet();
       battle.active = index; battle.participants.add(index); battle.mustSwitch = false; battle.guard = false; battle.enemyActed = false;
@@ -1954,6 +2127,7 @@
       const pet = activePet();
       const chosen = pet.skills?.[slot];
       if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
+      if (!guard && move === "skill" && pet.v5status?.id === 6 && skillTier5(pet, chosen) > SPECIAL5(30).blocks_tier_above) { battle.message = `${pet.name} bị ${STATUS5[6].name}, không dùng được kỹ năng bậc ${skillTier5(pet, chosen)}.`; return; }
       if (!guard && move === "skill" && chosen.uses <= 0) { battle.message = `${chosen.name} đã hết lượt dùng.`; return; }
       if (!guard && move === "skill" && chosen.noDamage && !chosen.effect) { battle.message = `${chosen.name} chưa được hỗ trợ trong prototype.`; return; }
       fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true;
@@ -2015,6 +2189,9 @@
         if (!member.progressKey) { lines.push(`${member.name} (VQSV5) chưa nhận kinh nghiệm vì chỉ số chưa giải.`); continue; }
         let amount = expReward(battle.enemy, members.length, member.level);
         if (member.item === 5) amount = Math.trunc(amount * (100 + RELIC(5).p1) / 100); // Mật Phong Sào
+        // Skills 36 / 37: +100% / +200% of the experience, added together (ak: n4 = 100 + 200, exp * (n4 + 100) / 100).
+        const expBonus = [36, 37].reduce((sum, id) => sum + (hasPassive(member, id) ? SPECIAL5(id).percent : 0), 0);
+        if (expBonus) amount = Math.trunc(amount * (100 + expBonus) / 100);
         const gained = gainExp(member, amount);
         lines.push(`${member.name} +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
         if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
@@ -2036,7 +2213,7 @@
     function enemyStrike(at) {
       const battle = state.battle, pet = activePet(), enemy = battle.enemy;
       // Enemy AI: any skill with uses left; a status-only skill is skipped while its status is already active.
-      const usable = enemy.skills.filter(skill => skill.uses > 0 && (!skill.noDamage || (skill.effect && !(skill.effect.kind === "buff" ? enemy.buffs[skill.effect.id] : pet.debuffs[skill.effect.id]))));
+      const usable = enemy.skills.filter(skill => skill.uses > 0 && !(enemy.v5status?.id === 6 && skillTier5(enemy, skill) > SPECIAL5(30).blocks_tier_above) && (!skill.noDamage || (skill.effect && !(skill.effect.kind === "buff" ? enemy.buffs[skill.effect.id] : pet.debuffs[skill.effect.id]))));
       const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : { name: "Đòn thường", power: BASIC_POWER };
       battle.enemyAt = at + 180;
       battle.enemyActed = true;
@@ -2110,6 +2287,8 @@
     function fleeBattle() {
       if (state.mode !== "battle" || state.battle.pendingUntil) return;
       if (activePet().debuffs?.[2] && !state.battle.mustSwitch) { state.battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể chạy trốn.`; return; }
+      const own5 = activePet();
+      if (!state.battle.mustSwitch && !hasPassive(own5, 42) && (own5.v5status?.id === 3 || own5.v5status?.id === 4)) { state.battle.message = `${own5.name} đang bị ${STATUS5[own5.v5status.id].name}, không thể chạy trốn.`; return; }
       if (state.battle.wild) { finishWild("flee"); return; }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";

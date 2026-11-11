@@ -55,6 +55,15 @@ Traits (al.e(int), the al constructor, ak.a[] values; class al byte[16] and byte
   can never fire; the description says it should); 3 is described as taking more burn/rot damage (+20%) but the source tests
   al.a(3) (a passive skill) instead of al.e(3), so as coded it never fires either.
 
+Special skills (ids 26-48, held in the two extra slots al.b[14], al.b[15]; ak.n rows, ak.c(), ak.b(z,al,al,int), ak.e(al) and the end-of-round code):
+  26-30 are usable moves (the menu lists slots 8-15); 31-48 are passive and only tested with al.a(id). A pet learns one from a skill book
+  (bag item = skill id + 9, i.e. items 35-57, ak.h(al)); the books are sold for medals by shop 2 (shop.d price_rows[1], by position in the
+  shop list) and each needs a trainer rank ak.u[id - 26]. Pets from scripted teams start with passives 30 and 48.
+  Statuses (al.b = id, al.c = turns, 7 = none; one at a time): 0 Thạch Hóa (2 turns, cannot act, damage taken -30%), 2 Tê Liệt (4 turns, 5 with
+  skill 32; loses 10% HP each round), 3 Mị Hoặc (4, cannot flee, easier to capture), 4 Giam Cầm (4, cannot flee, switch pets or use items),
+  5 Hủ Thực (4, loses h*h + 4 HP each round with h = skill id + 1, or + n[31][0] = 3 with skill 31), 6 Phong Bế (4, cannot use skills above
+  tier 3). Type skills carry [power, cost, chance, status] so Thực Vật -> 5, Kim Loại -> 0, Phi Hành -> 4, Mãnh Thú -> 2, Hải Dương -> 3.
+
 Writes prototype/data/vqsv5_pet_stats.json and asset_review/vqsv5_pet_stats.csv.
 """
 import csv
@@ -169,6 +178,54 @@ for index, (name, label, row) in enumerate(zip(skill_names, skill_labels, skills
                    "param": row[3] if len(row) > 3 else None,
                    "note": "power/cost used by the damage and SP rules; chance/param belong to the skill's special effect (index 26-48 are special skills)"})
 
+# ---- special skills 26-48 (see docstring) ----
+SPECIAL = {
+    26: {"kind": "damage_loyalty", "loyalty_percent": skills_raw[26][3], "chance": skills_raw[26][2], "blocked_by_passive": 40,
+         "evidence": "ak.c(): after the hit, rand(100) < n[26][2] lowers the target's loyalty by n[26][3]% of it unless it knows skill 40"},
+    27: {"kind": "heal", "amount": skills_raw[27][0] * 10, "evidence": "ak.c(): heals n[27][0] * 10 HP, no hit roll"},
+    28: {"kind": "heal", "amount": skills_raw[28][0] * 10, "evidence": "ak.c(): heals n[28][0] * 10 HP, no hit roll"},
+    29: {"kind": "sacrifice", "attack_multiplier": skills_raw[29][0], "uses_all_sp": True,
+         "evidence": "ak.c(): damage = attack * n[29][0] + current SP, then the user's SP drops to 0"},
+    30: {"kind": "seal", "status": 6, "chance": skills_raw[30][2], "blocks_tier_above": 3,
+         "evidence": "ak.b(z,al,al,int) status 6; ak.c(): a sealed pet cannot choose a skill of tier above 3"},
+    31: {"kind": "rot_boost", "skill_offset": skills_raw[31][0], "default_offset": 1, "evidence": "z.h = skill id + (knows 31 ? n[31][0] : 1); rot loses h*h + 4 per round"},
+    32: {"kind": "paralysis_turns", "turns": 5, "default_turns": 4, "evidence": "ak.b(z,al,al,int): status 2 lasts 5 turns when the attacker knows 32"},
+    33: {"kind": "defense_percent", "percent": skills_raw[33][0], "type": "Kim Loại hệ", "evidence": "damage method: defender type 1 and knows 33 -> damage * n[33][0] / 100"},
+    34: {"kind": "sp_drain", "percent": skills_raw[34][0], "type": "Phi Hành hệ", "source_quirk": "n[34][0] is 0, so the drain coded in ak.c() (target max SP * n[34][0] / 100) is 0",
+         "evidence": "ak.c(): attacker type 2 and knows 34 -> target SP -= max SP * n[34][0] / 100"},
+    35: {"kind": "sp_cost_discount", "type": "Hải Dương hệ", "evidence": "ak.b(al,int): cost = cost * n[skill][0] / 100 when the pet is type 4 and knows 35 (n[skill][0] is the skill's power)"},
+    36: {"kind": "exp_bonus", "percent": 100, "evidence": "exp * (100 + 100) / 100 per skill, 36 and 37 add up"},
+    37: {"kind": "exp_bonus", "percent": 200, "evidence": "exp * (100 + 200) / 100 per skill, 36 and 37 add up"},
+    38: {"kind": "revive", "hp_percent": skills_raw[38][0], "chance": skills_raw[38][1], "label_chance": 70,
+         "source_quirk": "the label promises 70% but the code tests rand(100) < n[38][1] = 60",
+         "evidence": "when a pet falls: rand(100) < n[38][1] -> back with n[38][0]% of max HP"},
+    39: {"kind": "lucky_encounters", "evidence": "ak.au(): wild pets are created with trait mode 1 when the lead pet knows 39"},
+    40: {"kind": "loyalty_lock", "evidence": "loyalty is not lost on defeat or when sent out, and skill 26 cannot lower it"},
+    41: {"kind": "capture_no_flee", "evidence": "a failed capture does not make the target flee (ak: knows 41 -> keep fighting)"},
+    42: {"kind": "flee_always", "evidence": "fleeing always succeeds even with status 3 or 4"},
+    **{43 + t: {"kind": "terrain", "type_id": t, "evidence": "the pet's side counts as standing on its own type's terrain (ak.b(z,al): z.i = type)"} for t in range(5)},
+    48: {"kind": "damage_halved_chance", "chance": skills_raw[48][0], "evidence": "damage method: defender knows 48 and rand(100) < n[48][0] -> damage >> 1"},
+}
+for sid, special in SPECIAL.items():
+    skills[sid]["special"] = special
+STATUS_RULES = {
+    "single_status": "a combatant can carry one status; a new one only lands while none is active (ak.b(z,al,al,int): al3.b != 7 -> no)",
+    "statuses": {
+        "0": {"name": "Thạch Hóa", "turns": 2, "effect": "cannot act, damage taken -30%", "type": "Kim Loại hệ", "trait_delta": [5, 6]},
+        "2": {"name": "Tê Liệt", "turns": 4, "effect": "loses 10% of current HP each round", "type": "Mãnh Thú hệ", "trait_delta": [11, 12]},
+        "3": {"name": "Mị Hoặc", "turns": 4, "effect": "cannot flee, easier to capture", "type": "Hải Dương hệ"},
+        "4": {"name": "Giam Cầm", "turns": 4, "effect": "cannot flee, switch pets or use items", "type": "Phi Hành hệ", "trait_delta": [7, 8]},
+        "5": {"name": "Hủ Thực", "turns": 4, "effect": "loses h*h + 4 HP each round, h = skill id + 1 (+3 with skill 31)", "type": "Thực Vật hệ", "trait_delta": [11, 12]},
+        "6": {"name": "Phong Bế", "turns": 4, "effect": "cannot use skills of tier above 3", "type": "skill 30"},
+    },
+    "damage_each_round_boost_trait": 3,
+}
+SHOP2_BOOKS = {item: price_rows[1][i] for i, item in enumerate(shops[2]) if 35 <= item <= 57}
+assert set(SHOP2_BOOKS) == set(range(35, 58))
+skill_books = [{"item_id": sid + 9, "skill_id": sid, "name": item_names[sid + 9], "description": item_effects[sid + 9], "price_medals": SHOP2_BOOKS[sid + 9],
+                "trainer_rank": ak_u[sid - 26], "passive": sid > 30} for sid in range(26, 49)]
+assert all(book["name"] and book["trainer_rank"] > 0 for book in skill_books)
+
 # ---- evolution rows (ak.q) ----
 RANK_LEVEL_GATE = {1: 15, 2: 25, 3: 30}
 MUTATION_ITEM = 34
@@ -240,7 +297,7 @@ out = {
     "source": "vqsv5.jar data/data.d (ak.j()), formulas from class al and class ak",
     "confidence": {
         "direct": "Stat formulas, type ids, ranks, skill unlock slots, SP costs and the damage/hit formulas are read from bytecode.",
-        "unresolved": "Pet columns 13-14, the byte tables ak.u/ak.e/ak.v and the special-skill effects (ids 26-48) are exported raw or ignored. Column 12 is the initial evolution counter.",
+        "unresolved": "Pet columns 13-14 and the byte tables ak.e/ak.v are exported raw or ignored; the special skills 26-48 and statuses are read from ak.c(), ak.b() and the end-of-round code (see special and status_rules). Column 12 is the initial evolution counter.",
     },
     "rules": {
         "stats": "hp = c0 + c7*L/10; sp = c1 + c8*L/10; agility = c2 + c9*L/10; attack = c3 + c10*L/10; defense = c4 + c11*L/10",
@@ -269,6 +326,8 @@ out = {
         "halve_chance": 20, "boost_chance": 20, "dot_boost_percent": 20, "regen_percent": 6, "status_delta": 20, "hp_percent": 15,
         "inherited_on_evolution": True,
     },
+    "status_rules": STATUS_RULES,
+    "skill_books": skill_books,
     "items": items,
     "type_names": type_names, "traits": traits, "skills": skills, "pets": pets,
 }

@@ -171,6 +171,54 @@
       detail.append(go);
     }
   }
+  // VQSV5 special skills: two slots per pet, filled from skill books (skills 26-30 are moves, 31-48 passive).
+  let specialNote = "";
+  function appendSpecialSkills(entry, rec5) {
+    const api = window.VQSVSpecials;
+    if (!api) return;
+    const individuals = api.individuals(rec5.pet_id);
+    if (!individuals.length) { detail.append(node("p", "Kỹ năng đặc biệt: học từ sách kỹ năng, mỗi pet có 2 ô (cần sở hữu pet này).", "pet-skill-hint")); return; }
+    for (const individual of individuals) {
+      const box = node("div", undefined, "pet-skills");
+      box.append(node("h4", `Kỹ năng đặc biệt · ${individual.label}`));
+      const slots = api.slots(individual.key);
+      slots.forEach((id, index) => {
+        const row = node("div", undefined, "pet-skill-row");
+        const info = id >= 0 ? api.describe(id) : null;
+        const label = node("span", info ? `${info.name} · ${info.passive ? "bị động" : "chủ động"}` : `Ô ${index + 1}: trống`);
+        if (info) label.title = info.label;
+        row.append(label);
+        if (info) {
+          const off = node("button", "Quên", "pet-skill-button");
+          off.type = "button";
+          off.addEventListener("click", () => { specialNote = api.forget(individual.key, rec5.pet_id, index).message; render(); });
+          row.append(off);
+          box.append(node("p", info.label, "pet-skill-hint"));
+        }
+        box.append(row);
+      });
+      const owned = api.books().filter(book => book.owned > 0);
+      if (owned.length) {
+        box.append(node("p", "Sách trong túi:", "pet-skill-hint"));
+        for (const book of owned) {
+          const row = node("div", undefined, "pet-skill-row");
+          const label = node("span", `${book.name} ×${book.owned}`);
+          label.title = book.description;
+          row.append(label);
+          const full = slots.every(id => id >= 0);
+          for (const target of full ? [0, 1] : [null]) {
+            const learn = node("button", full ? `Thay ô ${target + 1}` : "Học", "pet-skill-button");
+            learn.type = "button";
+            learn.addEventListener("click", () => { specialNote = api.learn(individual.key, rec5.pet_id, book.skill_id, target).message; render(); });
+            row.append(learn);
+          }
+          box.append(row);
+        }
+      } else box.append(node("p", "Túi không có sách kỹ năng. Mua ở Thương điếm bằng huy hiệu (1-9 mỗi cuốn).", "pet-skill-hint"));
+      detail.append(box);
+    }
+    if (specialNote) detail.append(node("p", specialNote, "pet-evolve-note"));
+  }
   // Held items: one per pet; equip from the bag, unequip back to it.
   function appendItemManager(entry) {
     const items = window.VQSVItems;
@@ -312,6 +360,7 @@
           const mine = window.VQSVTraits?.of?.(rec5.pet_id);
           if (mine) detail.append(node("p", `Đặc tính của cá thể bạn: ${mine.map(id => stats5.traits[id].name).join(" + ")}.`));
         }
+        appendSpecialSkills(entry, rec5);
         const evo5 = rec5.evolution;
         if (evo5) {
           const mats = evo5.materials.map(material => `${material.quantity} ${material.name}`).join(", ");

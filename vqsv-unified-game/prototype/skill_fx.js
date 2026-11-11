@@ -37,6 +37,7 @@ import * as manaBurst from "./vendor/pixelfx/src/fx/arcane/mana-burst.js";
 import * as poisoned from "./vendor/pixelfx/src/fx/status/poisoned.js";
 import * as confused from "./vendor/pixelfx/src/fx/status/confused.js";
 import * as slowed from "./vendor/pixelfx/src/fx/status/slowed.js";
+import * as charmed from "./vendor/pixelfx/src/fx/status/charmed.js";
 import * as stunned from "./vendor/pixelfx/src/fx/status/stunned.js";
 import * as cursed from "./vendor/pixelfx/src/fx/status/cursed.js";
 import * as haste from "./vendor/pixelfx/src/fx/status/haste.js";
@@ -47,7 +48,7 @@ import * as bleeding from "./vendor/pixelfx/src/fx/status/bleeding.js";
 
 const FX = { fireball, fireRing, hitSpark, critHit, shieldBlock, clawSwipe, swordSlash, heavyCleave, doubleSlash, uppercut,
   vineWhip, earthSpike, tornado, rootSnare, leafStorm, splash, waterJet, waveCrash, zapHit, lightningStrike, chainLightning, curse,
-  lifeSteal, graspingHands, energyDisc, plasmaShot, iceLance, iceShatter, heal, divineShield, manaBurst, poisoned, confused, slowed, stunned, cursed,
+  lifeSteal, graspingHands, energyDisc, plasmaShot, iceLance, iceShatter, heal, divineShield, manaBurst, poisoned, confused, slowed, charmed, stunned, cursed,
   haste, rage, petrified, frozen, bleeding };
 
 // The battle canvas is 480x360; effects are drawn on a 240x180 frame and scaled 2x so their pixels match the sprites.
@@ -117,6 +118,9 @@ function actorFromImage(image, box) {
   return actor;
 }
 
+// VQSV5 statuses (status_rules): Thạch Hóa, Tê Liệt, Mị Hoặc, Giam Cầm, Hủ Thực, Phong Bế.
+const V5_FX = { 0: { fx: "petrified", ms: 1300 }, 2: { fx: "stunned", ms: 1200 }, 3: { fx: "charmed", ms: 1200 }, 4: { fx: "rootSnare", ms: 1000, speed: 2 }, 5: { fx: "poisoned", ms: 1000 }, 6: { fx: "cursed", ms: 1100 } };
+
 const frame = createFrame(W, H);
 let canvas = null, image = null;
 const live = [];
@@ -149,7 +153,7 @@ function cast({ fromEnemy, element, startAt, crit = false }) {
 }
 function basic({ fromEnemy, startAt, element }) { cast({ fromEnemy, element: element || null, startAt }); }
 function status({ onEnemy, kind, id, startAt, image = null, box = [114, 112] }) {
-  const row = (kind === "buff" ? BUFF_FX : DEBUFF_FX)[id];
+  const row = (kind === "buff" ? BUFF_FX : kind === "v5" ? V5_FX : DEBUFF_FX)[id];
   if (!row) return;
   const at = sidePos(onEnemy ? "foe" : "hero", true);
   const actor = actorFromImage(image, box);
@@ -185,5 +189,5 @@ function draw(ctx, now) {
   ctx.imageSmoothingEnabled = smoothing;
 }
 
-window.VQSVSkillFx = { cast, basic, status, draw, clear: () => { live.length = 0; }, busy: () => live.length > 0, plans: Object.keys(PLANS), planOf: planKey, elements: ELEMENT_PLAN, buffFx: BUFF_FX, debuffFx: DEBUFF_FX };
+window.VQSVSkillFx = { cast, basic, status, draw, clear: () => { live.length = 0; }, busy: () => live.length > 0, plans: Object.keys(PLANS), planOf: planKey, elements: ELEMENT_PLAN, buffFx: BUFF_FX, debuffFx: DEBUFF_FX, v5Fx: V5_FX };
 window.dispatchEvent?.(new Event("vqsv-skillfx-ready"));

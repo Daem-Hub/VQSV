@@ -39,3 +39,4 @@ status/petrified
 status/frozen
 status/bleeding
 fire/fire-ring
+status/charmed

@@ -1,0 +1,227 @@
+// VQSV5 special skills 26-48, statuses and skill books (decoded in tools/decode_vqsv5_pet_stats.py) and their use in the unified battle.
+const fs = require('fs'), path = require('path'), vm = require('vm'), assert = require('assert');
+const html = fs.readFileSync(path.join(__dirname, '..', 'prototype', 'index.html'), 'utf8');
+const code = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)[1].replace(/    loadData\(\)\.catch\(err => \{[^\n]+\}\);/, '');
+const boot = require('./bootstrap_for_tests.cjs');
+const S5 = boot.vqsv5Stats;
+
+// ---- Data ----
+const sp = id => S5.skills[id].special;
+assert.deepEqual(sp(26), { kind: 'damage_loyalty', loyalty_percent: 25, chance: 100, blocked_by_passive: 40, evidence: sp(26).evidence });
+assert.equal(sp(27).amount, 70); assert.equal(sp(28).amount, 200);
+assert.equal(sp(29).attack_multiplier, 2); assert.equal(sp(30).status, 6);
+assert.equal(sp(33).percent, 80); assert.equal(sp(38).chance, 60); assert.equal(sp(38).hp_percent, 50); assert(sp(38).source_quirk);
+assert.equal(sp(48).chance, 30); assert.deepEqual([43, 44, 45, 46, 47].map(id => sp(id).type_id), [0, 1, 2, 3, 4]);
+assert.equal(S5.skills.slice(26).filter(s => !s.special).length, 0);
+assert.equal(S5.skill_books.length, 23);
+assert.deepEqual(S5.skill_books.slice(0, 3).map(b => [b.item_id, b.skill_id, b.price_medals, b.trainer_rank]), [[35, 26, 7, 4], [36, 27, 1, 1], [37, 28, 3, 3]].map(r => r));
+assert(S5.skill_books.every(b => b.item_id === b.skill_id + 9 && b.passive === (b.skill_id > 30)));
+assert.deepEqual(Object.keys(S5.status_rules.statuses), ['0', '2', '3', '4', '5', '6']);
+// Type skills carry [power, cost, chance, status]: plant -> 5 (Hủ Thực), metal -> 0, flying -> 4, beast -> 2, sea -> 3.
+assert.deepEqual([0, 5, 10, 15, 20].map(id => S5.skills[id].param), [5, 0, 4, 2, 3]);
+
+// ---- Game integration ----
+const els = {};
+const element = id => els[id] ||= { textContent: '', hidden: false, open: false, listeners: {}, addEventListener(event, fn) { this.listeners[event] = fn; }, getContext() { return {}; }, replaceChildren() {}, append() {}, setAttribute() {} };
+const store = new Map(), localStorage = { getItem: k => store.get(k) ?? null, setItem: (k, v) => store.set(k, v) };
+const teamIds = [];
+let speciesCaught = 30;
+const VQSVPetTeam = { speciesCaught: () => speciesCaught, ids: () => teamIds, replaceSpecies() {}, caughtBest: () => null,
+  info: id => ({ id, kind: id.startsWith('vqsv5') ? 'vqsv5' : 'vqsv6', name: id, element: null, sequences: [], image: `assets/pets/${id}.png` }), recordCatch: () => ({ addedToTeam: false }) };
+const ctx = vm.createContext({ document: { getElementById: element, createElement: () => ({ append() {}, addEventListener() {}, setAttribute() {}, replaceChildren() {} }) }, window: { addEventListener() {}, VQSVBootstrap: boot, VQSVPetTeam }, Image: class {}, Element: class {}, performance: { now: () => 1000 }, console, localStorage });
+vm.runInContext(code, ctx);
+const run = js => vm.runInContext(js, ctx);
+const J = js => { const text = JSON.stringify(run(js)); return text === undefined ? undefined : JSON.parse(text); };
+run('assets.map = { id: "ryan-lakeside", width: 4, height: 4, objects: [], entities: { player: { x: 1, y: 1 }, elder: { x: 3, y: 3 }, encounter: { x: 2, y: 2 } } }; reset()');
+const setup = (team = ['vqsv5-db-0'], level = 30, extra = '') => {
+  teamIds.length = 0; teamIds.push(...team);
+  const init = JSON.stringify(Object.fromEntries(team.map(id => [id, { level, exp: 0, traits: [3, 0] }])));
+  run(`state.mode = "explore"; wallet = { gold: 5000, badges: 50, rewarded: {} }; for (const id of ITEMS5.keys()) mats5[id] = 0; progress = ${init}; Math.random = () => 0.5; ${extra}`);
+};
+const battle = (extra = '') => run(`state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; state.battle.enemy.stats.speed = 0; state.battle.enemy.skills = []; state.battle.terrain = null; ${extra}`);
+
+// Skill books are sold for badges (medals in the source); learning fills the two special slots, a full set asks which to replace.
+setup(['vqsv5-db-0'], 30, 'wallet.badges = 20');
+assert.equal(J('catalogById.get("mat5-36").price'), 1); assert.equal(J('catalogById.get("mat5-36").currency'), 1);
+assert.equal(J('buyItem("mat5-36", 2, false).total'), 2); assert.equal(run('wallet.badges'), 18); assert.equal(run('mats5[36]'), 2);
+run('mats5[37] = 1; mats5[35] = 1');
+let r = J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 27)'); assert.equal(r.ok, true); assert.deepEqual(r.slots, [27, -1]); assert.equal(run('mats5[36]'), 1);
+assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 27)').ok, false);          // already known
+assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 28)').ok, true);
+r = J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26)'); assert.equal(r.ok, false); assert.equal(r.needsReplace, true); assert.equal(run('mats5[35]'), 1);
+r = J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26, 1)'); assert.equal(r.ok, true); assert.deepEqual(r.slots, [27, 26]); assert.match(r.message, /thay Trị liệu chuyên nghiệp/);
+assert.deepEqual(J('window.VQSVSpecials.forget("vqsv5-db-0", "vqsv5-db-0", 0).slots'), [-1, 26]);
+assert.deepEqual(J('progress["vqsv5-db-0"].passives'), [-1, 26]);
+assert.deepEqual(J('passivesOf5("vqsv5-db-0")'), [-1, 26]);
+run('mats5[36] = 0');
+assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 27)').ok, false);          // no book left
+run('state.mode = "battle"'); assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 27)').ok, false); run('state.mode = "explore"');
+// Evolution keeps the special slots.
+setup(['vqsv5-db-0'], 15, 'mats5[18] = 3; progress["vqsv5-db-0"].passives = [33, 48]');
+assert.equal(J('evolvePet5("vqsv5-db-0", "vqsv5-db-0")').ok, true); assert.deepEqual(J('progress["vqsv5-db-1"].passives'), [33, 48]);
+
+// Skills 26-30 become moves; passives do not.
+let c = J('vqsv5Combatant("vqsv5-db-0", 30, [], [27, 29])');
+assert.deepEqual(c.skills.slice(-2).map(s => [s.name, s.noDamage, s.max]), [['Trị liệu sơ cấp', true, 12], ['Tử Vong Chi Xúc', true, 1]]);
+c = J('vqsv5Combatant("vqsv5-db-0", 30, [], [26, 30])'); assert.deepEqual(c.skills.slice(-2).map(s => [s.name, s.power]), [['Tàn quân', 120], ['Kỹ năng Phong Bế', 53]]);
+assert.equal(J('vqsv5Combatant("vqsv5-db-0", 30, [], [33, 48]).skills.length'), 4);
+
+// Statuses (all of them need a hit by a VQSV5 skill; status chance = the skill's chance, shifted by traits).
+setup(['vqsv5-db-0']);
+battle();
+run('state.battle.pendingUntil = 0; globalThis.A = vqsv5Combatant("vqsv5-db-0", 30, [], []); globalThis.T = state.battle.enemy; T.hp = T.max = 1000; T.skills = [];');
+const tryStatus = (id, chance, r, traits = []) => { run(`Math.random = () => ${r}; T.v5status = null; T.traits = ${JSON.stringify(traits)}; T.item = null; T.hp = 1000`); return J(`status5Lands(T, ${id}, ${chance})`); };
+assert.equal(tryStatus(5, 24, 0.23), true); assert.equal(tryStatus(5, 24, 0.25), false);
+assert.equal(tryStatus(5, 24, 0.43, [11]), true);      // trait 11: +20
+assert.equal(tryStatus(2, 24, 0.05, [12]), false);    // trait 12: -20 -> 4%
+assert.equal(tryStatus(0, 24, 0.43, [5]), true); assert.equal(tryStatus(4, 24, 0.43, [8]), false); assert.equal(tryStatus(4, 24, 0.43, [7]), true);
+assert.equal(tryStatus(3, 24, 0.43, [7, 11]), false);   // Mị Hoặc is not shifted by any trait
+run('T.v5status = { id: 2, turns: 3, h: 0 }; Math.random = () => 0'); assert.equal(J('status5Lands(T, 5, 100)'), false);   // one status at a time
+// Turn lengths and the Hủ Thực damage seed h = skill id + 1 (+3 with skill 31).
+run('T.v5status = null; setStatus5(A, T, 2, 16)'); assert.equal(run('T.v5status.turns'), 4);
+run('A.passives = [32, -1]; T.v5status = null; setStatus5(A, T, 2, 16)'); assert.equal(run('T.v5status.turns'), 5);
+run('T.v5status = null; setStatus5(A, T, 0, 5)'); assert.equal(run('T.v5status.turns'), 2);
+run('A.passives = []; T.v5status = null; setStatus5(A, T, 5, 2)'); assert.equal(run('T.v5status.h'), 3);
+run('A.passives = [31, -1]; T.v5status = null; setStatus5(A, T, 5, 2)'); assert.equal(run('T.v5status.h'), 5);
+// Rounds: Hủ Thực loses h*h + 4, Tê Liệt 10% of the current HP, trait 3 adds 20%; the status expires after its turns.
+run('T.traits = []; T.hp = 1000; T.v5status = { id: 5, turns: 2, h: 3 }'); assert.match(J('tickStatuses(T, "T").join()'), /mất 13 HP vì Hủ Thực/); assert.equal(run('T.hp'), 987);
+assert.match(J('tickStatuses(T, "T").join()'), /hết Hủ Thực/); assert.equal(run('T.v5status'), null);
+run('T.hp = 1000; T.v5status = { id: 2, turns: 4, h: 0 }'); J('tickStatuses(T, "T")'); assert.equal(run('T.hp'), 900);
+run('T.hp = 1000; T.traits = [3, 0]; T.v5status = { id: 2, turns: 4, h: 0 }'); J('tickStatuses(T, "T")'); assert.equal(run('T.hp'), 880);    // 100 + 20%
+// Thạch Hóa: cannot act and takes 30% less; Phong Bế: skills above tier 3 are refused; Giam Cầm / Mị Hoặc stop fleeing and switching.
+run('T.traits = []; T.hp = 1000; T.v5status = { id: 0, turns: 2, h: 0 }; globalThis.moved = performMove(T, A, { name: "x", power: 100 }, "T")');
+assert.match(run('moved'), /đang Thạch Hóa, không thể hành động/);
+run('T.v5status = null; A.passives = []'); const plain = J('adjustDamage5(A, T, 100)'); run('T.v5status = { id: 0, turns: 2, h: 0 }'); assert.equal(J('adjustDamage5(A, T, 100)'), Math.trunc(plain * 70 / 100));
+run('T.v5status = { id: 6, turns: 4, h: 0 }; T.v5 = false; T.skills = [{ name: "a", power: 100, uses: 3 }, { name: "b", power: 100, uses: 3 }, { name: "c", power: 100, uses: 3 }, { name: "d", power: 100, uses: 3 }]');
+assert.deepEqual(J('T.skills.map(s => skillTier5(T, s))'), [1, 2, 3, 4]);
+assert.match(run('performMove(T, A, T.skills[3], "T")'), /bị Phong Bế, không dùng được d/);
+assert.equal(run('T.skills[3].uses'), 3);
+assert.deepEqual(J('[0, 5, 14, 19, 24, 25].map(id => skillTier5(A, { v5Id: id }))'), [1, 1, 5, 5, 5, 0]);
+
+// Hits by type skills apply their status; skill 30 seals; skill 26 lowers loyalty unless the target knows 40.
+setup(['vqsv5-db-0'], 35);
+battle('state.battle.enemy.stats.speed = 0');
+run('state.battle.pendingUntil = 0; globalThis.A = vqsv5Combatant("vqsv5-db-0", 35, [], [26, 30]); globalThis.T = state.battle.enemy; T.hp = T.max = 100000; T.v5status = null; T.loyalty = undefined; Math.random = () => 0');
+run('globalThis.moved = performMove(A, T, A.skills[0], "A")');           // Triền Nhiễu: Hủ Thực, chance 4%, random 0 -> lands
+assert.match(run('moved'), /Hủ Thực/); assert.equal(run('T.v5status.id'), 5); assert.equal(run('T.v5status.h'), 1);
+run('T.v5status = null; globalThis.moved = performMove(A, T, A.skills.find(s => s.v5Id === 30), "A")');
+assert.equal(run('T.v5status.id'), 6);
+run('T.v5status = null; T.loyalty = 100; globalThis.moved = performMove(A, T, A.skills.find(s => s.v5Id === 26), "A")');
+assert.equal(run('T.loyalty'), 75); assert.match(run('moved'), /Độ trung thành của .* giảm 25/);
+run('T.passives = [40, -1]; performMove(A, T, A.skills.find(s => s.v5Id === 26), "A")'); assert.equal(run('T.loyalty'), 75);   // skill 40: loyalty cannot be lowered
+// Loyalty: +20% damage at 120, -20% at 70, -40% at 50; below 41 the pet disobeys 25% of the time.
+assert.deepEqual(J('[120, 100, 99, 80, 70, 50, 20].map(loyaltyBonus)'), [20, 0, 0, 0, -20, -40, -60]);
+run('Math.random = () => 0.1; T.loyalty = 30; globalThis.moved = performMove(T, A, { name: "x", power: 100 }, "T")'); assert.match(run('moved'), /không nghe lệnh/);
+run('Math.random = () => 0.9; globalThis.moved = performMove(T, A, { name: "x", power: 100 }, "T")'); assert.doesNotMatch(run('moved'), /không nghe lệnh/);
+
+// Move 27/28 heal (scaled by the calibration), 29 spends all energy, passive 33/48 reduce damage, 38 revives, 36/37 add experience.
+setup(['vqsv5-db-0'], 30);
+battle('state.battle.pendingUntil = 0');
+run('globalThis.A = vqsv5Combatant("vqsv5-db-0", 30, [], [27, 29]); A.hp = 1; globalThis.T = state.battle.enemy; T.hp = T.max = 100000; T.v5status = null');
+run('globalThis.moved = performMove(A, T, A.skills.find(s => s.v5Id === 27), "A")');
+assert.equal(run('A.hp'), Math.min(run('A.max'), 1 + Math.max(1, Math.round(70 * J('calibration(30)').hp))));
+const attack = J('effStats(A).attack'), spLeft = J('A.skills.filter(s => s.v5Id !== 29).reduce((n, s) => n + s.uses * STATS5.skills[s.v5Id].sp_cost, 0)');
+run('globalThis.moved = performMove(A, T, A.skills.find(s => s.v5Id === 29), "A")');
+assert.equal(100000 - run('T.hp'), Math.trunc(attack * 2 + spLeft * J('calibration(30)').attack)); assert(J('A.skills.every(s => s.uses === 0)')); assert.match(run('moved'), /tiêu hao toàn bộ năng lượng/);
+run('A.passives = []; T.passives = []; T.typeId = null; Math.random = () => 0.99'); const base = J('adjustDamage5(A, T, 100)');
+run('T.passives = [33, -1]; T.typeId = 1'); assert.equal(J('adjustDamage5(A, T, 100)'), Math.trunc(base * 80 / 100));
+run('T.passives = [48, -1]; T.typeId = null; Math.random = () => 0.1'); assert.equal(J('adjustDamage5(A, T, 100)'), Math.trunc(base / 2));
+run('Math.random = () => 0.9'); assert.equal(J('adjustDamage5(A, T, 100)'), base);
+// Terrain: a typed VQSV5 pet off its field deals 20% less unless it knows 43 + its type; maps without a field type have no penalty.
+run('state.battle.terrain = 2; A.passives = []; T.passives = []; T.typeId = null; Math.random = () => 0.9');
+assert.equal(J('adjustDamage5(A, T, 100)'), Math.trunc(base * 80 / 100));
+run('A.passives = [43, -1]'); assert.equal(J('adjustDamage5(A, T, 100)'), base);
+run('state.battle.terrain = null; A.passives = []'); assert.equal(J('adjustDamage5(A, T, 100)'), base);
+// Field types come from the decoded maps: data/map/m<N>.d, and each unified map carries the types of the source areas it stands for.
+const T = require('../prototype/data/vqsv5_map_terrain.json');
+assert.equal(T.summary.files, 68); assert.equal(T.summary.typed, 67);
+const placeType = name => T.maps.find(m => m.place_guess === name).terrain_type;
+assert.deepEqual(['Kim Loại Di Tích 1', 'Cao nguyên phía đông 1', 'Rừng rậm phía tây 1', 'Bầu trời phương bắc 1', 'Vực Bắc Bắc Hải', 'Quảng Trường Cầu Vồng'].map(placeType),
+  ['Kim Loại hệ', 'Thực Vật hệ', 'Mãnh Thú hệ', 'Phi Hành hệ', 'Hải Dương hệ', 'Kim Loại hệ']);
+const wildMap = T.maps.find(m => m.place_guess === 'Cao nguyên phía đông 1').wild; assert.deepEqual([wildMap.level_min, wildMap.level_max, wildMap.pet_ids], [8, 10, ['vqsv5-db-4', 'vqsv5-db-10', 'vqsv5-db-59']]);
+assert.equal(T.maps.find(m => m.place_guess === 'Khu Quý tộc').wild, null);
+const expectedTypes = { 'ryan-phong-loi-forest': [3], 'ryan-forest-stream': [0, 1, 2, 3, 4], 'ryan-ashfield': [0], 'ryan-canyon': [1], 'ryan-highland': [1], 'ryan-lakeside': [4], 'ryan-meadow': [0], 'ryan-skyridge': [2] };
+for (const [id, types] of Object.entries(expectedTypes)) assert.deepEqual(boot.maps[id].terrain5.types, types, id);
+assert.equal(boot.maps['slice01-border-village'].terrain5, undefined);
+run('assets.maps = window.VQSVBootstrap.maps; assets.map = assets.maps["ryan-lakeside"]; Math.random = () => 0.5'); assert.equal(J('currentTerrain5()'), 4);
+run('assets.map = assets.maps["ryan-forest-stream"]'); assert.deepEqual([0, 0.21, 0.41, 0.61, 0.99].map(r => { run(`Math.random = () => ${r}`); return J('currentTerrain5()'); }), [0, 1, 2, 3, 4]);
+run('assets.map = assets.maps["slice01-border-village"]'); assert.equal(J('currentTerrain5()'), null);
+// Revive: 60% (code value, not the 70% on the label), once per battle, 50% of max HP.
+run('A.passives = [38, -1]; A.hp = 0; A.revived = false; Math.random = () => 0.59'); assert.match(run('reviveCheck5(A)'), /hồi sinh/); assert.equal(run('A.hp'), Math.trunc(run('A.max') / 2));
+run('A.hp = 0; Math.random = () => 0'); assert.equal(run('reviveCheck5(A)'), ''); assert.equal(run('A.hp'), 0);        // already used
+run('A.hp = 0; A.revived = false; Math.random = () => 0.6'); assert.equal(run('reviveCheck5(A)'), ''); assert.equal(run('A.hp'), 0);
+// Experience: 36 -> x2, 37 -> x3, both -> x4.
+const exp = passives => { setup(['vqsv5-db-0'], 30, `progress["vqsv5-db-0"].passives = ${JSON.stringify(passives)}`); battle('state.battle.pendingUntil = 0; switchPet(1); state.battle.enemy.hp = 0'); run('awardExperience(1000)'); return Number(run('state.battle.message').match(/vqsv5-db-0 \+(\d+) KN/)[1]); };
+const e0 = exp([-1, -1]);
+assert.equal(exp([36, -1]), e0 * 2); assert.equal(exp([37, -1]), e0 * 3); assert.equal(exp([36, 37]), e0 * 4);
+// Fleeing, switching and items under Giam Cầm / Mị Hoặc, with skill 42 overriding fleeing.
+setup(['vqsv5-db-0', 'vqsv5-db-4'], 30);
+battle('switchPet(1); state.battle.pendingUntil = 0');
+run('activePet().v5status = { id: 4, turns: 3, h: 0 }; state.battle.message = ""; fleeBattle()'); assert.match(run('state.battle.message'), /đang bị Giam Cầm, không thể chạy trốn/); assert.equal(run('state.mode'), 'battle');
+run('state.battle.message = ""; switchPet(0)'); assert.match(run('state.battle.message'), /Giam Cầm, không thể đổi pet/);
+run('activePet().v5status = { id: 3, turns: 3, h: 0 }; state.battle.message = ""; fleeBattle()'); assert.match(run('state.battle.message'), /Mị Hoặc, không thể chạy trốn/);
+run('activePet().passives = [42, -1]; state.battle.message = ""; fleeBattle()'); assert.notEqual(run('state.mode'), 'battle');
+// Mị Hoặc makes a catch easier (same factor as the VQSV6 status that does so).
+setup(['vqsv5-db-0']); battle(); run('globalThis.E = state.battle.enemy; E.hp = E.max');
+const rate = J('captureRate(1, E)'); run('E.v5status = { id: 3, turns: 4, h: 0 }'); assert(J('captureRate(1, E)') >= rate);
+assert.match(run('statusLabels(E).join()'), /▼Mị Hoặc 4/);
+// Skill 39 rolls traits in the lucky mode.
+setup(['vqsv5-db-0'], 20, 'progress["vqsv5-db-0"].passives = [39, -1]; delete progress["vqsv5-db-0"].traits; Math.random = () => 0.5'); assert.equal(run('teamLucky5()'), true);
+battle(); assert.deepEqual(J('progress["vqsv5-db-0"].traits'), [4, 2]);       // rand(100) = 50 < 70 for both slots
+
+// ---- Treasure boxes: the source of skill books (data/box.d) ----
+const CR = S5.chest_rules;
+assert.deepEqual([CR.chest_item, CR.key_item, CR.key_price, CR.win_drop_chance], [32, 33, 50, 50]); assert.deepEqual(CR.tier_thresholds, [70, 85, 95]);
+assert.deepEqual(CR.tiers.map(t => t.reduce((n, e) => n + e.chance, 0)), [100, 100, 100, 100]);
+assert.deepEqual(CR.tiers[2].filter(e => e.item_id).map(e => e.item_id), [35, 41, 51, 52, 53, 54, 55]);
+assert.deepEqual(CR.tiers[3].filter(e => e.item_id).map(e => e.item_id), [26, 27, 28, 30, 31]); assert.deepEqual(CR.tiers[1].map(e => e.item_id), [13, 32, 33, 34, null]);
+assert.equal(J('catalogById.get("mat5-33").price'), 50); assert.equal(J('catalogById.get("mat5-32")'), undefined);   // the box is not sold
+// A won battle drops a box 50% of the time (below the 99 cap), shown in the reward text.
+const win = (r, held = 0) => { setup(['vqsv5-db-0'], 30, `mats5[32] = ${held}`); battle('state.battle.pendingUntil = 0; state.battle.enemy.hp = 0'); run(`Math.random = () => ${r}`); run('awardExperience(1000)'); return [run('mats5[32]'), run('state.battle.message')]; };
+let [count, text] = win(0.49); assert.equal(count, 1); assert.match(text, /Nhận Bảo rương ×1/);
+[count, text] = win(0.5); assert.equal(count, 0); assert.doesNotMatch(text, /Bảo rương/);
+[count] = win(0.1, 99); assert.equal(count, 99);
+// Opening: needs both items, not in battle; one of each is spent; tier by the first roll, entry by the second.
+const open = (rolls, extra = '') => { setup(['vqsv5-db-0'], 30, `mats5[32] = 2; mats5[33] = 2; ${extra}`); run(`globalThis.rolls = ${JSON.stringify(rolls)}; Math.random = () => rolls.shift() / 100 + 0.0001`); return J('window.VQSVChest.open()'); };
+let o = open([75, 20]); assert.equal(o.ok, true); assert.equal(o.tier, 1); assert.match(o.message, /Đạt được: Cái chìa khóa/); assert.equal(run('mats5[32]'), 1); assert.equal(run('mats5[33]'), 2);   // 1 box, 1 key + 1 won key
+o = open([96, 10]); assert.equal(o.tier, 3); assert.match(o.message, /Bay lượn thiên thạch/); assert.equal(run('mats5[26]'), 1);
+o = open([90, 14]); assert.equal(o.tier, 2); assert.match(o.message, /Sách Quân tâm tan rả/); assert.equal(run('mats5[35]'), 1);
+o = open([90, 74]); assert.match(o.message, /Sách /); assert.equal(run('mats5[55]'), 1);
+o = open([90, 80]); assert.equal(o.item, null); assert.match(o.message, /trống/);                                // 25% empty
+const bag4 = run('bag[4] || 0'); o = open([0, 24]); assert.equal(o.tier, 0); assert.match(o.message, /Đạt được: /); assert.equal(run('bag[4] || 0'), bag4 + 1);
+o = open([0, 85], 'wallet.gold = 100'); assert.equal(o.tier, 0); assert.equal(run('wallet.gold'), 100 + 200); assert.match(o.message, /200 kim tiền/);        // item 12 -> kim tiền
+// The mutation item is not given while one is held; a full stack is not exceeded.
+o = open([80, 70], 'mats5[34] = 1'); assert.equal(o.tier, 1); assert.equal(run('mats5[34]'), 1); assert.match(o.message, /trống/);
+o = open([80, 70]); assert.equal(run('mats5[34]'), 1); assert.match(o.message, /Dị hoá tài liệu/);
+o = open([90, 14], 'mats5[35] = 99'); assert.equal(run('mats5[35]'), 99); assert.match(o.message, /trống/);
+setup(['vqsv5-db-0'], 30, 'mats5[32] = 1'); o = J('window.VQSVChest.open()'); assert.equal(o.ok, false); assert.match(o.message, /Cần có cả Bảo rương và Cái chìa khóa/); assert.equal(run('mats5[32]'), 1);
+setup(['vqsv5-db-0'], 30, 'mats5[32] = 1; mats5[33] = 1; state.mode = "battle"'); assert.equal(J('window.VQSVChest.open()').ok, false); assert.equal(run('mats5[33]'), 1);
+// Full path: buy a key, win for a box, open for a book, learn it.
+setup(['vqsv5-db-0'], 30, 'wallet.gold = 100');
+assert.equal(J('buyItem("mat5-33", 1, false).total'), 50); run('mats5[32] = 1; mats5[33] += 0; Math.random = () => 0.9001');
+assert.equal(J('window.VQSVChest.open()').tier, 2);
+// ---- Trainer rank, medals and the mutation-item sale (decoded from as.b(boolean), event opcode 32 and data/event map 43) ----
+assert.deepEqual(S5.trainer_rules.rank_species_thresholds, [5, 10, 15, 30]);
+for (const [n, rank] of [[0, 1], [4, 1], [5, 2], [9, 2], [10, 3], [14, 3], [15, 4], [29, 4], [30, 5]]) { speciesCaught = n; assert.equal(run('window.VQSVTrainer.rank()'), rank, `species ${n}`); }
+// Books need the rank: shop and learning both refuse a book above it.
+setup(['vqsv5-db-0'], 30, 'wallet.badges = 50; mats5[35] = 1; mats5[37] = 1'); speciesCaught = 4;
+r = J('buyItem("mat5-35", 1, false)'); assert.equal(r.ok, false); assert.match(r.message, /cần huấn luyện sư bậc 4 \(hiện tại bậc 1\)/); assert.equal(run('wallet.badges'), 50);
+assert.equal(J('buyItem("mat5-36", 1, false)').ok, true);
+r = J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26)'); assert.equal(r.ok, false); assert.match(r.message, /Cần huấn luyện sư bậc 4/); assert.equal(run('mats5[35]'), 1);
+speciesCaught = 15; assert.equal(J('window.VQSVSpecials.learn("vqsv5-db-0", "vqsv5-db-0", 26)').ok, true); assert.equal(J('buyItem("mat5-35", 1, false)').ok, true);
+speciesCaught = 30;
+// Medals: one per new species since the last hand-in.
+setup(['vqsv5-db-0'], 30, 'wallet.badges = 2; wallet.medalsClaimed = 0'); speciesCaught = 7;
+assert.equal(run('window.VQSVTrainer.pendingMedals()'), 7); r = J('window.VQSVTrainer.claim()'); assert.equal(r.ok, true); assert.equal(r.amount, 7); assert.equal(run('wallet.badges'), 9);
+assert.equal(J('window.VQSVTrainer.claim()').ok, false); speciesCaught = 9; assert.equal(run('window.VQSVTrainer.pendingMedals()'), 2);
+run('state.mode = "battle"'); assert.equal(J('window.VQSVTrainer.claim()').ok, false); run('state.mode = "explore"'); speciesCaught = 30;
+// The mutation item: 1500 kim from the Trung Tâm Thương Mại script, only one at a time.
+assert.deepEqual(S5.script_sales.map(x => [x.item_id, x.price, x.limit]), [[34, 1500, 1]]);
+setup(['vqsv5-db-0'], 30, 'wallet.gold = 3200');
+assert.equal(J('buyItem("mat5-34", 1, false).total'), 1500); assert.equal(run('mats5[34]'), 1); assert.equal(run('wallet.gold'), 1700);
+r = J('buyItem("mat5-34", 1, false)'); assert.equal(r.ok, false); assert.match(r.message, /chỉ bán một cái/); assert.equal(run('wallet.gold'), 1700);
+run('mats5[34] = 0; wallet.gold = 1400'); assert.equal(J('buyItem("mat5-34", 1, false)').ok, false); assert.equal(run('mats5[34]'), 0);
+const events = require('../prototype/data/vqsv5_event_rewards.json');
+assert.equal(events.summary.scripts, 386); assert(events.summary.parsed >= 385);
+assert.deepEqual(events.summary.skill_books_given.map(b => [b.map, b.item_id]), [[63, 44], [66, 39]]);
+console.log('VQSV5 specials: decoded skills, books, statuses, loyalty, passives, treasure boxes and battle rules passed.');

@@ -1,0 +1,465 @@
+{
+  "id": "ryan-canyon",
+  "title": "Hẻm Núi Đá",
+  "width": 24,
+  "height": 18,
+  "tileSize": 20,
+  "ground": {
+    "tileset": 4,
+    "tile": 20,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 8,
+      "y": 3
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 1,
+      "y": 6
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 9,
+      "y": 0
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 0,
+      "y": 16
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 11,
+      "y": 8
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 3,
+      "y": 1
+    }
+  ],
+  "paths": [
+    {
+      "x": 0,
+      "y": 9,
+      "width": 24,
+      "height": 3
+    }
+  ],
+  "objects": [
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 3,
+      "y": 16,
+      "solid": [
+        [
+          3,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 9,
+      "y": 2,
+      "solid": [
+        [
+          9,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 9,
+      "y": 14,
+      "solid": [
+        [
+          9,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 12,
+      "y": 3,
+      "solid": [
+        [
+          12,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 11,
+      "y": 16,
+      "solid": [
+        [
+          11,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 5,
+      "y": 17,
+      "solid": [
+        [
+          5,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 5,
+      "y": 0,
+      "solid": [
+        [
+          5,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 0,
+      "y": 2,
+      "solid": [
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 12,
+      "y": 14,
+      "solid": [
+        [
+          12,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 20,
+      "y": 3,
+      "solid": [
+        [
+          20,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 5,
+      "y": 3,
+      "solid": [
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 16,
+      "y": 6,
+      "solid": [
+        [
+          16,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 14,
+      "y": 6,
+      "solid": [
+        [
+          14,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 9,
+      "y": 16,
+      "solid": [
+        [
+          9,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 3,
+      "y": 3,
+      "solid": [
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 3,
+      "y": 0,
+      "solid": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 23,
+      "y": 13,
+      "solid": [
+        [
+          23,
+          13
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 21,
+      "y": 16,
+      "solid": [
+        [
+          21,
+          16
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 13,
+      "y": 15,
+      "solid": [
+        [
+          13,
+          15
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 15,
+      "y": 14,
+      "solid": [
+        [
+          15,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 13,
+      "y": 3,
+      "solid": [
+        [
+          13,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 7,
+      "y": 14,
+      "solid": [
+        [
+          7,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 2,
+      "y": 4,
+      "solid": [
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 18,
+      "y": 14,
+      "solid": [
+        [
+          18,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 13,
+      "y": 0,
+      "solid": [
+        [
+          13,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 1,
+      "y": 17,
+      "solid": [
+        [
+          1,
+          17
+        ]
+      ]
+    }
+  ],
+  "entities": {
+    "player": {
+      "x": 1,
+      "y": 10
+    },
+    "villagers": []
+  },
+  "tint": "#c98f5a24",
+  "wildAreas": [
+    "4-1",
+    "4-3",
+    "4-4",
+    "4-6",
+    "4-7",
+    "4-9"
+  ],
+  "links": [
+    {
+      "x": 0,
+      "y": 10,
+      "target": "ryan-highland",
+      "spawnX": 22,
+      "spawnY": 10,
+      "label": "Cao Nguyên Đá"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "target": "ryan-ashfield",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Bãi Tro Núi Lửa"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-canyon:0",
+      "x": 19,
+      "y": 4,
+      "source_map": 6,
+      "reward": {
+        "kind": "item",
+        "item_id": 6,
+        "name": "Hoàng kim đường",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-canyon:1",
+      "x": 4,
+      "y": 5,
+      "source_map": 5,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-canyon:2",
+      "x": 12,
+      "y": 4,
+      "source_map": 6,
+      "reward": {
+        "kind": "item",
+        "item_id": 4,
+        "name": "Tụ năng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-canyon:3",
+      "x": 2,
+      "y": 15,
+      "source_map": 5,
+      "reward": {
+        "kind": "item",
+        "item_id": 12,
+        "name": "Hưng phấn cô",
+        "quantity": 3
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      5,
+      6,
+      10
+    ],
+    "types": [
+      1
+    ]
+  }
+}

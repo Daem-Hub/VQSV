@@ -1,0 +1,403 @@
+{
+  "id": "ryan-meadow",
+  "title": "Đồng Cỏ Lộng Gió",
+  "width": 24,
+  "height": 18,
+  "tileSize": 20,
+  "ground": {
+    "tileset": 4,
+    "tile": 34,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 2,
+      "y": 13
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 21,
+      "y": 13
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 4,
+      "y": 17
+    },
+    {
+      "tileset": 4,
+      "tile": 0,
+      "x": 10,
+      "y": 17
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 5,
+      "y": 1
+    },
+    {
+      "tileset": 4,
+      "tile": 3,
+      "x": 17,
+      "y": 5
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 16,
+      "y": 2
+    }
+  ],
+  "paths": [
+    {
+      "x": 0,
+      "y": 9,
+      "width": 24,
+      "height": 3
+    }
+  ],
+  "objects": [
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 16,
+      "y": 5
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 16,
+      "y": 7,
+      "solid": [
+        [
+          16,
+          6
+        ],
+        [
+          17,
+          6
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          17,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 12,
+      "y": 3
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 12,
+      "y": 5,
+      "solid": [
+        [
+          12,
+          4
+        ],
+        [
+          13,
+          4
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          5
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 13,
+      "y": 1
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 13,
+      "y": 3,
+      "solid": [
+        [
+          13,
+          2
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          13,
+          3
+        ],
+        [
+          14,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 15,
+      "y": 12
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 15,
+      "y": 14,
+      "solid": [
+        [
+          15,
+          13
+        ],
+        [
+          16,
+          13
+        ],
+        [
+          15,
+          14
+        ],
+        [
+          16,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 20,
+      "y": 4
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 20,
+      "y": 6,
+      "solid": [
+        [
+          20,
+          5
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          21,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 18,
+      "y": 1
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 18,
+      "y": 3,
+      "solid": [
+        [
+          18,
+          2
+        ],
+        [
+          19,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          19,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 7,
+      "y": 1
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 7,
+      "y": 3,
+      "solid": [
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 18,
+      "y": 6,
+      "solid": [
+        [
+          18,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 2,
+      "y": 0,
+      "solid": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 21,
+      "y": 16,
+      "solid": [
+        [
+          21,
+          16
+        ]
+      ]
+    }
+  ],
+  "entities": {
+    "player": {
+      "x": 1,
+      "y": 10
+    },
+    "villagers": []
+  },
+  "tint": "#fff2a01c",
+  "wildAreas": [
+    "2-6",
+    "2-7",
+    "3-0",
+    "3-1",
+    "3-2"
+  ],
+  "links": [
+    {
+      "x": 0,
+      "y": 10,
+      "target": "ryan-lakeside",
+      "spawnX": 22,
+      "spawnY": 10,
+      "label": "Hồ Sương Mù"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "target": "ryan-highland",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Cao Nguyên Đá"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-meadow:0",
+      "x": 14,
+      "y": 4,
+      "source_map": 15,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 300
+      }
+    },
+    {
+      "id": "ryan-meadow:1",
+      "x": 6,
+      "y": 15,
+      "source_map": 12,
+      "reward": {
+        "kind": "item",
+        "item_id": 2,
+        "name": "Chocolate",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-meadow:2",
+      "x": 20,
+      "y": 3,
+      "source_map": 14,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-meadow:3",
+      "x": 2,
+      "y": 3,
+      "source_map": 12,
+      "reward": {
+        "kind": "item",
+        "item_id": 0,
+        "name": "Đồ uống",
+        "quantity": 2
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "types": [
+      0
+    ]
+  }
+}

@@ -6,7 +6,7 @@ const bootCtx = {window:{}}; vm.runInNewContext(fs.readFileSync(path.join(root,'
 const maps = bootCtx.window.VQSVBootstrap.maps;
 const els = {}, element = id => els[id] ||= {textContent:'',hidden:false,addEventListener(){},getContext(){return {}}};
 const storage = new Map(), localStorage = {getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
-const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,localStorage,maps});
+const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,maps});
 vm.runInContext(code,ctx); vm.runInContext('assets.maps=maps; assets.map=maps["slice01-border-village"]; reset()',ctx);
 vm.runInContext('state.player.x=22; state.player.y=10; interact()',ctx);
 assert.equal(vm.runInContext('assets.map.id',ctx),'slice01-border-village');

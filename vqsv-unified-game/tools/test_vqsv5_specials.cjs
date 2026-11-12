@@ -132,7 +132,20 @@ run('state.battle.terrain = 2; A.passives = []; T.passives = []; T.typeId = null
 assert.equal(J('adjustDamage5(A, T, 100)'), Math.trunc(base * 80 / 100));
 run('A.passives = [43, -1]'); assert.equal(J('adjustDamage5(A, T, 100)'), base);
 run('state.battle.terrain = null; A.passives = []'); assert.equal(J('adjustDamage5(A, T, 100)'), base);
-assert.equal(J('currentTerrain5()'), 3 + 1);   // ryan-lakeside is a Hải Dương field
+// Field types come from the decoded maps: data/map/m<N>.d, and each unified map carries the types of the source areas it stands for.
+const T = require('../prototype/data/vqsv5_map_terrain.json');
+assert.equal(T.summary.files, 68); assert.equal(T.summary.typed, 67);
+const placeType = name => T.maps.find(m => m.place_guess === name).terrain_type;
+assert.deepEqual(['Kim Loại Di Tích 1', 'Cao nguyên phía đông 1', 'Rừng rậm phía tây 1', 'Bầu trời phương bắc 1', 'Vực Bắc Bắc Hải', 'Quảng Trường Cầu Vồng'].map(placeType),
+  ['Kim Loại hệ', 'Thực Vật hệ', 'Mãnh Thú hệ', 'Phi Hành hệ', 'Hải Dương hệ', 'Kim Loại hệ']);
+const wildMap = T.maps.find(m => m.place_guess === 'Cao nguyên phía đông 1').wild; assert.deepEqual([wildMap.level_min, wildMap.level_max, wildMap.pet_ids], [8, 10, ['vqsv5-db-4', 'vqsv5-db-10', 'vqsv5-db-59']]);
+assert.equal(T.maps.find(m => m.place_guess === 'Khu Quý tộc').wild, null);
+const expectedTypes = { 'ryan-phong-loi-forest': [3], 'ryan-forest-stream': [0, 1, 2, 3, 4], 'ryan-ashfield': [0], 'ryan-canyon': [1], 'ryan-highland': [1], 'ryan-lakeside': [4], 'ryan-meadow': [0], 'ryan-skyridge': [2] };
+for (const [id, types] of Object.entries(expectedTypes)) assert.deepEqual(boot.maps[id].terrain5.types, types, id);
+assert.equal(boot.maps['slice01-border-village'].terrain5, undefined);
+run('assets.maps = window.VQSVBootstrap.maps; assets.map = assets.maps["ryan-lakeside"]; Math.random = () => 0.5'); assert.equal(J('currentTerrain5()'), 4);
+run('assets.map = assets.maps["ryan-forest-stream"]'); assert.deepEqual([0, 0.21, 0.41, 0.61, 0.99].map(r => { run(`Math.random = () => ${r}`); return J('currentTerrain5()'); }), [0, 1, 2, 3, 4]);
+run('assets.map = assets.maps["slice01-border-village"]'); assert.equal(J('currentTerrain5()'), null);
 // Revive: 60% (code value, not the 70% on the label), once per battle, 50% of max HP.
 run('A.passives = [38, -1]; A.hp = 0; A.revived = false; Math.random = () => 0.59'); assert.match(run('reviveCheck5(A)'), /hồi sinh/); assert.equal(run('A.hp'), Math.trunc(run('A.max') / 2));
 run('A.hp = 0; Math.random = () => 0'); assert.equal(run('reviveCheck5(A)'), ''); assert.equal(run('A.hp'), 0);        // already used

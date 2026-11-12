@@ -331,9 +331,9 @@
     const BOOKS5 = new Map((STATS5?.skill_books || []).map(book => [book.skill_id, book]));
     const hasPassive = (c, id) => !!c.passives && c.passives.includes(id);
     const validPassives5 = list => Array.isArray(list) && list.length === 2 && list.every(v => v === -1 || (Number.isInteger(v) && v >= 26 && v <= 48));
-    // TRIAL: the source gives every battle field a type; the prototype assigns one to each wild region. A pet whose type differs
-    // from the field deals 20% less (ak.b(z,al,al)) unless it knows the matching terrain skill 43-47. Maps not listed have no field type.
-    const TERRAIN5 = { "ryan-phong-loi-forest": 0, "ryan-forest-stream": 4, "ryan-canyon": 1, "ryan-lakeside": 4, "ryan-skyridge": 2, "ryan-meadow": 3, "ryan-highland": 3 };
+    // Battle field type (data/map/m<N>.d, vqsv5_map_terrain.json): a pet whose type differs from the field deals 20% less (ak.b(z,al,al)) unless it
+    // knows the matching terrain skill 43-47. Each map carries `terrain5.types`, the real field types of the VQSV5 areas it stands for (the pairing
+    // is a TRIAL choice, tools/design_map_chests.py); a map with several types picks one per battle. Maps without it have no field type.
     const STATUS5_TURNS = { 0: 2, 2: 4, 3: 4, 4: 4, 5: 4, 6: 4 };
     const LOYALTY_DISOBEY = 25;        // below 41 loyalty a pet ignores the order 25% of the time (ak.an())
     // Loyalty term of the damage bonus (ak.b(z,al,al)): by = loyalty - 99; by > 1 ? +20 : by / 20 * 20 (Java division truncates).
@@ -1430,7 +1430,10 @@
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
     function newBattle(wild = null) { window.VQSVSkillFx?.clear(); return newBattleCore(wild); }
-    function currentTerrain5() { try { return TERRAIN5[assets.map?.id] ?? null; } catch (_) { return null; } }   // assets is not ready yet during the very first newBattle()
+    function currentTerrain5() {
+      let types; try { types = assets.map?.terrain5?.types; } catch (_) { return null; }       // assets is not ready yet during the very first newBattle()
+      return types?.length ? types[Math.floor(Math.random() * types.length)] : null;
+    }
     function newBattleCore(wild = null) { const enemy = wild ? buildWild(wild) : buildEnemy(); if (enemy.image) cachedImage(enemy.image); return { wild, terrain: currentTerrain5(), team: buildTeam(), enemy, participants: new Set([0]), rewarded: false, captureAt: -10000, captured: null, active: 0, mustSwitch: false, turn: 0, guard: false, enemyActed: false, attackAt: -10000, enemyAt: -10000, guardAt: -10000, skill: null, pendingUntil: 0, message: wild ? `Một ${enemy.name} hoang dã xuất hiện!` : "Một sinh vật lạ chặn lối đi." }; }
     const state = { mode: "loading", player: { x: 11, y: 11, visualX: 11, visualY: 11, faceX: 1, faceY: 0, step: null, inputDir: null }, dialogue: 0, activeNpc: null, spokeToElder: false, herbQuest: newHerbQuest(), battle: newBattle() };
     const assets = { tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };

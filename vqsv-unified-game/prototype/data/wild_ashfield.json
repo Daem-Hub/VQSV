@@ -441,5 +441,13 @@
         "quantity": 1
       }
     }
-  ]
+  ],
+  "terrain5": {
+    "source_maps": [
+      57
+    ],
+    "types": [
+      0
+    ]
+  }
 }

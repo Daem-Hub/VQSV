@@ -2,7 +2,8 @@
 
 The unified maps are not the VQSV5 maps, so positions are designed here: each map is paired with the VQSV5 area that looks most like it
 (TRIAL choice, see AREAS) and gets up to MAX_CHESTS chests whose rewards are drawn, without repetition, from the chests of those source maps.
-Chests stand on free tiles away from the road (rows 8-12), the spawn point and the links, and every chest keeps at least one reachable
+The same pairing gives each map its battlefield type (`terrain5`: the real field types of those source maps, data/map/m<N>.d, see
+decode_vqsv5_terrain.py); a map whose source area mixes types picks one of them per battle. Chests stand on free tiles away from the road (rows 8-12), the spawn point and the links, and every chest keeps at least one reachable
 neighbour. Run after tools/design_*_map(s).py, which rewrite the map files; this script only adds the `chests` field.
 """
 import json
@@ -24,6 +25,9 @@ AREAS = {
     "ryan-skyridge": ("wild_skyridge.json", ["Bầu trời phương bắc", "Thiên Không Thành"]),
     "ryan-ashfield": ("wild_ashfield.json", None),        # no source area of its own: the chests no other region uses
 }
+# source places that give a map its battlefield type (the ashfield borrows the mysterious jungle, which has no chests)
+TERRAIN_AREAS = {**{k: v[1] for k, v in AREAS.items() if v[1]}, "ryan-ashfield": ["Rừng rậm thần bí"]}
+terrain = json.loads((data / "vqsv5_map_terrain.json").read_text(encoding="utf-8"))
 source = json.loads((data / "vqsv5_map_chests.json").read_text(encoding="utf-8"))
 by_map = {m["map"]: m for m in source["maps"]}
 
@@ -81,5 +85,9 @@ for map_id, (filename, fragments) in AREAS.items():
         else:
             raise SystemExit(f"no free tile for chest {index} on {map_id}")
     m["chests"] = chests
+    sources = [t for t in terrain["maps"] if t.get("terrain_type_id") is not None and t["place_guess"] and any(f in t["place_guess"] for f in TERRAIN_AREAS[map_id])]
+    assert sources, map_id
+    sources = [t for t in sources if t.get("wild")] or sources          # prefer the outdoor areas that have wild pets
+    m["terrain5"] = {"source_maps": [t["map"] for t in sources], "types": sorted({t["terrain_type_id"] for t in sources})}
     path.write_text(json.dumps(m, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{map_id}: {len(chests)} chests, e.g. {chests[0]['reward']}")

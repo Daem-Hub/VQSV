@@ -396,5 +396,15 @@
         "quantity": 2
       }
     }
-  ]
+  ],
+  "terrain5": {
+    "source_maps": [
+      24,
+      25,
+      26
+    ],
+    "types": [
+      2
+    ]
+  }
 }

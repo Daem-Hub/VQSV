@@ -209,7 +209,7 @@ Khi ID loài được xác minh, mỗi pet sẽ có một `pet_id` mới của g
 ## Bước kế tiếp
 
 1. Giải quan hệ giữa 34 mục `monN` và 102 dòng pet `data.d`, kiểm tra hai dòng dùng chung hình.
-2. Dùng bảng pet hoang dã VQSV5 thật cho trận hoang dã, và độ trung thành lâu dài của VQSV5.
+2. Độ trung thành lâu dài của VQSV5 và ghép bản đồ nguồn VQSV5 chặt hơn với bản đồ game.
 3. Chỉ số, khắc hệ và kỹ năng VQSV6 đã giải (mục trên); còn hiệu ứng trạng thái kỹ năng và các bảng buff 2–7; tên/ID/hệ/ảnh của roster 100 pet đã nối. Xác định role gameplay riêng cho `img_514`.
 4. Đánh dấu loài trùng, dạng tiến hóa, pet độc quyền và boss; rồi mới chuẩn hóa chỉ số/điều kiện bắt.
 5. Khóa một roster nhỏ cho lát đầu: Lôi Miêu, một đối thủ bị tha hóa, sau đó thêm pet tuyển chọn từ hai nguồn.

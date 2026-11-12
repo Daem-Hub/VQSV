@@ -25,11 +25,12 @@ const allowed = new Set(['vqsv6-db-33', 'vqsv6-db-86', 'vqsv6-db-11', 'vqsv6-db-
 for (let i = 0; i < 200; i++) {
   const forest = run('rollWild("ryan-phong-loi-forest")'), stream = run('rollWild("ryan-forest-stream")');
   for (const roll of [forest, stream]) {
+    if (roll.v5) continue;                                  // VQSV5 wild pets are covered by test_vqsv5_wild.cjs
     assert(allowed.has(roll.petId), roll.petId);
     assert(roll.level >= 5 && roll.level <= 7);
     assert(roll.quality >= 1 && roll.quality <= 2);
   }
-  assert.equal(forest.level, 5);
+  if (!forest.v5) assert.equal(forest.level, 5);
 }
 assert.equal(run('rollWild("slice01-border-village")'), null);
 

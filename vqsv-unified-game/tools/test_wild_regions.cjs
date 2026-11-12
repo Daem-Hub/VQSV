@@ -46,6 +46,7 @@ for (const id of chain.slice(1)) {
   const [lo, hi] = JSON.parse(JSON.stringify(run(`wildLevelRange("${id}")`)));
   for (let i = 0; i < 150; i++) {
     const roll = JSON.parse(JSON.stringify(run(`rollWild("${id}")`)));
+    if (roll.v5) continue;                                  // VQSV5 wild pets are covered by test_vqsv5_wild.cjs
     assert(allowed.has(roll.petId), `${id}: ${roll.petId}`);
     assert(roll.level >= lo && roll.level <= hi && roll.quality >= 1 && roll.quality <= 5);
   }

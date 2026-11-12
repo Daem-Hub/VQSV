@@ -335,6 +335,7 @@
     // knows the matching terrain skill 43-47. Each map carries `terrain5.types`, the real field types of the VQSV5 areas it stands for (the pairing
     // is a TRIAL choice, tools/design_map_chests.py); a map with several types picks one per battle. Maps without it have no field type.
     const STATUS5_TURNS = { 0: 2, 2: 4, 3: 4, 4: 4, 5: 4, 6: 4 };
+    const BEATS5 = Object.fromEntries(Object.entries(STATS5?.rules?.type_chart || {}).map(([name, row]) => [STATS5.type_names.indexOf(name), STATS5.type_names.indexOf(row.beats)]));
     const LOYALTY_DISOBEY = 25;        // below 41 loyalty a pet ignores the order 25% of the time (ak.an())
     // Loyalty term of the damage bonus (ak.b(z,al,al)): by = loyalty - 99; by > 1 ? +20 : by / 20 * 20 (Java division truncates).
     const loyaltyBonus = loyalty => { const by = loyalty - 99; return by > 1 ? 20 : Math.trunc(by / 20) * 20; };
@@ -1069,17 +1070,41 @@
     function recordWildCatch(enemy) {
       // A caught species keeps the stronger of its stored progress and the newly caught individual.
       const stored = progress[enemy.petId];
+      if (enemy.v5) {
+        if (!stored || stored.level < enemy.level) { progress[enemy.petId] = { level: enemy.level, exp: 0, ...(validTraits5(enemy.traits) ? { traits: enemy.traits } : {}), ...(validPassives5(stored?.passives) ? { passives: stored.passives } : {}) }; saveProgress(); }
+        return;
+      }
       if (!stored || stored.level < enemy.level || (stored.level === enemy.level && (stored.quality || 0) < enemy.quality)) {
         progress[enemy.petId] = { level: enemy.level, exp: 0, quality: enemy.quality, ...(enemy.skills ? { skills: enemy.skills.map(skill => skill.row) } : {}) };
         saveProgress();
       }
     }
     function buildWild(wild) {
+      if (wild.v5) {
+        const enemy = vqsv5Combatant(wild.petId, wild.level, wild.traits || [], []);
+        const info = window.VQSVPetTeam?.info(wild.petId), frames = info?.sequences?.[0] || [];
+        for (const sequence of info?.sequences || []) for (const frame of sequence) cachedImage(frame.image);
+        return { ...enemy, sequences: info?.sequences || [], image: frames[0]?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element ? enemy.element.toUpperCase() : "CHƯA RÕ HỆ"} · VQSV5 · HẠNG ${enemy.quality}` };
+      }
       const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality, wild.skills || wildSkillRows(STAT_BY_ID.get(wild.petId), wild.level));
       return { ...enemy, image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
     }
     function randInt(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
+    // ---- VQSV5 wild pets (vqsv5_map_terrain.json: m<N>.d). A map stands for several VQSV5 areas (terrain5.source_maps); each area has a level range and
+    // a pet list: one of the first three (rare entry 4th with 5%, ak.b(byte[],int,int)). The share of VQSV5 encounters is a TRIAL value. ----
+    const WILD5 = window.VQSVBootstrap?.vqsv5Wild || {};
+    const V5_WILD_SHARE = 0.5;
+    function rollWild5(mapId) {
+      const sources = (assets.maps?.[mapId]?.terrain5?.source_maps || []).filter(index => WILD5[index]);
+      if (!sources.length) return null;
+      const index = sources[randInt(0, sources.length - 1)], table = WILD5[index], list = table.pet_ids.filter(id => STAT5_BY_ID.has(id));
+      if (!list.length) return null;
+      const petId = Math.random() * 100 < 5 && list.length > 3 ? list[3] : list[Math.floor(Math.random() * (list.length > 3 ? 3 : list.length))];
+      const record = STAT5_BY_ID.get(petId);
+      return { v5: true, petId, area: `vqsv5-${index}`, level: randInt(table.level_min, table.level_max), quality: record.rank, traits: rollTraits5(record, teamLucky5() ? "lucky" : "random") };
+    }
     function rollWild(mapId, terrain = 0) {
+      if (terrain === 0 && Math.random() >= 1 - V5_WILD_SHARE) { const wild5 = rollWild5(mapId); if (wild5) return wild5; }
       const areas = wildAreasOf(mapId);
       const usable = (area, wanted) => area.pets.filter(pet => pet.terrain === wanted && STAT_BY_ID.has(pet.pet_id));
       let candidates = terrain === 2 ? areas.filter(area => usable(area, 2).length) : [];
@@ -1268,6 +1293,8 @@
     function adjustDamage5(actor, target, dealt) {
       let bonus = 0;
       if (actor.loyalty != null) bonus += loyaltyBonus(actor.loyalty);
+      // ak.b(z,al,al): +30% when the attacker's type beats the defender's, and always for a typeless attacker (VQSV5 against VQSV5).
+      if (actor.v5 && target.v5 && (actor.typeId == null || BEATS5[actor.typeId] === target.typeId)) bonus += 30;
       const terrain = state.battle?.terrain;
       if (actor.v5 && actor.typeId != null && terrain != null && actor.typeId !== terrain && !hasPassive(actor, 43 + actor.typeId)) bonus -= 20;
       if (bonus) dealt = Math.max(1, Math.trunc(dealt * (100 + bonus) / 100));
@@ -1832,7 +1859,10 @@
       const sinceCapture = now - state.battle.captureAt;
       const capturing = sinceCapture >= 0 && sinceCapture < 1400;
       const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : state.battle.rewarded ? .3 : 1;
-      if (state.battle.wild) drawFitted(cachedImage(state.battle.enemy.image), 82 + enemyPulse * 22 + enemyShake, 70 + idleEnemy, 114, 112, enemyAlpha);
+      if (state.battle.wild) {
+        const foe = state.battle.enemy, frames = foe.v5 ? foe.sequences?.[0] : null;
+        drawFitted(cachedImage(frames?.length ? sequenceFrame(frames, now).image : foe.image), 82 + enemyPulse * 22 + enemyShake, 70 + idleEnemy, 114, 112, enemyAlpha);
+      }
       else { ctx.save(); ctx.globalAlpha = enemyAlpha; ctx.drawImage(assets.pets.enemy, 92 + enemyPulse * 22 + enemyShake, 86 + idleEnemy, 94, 96); ctx.restore(); }
       if (capturing) drawCaptureBall(sinceCapture);
       drawActivePet(304 - attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94, now, heroAttack);

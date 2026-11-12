@@ -342,5 +342,51 @@
       "spawnY": 10,
       "label": "Cao Nguyên Đá"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-meadow:0",
+      "x": 14,
+      "y": 4,
+      "source_map": 15,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 300
+      }
+    },
+    {
+      "id": "ryan-meadow:1",
+      "x": 6,
+      "y": 15,
+      "source_map": 12,
+      "reward": {
+        "kind": "item",
+        "item_id": 2,
+        "name": "Chocolate",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-meadow:2",
+      "x": 20,
+      "y": 3,
+      "source_map": 14,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-meadow:3",
+      "x": 2,
+      "y": 3,
+      "source_map": 12,
+      "reward": {
+        "kind": "item",
+        "item_id": 0,
+        "name": "Đồ uống",
+        "quantity": 2
+      }
+    }
   ]
 }

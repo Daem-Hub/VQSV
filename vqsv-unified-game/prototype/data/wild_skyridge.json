@@ -358,5 +358,43 @@
       "spawnY": 10,
       "label": "Bãi Tro Núi Lửa"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-skyridge:0",
+      "x": 6,
+      "y": 14,
+      "source_map": 49,
+      "reward": {
+        "kind": "item",
+        "item_id": 4,
+        "name": "Tụ năng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-skyridge:1",
+      "x": 11,
+      "y": 16,
+      "source_map": 25,
+      "reward": {
+        "kind": "item",
+        "item_id": 22,
+        "name": "Cách không thạch",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-skyridge:2",
+      "x": 16,
+      "y": 2,
+      "source_map": 49,
+      "reward": {
+        "kind": "item",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
+        "quantity": 2
+      }
+    }
   ]
 }

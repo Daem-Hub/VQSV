@@ -521,7 +521,8 @@
     // key is sold by the shop; opening spends one of each and rolls a tier (70/15/10/5%) and then that tier's table. Table 2 holds the skill books. ----
     const CHEST5 = STATS5?.chest_rules;
     // TRIAL: table 0 and 1 hold VQSV5 shop consumables; they become the closest item of the unified bag, or kim tiền (price in the source) when none exists.
-    const CHEST5_GRANTS = { 0: { bag: 4 }, 1: { bag: 4 }, 3: { bag: 6 }, 6: { bag: 5 }, 10: { bag: 2 }, 14: { bag: 13 }, 12: { gold: 200 }, 13: { gold: 500 } };
+    const CHEST5_GRANTS = { 0: { bag: 4 }, 1: { bag: 4 }, 2: { bag: 5 }, 3: { bag: 6 }, 4: { bag: 7 }, 5: { bag: 5 }, 6: { bag: 5 }, 7: { bag: 11 }, 8: { bag: 10 }, 9: { bag: 1 }, 10: { bag: 2 }, 11: { bag: 3 },
+      14: { bag: 13 }, 15: { bag: 13 }, 12: { gold: 200 }, 13: { gold: 500 } };
     const rand100 = () => Math.floor(Math.random() * 100);
     function rollChestDrop5() {
       if (!CHEST5 || !(Math.random() * 100 < CHEST5.win_drop_chance) || (mats5[CHEST5.chest_item] || 0) >= CHEST5.stack_max) return "";
@@ -552,6 +553,44 @@
       saveMats5(); updateStones();
       return { ok: true, tier, item: got, message };
     }
+    // ---- Chests on the maps (tools/design_map_chests.py): the contents are real VQSV5 map chests (vqsv5_map_chests.json), the positions are designed.
+    // Opening follows at.z(): kim tiền (amount), huy chương (badges) or an item x quantity; a full stack still opens the chest. ----
+    const CHESTS_KEY = "vqsv-unified-chests-v1";
+    const chestsOpened = new Set();
+    try { const raw = JSON.parse(localStorage.getItem(CHESTS_KEY) || "[]"); if (Array.isArray(raw)) for (const id of raw) if (typeof id === "string") chestsOpened.add(id); } catch (_) {}
+    const saveChests = () => { try { localStorage.setItem(CHESTS_KEY, JSON.stringify([...chestsOpened])); } catch (_) {} };
+    let notice = null;                                  // { text, until } shown over the map for a few seconds
+    function grantSource5(id, quantity) {
+      if (ITEMS5.has(id)) {
+        const room = Math.max(0, STACK_MAX - (mats5[id] || 0)), added = Math.min(quantity, room);
+        if (added > 0) { mats5[id] = (mats5[id] || 0) + added; saveMats5(); updateStones(); }
+        return added > 0 ? `${ITEMS5.get(id).name} ×${added}` : `${ITEMS5.get(id).name} (đã đầy)`;
+      }
+      const grant = CHEST5_GRANTS[id];
+      if (!grant) return "một vật phẩm chưa có trong prototype";
+      if (grant.gold != null) { wallet.gold += grant.gold * quantity; saveWallet(); updateWallet(); return `${grant.gold * quantity} kim tiền`; }
+      const target = itemEntry(grant.bag);
+      if (!target) return "một vật phẩm chưa có trong prototype";
+      const added = Math.min(quantity, Math.max(0, STACK_MAX - countOf(target)));
+      if (added > 0) setCount(target, countOf(target) + added);
+      return added > 0 ? `${target.name} ×${added}` : `${target.name} (đã đầy)`;
+    }
+    const mapChests = () => assets.map?.chests || [];
+    const nearbyChest = () => mapChests().find(chest => !chestsOpened.has(chest.id) && near(state.player, chest));
+    function openMapChest(chest) {
+      if (!chest || chestsOpened.has(chest.id) || state.mode === "battle") return { ok: false, message: "Không mở được rương này." };
+      const reward = chest.reward;
+      let text;
+      if (reward.kind === "gold") { wallet.gold += reward.kim_tien; saveWallet(); updateWallet(); text = `${reward.kim_tien} kim tiền`; }
+      else if (reward.kind === "medals") { wallet.badges += reward.medals; saveWallet(); updateWallet(); text = `${reward.medals} huy hiệu`; }
+      else text = grantSource5(reward.item_id, reward.quantity);
+      chestsOpened.add(chest.id); saveChests();
+      const message = `Mở rương, đạt được: ${text}.`;
+      notice = { text: message, until: performance.now() + 3500 };
+      statusEl.textContent = message;
+      return { ok: true, message, reward };
+    }
+    window.VQSVMapChests = { list: mapChests, open: id => openMapChest(mapChests().find(chest => chest.id === id)), opened: () => [...chestsOpened], reset: () => { chestsOpened.clear(); saveChests(); } };
     window.VQSVChest = { open: openChest5, counts: () => ({ chest: mats5[CHEST5?.chest_item] || 0, key: mats5[CHEST5?.key_item] || 0 }), rules: CHEST5 };
     function stoneText() {
       const parts = Object.keys(STONE_INFO).filter(row => stones[row] > 0).map(row => `${STONE_INFO[row].name} ×${stones[row]}`);
@@ -1645,6 +1684,7 @@
         ctx.fillStyle = "#ecf7ad"; ctx.fillRect(x-1,y-7,2,14); ctx.fillRect(x-7,y-1,14,2);
         ctx.fillStyle = "#53a65a"; ctx.fillRect(x-3,y+3,6,4);
       }
+      for (const chest of mapChests()) drawChest(chest, chestsOpened.has(chest.id));
       if (!state.spokeToElder && assets.map.entities.elder) {
         ctx.fillStyle = "#f5dc82"; ctx.font = "bold 15px system-ui"; ctx.textAlign = "center";
         ctx.fillText("!", assets.map.entities.elder.x * S + S / 2, assets.map.entities.elder.y * S - 26 + Math.sin(performance.now() / 300));
@@ -1669,9 +1709,28 @@
       const npc = nearbyNpc();
       if (npc) prompt(`E  Nói chuyện · ${npc.name}`);
       else if (nearbyHerb()) prompt("E  Thu thập thảo dược");
+      else if (nearbyChest()) prompt("E  Mở rương");
       else if (point && state.spokeToElder && near(state.player, point)) prompt("E  Theo dấu vết");
       else if (nearbyLink()) prompt(`E  ${state.spokeToElder ? "Đến " + nearbyLink().label : "Nói chuyện với người gác làng trước"}`);
       title(assets.map.title.toLocaleUpperCase("vi-VN"));
+      drawNotice();
+    }
+    // A small pixel chest on one 20 px tile; open chests show the dark inside and a raised lid.
+    function drawChest(chest, open) {
+      const x = chest.x * S, y = chest.y * S;
+      ctx.fillStyle = "#00000044"; ctx.fillRect(x + 2, y + 17, 16, 3);
+      ctx.fillStyle = open ? "#5c3d1e" : "#a8692f"; ctx.fillRect(x + 2, y + 9, 16, 9);
+      ctx.fillStyle = open ? "#2a1a0c" : "#c98a46"; ctx.fillRect(x + 2, open ? y + 9 : y + 5, 16, open ? 3 : 5);
+      if (open) { ctx.fillStyle = "#8a5a2b"; ctx.fillRect(x + 2, y + 2, 16, 3); }
+      ctx.fillStyle = "#3a2410"; ctx.fillRect(x + 2, y + 9, 16, 1); ctx.fillRect(x + 2, y + 17, 16, 1);
+      if (!open) { ctx.fillStyle = "#f3d46a"; ctx.fillRect(x + 8, y + 8, 4, 4); ctx.fillStyle = "#3a2410"; ctx.fillRect(x + 9, y + 10, 2, 2); }
+    }
+    function drawNotice() {
+      if (!notice || performance.now() > notice.until) return;
+      ctx.font = "bold 11px system-ui";
+      const w = Math.min(460, ctx.measureText(notice.text).width + 20);
+      ctx.fillStyle = "#101d24e8"; roundRect(240 - w / 2, 14, w, 24, 6, true);
+      ctx.fillStyle = "#f3e6b8"; ctx.textAlign = "center"; ctx.fillText(notice.text, 240, 30); ctx.textAlign = "left";
     }
     function prompt(text) {
       ctx.font = "bold 11px system-ui";
@@ -2085,6 +2144,7 @@
       if (x < 0 || y < 0 || x >= m.width || y >= m.height) return true;
       if (m.objects.some(o => (o.solid || []).some(([sx, sy]) => sx === x && sy === y))) return true;
       if ((m.water || []).some(w => x >= w.x && x < w.x+w.width && y >= w.y && y < w.y+w.height)) return true;
+      if ((m.chests || []).some(chest => chest.x === x && chest.y === y)) return true;
       return villageNpcs().some(npc => npc.x === x && npc.y === y);
     }
     function startStep(now) {
@@ -2156,6 +2216,8 @@
       if (npc) { state.dialogue = 0; state.activeNpc = npc; state.mode = "dialogue"; updateGuidance(); return; }
       const herb = nearbyHerb();
       if (herb) { state.herbQuest.collected.push(herb.id); statusEl.textContent = `Thảo dược · ${state.herbQuest.collected.length}/${HERBS.length}`; return; }
+      const chest = nearbyChest();
+      if (chest) { openMapChest(chest); return; }
       const link = nearbyLink();
       if (link && state.spokeToElder && assets.maps?.[link.target]) {
         assets.map = assets.maps[link.target];

@@ -1,0 +1,144 @@
+﻿map,place_guess,x,y,kind,item,quantity_or_amount
+0,Khu Quý tộc,2,16,item,Bánh bích quy,2
+1,Quảng Trường Cầu Vồng,12,2,item,Bánh bích quy,1
+1,Quảng Trường Cầu Vồng,22,21,gold,,800
+1,Quảng Trường Cầu Vồng,25,26,item,Chocolate,1
+1,Quảng Trường Cầu Vồng,19,0,gold,,500
+1,Quảng Trường Cầu Vồng,21,0,item,Vạn năng dược,1
+2,Thao trường của Học Viện Cầu Vồng,27,31,item,Bánh bích quy,2
+2,Thao trường của Học Viện Cầu Vồng,6,22,item,sinh mệnh thạch,2
+3,Phòng học,23,24,item,Tụ năng thạch,2
+3,Phòng học,1,4,item,sinh mệnh thạch,1
+3,Phòng học,18,9,item,Hưng phấn cô,2
+3,Phòng học,1,10,gold,,500
+4,Cầu Vồng Đấu trường bậc trung,14,6,item,Phong ấn cầu,2
+5,Kim Loại Di Tích 1,5,26,gold,,500
+5,Kim Loại Di Tích 1,7,26,item,sinh mệnh thạch,2
+5,Kim Loại Di Tích 1,1,18,gold,,800
+5,Kim Loại Di Tích 1,3,18,item,Bánh bích quy,2
+5,Kim Loại Di Tích 1,5,18,item,Hưng phấn cô,3
+5,Kim Loại Di Tích 1,1,3,item,Đồ uống,2
+5,Kim Loại Di Tích 1,2,3,item,Năng lượng thạch,2
+6,Kim Loại Di Tích 2,13,4,item,Chocolate,2
+6,Kim Loại Di Tích 2,1,10,item,Bánh bích quy,2
+6,Kim Loại Di Tích 2,5,28,gold,,1000
+6,Kim Loại Di Tích 2,9,28,item,Cao cấp cầu,2
+6,Kim Loại Di Tích 2,7,28,item,Thú hồn,1
+6,Kim Loại Di Tích 2,11,28,item,Hoàng kim đường,1
+6,Kim Loại Di Tích 2,1,24,item,Đồ uống,3
+6,Kim Loại Di Tích 2,14,24,item,Nước hoa,3
+6,Kim Loại Di Tích 2,2,31,item,Bánh bích quy,3
+6,Kim Loại Di Tích 2,13,31,item,Năng lượng thạch,3
+6,Kim Loại Di Tích 2,6,14,item,Đồ uống,2
+6,Kim Loại Di Tích 2,9,14,item,Tụ năng thạch,2
+7,Khu quản lý Trường học sủng vật,1,3,item,Cây bạch quả quả,2
+7,Khu quản lý Trường học sủng vật,14,3,item,Tụ năng thạch,2
+10,Kim Loại Di Tích 3,19,3,item,Chocolate,2
+11,Bên ngoài thành phía nam,11,0,item,Cái chìa khóa,2
+11,Bên ngoài thành phía nam,6,8,gold,,100
+11,Bên ngoài thành phía nam,22,7,item,Vạn năng dược,1
+11,Bên ngoài thành phía nam,11,17,item,Năng lượng thạch,2
+11,Bên ngoài thành phía nam,22,17,item,Cây bạch quả quả,1
+12,Cao nguyên phía đông 1,18,21,item,Vạn năng dược,1
+12,Cao nguyên phía đông 1,25,0,gold,,500
+12,Cao nguyên phía đông 1,16,20,item,Phong ấn cầu,2
+12,Cao nguyên phía đông 1,13,20,item,Đồ uống,2
+12,Cao nguyên phía đông 1,18,4,item,Chocolate,2
+13,Cao nguyên phía đông 2,13,22,item,Đồ uống,2
+13,Cao nguyên phía đông 2,5,26,medals,,2
+13,Cao nguyên phía đông 2,29,27,item,Năng lượng thạch,1
+14,Cao nguyên phía đông 3,9,1,item,Thụ chướng thạch,2
+14,Cao nguyên phía đông 3,16,10,gold,,500
+15,Cao nguyên phía đông 4,6,19,gold,,300
+15,Cao nguyên phía đông 4,0,19,item,Đồ uống,2
+15,Cao nguyên phía đông 4,16,1,item,Cách không thạch,1
+16,Rừng rậm phía tây 1,2,14,item,Hưng phấn cô,3
+16,Rừng rậm phía tây 1,0,10,item,Cao cấp cầu,3
+16,Rừng rậm phía tây 1,15,0,item,Hoàng kim đường,2
+17,Rừng rậm phía tây 2,22,9,item,Nước hoa,1
+17,Rừng rậm phía tây 2,9,19,item,Hưng phấn cô,5
+17,Rừng rậm phía tây 2,3,1,item,Bánh bích quy,2
+17,Rừng rậm phía tây 2,5,1,item,Chocolate,2
+18,Rừng rậm phía tây 3,20,0,item,Chocolate,2
+18,Rừng rậm phía tây 3,3,8,item,Mật tâm đường,1
+18,Rừng rậm phía tây 3,22,5,gold,,1000
+18,Rừng rậm phía tây 3,23,5,item,sinh mệnh thạch,2
+18,Rừng rậm phía tây 3,24,5,item,Cao cấp cầu,1
+18,Rừng rậm phía tây 3,25,5,item,Đồ uống,1
+20,Rừng rậm phía tây 5,9,3,item,Nước hoa,1
+21,Nam Chi Phế Tích 1,14,5,item,Hưng phấn cô,2
+23,Nam Chi Phế Tích 3,16,3,gold,,900
+23,Nam Chi Phế Tích 3,4,3,item,sinh mệnh thạch,3
+23,Nam Chi Phế Tích 3,1,3,item,Tụ năng thạch,2
+25,Bầu trời phương bắc 2,29,28,item,Cách không thạch,1
+27,Khu làm việc Học Viện Cầu Vồng,18,33,item,Cổ kình chi tâm,1
+27,Khu làm việc Học Viện Cầu Vồng,29,33,item,sinh mệnh thạch,2
+27,Khu làm việc Học Viện Cầu Vồng,28,0,item,Cứng cỏi thạch,1
+27,Khu làm việc Học Viện Cầu Vồng,0,0,item,Bong bóng,1
+28,Bến tàu phía nam Bắc Hải,11,8,gold,,800
+28,Bến tàu phía nam Bắc Hải,2,1,item,Tinh nguyên thạch,1
+28,Bến tàu phía nam Bắc Hải,14,8,item,Bánh bích quy,2
+29,Bến tàu phía bắc Bắc Hải,23,0,item,Năng lượng thạch,1
+29,Bến tàu phía bắc Bắc Hải,3,29,item,Đại sư cầu,2
+31,Vực Bắc Bắc Hải,23,0,gold,,500
+31,Vực Bắc Bắc Hải,2,13,item,Chocolate,2
+31,Vực Bắc Bắc Hải,17,8,gold,,1000
+31,Vực Bắc Bắc Hải,14,3,item,Tụ năng thạch,2
+31,Vực Bắc Bắc Hải,16,3,item,Bánh bích quy,3
+31,Vực Bắc Bắc Hải,21,3,item,Cao cấp cầu,2
+31,Vực Bắc Bắc Hải,18,19,item,Cây bạch quả quả,3
+32,Vực Nam Bắc Hải,3,4,item,Hoàng kim đường,2
+32,Vực Nam Bắc Hải,7,8,gold,,800
+32,Vực Nam Bắc Hải,12,8,item,Cây bạch quả quả,3
+32,Vực Nam Bắc Hải,2,13,item,Bong bóng,1
+32,Vực Nam Bắc Hải,17,18,item,Bánh bích quy,2
+33,Phòng học Bắc Hải 1,14,7,item,Bảo rương,10
+36,Khu trường cũ Bắc Hải 2,13,29,item,Bánh bích quy,2
+36,Khu trường cũ Bắc Hải 2,13,30,item,Hưng phấn cô,1
+37,Khu trường cũ Bắc Hải 3,8,9,gold,,600
+37,Khu trường cũ Bắc Hải 3,10,9,item,Chocolate,3
+37,Khu trường cũ Bắc Hải 3,12,9,item,Tụ năng thạch,2
+38,Rừng rậm u ám 1,4,0,item,Cao cấp cầu,1
+39,Rừng rậm u ám 2,13,2,gold,,600
+39,Rừng rậm u ám 2,15,2,item,Đồ uống,3
+39,Rừng rậm u ám 2,17,2,item,sinh mệnh thạch,2
+39,Rừng rậm u ám 2,21,29,item,Mật tâm đường,1
+40,Rừng rậm u ám 3,7,3,item,Chu quả,2
+40,Rừng rậm u ám 3,10,3,item,Tinh nguyên thạch,2
+41,Rừng rậm u ám 4,16,3,item,Bạch kim,1
+42,Rừng rậm u ám 5,4,0,gold,,800
+42,Rừng rậm u ám 5,6,0,item,Bánh bích quy,5
+42,Rừng rậm u ám 5,10,0,item,Hưng phấn cô,2
+42,Rừng rậm u ám 5,13,0,item,Cao cấp cầu,3
+42,Rừng rậm u ám 5,1,0,item,Chu quả,1
+43,Trung Tâm Thương Mại,5,3,gold,,200
+43,Trung Tâm Thương Mại,4,3,item,Tụ năng thạch,2
+44,Cầu Vồng Tửu Quán,9,4,gold,,200
+44,Cầu Vồng Tửu Quán,24,3,item,Cây bạch quả quả,2
+44,Cầu Vồng Tửu Quán,15,4,item,Đồ uống,3
+45,Nhà dân,14,8,item,Chocolate,1
+45,Nhà dân,10,5,item,Cây bạch quả quả,1
+46,Hanabusa,2,6,item,Vạn năng dược,2
+47,Thành Đấu trường Cầu Vồng,1,15,item,Đồ uống,2
+48,Quảng Trường Bắc Hải,3,22,item,Bánh bích quy,2
+48,Quảng Trường Bắc Hải,7,22,gold,,200
+48,Quảng Trường Bắc Hải,1,8,gold,,400
+49,Thiên Không Thành 1,1,19,item,Tụ năng thạch,2
+49,Thiên Không Thành 1,13,12,item,Cao cấp cầu,2
+52,Nam Chi Phế Tích 4,22,8,item,Đại sư cầu,2
+52,Nam Chi Phế Tích 4,25,28,gold,,200
+52,Nam Chi Phế Tích 4,12,28,item,Cây bạch quả quả,1
+52,Nam Chi Phế Tích 4,8,14,item,Chocolate,2
+52,Nam Chi Phế Tích 4,6,14,item,Cây bạch quả quả,2
+52,Nam Chi Phế Tích 4,1,8,gold,,500
+52,Nam Chi Phế Tích 4,6,8,item,Cây bạch quả quả,2
+53,Khu trường cũ Bắc Hải 4,6,8,item,Bánh bích quy,3
+54,Tắc Kỳ Gia,16,20,gold,,100
+54,Tắc Kỳ Gia,10,20,item,Đồ uống,1
+55,Người hầu phòng,17,3,gold,,500
+55,Người hầu phòng,9,3,item,Phong ấn cầu,1
+56,Trung Tâm Thương Mại,6,4,item,Hoàng kim đường,1
+59,Khu ký túc xá học sinh của Học Viện Cầu Vồng,8,5,item,Năng lượng thạch,2
+67,Phòng sinh hoạt của Học Viện Cầu Vồng,11,6,item,Chocolate,2
+67,Phòng sinh hoạt của Học Viện Cầu Vồng,15,6,gold,,400
+67,Phòng sinh hoạt của Học Viện Cầu Vồng,15,18,item,Bánh bích quy,4

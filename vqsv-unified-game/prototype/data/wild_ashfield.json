@@ -391,5 +391,55 @@
       "spawnY": 10,
       "label": "Dải Mây Cao"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-ashfield:0",
+      "x": 16,
+      "y": 7,
+      "source_map": 27,
+      "reward": {
+        "kind": "item",
+        "item_id": 20,
+        "name": "Bong bóng",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-ashfield:1",
+      "x": 13,
+      "y": 15,
+      "source_map": 3,
+      "reward": {
+        "kind": "item",
+        "item_id": 12,
+        "name": "Hưng phấn cô",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-ashfield:2",
+      "x": 2,
+      "y": 4,
+      "source_map": 67,
+      "reward": {
+        "kind": "item",
+        "item_id": 2,
+        "name": "Chocolate",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-ashfield:3",
+      "x": 11,
+      "y": 6,
+      "source_map": 45,
+      "reward": {
+        "kind": "item",
+        "item_id": 2,
+        "name": "Chocolate",
+        "quantity": 1
+      }
+    }
   ]
 }

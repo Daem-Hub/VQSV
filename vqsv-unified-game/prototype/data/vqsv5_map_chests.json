@@ -1,0 +1,1517 @@
+{
+ "source": "vqsv5.jar raw_data/4 entry 0 (at.p(): header, three matrices, chests, one more matrix)",
+ "confidence": "The layout consumes all 68 blobs exactly. Rewards follow at.z(): content - 2 = -2 kim tiền x100, -1 huy chương, else item id. Place names are guessed from the blob index.",
+ "summary": {
+  "maps": 68,
+  "maps_with_chests": 48,
+  "chests": 143,
+  "gold_chests": 28,
+  "medal_chests": 1,
+  "item_chests": 114,
+  "total_kim_tien": 15200,
+  "item_ids": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   22,
+   24,
+   25,
+   29,
+   32,
+   33
+  ]
+ },
+ "maps": [
+  {
+   "map": 0,
+   "place_guess": "Khu Quý tộc",
+   "chests": [
+    {
+     "x": 2,
+     "y": 16,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 1,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "chests": [
+    {
+     "x": 12,
+     "y": 2,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 1
+    },
+    {
+     "x": 22,
+     "y": 21,
+     "kind": "gold",
+     "kim_tien": 800
+    },
+    {
+     "x": 25,
+     "y": 26,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 1
+    },
+    {
+     "x": 19,
+     "y": 0,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 21,
+     "y": 0,
+     "kind": "item",
+     "item_id": 8,
+     "name": "Vạn năng dược",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 2,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "chests": [
+    {
+     "x": 27,
+     "y": 31,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 6,
+     "y": 22,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 3,
+   "place_guess": "Phòng học",
+   "chests": [
+    {
+     "x": 23,
+     "y": 24,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 1
+    },
+    {
+     "x": 18,
+     "y": 9,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 2
+    },
+    {
+     "x": 1,
+     "y": 10,
+     "kind": "gold",
+     "kim_tien": 500
+    }
+   ]
+  },
+  {
+   "map": 4,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "chests": [
+    {
+     "x": 14,
+     "y": 6,
+     "kind": "item",
+     "item_id": 9,
+     "name": "Phong ấn cầu",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 5,
+   "place_guess": "Kim Loại Di Tích 1",
+   "chests": [
+    {
+     "x": 5,
+     "y": 26,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 7,
+     "y": 26,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    },
+    {
+     "x": 1,
+     "y": 18,
+     "kind": "gold",
+     "kim_tien": 800
+    },
+    {
+     "x": 3,
+     "y": 18,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 5,
+     "y": 18,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 3
+    },
+    {
+     "x": 1,
+     "y": 3,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "x": 2,
+     "y": 3,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 6,
+   "place_guess": "Kim Loại Di Tích 2",
+   "chests": [
+    {
+     "x": 13,
+     "y": 4,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "x": 1,
+     "y": 10,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 5,
+     "y": 28,
+     "kind": "gold",
+     "kim_tien": 1000
+    },
+    {
+     "x": 9,
+     "y": 28,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 2
+    },
+    {
+     "x": 7,
+     "y": 28,
+     "kind": "item",
+     "item_id": 17,
+     "name": "Thú hồn",
+     "quantity": 1
+    },
+    {
+     "x": 11,
+     "y": 28,
+     "kind": "item",
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": 1
+    },
+    {
+     "x": 1,
+     "y": 24,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 3
+    },
+    {
+     "x": 14,
+     "y": 24,
+     "kind": "item",
+     "item_id": 15,
+     "name": "Nước hoa",
+     "quantity": 3
+    },
+    {
+     "x": 2,
+     "y": 31,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 3
+    },
+    {
+     "x": 13,
+     "y": 31,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 3
+    },
+    {
+     "x": 6,
+     "y": 14,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "x": 9,
+     "y": 14,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 7,
+   "place_guess": "Khu quản lý Trường học sủng vật",
+   "chests": [
+    {
+     "x": 1,
+     "y": 3,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 2
+    },
+    {
+     "x": 14,
+     "y": 3,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 8,
+   "place_guess": "Cầu Vồng Đấu trường sơ cấp",
+   "chests": []
+  },
+  {
+   "map": 9,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "chests": []
+  },
+  {
+   "map": 10,
+   "place_guess": "Kim Loại Di Tích 3",
+   "chests": [
+    {
+     "x": 19,
+     "y": 3,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 11,
+   "place_guess": "Bên ngoài thành phía nam",
+   "chests": [
+    {
+     "x": 11,
+     "y": 0,
+     "kind": "item",
+     "item_id": 33,
+     "name": "Cái chìa khóa",
+     "quantity": 2
+    },
+    {
+     "x": 6,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 100
+    },
+    {
+     "x": 22,
+     "y": 7,
+     "kind": "item",
+     "item_id": 8,
+     "name": "Vạn năng dược",
+     "quantity": 1
+    },
+    {
+     "x": 11,
+     "y": 17,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 2
+    },
+    {
+     "x": 22,
+     "y": 17,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 12,
+   "place_guess": "Cao nguyên phía đông 1",
+   "chests": [
+    {
+     "x": 18,
+     "y": 21,
+     "kind": "item",
+     "item_id": 8,
+     "name": "Vạn năng dược",
+     "quantity": 1
+    },
+    {
+     "x": 25,
+     "y": 0,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 16,
+     "y": 20,
+     "kind": "item",
+     "item_id": 9,
+     "name": "Phong ấn cầu",
+     "quantity": 2
+    },
+    {
+     "x": 13,
+     "y": 20,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "x": 18,
+     "y": 4,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 13,
+   "place_guess": "Cao nguyên phía đông 2",
+   "chests": [
+    {
+     "x": 13,
+     "y": 22,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "x": 5,
+     "y": 26,
+     "kind": "medals",
+     "medals": 2
+    },
+    {
+     "x": 29,
+     "y": 27,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 14,
+   "place_guess": "Cao nguyên phía đông 3",
+   "chests": [
+    {
+     "x": 9,
+     "y": 1,
+     "kind": "item",
+     "item_id": 18,
+     "name": "Thụ chướng thạch",
+     "quantity": 2
+    },
+    {
+     "x": 16,
+     "y": 10,
+     "kind": "gold",
+     "kim_tien": 500
+    }
+   ]
+  },
+  {
+   "map": 15,
+   "place_guess": "Cao nguyên phía đông 4",
+   "chests": [
+    {
+     "x": 6,
+     "y": 19,
+     "kind": "gold",
+     "kim_tien": 300
+    },
+    {
+     "x": 0,
+     "y": 19,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    },
+    {
+     "x": 16,
+     "y": 1,
+     "kind": "item",
+     "item_id": 22,
+     "name": "Cách không thạch",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 16,
+   "place_guess": "Rừng rậm phía tây 1",
+   "chests": [
+    {
+     "x": 2,
+     "y": 14,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 3
+    },
+    {
+     "x": 0,
+     "y": 10,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 3
+    },
+    {
+     "x": 15,
+     "y": 0,
+     "kind": "item",
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 17,
+   "place_guess": "Rừng rậm phía tây 2",
+   "chests": [
+    {
+     "x": 22,
+     "y": 9,
+     "kind": "item",
+     "item_id": 15,
+     "name": "Nước hoa",
+     "quantity": 1
+    },
+    {
+     "x": 9,
+     "y": 19,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 5
+    },
+    {
+     "x": 3,
+     "y": 1,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 5,
+     "y": 1,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 18,
+   "place_guess": "Rừng rậm phía tây 3",
+   "chests": [
+    {
+     "x": 20,
+     "y": 0,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "x": 3,
+     "y": 8,
+     "kind": "item",
+     "item_id": 13,
+     "name": "Mật tâm đường",
+     "quantity": 1
+    },
+    {
+     "x": 22,
+     "y": 5,
+     "kind": "gold",
+     "kim_tien": 1000
+    },
+    {
+     "x": 23,
+     "y": 5,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    },
+    {
+     "x": 24,
+     "y": 5,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 1
+    },
+    {
+     "x": 25,
+     "y": 5,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 19,
+   "place_guess": "Rừng rậm phía tây 4",
+   "chests": []
+  },
+  {
+   "map": 20,
+   "place_guess": "Rừng rậm phía tây 5",
+   "chests": [
+    {
+     "x": 9,
+     "y": 3,
+     "kind": "item",
+     "item_id": 15,
+     "name": "Nước hoa",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 21,
+   "place_guess": "Nam Chi Phế Tích 1",
+   "chests": [
+    {
+     "x": 14,
+     "y": 5,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 22,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "chests": []
+  },
+  {
+   "map": 23,
+   "place_guess": "Nam Chi Phế Tích 3",
+   "chests": [
+    {
+     "x": 16,
+     "y": 3,
+     "kind": "gold",
+     "kim_tien": 900
+    },
+    {
+     "x": 4,
+     "y": 3,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 3
+    },
+    {
+     "x": 1,
+     "y": 3,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 24,
+   "place_guess": "Bầu trời phương bắc 1",
+   "chests": []
+  },
+  {
+   "map": 25,
+   "place_guess": "Bầu trời phương bắc 2",
+   "chests": [
+    {
+     "x": 29,
+     "y": 28,
+     "kind": "item",
+     "item_id": 22,
+     "name": "Cách không thạch",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 26,
+   "place_guess": "Bầu trời phương bắc 3",
+   "chests": []
+  },
+  {
+   "map": 27,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "chests": [
+    {
+     "x": 18,
+     "y": 33,
+     "kind": "item",
+     "item_id": 29,
+     "name": "Cổ kình chi tâm",
+     "quantity": 1
+    },
+    {
+     "x": 29,
+     "y": 33,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    },
+    {
+     "x": 28,
+     "y": 0,
+     "kind": "item",
+     "item_id": 16,
+     "name": "Cứng cỏi thạch",
+     "quantity": 1
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "kind": "item",
+     "item_id": 20,
+     "name": "Bong bóng",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 28,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "chests": [
+    {
+     "x": 11,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 800
+    },
+    {
+     "x": 2,
+     "y": 1,
+     "kind": "item",
+     "item_id": 24,
+     "name": "Tinh nguyên thạch",
+     "quantity": 1
+    },
+    {
+     "x": 14,
+     "y": 8,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 29,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "chests": [
+    {
+     "x": 23,
+     "y": 0,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 1
+    },
+    {
+     "x": 3,
+     "y": 29,
+     "kind": "item",
+     "item_id": 11,
+     "name": "Đại sư cầu",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 30,
+   "place_guess": "Học viện Bắc Hải",
+   "chests": []
+  },
+  {
+   "map": 31,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "chests": [
+    {
+     "x": 23,
+     "y": 0,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 2,
+     "y": 13,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "x": 17,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 1000
+    },
+    {
+     "x": 14,
+     "y": 3,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    },
+    {
+     "x": 16,
+     "y": 3,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 3
+    },
+    {
+     "x": 21,
+     "y": 3,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 2
+    },
+    {
+     "x": 18,
+     "y": 19,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 3
+    }
+   ]
+  },
+  {
+   "map": 32,
+   "place_guess": "Vực Nam Bắc Hải",
+   "chests": [
+    {
+     "x": 3,
+     "y": 4,
+     "kind": "item",
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": 2
+    },
+    {
+     "x": 7,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 800
+    },
+    {
+     "x": 12,
+     "y": 8,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 3
+    },
+    {
+     "x": 2,
+     "y": 13,
+     "kind": "item",
+     "item_id": 20,
+     "name": "Bong bóng",
+     "quantity": 1
+    },
+    {
+     "x": 17,
+     "y": 18,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 33,
+   "place_guess": "Phòng học Bắc Hải 1",
+   "chests": [
+    {
+     "x": 14,
+     "y": 7,
+     "kind": "item",
+     "item_id": 32,
+     "name": "Bảo rương",
+     "quantity": 10
+    }
+   ]
+  },
+  {
+   "map": 34,
+   "place_guess": "Phòng học Bắc Hải 2",
+   "chests": []
+  },
+  {
+   "map": 35,
+   "place_guess": "Khu trường cũ Bắc Hải 1",
+   "chests": []
+  },
+  {
+   "map": 36,
+   "place_guess": "Khu trường cũ Bắc Hải 2",
+   "chests": [
+    {
+     "x": 13,
+     "y": 29,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 13,
+     "y": 30,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 37,
+   "place_guess": "Khu trường cũ Bắc Hải 3",
+   "chests": [
+    {
+     "x": 8,
+     "y": 9,
+     "kind": "gold",
+     "kim_tien": 600
+    },
+    {
+     "x": 10,
+     "y": 9,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 3
+    },
+    {
+     "x": 12,
+     "y": 9,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 38,
+   "place_guess": "Rừng rậm u ám 1",
+   "chests": [
+    {
+     "x": 4,
+     "y": 0,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 39,
+   "place_guess": "Rừng rậm u ám 2",
+   "chests": [
+    {
+     "x": 13,
+     "y": 2,
+     "kind": "gold",
+     "kim_tien": 600
+    },
+    {
+     "x": 15,
+     "y": 2,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 3
+    },
+    {
+     "x": 17,
+     "y": 2,
+     "kind": "item",
+     "item_id": 7,
+     "name": "sinh mệnh thạch",
+     "quantity": 2
+    },
+    {
+     "x": 21,
+     "y": 29,
+     "kind": "item",
+     "item_id": 13,
+     "name": "Mật tâm đường",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 40,
+   "place_guess": "Rừng rậm u ám 3",
+   "chests": [
+    {
+     "x": 7,
+     "y": 3,
+     "kind": "item",
+     "item_id": 19,
+     "name": "Chu quả",
+     "quantity": 2
+    },
+    {
+     "x": 10,
+     "y": 3,
+     "kind": "item",
+     "item_id": 24,
+     "name": "Tinh nguyên thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 41,
+   "place_guess": "Rừng rậm u ám 4",
+   "chests": [
+    {
+     "x": 16,
+     "y": 3,
+     "kind": "item",
+     "item_id": 25,
+     "name": "Bạch kim",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 42,
+   "place_guess": "Rừng rậm u ám 5",
+   "chests": [
+    {
+     "x": 4,
+     "y": 0,
+     "kind": "gold",
+     "kim_tien": 800
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 5
+    },
+    {
+     "x": 10,
+     "y": 0,
+     "kind": "item",
+     "item_id": 12,
+     "name": "Hưng phấn cô",
+     "quantity": 2
+    },
+    {
+     "x": 13,
+     "y": 0,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 3
+    },
+    {
+     "x": 1,
+     "y": 0,
+     "kind": "item",
+     "item_id": 19,
+     "name": "Chu quả",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 43,
+   "place_guess": "Trung Tâm Thương Mại",
+   "chests": [
+    {
+     "x": 5,
+     "y": 3,
+     "kind": "gold",
+     "kim_tien": 200
+    },
+    {
+     "x": 4,
+     "y": 3,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 44,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "chests": [
+    {
+     "x": 9,
+     "y": 4,
+     "kind": "gold",
+     "kim_tien": 200
+    },
+    {
+     "x": 24,
+     "y": 3,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 2
+    },
+    {
+     "x": 15,
+     "y": 4,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 3
+    }
+   ]
+  },
+  {
+   "map": 45,
+   "place_guess": "Nhà dân",
+   "chests": [
+    {
+     "x": 14,
+     "y": 8,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 1
+    },
+    {
+     "x": 10,
+     "y": 5,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 46,
+   "place_guess": "Hanabusa",
+   "chests": [
+    {
+     "x": 2,
+     "y": 6,
+     "kind": "item",
+     "item_id": 8,
+     "name": "Vạn năng dược",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 47,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "chests": [
+    {
+     "x": 1,
+     "y": 15,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 48,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "chests": [
+    {
+     "x": 3,
+     "y": 22,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 2
+    },
+    {
+     "x": 7,
+     "y": 22,
+     "kind": "gold",
+     "kim_tien": 200
+    },
+    {
+     "x": 1,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 400
+    }
+   ]
+  },
+  {
+   "map": 49,
+   "place_guess": "Thiên Không Thành 1",
+   "chests": [
+    {
+     "x": 1,
+     "y": 19,
+     "kind": "item",
+     "item_id": 4,
+     "name": "Tụ năng thạch",
+     "quantity": 2
+    },
+    {
+     "x": 13,
+     "y": 12,
+     "kind": "item",
+     "item_id": 10,
+     "name": "Cao cấp cầu",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 50,
+   "place_guess": "Thiên Không Thành 2",
+   "chests": []
+  },
+  {
+   "map": 51,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "chests": []
+  },
+  {
+   "map": 52,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "chests": [
+    {
+     "x": 22,
+     "y": 8,
+     "kind": "item",
+     "item_id": 11,
+     "name": "Đại sư cầu",
+     "quantity": 2
+    },
+    {
+     "x": 25,
+     "y": 28,
+     "kind": "gold",
+     "kim_tien": 200
+    },
+    {
+     "x": 12,
+     "y": 28,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 1
+    },
+    {
+     "x": 8,
+     "y": 14,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "x": 6,
+     "y": 14,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 2
+    },
+    {
+     "x": 1,
+     "y": 8,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 6,
+     "y": 8,
+     "kind": "item",
+     "item_id": 5,
+     "name": "Cây bạch quả quả",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 53,
+   "place_guess": "Khu trường cũ Bắc Hải 4",
+   "chests": [
+    {
+     "x": 6,
+     "y": 8,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 3
+    }
+   ]
+  },
+  {
+   "map": 54,
+   "place_guess": "Tắc Kỳ Gia",
+   "chests": [
+    {
+     "x": 16,
+     "y": 20,
+     "kind": "gold",
+     "kim_tien": 100
+    },
+    {
+     "x": 10,
+     "y": 20,
+     "kind": "item",
+     "item_id": 0,
+     "name": "Đồ uống",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 55,
+   "place_guess": "Người hầu phòng",
+   "chests": [
+    {
+     "x": 17,
+     "y": 3,
+     "kind": "gold",
+     "kim_tien": 500
+    },
+    {
+     "x": 9,
+     "y": 3,
+     "kind": "item",
+     "item_id": 9,
+     "name": "Phong ấn cầu",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 56,
+   "place_guess": "Trung Tâm Thương Mại",
+   "chests": [
+    {
+     "x": 6,
+     "y": 4,
+     "kind": "item",
+     "item_id": 6,
+     "name": "Hoàng kim đường",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "map": 57,
+   "place_guess": "Rừng rậm thần bí 1",
+   "chests": []
+  },
+  {
+   "map": 58,
+   "place_guess": "Rừng rậm thần bí 2",
+   "chests": []
+  },
+  {
+   "map": 59,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "chests": [
+    {
+     "x": 8,
+     "y": 5,
+     "kind": "item",
+     "item_id": 3,
+     "name": "Năng lượng thạch",
+     "quantity": 2
+    }
+   ]
+  },
+  {
+   "map": 60,
+   "place_guess": "Phòng trung chuyển Kim Loại Di Tích",
+   "chests": []
+  },
+  {
+   "map": 61,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "chests": []
+  },
+  {
+   "map": 62,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "chests": []
+  },
+  {
+   "map": 63,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "chests": []
+  },
+  {
+   "map": 64,
+   "place_guess": "Phòng trung chuyển Kim",
+   "chests": []
+  },
+  {
+   "map": 65,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "chests": []
+  },
+  {
+   "map": 66,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "chests": []
+  },
+  {
+   "map": 67,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "chests": [
+    {
+     "x": 11,
+     "y": 6,
+     "kind": "item",
+     "item_id": 2,
+     "name": "Chocolate",
+     "quantity": 2
+    },
+    {
+     "x": 15,
+     "y": 6,
+     "kind": "gold",
+     "kim_tien": 400
+    },
+    {
+     "x": 15,
+     "y": 18,
+     "kind": "item",
+     "item_id": 1,
+     "name": "Bánh bích quy",
+     "quantity": 4
+    }
+   ]
+  }
+ ]
+}

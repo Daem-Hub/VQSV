@@ -403,5 +403,53 @@
       "spawnY": 10,
       "label": "Bãi Tro Núi Lửa"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-canyon:0",
+      "x": 19,
+      "y": 4,
+      "source_map": 6,
+      "reward": {
+        "kind": "item",
+        "item_id": 6,
+        "name": "Hoàng kim đường",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-canyon:1",
+      "x": 4,
+      "y": 5,
+      "source_map": 5,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-canyon:2",
+      "x": 12,
+      "y": 4,
+      "source_map": 6,
+      "reward": {
+        "kind": "item",
+        "item_id": 4,
+        "name": "Tụ năng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-canyon:3",
+      "x": 2,
+      "y": 15,
+      "source_map": 5,
+      "reward": {
+        "kind": "item",
+        "item_id": 12,
+        "name": "Hưng phấn cô",
+        "quantity": 3
+      }
+    }
   ]
 }

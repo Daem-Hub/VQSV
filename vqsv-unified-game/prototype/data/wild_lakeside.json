@@ -350,5 +350,55 @@
     "y": 9,
     "width": 4,
     "height": 3
-  }
+  },
+  "chests": [
+    {
+      "id": "ryan-lakeside:0",
+      "x": 2,
+      "y": 13,
+      "source_map": 31,
+      "reward": {
+        "kind": "item",
+        "item_id": 1,
+        "name": "Bánh bích quy",
+        "quantity": 3
+      }
+    },
+    {
+      "id": "ryan-lakeside:1",
+      "x": 5,
+      "y": 15,
+      "source_map": 48,
+      "reward": {
+        "kind": "item",
+        "item_id": 1,
+        "name": "Bánh bích quy",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-lakeside:2",
+      "x": 22,
+      "y": 15,
+      "source_map": 29,
+      "reward": {
+        "kind": "item",
+        "item_id": 3,
+        "name": "Năng lượng thạch",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-lakeside:3",
+      "x": 7,
+      "y": 5,
+      "source_map": 36,
+      "reward": {
+        "kind": "item",
+        "item_id": 1,
+        "name": "Bánh bích quy",
+        "quantity": 2
+      }
+    }
+  ]
 }

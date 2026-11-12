@@ -838,5 +838,55 @@
       "spawnY": 10,
       "label": "Suối Sấm Phong Lôi"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-phong-loi-forest:0",
+      "x": 2,
+      "y": 15,
+      "source_map": 20,
+      "reward": {
+        "kind": "item",
+        "item_id": 15,
+        "name": "Nước hoa",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-phong-loi-forest:1",
+      "x": 13,
+      "y": 7,
+      "source_map": 18,
+      "reward": {
+        "kind": "item",
+        "item_id": 2,
+        "name": "Chocolate",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-phong-loi-forest:2",
+      "x": 19,
+      "y": 13,
+      "source_map": 18,
+      "reward": {
+        "kind": "item",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-phong-loi-forest:3",
+      "x": 20,
+      "y": 4,
+      "source_map": 18,
+      "reward": {
+        "kind": "item",
+        "item_id": 13,
+        "name": "Mật tâm đường",
+        "quantity": 1
+      }
+    }
   ]
 }

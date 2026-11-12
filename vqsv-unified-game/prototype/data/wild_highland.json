@@ -414,5 +414,51 @@
       "spawnY": 10,
       "label": "Hẻm Núi Đá"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-highland:0",
+      "x": 21,
+      "y": 3,
+      "source_map": 52,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-highland:1",
+      "x": 22,
+      "y": 15,
+      "source_map": 52,
+      "reward": {
+        "kind": "item",
+        "item_id": 11,
+        "name": "Đại sư cầu",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-highland:2",
+      "x": 14,
+      "y": 5,
+      "source_map": 23,
+      "reward": {
+        "kind": "item",
+        "item_id": 7,
+        "name": "sinh mệnh thạch",
+        "quantity": 3
+      }
+    },
+    {
+      "id": "ryan-highland:3",
+      "x": 22,
+      "y": 5,
+      "source_map": 52,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 200
+      }
+    }
   ]
 }

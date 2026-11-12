@@ -666,5 +666,55 @@
       "spawnY": 10,
       "label": "Hồ Sương Mù"
     }
+  ],
+  "chests": [
+    {
+      "id": "ryan-forest-stream:0",
+      "x": 20,
+      "y": 7,
+      "source_map": 38,
+      "reward": {
+        "kind": "item",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-forest-stream:1",
+      "x": 18,
+      "y": 13,
+      "source_map": 42,
+      "reward": {
+        "kind": "item",
+        "item_id": 12,
+        "name": "Hưng phấn cô",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-forest-stream:2",
+      "x": 19,
+      "y": 5,
+      "source_map": 42,
+      "reward": {
+        "kind": "item",
+        "item_id": 19,
+        "name": "Chu quả",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-forest-stream:3",
+      "x": 17,
+      "y": 16,
+      "source_map": 41,
+      "reward": {
+        "kind": "item",
+        "item_id": 25,
+        "name": "Bạch kim",
+        "quantity": 1
+      }
+    }
   ]
 }

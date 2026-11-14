@@ -83,4 +83,17 @@ run('state.battle = newBattle({ v5: true, petId: "vqsv5-db-0", level: 10, qualit
 // Skill 39 on a team pet: wild pets get lucky traits.
 run('window.VQSVPetTeam.ids = () => ["vqsv5-db-0"]; progress["vqsv5-db-0"].passives = [39, -1]; ' + seq([0.9, 0, 0.5, 0, 0, 0.5, 0.5, 0.5, 0.5]));
 assert.equal(run('teamLucky5()'), true); assert.equal(J('rollWild("ryan-phong-loi-forest")').traits.length, 2);
-console.log('VQSV5 wild: decoded tables, rolls, battles, type advantage and catching passed.');
+// ---- Battle backgrounds: one picture per field type (data/battle/0..4.png), the enemy side on top, the player side mirrored below ----
+for (let t = 0; t < 5; t++) assert(fs.existsSync(path.join(__dirname, '..', 'prototype', 'assets', 'battle', `vqsv5_field_${t}.png`)), `background ${t}`);
+assert.equal(run('FIELD_BG(3)'), 'assets/battle/vqsv5_field_3.png');
+run('assets.map = assets.maps["ryan-meadow"]; Math.random = () => 0.5; window.VQSVPetTeam.ids = () => []; progress = {}; state.battle = newBattle({ v5: true, petId: "vqsv5-db-0", level: 10, quality: 1, traits: [3, 0] }); state.mode = "battle"');
+assert.deepEqual(J('battleFields5()'), { enemy: 0, player: 0 });                                  // the meadow is a Thực Vật field
+run('state.battle.terrain = 3'); assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 3 });
+// A VQSV5 pet that knows the terrain skill of its own type turns its side into its own field (ak.b(z,al)); the other side is unchanged.
+const metal = S5.pets.find(p => p.type_id === 1).pet_id;
+run(`state.battle.team.push(Object.assign(vqsv5Combatant("${metal}", 20, [], [44, -1]), { kind: "vqsv5", progressKey: "${metal}" })); state.battle.active = state.battle.team.length - 1`);
+assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 1 });
+run('activePet().passives = [43, -1]'); assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 3 });   // 43 is the Thực Vật skill: no effect on a metal pet
+run('state.battle.active = 0'); assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 3 });
+run('state.battle.terrain = null'); assert.equal(J('battleFields5()'), null);                    // village / story fights keep the painted backdrop
+console.log('VQSV5 wild: decoded tables, rolls, battles, type advantage and catching and battle backgrounds passed.');

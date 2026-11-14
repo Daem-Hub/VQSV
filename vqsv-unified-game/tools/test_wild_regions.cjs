@@ -73,7 +73,7 @@ run('assets.map = maps["ryan-canyon"]; assets.map = maps["ryan-highland"]; state
 assert.match(element('status').textContent, /Hẻm Núi Đá · pet hoang dã cấp 24–32/);
 // A high-level wild pet gets level-appropriate skills (slots = level / 10 + 1) from its own element pool.
 const skyAreas = maps['ryan-skyridge'].wildAreas;
-const sample = JSON.parse(JSON.stringify(run('rollWild("ryan-skyridge")')));
+let sample; do { sample = JSON.parse(JSON.stringify(run('rollWild("ryan-skyridge")'))); } while (sample.v5);   // VQSV6 pets only; VQSV5 wild pets: test_vqsv5_wild.cjs
 const battle = JSON.parse(JSON.stringify(run(`(() => { const b = newBattle(${JSON.stringify(sample)}); state.battle = b; return { skills: b.enemy.skills.length, level: b.enemy.level, hp: b.enemy.max, slots: skillSlots(b.enemy.level) }; })()`)));
 assert.equal(battle.skills, battle.slots); assert(battle.level >= 35);
 console.log('Wild regions: chain travel, reachability, source pools, level order, water pets and tints passed.');

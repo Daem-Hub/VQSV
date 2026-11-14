@@ -1456,7 +1456,12 @@
     function activePet(battle = state.battle) { return battle.team[battle.active]; }
     const HERBS = [{id:"herb-a",x:10,y:14},{id:"herb-b",x:14,y:13},{id:"herb-c",x:18,y:14}];
     function newHerbQuest() { return {stage:"unstarted", collected:[]}; }
-    function newBattle(wild = null) { window.VQSVSkillFx?.clear(); return newBattleCore(wild); }
+    function newBattle(wild = null) {
+      window.VQSVSkillFx?.clear();
+      const battle = newBattleCore(wild);
+      if (battle.terrain != null && typeof Image !== "undefined") for (let type = 0; type < 5; type++) cachedImage(FIELD_BG(type));
+      return battle;
+    }
     function currentTerrain5() {
       let types; try { types = assets.map?.terrain5?.types; } catch (_) { return null; }       // assets is not ready yet during the very first newBattle()
       return types?.length ? types[Math.floor(Math.random() * types.length)] : null;
@@ -1832,8 +1837,39 @@
         if (lines.length * gap <= 34 || size === 9) { lines.slice(0, 4).forEach((l, i) => ctx.fillText(l, 25, top + i * gap)); return; }
       }
     }
-    function drawBattle() {
-      const now = performance.now();
+    // ---- VQSV5 battle backgrounds (data/battle/0..4.png, one per field type). ak.ak() draws the enemy side's field on top and the player side's field
+    // mirrored below a dark band; a side's field is the map's type unless its active pet knows the matching terrain skill 43 + type, which makes
+    // the field its own type (ak.b(z,al)). The prototype keeps both pets in the upper picture and shows the player's field under the panels. ----
+    const FIELD_BG = type => `assets/battle/vqsv5_field_${type}.png`;
+    function sideField5(c, terrain) {
+      if (terrain == null) return null;
+      return c && c.v5 && c.typeId != null && hasPassive(c, 43 + c.typeId) ? c.typeId : terrain;
+    }
+    function battleFields5(battle = state.battle) {
+      const terrain = battle?.terrain ?? null;
+      if (terrain == null) return null;
+      return { enemy: sideField5(battle.enemy, terrain), player: sideField5(battle.team?.[battle.active], terrain) };
+    }
+    function drawFieldImage(type, y, mirrored) {
+      const image = cachedImage(FIELD_BG(type));
+      if (!image?.complete || !image.naturalWidth) return false;
+      ctx.save(); ctx.imageSmoothingEnabled = false;
+      if (mirrored) { ctx.translate(480, 0); ctx.scale(-1, 1); }
+      ctx.drawImage(image, 0, y, 480, 216);
+      ctx.restore();
+      return true;
+    }
+    function drawBattleBackdrop() {
+      const fields = battleFields5();
+      if (fields && drawFieldImage(fields.enemy, 0, false)) {
+        ctx.fillStyle = "#1b2a30"; ctx.fillRect(0, 216, 480, 144);
+        drawFieldImage(fields.player, 222, true);
+        ctx.fillStyle = "#0b1114"; ctx.fillRect(0, 214, 480, 8);
+        // soft shadows so both pets stand on the picture
+        ctx.fillStyle = "#00000038"; ctx.beginPath(); ctx.ellipse(139, 184, 62, 12, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(350, 186, 66, 13, 0, 0, Math.PI * 2); ctx.fill();
+        return;
+      }
       const sky = ctx.createLinearGradient(0, 0, 0, 270);
       sky.addColorStop(0, "#202b3c"); sky.addColorStop(1, "#65776b");
       ctx.fillStyle = sky; ctx.fillRect(0, 0, 480, 360);
@@ -1845,6 +1881,10 @@
       ctx.fillStyle = "#354d3c"; ctx.fillRect(0, 196, 480, 164);
       ctx.fillStyle = "#577453"; ctx.beginPath(); ctx.ellipse(135, 200, 105, 27, 0, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(330, 247, 117, 30, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    function drawBattle() {
+      const now = performance.now();
+      drawBattleBackdrop();
       ctx.fillStyle = "#102528e8"; roundRect(207, 12, 66, 25, 6, true);
       ctx.textAlign = "center"; ctx.font = "bold 10px system-ui"; ctx.fillStyle = "#eadba6"; ctx.fillText(`LƯỢT ${state.battle.turn + 1}`, 240, 29); ctx.textAlign = "left";
       battlePanel(12, 12, state.battle.wild ? state.battle.enemy.name.toUpperCase() : "SỦNG VẬT THA HÓA", state.battle.enemy.subtitle, state.battle.enemy.hp, state.battle.enemy.max, "#dc8e7f");

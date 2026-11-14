@@ -90,6 +90,13 @@
       "y": 11,
       "width": 3,
       "height": 5
+    },
+    {
+      "x": 16,
+      "y": 0,
+      "width": 1,
+      "height": 9,
+      "branch": "ryan-pinewind"
     }
   ],
   "objects": [
@@ -837,6 +844,14 @@
       "spawnX": 1,
       "spawnY": 10,
       "label": "Suối Sấm Phong Lôi"
+    },
+    {
+      "x": 16,
+      "y": 0,
+      "target": "ryan-pinewind",
+      "spawnX": 12,
+      "spawnY": 16,
+      "label": "Rừng Thông Gió"
     }
   ],
   "chests": [

@@ -357,6 +357,14 @@
       "spawnX": 22,
       "spawnY": 10,
       "label": "Bãi Tro Núi Lửa"
+    },
+    {
+      "x": 23,
+      "y": 10,
+      "target": "ryan-sanctum",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Thánh Địa Thần Thú"
     }
   ],
   "chests": [

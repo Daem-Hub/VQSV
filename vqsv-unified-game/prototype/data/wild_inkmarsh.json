@@ -1,0 +1,412 @@
+{
+  "id": "ryan-inkmarsh",
+  "title": "Đầm Mực Đen",
+  "width": 24,
+  "height": 18,
+  "tileSize": 20,
+  "ground": {
+    "tileset": 4,
+    "tile": 25,
+    "step": 2
+  },
+  "groundVariation": [],
+  "groundDecor": [
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 8,
+      "y": 8
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 21,
+      "y": 5
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 13,
+      "y": 1
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 10,
+      "y": 17
+    },
+    {
+      "tileset": 4,
+      "tile": 1,
+      "x": 1,
+      "y": 13
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 8,
+      "y": 16
+    },
+    {
+      "tileset": 4,
+      "tile": 5,
+      "x": 13,
+      "y": 12
+    }
+  ],
+  "paths": [
+    {
+      "x": 0,
+      "y": 9,
+      "width": 24,
+      "height": 3
+    },
+    {
+      "x": 15,
+      "y": 0,
+      "width": 3,
+      "height": 9
+    }
+  ],
+  "objects": [
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 21,
+      "y": 15
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 21,
+      "y": 17,
+      "solid": [
+        [
+          21,
+          16
+        ],
+        [
+          22,
+          16
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          22,
+          17
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 12,
+      "y": 13
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 12,
+      "y": 15,
+      "solid": [
+        [
+          12,
+          14
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          12,
+          15
+        ],
+        [
+          13,
+          15
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 9,
+      "y": 1
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 9,
+      "y": 3,
+      "solid": [
+        [
+          9,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          10,
+          3
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 18,
+      "y": 11
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 18,
+      "y": 13,
+      "solid": [
+        [
+          18,
+          12
+        ],
+        [
+          19,
+          12
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          19,
+          13
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 14,
+      "y": 12
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 14,
+      "y": 14,
+      "solid": [
+        [
+          14,
+          13
+        ],
+        [
+          15,
+          13
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          15,
+          14
+        ]
+      ]
+    },
+    {
+      "tileset": 0,
+      "tile": 11,
+      "x": 9,
+      "y": 5
+    },
+    {
+      "tileset": 0,
+      "tile": 12,
+      "x": 9,
+      "y": 7,
+      "solid": [
+        [
+          9,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 13,
+      "y": 6,
+      "solid": [
+        [
+          13,
+          6
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 23,
+      "y": 1,
+      "solid": [
+        [
+          23,
+          1
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 12,
+      "x": 8,
+      "y": 5,
+      "solid": [
+        [
+          8,
+          5
+        ]
+      ]
+    },
+    {
+      "tileset": 4,
+      "tile": 4,
+      "x": 9,
+      "y": 16,
+      "solid": [
+        [
+          9,
+          16
+        ]
+      ]
+    }
+  ],
+  "tint": "#3a2a6a38",
+  "wildAreas": [],
+  "customWildAreas": [
+    {
+      "area": "x-inkmarsh-land",
+      "level_range": [
+        15,
+        18
+      ],
+      "pets": [
+        {
+          "pet_id": "vqsv6-db-96",
+          "name": "Hư không hành giả",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-64",
+          "name": "Lục Hành Điểu",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "area": "x-inkmarsh-water",
+      "level_range": [
+        16,
+        19
+      ],
+      "pets": [
+        {
+          "pet_id": "vqsv6-db-66",
+          "name": "Mực Ma",
+          "terrain": 2,
+          "quality_range": [
+            1,
+            2
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-68",
+          "name": "Thủy Thượng Phiêu",
+          "terrain": 2,
+          "quality_range": [
+            2,
+            3
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-64",
+          "name": "Lục Hành Điểu",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "x": 16,
+      "y": 0,
+      "target": "ryan-lakeside",
+      "spawnX": 17,
+      "spawnY": 16,
+      "label": "Hồ Sương Mù"
+    }
+  ],
+  "entities": {
+    "player": {
+      "x": 16,
+      "y": 1
+    },
+    "villagers": []
+  },
+  "water": [
+    {
+      "x": 3,
+      "y": 0,
+      "width": 5,
+      "height": 9
+    },
+    {
+      "x": 3,
+      "y": 12,
+      "width": 5,
+      "height": 6
+    }
+  ],
+  "bridge": {
+    "x": 3,
+    "y": 9,
+    "width": 5,
+    "height": 3
+  },
+  "terrain5": {
+    "source_maps": [],
+    "types": [
+      4
+    ],
+    "note": "prototype design: no VQSV5 area; the type sets the battle background and the terrain rule"
+  }
+}

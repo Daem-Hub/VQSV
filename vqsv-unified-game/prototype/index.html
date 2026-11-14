@@ -399,7 +399,8 @@
     const WILD_MAP_AREAS = { "ryan-phong-loi-forest": ["1-1", "1-2"], "ryan-forest-stream": ["1-3", "1-4"] };
     // Newer regions carry their own `wildAreas` in the map data (see tools/design_wild_maps.py).
     const areaKeys = mapId => assets.maps?.[mapId]?.wildAreas || WILD_MAP_AREAS[mapId] || [];
-    function wildAreasOf(mapId) { const keys = areaKeys(mapId); return (STATS?.wild_areas || []).filter(area => keys.includes(area.area)); }
+    // Branch maps (tools/design_extra_wild_maps.py) add designed tables for the VQSV6 pets no source area contains (`customWildAreas`, TRIAL).
+    function wildAreasOf(mapId) { const keys = areaKeys(mapId); return [...(STATS?.wild_areas || []).filter(area => keys.includes(area.area)), ...(assets.maps?.[mapId]?.customWildAreas || [])]; }
     function wildLevelRange(mapId) {
       const areas = wildAreasOf(mapId);
       return areas.length ? [Math.min(...areas.map(area => area.level_range[0])), Math.max(...areas.map(area => area.level_range[1]))] : null;
@@ -1540,7 +1541,7 @@
       if (state.mode === "battle") battleHint.textContent = `Kim tiền ${wallet.gold} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0} · Đạo cụ hồi phục: ${battleItems().reduce((sum, entry) => sum + bag[entry.row], 0)}`;
       updateWallet();
       if (state.mode === "battle") objectiveEl.textContent = state.battle.mustSwitch ? `${pet.name} kiệt sức. Chọn pet khác trong Sủng vật.` : state.battle.wild ? "Đánh yếu pet hoang dã rồi chọn Bắt pet: HP càng thấp càng dễ bắt." : "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
-      else if (areaKeys(assets.map.id).length && state.mode === "explore") {
+      else if (wildAreasOf(assets.map.id).length && state.mode === "explore") {
         const range = wildLevelRange(assets.map.id);
         objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.`;
       }
@@ -1734,7 +1735,7 @@
       ctx.restore(); }
       for (const link of (assets.map.links || [])) {
         ctx.fillStyle = "#f8e69c"; ctx.font = "bold 16px system-ui"; ctx.textAlign = "center";
-        ctx.fillText(link.x === 0 ? "◀" : "▶", link.x*S+10, link.y*S+15); ctx.textAlign = "left";
+        ctx.fillText(link.x === 0 ? "◀" : link.y === 0 ? "▲" : link.y === assets.map.height - 1 ? "▼" : "▶", link.x*S+10, link.y*S+15); ctx.textAlign = "left";
       }
       for (const npc of npcs) if (npc.y < state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
       drawCompanion(state.player.visualX, state.player.visualY, state.player.faceX);
@@ -2106,7 +2107,7 @@
       updateGuidance();
     }
     function maybeEncounter() {
-      if (state.mode !== "explore" || !state.spokeToElder || !areaKeys(assets.map.id).length) return;
+      if (state.mode !== "explore" || !state.spokeToElder || !wildAreasOf(assets.map.id).length) return;
       if (repelSteps > 0) { if (--repelSteps === 0) { statusEl.textContent = "Tị quái hàn đã hết tác dụng"; } updateWallet(); return; }
       if (++wildSteps <= ENCOUNTER_GRACE_STEPS || Math.random() >= ENCOUNTER_CHANCE) return;
       startWildBattle(rollWild(assets.map.id, terrainAt(state.player.x, state.player.y)));

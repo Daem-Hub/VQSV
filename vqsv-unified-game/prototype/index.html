@@ -411,7 +411,13 @@
       return areas.length ? [Math.min(...areas.map(area => area.level_range[0])), Math.max(...areas.map(area => area.level_range[1]))] : null;
     }
     // Water pets (terrain 2 in petArea.mid) appear while crossing a map's bridge; everything else is land.
+    // ---- Maps laid on real VQSV5 maps (tools/build_vqsv5_walk_maps.py): collision rows of digits; on foot 1, 2 and 4 block (at.java
+    // movement mode 0), 3 is shallow water. Water pets are met beside deep water (2) or in shallow water (3). ----
+    const BLOCK5 = new Set(["1", "2", "4"]);
+    const cell5 = (m, x, y) => (m.collision && y >= 0 && y < m.height && x >= 0 && x < m.width ? m.collision[y][x] : "1");
     function terrainAt(x, y) {
+      const m = assets.map;
+      if (m?.source5) return cell5(m, x, y) === "3" || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => cell5(m, x + dx, y + dy) === "2") ? 2 : 0;
       const bridge = assets.map?.bridge;
       return bridge && x >= bridge.x && x < bridge.x + bridge.width && y >= bridge.y && y < bridge.y + bridge.height ? 2 : 0;
     }
@@ -1106,6 +1112,7 @@
     const WILD5 = window.VQSVBootstrap?.vqsv5Wild || {};
     const V5_WILD_SHARE = 0.5;
     function rollWild5(mapId) {
+      if (assets.maps?.[mapId]?.wild5 === false) return null;          // branch maps kept for VQSV6 pets
       const sources = (assets.maps?.[mapId]?.terrain5?.source_maps || []).filter(index => WILD5[index]);
       if (!sources.length) return null;
       const index = sources[randInt(0, sources.length - 1)], table = WILD5[index], list = table.pet_ids.filter(id => STAT5_BY_ID.has(id));
@@ -1598,6 +1605,12 @@
     }
     function drawMap(depthY = null) {
       const m = assets.map;
+      if (m.source5) {                    // a real VQSV5 map: its ground picture (the layer above the characters comes in drawForeground)
+        const base = cachedImage(m.source5.base);
+        ctx.fillStyle = m.source5.background; ctx.fillRect(0, 0, m.width * S, m.height * S);
+        if (base?.complete && base.naturalWidth) ctx.drawImage(base, 0, 0);
+        return;
+      }
       ctx.fillStyle = "#536e3b";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       const groundStep = m.ground.step || 1;
@@ -1648,6 +1661,8 @@
       if (m.tint) { ctx.fillStyle = m.tint; ctx.fillRect(0, 0, canvas.width, canvas.height); }
     }
     function drawForeground(depthY) {
+      const over = assets.map.source5?.overlay ? cachedImage(assets.map.source5.overlay) : null;
+      if (over?.complete && over.naturalWidth) ctx.drawImage(over, 0, 0);
       for (const obj of [...assets.map.objects].sort((a, b) => a.y - b.y || a.x - b.x)) {
         if (obj.y >= depthY) drawMapObject(obj);
       }
@@ -1735,7 +1750,15 @@
       if (state.mode === "ending" && q.stage !== "done") herbQuestText.textContent = "Bản thử đã kết thúc; tải bản lưu trước trận hoặc chơi lại để làm nhiệm vụ này.";
       questJournal.showModal();
     }
+    // Camera: maps larger than the 24 x 18 screen scroll with Kael; smaller ones are centred on a dark border.
+    function cameraOf(m = assets.map) {
+      const axis = (size, view, focus) => size * S <= view ? -Math.round((view - size * S) / 2) : Math.max(0, Math.min(size * S - view, Math.round(focus * S + S / 2 - view / 2)));
+      return { x: axis(m.width, 480, state.player.visualX), y: axis(m.height, 360, state.player.visualY) };
+    }
     function drawExplore() {
+      const cam = cameraOf();
+      ctx.fillStyle = "#0d1416"; ctx.fillRect(0, 0, 480, 360);
+      ctx.save(); ctx.translate(-cam.x, -cam.y);
       drawMap(state.player.visualY);
       const npcs = villageNpcs();
       const point = assets.map.entities.encounter;
@@ -1760,13 +1783,14 @@
       ctx.restore(); }
       for (const link of (assets.map.links || [])) {
         ctx.fillStyle = "#f8e69c"; ctx.font = "bold 16px system-ui"; ctx.textAlign = "center";
-        ctx.fillText(link.x === 0 ? "◀" : link.y === 0 ? "▲" : link.y === assets.map.height - 1 ? "▼" : "▶", link.x*S+10, link.y*S+15); ctx.textAlign = "left";
+        ctx.fillText(link.x === 0 ? "◀" : link.x === assets.map.width - 1 ? "▶" : link.y === 0 ? "▲" : link.y === assets.map.height - 1 ? "▼" : "◆", link.x*S+10, link.y*S+15); ctx.textAlign = "left";
       }
       for (const npc of npcs) if (npc.y < state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
       drawCompanion(state.player.visualX, state.player.visualY, state.player.faceX);
       drawCharacter(assets.chars.player, state.player.visualX, state.player.visualY, "player", state.player.faceX, state.player.faceY);
       for (const npc of npcs) if (npc.y >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
       drawForeground(state.player.visualY);
+      ctx.restore();
       const npc = nearbyNpc();
       if (npc) prompt(`E  Nói chuyện · ${npc.name}`);
       else if (nearbyHerb()) prompt("E  Thu thập thảo dược");
@@ -2288,6 +2312,7 @@
     function blocked(x, y) {
       const m = assets.map;
       if (x < 0 || y < 0 || x >= m.width || y >= m.height) return true;
+      if (m.source5 && BLOCK5.has(cell5(m, x, y))) return true;
       if (m.objects.some(o => (o.solid || []).some(([sx, sy]) => sx === x && sy === y))) return true;
       if ((m.water || []).some(w => x >= w.x && x < w.x+w.width && y >= w.y && y < w.y+w.height)) return true;
       if ((m.chests || []).some(chest => chest.x === x && chest.y === y)) return true;

@@ -13,25 +13,25 @@ run('assets.maps = maps; assets.map = maps["slice01-border-village"]; reset(); s
 
 const chain = ['ryan-forest-stream', 'ryan-lakeside', 'ryan-meadow', 'ryan-highland', 'ryan-canyon', 'ryan-ashfield', 'ryan-skyridge'];
 for (const id of chain) assert(maps[id], id);
-// Every hop is two-way and both spawn cells are walkable.
+// Every hop is two-way and both arrival cells are walkable (the maps are real VQSV5 maps: exits sit on their walkable edges).
 for (let i = 0; i + 1 < chain.length; i++) {
   const east = maps[chain[i]].links.find(l => l.target === chain[i + 1]);
   const west = maps[chain[i + 1]].links.find(l => l.target === chain[i]);
   assert(east && west, `${chain[i]} <-> ${chain[i + 1]}`);
-  assert.equal(east.x, 23); assert.equal(west.x, 0);
+  assert.deepEqual([east.spawnX, east.spawnY], maps[chain[i + 1]].arrivals[chain[i]]);
   run(`assets.map = maps["${chain[i + 1]}"]`); assert.equal(run(`blocked(${east.spawnX}, ${east.spawnY})`), false);
   run(`assets.map = maps["${chain[i]}"]`); assert.equal(run(`blocked(${west.spawnX}, ${west.spawnY})`), false);
 }
-// Walk the whole chain by interacting at each exit (the exit cell must be reachable from the entry cell).
-run('assets.map = maps["ryan-forest-stream"]; state.player.x = 22; state.player.y = 10');
+// Walk the whole chain: from each arrival cell the next exit must be reachable on foot, then E takes you there.
+const reachable = (from, to) => JSON.parse(run(`JSON.stringify((() => { const seen = new Set(["${from}"]); const q = [[${from}]]; while (q.length) { const [x, y] = q.shift(); for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) { const nx = x + dx, ny = y + dy, key = nx + "," + ny; if (!seen.has(key) && (key === "${to}" || !blocked(nx, ny))) { seen.add(key); q.push([nx, ny]); } } } return seen.has("${to}"); })())`));
+run('assets.map = maps["ryan-forest-stream"]');
 for (let i = 1; i < chain.length; i++) {
-  run('interact()'); // east exit
+  const here = maps[chain[i - 1]], exit = here.links.find(l => l.target === chain[i]);
+  const start = i === 1 ? [here.entities.player.x, here.entities.player.y] : here.arrivals[chain[i - 2]];
+  assert(reachable(start.join(','), `${exit.x},${exit.y}`), `${chain[i - 1]}: exit to ${chain[i]} reachable`);
+  run(`state.player.x = ${exit.x}; state.player.y = ${exit.y}; interact()`);
   assert.equal(run('assets.map.id'), chain[i]);
-  assert.equal(run('state.player.x'), 1);
-  // Reachability from the west entry to the east exit on this map.
-  const reach = JSON.parse(run(`JSON.stringify((() => { const seen = new Set(["1,10"]); const q = [[1, 10]]; while (q.length) { const [x, y] = q.shift(); for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) { const nx = x + dx, ny = y + dy, key = nx + "," + ny; if (!seen.has(key) && !blocked(nx, ny)) { seen.add(key); q.push([nx, ny]); } } } return seen.has("22,10") && seen.has("23,10") && seen.has("0,10"); })())`));
-  assert.equal(reach, true, chain[i]);
-  run('state.player.x = 22; state.player.y = 10');
+  assert.deepEqual([run('state.player.x'), run('state.player.y')], maps[chain[i]].arrivals[chain[i - 1]]);
 }
 // Regions have increasing, source-backed level ranges and only their own areas feed the rolls.
 const ranges = chain.slice(1).map(id => JSON.parse(JSON.stringify(run(`wildLevelRange("${id}")`))));
@@ -50,7 +50,7 @@ for (const id of chain.slice(1)) {
     assert(allowed.has(roll.petId), `${id}: ${roll.petId}`);
     assert(roll.level >= lo && roll.level <= hi && roll.quality >= 1 && roll.quality <= 5);
   }
-  assert(maps[id].tint, `${id} tint`);
+  assert(maps[id].source5 && maps[id].collision.length === maps[id].height, `${id} is a real VQSV5 map`);
 }
 // No area is shared between regions.
 const used = chain.slice(1).flatMap(id => maps[id].wildAreas);
@@ -59,21 +59,24 @@ assert.equal(new Set(used).size, used.length);
 const waterIds = new Set(wildAreas.filter(a => maps['ryan-lakeside'].wildAreas.includes(a.area)).flatMap(a => a.pets.filter(p => p.terrain === 2).map(p => p.pet_id)));
 assert(waterIds.size > 0);
 run('assets.map = maps["ryan-lakeside"]');
-assert.equal(run('terrainAt(11, 10)'), 2); assert.equal(run('terrainAt(2, 10)'), 0);
+// on a real VQSV5 map: next to deep water (collision 2) or in shallow water (3) counts as water; inland does not
+const lake = maps['ryan-lakeside'];
+const shore = (() => { for (let y = 0; y < lake.height; y++) for (let x = 0; x < lake.width; x++) if (lake.collision[y][x] === '0' && [[1,0],[-1,0],[0,1],[0,-1]].some(([dx, dy]) => (lake.collision[y + dy] || '')[x + dx] === '2')) return [x, y]; })();
+const inland = (() => { for (let y = 0; y < lake.height; y++) for (let x = 0; x < lake.width; x++) if (lake.collision[y][x] === '0' && ![[1,0],[-1,0],[0,1],[0,-1]].some(([dx, dy]) => ['2', '3'].includes((lake.collision[y + dy] || '')[x + dx]))) return [x, y]; })();
+assert.equal(run(`terrainAt(${shore})`), 2); assert.equal(run(`terrainAt(${inland})`), 0);
 let sawWater = false;
 for (let i = 0; i < 200; i++) { const roll = JSON.parse(JSON.stringify(run('rollWild("ryan-lakeside", 2)'))); if (waterIds.has(roll.petId)) sawWater = true; }
 assert(sawWater);
 const landOnly = JSON.parse(JSON.stringify(run('Array.from({ length: 300 }, () => rollWild("ryan-lakeside", 0).petId)')));
 assert(landOnly.every(id => !waterIds.has(id) || wildAreas.some(a => maps['ryan-lakeside'].wildAreas.includes(a.area) && a.pets.some(p => p.pet_id === id && p.terrain === 0))));
-run('assets.map = maps["ryan-meadow"]'); // no bridge/water pets there: terrain 2 falls back to land
-assert.equal(run('terrainAt(11, 10)'), 0);
+run('assets.map = maps["ryan-meadow"]'); // no water pets there: terrain 2 falls back to land
 assert(JSON.parse(JSON.stringify(run('rollWild("ryan-meadow", 2)'))).level >= 13);
 // Entering a region reports the wild level range.
-run('assets.map = maps["ryan-canyon"]; assets.map = maps["ryan-highland"]; state.player.x = 22; state.player.y = 10; interact()');
+{ const l = maps['ryan-highland'].links.find(k => k.target === 'ryan-canyon'); run(`assets.map = maps["ryan-highland"]; state.player.x = ${l.x}; state.player.y = ${l.y}; interact()`); }
 assert.match(element('status').textContent, /Hẻm Núi Đá · pet hoang dã cấp 24–32/);
 // A high-level wild pet gets level-appropriate skills (slots = level / 10 + 1) from its own element pool.
 const skyAreas = maps['ryan-skyridge'].wildAreas;
 let sample; do { sample = JSON.parse(JSON.stringify(run('rollWild("ryan-skyridge")'))); } while (sample.v5);   // VQSV6 pets only; VQSV5 wild pets: test_vqsv5_wild.cjs
 const battle = JSON.parse(JSON.stringify(run(`(() => { const b = newBattle(${JSON.stringify(sample)}); state.battle = b; return { skills: b.enemy.skills.length, level: b.enemy.level, hp: b.enemy.max, slots: skillSlots(b.enemy.level) }; })()`)));
 assert.equal(battle.skills, battle.slots); assert(battle.level >= 35);
-console.log('Wild regions: chain travel, reachability, source pools, level order, water pets and tints passed.');
+console.log('Wild regions: chain travel, reachability, source pools, level order, water pets and real VQSV5 layouts passed.');

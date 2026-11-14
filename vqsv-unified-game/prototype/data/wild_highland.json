@@ -1,395 +1,112 @@
 {
   "id": "ryan-highland",
   "title": "Cao Nguyên Đá",
-  "width": 24,
-  "height": 18,
+  "width": 20,
+  "height": 27,
   "tileSize": 20,
+  "source5": {
+    "map": 14,
+    "place": "Cao nguyên phía đông 3",
+    "tileset": 4,
+    "background": "#004e98",
+    "base": "assets/maps/vqsv5_14_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "00000000001000100000",
+    "00000000101000100000",
+    "00111111111000111111",
+    "00100000000000033000",
+    "10100000000000033000",
+    "00110111000000033000",
+    "00110101000000033000",
+    "00110111111110011101",
+    "00000001000013310101",
+    "00000001111113311101",
+    "00000000000013310000",
+    "00111111111110011110",
+    "00100000000000000011",
+    "00100111111110000000",
+    "00100100000010000000",
+    "00100111101110000000",
+    "00100100010010000000",
+    "00100100000010000000",
+    "00000000000010000000",
+    "11111000000110000000",
+    "00001100000010000000",
+    "00001100000110000000",
+    "11011010001100000000",
+    "01011001001001111000",
+    "11011001110001001000",
+    "00000000000001001000",
+    "00000000000001000100"
+  ],
   "ground": {
     "tileset": 4,
     "tile": 28,
     "step": 1
   },
   "groundVariation": [],
-  "groundDecor": [
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 5,
-      "y": 13
-    },
-    {
-      "tileset": 4,
-      "tile": 5,
-      "x": 23,
-      "y": 8
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 11,
-      "y": 6
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 16,
-      "y": 4
-    },
-    {
-      "tileset": 4,
-      "tile": 5,
-      "x": 22,
-      "y": 7
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 23,
-      "y": 15
-    },
-    {
-      "tileset": 4,
-      "tile": 5,
-      "x": 6,
-      "y": 1
-    }
-  ],
-  "paths": [
-    {
-      "x": 0,
-      "y": 9,
-      "width": 24,
-      "height": 3
-    }
-  ],
-  "objects": [
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 9,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 9,
-      "y": 7,
-      "solid": [
-        [
-          9,
-          6
-        ],
-        [
-          10,
-          6
-        ],
-        [
-          9,
-          7
-        ],
-        [
-          10,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 5,
-      "y": 14
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 5,
-      "y": 16,
-      "solid": [
-        [
-          5,
-          15
-        ],
-        [
-          6,
-          15
-        ],
-        [
-          5,
-          16
-        ],
-        [
-          6,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 6,
-      "y": 3
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 6,
-      "y": 5,
-      "solid": [
-        [
-          6,
-          4
-        ],
-        [
-          7,
-          4
-        ],
-        [
-          6,
-          5
-        ],
-        [
-          7,
-          5
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 7,
-      "y": 12
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 7,
-      "y": 14,
-      "solid": [
-        [
-          7,
-          13
-        ],
-        [
-          8,
-          13
-        ],
-        [
-          7,
-          14
-        ],
-        [
-          8,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 10,
-      "y": 1
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 10,
-      "y": 3,
-      "solid": [
-        [
-          10,
-          2
-        ],
-        [
-          11,
-          2
-        ],
-        [
-          10,
-          3
-        ],
-        [
-          11,
-          3
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 13,
-      "y": 4,
-      "solid": [
-        [
-          13,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 8,
-      "y": 4,
-      "solid": [
-        [
-          8,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 23,
-      "y": 13,
-      "solid": [
-        [
-          23,
-          13
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 7,
-      "y": 15,
-      "solid": [
-        [
-          7,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 20,
-      "y": 3,
-      "solid": [
-        [
-          20,
-          3
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 22,
-      "y": 14,
-      "solid": [
-        [
-          22,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 14,
-      "y": 14,
-      "solid": [
-        [
-          14,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 11,
-      "y": 14,
-      "solid": [
-        [
-          11,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 12,
-      "y": 4,
-      "solid": [
-        [
-          12,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 17,
-      "y": 7,
-      "solid": [
-        [
-          17,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 4,
-      "y": 2,
-      "solid": [
-        [
-          4,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 20,
-      "y": 14,
-      "solid": [
-        [
-          20,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 0,
-      "y": 13,
-      "solid": [
-        [
-          0,
-          13
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 15,
-      "y": 14,
-      "solid": [
-        [
-          15,
-          14
-        ]
-      ]
-    }
-  ],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
   "entities": {
     "player": {
       "x": 1,
-      "y": 10
+      "y": 14
     },
     "villagers": []
   },
-  "tint": "#9fb0c624",
+  "links": [
+    {
+      "x": 0,
+      "y": 14,
+      "target": "ryan-meadow",
+      "spawnX": 24,
+      "spawnY": 14,
+      "label": "Đồng Cỏ Lộng Gió"
+    },
+    {
+      "x": 19,
+      "y": 13,
+      "target": "ryan-canyon",
+      "spawnX": 1,
+      "spawnY": 17,
+      "label": "Hẻm Núi Đá"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-highland:0",
+      "x": 9,
+      "y": 1,
+      "source_map": 14,
+      "reward": {
+        "kind": "item",
+        "item_id": 18,
+        "name": "Thụ chướng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-highland:1",
+      "x": 16,
+      "y": 10,
+      "source_map": 14,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      14
+    ],
+    "types": [
+      0
+    ]
+  },
   "wildAreas": [
     "3-4",
     "3-5",
@@ -397,79 +114,14 @@
     "4-0",
     "4-2"
   ],
-  "links": [
-    {
-      "x": 0,
-      "y": 10,
-      "target": "ryan-meadow",
-      "spawnX": 22,
-      "spawnY": 10,
-      "label": "Đồng Cỏ Lộng Gió"
-    },
-    {
-      "x": 23,
-      "y": 10,
-      "target": "ryan-canyon",
-      "spawnX": 1,
-      "spawnY": 10,
-      "label": "Hẻm Núi Đá"
-    }
-  ],
-  "chests": [
-    {
-      "id": "ryan-highland:0",
-      "x": 21,
-      "y": 3,
-      "source_map": 52,
-      "reward": {
-        "kind": "gold",
-        "kim_tien": 500
-      }
-    },
-    {
-      "id": "ryan-highland:1",
-      "x": 22,
-      "y": 15,
-      "source_map": 52,
-      "reward": {
-        "kind": "item",
-        "item_id": 11,
-        "name": "Đại sư cầu",
-        "quantity": 2
-      }
-    },
-    {
-      "id": "ryan-highland:2",
-      "x": 14,
-      "y": 5,
-      "source_map": 23,
-      "reward": {
-        "kind": "item",
-        "item_id": 7,
-        "name": "sinh mệnh thạch",
-        "quantity": 3
-      }
-    },
-    {
-      "id": "ryan-highland:3",
-      "x": 22,
-      "y": 5,
-      "source_map": 52,
-      "reward": {
-        "kind": "gold",
-        "kim_tien": 200
-      }
-    }
-  ],
-  "terrain5": {
-    "source_maps": [
-      21,
-      22,
-      23,
-      52
+  "arrivals": {
+    "ryan-meadow": [
+      1,
+      14
     ],
-    "types": [
-      1
+    "ryan-canyon": [
+      18,
+      13
     ]
   }
 }

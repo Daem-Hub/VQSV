@@ -23,7 +23,8 @@ for (const [id, host] of Object.entries(NEW)) {
   }
   // Two-way links: the host has an exit to the new map, the new map one back; both arrival tiles are free.
   const out = maps[host].links.find(l => l.target === id), back = m.links.find(l => l.target === host);
-  assert(out && back, id); assert.equal(m.terrain5.types.length, 1); assert.deepEqual(m.terrain5.source_maps, []);
+  assert(out && back, id); assert.equal(m.terrain5.types.length, 1); assert.deepEqual(m.terrain5.source_maps, [m.source5.map]);
+  assert.equal(m.wild5, false, `${id} keeps VQSV5 wild pets out`);
   assert.deepEqual([out.spawnX, out.spawnY], [m.entities.player.x, m.entities.player.y]);
 }
 // ---- In the game ----
@@ -35,7 +36,7 @@ const run = js => vm.runInContext(js, ctx), J = js => JSON.parse(JSON.stringify(
 run('assets.maps = window.VQSVBootstrap.maps; assets.map = assets.maps["slice01-border-village"]; reset(); state.spokeToElder = true');
 for (const [id, host] of Object.entries(NEW)) {
   // Travel there and back with E next to the exit.
-  run(`assets.map = assets.maps["${host}"]; state.mode = "explore"; { const l = assets.map.links.find(l => l.target === "${id}"); const dx = l.x === assets.map.width - 1 ? -1 : 0, dy = l.y === 0 ? 1 : l.y === assets.map.height - 1 ? -1 : 0; state.player = { x: l.x + dx, y: l.y + dy, visualX: l.x + dx, visualY: l.y + dy, faceX: 0, faceY: 0, step: null, inputDir: null }; } interact()`);
+  run(`assets.map = assets.maps["${host}"]; state.mode = "explore"; { const l = assets.map.links.find(l => l.target === "${id}"); state.player = { x: l.x, y: l.y, visualX: l.x, visualY: l.y, faceX: 0, faceY: 0, step: null, inputDir: null }; } interact()`);
   assert.equal(run('assets.map.id'), id); assert.equal(run('blocked(state.player.x, state.player.y)'), false);
   const range = J(`wildLevelRange("${id}")`); assert(range, id);
   assert.match(element('status').textContent, new RegExp(`pet hoang dã cấp ${range[0]}–${range[1]}`));
@@ -52,7 +53,7 @@ for (const [id, host] of Object.entries(NEW)) {
   assert.equal(J('battleFields5().enemy'), maps[id].terrain5.types[0]);
   assert.equal(J('state.battle.enemy.skills.length'), J('skillSlots(state.battle.enemy.level)'));
   run('state.mode = "explore"');
-  { const l = maps[id].links.find(x => x.target === host); run(`state.player = { x: ${l.x + (l.x === 0 ? 1 : 0)}, y: ${l.y + (l.y === 0 ? 1 : l.y === 17 ? -1 : 0)}, visualX: 0, visualY: 0, faceX: 0, faceY: 0, step: null, inputDir: null }; interact()`); }
+  { const l = maps[id].links.find(x => x.target === host); run(`state.player = { x: ${l.x}, y: ${l.y}, visualX: 0, visualY: 0, faceX: 0, faceY: 0, step: null, inputDir: null }; interact()`); }
   assert.equal(run('assets.map.id'), host); assert.equal(run('blocked(state.player.x, state.player.y)'), false);
 }
 // The sanctum only holds quality 5 legendaries at level 46-50.
@@ -72,4 +73,11 @@ for (let i = 0; i < 20; i++) { run('state.battle = newBattle(rollWild("ryan-sanc
 run('assets.map = assets.maps["slice01-border-village"]; state.battle = newBattle()'); assert.equal(run('state.battle.backdrop6'), 'quy');
 run('assets.map = assets.maps["ryan-meadow"]; state.battle = newBattle({ v5: true, petId: "vqsv5-db-0", level: 10, quality: 1, traits: [3, 0] })'); assert.equal(run('state.battle.backdrop6'), null);
 assert.equal(run('backdrop6For("unknown-map", { petId: "vqsv6-db-33" }, { element: "Hỏa hệ" })'), null);
+// The marsh's water pets are met beside its water (the map is a real VQSV5 map with deep water).
+{ const m = maps['ryan-inkmarsh'], water = new Set(m.customWildAreas.flatMap(a => a.pets.filter(p => p.terrain === 2).map(p => p.pet_id)));
+  const shore = (() => { for (let y = 0; y < m.height; y++) for (let x = 0; x < m.width; x++) if (m.collision[y][x] === '0' && [[1,0],[-1,0],[0,1],[0,-1]].some(([dx, dy]) => (m.collision[y + dy] || '')[x + dx] === '2')) return [x, y]; })();
+  run('assets.map = assets.maps["ryan-inkmarsh"]'); assert.equal(run(`terrainAt(${shore})`), 2);
+  let saw = false; for (let i = 0; i < 100; i++) if (water.has(J(`rollWild("ryan-inkmarsh", terrainAt(${shore}))`).petId)) saw = true; assert(saw); }
+// Every pet of the branch tables can actually be met: water pets only on maps with water.
+for (const id of Object.keys(NEW)) { const m = maps[id]; if (m.customWildAreas.some(a => a.pets.some(p => p.terrain === 2))) assert(m.collision.some(row => /[23]/.test(row)), `${id} has water for its water pets`); }
 console.log('Extra wild maps: every VQSV6 base form reachable, two-way travel, tables, water pets, battles and VQSV6 backgrounds passed.');

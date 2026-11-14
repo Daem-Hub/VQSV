@@ -1,363 +1,52 @@
 {
   "id": "ryan-ashfield",
   "title": "Bãi Tro Núi Lửa",
-  "width": 24,
-  "height": 18,
+  "width": 20,
+  "height": 24,
   "tileSize": 20,
+  "source5": {
+    "map": 41,
+    "place": "Rừng rậm u ám 4",
+    "tileset": 8,
+    "background": "#474868",
+    "base": "assets/maps/vqsv5_41_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "00001101000100000000",
+    "00010011000100000000",
+    "00100000000011111000",
+    "00100111000000000100",
+    "00011011000000000100",
+    "11111100000000011000",
+    "00000000000000011111",
+    "00000000000000000000",
+    "00000000000000000000",
+    "00000000000000000000",
+    "00000000000000000000",
+    "11100000000000000000",
+    "00101111111101110000",
+    "00010111110010010000",
+    "00111000001000100000",
+    "01000000001100100000",
+    "01000000000011000000",
+    "01000000000000000000",
+    "01000000000000000000",
+    "10000011100000000000",
+    "10000100100110000000",
+    "10000101000101111101",
+    "10000110000100000010",
+    "10000110000100000000"
+  ],
   "ground": {
     "tileset": 4,
     "tile": 23,
     "step": 1
   },
   "groundVariation": [],
-  "groundDecor": [
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 21,
-      "y": 15
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 12,
-      "y": 12
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 0,
-      "y": 8
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 23,
-      "y": 2
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 9,
-      "y": 2
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 1,
-      "y": 14
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 1,
-      "y": 8
-    },
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 5,
-      "y": 15
-    }
-  ],
-  "paths": [
-    {
-      "x": 0,
-      "y": 9,
-      "width": 24,
-      "height": 3
-    }
-  ],
-  "objects": [
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 6,
-      "y": 0,
-      "solid": [
-        [
-          6,
-          0
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 5,
-      "y": 7,
-      "solid": [
-        [
-          5,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 1,
-      "y": 4,
-      "solid": [
-        [
-          1,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 7,
-      "y": 3,
-      "solid": [
-        [
-          7,
-          3
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 7,
-      "y": 6,
-      "solid": [
-        [
-          7,
-          6
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 10,
-      "y": 7,
-      "solid": [
-        [
-          10,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 23,
-      "y": 16,
-      "solid": [
-        [
-          23,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 7,
-      "y": 14,
-      "solid": [
-        [
-          7,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 15,
-      "y": 2,
-      "solid": [
-        [
-          15,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 22,
-      "y": 14,
-      "solid": [
-        [
-          22,
-          14
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 2,
-      "y": 15,
-      "solid": [
-        [
-          2,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 6,
-      "y": 4,
-      "solid": [
-        [
-          6,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 19,
-      "y": 0,
-      "solid": [
-        [
-          19,
-          0
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 16,
-      "y": 15,
-      "solid": [
-        [
-          16,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 3,
-      "y": 3,
-      "solid": [
-        [
-          3,
-          3
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 1,
-      "y": 2,
-      "solid": [
-        [
-          1,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 23,
-      "y": 17,
-      "solid": [
-        [
-          23,
-          17
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 12,
-      "y": 16,
-      "solid": [
-        [
-          12,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 5,
-      "y": 17,
-      "solid": [
-        [
-          5,
-          17
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 2,
-      "y": 7,
-      "solid": [
-        [
-          2,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 9,
-      "y": 5,
-      "solid": [
-        [
-          9,
-          5
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 12,
-      "y": 15,
-      "solid": [
-        [
-          12,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 14,
-      "y": 2,
-      "solid": [
-        [
-          14,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 15,
-      "y": 4,
-      "solid": [
-        [
-          15,
-          4
-        ]
-      ]
-    }
-  ],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
   "entities": {
     "player": {
       "x": 1,
@@ -365,7 +54,46 @@
     },
     "villagers": []
   },
-  "tint": "#ff4a2a30",
+  "links": [
+    {
+      "x": 0,
+      "y": 10,
+      "target": "ryan-canyon",
+      "spawnX": 18,
+      "spawnY": 10,
+      "label": "Hẻm Núi Đá"
+    },
+    {
+      "x": 19,
+      "y": 12,
+      "target": "ryan-skyridge",
+      "spawnX": 0,
+      "spawnY": 15,
+      "label": "Dải Mây Cao"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-ashfield:0",
+      "x": 16,
+      "y": 3,
+      "source_map": 41,
+      "reward": {
+        "kind": "item",
+        "item_id": 25,
+        "name": "Bạch kim",
+        "quantity": 1
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      41
+    ],
+    "types": [
+      3
+    ]
+  },
   "wildAreas": [
     "4-10",
     "4-11",
@@ -374,80 +102,14 @@
     "5-4",
     "5-6"
   ],
-  "links": [
-    {
-      "x": 0,
-      "y": 10,
-      "target": "ryan-canyon",
-      "spawnX": 22,
-      "spawnY": 10,
-      "label": "Hẻm Núi Đá"
-    },
-    {
-      "x": 23,
-      "y": 10,
-      "target": "ryan-skyridge",
-      "spawnX": 1,
-      "spawnY": 10,
-      "label": "Dải Mây Cao"
-    }
-  ],
-  "chests": [
-    {
-      "id": "ryan-ashfield:0",
-      "x": 16,
-      "y": 7,
-      "source_map": 27,
-      "reward": {
-        "kind": "item",
-        "item_id": 20,
-        "name": "Bong bóng",
-        "quantity": 1
-      }
-    },
-    {
-      "id": "ryan-ashfield:1",
-      "x": 13,
-      "y": 15,
-      "source_map": 3,
-      "reward": {
-        "kind": "item",
-        "item_id": 12,
-        "name": "Hưng phấn cô",
-        "quantity": 2
-      }
-    },
-    {
-      "id": "ryan-ashfield:2",
-      "x": 2,
-      "y": 4,
-      "source_map": 67,
-      "reward": {
-        "kind": "item",
-        "item_id": 2,
-        "name": "Chocolate",
-        "quantity": 2
-      }
-    },
-    {
-      "id": "ryan-ashfield:3",
-      "x": 11,
-      "y": 6,
-      "source_map": 45,
-      "reward": {
-        "kind": "item",
-        "item_id": 2,
-        "name": "Chocolate",
-        "quantity": 1
-      }
-    }
-  ],
-  "terrain5": {
-    "source_maps": [
-      57
+  "arrivals": {
+    "ryan-canyon": [
+      1,
+      10
     ],
-    "types": [
-      0
+    "ryan-skyridge": [
+      18,
+      12
     ]
   }
 }

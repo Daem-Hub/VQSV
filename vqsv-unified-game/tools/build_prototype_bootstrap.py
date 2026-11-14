@@ -7,7 +7,8 @@ prototype = PROJECT / "prototype"
 opening_map = json.loads((prototype / "data" / "opening_map.json").read_text(encoding="utf-8"))
 forest_map = json.loads((prototype / "data" / "forest_map.json").read_text(encoding="utf-8"))
 stream_map = json.loads((prototype / "data" / "forest_stream_map.json").read_text(encoding="utf-8"))
-opening_map["links"] = [{"x": 23, "y": 10, "target": forest_map["id"], "spawnX": 1, "spawnY": 10, "label": forest_map["title"]}]
+arrive = forest_map.get("arrivals", {}).get(opening_map["id"], [1, 10])          # the forest cell next to its exit back to the village
+opening_map["links"] = [{"x": 23, "y": 10, "target": forest_map["id"], "spawnX": arrive[0], "spawnY": arrive[1], "label": forest_map["title"]}]
 tile_defs = {
     str(index): json.loads((prototype / "assets" / "tilesets" / f"tileset_{index:02}.json").read_text(encoding="utf-8"))
     for index in (0, 4)

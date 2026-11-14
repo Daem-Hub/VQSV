@@ -497,9 +497,10 @@ assert.match(win(), /Lôi Miêu \+500 KN.*\(Ký Cư Giải Xác\) \+500 KN/);
 assert.equal(run('progress["vqsv6-db-61"].exp'), 160);
 teamIds.length = 0;
 // TRIAL badge source: the first visit to each higher-level region gives 1 huy hiệu, once.
-reset3(); run('state.spokeToElder = true; assets.maps = maps; assets.map = maps["ryan-forest-stream"]; state.player.x = 22; state.player.y = 10; interact()');
+run('globalThis.travelTo = target => { const l = assets.map.links.find(k => k.target === target); state.player.x = l.x; state.player.y = l.y; interact(); }');
+reset3(); run('state.spokeToElder = true; assets.maps = maps; assets.map = maps["ryan-forest-stream"]; travelTo("ryan-lakeside")');
 assert.equal(run('assets.map.id'), 'ryan-lakeside'); assert.equal(run('wallet.badges'), 3);
 assert.match(element('status').textContent, /\+1 huy hiệu/);
-run('state.player.x = 1; state.player.y = 10; interact(); state.player.x = 22; state.player.y = 10; interact()');
+run('travelTo("ryan-forest-stream"); travelTo("ryan-lakeside")');
 assert.equal(run('assets.map.id'), 'ryan-lakeside'); assert.equal(run('wallet.badges'), 3);
 console.log('Wild capture: source encounter pools, grace steps, capture formula, ball use, story restriction, experience, skill learning, status effects, evolution, shop, items, skill management and held items passed.');

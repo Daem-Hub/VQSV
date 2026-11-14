@@ -2,375 +2,115 @@
   "id": "ryan-lakeside",
   "title": "Hồ Sương Mù",
   "width": 24,
-  "height": 18,
+  "height": 28,
   "tileSize": 20,
+  "source5": {
+    "map": 31,
+    "place": "Vực Bắc Bắc Hải",
+    "tileset": 5,
+    "background": "#30b8ff",
+    "base": "assets/maps/vqsv5_31_base.png",
+    "overlay": "assets/maps/vqsv5_31_overlay.png"
+  },
+  "collision": [
+    "000000012222210000000000",
+    "000000012222210000000000",
+    "000000012222210000000000",
+    "000000012222210001111000",
+    "111111112222210001001000",
+    "222222222222210000000000",
+    "222222222222210000000000",
+    "222222222222211111111001",
+    "222222222222210000012222",
+    "222222222222100000012222",
+    "222222222222100000012222",
+    "222222222222101100112222",
+    "211111122222101222222222",
+    "210000122222101222222222",
+    "210000122222111222222222",
+    "210000122222222222222222",
+    "211001122222222222222222",
+    "222222222222222222222222",
+    "222222222222222211111122",
+    "222222222222222210000122",
+    "111111111122222210000122",
+    "000000000122222210000122",
+    "000000000122222211001122",
+    "110011100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222"
+  ],
   "ground": {
     "tileset": 4,
     "tile": 25,
     "step": 2
   },
   "groundVariation": [],
-  "groundDecor": [
-    {
-      "tileset": 4,
-      "tile": 3,
-      "x": 15,
-      "y": 0
-    },
-    {
-      "tileset": 4,
-      "tile": 5,
-      "x": 21,
-      "y": 2
-    },
-    {
-      "tileset": 4,
-      "tile": 1,
-      "x": 14,
-      "y": 8
-    },
-    {
-      "tileset": 4,
-      "tile": 5,
-      "x": 2,
-      "y": 8
-    }
-  ],
-  "paths": [
-    {
-      "x": 0,
-      "y": 9,
-      "width": 24,
-      "height": 3
-    },
-    {
-      "x": 17,
-      "y": 12,
-      "width": 1,
-      "height": 6,
-      "branch": "ryan-inkmarsh"
-    }
-  ],
-  "objects": [
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 15,
-      "y": 14
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 15,
-      "y": 16,
-      "solid": [
-        [
-          15,
-          15
-        ],
-        [
-          16,
-          15
-        ],
-        [
-          15,
-          16
-        ],
-        [
-          16,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 18,
-      "y": 14
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 18,
-      "y": 16,
-      "solid": [
-        [
-          18,
-          15
-        ],
-        [
-          19,
-          15
-        ],
-        [
-          18,
-          16
-        ],
-        [
-          19,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 19,
-      "y": 4
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 19,
-      "y": 6,
-      "solid": [
-        [
-          19,
-          5
-        ],
-        [
-          20,
-          5
-        ],
-        [
-          19,
-          6
-        ],
-        [
-          20,
-          6
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 6,
-      "y": 13
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 6,
-      "y": 15,
-      "solid": [
-        [
-          6,
-          14
-        ],
-        [
-          7,
-          14
-        ],
-        [
-          6,
-          15
-        ],
-        [
-          7,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 6,
-      "y": 2
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 6,
-      "y": 4,
-      "solid": [
-        [
-          6,
-          3
-        ],
-        [
-          7,
-          3
-        ],
-        [
-          6,
-          4
-        ],
-        [
-          7,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 15,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 15,
-      "y": 7,
-      "solid": [
-        [
-          15,
-          6
-        ],
-        [
-          16,
-          6
-        ],
-        [
-          15,
-          7
-        ],
-        [
-          16,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 4,
-      "y": 2,
-      "solid": [
-        [
-          4,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 14,
-      "y": 5,
-      "solid": [
-        [
-          14,
-          5
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 16,
-      "y": 2,
-      "solid": [
-        [
-          16,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 1,
-      "y": 6,
-      "solid": [
-        [
-          1,
-          6
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 12,
-      "x": 19,
-      "y": 0,
-      "solid": [
-        [
-          19,
-          0
-        ]
-      ]
-    },
-    {
-      "tileset": 4,
-      "tile": 4,
-      "x": 18,
-      "y": 6,
-      "solid": [
-        [
-          18,
-          6
-        ]
-      ]
-    }
-  ],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
   "entities": {
     "player": {
-      "x": 1,
-      "y": 10
+      "x": 15,
+      "y": 6
     },
     "villagers": []
   },
-  "tint": "#6fb7ff24",
-  "wildAreas": [
-    "2-0",
-    "2-2",
-    "2-3",
-    "2-4",
-    "2-5"
-  ],
   "links": [
     {
-      "x": 0,
-      "y": 10,
+      "x": 14,
+      "y": 6,
       "target": "ryan-forest-stream",
-      "spawnX": 22,
-      "spawnY": 10,
+      "spawnX": 26,
+      "spawnY": 16,
       "label": "Suối Sấm Phong Lôi"
     },
     {
       "x": 23,
-      "y": 10,
+      "y": 6,
       "target": "ryan-meadow",
       "spawnX": 1,
-      "spawnY": 10,
+      "spawnY": 14,
       "label": "Đồng Cỏ Lộng Gió"
     },
     {
-      "x": 17,
-      "y": 17,
+      "x": 21,
+      "y": 7,
       "target": "ryan-inkmarsh",
-      "spawnX": 16,
-      "spawnY": 1,
+      "spawnX": 11,
+      "spawnY": 8,
       "label": "Đầm Mực Đen"
     }
   ],
-  "water": [
-    {
-      "x": 10,
-      "y": 0,
-      "width": 4,
-      "height": 9
-    },
-    {
-      "x": 10,
-      "y": 12,
-      "width": 4,
-      "height": 6
-    }
-  ],
-  "bridge": {
-    "x": 10,
-    "y": 9,
-    "width": 4,
-    "height": 3
-  },
   "chests": [
     {
       "id": "ryan-lakeside:0",
-      "x": 2,
-      "y": 13,
+      "x": 23,
+      "y": 0,
+      "source_map": 31,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-lakeside:3",
+      "x": 14,
+      "y": 3,
+      "source_map": 31,
+      "reward": {
+        "kind": "item",
+        "item_id": 4,
+        "name": "Tụ năng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-lakeside:4",
+      "x": 16,
+      "y": 3,
       "source_map": 31,
       "reward": {
         "kind": "item",
@@ -380,56 +120,45 @@
       }
     },
     {
-      "id": "ryan-lakeside:1",
-      "x": 5,
-      "y": 15,
-      "source_map": 48,
+      "id": "ryan-lakeside:5",
+      "x": 21,
+      "y": 3,
+      "source_map": 31,
       "reward": {
         "kind": "item",
-        "item_id": 1,
-        "name": "Bánh bích quy",
-        "quantity": 2
-      }
-    },
-    {
-      "id": "ryan-lakeside:2",
-      "x": 22,
-      "y": 15,
-      "source_map": 29,
-      "reward": {
-        "kind": "item",
-        "item_id": 3,
-        "name": "Năng lượng thạch",
-        "quantity": 1
-      }
-    },
-    {
-      "id": "ryan-lakeside:3",
-      "x": 7,
-      "y": 5,
-      "source_map": 36,
-      "reward": {
-        "kind": "item",
-        "item_id": 1,
-        "name": "Bánh bích quy",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
         "quantity": 2
       }
     }
   ],
   "terrain5": {
     "source_maps": [
-      28,
-      29,
-      31,
-      32,
-      35,
-      36,
-      37,
-      48,
-      53
+      31
     ],
     "types": [
       4
+    ]
+  },
+  "wildAreas": [
+    "2-0",
+    "2-2",
+    "2-3",
+    "2-4",
+    "2-5"
+  ],
+  "arrivals": {
+    "ryan-forest-stream": [
+      15,
+      6
+    ],
+    "ryan-meadow": [
+      22,
+      6
+    ],
+    "ryan-inkmarsh": [
+      21,
+      6
     ]
   }
 }

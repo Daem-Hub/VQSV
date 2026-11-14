@@ -49,7 +49,7 @@ REGIONS = [
          custom=[{"area": "x-sanctum", "level_range": [46, 50], "pets": pets(
              ("vqsv6-db-25", "Hỏa Phượng Hoàng", 0, (5, 5)), ("vqsv6-db-41", "Linh Quang Lộc", 0, (5, 5)), ("vqsv6-db-57", "Chiến Thần Đà", 0, (5, 5)),
              ("vqsv6-db-85", "Lôi Kỳ Lân", 0, (5, 5)), ("vqsv6-db-97", "Minh vương Long", 0, (5, 5)), ("vqsv6-db-109", "Tinh Vân Hạc", 0, (5, 5)),
-             ("vqsv6-db-73", "Tương Quân Giải", 2, (5, 5)))}], seed=24),
+             ("vqsv6-db-73", "Tương Quân Giải", 0, (5, 5)))}], seed=24),   # on land: the sky city it stands on has no water
 ]
 NEW_IDS = {r["id"] for r in REGIONS}
 

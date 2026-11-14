@@ -236,6 +236,10 @@ function cast({ fromEnemy, element, startAt, crit = false, tier = 1 }) {
   const feetTo = sidePos(fromEnemy ? "hero" : "foe", true);
   // Ground effects stand on the target's feet; spark and strike effects hit its body.
   const plan = planOf(planKey(element), tier);
+  // sound on impact (sound_fx.js): after the projectile flight when the move throws something
+  const impact = Math.max(0, startAt - performance.now()) + (plan.find(step => step.travel)?.travel || 60);
+  window.VQSVSound?.play(planKey(element), { tier, delay: impact });
+  if (crit) window.VQSVSound?.play("crit", { delay: impact + 80 });
   for (const step of plan) {
     add(step, from, to, startAt);
   }
@@ -243,9 +247,13 @@ function cast({ fromEnemy, element, startAt, crit = false, tier = 1 }) {
   if (!live.length) return;
 }
 // A one-off event effect standing on one side's feet (EVENT_FX), e.g. a capture burst on the enemy or a parry on the attacker.
+const EVENT_SOUND = { miss: ["miss"], reflect: ["reflect"], drain: ["drain"], revive: ["revive"], captureHit: ["ballHit"], captureOk: ["caught"], captureFail: ["escape"],
+  healSmall: ["heal", 1], healBig: ["heal", 2], loyalty: ["loyalty"], sacrifice: ["sacrifice"] };
 function event({ kind, onEnemy, startAt, delay = 0, image = null, box = [114, 112] }) {
   const row = EVENT_FX[kind];
   if (!row) return;
+  const sound = EVENT_SOUND[kind];
+  if (sound) window.VQSVSound?.play(sound[0], { tier: sound[1] || 1, delay: Math.max(0, startAt - performance.now()) + delay });
   const at = sidePos(onEnemy ? "foe" : "hero", true), actor = actorFromImage(image, box);
   add({ ...row, on: "target", at: delay, opts: { ...(row.opts || {}), ...(actor ? { actor } : {}) } }, at, at, startAt);
 }
@@ -253,6 +261,7 @@ function basic({ fromEnemy, startAt, element }) { cast({ fromEnemy, element: ele
 function status({ onEnemy, kind, id, startAt, image = null, box = [114, 112] }) {
   const row = (kind === "buff" ? BUFF_FX : kind === "v5" ? V5_FX : DEBUFF_FX)[id];
   if (!row) return;
+  window.VQSVSound?.play(kind === "buff" ? (row.fx === "heal" ? "heal" : "buff") : "debuff", { delay: Math.max(0, startAt - performance.now()) });
   const at = sidePos(onEnemy ? "foe" : "hero", true);
   const actor = actorFromImage(image, box), opts = { ...(row.opts || {}), ...(actor ? { actor } : {}) };
   // effects that point somewhere (faceFoe) are anchored on the holder and turned toward the opponent

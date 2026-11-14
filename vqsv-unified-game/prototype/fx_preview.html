@@ -16,13 +16,14 @@ button:hover{border-color:var(--accent);color:var(--accent)}
 h2{font-size:16px;margin:20px 0 8px}
 </style></head><body><main>
 <h1>Hiệu ứng kỹ năng (pixelfx)</h1>
-<p>Mỗi ô là một hệ: nhấn "Pet mình ra đòn" hoặc "Đối thủ ra đòn" để xem. Hiệu ứng trạng thái ở phần dưới. Hình pet trong ô chỉ là khối giữ chỗ.</p>
+<p>Mỗi ô là một hệ: nhấn "Pet mình ra đòn" hoặc "Đối thủ ra đòn" để xem. Hiệu ứng trạng thái ở phần dưới. Có âm thanh (bấm một nút bất kỳ để trình duyệt cho phép phát).</p>
 <div class="grid" id="elements"></div>
 <h2>Trạng thái có lợi</h2><div class="grid" id="buffs"></div>
 <h2>Trạng thái bất lợi</h2><div class="grid" id="debuffs"></div>
 <h2>Trạng thái VQSV5</h2><div class="grid" id="v5"></div>
 <h2>Sự kiện trong trận</h2><div class="grid" id="events"></div>
 <script src="data/bootstrap.js"></script>
+<script src="sound_fx.js"></script>
 <script type="module">
 import "./skill_fx.js";
 const fx = window.VQSVSkillFx;

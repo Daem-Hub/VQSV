@@ -107,6 +107,9 @@
     #error { color: #ffb0a4; white-space: pre-wrap; margin-top: 10px; font-size: 12px; }
     .save-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
     .save-controls button { background: #b7d4bd; font-size: 12px; }
+    .sound-controls { grid-template-columns: auto 1fr; align-items: center; }
+    .sound-controls button { white-space: nowrap; padding-inline: 10px; }
+    .sound-controls input { width: 100%; accent-color: #7fb69a; }
     #saveStatus { min-height: 1.2em; color: #c7d7c8; font-size: 11px; line-height: 1.4; }
     #questJournal { width: min(520px, calc(100vw - 32px)); padding: 0; color: #eef4e7; background: #182b24; border: 1px solid #7b895e; border-radius: 14px; }
     #questJournal::backdrop { background: #07110dcc; }
@@ -189,6 +192,7 @@
         <p id="battleHint" class="battle-controls-hint" hidden aria-live="polite"></p>
         <p><strong>Tiến trình</strong><br>Lưu vị trí và mốc truyện trên trình duyệt này.</p>
         <div class="save-controls"><button id="saveGame" type="button">Lưu</button><button id="loadGame" type="button">Tải lại</button></div>
+        <div class="save-controls sound-controls"><button id="toggleSound" type="button" title="Bật/tắt âm thanh hiệu ứng (phím N)">Âm thanh: bật</button><input id="soundVolume" type="range" min="0" max="100" step="5" aria-label="Âm lượng hiệu ứng"></div>
         <p id="saveStatus" aria-live="polite"></p>
         <p><strong>Ví</strong><br><span id="walletStatus"></span></p>
         <p><strong>Nguyên liệu tiến hóa</strong><br><span id="stoneStatus"></span></p>
@@ -270,6 +274,7 @@
   <script src="pet_book.js"></script>
   <script src="skill_book.js"></script>
   <script src="world_atlas.js"></script>
+  <script src="sound_fx.js"></script>
   <script type="module" src="skill_fx.js"></script>
   <script>
     const canvas = document.getElementById("game");
@@ -516,6 +521,7 @@
       if (state.mode === "battle") return { ok: false, message: "Không thể nhận huy hiệu trong trận." };
       if (!pending) return { ok: false, message: "Chưa có loài mới nào để đổi huy hiệu." };
       wallet.badges += pending; wallet.medalsClaimed = speciesCaught5(); saveWallet(); updateWallet();
+      window.VQSVSound?.play("coin");
       return { ok: true, amount: pending, message: `Đổi ${pending} loài mới lấy ${pending} huy hiệu.` };
     }
     window.VQSVTrainer = { rank: trainerRank5, species: speciesCaught5, pendingMedals: pendingMedals5, claim: claimMedals5 };
@@ -553,6 +559,7 @@
         } else { wallet.gold += grant.gold; saveWallet(); updateWallet(); got = `${grant.gold} kim tiền`; message = `Đạt được: ${got}.`; }
       }
       saveMats5(); updateStones();
+      window.VQSVSound?.play("chest");
       return { ok: true, tier, item: got, message };
     }
     // ---- Chests on the maps (tools/design_map_chests.py): the contents are real VQSV5 map chests (vqsv5_map_chests.json), the positions are designed.
@@ -588,6 +595,7 @@
       else text = grantSource5(reward.item_id, reward.quantity);
       chestsOpened.add(chest.id); saveChests();
       const message = `Mở rương, đạt được: ${text}.`;
+      window.VQSVSound?.play("chest");
       notice = { text: message, until: performance.now() + 3500 };
       statusEl.textContent = message;
       return { ok: true, message, reward };
@@ -887,6 +895,7 @@
       if (balanceOf(entry) < total) return { ok: false, message: `${entry.currency === 0 ? "Kim tiền" : "Huy hiệu"} chưa đủ (cần ${total}, đang có ${balanceOf(entry)}).` };
       adjustBalance(entry, -total);
       setCount(entry, countOf(entry) + quantity);
+      window.VQSVSound?.play("coin");
       return { ok: true, total, message: `Đã mua ${entry.name} × ${quantity} (${total} ${currencyName(entry)}).` };
     }
     // Selling (game/k.java aZ()): table 4 items only, for price / 2 in the item's own currency, in the village only.
@@ -991,6 +1000,7 @@
         member.max = member.hp = member.stats.hp;
         if (member.skill) member.skill.uses = member.skill.max;
       }
+      if (entry.level !== before) member.leveledUp = true;
       return entry.level - before;
     }
     const spriteCache = new Map();
@@ -2140,6 +2150,7 @@
         window.VQSVSkillFx.event({ kind: "captureHit", onEnemy: true, startAt: now, delay: 430 });
         window.VQSVSkillFx.event({ kind: battle.captured ? "captureOk" : "captureFail", onEnemy: true, startAt: now, delay: battle.captured ? 820 : 980 });
       }
+      window.VQSVSound?.play("throw");
       const ball = CAPTURE.balls[ballIndex].name;
       battle.message = battle.captured ? `Kael ném ${ball}… Bắt thành công ${battle.enemy.name}!` : `Kael ném ${ball}… ${battle.enemy.name} thoát ra! (tỉ lệ ${rate}%)`;
       battle.pendingUntil = now + (battle.captured ? 1500 : 1150);
@@ -2177,6 +2188,7 @@
       const player = state.player;
       player.inputDir = null; player.step = null; player.visualX = player.x; player.visualY = player.y;
       state.battle = newBattle(wild); state.mode = "battle";
+      window.VQSVSound?.play("encounter");
       statusEl.textContent = `Chạm trán · ${state.battle.enemy.name} hoang dã`;
       updateGuidance();
     }
@@ -2454,6 +2466,8 @@
         lines.push(`${member.name} (Ký Cư Giải Xác) +${amount} KN${gained ? `, lên cấp ${member.level}!` : "."}`);
         if (gained) member.subtitle = member.subtitle.replace(/CẤP \d+/, `CẤP ${member.level}`);
       }
+      window.VQSVSound?.play("victory");
+      if (members.some(member => member.leveledUp) || sharers.some(member => member.leveledUp)) window.VQSVSound?.play("levelUp", { delay: 900 });
       const chestLine = rollChestDrop5();
       if (chestLine) lines.push(chestLine);
       saveProgress();
@@ -2478,6 +2492,7 @@
     function handleFaint() {
       const pet = activePet();
       if (pet.hp > 0) return;
+      window.VQSVSound?.play("faint");
       state.battle.pendingUntil = 0;
       state.battle.guard = false;
       if (state.battle.team.some(member => member.hp > 0)) {
@@ -2541,7 +2556,7 @@
       if (activePet().debuffs?.[2] && !state.battle.mustSwitch) { state.battle.message = `${activePet().name} đang bị ${DEBUFF(2).name}, không thể chạy trốn.`; return; }
       const own5 = activePet();
       if (!state.battle.mustSwitch && !hasPassive(own5, 42) && (own5.v5status?.id === 3 || own5.v5status?.id === 4)) { state.battle.message = `${own5.name} đang bị ${STATUS5[own5.v5status.id].name}, không thể chạy trốn.`; return; }
-      if (state.battle.wild) { finishWild("flee"); return; }
+      if (state.battle.wild) { window.VQSVSound?.play("flee"); finishWild("flee"); return; }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";
       updateGuidance();
@@ -2708,6 +2723,7 @@
       if (key === "m" && !e.repeat) { e.preventDefault(); openMap(); return; }
       if (key === "b" && !e.repeat) { e.preventDefault(); openShop(); return; }
       if (key === "i" && !e.repeat) { e.preventDefault(); openBag(); return; }
+      if (key === "n" && !e.repeat) { e.preventDefault(); toggleSound(); return; }
       if (["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(key)) e.preventDefault();
       if (["w", "arrowup"].includes(key)) setMove(0, -1);
       if (["s", "arrowdown"].includes(key)) setMove(0, 1);
@@ -2772,6 +2788,19 @@
     document.getElementById("teamButton").addEventListener("click", () => toggleTeamMenu());
     document.getElementById("teamBookButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
     document.getElementById("fleeButton").addEventListener("click", fleeBattle);
+    // Sound settings (sound_fx.js): on/off and volume, kept in this browser; N toggles.
+    function renderSoundControls() {
+      const sound = window.VQSVSound, button = document.getElementById("toggleSound"), slider = document.getElementById("soundVolume");
+      if (!sound || !button) return;
+      const st = sound.settings();
+      button.textContent = !sound.supported ? "Âm thanh: không hỗ trợ" : `Âm thanh: ${st.on ? "bật" : "tắt"}`;
+      if (slider) slider.value = String(Math.round(st.volume * 100));
+    }
+    function toggleSound() { const sound = window.VQSVSound; if (!sound) return; sound.setOn(!sound.settings().on); renderSoundControls(); if (sound.settings().on) sound.play("select"); }
+    document.getElementById("toggleSound")?.addEventListener("click", toggleSound);
+    document.getElementById("soundVolume")?.addEventListener("input", e => { window.VQSVSound?.setVolume(Number(e.target.value) / 100); });
+    document.getElementById("soundVolume")?.addEventListener("change", () => window.VQSVSound?.play("select"));
+    renderSoundControls();
     loadData().catch(err => { statusEl.textContent = "Không nạp được prototype"; errorEl.textContent = err.message; console.error(err); });
   </script>
 </body>

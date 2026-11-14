@@ -1460,7 +1460,9 @@
     function newBattle(wild = null) {
       window.VQSVSkillFx?.clear();
       const battle = newBattleCore(wild);
-      if (battle.terrain != null && typeof Image !== "undefined") for (let type = 0; type < 5; type++) cachedImage(FIELD_BG(type));
+      let mapId = null; try { mapId = assets.map?.id ?? null; } catch (_) {}
+      battle.backdrop6 = backdrop6For(mapId, wild, battle.enemy);
+      if (typeof Image !== "undefined") { if (battle.terrain != null) for (let type = 0; type < 5; type++) cachedImage(FIELD_BG(type)); if (battle.backdrop6) cachedImage(BG6(battle.backdrop6)); }
       return battle;
     }
     function currentTerrain5() {
@@ -1851,8 +1853,37 @@
       if (terrain == null) return null;
       return { enemy: sideField5(battle.enemy, terrain), player: sideField5(battle.team?.[battle.active], terrain) };
     }
-    function drawFieldImage(type, y, mirrored) {
-      const image = cachedImage(FIELD_BG(type));
+    // ---- VQSV6 battle backgrounds (tools/make_vqsv6_battle_backdrops.py, new prototype art: VQSV6 only stores one flat colour per area in
+    // backPic.mid). One picture per element; each region shows the element that dominates its wild pets (counts in the comments), or its theme
+    // where the counts are close. The sanctum shows the element of the legendary met there; the village story fight shows the ghost marsh. ----
+    // function declarations (not consts): the very first newBattle() runs before this part of the script is reached
+    function elementBg6(element) { return { "Hỏa hệ": "hoa", "Mộc hệ": "moc", "Thổ hệ": "tho", "Thủy hệ": "thuy", "Điện hệ": "dien", "Quỷ hệ": "quy", "Phong hệ": "phong" }[element] || null; }
+    function regionBg6(mapId) {
+      return {
+        "ryan-phong-loi-forest": "moc",   // Mộc 2, Quỷ 1, Hỏa 1
+        "ryan-forest-stream": "dien",     // Hỏa 2, Quỷ 1, Điện 1: the thunder stream (Suối Sấm)
+        "ryan-lakeside": "thuy",          // Thủy 13
+        "ryan-meadow": "moc",             // Mộc 9
+        "ryan-highland": "tho",           // Thổ 5
+        "ryan-canyon": "tho",             // Thổ 8
+        "ryan-ashfield": "hoa",           // Thổ 7, Hỏa 6: the volcanic ash field
+        "ryan-skyridge": "phong",         // Phong 14
+        "ryan-pinewind": "phong",         // Phong 2 and the wind-pine theme
+        "ryan-inkmarsh": "quy",           // Thủy 4, Quỷ 1: the black marsh
+        "ryan-stormplain": "dien",        // Điện theme (Chuột Điện)
+        "ryan-sanctum": "enemy",          // the legendary's own element
+      }[mapId] || null;
+    }
+    function BG6(key) { return `assets/battle/vqsv6_${key}.png`; }
+    function backdrop6For(mapId, wild, enemy) {
+      if (!wild) return "quy";                                   // the corrupted creature of the story fight
+      if (enemy?.v5) return null;                                // VQSV5 wild pets keep the VQSV5 field pictures
+      const key = regionBg6(mapId);
+      return key === "enemy" ? elementBg6(enemy?.element) : key;
+    }
+    function drawFieldImage(type, y, mirrored, path = null) {
+      if (typeof Image === "undefined") return false;          // headless tests
+      const image = cachedImage(path || FIELD_BG(type));
       if (!image?.complete || !image.naturalWidth) return false;
       ctx.save(); ctx.imageSmoothingEnabled = false;
       if (mirrored) { ctx.translate(480, 0); ctx.scale(-1, 1); }
@@ -1861,6 +1892,18 @@
       return true;
     }
     function drawBattleBackdrop() {
+      const battle = state.battle, key = battle?.backdrop6;
+      if (key && drawFieldImage(null, 0, false, BG6(key))) {
+        ctx.fillStyle = "#1b2a30"; ctx.fillRect(0, 216, 480, 144);
+        // the player's half: the same picture mirrored, or the VQSV5 field of a pet that knows its terrain skill (ak.b(z,al))
+        const own = activePet(), ownField = own?.v5 && own.typeId != null && hasPassive(own, 43 + own.typeId) ? own.typeId : null;
+        if (ownField != null) drawFieldImage(ownField, 222, true); else drawFieldImage(null, 222, true, BG6(key));
+        ctx.fillStyle = "#0b1114"; ctx.fillRect(0, 214, 480, 8);
+        if (key === "dien") { const t = performance.now() % 4200; if (t < 140) { ctx.fillStyle = `rgba(255,252,220,${(1 - t / 140) * .45})`; ctx.fillRect(0, 0, 480, 214); } }
+        ctx.fillStyle = "#00000038"; ctx.beginPath(); ctx.ellipse(139, 184, 62, 12, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(350, 186, 66, 13, 0, 0, Math.PI * 2); ctx.fill();
+        return;
+      }
       const fields = battleFields5();
       if (fields && drawFieldImage(fields.enemy, 0, false)) {
         ctx.fillStyle = "#1b2a30"; ctx.fillRect(0, 216, 480, 144);

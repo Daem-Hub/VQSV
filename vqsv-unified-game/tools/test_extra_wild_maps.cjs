@@ -57,4 +57,19 @@ for (const [id, host] of Object.entries(NEW)) {
 }
 // The sanctum only holds quality 5 legendaries at level 46-50.
 for (let i = 0; i < 60; i++) { const r = J('rollWild("ryan-sanctum")'); assert.equal(r.quality, 5); assert(r.level >= 46); }
-console.log('Extra wild maps: every VQSV6 base form reachable, two-way travel, tables, water pets and battles passed.');
+// ---- VQSV6 battle backgrounds: one new picture per element, chosen by region ----
+for (const key of ['hoa', 'moc', 'tho', 'thuy', 'dien', 'quy', 'phong']) assert(fs.existsSync(path.join(__dirname, '..', 'prototype', 'assets', 'battle', `vqsv6_${key}.png`)), key);
+const expectBg = { 'ryan-phong-loi-forest': 'moc', 'ryan-forest-stream': 'dien', 'ryan-lakeside': 'thuy', 'ryan-meadow': 'moc', 'ryan-highland': 'tho', 'ryan-canyon': 'tho',
+  'ryan-ashfield': 'hoa', 'ryan-skyridge': 'phong', 'ryan-pinewind': 'phong', 'ryan-inkmarsh': 'quy', 'ryan-stormplain': 'dien' };
+for (const [id, key] of Object.entries(expectBg)) {
+  run(`assets.map = assets.maps["${id}"]; { let w; do { w = rollWild("${id}"); } while (w.v5); state.battle = newBattle(w); }`);
+  assert.equal(run('state.battle.backdrop6'), key, id);
+}
+// The sanctum shows the legendary's own element; the story fight the ghost marsh; a VQSV5 wild pet keeps the VQSV5 field pictures.
+const bgOf = { 'Hỏa hệ': 'hoa', 'Mộc hệ': 'moc', 'Thổ hệ': 'tho', 'Thủy hệ': 'thuy', 'Điện hệ': 'dien', 'Quỷ hệ': 'quy', 'Phong hệ': 'phong' };
+run('assets.map = assets.maps["ryan-sanctum"]');
+for (let i = 0; i < 20; i++) { run('state.battle = newBattle(rollWild("ryan-sanctum"))'); assert.equal(run('state.battle.backdrop6'), bgOf[run('state.battle.enemy.element')]); }
+run('assets.map = assets.maps["slice01-border-village"]; state.battle = newBattle()'); assert.equal(run('state.battle.backdrop6'), 'quy');
+run('assets.map = assets.maps["ryan-meadow"]; state.battle = newBattle({ v5: true, petId: "vqsv5-db-0", level: 10, quality: 1, traits: [3, 0] })'); assert.equal(run('state.battle.backdrop6'), null);
+assert.equal(run('backdrop6For("unknown-map", { petId: "vqsv6-db-33" }, { element: "Hỏa hệ" })'), null);
+console.log('Extra wild maps: every VQSV6 base form reachable, two-way travel, tables, water pets, battles and VQSV6 backgrounds passed.');

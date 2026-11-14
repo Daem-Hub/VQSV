@@ -20,6 +20,8 @@ h2{font-size:16px;margin:20px 0 8px}
 <div class="grid" id="elements"></div>
 <h2>Trạng thái có lợi</h2><div class="grid" id="buffs"></div>
 <h2>Trạng thái bất lợi</h2><div class="grid" id="debuffs"></div>
+<h2>Trạng thái VQSV5</h2><div class="grid" id="v5"></div>
+<h2>Sự kiện trong trận</h2><div class="grid" id="events"></div>
 <script src="data/bootstrap.js"></script>
 <script type="module">
 import "./skill_fx.js";
@@ -54,10 +56,11 @@ const elementNames = [["fire", "Hỏa hệ"], ["leaf", "Mộc hệ"], ["earth", 
 const label = { fire: "Hỏa", leaf: "Mộc / Thực Vật", earth: "Thổ", water: "Thủy", volt: "Điện", dark: "Quỷ", wind: "Phong / Phi Hành", steel: "Kim Loại", beast: "Mãnh Thú", sea: "Hải Dương", plain: "Đòn thường" };
 let current = null;
 for (const [key, element] of elementNames) {
-  const s = make(document.getElementById("elements"), label[key], [
-    ["Pet mình ra đòn", s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t })); }],
-    ["Đối thủ ra đòn", s => { current = s; play(s, t => fx.cast({ fromEnemy: true, element, startAt: t })); }],
-    ["Chí mạng", s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t, crit: true })); }],
+  const tiers = fx.tiersOf(key);
+  make(document.getElementById("elements"), label[key], [
+    ...Array.from({ length: tiers }, (_, i) => [`Bậc ${i + 1}`, s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t, tier: i + 1 })); }]),
+    ["Đối thủ ra đòn", s => { current = s; play(s, t => fx.cast({ fromEnemy: true, element, startAt: t, tier: tiers })); }],
+    ["Chí mạng", s => { current = s; play(s, t => fx.cast({ fromEnemy: false, element, startAt: t, crit: true, tier: tiers })); }],
   ]);
 }
 for (const [host, kind, table, fxTable] of [["buffs", "buff", S.buffs, fx.buffFx], ["debuffs", "debuff", S.debuffs, fx.debuffFx]]) {
@@ -69,8 +72,21 @@ for (const [host, kind, table, fxTable] of [["buffs", "buff", S.buffs, fx.buffFx
     ]);
   });
 }
+const v5Names = { 0: "Thạch Hóa", 2: "Tê Liệt", 3: "Mị Hoặc", 4: "Giam Cầm", 5: "Hủ Thực", 6: "Phong Bế" };
+for (const id of Object.keys(fx.v5Fx)) make(document.getElementById("v5"), `${v5Names[id]} (${fx.v5Fx[id].fx})`, [
+  ["Lên đối thủ", s => { current = s; play(s, t => fx.status({ onEnemy: true, kind: "v5", id: Number(id), startAt: t, image: foeImg, box: [114, 112] })); }]]);
+const eventNames = { miss: "Đánh trượt", reflect: "Phản đòn", drain: "Hút máu", revive: "Hồi sinh", captureHit: "Bóng chạm", captureOk: "Bắt thành công", captureFail: "Bắt hụt",
+  healSmall: "Trị liệu sơ cấp", healBig: "Trị liệu chuyên nghiệp", loyalty: "Tàn quân (giảm trung thành)", sacrifice: "Tử Vong Chi Xúc" };
+for (const kind of Object.keys(fx.eventFx)) make(document.getElementById("events"), `${eventNames[kind] || kind} (${fx.eventFx[kind].fx})`, [
+  ["Phía đối thủ", s => { current = s; play(s, t => fx.event({ kind, onEnemy: true, startAt: t, image: foeImg, box: [114, 112] })); }],
+  ["Phía mình", s => { current = s; play(s, t => fx.event({ kind, onEnemy: false, startAt: t, image: heroImg, box: [120, 110] })); }]]);
+// Only the stage that is playing is redrawn each frame (about 60 stages: redrawing all of them is slow on phones).
+let painted = false, last = null;
 function frame(now) {
-  for (const s of stages) { s.ctx.setTransform(1, 0, 0, 1, 0, 0); bg(s.ctx); if (s === current) fx.draw(s.ctx, now); }
+  if (!painted && foeImg.complete && heroImg.complete) { for (const s of stages) bg(s.ctx); painted = true; }
+  if (last && last !== current) bg(last.ctx);
+  if (current) { bg(current.ctx); fx.draw(current.ctx, now); }
+  last = current;
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);

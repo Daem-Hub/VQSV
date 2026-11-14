@@ -1237,6 +1237,17 @@
       const frames = c.sequences?.[0];
       return { image: c.image ? cachedImage(c.image) : frames?.length ? cachedImage(frames[0].image) : null, box: [120, 110] };
     }
+    // One-off effects (miss, reflect, drain, revive, capture, special moves) on one side; `delay` in ms after the move starts.
+    function fxEvent(kind, c, delay = 0) {
+      if (!window.VQSVSkillFx || !state.battle) return;
+      window.VQSVSkillFx.event({ kind, onEnemy: c === state.battle.enemy, startAt: fxNow(), delay, ...fxSprite(c) });
+    }
+    // Effect strength of a move: VQSV5 type skills by tier (id % 5 + 1), VQSV6 skills by power, basic attacks the lightest.
+    function fxTier(skill) {
+      if (skill.v5Id != null) return skill.v5Id === 25 ? 1 : skill.v5Id < 25 ? [1, 1, 2, 2, 3][skill.v5Id % 5] : 2;
+      if (skill.row == null) return 1;
+      return skill.power >= 150 ? 3 : skill.power >= 100 ? 2 : 1;
+    }
     function fxStatus(c, kind, id) {
       if (!window.VQSVSkillFx || !state.battle) return;
       window.VQSVSkillFx.status({ onEnemy: c === state.battle.enemy, kind, id: Number(id), startAt: fxNow(), ...fxSprite(c) });
@@ -1277,6 +1288,7 @@
         const before = target.loyalty ?? 100, lost = Math.trunc(before * source.param / 100);
         target.loyalty = Math.max(0, before - lost);
         out += ` Độ trung thành của ${target.name} giảm ${lost}.`;
+        fxEvent("loyalty", target, 300);
       }
       const statusId = id < 25 ? source.param : id === 30 ? 6 : null;
       if (statusId != null && STATUS5[statusId] && !(statusId === 6 && target.v5 && target.typeId == null) && status5Lands(target, statusId, source.effect_chance)) {
@@ -1310,7 +1322,7 @@
       if (special.kind === "heal") {
         const heal = Math.min(actor.max - actor.hp, Math.max(1, Math.round(special.amount * k.hp)));
         actor.hp += Math.max(0, heal);
-        fxStatus(actor, "buff", 3);
+        fxEvent(skill.v5Id === 28 ? "healBig" : "healSmall", actor);
         return `${label} dùng ${skill.name}, hồi ${Math.max(0, heal)} HP.`;
       }
       // Tử Vong Chi Xúc: damage = attack * 2 + remaining SP, which is spent. The prototype's SP is the sum of the remaining uses x costs (TRIAL scale).
@@ -1318,7 +1330,8 @@
       const damage = Math.max(1, Math.trunc(effStats(actor).attack * special.attack_multiplier + spLeft * k.attack));
       for (const item of actor.skills || []) if (item !== skill) item.uses = 0;
       target.hp = Math.max(0, target.hp - damage);
-      window.VQSVSkillFx?.cast({ fromEnemy: actor === state.battle?.enemy, element: actor.element, startAt: fxNow(), crit: true });
+      fxEvent("sacrifice", actor);
+      window.VQSVSkillFx?.cast({ fromEnemy: actor === state.battle?.enemy, element: actor.element, startAt: fxNow() + 450, crit: true, tier: 3 });
       return `${label} dùng ${skill.name}, tiêu hao toàn bộ năng lượng và gây ${damage} sát thương!`;
     }
     // Skill 38 (Trọng Sinh Chi Tâm): once per battle a fallen holder gets back up with hp_percent of its max HP, chance from the data.
@@ -1329,7 +1342,7 @@
       if (Math.random() * 100 >= special.chance) return "";
       c.hp = Math.max(1, Math.trunc(c.max * special.hp_percent / 100));
       c.v5status = null;
-      fxStatus(c, "buff", 3);
+      fxEvent("revive", c, 200);
       return ` ${c.name} hồi sinh nhờ Trọng Sinh Chi Tâm (${c.hp} HP)!`;
     }
     function performMove(actor, target, skill, label) {
@@ -1358,7 +1371,7 @@
         // game/a.java: miss% = clamp(2 * (target level - attacker level), 0, 20); Mục lowers the attacker's level by its
         // parameter and the held item Cá Thờn Bơn (9) removes the miss chance.
         const missPct = actor.item === 9 ? 0 : Math.max(0, Math.min(20, 2 * (target.level - (actor.level - (debuffs[4] ? debuffs[4].value : 0)))));
-        if (missPct > 0 && Math.random() * 100 < missPct) return `${text} nhưng đánh trượt.`;
+        if (missPct > 0 && Math.random() * 100 < missPct) { fxEvent("miss", target, 150); return `${text} nhưng đánh trượt.`; }
         const hits = actor.buffs?.[12] ? 2 : 1;
         const parts = [];
         let last = null;
@@ -1375,19 +1388,19 @@
           if (target.buffs?.[6] && Math.random() * 100 < BUFF(6).param_a) dealt = Math.max(1, Math.trunc(dealt / 2));
           if (debuffs[8] && Math.random() * 100 < (debuffs[8].param > 0 ? debuffs[8].param : 40)) {
             actor.hp = Math.max(0, actor.hp - dealt);
-            parts.push(`bị ${DEBUFF(8).name} dội ngược ${dealt} sát thương`);
+            parts.push(`bị ${DEBUFF(8).name} dội ngược ${dealt} sát thương`); fxEvent("reflect", actor, 200);
             continue;
           }
           if (target.buffs?.[5] && Math.random() * 100 < BUFF(5).param_a) {
             actor.hp = Math.max(0, actor.hp - dealt);
-            parts.push(`${target.name} ${BUFF(5).name} dội ngược ${dealt}`);
+            parts.push(`${target.name} ${BUFF(5).name} dội ngược ${dealt}`); fxEvent("reflect", target, 200);
             continue;
           }
           target.hp = Math.max(0, target.hp - dealt);
           if (actor.item === 10 && target.hp < RELIC(10).p1) target.hp = RELIC(10).p1; // Cảm Lãm Chi Diệp: leave the target at 10 HP
           if (actor.item === 8 && actor.hp > 0 && Math.random() * 100 <= RELIC(8).p1) {
             const heal = Math.min(actor.max - actor.hp, pct(dealt, RELIC(8).p2));
-            if (heal > 0) { actor.hp += heal; parts.push(`hút máu +${heal} HP`); }
+            if (heal > 0) { actor.hp += heal; parts.push(`hút máu +${heal} HP`); fxEvent("drain", actor, 350); }
           }
           if (target.buffs?.[2]) { const back = Math.max(1, pct(dealt, BUFF(2).param_b)); actor.hp = Math.max(0, actor.hp - back); }
           parts.push(hitText({ ...result, damage: dealt }) + (target === activePet() && state.battle.guard ? " (đã thủ)" : ""));
@@ -1395,7 +1408,7 @@
         if (window.VQSVSkillFx && state.battle && parts.length) {
           // Basic attacks (no element skill) use the plain slash; the crit flash plays when any hit was critical.
           const basic = skill.v5Id === 25 || (skill.row == null && skill.v5Id == null);
-          window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: fxMoveAt ?? performance.now(), crit: !!last?.crit });
+          window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: fxMoveAt ?? performance.now(), crit: !!last?.crit, tier: basic ? 1 : fxTier(skill) });
         }
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
         const extra = hitEffects5(actor, target, skill);
@@ -2123,6 +2136,10 @@
       const now = performance.now();
       battle.captureAt = now; battle.enemyActed = false; battle.skill = null;
       battle.captured = Math.random() * 100 < rate;
+      if (window.VQSVSkillFx) {           // the ball lands at 450 ms, wobbles, then pops open (fail) or seals (success)
+        window.VQSVSkillFx.event({ kind: "captureHit", onEnemy: true, startAt: now, delay: 430 });
+        window.VQSVSkillFx.event({ kind: battle.captured ? "captureOk" : "captureFail", onEnemy: true, startAt: now, delay: battle.captured ? 820 : 980 });
+      }
       const ball = CAPTURE.balls[ballIndex].name;
       battle.message = battle.captured ? `Kael ném ${ball}… Bắt thành công ${battle.enemy.name}!` : `Kael ném ${ball}… ${battle.enemy.name} thoát ra! (tỉ lệ ${rate}%)`;
       battle.pendingUntil = now + (battle.captured ? 1500 : 1150);

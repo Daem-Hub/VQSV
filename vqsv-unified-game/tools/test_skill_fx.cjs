@@ -21,12 +21,16 @@ const path = require('path'), assert = require('assert'), { pathToFileURL } = re
   for (const plan of fx.plans) {
     fx.clear();
     const element = Object.entries(fx.elements).find(([, v]) => v === plan)?.[0] ?? null;
-    fx.cast({ fromEnemy: plan.length % 2 === 0, element, startAt: 0, crit: true });
-    assert(fx.busy(), plan);
-    const before = drawn.length;
-    for (let t = 0; t <= 4000 && fx.busy(); t += 16) fx.draw(ctx, t);
-    assert(!fx.busy(), `${plan} should finish`);
-    assert(drawn.length > before, `${plan} should draw`);
+    for (let tier = 1; tier <= fx.tiersOf(plan); tier++) {
+      fx.clear();
+      fx.cast({ fromEnemy: (plan.length + tier) % 2 === 0, element, startAt: 0, crit: tier === 3, tier });
+      assert(fx.busy(), plan);
+      const before = drawn.length;
+      for (let t = 0; t <= 4000 && fx.busy(); t += 16) fx.draw(ctx, t);
+      assert(!fx.busy(), `${plan} tier ${tier} should finish`);
+      assert(drawn.length > before, `${plan} tier ${tier} should draw`);
+    }
+    if (plan !== 'plain') assert.equal(fx.tiersOf(plan), 3, plan);
   }
   assert.equal(ctx.imageSmoothingEnabled, true);       // the canvas smoothing setting is restored
   for (const [kind, table] of [['buff', fx.buffFx], ['debuff', fx.debuffFx]]) for (const id of Object.keys(table)) {
@@ -35,5 +39,13 @@ const path = require('path'), assert = require('assert'), { pathToFileURL } = re
     assert(!fx.busy(), `${kind} ${id} should finish`);
   }
   fx.clear(); fx.status({ onEnemy: false, kind: 'buff', id: 999, startAt: 0 }); assert(!fx.busy());   // unmapped ids are ignored
-  console.log('Skill effects: element plans, statuses and headless playback passed.');
+  // Every buff of the source table has an effect now (0-14), and every one-off event plays and ends.
+  assert.deepEqual(Object.keys(fx.buffFx).map(Number).sort((a, b) => a - b), S.buffs.map((_, i) => i));
+  for (const kind of Object.keys(fx.eventFx)) {
+    fx.clear(); fx.event({ kind, onEnemy: kind.startsWith('capture'), startAt: 0, delay: 100 }); assert(fx.busy(), kind);
+    for (let t = 0; t <= 4000 && fx.busy(); t += 16) fx.draw(ctx, t);
+    assert(!fx.busy(), `${kind} should finish`);
+  }
+  assert.deepEqual(Object.keys(fx.eventFx).sort(), ['captureFail', 'captureHit', 'captureOk', 'drain', 'healBig', 'healSmall', 'loyalty', 'miss', 'reflect', 'revive', 'sacrifice']);
+  console.log('Skill effects: element plans in three tiers, all buffs, statuses, events and headless playback passed.');
 })().catch(e => { console.error(e); process.exit(1); });

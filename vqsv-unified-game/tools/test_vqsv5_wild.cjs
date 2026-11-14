@@ -96,4 +96,8 @@ assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 1 });
 run('activePet().passives = [43, -1]'); assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 3 });   // 43 is the Thực Vật skill: no effect on a metal pet
 run('state.battle.active = 0'); assert.deepEqual(J('battleFields5()'), { enemy: 3, player: 3 });
 run('state.battle.terrain = null'); assert.equal(J('battleFields5()'), null);                    // village / story fights keep the painted backdrop
+// Effect strength tiers: VQSV5 type skills by tier, VQSV6 skills by power, basic attacks tier 1.
+assert.deepEqual([0, 1, 2, 3, 4, 25, 26, 30].map(id => J(`fxTier({ v5Id: ${id} })`)), [1, 1, 2, 2, 3, 1, 2, 2]);
+assert.deepEqual([[50, 1], [90, 1], [100, 2], [130, 2], [150, 3], [250, 3]].map(([power]) => J(`fxTier({ row: 1, power: ${power} })`)), [1, 1, 2, 2, 3, 3]);
+assert.equal(J('fxTier({ name: "Đòn thường", power: 53 })'), 1);
 console.log('VQSV5 wild: decoded tables, rolls, battles, type advantage and catching and battle backgrounds passed.');

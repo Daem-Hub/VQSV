@@ -72,8 +72,8 @@ const FX = { fireball, hitSpark, critHit, shieldBlock, clawSwipe, swordSlash, he
 
 // The battle canvas is 480x360; effects are drawn on a 240x180 frame and scaled 2x so their pixels match the sprites.
 const SCALE = 2, W = 240, H = 180;
-// Where the two combatants stand, in frame pixels (feet) — the enemy on the left, the player's active pet on the right.
-const SIDE = { foe: { x: 70, feet: 91 }, hero: { x: 175, feet: 92 } };
+// Where the two combatants stand, in frame pixels (feet). VQSV5 layout: the enemy up on the right, the player's active pet down on the left.
+const SIDE = { foe: { x: 179, feet: 76 }, hero: { x: 61, feet: 92 } };
 const BODY = 28;              // roughly how high a pet's torso sits above its feet
 
 // Seven-step ramps (dark to bright) for the generic hit spark, per element.
@@ -221,7 +221,7 @@ function add(step, from, to, base, speedUp = 1) {
   const target = step.on === "caster" ? from : to;
   const mod = FX[step.fx];
   if (!mod) return;
-  const flip = to.x < from.x;                         // the foe is on the left: effects that face right are mirrored for the hero
+  const flip = to.x < from.x;                         // effects drawn facing right are mirrored when the target is to the left
   const entry = { mod, start: base + (step.at || 0), ms: step.ms || 800, speed: (step.speed || 1) * speedUp, flip, step, from, to, fx: null, last: null };
   const pos = step.travel ? from : target;
   // "ox": slide the origin toward the attacker so a melee mark lands on the target; "feet": stand on the target's feet.

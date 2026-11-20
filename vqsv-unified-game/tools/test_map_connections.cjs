@@ -37,3 +37,55 @@ run('travelTo("slice01-border-village")');
 assert.equal(run('assets.map.id'),'slice01-border-village');
 assert.equal(run('blocked(state.player.x,state.player.y)'),false);
 console.log('Map connections: story gate, two-way travel, unblocked spawn, save and restore passed.');
+
+// "Khảo sát Suối Sấm": gated dialogue, the survey spot on the real VQSV5 stream map, the return trip and old saves.
+function talkToScout() {
+  run('{ const scout = assets.map.entities.villagers.find(npc => npc.id === "scout"); state.player.x = scout.x; state.player.y = scout.y + 1; interact(); }');
+  assert.equal(run('state.activeNpc.id'), 'scout');
+  const lines = run('state.activeNpc.dialogue.length');
+  for (let i = 0; i < lines; i++) run('interact()');
+}
+run('reset()');
+talkToScout();
+assert.equal(run('state.survey'), 'unstarted');                 // before the guard, the scout only chats
+run('state.spokeToElder = true');
+talkToScout();
+assert.equal(run('state.survey'), 'active');
+run('travelTo("ryan-phong-loi-forest"); travelTo("ryan-forest-stream")');
+const point = maps['ryan-forest-stream'].surveyPoint;
+assert(point && !run(`blocked(${point.x},${point.y})`), 'survey point is walkable');
+run(`state.player.x=${point.x}; state.player.y=${point.y}; interact()`);
+assert.equal(run('state.survey'), 'return');
+run('saveGame(); reset(); loadGame()');
+assert.equal(run('state.survey'), 'return');
+assert.equal(run('assets.map.id'), 'ryan-forest-stream');
+run('travelTo("ryan-phong-loi-forest"); travelTo("slice01-border-village")');
+talkToScout();
+assert.equal(run('state.survey'), 'done');
+const slot = run('SAVE_KEY');
+const legacySave = JSON.parse(storage.get(slot));
+delete legacySave.survey;
+storage.set(slot, JSON.stringify(legacySave));
+run('loadGame()');
+assert.equal(run('state.survey'), 'unstarted');
+console.log('Survey quest: gated dialogue, VQSV5 stream survey spot, return trip, save/restore and legacy save passed.');
+
+// Shop doors are always open and lead into their interiors; the exit returns to the door.
+run('reset()');
+const door = maps['slice01-border-village'].links.find(link => link.kind === 'door');
+run(`state.player.x=${door.x}; state.player.y=${door.y + 1}; interact()`);
+assert.equal(run('assets.map.id'), door.target);
+assert.equal(run('blocked(state.player.x,state.player.y)'), false);
+run('{ const exit = assets.map.links.find(link => link.kind === "exit"); state.player.x = exit.x; state.player.y = exit.y - 1; interact(); }');
+assert.equal(run('assets.map.id'), 'slice01-border-village');
+assert.deepEqual([run('state.player.x'), run('state.player.y')], [door.x, door.y]);
+
+// Holding a direction through an unlocked border carries it to the next map.
+run('reset(); state.player.x=23; state.player.y=10; setMove(1,0)');
+assert.equal(run('assets.map.id'), 'slice01-border-village');
+run('state.spokeToElder=true; state.player.inputDir=null; setMove(1,0)');
+assert.equal(run('assets.map.id'), 'ryan-phong-loi-forest');
+assert.equal(run('state.player.inputDir.dx'), 1);
+run('releaseMove(1,0)');
+assert.equal(run('state.player.inputDir'), null);
+console.log('Doors, interiors and walking through open borders passed.');

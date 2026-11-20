@@ -6,46 +6,42 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 path = ROOT / 'prototype/data/opening_map.json'
 m = json.loads(path.read_text(encoding='utf-8'))
-m['paths'] = [
-    {'x': 1, 'y': 10, 'width': 22, 'height': 1, 'tileset': 4, 'tile': 23},
-    {'x': 3, 'y': 8, 'width': 4, 'height': 2, 'tileset': 4, 'tile': 23},
-    {'x': 18, 'y': 7, 'width': 1, 'height': 4, 'tileset': 4, 'tile': 23},
-    {'x': 10, 'y': 9, 'width': 4, 'height': 3, 'tileset': 4, 'tile': 23},
-    {'x': 11, 'y': 11, 'width': 2, 'height': 7, 'tileset': 4, 'tile': 23},
-    {'x': 7, 'y': 11, 'width': 5, 'height': 1, 'tileset': 4, 'tile': 23},
-    {'x': 13, 'y': 12, 'width': 5, 'height': 1, 'tileset': 4, 'tile': 23},
+# Coordinates follow walkable tile centres, from the shop steps to the east gate.
+m.pop('paths', None)
+m['trails'] = [
+    {'width': 1.65, 'points': [[5,8], [5,9], [6.5,10], [9,10.4], [11,10.6], [14,10.3], [17,10.7], [20,10], [22,10], [24,10]]},
+    {'width': 1.15, 'points': [[19,7], [18.9,8.2], [18.4,9.5], [17.5,10.6]]},
+    {'width': 1.15, 'points': [[11,8.9], [11,10.6], [11,11.8], [10.4,13.2], [10,14]]},
+    {'width': 1.03, 'surface': 'earth', 'points': [[6.2,11.8], [7.5,12.8], [9.6,13.9], [11.2,14.1], [13.1,13.6], [14.4,12.6], [16.2,12], [17,12]]},
+    {'width': 1.0, 'points': [[7.3,10.2], [7.1,11], [6,12]]},
+    {'width': 1.0, 'points': [[17,10.7], [16.6,11.5], [17,12]]},
 ]
 m['objects'] = []
-for x, y in ((3, 7), (17, 6)):
-    m['objects'].extend([
-        {'tileset': 0, 'tile': 2, 'x': x, 'y': y - 4},
-        {'tileset': 0, 'tile': 2, 'x': x + 2, 'y': y - 4, 'flip': 4},
-        {'tileset': 0, 'tile': 3, 'x': x, 'y': y, 'solid': [[xx, yy] for yy in (y-1, y) for xx in range(x, x + 4)]},
-        {'tileset': 0, 'tile': 3, 'x': x + 2, 'y': y, 'flip': 4},
-    ])
-for x, y in [(0, 2), (3, 2), (7, 2), (9, 2), (12, 2), (15, 2), (20, 2), (22, 3),
-             (0, 5), (1, 8), (0, 14), (3, 17), (6, 16), (9, 17),
-             (15, 17), (18, 16), (21, 17), (22, 6), (22, 9), (22, 14)]:
+for x, y, sprite in [(3, 7, 'apothecary'), (17, 6, 'charm-shop')]:
+    solid = [[xx, yy] for yy in (y-1, y) for xx in range(x, x+4)]
+    m['objects'].append({'asset': f'scenery/{sprite}.png', 'x': x+2, 'y': y, 'anchorX': .5, 'solid': solid})
+# Keep complete crowns clear of roofs, doors, and the eastbound road.
+for x, y in [(0, 5), (7, 2), (12, 2), (22, 3), (22, 9),
+             (0, 14), (3, 17), (9, 17), (15, 17), (21, 17)]:
     solid = [[xx, yy] for yy in (y - 1, y) for xx in (x, x + 1) if 0 <= xx < m['width'] and 0 <= yy < m['height']]
-    if (x, y) in ((3, 17), (15, 17)):
-        m['objects'].append({'asset': 'tilesets/village_prop_36.png', 'x': x, 'y': y, 'solid': solid})
-    else:
-        m['objects'].append({'tileset': 0, 'tile': 11, 'x': x, 'y': y - 2})
-        m['objects'].append({'tileset': 0, 'tile': 12, 'x': x, 'y': y, 'solid': solid})
+    tree = 'fir' if (x, y) in [(7, 2), (22, 3), (0, 14), (15, 17)] else 'oak'
+    m['objects'].append({'asset': f'scenery/{tree}.png', 'x': x, 'y': y, 'solid': solid})
 for x, y in [(2, 7), (8, 8), (15, 8), (20, 8), (5, 14), (18, 13)]:
-    m['objects'].append({'tileset': 4, 'tile': 2, 'x': x, 'y': y, 'solid': [[x, y]]})
-for x, y in [(2, 13), (8, 14), (15, 13), (20, 14)]:
-    m['objects'].append({'tileset': 4, 'tile': 4, 'x': x, 'y': y, 'solid': [[x, y]]})
-m['objects'].extend([
-    {'asset':'tilesets/village_prop_24.png', 'x':8, 'y':7},
-    {'asset':'tilesets/village_prop_25.png', 'x':15, 'y':6, 'scale':0.5},
-])
+    prop = 'stump' if (x, y) in [(5,14), (18,13)] else 'shrub'
+    m['objects'].append({'asset': f'scenery/{prop}.png', 'x': x, 'y': y, 'anchorX': .5, 'solid': [[x,y]]})
+for x, y in [(2,13), (8,14), (15,13), (20,14)]:
+    m['objects'].append({'asset': 'scenery/stones.png', 'x': x, 'y': y, 'anchorX': .5, 'solid': [[x,y]]})
+m['objects'].append({'asset':'scenery/noticeboard.png', 'x':8, 'y':7})
 m['groundDecor'] = [
-    {'tileset': 4, 'tile': tile, 'x': x, 'y': y}
-    for tile, x, y in [(0, 2, 4), (1, 3, 5), (3, 8, 4), (1, 9, 5), (5, 14, 4),
-                       (0, 15, 6), (1, 20, 4), (3, 21, 6), (0, 3, 8), (5, 9, 9),
-                       (1, 14, 9), (3, 20, 9), (5, 2, 12), (1, 6, 12), (0, 9, 14),
-                       (3, 14, 15), (5, 19, 12), (1, 21, 12), (0, 6, 15), (5, 18, 15)]
+    {'asset': f'scenery/{name}.png', 'x': x, 'y': y, 'anchorX': .5}
+    for name, x, y in [('flowers',3,8), ('flowers',4,8), ('shrub',9,5), ('flowers',14,9),
+                       ('flowers',18,8), ('flowers',21,7), ('shrub',15,6), ('flowers',2,12),
+                       ('flowers',9,9), ('shrub',6,15), ('flowers',14,15), ('flowers',19,12)]
+]
+m['links'] = [
+    {'x': 23, 'y': 10, 'target': 'ryan-phong-loi-forest', 'spawnX': 1, 'spawnY': 10, 'label': 'Rừng Rậm Phong Lôi'},
+    {'kind': 'door', 'x': 5, 'y': 8, 'target': 'village-apothecary', 'spawnX': 12, 'spawnY': 13, 'label': 'Tiệm thuốc'},
+    {'kind': 'door', 'x': 19, 'y': 7, 'target': 'village-charms', 'spawnX': 12, 'spawnY': 13, 'label': 'Tiệm bùa'},
 ]
 m['groundVariation'] = []
 blocked = {tuple(cell) for obj in m['objects'] for cell in obj.get('solid', [])}

@@ -8,7 +8,18 @@ opening_map = json.loads((prototype / "data" / "opening_map.json").read_text(enc
 forest_map = json.loads((prototype / "data" / "forest_map.json").read_text(encoding="utf-8"))
 stream_map = json.loads((prototype / "data" / "forest_stream_map.json").read_text(encoding="utf-8"))
 arrive = forest_map.get("arrivals", {}).get(opening_map["id"], [1, 10])          # the forest cell next to its exit back to the village
-opening_map["links"] = [{"x": 23, "y": 10, "target": forest_map["id"], "spawnX": arrive[0], "spawnY": arrive[1], "label": forest_map["title"]}]
+# Doors into the two shops (kind="door") come from design_opening_village.py; the east gate leads to the forest.
+opening_map["links"] = [link for link in opening_map.get("links", []) if link.get("kind")] + [
+    {"x": 23, "y": 10, "target": forest_map["id"], "spawnX": arrive[0], "spawnY": arrive[1], "label": forest_map["title"]}]
+interiors = json.loads((prototype / "data" / "village_interiors.json").read_text(encoding="utf-8"))
+# "Khảo sát Suối Sấm" asks Kael to inspect the middle of the stream crossing. The real VQSV5 stream map has no
+# separate bridge object, so mark the walkable cell nearest the map centre (collision 0 or 3 = shallow water).
+if "bridge" not in stream_map and stream_map.get("collision"):
+    w, h, cells = stream_map["width"], stream_map["height"], stream_map["collision"]
+    walk = [(x, y) for y in range(h) for x in range(w) if str(cells[y][x]) in ("0", "3")]
+    cx, cy = (w - 1) / 2, (h - 1) / 2
+    sx, sy = min(walk, key=lambda c: ((c[0] - cx) ** 2 + (c[1] - cy) ** 2, c))
+    stream_map["surveyPoint"] = {"x": sx, "y": sy}
 tile_defs = {
     str(index): json.loads((prototype / "assets" / "tilesets" / f"tileset_{index:02}.json").read_text(encoding="utf-8"))
     for index in (0, 4)
@@ -26,6 +37,6 @@ wild_maps = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((pr
 order = ["ryan-lakeside", "ryan-meadow", "ryan-highland", "ryan-canyon", "ryan-ashfield", "ryan-skyridge",
          "ryan-pinewind", "ryan-inkmarsh", "ryan-stormplain", "ryan-sanctum"]   # branch maps from tools/design_extra_wild_maps.py
 wild_maps.sort(key=lambda m: order.index(m["id"]))
-payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map, *wild_maps)}, "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects, "vqsv6Stats": vqsv6_stats, "vqsv5Stats": vqsv5_stats, "vqsv5Wild": vqsv5_wild}, ensure_ascii=False, separators=(",", ":"))
+payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map, *interiors, *wild_maps)}, "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects, "vqsv6Stats": vqsv6_stats, "vqsv5Stats": vqsv5_stats, "vqsv5Wild": vqsv5_wild}, ensure_ascii=False, separators=(",", ":"))
 (prototype / "data" / "bootstrap.js").write_text(f"window.VQSVBootstrap = {payload};\n", encoding="utf-8")
 print("Wrote prototype/data/bootstrap.js")

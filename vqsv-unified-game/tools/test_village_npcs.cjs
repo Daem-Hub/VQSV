@@ -18,7 +18,8 @@ for (const npc of map.entities.villagers) {
   assert.equal(vm.runInContext('blocked(npc.x,npc.y)',sandbox), true);
   vm.runInContext('state.player.x=npc.x; state.player.y=npc.y+1; interact()',sandbox);
   assert.equal(vm.runInContext('state.activeNpc.id',sandbox),npc.id);
-  vm.runInContext('drawDialogue()',sandbox);
+  vm.runInContext('drawExplore()',sandbox);
+  assert(vm.runInContext('state.activeNpc.dialogue[state.dialogue].length > 0',sandbox));
   for (let i=0; i<npc.dialogue.length; i++) vm.runInContext('interact()',sandbox);
   assert.equal(vm.runInContext('state.mode',sandbox),'explore');
   assert.equal(vm.runInContext('state.spokeToElder',sandbox),false);

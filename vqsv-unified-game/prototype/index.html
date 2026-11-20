@@ -367,11 +367,18 @@
     // Skill 39 (Hạnh Vận Chi Tinh): wild pets are created with the "lucky" trait mode when the lead of the team knows it. The unified lead is a
     // VQSV6 pet, so the prototype checks every VQSV5 pet in the team (TRIAL).
     const teamLucky5 = () => (window.VQSVPetTeam?.ids?.() || []).some(id => STAT5_BY_ID.has(id) && passivesOf5(id).includes(39));
+    // TRIAL: VQSV5's five types placed on VQSV6's seven elements so mixed battles use one advantage chart
+    // (tools/atlas_wild.py uses the same table). Thực Vật -> Mộc, Kim Loại -> Điện, Phi Hành -> Phong,
+    // Mãnh Thú -> Thổ, Hải Dương -> Thủy; the two untyped pets count as Quỷ. VQSV5 vs VQSV5 keeps the source +30% rule.
+    const ELEMENT6 = ["Hỏa hệ", "Mộc hệ", "Thổ hệ", "Thủy hệ", "Điện hệ", "Quỷ hệ", "Phong hệ"];
+    const UNIFY5 = { 0: 1, 1: 4, 2: 6, 3: 2, 4: 3 }, UNIFY5_NONE = 5;
+    const unifiedId5 = typeId => Number.isInteger(typeId) ? UNIFY5[typeId] : UNIFY5_NONE;
     function vqsv5Combatant(petId, level, traits = [], passives = []) {
       const record = STAT5_BY_ID.get(petId), stats = unifiedStats5(record, level), skills = skills5(record, level, passives);
       // ak.b(al,int): trait 1 / 2 changes max HP by -15% / +15% (Java integer division truncates toward zero).
       for (const id of traits) if (id === 1 || id === 2) stats.hp = Math.max(1, stats.hp + Math.trunc(stats.hp * (TRAITS5[id]?.value || 0) / 100));
-      return { stats, level, elementId: null, element: record.type, col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
+      const elementId = unifiedId5(Number.isInteger(record.type_id) ? record.type_id : null);
+      return { stats, level, elementId, unifiedElement: ELEMENT6[elementId], element: record.type || ELEMENT6[elementId], col22: 0, skills, skill: skills[0], hp: stats.hp, max: stats.hp,
         quality: record.rank, petId, name: record.name, buffs: {}, debuffs: {}, item: null, v5: true, basicPower: V5_BASIC_POWER, traits: [...traits],
         passives: [...passives], typeId: Number.isInteger(record.type_id) ? record.type_id : null, loyalty: record.rank > 3 ? 120 : 100, v5status: null };
     }
@@ -1100,6 +1107,13 @@
     const V5_WILD_SHARE = 0.5;
     function rollWild5(mapId) {
       if (assets.maps?.[mapId]?.wild5 === false) return null;          // branch maps kept for VQSV6 pets
+      const pool = assets.maps?.[mapId]?.wild5Pool;                     // atlas maps: VQSV5 pets of the region's elements (tools/atlas_wild.py)
+      if (pool) {
+        const list = pool.pet_ids.filter(id => STAT5_BY_ID.has(id));
+        if (!list.length) return null;
+        const record = STAT5_BY_ID.get(list[randInt(0, list.length - 1)]);
+        return { v5: true, petId: record.pet_id, area: `atlas-${mapId}`, level: randInt(pool.level_min, pool.level_max), quality: record.rank, traits: rollTraits5(record, teamLucky5() ? "lucky" : "random") };
+      }
       const sources = (assets.maps?.[mapId]?.terrain5?.source_maps || []).filter(index => WILD5[index]);
       if (!sources.length) return null;
       const index = sources[randInt(0, sources.length - 1)], table = WILD5[index], list = table.pet_ids.filter(id => STAT5_BY_ID.has(id));
@@ -1143,6 +1157,7 @@
     // game/i.java b(i) + C() + a(i): (atk - def) * power%, crit 5% + speed/2 (x1.5), element x3 / x0.6, +-1 jitter, min 1.
     function elementMultiplier(attacker, defender) {
       if (attacker.elementId == null || defender.elementId == null) return 0;
+      if (attacker.v5 && defender.v5) return 0;            // two VQSV5 pets: only the source type bonus (adjustDamage5)
       const attFlag = attacker.col22 === 2, defFlag = defender.col22 === 2;
       const allowUp = attFlag || !defFlag, allowDown = defFlag || !attFlag;
       if (allowUp && BEATS[attacker.elementId] === defender.elementId) return 1;
@@ -2039,7 +2054,7 @@
       if (!wild) return "quy";                                   // the corrupted creature of the story fight
       if (enemy?.v5) return null;                                // VQSV5 wild pets keep the VQSV5 field pictures
       const key = regionBg6(mapId);
-      return key === "enemy" ? elementBg6(enemy?.element) : key;
+      return key === "enemy" ? elementBg6(enemy?.unifiedElement || enemy?.element) : key;
     }
     function drawFieldImage(type, y, mirrored, path = null) {
       if (typeof Image === "undefined") return false;          // headless tests

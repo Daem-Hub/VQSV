@@ -90,7 +90,7 @@ assert.equal(run('state.battle.team[1].hp'), run('state.battle.team[1].max'));
 // A typeless boss-like pet has the basic move only and no element.
 teamIds.length = 0; teamIds.push('vqsv5-db-85');
 run('progress = { "vqsv5-db-85": { level: 40, exp: 0 } }; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"');
-assert.equal(run('state.battle.team[1].skills.length'), 0); assert.equal(run('state.battle.team[1].element'), null);
+assert.equal(run('state.battle.team[1].skills.length'), 0); assert.equal(run('state.battle.team[1].element'), 'Quỷ hệ'); assert.equal(run('state.battle.team[1].typeId'), null);   // untyped VQSV5 pets count as Quỷ hệ in the unified chart
 // A story/wild win gives the VQSV5 pet experience through the shared formula (it no longer says "chưa nhận kinh nghiệm").
 teamIds.length = 0; teamIds.push('vqsv5-db-0');
 run('progress = { "loi-mieu": { level: 5, exp: 0 }, "vqsv5-db-0": { level: 5, exp: 0 } }; state.battle = newBattle({ petId: "vqsv6-db-33", level: 5, quality: 1 }); state.mode = "battle"; switchPet(1); state.battle.pendingUntil = 0; state.battle.enemy.hp = 0; state.battle.pendingUntil = 1; updateBattle(2)');

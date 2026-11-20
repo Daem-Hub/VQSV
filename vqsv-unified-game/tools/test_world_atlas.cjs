@@ -37,7 +37,25 @@ els.worldTab.onclick();
 els.regionSelect.value = '11';
 els.regionSelect.listeners.change();
 assert.equal(els.worldRegionDetail.children[0].textContent,'Mặt Trăng Đỏ');
-assert.match(els.worldRegionDetail.children[1].textContent,/Chưa mở/);
+assert.match(els.worldRegionDetail.children[1].textContent,/Có thể khám phá/);
+let scenes = 0;
+const previews = new Set();
+for (let i = 2; i < 12; i++) {
+  els.worldPins.children[i].listeners.click();
+  const [, , , picker, image, action] = els.worldRegionDetail.children;
+  for (const option of picker.children) {
+    picker.value = option.value;
+    picker.listeners.change();
+    assert.equal(image.alt, option.textContent);
+    assert(fs.existsSync(path.join(root, image.src)));
+    previews.add(image.src);
+    scenes++;
+  }
+  action.onclick();
+  assert.equal(preferred, 'slice01-border-village');
+}
+assert.equal(scenes, 29);
+assert.equal(previews.size, scenes);
 els.closeWorldAtlas.listeners.click();
 assert(!els.worldAtlas.open);
-console.log('World atlas: both views, 12 selectable pins, current interiors, first connecting exit and planned regions passed.');
+console.log('World atlas: both views, 12 selectable pins, current interiors, first connecting exit and all 29 illustrated destinations passed.');

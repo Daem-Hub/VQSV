@@ -86,7 +86,7 @@
 <body>
   <main>
     <header class="hud">
-      <div class="location"><img src="assets/illustrations/loi-mieu.webp" alt=""><div><small>Chương I · Ryan</small><h1 id="locationTitle">Làng biên giới</h1></div></div>
+      <div class="location"><img src="assets/illustrations/loi-mieu.webp" alt=""><div><small id="locationArea">Chương I · Ryan</small><h1 id="locationTitle">Làng biên giới</h1></div></div>
       <div class="hud-actions"><button id="fullscreen" type="button" aria-label="Toàn màn hình" title="Toàn màn hình"><i class="glyph fullscreen" aria-hidden="true"></i></button><button id="openMenu" type="button" aria-label="Mở menu" title="Menu"><i class="glyph menu" aria-hidden="true"></i></button></div>
     </header>
       <div class="game-frame">
@@ -1534,6 +1534,7 @@
     function updateGuidance() {
       window.syncScene?.();
       document.getElementById("locationTitle").textContent = assets.map.title;
+      document.getElementById("locationArea").textContent = window.atlasArea?.(assets.map.atlasRegion) || "Chương I · Ryan";
       document.getElementById("touchControls").hidden = !["explore", "dialogue"].includes(state.mode);
       refreshFieldMap();
       document.getElementById("duelMessage").textContent = state.battle.message || "";
@@ -1570,9 +1571,10 @@
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
       else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
       else if (assets.map.interior) objectiveEl.textContent = "Đến cạnh người bán để xem hàng; cửa phía nam dẫn ra làng.";
+      else if (assets.map.illustration) objectiveEl.textContent = assets.map.links.length > 1 ? "Theo đường về phía đông để đi tiếp, hoặc về phía tây để quay lại." : "Đã đến Mặt Trăng Đỏ. Lối phía tây dẫn về Vành đai cơ khí.";
       else if (state.survey === "active" || state.survey === "return") objectiveEl.textContent = surveyHint();
       else if (!assets.map.entities.elder) objectiveEl.textContent = "Khám phá khu vực; đến lối đi và nhấn E để chuyển map.";
-      else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ hoặc đi về phía đông để khám phá rừng.";
+      else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ, qua cổng đông vào rừng hoặc theo đường phía nam đến hoang mạc.";
       else objectiveEl.textContent = "Tìm người gác làng và nói chuyện.";
     }
 
@@ -1596,9 +1598,9 @@
     }
     function drawMap(depthY = null) {
       const m = assets.map;
-      if (m.source5) {                    // a real VQSV5 map: its ground picture (the layer above the characters comes in drawForeground)
-        const base = cachedImage(m.source5.base);
-        ctx.fillStyle = m.source5.background; ctx.fillRect(0, 0, m.width * S, m.height * S);
+      if (m.source5 || m.illustration) {
+        const base = cachedImage(m.illustration || m.source5.base);
+        ctx.fillStyle = m.source5?.background || "#253c42"; ctx.fillRect(0, 0, m.width * S, m.height * S);
         if (base?.complete && base.naturalWidth) ctx.drawImage(base, 0, 0);
         return;
       }
@@ -1798,6 +1800,7 @@
       const map = assets.map;
       if (state.mode !== "explore" && state.mode !== "dialogue") return null;
       if (map.interior) return map.entities.villagers[0];
+      if (map.illustration) return null;
       if (state.survey === "active") return surveyPoint() || map.links?.find(link => link.target === "ryan-forest-stream") || map.links?.find(link => link.x === map.width - 1);
       if (state.survey === "return") return map.entities.villagers?.find(npc => npc.id === "scout") || map.links?.find(link => link.target === "slice01-border-village") || map.links?.find(link => link.target === "ryan-phong-loi-forest");
       return state.spokeToElder ? map.entities.encounter : map.entities.elder;
@@ -1819,8 +1822,12 @@
     function refreshFieldMap() {
       if (!assets.map) return;
       const herbs = assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.filter(herb => !state.herbQuest.collected.includes(herb.id)) : [];
-      const source5 = assets.map.source5 ? cachedImage(assets.map.source5.base) : null;
-      window.drawFieldMap?.(assets.map, state.player, mapTarget(), herbs, assets.charts[assets.map.id] || (source5?.complete && source5.naturalWidth ? source5 : undefined));
+      const picture = assets.map.illustration || assets.map.source5?.base;
+      const background = picture ? cachedImage(picture) : null;
+      if (background && !background.complete) background.onload = () => {
+        if (assets.map.illustration === picture || assets.map.source5?.base === picture) refreshFieldMap();
+      };
+      window.drawFieldMap?.(assets.map, state.player, mapTarget(), herbs, assets.charts[assets.map.id] || (background?.complete && background.naturalWidth ? background : undefined));
       const button = document.getElementById("touchAction");
       const label = state.mode === "dialogue" ? "Tiếp tục" : fieldAction();
       button.textContent = label || "Tương tác";
@@ -2403,7 +2410,7 @@
     function blocked(x, y) {
       const m = assets.map;
       if (x < 0 || y < 0 || x >= m.width || y >= m.height) return true;
-      if (m.source5 && BLOCK5.has(cell5(m, x, y))) return true;
+      if (m.collision && BLOCK5.has(cell5(m, x, y))) return true;
       if (m.interior && (x < 2 || x > 21 || y < 5 || y > 15 || (m.furniture || []).some(f => x >= f.x && x < f.x + f.width && y >= f.y && y < f.y + f.height))) return true;
       if (m.objects.some(o => (o.solid || []).some(([sx, sy]) => sx === x && sy === y))) return true;
       if ((m.water || []).some(w => x >= w.x && x < w.x+w.width && y >= w.y && y < w.y+w.height)) return true;

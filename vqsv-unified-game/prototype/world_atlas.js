@@ -4,19 +4,25 @@
   const list = byId('worldPins'), selector = byId('regionSelect');
   const detail = document.getElementById('worldRegionDetail');
   const regions = [
-    {maps:['slice01-border-village','village-apothecary','village-charms'],name:'Làng biên giới sương mù',area:'Lục địa Ryan',status:'Có thể khám phá',description:'Nơi Kael và Lôi Miêu bắt đầu hành trình, gặp người gác làng và lần theo dấu vết.',places:['Làng biên giới','Tiệm thuốc','Tiệm bùa']},
-    {maps:['ryan-phong-loi-forest','ryan-forest-stream'],name:'Rừng Rậm Phong Lôi',area:'Lục địa Ryan',status:'Có thể khám phá',description:'Từ cổng đông của làng, đi qua đường rừng đến cầu gỗ Suối Sấm. Người đi rừng trong làng phụ trách chuyến khảo sát.',places:['Rừng Phong Lôi','Suối Sấm (địa điểm thiết kế thử)']},
-    {name:'Hoang Mạc Xích Diễm',area:'Lục địa Ryan',status:'Chưa mở',description:'Vùng cát đỏ dẫn tới Hỏa Sơn Bất Diệt.',places:['Hoang mạc','Hẻm núi cát đỏ','Hỏa Sơn Bất Diệt']},
-    {name:'Băng Nguyên Vĩnh Cửu',area:'Lục địa Ryan',status:'Chưa mở',description:'Vùng băng tuyết nơi Kael tìm và đánh thức Tuyết Y Linh Thú.',places:['Đèo băng','Băng nguyên','Hồ Băng Cổ Xưa']},
-    {name:'Biển Đầm Thẳm Sâu',area:'Lục địa Ryan',status:'Chưa mở',description:'Vùng nước và đầm lầy thuộc bốn vùng đất của Ryan.',places:['Đầm lầy','Bờ biển Ryan']},
-    {name:'Tháp Thiên Không',area:'Lục địa Ryan',status:'Chưa mở',description:'Nơi đối đầu kẻ cầm đầu và Cổ Long Hắc Ám, kích hoạt Quang Minh Trận.',places:['Đường lên tháp','Các tầng tháp','Đỉnh tháp']},
-    {name:'Hải Vực Vô Tận',area:'Đại dương',status:'Chưa mở',description:'Hải trình qua vùng nước biến dị và cơn lốc xoáy lôi đình.',places:['Bến cảng Ryan','Hải vực','Vòng xoáy']},
-    {name:'Vương Quốc Chìm Atlantis',area:'Đại dương',status:'Chưa mở',description:'Vương quốc dưới biển, nơi Kael gặp Lyra và quả trứng Thương Hải Thần Cự Kình.',places:['Atlantis','Hang Động San Hô Lân Quang','Nghĩa Địa Chiến Thuyền','Vực Thẳm Tận Cùng']},
-    {name:'Miệng Núi Lửa Hắc Diệu',area:'Lục địa bay Aethelgard',status:'Chưa mở',description:'Cứ điểm của Boran và chiến trường Nham Bạo Long.',places:['Lối vào Aethelgard','Miệng núi lửa','Pháo đài và đấu trường Boran']},
-    {name:'Tầng Mây Khởi Nguyên',area:'Lục địa bay Aethelgard',status:'Chưa mở',description:'Cung điện pha lê và trận chiến với Seraphina, Kính Giới Thiên Sứ.',places:['Đường lên tầng mây','Cung điện pha lê','Điện gương']},
-    {name:'Cột Mốc Vọng Thiên',area:'Lục địa bay Aethelgard',status:'Chưa mở',description:'Điểm nối từ Aethelgard lên quỹ đạo trong đoạn cuối kịch bản.',places:['Đỉnh Aethelgard','Cột Mốc Vọng Thiên']},
-    {name:'Mặt Trăng Đỏ',area:'Không gian',status:'Chưa mở',description:'Điểm đến được hé lộ ở cuối kịch bản; nội dung sau khi đến cần được duyệt.',places:['Quỹ đạo','Vành đai cơ khí','Mặt Trăng Đỏ']}
+    {maps:['slice01-border-village','village-apothecary','village-charms'],name:'Làng biên giới sương mù',area:'Lục địa Ryan',description:'Nơi Kael và Lôi Miêu bắt đầu hành trình, gặp người gác làng và lần theo dấu vết.'},
+    {maps:['ryan-phong-loi-forest','ryan-forest-stream'],name:'Rừng Rậm Phong Lôi',area:'Lục địa Ryan',description:'Từ cổng đông của làng, đi qua đường rừng đến cầu gỗ Suối Sấm. Người đi rừng trong làng phụ trách chuyến khảo sát.'},
+    {name:'Hoang Mạc Xích Diễm',area:'Lục địa Ryan',description:'Vùng cát đỏ dẫn tới Hỏa Sơn Bất Diệt.'},
+    {name:'Băng Nguyên Vĩnh Cửu',area:'Lục địa Ryan',description:'Qua đèo tuyết và băng nguyên, con đường dẫn tới vòng đá cổ giữa hồ băng.'},
+    {name:'Biển Đầm Thẳm Sâu',area:'Lục địa Ryan',description:'Vùng nước và đầm lầy thuộc bốn vùng đất của Ryan.'},
+    {name:'Tháp Thiên Không',area:'Lục địa Ryan',description:'Từ chân tháp, theo bậc đá lên các tầng máy cổ và khoảng sân giữa mây.'},
+    {name:'Hải Vực Vô Tận',area:'Đại dương',description:'Hải trình qua vùng nước biến dị và cơn lốc xoáy lôi đình.'},
+    {name:'Vương Quốc Chìm Atlantis',area:'Đại dương',description:'Từ thành Atlantis, con đường qua hang san hô phát sáng và nghĩa địa chiến thuyền rồi tới vực sâu.'},
+    {name:'Miệng Núi Lửa Hắc Diệu',area:'Lục địa bay Aethelgard',description:'Qua cổng Aethelgard và miệng núi lửa để đến đấu trường trong pháo đài Boran.'},
+    {name:'Tầng Mây Khởi Nguyên',area:'Lục địa bay Aethelgard',description:'Lối đá qua các đảo mây nối cung điện pha lê với điện gương.'},
+    {name:'Cột Mốc Vọng Thiên',area:'Lục địa bay Aethelgard',description:'Điểm nối từ Aethelgard lên quỹ đạo trong đoạn cuối kịch bản.'},
+    {name:'Mặt Trăng Đỏ',area:'Không gian',description:'Từ quỹ đạo, băng qua vành đai bánh răng để đặt chân lên bề mặt Mặt Trăng Đỏ.'}
   ];
+  for (const map of Object.values(window.VQSVBootstrap.maps)) {
+    if (map.atlasRegion == null) continue;
+    const region = regions[map.atlasRegion];
+    (region.maps ||= []).push(map.id);
+  }
+  window.atlasArea = regionIndex => regions[regionIndex]?.area;
   // Marker positions are proportions of the illustrated world, independent of screen size.
   const positions = [[18,45],[21,21],[28,66],[41,19],[43,69],[42,39],[71,55],[77,81],[13,65],[78,17],[87,31],[94,8]];
   let currentId, index = 0;
@@ -53,13 +59,30 @@
       button.classList.toggle('here', Boolean(regions[n].maps?.includes(currentId)));
     });
     detail.replaceChildren();
-    detail.append(el('h3',region.name),el('small',here ? 'Kael đang ở đây' : region.area + ' · ' + region.status),el('p',region.description));
+    detail.append(el('h3',region.name),el('small',here ? 'Kael đang ở đây' : region.area + ' · Có thể khám phá'),el('p',region.description));
     if (region.maps) {
+      let destination = here ? currentId : region.maps[0];
       const action = el('button',here ? 'Xem khu vực hiện tại' : 'Xem lối đi');
+      if (window.VQSVBootstrap.maps[destination]?.illustration) {
+        const picker = el('select',''), preview = el('img','');
+        picker.setAttribute('aria-label','Xem cảnh trong vùng');
+        for (const id of region.maps) {
+          const option = el('option',window.VQSVBootstrap.maps[id].title);
+          option.value = id; picker.append(option);
+        }
+        picker.value = destination;
+        function showScene() {
+          destination = picker.value;
+          const map = window.VQSVBootstrap.maps[destination];
+          preview.src = map.illustration; preview.alt = map.title;
+          action.textContent = currentId === destination ? 'Xem khu vực hiện tại' : 'Xem lối đi';
+        }
+        picker.addEventListener('change',showScene); showScene(); detail.append(picker,preview);
+      }
       action.type = 'button';
-      action.onclick = () => switchPage(false, here ? undefined : firstLinkTo(region.maps[0]));
+      action.onclick = () => switchPage(false, currentId === destination ? undefined : firstLinkTo(destination));
       detail.append(action);
-    } else detail.append(el('small',region.places.join(' · ')));
+    }
   }
   regions.forEach((region,i) => {
     const option = el('option',region.name);

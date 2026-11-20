@@ -89,3 +89,34 @@ assert.equal(run('state.player.inputDir.dx'), 1);
 run('releaseMove(1,0)');
 assert.equal(run('state.player.inputDir'), null);
 console.log('Doors, interiors and walking through open borders passed.');
+
+// Walkable cells must connect every painted entrance to its exit and allow a return trip.
+const atlas = Object.values(maps).filter(map => map.illustration);
+assert.equal(atlas.length, 29);
+function canReach(point) {
+  const [x,y] = run('[state.player.x,state.player.y]');
+  const queue = [[x,y]], seen = new Set([x+','+y]);
+  for (const [cx,cy] of queue) {
+    if (cx === point.x && cy === point.y) return true;
+    for (const [nx,ny] of [[cx+1,cy],[cx-1,cy],[cx,cy+1],[cx,cy-1]]) {
+      const key = nx+','+ny;
+      if (seen.has(key) || run(`blocked(${nx},${ny})`)) continue;
+      seen.add(key); queue.push([nx,ny]);
+    }
+  }
+  return false;
+}
+run('reset(); state.spokeToElder=true');
+const journey = [...atlas, ...atlas.slice(0,-1).reverse(), maps['slice01-border-village']];
+for (const next of journey) {
+  const gate = maps[run('assets.map.id')].links.find(link => link.target === next.id);
+  assert(gate && canReach(gate), 'walking to ' + next.id);
+  run(`travelTo(${JSON.stringify(next.id)})`);
+  assert.equal(run('assets.map.id'), next.id);
+  assert(!run('blocked(state.player.x,state.player.y)'));
+  if (next === atlas.at(-1)) {
+    run('saveGame(); reset(); loadGame()');
+    assert.equal(run('assets.map.id'), next.id);
+  }
+}
+console.log('All 29 atlas scenes reachable on foot in both directions, including save and restore on the Red Moon.');

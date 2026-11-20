@@ -27,3 +27,6 @@
 #worldRegionDetail h3 { margin:10px 0 1px; } #worldRegionDetail p { font-size:13px; margin:8px 0; } #worldRegionDetail small { display:block; }
 @media(max-width:570px) and (min-height:500px) { .atlas-page { grid-template-columns:1fr; gap:8px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-info { padding:0 2px; } }
 @media(max-height:500px) and (min-width:571px) { #worldAtlas { width:min(710px,calc(100vw - 24px)); } .atlas-page { padding:6px 10px; grid-template-columns:minmax(0,1.1fr) minmax(210px,1fr); } #localMap { max-height:48dvh; width:auto; max-width:100%; margin:auto; } #localPage .map-frame { width:fit-content; justify-self:center; max-width:100%; } .world-chart { max-width:300px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-tabs { padding:5px 10px 0; } }
+
+#worldRegionDetail img { display:block; width:100%; max-height:20dvh; object-fit:contain; margin:5px auto; image-rendering:pixelated; }
+#worldRegionDetail select { width:100%; min-height:40px; }

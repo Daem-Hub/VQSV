@@ -95,6 +95,7 @@
         <div id="battleControls" hidden aria-label="Lệnh chiến đấu">
           <div id="fightMenu" class="duel-picker" hidden aria-label="Bảng kỹ năng Lôi Miêu">
             <div class="skill-heading"><span id="skillHeading">Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
+            <p class="team-note">≈ sát thương dự tính lên đối thủ (chưa tính bạo kích) · ▲ khắc hệ ×3 · ▼ bị khắc ×0,6</p>
             <button id="attackButton" type="button"><span id="skillLabel">1 · Điện giật</span><span id="sparkUses">45 / 45</span></button>
             <div id="extraSkills"></div>
             <button id="basicButton" type="button"><span id="basicLabel">3 · Vồ nhanh</span><span>Không giới hạn</span></button>
@@ -1255,13 +1256,36 @@
       fxStatus(target, "debuff", id);
       return ` ${target.name} bị ${DEBUFF(id).name}.`;
     }
-    function rollDamage(attacker, defender, power) {
+    // Skills whose damage has its own rule (game/i.java b(i), switch on the skill row; column 3 = power %, column 8 = parameter).
+    // Every other damaging skill is "damage x power %". Rows 2/8/22/28/41/47 only change their status chance (handled in debuffLands).
+    function skillDamage(skill, attacker, defender, damage) {
+      const row = skill?.v5Id == null ? skill?.row : null, f = row != null ? STATS.skills[row]?.raw_fields : null;
+      const power = skill?.power ?? 100;
+      if (!f) return Math.trunc(damage * power / 100);
+      switch (row) {
+        case 1: case 7:          // Dương viêm, Chước nhiệt chi xúc: damage x power % + damage / parameter
+          return Math.trunc(damage * power / 100) + (f[8] > 0 ? Math.trunc(damage / f[8]) : 0);
+        case 3: case 9:          // Hỏa Vân triệu, Vĩnh hằng hỏa ảnh: parameter % instead of power % when the target carries debuff 0
+          return Math.trunc(damage * (defender.debuffs?.[0] ? f[8] : power) / 100);
+        case 23: case 29:        // Nham băng, Thổ Chi Loạn Vũ: parameter % when the target carries debuff 1 (Mê Muội)
+          return Math.trunc(damage * (defender.debuffs?.[1] ? f[8] : power) / 100);
+        case 43: case 49:        // Sóng điện từ, Cảm ứng điện từ: power %, and the target loses its buffs (i.E())
+          if (defender.buffs && Object.keys(defender.buffs).length) { defender.buffs = {}; defender.buffsCleared = true; }
+          return Math.trunc(damage * power / 100);
+        case 53: case 59: {      // Cơn ác mộng, Lời nguyền cuối cùng: (parameter - the user's HP %) % (the code reads the attacker's HP)
+          const hpPct = attacker.max > 0 ? Math.trunc(attacker.hp * 100 / attacker.max) : 100;
+          return Math.trunc(damage * (f[8] - hpPct) / 100);
+        }
+        default: return Math.trunc(damage * power / 100);
+      }
+    }
+    function rollDamage(attacker, defender, power, skill = null) {
       const a = effStats(attacker), d = effStats(defender);
       let damage = a.attack - d.defense;
       const crit = Math.random() * 100 < 5 + a.speed / 2 + (attacker.item === 4 ? RELIC(4).p1 : 0);
       if (crit) damage = Math.trunc(damage * 3 / 2);
       const base = damage;
-      damage = Math.trunc(damage * power / 100);
+      damage = skill ? skillDamage(skill, attacker, defender, damage) : Math.trunc(damage * power / 100);
       if (attacker.buffs?.[0]?.bonus && power > 0) { damage += pct(Math.max(0, base), BUFF(0).param_b); delete attacker.buffs[0]; }
       if (attacker.buffs?.[1]) damage += pct(damage, BUFF(1).param_b);
       if (attacker.buffs?.[8]) damage += pct(damage, BUFF(8).param_a);
@@ -1271,6 +1295,31 @@
       if (damage <= 0) damage = 1;
       else if (Math.trunc(damage * 2 / 100) <= 0) damage += Math.random() < .5 ? 1 : -1;
       return { damage: Math.max(1, damage), crit, effect, base: Math.max(1, base) };
+    }
+    // Expected damage of one hit, shown in the skill list: the same steps as rollDamage without the random parts
+    // (no critical hit, no ±1 jitter, no trait or passive chances, no miss). The critical value is shown next to it.
+    function estimateDamage(attacker, defender, skill) {
+      if (!attacker || !defender || !skill || skill.noDamage || skill.special) return null;
+      const a = effStats(attacker), d = effStats(defender), copy = { ...defender, buffs: { ...(defender.buffs || {}) } };
+      const finish = raw => {
+        let damage = skillDamage(skill, attacker, copy, raw);
+        if (attacker.buffs?.[1]) damage += pct(damage, BUFF(1).param_b);
+        if (attacker.buffs?.[8]) damage += pct(damage, BUFF(8).param_a);
+        if (attacker.debuffs?.[6]) damage -= pct(damage, attacker.debuffs[6].value);
+        const effect = elementMultiplier(attacker, defender);
+        if (effect > 0) damage *= 3; else if (effect < 0) damage = Math.trunc(damage * 60 / 100);
+        damage = Math.max(1, damage);
+        const random = Math.random; Math.random = () => .999;     // adjustDamage5 without its chance-based halving
+        try { damage = adjustDamage5(attacker, defender, damage); } finally { Math.random = random; }
+        return { damage, effect };
+      };
+      const plain = finish(a.attack - d.defense), crit = finish(Math.trunc((a.attack - d.defense) * 3 / 2));
+      return { damage: plain.damage, crit: crit.damage, effect: plain.effect };
+    }
+    function damageHint(pet, skill) {
+      const enemy = state.mode === "battle" ? state.battle.enemy : null, est = estimateDamage(pet, enemy, skill);
+      if (!est) return "";
+      return ` · ≈${est.damage}${est.effect > 0 ? " ▲" : est.effect < 0 ? " ▼" : ""}`;
     }
     // One actor's move: skip checks, damage, reflection and the skill's status effect.
     // TRIAL (no dedicated handler found in the decompiled code): Mê Muội skips the turn,
@@ -1435,7 +1484,8 @@
         const parts = [];
         let last = null;
         for (let i = 0; i < hits && target.hp > 0; i++) {
-          const result = rollDamage(actor, target, skill.power);
+          const result = rollDamage(actor, target, skill.power, skill);
+          if (target.buffsCleared) { delete target.buffsCleared; parts.push(`${target.name} mất các trạng thái có lợi`); }
           last = result;
           let dealt = result.damage;
           // Trait 9 halves the holder's outgoing damage 20% of the time; trait 10 multiplies it by 1.5 (interpretation, the
@@ -1623,10 +1673,10 @@
       document.getElementById("skillHeading").textContent = `Kỹ năng · ${pet.name}`;
       document.getElementById("attackButton").hidden = !pet.skill;
       if (pet.skill) {
-        document.getElementById("skillLabel").textContent = `1 · ${pet.skill.name}`;
+        document.getElementById("skillLabel").textContent = `1 · ${pet.skill.name}${damageHint(pet, pet.skill)}`;
         document.getElementById("sparkUses").textContent = `${pet.skill.uses} / ${pet.skill.max}`;
       }
-      document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}`;
+      document.getElementById("basicLabel").textContent = `3 · ${isLead ? "Vồ nhanh" : "Đòn thường"}${damageHint(pet, { name: "basic", power: pet.basicPower ?? BASIC_POWER })}`;
       document.getElementById("attackButton").disabled = !pet.skill || pet.skill.uses <= 0 || (pet.skill.noDamage && !pet.skill.effect) || busy;
       renderExtraSkills(pet, busy);
       document.getElementById("basicButton").disabled = busy;
@@ -2257,7 +2307,7 @@
       (pet.skills || []).slice(1).forEach((skill, i) => {
         const button = document.createElement("button");
         button.type = "button";
-        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? ` · ${skill.power}%` : skill.effect ? " · hiệu ứng" : " · chưa hỗ trợ"}`;
+        const name = document.createElement("span"); name.textContent = `${skill.name}${skill.power ? damageHint(pet, skill) || ` · ${skill.power}%` : skill.effect ? " · hiệu ứng" : " · chưa hỗ trợ"}`;
         const uses = document.createElement("span"); uses.textContent = `${skill.uses} / ${skill.max}`;
         button.append(name, uses);
         button.disabled = busy || skill.uses <= 0 || (skill.noDamage && !skill.effect);

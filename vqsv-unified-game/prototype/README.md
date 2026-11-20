@@ -130,3 +130,25 @@ Cả ba phần dưới đây là thiết kế thử của bản hợp nhất, kh
   - Pet chính nhận một nửa số EXP mà pet ghép cần cho cấp cuối của nó.
   - Nếu hai pet cùng hệ chung: pet VQSV6 lên một bậc phẩm chất (tối đa 5); pet VQSV5 được gieo lại đặc tính theo kiểu "may mắn".
   - Pet ghép mất đi sau khi ghép. Lôi Miêu làm được pet chính nhưng không làm pet ghép.
+
+## Tính sát thương pet
+
+Trình tự một đòn, theo `game/i.java` `C()` và `b(i)` của VQSV6:
+
+1. **Gốc:** Công người đánh − Thủ người nhận. Vật phẩm mang theo được tính vào bước này: Mạn Đà La Thạch, Hồng Sắc Hải Loa, Quy Xác Toái Phiến.
+2. **Bạo kích:** tỉ lệ 5% + Tốc / 2 (cộng thêm của Viễn Cổ Long Cốt nếu có). Trúng bạo kích thì sát thương gốc × 1,5.
+3. **Theo kỹ năng:** phần lớn chiêu tính sát thương × uy lực %. Một số chiêu có luật riêng (mới thêm, giải từ bảng 1 cột 3 = uy lực và cột 8 = tham số):
+   - **Dương viêm, Chước nhiệt chi xúc** (dòng 1/7): uy lực % cộng thêm sát thương / tham số (4 và 3).
+   - **Hỏa Vân triệu, Vĩnh hằng hỏa ảnh** (3/9): đối thủ đang mang trạng thái bất lợi số 0 (hiệu ứng cháy) thì dùng tham số 120% / 250% thay cho uy lực 100% / 200%.
+   - **Nham băng, Thổ Chi Loạn Vũ** (23/29): đối thủ đang Mê Muội thì dùng 250% / 300%.
+   - **Sóng điện từ, Cảm ứng điện từ** (43/49): đánh theo uy lực và xóa hết trạng thái có lợi của đối thủ.
+   - **Cơn ác mộng, Lời nguyền cuối cùng** (53/59): sát thương × (tham số − % HP còn lại)%. Mô tả trong game nói "HP kẻ địch càng thấp càng mạnh", nhưng mã gốc đọc HP của **người dùng chiêu**; prototype làm theo mã.
+4. **Trạng thái của người đánh:** Súc Lực, Phá Phủ, Điện áp làm tăng; trạng thái bất lợi số 6 làm giảm.
+5. **Khắc hệ:** khắc thì × 3, bị khắc thì × 0,6. Pet VQSV5 dùng bảng hệ chung; hai pet VQSV5 đấu nhau thì chỉ dùng luật +30% gốc.
+6. **Làm tròn cuối:** sát thương tối thiểu 1. Đòn rất nhỏ được cộng hoặc trừ 1 ngẫu nhiên. Sau đó áp các luật VQSV5 (trung thành, khắc hệ +30%, địa hình −20%, kỹ năng đặc biệt) và các luật trong trận (phòng thủ, phản đòn, hút máu).
+
+Mã gốc còn hai chỗ prototype **không** làm:
+- Điều kiện bạo kích 30% (`D == X[hệ] + Y[hệ] − 1`): với dữ liệu thật, điều kiện này không bao giờ đúng.
+- Hai mức tăng sát thương thuộc tính năng nạp tiền của bản gốc.
+
+**Sát thương dự tính:** trong bảng **Công kích**, mỗi chiêu hiện `≈ số` là sát thương một đòn không bạo kích lên đối thủ hiện tại. ▲ là khắc hệ, ▼ là bị khắc. Số này bỏ qua các phần ngẫu nhiên: bạo kích, ±1, đánh trượt, đặc tính, và kỹ năng bị động có xác suất.

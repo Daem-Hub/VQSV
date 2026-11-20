@@ -1,0 +1,179 @@
+{
+  "id": "ryan-sanctum",
+  "title": "Thánh Địa Thần Thú",
+  "width": 24,
+  "height": 32,
+  "tileSize": 20,
+  "source5": {
+    "map": 49,
+    "place": "Thiên Không Thành 1",
+    "tileset": 10,
+    "background": "#52c0ff",
+    "base": "assets/maps/vqsv5_49_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "444444441000144444444444",
+    "444444411000114444111114",
+    "444444410000014444100014",
+    "444444410000014444100014",
+    "444444410000014444144414",
+    "444444410000014444444444",
+    "444444410000014444444444",
+    "444444411444114444444444",
+    "444444444444444444444444",
+    "444444444444444444444444",
+    "444444444444444444444444",
+    "444444444110011111111014",
+    "444444444100001000011014",
+    "444444444100001000010014",
+    "444444444100001111110014",
+    "444444444100000000000014",
+    "444444444100000000001114",
+    "444444444111111111001444",
+    "111111114444444441001444",
+    "101001014444444441001444",
+    "101001014444444441001444",
+    "101111014444444441441444",
+    "100000044444444444444444",
+    "100000044444444444444444",
+    "100000014444444444444444",
+    "111111114444444444444444",
+    "444444444444444444444444",
+    "444444444441000011111114",
+    "444444444441000011111014",
+    "444444444441000010001014",
+    "444444444441000010001014",
+    "444444444441000010001014"
+  ],
+  "ground": {
+    "tileset": 4,
+    "tile": 34,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
+  "entities": {
+    "player": {
+      "x": 11,
+      "y": 16
+    },
+    "villagers": []
+  },
+  "links": [
+    {
+      "x": 10,
+      "y": 16,
+      "target": "ryan-skyridge",
+      "spawnX": 28,
+      "spawnY": 16,
+      "label": "Dải Mây Cao"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-sanctum:1",
+      "x": 13,
+      "y": 12,
+      "source_map": 49,
+      "reward": {
+        "kind": "item",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
+        "quantity": 2
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      49
+    ],
+    "types": [
+      2
+    ]
+  },
+  "wildAreas": [],
+  "customWildAreas": [
+    {
+      "area": "x-sanctum",
+      "level_range": [
+        46,
+        50
+      ],
+      "pets": [
+        {
+          "pet_id": "vqsv6-db-25",
+          "name": "Hỏa Phượng Hoàng",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-41",
+          "name": "Linh Quang Lộc",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-57",
+          "name": "Chiến Thần Đà",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-85",
+          "name": "Lôi Kỳ Lân",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-97",
+          "name": "Minh vương Long",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-109",
+          "name": "Tinh Vân Hạc",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-73",
+          "name": "Tương Quân Giải",
+          "terrain": 0,
+          "quality_range": [
+            5,
+            5
+          ]
+        }
+      ]
+    }
+  ],
+  "wild5": false,
+  "arrivals": {
+    "ryan-skyridge": [
+      11,
+      16
+    ]
+  }
+}

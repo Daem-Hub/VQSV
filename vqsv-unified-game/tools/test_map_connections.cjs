@@ -6,57 +6,60 @@ const bootCtx = {window:{}}; vm.runInNewContext(fs.readFileSync(path.join(root,'
 const maps = bootCtx.window.VQSVBootstrap.maps;
 const els = {}, element = id => els[id] ||= {textContent:'',hidden:false,addEventListener(){},getContext(){return {}}};
 const storage = new Map(), localStorage = {getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
-const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,localStorage,maps});
+const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,maps});
 vm.runInContext(code,ctx); vm.runInContext('assets.maps=maps; assets.map=maps["slice01-border-village"]; reset()',ctx);
-vm.runInContext('state.player.x=22; state.player.y=10; interact()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'slice01-border-village');
-vm.runInContext('state.spokeToElder=true; interact()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'ryan-phong-loi-forest');
-assert.equal(vm.runInContext('blocked(state.player.x,state.player.y)',ctx),false);
-vm.runInContext('state.player.x=22; state.player.y=10; interact()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'ryan-forest-stream');
-assert.equal(vm.runInContext('blocked(10,5)',ctx),true);
-assert.equal(vm.runInContext('blocked(10,10)',ctx),false);
-vm.runInContext('state.player.x=12; state.player.y=10; saveGame(); reset(); loadGame()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'ryan-forest-stream');
-vm.runInContext('state.player.x=1; state.player.y=10; interact()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'ryan-phong-loi-forest');
-vm.runInContext('state.player.x=12; state.player.y=10; saveGame(); reset(); loadGame()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'ryan-phong-loi-forest');
-assert.equal(vm.runInContext('state.player.x',ctx),12);
-vm.runInContext('state.player.x=1; state.player.y=10; interact()',ctx);
-assert.equal(vm.runInContext('assets.map.id',ctx),'slice01-border-village');
-assert.equal(vm.runInContext('blocked(state.player.x,state.player.y)',ctx),false);
+const run = js => vm.runInContext(js, ctx);
+run('globalThis.travelTo = target => { const l = assets.map.links.find(k => k.target === target); state.player.x = l.x; state.player.y = l.y; interact(); }');
+run('state.player.x=22; state.player.y=10; interact()');
+assert.equal(run('assets.map.id'),'slice01-border-village');            // the guard must be met first
+run('state.spokeToElder=true; interact()');
+assert.equal(run('assets.map.id'),'ryan-phong-loi-forest');
+assert.equal(run('blocked(state.player.x,state.player.y)'),false);
+assert.deepEqual([run('state.player.x'), run('state.player.y')], maps['ryan-phong-loi-forest'].arrivals['slice01-border-village']);
+run('travelTo("ryan-forest-stream")');
+assert.equal(run('assets.map.id'),'ryan-forest-stream');
+assert.equal(run('blocked(state.player.x,state.player.y)'),false);
+// collision of the real VQSV5 map: 1 blocks, 0 is free
+const stream = maps['ryan-forest-stream'];
+const wall = (() => { for (let y = 0; y < stream.height; y++) { const x = stream.collision[y].indexOf('1'); if (x >= 0) return [x, y]; } })();
+assert.equal(run(`blocked(${wall[0]},${wall[1]})`), true);
+assert.equal(run(`blocked(${stream.entities.player.x},${stream.entities.player.y})`), false);
+const spot = stream.arrivals['ryan-phong-loi-forest'];
+run(`state.player.x=${spot[0]}; state.player.y=${spot[1]}; saveGame(); reset(); loadGame()`);
+assert.equal(run('assets.map.id'),'ryan-forest-stream');
+run('travelTo("ryan-phong-loi-forest")');
+assert.equal(run('assets.map.id'),'ryan-phong-loi-forest');
+assert.deepEqual([run('state.player.x'), run('state.player.y')], maps['ryan-phong-loi-forest'].arrivals['ryan-forest-stream']);
+run('saveGame(); reset(); loadGame()');
+assert.equal(run('assets.map.id'),'ryan-phong-loi-forest');
+assert.deepEqual([run('state.player.x'), run('state.player.y')], maps['ryan-phong-loi-forest'].arrivals['ryan-forest-stream']);
+run('travelTo("slice01-border-village")');
+assert.equal(run('assets.map.id'),'slice01-border-village');
+assert.equal(run('blocked(state.player.x,state.player.y)'),false);
 console.log('Map connections: story gate, two-way travel, unblocked spawn, save and restore passed.');
 
-// Exercise the quest over the same map links that the player uses.
-const run = input => vm.runInContext(input, ctx);
+// "Khảo sát Suối Sấm": gated dialogue, the survey spot on the real VQSV5 stream map, the return trip and old saves.
 function talkToScout() {
-  run(`{
-    const scout = assets.map.entities.villagers.find(npc => npc.id === "scout");
-    state.player.x = scout.x;
-    state.player.y = scout.y + 1;
-    interact();
-  }`);
+  run('{ const scout = assets.map.entities.villagers.find(npc => npc.id === "scout"); state.player.x = scout.x; state.player.y = scout.y + 1; interact(); }');
   assert.equal(run('state.activeNpc.id'), 'scout');
   const lines = run('state.activeNpc.dialogue.length');
   for (let i = 0; i < lines; i++) run('interact()');
 }
 run('reset()');
 talkToScout();
-assert.equal(run('state.survey'), 'unstarted');
+assert.equal(run('state.survey'), 'unstarted');                 // before the guard, the scout only chats
 run('state.spokeToElder = true');
 talkToScout();
 assert.equal(run('state.survey'), 'active');
-run('state.player.x=22; state.player.y=10; interact()');
-run('state.player.x=22; state.player.y=10; interact()');
-run('state.player.x=5; state.player.y=10; interact()');
-assert.equal(run('state.survey'), 'active');
-run('state.player.x=11; state.player.y=10; interact(); saveGame(); reset(); loadGame()');
+run('travelTo("ryan-phong-loi-forest"); travelTo("ryan-forest-stream")');
+const point = maps['ryan-forest-stream'].surveyPoint;
+assert(point && !run(`blocked(${point.x},${point.y})`), 'survey point is walkable');
+run(`state.player.x=${point.x}; state.player.y=${point.y}; interact()`);
+assert.equal(run('state.survey'), 'return');
+run('saveGame(); reset(); loadGame()');
 assert.equal(run('state.survey'), 'return');
 assert.equal(run('assets.map.id'), 'ryan-forest-stream');
-run('state.player.x=1; state.player.y=10; interact()');
-run('state.player.x=1; state.player.y=10; interact()');
+run('travelTo("ryan-phong-loi-forest"); travelTo("slice01-border-village")');
 talkToScout();
 assert.equal(run('state.survey'), 'done');
 const slot = run('SAVE_KEY');
@@ -65,14 +68,24 @@ delete legacySave.survey;
 storage.set(slot, JSON.stringify(legacySave));
 run('loadGame()');
 assert.equal(run('state.survey'), 'unstarted');
-assert.equal(run('assets.map.id'), 'ryan-forest-stream');
-console.log('Survey quest: gated dialogue, bridge proximity, return trip, save/restore and legacy save passed.');
+console.log('Survey quest: gated dialogue, VQSV5 stream survey spot, return trip, save/restore and legacy save passed.');
 
-// Holding the stick through an unlocked border carries direction to its safe arrival tile.
+// Shop doors are always open and lead into their interiors; the exit returns to the door.
+run('reset()');
+const door = maps['slice01-border-village'].links.find(link => link.kind === 'door');
+run(`state.player.x=${door.x}; state.player.y=${door.y + 1}; interact()`);
+assert.equal(run('assets.map.id'), door.target);
+assert.equal(run('blocked(state.player.x,state.player.y)'), false);
+run('{ const exit = assets.map.links.find(link => link.kind === "exit"); state.player.x = exit.x; state.player.y = exit.y - 1; interact(); }');
+assert.equal(run('assets.map.id'), 'slice01-border-village');
+assert.deepEqual([run('state.player.x'), run('state.player.y')], [door.x, door.y]);
+
+// Holding a direction through an unlocked border carries it to the next map.
 run('reset(); state.player.x=23; state.player.y=10; setMove(1,0)');
 assert.equal(run('assets.map.id'), 'slice01-border-village');
-run('state.spokeToElder=true; setMove(1,0)');
+run('state.spokeToElder=true; state.player.inputDir=null; setMove(1,0)');
 assert.equal(run('assets.map.id'), 'ryan-phong-loi-forest');
 assert.equal(run('state.player.inputDir.dx'), 1);
 run('releaseMove(1,0)');
 assert.equal(run('state.player.inputDir'), null);
+console.log('Doors, interiors and walking through open borders passed.');

@@ -1,0 +1,142 @@
+{
+  "id": "ryan-pinewind",
+  "title": "Rừng Thông Gió",
+  "width": 20,
+  "height": 20,
+  "tileSize": 20,
+  "source5": {
+    "map": 20,
+    "place": "Rừng rậm phía tây 5",
+    "tileset": 4,
+    "background": "#004e98",
+    "base": "assets/maps/vqsv5_20_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "00000000000000000000",
+    "00000000000000000000",
+    "00000011110000000000",
+    "00000100001000000000",
+    "00000100001000000000",
+    "10011100001111111111",
+    "01100000000000000000",
+    "00000001000000000000",
+    "00000000010100000000",
+    "00000000000101000000",
+    "00001010000001000000",
+    "00000000000101000000",
+    "01011100000000000000",
+    "00000000000000000000",
+    "00000000000000000011",
+    "00000100000000000000",
+    "00000000000000000000",
+    "00101000000000000000",
+    "01000000000000000000",
+    "11000000101000000000"
+  ],
+  "ground": {
+    "tileset": 4,
+    "tile": 25,
+    "step": 2
+  },
+  "groundVariation": [],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
+  "entities": {
+    "player": {
+      "x": 9,
+      "y": 18
+    },
+    "villagers": []
+  },
+  "links": [
+    {
+      "x": 9,
+      "y": 19,
+      "target": "ryan-phong-loi-forest",
+      "spawnX": 17,
+      "spawnY": 1,
+      "label": "Rừng Rậm Phong Lôi"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-pinewind:0",
+      "x": 9,
+      "y": 3,
+      "source_map": 20,
+      "reward": {
+        "kind": "item",
+        "item_id": 15,
+        "name": "Nước hoa",
+        "quantity": 1
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      20
+    ],
+    "types": [
+      3
+    ]
+  },
+  "wildAreas": [
+    "1-6"
+  ],
+  "customWildAreas": [
+    {
+      "area": "x-pinewind",
+      "level_range": [
+        8,
+        10
+      ],
+      "pets": [
+        {
+          "pet_id": "vqsv6-db-105",
+          "name": "Đậu ưng",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-39",
+          "name": "Uy Qua Đệ Đệ",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-10",
+          "name": "Nhiên Dực Bức",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-84",
+          "name": "Dị Tiểu Hiệp",
+          "terrain": 0,
+          "quality_range": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "wild5": false,
+  "arrivals": {
+    "ryan-phong-loi-forest": [
+      9,
+      18
+    ]
+  }
+}

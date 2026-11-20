@@ -51,10 +51,14 @@
   }
   function box(x,y,w,h,color) { pen.fillStyle = color; pen.fillRect(x,y,w,h); }
   function paintMap(map, player, target, herbs, background) {
+    pen.setTransform(1,0,0,1,0,0);
     pen.clearRect(0,0,chart.width,chart.height);
-    if (background) pen.drawImage(background,0,0,chart.width,chart.height);
+    // Fit the whole map in the chart: real VQSV5 maps are larger or squarer than the 24 × 18 village.
+    const t = map.tileSize, mw = map.width*t, mh = map.height*t, k = Math.min(chart.width/mw, chart.height/mh);
+    pen.setTransform(k,0,0,k,Math.round((chart.width-mw*k)/2),Math.round((chart.height-mh*k)/2));
+    pen.imageSmoothingEnabled = false;
+    if (background) pen.drawImage(background,0,0,mw,mh);
     else if (map.interior) window.drawShopRoom(pen,map);
-    const t = map.tileSize;
     for (const link of map.links || []) {
       const x=link.x*t+10, y=link.y*t+10;
       box(x-5,y-5,11,11,"#1c3441"); box(x-1,y-4,3,9,"#adf5ff"); box(x-4,y-1,9,3,"#adf5ff");
@@ -82,6 +86,7 @@
     pen.beginPath();pen.arc(x,y,6,0,Math.PI*2);pen.fillStyle="#f9ffff";pen.fill();
     pen.strokeStyle="#163349";pen.lineWidth=3;pen.stroke(); box(x-2,y-2,4,4,"#1784ba");
     byId("mapCaption").textContent = "Kael · " + player.x + ", " + player.y;
+    pen.setTransform(1,0,0,1,0,0);
   }
   function describe() {
     for (const row of byId("mapExits").children) row.setAttribute("aria-pressed",String(row.dataset.place === selected?.id));
@@ -131,7 +136,10 @@
   };
   chart.addEventListener("click", event => {
     const rect = chart.getBoundingClientRect(), map = assets.map;
-    const x=(event.clientX-rect.left)/rect.width*map.width-.5, y=(event.clientY-rect.top)/rect.height*map.height-.5;
+    const t = map.tileSize, k = Math.min(chart.width/(map.width*t), chart.height/(map.height*t));
+    const cx = (event.clientX-rect.left)/rect.width*chart.width - (chart.width-map.width*t*k)/2;
+    const cy = (event.clientY-rect.top)/rect.height*chart.height - (chart.height-map.height*t*k)/2;
+    const x = cx/(t*k)-.5, y = cy/(t*k)-.5;
     const nearest = places.reduce((prev,p) => Math.hypot(p.x-x,p.y-y) < Math.hypot(prev.x-x,prev.y-y) ? p : prev, places[0]);
     if (nearest && Math.hypot(nearest.x-x,nearest.y-y) <= 1.75) { selected=nearest; refreshFieldMap(); }
   });

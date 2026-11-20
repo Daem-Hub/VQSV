@@ -1,0 +1,101 @@
+﻿pet_id,name,element,default_quality,max_stars,L5_hp,L5_atk,L5_def,L5_spd,L30_hp,L30_atk,L30_def,L30_spd,skills_L5,skills_L30
+vqsv6-db-10,Nhiên Dực Bức,Hỏa hệ,1,4,83,25,9,7,421,137,54,16,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-11,Bom tinh nghịch,Hỏa hệ,1,4,85,23,9,4,423,135,54,11,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-12,Nhiên Liệp Sư,Hỏa hệ,1,4,104,32,11,5,509,167,56,14,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-13,Hắc Thán Báo,Hỏa hệ,1,4,112,33,10,6,540,168,55,15,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-14,Hỏa Diễm Hồ,Hỏa hệ,1,4,84,24,10,7,399,136,55,16,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-15,Viêm Ma,Hỏa hệ,3,4,130,32,15,4,630,157,65,9,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc / Liệt diễm phong bạo / Vĩnh hằng hỏa ảnh
+vqsv6-db-16,Long bảo bối,Hỏa hệ,1,4,98,21,10,4,480,111,55,11,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc
+vqsv6-db-17,Phệ Hỏa Thú,Hỏa hệ,1,4,106,27,12,5,511,140,57,14,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc
+vqsv6-db-18,Bạo Long Thú,Hỏa hệ,1,4,123,34,14,5,595,169,59,14,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc / Liệt diễm phong bạo / Vĩnh hằng hỏa ảnh
+vqsv6-db-19,Ly Ngưu Ngưu,Hỏa hệ,1,4,133,22,16,3,673,135,83,8,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc
+vqsv6-db-20,Ly Ngưu Thản Khắc,Hỏa hệ,1,4,139,24,18,2,702,136,86,7,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá
+vqsv6-db-21,Nhiệt Bạo Phong Tốc Khuyển,Hỏa hệ,2,4,113,38,15,8,564,180,62,18,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc
+vqsv6-db-22,Tuyệt Đối Linh Độ Khuyển,Hỏa hệ,2,5,75,42,8,9,336,232,32,19,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc / Liệt diễm phong bạo / Vĩnh hằng hỏa ảnh
+vqsv6-db-23,Hỏa Diễm Tường Vân Khuyển,Hỏa hệ,3,5,119,34,14,8,569,184,64,18,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc / Liệt diễm phong bạo / Vĩnh hằng hỏa ảnh
+vqsv6-db-24,Tà Vân Khuyển Thần,Hỏa hệ,3,5,84,47,8,9,359,247,33,19,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc
+vqsv6-db-25,Hỏa Phượng Hoàng,Hỏa hệ,5,5,312,72,38,10,1250,322,132,22,Hỏa trảo,Hỏa trảo / Dương viêm / Diễm kích / Hỏa Vân triệu / Thiên Hỏa tế / Viêm lôi phá / Hỏa diễm đao / Chước nhiệt chi xúc / Liệt diễm phong bạo / Vĩnh hằng hỏa ảnh
+vqsv6-db-26,Diệp Tán Oa,Mộc hệ,1,4,83,22,9,5,421,135,54,14,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ
+vqsv6-db-27,Thụ Tán Oa,Mộc hệ,2,4,96,26,14,6,476,145,61,16,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ
+vqsv6-db-28,Long Oa,Mộc hệ,2,4,105,34,17,4,509,176,88,12,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ / Đằng mạn triền nhiễu / Quang hợp hiệu ứng
+vqsv6-db-29,Tiên Nhân Cầu Bảo Bảo,Mộc hệ,3,4,94,27,12,8,494,127,62,18,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ / Đằng mạn triền nhiễu / Quang hợp hiệu ứng
+vqsv6-db-30,Tiên Nhân Chưởng Thú,Mộc hệ,3,5,88,27,17,7,413,152,67,17,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-31,Thiết Tý Phách Vương Thụ,Mộc hệ,3,5,139,37,20,5,689,187,95,10,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-32,Khẩu Đại Thảo,Mộc hệ,1,3,102,21,10,6,507,111,55,18,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-33,Khốc Tị Mộc Linh,Mộc hệ,1,3,119,27,12,5,592,140,57,14,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-34,La Phục Thảo,Mộc hệ,1,3,101,29,14,4,484,142,59,11,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-35,La phục Oa Oa,Mộc hệ,1,4,108,27,16,3,535,162,83,10,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-36,Tây Quan Tiểu Hương Trư,Mộc hệ,1,4,117,24,18,4,590,136,86,9,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-37,Trư Lộc Điệp,Mộc hệ,1,4,135,36,14,4,675,171,59,9,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ
+vqsv6-db-38,Cương Tán Ma Cô,Mộc hệ,1,3,107,31,17,9,534,166,84,18,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ
+vqsv6-db-39,Uy Qua Đệ Đệ,Mộc hệ,1,3,120,29,12,6,593,164,57,13,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật
+vqsv6-db-40,Thảo Diệp Cô,Mộc hệ,3,4,119,32,13,9,569,157,63,19,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ / Đằng mạn triền nhiễu / Quang hợp hiệu ứng
+vqsv6-db-41,Linh Quang Lộc,Mộc hệ,5,5,337,72,37,10,1275,322,131,22,Diệp Toàn,Diệp Toàn / Quang phản / Đằng Phược / Thảo Chủng / Đằng chi bích lũy / Thảo nguyện thuật / Châm Diệp Trảm / Diệp chi ân huệ / Đằng mạn triền nhiễu / Quang hợp hiệu ứng
+vqsv6-db-42,Kim Chỉ Ốc,Thổ hệ,1,3,83,25,9,4,421,137,54,9,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-43,Mèo YeDoon,Thổ hệ,2,3,90,24,9,5,446,143,57,15,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-44,Thỏ Di Lặc Bunny,Thổ hệ,1,4,104,32,11,5,509,167,56,14,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-45,Toản Địa Khâu Dẫn,Thổ hệ,1,4,90,33,10,5,405,168,55,12,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật
+vqsv6-db-46,Toái nham Khâu Dẫn,Thổ hệ,1,4,89,24,10,6,426,136,55,13,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật
+vqsv6-db-47,Nham Nham Quy,Thổ hệ,1,3,121,28,13,5,594,141,58,9,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật
+vqsv6-db-48,Kiếm Giáp Hạn Quy,Thổ hệ,1,4,125,21,10,5,642,111,55,12,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-49,Bạch Châm Bảo Bảo,Thổ hệ,1,4,101,27,12,5,484,140,57,14,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá / Bão cát / Thổ Chi Loạn Vũ
+vqsv6-db-50,Hắc Châm Yển Bảo Bảo,Thổ hệ,3,5,87,48,11,5,362,248,36,13,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá / Bão cát / Thổ Chi Loạn Vũ
+vqsv6-db-51,Nham Sơn Long,Thổ hệ,1,4,133,22,16,3,673,135,83,8,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-52,Zombie Nham Sơn Long,Thổ hệ,1,4,78,37,11,2,325,217,45,7,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-53,Thổ Lang Chu Chu,Thổ hệ,1,3,93,31,14,8,453,144,59,17,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật
+vqsv6-db-54,Độc Lang Chu,Thổ hệ,1,4,89,49,8,9,426,274,30,18,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật
+vqsv6-db-55,Sừng tê giác bạo long,Thổ hệ,3,5,144,33,14,8,719,183,64,18,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá
+vqsv6-db-56,Khủng giác bạo long,Thổ hệ,3,5,79,57,8,9,329,307,33,19,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá / Bão cát / Thổ Chi Loạn Vũ
+vqsv6-db-57,Chiến Thần Đà,Thổ hệ,5,5,350,72,37,10,1287,322,131,22,Hất bụi,Hất bụi / Thổ thuẫn / Bão cát / Nham băng / Người bảo vệ Địa Giới / Thạch phu thuật / Nham bạo / Hàng rào cát đá / Bão cát / Thổ Chi Loạn Vũ
+vqsv6-db-58,Tuyết Cầu Bảo Bảo,Thủy hệ,1,2,83,25,9,7,421,115,54,16,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-59,Người tuyết,Thủy hệ,2,4,99,28,9,4,503,147,57,12,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-60,Tuyết Sơn Cự Linh,Thủy hệ,1,4,117,32,11,5,590,167,56,14,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-61,Thủy thủ chim cánh cụt,Thủy hệ,1,4,130,24,10,6,648,114,55,15,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-62,Bá tước chim cánh cụt,Thủy hệ,2,4,141,25,11,7,735,144,58,17,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-63,Võ thần chim cánh cụt,Thủy hệ,3,5,150,37,15,6,750,187,65,14,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết / Băng Phong Hãm Tịnh / Ray lạnh
+vqsv6-db-64,Lục Hành Điểu,Thủy hệ,1,4,102,21,10,8,507,111,55,19,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-65,Cá Miệng Rộng,Thủy hệ,1,3,119,27,12,4,592,140,57,9,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-66,Mực Ma,Thủy hệ,1,4,136,34,14,4,676,169,59,11,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-67,Cá Đèn Lồng,Thủy hệ,1,2,128,22,16,3,646,135,83,10,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-68,Thủy Thượng Phiêu,Thủy hệ,2,5,152,25,2,8,769,144,50,18,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết / Băng Phong Hãm Tịnh / Ray lạnh
+vqsv6-db-69,Phi Thứ Hải Mã,Thủy hệ,1,2,93,31,14,7,453,144,59,16,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-70,Tấn Cá Kiếm,Thủy hệ,1,2,98,27,12,9,480,139,57,18,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết / Băng Phong Hãm Tịnh / Ray lạnh
+vqsv6-db-71,Cốt Cá Kiếm,Thủy hệ,1,4,71,38,9,7,296,218,44,16,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết
+vqsv6-db-72,Độc Giác Kim Ngư,Thủy hệ,1,3,111,28,11,6,539,141,56,15,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích
+vqsv6-db-73,Tương Quân Giải,Thủy hệ,5,5,337,72,37,10,1275,322,131,22,Bong bóng,Bong bóng / Băng lao / Tuyết ảnh / Thủy trụ / Thuật cầu nguyện / Thủy bích / Bạo Phong Tuyết / Lá chắn gió tuyết / Băng Phong Hãm Tịnh / Ray lạnh
+vqsv6-db-74,Lôi Quang Hầu,Điện hệ,3,5,109,27,12,7,534,152,62,15,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét / Điện quang thạch hỏa / Cảm ứng điện từ
+vqsv6-db-75,Lôi Vân Miêu,Điện hệ,1,2,94,24,13,8,432,114,58,17,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi
+vqsv6-db-76,Điện Nhãn Miêu,Điện hệ,2,4,103,27,11,6,507,146,58,19,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét
+vqsv6-db-77,Thân Sĩ Miêu,Điện hệ,2,4,126,34,13,5,625,176,60,15,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi
+vqsv6-db-78,Điện Miêu,Điện hệ,2,2,115,26,15,5,543,121,62,15,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét
+vqsv6-db-79,Thiểm Điện Miêu,Điện hệ,2,4,126,23,17,7,625,142,88,19,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét / Điện quang thạch hỏa / Cảm ứng điện từ
+vqsv6-db-80,Phù Du Điện Long,Điện hệ,1,4,126,24,18,2,621,136,86,9,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi
+vqsv6-db-81,Phù Du Quỷ Long,Điện hệ,1,4,66,45,9,7,291,225,32,14,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét
+vqsv6-db-82,Chuột Điện,Điện hệ,3,5,104,30,14,10,504,155,64,20,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi
+vqsv6-db-83,Chuột Lôi Điện,Điện hệ,3,5,79,48,9,8,329,273,34,18,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét
+vqsv6-db-84,Dị Tiểu Hiệp,Điện hệ,1,4,107,28,11,8,512,141,56,17,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi
+vqsv6-db-85,Lôi Kỳ Lân,Điện hệ,5,5,300,72,37,10,1237,322,131,22,Điện giật,Điện giật / Lôi thiểm / Nạp điện / Sóng điện từ / Đoạt mệnh cao áp / Điện năng chuyển đổi / Tia lửa điện / Chùm sấm sét / Điện quang thạch hỏa / Cảm ứng điện từ
+vqsv6-db-86,Độc Ba Lợi,Quỷ hệ,1,2,93,19,10,6,453,109,55,13,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-87,Kịch Độc Quái,Quỷ hệ,2,4,118,30,14,5,570,149,61,10,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-88,Kịch Độc Khủng Thú,Quỷ hệ,2,4,127,40,11,5,649,183,58,13,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-89,Đan nhãn thú,Quỷ hệ,1,3,106,27,12,5,511,140,57,14,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-90,Độc nhãn quái,Quỷ hệ,2,4,130,36,15,4,628,178,62,12,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-91,Độc nhãn cự thần,Quỷ hệ,2,4,140,33,17,3,710,199,88,8,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao
+vqsv6-db-92,Túi quỷ,Quỷ hệ,1,4,108,24,18,3,513,136,86,10,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn
+vqsv6-db-93,Thi Đại Quỷ,Quỷ hệ,2,4,70,47,10,8,307,237,34,18,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn
+vqsv6-db-94,Kính ma,Quỷ hệ,3,5,129,35,14,6,654,185,64,11,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao / Quỷ độc tín ngưỡng / Lời nguyền cuối cùng
+vqsv6-db-95,Phá kính tà linh,Quỷ hệ,3,5,79,48,9,5,329,273,34,10,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao / Quỷ độc tín ngưỡng / Lời nguyền cuối cùng
+vqsv6-db-96,Hư không hành giả,Quỷ hệ,1,3,125,33,11,5,620,168,56,12,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn
+vqsv6-db-97,Minh vương Long,Quỷ hệ,5,5,362,72,37,10,1300,322,131,22,Ảnh thứ,Ảnh thứ / Chú oán / Quỷ độc / Cơn ác mộng / Mị ảnh / Hỗn loạn / Độc ảnh thứ / Chú Phược Quỷ Lao / Quỷ độc tín ngưỡng / Lời nguyền cuối cùng
+vqsv6-db-98,Lắc lắc,Phong hệ,1,4,84,24,10,3,399,136,55,8,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-99,Chim xanh,Phong hệ,1,4,121,28,13,6,594,141,58,15,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-100,Tai tước,Phong hệ,1,4,62,35,6,6,264,192,28,18,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua
+vqsv6-db-101,Hải âu,Phong hệ,1,4,119,27,12,5,592,140,57,14,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-102,Dực thần,Phong hệ,1,4,136,34,14,5,676,169,59,14,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-103,Hồng nhạn,Phong hệ,1,4,133,22,16,4,673,135,83,13,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-104,Phi Dực Thú,Phong hệ,1,4,72,37,9,3,297,217,31,12,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua / Phong Chi Tí Hữu / Phi Yến Hoàn Sào
+vqsv6-db-105,Đậu ưng,Phong hệ,1,4,107,31,14,8,534,144,59,17,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật
+vqsv6-db-106,Liệt ưng,Phong hệ,3,5,134,35,14,10,684,185,64,20,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua
+vqsv6-db-107,Quáng thạch dực long,Phong hệ,3,5,119,33,14,8,569,183,64,18,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua / Phong Chi Tí Hữu / Phi Yến Hoàn Sào
+vqsv6-db-108,Tà ma dực long,Phong hệ,3,5,84,47,8,9,359,247,33,19,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua
+vqsv6-db-109,Tinh Vân Hạc,Phong hệ,5,5,287,72,37,10,1225,322,131,22,Phong nhận,Phong nhận / Phong áp / Thuận phong / Long quyển / Nghịch Phong Đoạt / Vũ Liệt Thuật / Yến Hồi Thiểm / Phong Chi Tuyền Qua / Phong Chi Tí Hữu / Phi Yến Hoàn Sào

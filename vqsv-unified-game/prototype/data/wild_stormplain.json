@@ -1,0 +1,184 @@
+{
+  "id": "ryan-stormplain",
+  "title": "Đồng Bằng Sấm Sét",
+  "width": 32,
+  "height": 18,
+  "tileSize": 20,
+  "source5": {
+    "map": 11,
+    "place": "Bên ngoài thành phía nam",
+    "tileset": 4,
+    "background": "#004e98",
+    "base": "assets/maps/vqsv5_11_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "01001000111010000000333100000111",
+    "00000001000000000000333300000000",
+    "00000011333331111100333300000011",
+    "00000011333331000100333300010001",
+    "00000011333331111100111111111111",
+    "11101111000001000100100000000010",
+    "00101011000001000100111111111101",
+    "11101111110111000100100003000000",
+    "00000001010101000111100003000000",
+    "00000001110111000100133333000000",
+    "10000000000000000111100000000000",
+    "10000000000000000000000000000000",
+    "10000000000000000000000000000000",
+    "10000000000001111000000000000000",
+    "10000000000001001000000001111100",
+    "11100000000001000100000001000100",
+    "00100000033310000100000001000010",
+    "00010000030010000100000010000010"
+  ],
+  "ground": {
+    "tileset": 4,
+    "tile": 34,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
+  "entities": {
+    "player": {
+      "x": 18,
+      "y": 16
+    },
+    "villagers": []
+  },
+  "links": [
+    {
+      "x": 18,
+      "y": 17,
+      "target": "ryan-canyon",
+      "spawnX": 15,
+      "spawnY": 1,
+      "label": "Hẻm Núi Đá"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-stormplain:0",
+      "x": 11,
+      "y": 0,
+      "source_map": 11,
+      "reward": {
+        "kind": "item",
+        "item_id": 33,
+        "name": "Cái chìa khóa",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-stormplain:1",
+      "x": 6,
+      "y": 8,
+      "source_map": 11,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 100
+      }
+    },
+    {
+      "id": "ryan-stormplain:2",
+      "x": 22,
+      "y": 7,
+      "source_map": 11,
+      "reward": {
+        "kind": "item",
+        "item_id": 8,
+        "name": "Vạn năng dược",
+        "quantity": 1
+      }
+    },
+    {
+      "id": "ryan-stormplain:3",
+      "x": 11,
+      "y": 17,
+      "source_map": 11,
+      "reward": {
+        "kind": "item",
+        "item_id": 3,
+        "name": "Năng lượng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-stormplain:4",
+      "x": 22,
+      "y": 17,
+      "source_map": 11,
+      "reward": {
+        "kind": "item",
+        "item_id": 5,
+        "name": "Cây bạch quả quả",
+        "quantity": 1
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      11
+    ],
+    "types": [
+      0
+    ]
+  },
+  "wildAreas": [],
+  "customWildAreas": [
+    {
+      "area": "x-stormplain",
+      "level_range": [
+        26,
+        30
+      ],
+      "pets": [
+        {
+          "pet_id": "vqsv6-db-82",
+          "name": "Chuột Điện",
+          "terrain": 0,
+          "quality_range": [
+            3,
+            4
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-40",
+          "name": "Thảo Diệp Cô",
+          "terrain": 0,
+          "quality_range": [
+            3,
+            4
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-15",
+          "name": "Viêm Ma",
+          "terrain": 0,
+          "quality_range": [
+            3,
+            4
+          ]
+        },
+        {
+          "pet_id": "vqsv6-db-12",
+          "name": "Nhiên Liệp Sư",
+          "terrain": 0,
+          "quality_range": [
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  ],
+  "wild5": false,
+  "arrivals": {
+    "ryan-canyon": [
+      18,
+      16
+    ]
+  }
+}

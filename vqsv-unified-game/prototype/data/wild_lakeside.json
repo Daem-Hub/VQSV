@@ -1,0 +1,164 @@
+{
+  "id": "ryan-lakeside",
+  "title": "Hồ Sương Mù",
+  "width": 24,
+  "height": 28,
+  "tileSize": 20,
+  "source5": {
+    "map": 31,
+    "place": "Vực Bắc Bắc Hải",
+    "tileset": 5,
+    "background": "#30b8ff",
+    "base": "assets/maps/vqsv5_31_base.png",
+    "overlay": "assets/maps/vqsv5_31_overlay.png"
+  },
+  "collision": [
+    "000000012222210000000000",
+    "000000012222210000000000",
+    "000000012222210000000000",
+    "000000012222210001111000",
+    "111111112222210001001000",
+    "222222222222210000000000",
+    "222222222222210000000000",
+    "222222222222211111111001",
+    "222222222222210000012222",
+    "222222222222100000012222",
+    "222222222222100000012222",
+    "222222222222101100112222",
+    "211111122222101222222222",
+    "210000122222101222222222",
+    "210000122222111222222222",
+    "210000122222222222222222",
+    "211001122222222222222222",
+    "222222222222222222222222",
+    "222222222222222211111122",
+    "222222222222222210000122",
+    "111111111122222210000122",
+    "000000000122222210000122",
+    "000000000122222211001122",
+    "110011100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222",
+    "222222100122222222222222"
+  ],
+  "ground": {
+    "tileset": 4,
+    "tile": 25,
+    "step": 2
+  },
+  "groundVariation": [],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
+  "entities": {
+    "player": {
+      "x": 15,
+      "y": 6
+    },
+    "villagers": []
+  },
+  "links": [
+    {
+      "x": 14,
+      "y": 6,
+      "target": "ryan-forest-stream",
+      "spawnX": 26,
+      "spawnY": 16,
+      "label": "Suối Sấm Phong Lôi"
+    },
+    {
+      "x": 23,
+      "y": 6,
+      "target": "ryan-meadow",
+      "spawnX": 1,
+      "spawnY": 14,
+      "label": "Đồng Cỏ Lộng Gió"
+    },
+    {
+      "x": 21,
+      "y": 7,
+      "target": "ryan-inkmarsh",
+      "spawnX": 11,
+      "spawnY": 8,
+      "label": "Đầm Mực Đen"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-lakeside:0",
+      "x": 23,
+      "y": 0,
+      "source_map": 31,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 500
+      }
+    },
+    {
+      "id": "ryan-lakeside:3",
+      "x": 14,
+      "y": 3,
+      "source_map": 31,
+      "reward": {
+        "kind": "item",
+        "item_id": 4,
+        "name": "Tụ năng thạch",
+        "quantity": 2
+      }
+    },
+    {
+      "id": "ryan-lakeside:4",
+      "x": 16,
+      "y": 3,
+      "source_map": 31,
+      "reward": {
+        "kind": "item",
+        "item_id": 1,
+        "name": "Bánh bích quy",
+        "quantity": 3
+      }
+    },
+    {
+      "id": "ryan-lakeside:5",
+      "x": 21,
+      "y": 3,
+      "source_map": 31,
+      "reward": {
+        "kind": "item",
+        "item_id": 10,
+        "name": "Cao cấp cầu",
+        "quantity": 2
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      31
+    ],
+    "types": [
+      4
+    ]
+  },
+  "wildAreas": [
+    "2-0",
+    "2-2",
+    "2-3",
+    "2-4",
+    "2-5"
+  ],
+  "arrivals": {
+    "ryan-forest-stream": [
+      15,
+      6
+    ],
+    "ryan-meadow": [
+      22,
+      6
+    ],
+    "ryan-inkmarsh": [
+      21,
+      6
+    ]
+  }
+}

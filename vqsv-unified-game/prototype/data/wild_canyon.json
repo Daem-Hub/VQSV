@@ -1,0 +1,133 @@
+{
+  "id": "ryan-canyon",
+  "title": "Hẻm Núi Đá",
+  "width": 20,
+  "height": 20,
+  "tileSize": 20,
+  "source5": {
+    "map": 15,
+    "place": "Cao nguyên phía đông 4",
+    "tileset": 4,
+    "background": "#004e98",
+    "base": "assets/maps/vqsv5_15_base.png",
+    "overlay": null
+  },
+  "collision": [
+    "00000111111111100010",
+    "00000100000000100000",
+    "01111000000000011110",
+    "01000000000000000010",
+    "01000000000000100010",
+    "01000000000000000010",
+    "00100111100111111110",
+    "00100100100100000010",
+    "00100111100111111110",
+    "00010100000000000000",
+    "00011100000000000000",
+    "01100111111111111100",
+    "10000333000000000100",
+    "10000333000000000100",
+    "01110111100011101100",
+    "00010100100010101100",
+    "11110111100011101100",
+    "00000000100010000000",
+    "00000000100010000000",
+    "00000000100010000000"
+  ],
+  "ground": {
+    "tileset": 4,
+    "tile": 20,
+    "step": 1
+  },
+  "groundVariation": [],
+  "groundDecor": [],
+  "paths": [],
+  "objects": [],
+  "entities": {
+    "player": {
+      "x": 1,
+      "y": 17
+    },
+    "villagers": []
+  },
+  "links": [
+    {
+      "x": 0,
+      "y": 17,
+      "target": "ryan-highland",
+      "spawnX": 18,
+      "spawnY": 13,
+      "label": "Cao Nguyên Đá"
+    },
+    {
+      "x": 19,
+      "y": 10,
+      "target": "ryan-ashfield",
+      "spawnX": 1,
+      "spawnY": 10,
+      "label": "Bãi Tro Núi Lửa"
+    },
+    {
+      "x": 15,
+      "y": 0,
+      "target": "ryan-stormplain",
+      "spawnX": 18,
+      "spawnY": 16,
+      "label": "Đồng Bằng Sấm Sét"
+    }
+  ],
+  "chests": [
+    {
+      "id": "ryan-canyon:0",
+      "x": 6,
+      "y": 19,
+      "source_map": 15,
+      "reward": {
+        "kind": "gold",
+        "kim_tien": 300
+      }
+    },
+    {
+      "id": "ryan-canyon:1",
+      "x": 0,
+      "y": 19,
+      "source_map": 15,
+      "reward": {
+        "kind": "item",
+        "item_id": 0,
+        "name": "Đồ uống",
+        "quantity": 2
+      }
+    }
+  ],
+  "terrain5": {
+    "source_maps": [
+      15
+    ],
+    "types": [
+      0
+    ]
+  },
+  "wildAreas": [
+    "4-1",
+    "4-3",
+    "4-4",
+    "4-6",
+    "4-7",
+    "4-9"
+  ],
+  "arrivals": {
+    "ryan-highland": [
+      1,
+      17
+    ],
+    "ryan-ashfield": [
+      18,
+      10
+    ],
+    "ryan-stormplain": [
+      15,
+      1
+    ]
+  }
+}

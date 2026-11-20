@@ -9,7 +9,7 @@ const ctx = new Proxy({ measureText: s => ({width:s.length*7}), createLinearGrad
 const els = {};
 const el = id => els[id] ||= { hidden:false, textContent:'', addEventListener(){}, getContext(){return ctx;} };
 const map = JSON.parse(fs.readFileSync(path.join(root, 'data/opening_map.json'), 'utf8'));
-const sandbox = vm.createContext({document:{getElementById:el},window:{addEventListener(){}},performance:{now:()=>1000},Element:class{},console,map});
+const sandbox = vm.createContext({document:{getElementById:el},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,map});
 vm.runInContext(code, sandbox);
 vm.runInContext('assets.map=map; reset()', sandbox);
 for (const npc of map.entities.villagers) {

@@ -1,0 +1,954 @@
+{
+ "source": "vqsv5.jar data/map/m<N>.d, ak.c(int,boolean) and ak.b(z,al,al)",
+ "confidence": "Every file is consumed exactly. The field type and level range are read from the code paths named in the script docstring; place names are guessed from the map index.",
+ "summary": {
+  "files": 68,
+  "typed": 67,
+  "with_wild_pets": 35,
+  "by_type": {
+   "Thực Vật hệ": 8,
+   "Kim Loại hệ": 26,
+   "Phi Hành hệ": 14,
+   "Mãnh Thú hệ": 6,
+   "Hải Dương hệ": 13
+  }
+ },
+ "maps": [
+  {
+   "map": 0,
+   "place_guess": "Khu Quý tộc",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 1,
+   "place_guess": "Quảng Trường Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 2,
+   "place_guess": "Thao trường của Học Viện Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 3,
+   "place_guess": "Phòng học",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 4,
+   "place_guess": "Cầu Vồng Đấu trường bậc trung",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 5,
+   "place_guess": "Kim Loại Di Tích 1",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 4,
+    "level_max": 6,
+    "pet_ids": [
+     "vqsv5-db-21",
+     "vqsv5-db-30"
+    ],
+    "pet_names": [
+     "Xích Đồng Xà",
+     "Thiết Đầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 6,
+   "place_guess": "Kim Loại Di Tích 2",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 5,
+    "level_max": 7,
+    "pet_ids": [
+     "vqsv5-db-21",
+     "vqsv5-db-25",
+     "vqsv5-db-30"
+    ],
+    "pet_names": [
+     "Xích Đồng Xà",
+     "Binh lính Thiết Giáp",
+     "Thiết Đầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 7,
+   "place_guess": "Khu quản lý Trường học sủng vật",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 8,
+   "place_guess": "Cầu Vồng Đấu trường sơ cấp",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 9,
+   "place_guess": "Phòng trung chuyển Học Viện Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 10,
+   "place_guess": "Kim Loại Di Tích 3",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 16,
+    "level_max": 18,
+    "pet_ids": [
+     "vqsv5-db-21",
+     "vqsv5-db-25",
+     "vqsv5-db-31"
+    ],
+    "pet_names": [
+     "Xích Đồng Xà",
+     "Binh lính Thiết Giáp",
+     "Thiết Cự Nhân"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 11,
+   "place_guess": "Bên ngoài thành phía nam",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 1,
+    "level_max": 2,
+    "pet_ids": [
+     "vqsv5-db-0",
+     "vqsv5-db-10",
+     "vqsv5-db-56"
+    ],
+    "pet_names": [
+     "Thụ quái",
+     "Tiên Nhân Chưởng",
+     "Ngựa núi"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 12,
+   "place_guess": "Cao nguyên phía đông 1",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 8,
+    "level_max": 10,
+    "pet_ids": [
+     "vqsv5-db-4",
+     "vqsv5-db-10",
+     "vqsv5-db-59"
+    ],
+    "pet_names": [
+     "Cỏ thơm",
+     "Tiên Nhân Chưởng",
+     "Heo núi"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 13,
+   "place_guess": "Cao nguyên phía đông 2",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 9,
+    "level_max": 11,
+    "pet_ids": [
+     "vqsv5-db-0",
+     "vqsv5-db-7",
+     "vqsv5-db-10"
+    ],
+    "pet_names": [
+     "Thụ quái",
+     "Thảo quả",
+     "Tiên Nhân Chưởng"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 14,
+   "place_guess": "Cao nguyên phía đông 3",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 10,
+    "level_max": 12,
+    "pet_ids": [
+     "vqsv5-db-56",
+     "vqsv5-db-4",
+     "vqsv5-db-11"
+    ],
+    "pet_names": [
+     "Ngựa núi",
+     "Cỏ thơm",
+     "Gai khổng lồ"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 15,
+   "place_guess": "Cao nguyên phía đông 4",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 12,
+    "level_max": 13,
+    "pet_ids": [
+     "vqsv5-db-59",
+     "vqsv5-db-4",
+     "vqsv5-db-11"
+    ],
+    "pet_names": [
+     "Heo núi",
+     "Cỏ thơm",
+     "Gai khổng lồ"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 16,
+   "place_guess": "Rừng rậm phía tây 1",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 17,
+    "level_max": 20,
+    "pet_ids": [
+     "vqsv5-db-10",
+     "vqsv5-db-7",
+     "vqsv5-db-4"
+    ],
+    "pet_names": [
+     "Tiên Nhân Chưởng",
+     "Thảo quả",
+     "Cỏ thơm"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 17,
+   "place_guess": "Rừng rậm phía tây 2",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 18,
+    "level_max": 20,
+    "pet_ids": [
+     "vqsv5-db-7",
+     "vqsv5-db-11",
+     "vqsv5-db-63"
+    ],
+    "pet_names": [
+     "Thảo quả",
+     "Gai khổng lồ",
+     "Sơn báo"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 18,
+   "place_guess": "Rừng rậm phía tây 3",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 19,
+    "level_max": 21,
+    "pet_ids": [
+     "vqsv5-db-60",
+     "vqsv5-db-67"
+    ],
+    "pet_names": [
+     "Heo răng nanh khổng lồ",
+     "Chân Dị Thú"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 19,
+   "place_guess": "Rừng rậm phía tây 4",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 30,
+    "level_max": 32,
+    "pet_ids": [
+     "vqsv5-db-57",
+     "vqsv5-db-60"
+    ],
+    "pet_names": [
+     "Ngựa vằn",
+     "Heo răng nanh khổng lồ"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 20,
+   "place_guess": "Rừng rậm phía tây 5",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 20,
+    "level_max": 22,
+    "pet_ids": [
+     "vqsv5-db-57",
+     "vqsv5-db-63",
+     "vqsv5-db-67"
+    ],
+    "pet_names": [
+     "Ngựa vằn",
+     "Sơn báo",
+     "Chân Dị Thú"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 21,
+   "place_guess": "Nam Chi Phế Tích 1",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 12,
+    "level_max": 14,
+    "pet_ids": [
+     "vqsv5-db-22",
+     "vqsv5-db-31",
+     "vqsv5-db-30"
+    ],
+    "pet_names": [
+     "Thiết Giáp Xà",
+     "Thiết Cự Nhân",
+     "Thiết Đầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 22,
+   "place_guess": "Nam Chi Phế Tích 2",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 13,
+    "level_max": 15,
+    "pet_ids": [
+     "vqsv5-db-22",
+     "vqsv5-db-25",
+     "vqsv5-db-30"
+    ],
+    "pet_names": [
+     "Thiết Giáp Xà",
+     "Binh lính Thiết Giáp",
+     "Thiết Đầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 23,
+   "place_guess": "Nam Chi Phế Tích 3",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 15,
+    "level_max": 17,
+    "pet_ids": [
+     "vqsv5-db-30",
+     "vqsv5-db-31"
+    ],
+    "pet_names": [
+     "Thiết Đầu",
+     "Thiết Cự Nhân"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 24,
+   "place_guess": "Bầu trời phương bắc 1",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": {
+    "level_min": 26,
+    "level_max": 28,
+    "pet_ids": [
+     "vqsv5-db-40",
+     "vqsv5-db-43",
+     "vqsv5-db-47"
+    ],
+    "pet_names": [
+     "Ưng",
+     "Dơi khổng lồ",
+     "Thiên Mã một sừng"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 25,
+   "place_guess": "Bầu trời phương bắc 2",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": {
+    "level_min": 28,
+    "level_max": 30,
+    "pet_ids": [
+     "vqsv5-db-40",
+     "vqsv5-db-49",
+     "vqsv5-db-47"
+    ],
+    "pet_names": [
+     "Ưng",
+     "Mao Cầu Điểu",
+     "Thiên Mã một sừng"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 26,
+   "place_guess": "Bầu trời phương bắc 3",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": {
+    "level_min": 27,
+    "level_max": 29,
+    "pet_ids": [
+     "vqsv5-db-40",
+     "vqsv5-db-43",
+     "vqsv5-db-49"
+    ],
+    "pet_names": [
+     "Ưng",
+     "Dơi khổng lồ",
+     "Mao Cầu Điểu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 27,
+   "place_guess": "Khu làm việc Học Viện Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 28,
+   "place_guess": "Bến tàu phía nam Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 35,
+    "level_max": 37,
+    "pet_ids": [
+     "vqsv5-db-80",
+     "vqsv5-db-81",
+     "vqsv5-db-76"
+    ],
+    "pet_names": [
+     "Cua vân Bạc",
+     "Cua thiên sứ",
+     "Rùa trinh sát"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 29,
+   "place_guess": "Bến tàu phía bắc Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 36,
+    "level_max": 38,
+    "pet_ids": [
+     "vqsv5-db-72",
+     "vqsv5-db-79"
+    ],
+    "pet_names": [
+     "Tiểu Cánh Cụt",
+     "Cua vàng"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 30,
+   "place_guess": "Học viện Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": null
+  },
+  {
+   "map": 31,
+   "place_guess": "Vực Bắc Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 48,
+    "level_max": 50,
+    "pet_ids": [
+     "vqsv5-db-81",
+     "vqsv5-db-76"
+    ],
+    "pet_names": [
+     "Cua thiên sứ",
+     "Rùa trinh sát"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 32,
+   "place_guess": "Vực Nam Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 50,
+    "level_max": 52,
+    "pet_ids": [
+     "vqsv5-db-73",
+     "vqsv5-db-81",
+     "vqsv5-db-76"
+    ],
+    "pet_names": [
+     "Đao Phong Cánh Cụt",
+     "Cua thiên sứ",
+     "Rùa trinh sát"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 33,
+   "place_guess": "Phòng học Bắc Hải 1",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": null
+  },
+  {
+   "map": 34,
+   "place_guess": "Phòng học Bắc Hải 2",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": null
+  },
+  {
+   "map": 35,
+   "place_guess": "Khu trường cũ Bắc Hải 1",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 38,
+    "level_max": 40,
+    "pet_ids": [
+     "vqsv5-db-73",
+     "vqsv5-db-80"
+    ],
+    "pet_names": [
+     "Đao Phong Cánh Cụt",
+     "Cua vân Bạc"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 36,
+   "place_guess": "Khu trường cũ Bắc Hải 2",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 40,
+    "level_max": 42,
+    "pet_ids": [
+     "vqsv5-db-80",
+     "vqsv5-db-75"
+    ],
+    "pet_names": [
+     "Cua vân Bạc",
+     "Hải Quy (rùa biển)"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 37,
+   "place_guess": "Khu trường cũ Bắc Hải 3",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 42,
+    "level_max": 44,
+    "pet_ids": [
+     "vqsv5-db-73",
+     "vqsv5-db-75"
+    ],
+    "pet_names": [
+     "Đao Phong Cánh Cụt",
+     "Hải Quy (rùa biển)"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 38,
+   "place_guess": "Rừng rậm u ám 1",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 24,
+    "level_max": 26,
+    "pet_ids": [
+     "vqsv5-db-56",
+     "vqsv5-db-59"
+    ],
+    "pet_names": [
+     "Ngựa núi",
+     "Heo núi"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 39,
+   "place_guess": "Rừng rậm u ám 2",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 25,
+    "level_max": 27,
+    "pet_ids": [
+     "vqsv5-db-43",
+     "vqsv5-db-59"
+    ],
+    "pet_names": [
+     "Dơi khổng lồ",
+     "Heo núi"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 40,
+   "place_guess": "Rừng rậm u ám 3",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": {
+    "level_min": 52,
+    "level_max": 54,
+    "pet_ids": [
+     "vqsv5-db-44",
+     "vqsv5-db-50"
+    ],
+    "pet_names": [
+     "Răng nanh của dơi",
+     "Phiêu Phù Mao Cầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 41,
+   "place_guess": "Rừng rậm u ám 4",
+   "terrain_type_id": 3,
+   "terrain_type": "Mãnh Thú hệ",
+   "wild": {
+    "level_min": 54,
+    "level_max": 56,
+    "pet_ids": [
+     "vqsv5-db-65",
+     "vqsv5-db-67",
+     "vqsv5-db-50"
+    ],
+    "pet_names": [
+     "Mị Ảnh",
+     "Chân Dị Thú",
+     "Phiêu Phù Mao Cầu"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 42,
+   "place_guess": "Rừng rậm u ám 5",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 58,
+    "level_max": 60,
+    "pet_ids": [
+     "vqsv5-db-44",
+     "vqsv5-db-65"
+    ],
+    "pet_names": [
+     "Răng nanh của dơi",
+     "Mị Ảnh"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 43,
+   "place_guess": "Trung Tâm Thương Mại",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 44,
+   "place_guess": "Cầu Vồng Tửu Quán",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 45,
+   "place_guess": "Nhà dân",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 46,
+   "place_guess": "Hanabusa",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 47,
+   "place_guess": "Thành Đấu trường Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 48,
+   "place_guess": "Quảng Trường Bắc Hải",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 37,
+    "level_max": 39,
+    "pet_ids": [
+     "vqsv5-db-72",
+     "vqsv5-db-79"
+    ],
+    "pet_names": [
+     "Tiểu Cánh Cụt",
+     "Cua vàng"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 49,
+   "place_guess": "Thiên Không Thành 1",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 50,
+   "place_guess": "Thiên Không Thành 2",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 51,
+   "place_guess": "Phòng Cầu Vồng triệu tập",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 52,
+   "place_guess": "Nam Chi Phế Tích 4",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": {
+    "level_min": 14,
+    "level_max": 16,
+    "pet_ids": [
+     "vqsv5-db-22",
+     "vqsv5-db-31"
+    ],
+    "pet_names": [
+     "Thiết Giáp Xà",
+     "Thiết Cự Nhân"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 53,
+   "place_guess": "Khu trường cũ Bắc Hải 4",
+   "terrain_type_id": 4,
+   "terrain_type": "Hải Dương hệ",
+   "wild": {
+    "level_min": 43,
+    "level_max": 45,
+    "pet_ids": [
+     "vqsv5-db-72",
+     "vqsv5-db-79",
+     "vqsv5-db-75"
+    ],
+    "pet_names": [
+     "Tiểu Cánh Cụt",
+     "Cua vàng",
+     "Hải Quy (rùa biển)"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 54,
+   "place_guess": "Tắc Kỳ Gia",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 55,
+   "place_guess": "Người hầu phòng",
+   "terrain_type_id": null,
+   "terrain_type": null,
+   "wild": null
+  },
+  {
+   "map": 56,
+   "place_guess": "Trung Tâm Thương Mại",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 57,
+   "place_guess": "Rừng rậm thần bí 1",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": {
+    "level_min": 31,
+    "level_max": 33,
+    "pet_ids": [
+     "vqsv5-db-57",
+     "vqsv5-db-60",
+     "vqsv5-db-44"
+    ],
+    "pet_names": [
+     "Ngựa vằn",
+     "Heo răng nanh khổng lồ",
+     "Răng nanh của dơi"
+    ],
+    "rare_pet_id": null
+   }
+  },
+  {
+   "map": 58,
+   "place_guess": "Rừng rậm thần bí 2",
+   "terrain_type_id": 0,
+   "terrain_type": "Thực Vật hệ",
+   "wild": null
+  },
+  {
+   "map": 59,
+   "place_guess": "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 60,
+   "place_guess": "Phòng trung chuyển Kim Loại Di Tích",
+   "terrain_type_id": 1,
+   "terrain_type": "Kim Loại hệ",
+   "wild": null
+  },
+  {
+   "map": 61,
+   "place_guess": "Gian phòng Bắc Hải thần bí",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 62,
+   "place_guess": "Gian phòng thần bí tại Học Viện Cầu Vồng",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 63,
+   "place_guess": "Phòng trung chuyển Bạch Kim",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 64,
+   "place_guess": "Phòng trung chuyển Kim",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 65,
+   "place_guess": "Phòng trung chuyển Tử Chi",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 66,
+   "place_guess": "Phòng trung chuyển Lam Chi",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  },
+  {
+   "map": 67,
+   "place_guess": "Phòng sinh hoạt của Học Viện Cầu Vồng",
+   "terrain_type_id": 2,
+   "terrain_type": "Phi Hành hệ",
+   "wild": null
+  }
+ ]
+}

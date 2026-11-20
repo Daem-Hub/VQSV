@@ -8,6 +8,9 @@
 .pet-book-filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.4fr; gap: 10px; margin-bottom: 14px; }
 .pet-collection-status { color: #c3d0c1; font-size: 12px; line-height: 1.45; }
 .pet-collect { margin: 0 0 8px; background: #e7c66c; }
+.pet-team { margin: 0 0 8px; background: #9fd0c1; }
+.pet-team[aria-pressed="true"] { background: #e4a58d; }
+.pet-team:disabled { opacity: .6; cursor: not-allowed; }
 .pet-book-filters label { display: grid; gap: 5px; color: #c3d0c1; font-size: 12px; }
 .pet-book-filters input, .pet-book-filters select, .pet-sequence { width: 100%; padding: 9px 10px; color: #eef5e9; background: #21372a; border: 1px solid #506857; border-radius: 7px; font: inherit; }
 .pet-book-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; }
@@ -48,3 +51,16 @@
 .effect-section { margin-top: 16px; }
 #effectPreview { width: 90px; height: 90px; object-fit: contain; image-rendering: pixelated; background: #27372e; border-radius: 8px; }
 @media (max-width: 600px) { .skill-layout { grid-template-columns: 1fr; } .skill-list { max-height: 150px; } .skill-book { padding: 14px; } }
+.pet-stats { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 12px; }
+.pet-stats th, .pet-stats td { padding: 3px 4px; border-bottom: 1px solid #3d5a45; text-align: right; color: #e6efe1; }
+.pet-stats th:first-child { text-align: left; color: #b8caaf; font-weight: 600; }
+.pet-evolve { margin: 0 0 8px; background: #d9a8f0; }
+.pet-evolve:disabled { opacity: .55; cursor: not-allowed; }
+.pet-evolve-note { padding: 8px; border: 1px solid #9a7bb8; border-radius: 7px; background: #3a2c4a; color: #f1dcff; }
+.pet-skills { margin: 8px 0; padding: 8px; border: 1px solid #4b6550; border-radius: 8px; background: #1d3226; }
+.pet-skills h4 { margin: 0 0 4px; color: #f6e5aa; font-size: 13px; }
+.pet-skills p { margin: 4px 0; font-size: 12px; }
+.pet-skill-hint { color: #b8caaf; }
+.pet-skill-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 3px 0; font-size: 12px; }
+.pet-skill-button { width: auto; padding: 3px 9px; font-size: 11px; background: #e4a58d; }
+.pet-skill-button:disabled { opacity: .45; cursor: not-allowed; }

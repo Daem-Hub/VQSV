@@ -1,0 +1,69 @@
+﻿map,place_guess,terrain_type,wild_levels,wild_pets
+0,Khu Quý tộc,Kim Loại hệ,,
+1,Quảng Trường Cầu Vồng,Kim Loại hệ,,
+2,Thao trường của Học Viện Cầu Vồng,Kim Loại hệ,,
+3,Phòng học,Kim Loại hệ,,
+4,Cầu Vồng Đấu trường bậc trung,Kim Loại hệ,,
+5,Kim Loại Di Tích 1,Kim Loại hệ,4-6,Xích Đồng Xà; Thiết Đầu
+6,Kim Loại Di Tích 2,Kim Loại hệ,5-7,Xích Đồng Xà; Binh lính Thiết Giáp; Thiết Đầu
+7,Khu quản lý Trường học sủng vật,Kim Loại hệ,,
+8,Cầu Vồng Đấu trường sơ cấp,Kim Loại hệ,,
+9,Phòng trung chuyển Học Viện Cầu Vồng,Kim Loại hệ,,
+10,Kim Loại Di Tích 3,Kim Loại hệ,16-18,Xích Đồng Xà; Binh lính Thiết Giáp; Thiết Cự Nhân
+11,Bên ngoài thành phía nam,Thực Vật hệ,1-2,Thụ quái; Tiên Nhân Chưởng; Ngựa núi
+12,Cao nguyên phía đông 1,Thực Vật hệ,8-10,Cỏ thơm; Tiên Nhân Chưởng; Heo núi
+13,Cao nguyên phía đông 2,Thực Vật hệ,9-11,Thụ quái; Thảo quả; Tiên Nhân Chưởng
+14,Cao nguyên phía đông 3,Thực Vật hệ,10-12,Ngựa núi; Cỏ thơm; Gai khổng lồ
+15,Cao nguyên phía đông 4,Thực Vật hệ,12-13,Heo núi; Cỏ thơm; Gai khổng lồ
+16,Rừng rậm phía tây 1,Mãnh Thú hệ,17-20,Tiên Nhân Chưởng; Thảo quả; Cỏ thơm
+17,Rừng rậm phía tây 2,Mãnh Thú hệ,18-20,Thảo quả; Gai khổng lồ; Sơn báo
+18,Rừng rậm phía tây 3,Mãnh Thú hệ,19-21,Heo răng nanh khổng lồ; Chân Dị Thú
+19,Rừng rậm phía tây 4,Mãnh Thú hệ,30-32,Ngựa vằn; Heo răng nanh khổng lồ
+20,Rừng rậm phía tây 5,Mãnh Thú hệ,20-22,Ngựa vằn; Sơn báo; Chân Dị Thú
+21,Nam Chi Phế Tích 1,Kim Loại hệ,12-14,Thiết Giáp Xà; Thiết Cự Nhân; Thiết Đầu
+22,Nam Chi Phế Tích 2,Kim Loại hệ,13-15,Thiết Giáp Xà; Binh lính Thiết Giáp; Thiết Đầu
+23,Nam Chi Phế Tích 3,Kim Loại hệ,15-17,Thiết Đầu; Thiết Cự Nhân
+24,Bầu trời phương bắc 1,Phi Hành hệ,26-28,Ưng; Dơi khổng lồ; Thiên Mã một sừng
+25,Bầu trời phương bắc 2,Phi Hành hệ,28-30,Ưng; Mao Cầu Điểu; Thiên Mã một sừng
+26,Bầu trời phương bắc 3,Phi Hành hệ,27-29,Ưng; Dơi khổng lồ; Mao Cầu Điểu
+27,Khu làm việc Học Viện Cầu Vồng,Kim Loại hệ,,
+28,Bến tàu phía nam Bắc Hải,Hải Dương hệ,35-37,Cua vân Bạc; Cua thiên sứ; Rùa trinh sát
+29,Bến tàu phía bắc Bắc Hải,Hải Dương hệ,36-38,Tiểu Cánh Cụt; Cua vàng
+30,Học viện Bắc Hải,Hải Dương hệ,,
+31,Vực Bắc Bắc Hải,Hải Dương hệ,48-50,Cua thiên sứ; Rùa trinh sát
+32,Vực Nam Bắc Hải,Hải Dương hệ,50-52,Đao Phong Cánh Cụt; Cua thiên sứ; Rùa trinh sát
+33,Phòng học Bắc Hải 1,Hải Dương hệ,,
+34,Phòng học Bắc Hải 2,Hải Dương hệ,,
+35,Khu trường cũ Bắc Hải 1,Hải Dương hệ,38-40,Đao Phong Cánh Cụt; Cua vân Bạc
+36,Khu trường cũ Bắc Hải 2,Hải Dương hệ,40-42,Cua vân Bạc; Hải Quy (rùa biển)
+37,Khu trường cũ Bắc Hải 3,Hải Dương hệ,42-44,Đao Phong Cánh Cụt; Hải Quy (rùa biển)
+38,Rừng rậm u ám 1,Thực Vật hệ,24-26,Ngựa núi; Heo núi
+39,Rừng rậm u ám 2,Kim Loại hệ,25-27,Dơi khổng lồ; Heo núi
+40,Rừng rậm u ám 3,Phi Hành hệ,52-54,Răng nanh của dơi; Phiêu Phù Mao Cầu
+41,Rừng rậm u ám 4,Mãnh Thú hệ,54-56,Mị Ảnh; Chân Dị Thú; Phiêu Phù Mao Cầu
+42,Rừng rậm u ám 5,Hải Dương hệ,58-60,Răng nanh của dơi; Mị Ảnh
+43,Trung Tâm Thương Mại,Kim Loại hệ,,
+44,Cầu Vồng Tửu Quán,Kim Loại hệ,,
+45,Nhà dân,Kim Loại hệ,,
+46,Hanabusa,Kim Loại hệ,,
+47,Thành Đấu trường Cầu Vồng,Kim Loại hệ,,
+48,Quảng Trường Bắc Hải,Hải Dương hệ,37-39,Tiểu Cánh Cụt; Cua vàng
+49,Thiên Không Thành 1,Phi Hành hệ,,
+50,Thiên Không Thành 2,Phi Hành hệ,,
+51,Phòng Cầu Vồng triệu tập,Phi Hành hệ,,
+52,Nam Chi Phế Tích 4,Kim Loại hệ,14-16,Thiết Giáp Xà; Thiết Cự Nhân
+53,Khu trường cũ Bắc Hải 4,Hải Dương hệ,43-45,Tiểu Cánh Cụt; Cua vàng; Hải Quy (rùa biển)
+54,Tắc Kỳ Gia,Kim Loại hệ,,
+55,Người hầu phòng,,,
+56,Trung Tâm Thương Mại,Kim Loại hệ,,
+57,Rừng rậm thần bí 1,Thực Vật hệ,31-33,Ngựa vằn; Heo răng nanh khổng lồ; Răng nanh của dơi
+58,Rừng rậm thần bí 2,Thực Vật hệ,,
+59,Khu ký túc xá học sinh của Học Viện Cầu Vồng,Kim Loại hệ,,
+60,Phòng trung chuyển Kim Loại Di Tích,Kim Loại hệ,,
+61,Gian phòng Bắc Hải thần bí,Phi Hành hệ,,
+62,Gian phòng thần bí tại Học Viện Cầu Vồng,Phi Hành hệ,,
+63,Phòng trung chuyển Bạch Kim,Phi Hành hệ,,
+64,Phòng trung chuyển Kim,Phi Hành hệ,,
+65,Phòng trung chuyển Tử Chi,Phi Hành hệ,,
+66,Phòng trung chuyển Lam Chi,Phi Hành hệ,,
+67,Phòng sinh hoạt của Học Viện Cầu Vồng,Phi Hành hệ,,

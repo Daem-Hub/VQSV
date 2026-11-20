@@ -65,7 +65,7 @@
     }, true);
   }
 
-  const menu = byId("gameMenu"), trade = byId("trade");
+  const menu = byId("gameMenu");
   function pauseWalking() {
     stopStick();
     state.player.inputDir = null;
@@ -91,7 +91,7 @@
   byId("openMenu").onclick = () => {
     if (!assets.map || menu.open) return;
     pauseWalking();
-    byId("menuCoins").textContent = state.bag.coins + " xu";
+    updateWallet();
     menu.showModal();
     if (!system.hidden) systemPage(false);
     markMenu(menuIndex); tiles[menuIndex].focus();
@@ -110,7 +110,8 @@
   });
   byId("quickMap").onclick = () => {pauseWalking(); openMap();};
   byId("menuJournal").onclick = () => openQuestJournal();
-  byId("menuBag").onclick = () => window.showGoods();
+  byId("menuBag").onclick = () => { menu.close(); openBag(); };
+  for (const id of ["openPetBook","openSkillBook","openWorldAtlas","openShop","menuJournal"]) byId(id).addEventListener("click", () => menu.close(), true);
   byId("playAgain").onclick = () => reset();
   byId("restart").addEventListener("click", () => menu.close());
   const full = byId("fullscreen");
@@ -126,135 +127,19 @@
     full.setAttribute("aria-label",label); full.title = label;
   });
 
-  const goods = {
-    apothecary: {name:"Thuốc hồi phục", price:8, icon:"potion", text:"Hồi tối đa 30 HP cho Lôi Miêu khi dùng Đạo cụ trong trận."},
-    charms: {name:"Bùa lá rừng", price:24, icon:"charm", text:"Tự trang bị cho Lôi Miêu, giảm 2 sát thương mỗi lần trúng đòn."}
-  };
-  const battleShop = {name:"Tiếp tế trong trận"};
-  let seller, selected, selling, ordering, quantity;
-  const owned = key => key === "charms" ? Number(state.bag.charm) : state.bag.tonics;
-  const unitPrice = (key = selected) => goods[key].price / (selling ? 2 : 1);
-  function limit() {
-    const bag = state.bag, price = unitPrice(), count = owned(selected);
-    return selling ? Math.min(count, Math.floor((Number.MAX_SAFE_INTEGER - bag.coins) / price))
-      : Math.min(Math.floor(bag.coins / price), (selected === "charms" ? 1 : Number.MAX_SAFE_INTEGER) - count);
-  }
-  function updateTrade() {
-    const item = goods[selected], available = limit();
-    byId("funds").textContent = state.bag.coins + " xu";
-    byId("tradeTabs").hidden = !seller || seller === battleShop || ordering;
-    byId("tradeBuy").setAttribute("aria-pressed", String(!selling));
-    byId("tradeSell").setAttribute("aria-pressed", String(selling));
-    for (const row of byId("stock").children) row.setAttribute("aria-current", String(row.dataset.key === selected));
-    const desc = document.createElement("p"), count = document.createElement("small");
-    desc.textContent = item.text;
-    count.textContent = "Trong túi: " + owned(selected) + (selected === "charms" && state.bag.charm ? " · Đang trang bị" : "");
-    byId("itemDetail").replaceChildren(desc, count);
-    byId("quantityBox").hidden = !ordering;
-    byId("quantity").textContent = quantity;
-    byId("lessGoods").disabled = quantity <= 1;
-    byId("moreGoods").disabled = quantity >= available;
-    byId("tradeTotal").hidden = !ordering;
-    byId("tradeTotal").textContent = (selling ? "Nhận được: " : "Cần trả: ") + (quantity * unitPrice()) + " xu";
-    const confirm = byId("tradeConfirm");
-    confirm.hidden = !seller;
-    confirm.disabled = available <= 0;
-    confirm.querySelector("span").textContent = available <= 0
-      ? (selling ? "Hết hàng để bán" : selected === "charms" && state.bag.charm ? "Đã trang bị" : "Không đủ xu")
-      : ordering ? (selling ? "Xác nhận bán" : "Xác nhận mua") : "Chọn";
-  }
-  function beginOrder() {
-    if (!seller || !limit() || ordering) return;
-    quantity = 1; ordering = true;
-    byId("receipt").textContent = "";
-    updateTrade(); byId("tradeConfirm").focus();
-  }
-  function listGoods() {
-    const stock = byId("stock");
-    stock.replaceChildren();
-    for (const [key,item] of Object.entries(goods)) {
-      if (seller?.vendor && key !== seller.vendor) continue;
-      const row = document.createElement("button"), icon = document.createElement("i"), price = document.createElement("small");
-      row.type = "button"; row.dataset.key = key;
-      icon.className = "v5-icon " + item.icon; icon.ariaHidden = "true";
-      price.textContent = seller ? unitPrice(key) + " xu" : "× " + owned(key);
-      row.append(icon, document.createTextNode(item.name), price);
-      row.onclick = () => { selected = key; updateTrade(); if (seller) beginOrder(); };
-      stock.append(row);
-    }
-    updateTrade();
-  }
-  function tradeMode(sell) {
-    selling = sell; ordering = false; quantity = 1;
-    byId("receipt").textContent = "";
-    listGoods();
-  }
-  byId("tradeBuy").onclick = () => tradeMode(false);
-  byId("tradeSell").onclick = () => tradeMode(true);
-  function adjust(delta) {
-    quantity = Math.max(1, Math.min(limit(), quantity + delta));
-    updateTrade();
-  }
-  byId("lessGoods").onclick = () => adjust(-1);
-  byId("moreGoods").onclick = () => adjust(1);
-  byId("tradeConfirm").onclick = () => {
-    if (!ordering) { beginOrder(); return; }
-    const canTrade = seller === battleShop ? state.mode === "battle" && !state.battle.pendingUntil && !selling : nearbyNpc()?.vendor === selected;
-    if (!trade.open || !canTrade || quantity < 1 || quantity > limit()) return;
-    const amount = quantity * (selling ? -1 : 1);
-    state.bag.coins -= amount * unitPrice();
-    if (selected === "apothecary") state.bag.tonics += amount;
-    else state.bag.charm = !selling;
-    byId("receipt").textContent = (selling ? "Đã bán " : "Đã mua ") + quantity + " " + goods[selected].name.toLocaleLowerCase("vi") + ".";
-    ordering = false; quantity = 1;
-    byId("menuCoins").textContent = state.bag.coins + " xu";
-    listGoods(); byId("stock").firstElementChild.focus();
-  };
-  function backTrade() {
-    if (!ordering) { trade.close(); return; }
-    ordering = false; quantity = 1; updateTrade(); byId("stock").firstElementChild.focus();
-  }
-  byId("tradeBack").onclick = backTrade;
-  trade.addEventListener("cancel", e => { e.preventDefault(); backTrade(); });
-  trade.addEventListener("keydown", e => {
-    if (ordering && ["4","6","ArrowLeft","ArrowRight"].includes(e.key)) {
-      e.preventDefault(); adjust(["4","ArrowLeft"].includes(e.key) ? -1 : 1);
-    } else if (e.key === "5" && seller) {
-      e.preventDefault(); if (!e.repeat) byId("tradeConfirm").click();
-    }
-  });
-  window.showGoods = npc => {
-    if (!assets.map || trade.open) return;
-    pauseWalking(); seller = npc || null;
-    selected = seller?.vendor || "apothecary";
-    byId("tradePerson").textContent = seller ? seller.name : "Kael";
-    byId("tradeTitle").textContent = seller === battleShop ? "Cửa hàng" : seller ? assets.map.title : "Hành trang";
-    tradeMode(false); trade.showModal(); byId("stock").firstElementChild.focus();
-  };
-  byId("openBag").onclick = () => window.showGoods();
-  byId("shopButton").onclick = () => {
-    if (state.mode === "battle" && !state.battle.pendingUntil) window.showGoods(battleShop);
-  };
-
   window.syncScene = () => {
     byId("menuLocation").textContent = assets.map.title;
-    byId("menuCoins").textContent = state.bag.coins + " xu";
     document.body.dataset.mode = state.mode;
-    const speaking = state.mode === "dialogue";
-    byId("speech").hidden = !speaking;
-    if (speaking) {
-      byId("speaker").textContent = state.activeNpc.name;
-      byId("line").textContent = state.activeNpc.dialogue[state.dialogue];
-    }
     byId("playAgain").hidden = !["ending","defeat"].includes(state.mode);
   };
-  // CSS crops the 4:3 map to the viewport. Pan that crop with the player.
+  // CSS crops the 4:3 canvas to the viewport. Pan that crop toward Kael's position on screen
+  // (the engine's camera already scrolls maps larger than the canvas).
   let lastPosition;
   window.followKael = () => {
     if (!["dialogue","explore"].includes(state.mode)) return;
-    const p = state.player;
-    const position = ((p.visualX+.5)/assets.map.width*100).toFixed(2) + "% " +
-      ((p.visualY+.25)/assets.map.height*100).toFixed(2) + "%";
+    const p = state.player, cam = cameraOf(assets.map);
+    const position = Math.max(0, Math.min(100, ((p.visualX+.5)*S - cam.x) / 480 * 100)).toFixed(2) + "% " +
+      Math.max(0, Math.min(100, ((p.visualY+.25)*S - cam.y) / 360 * 100)).toFixed(2) + "%";
     if (position !== lastPosition) { canvas.style.objectPosition = position; lastPosition = position; }
   };
 })();

@@ -28,3 +28,51 @@ vm.runInContext('state.player.x=1; state.player.y=10; interact()',ctx);
 assert.equal(vm.runInContext('assets.map.id',ctx),'slice01-border-village');
 assert.equal(vm.runInContext('blocked(state.player.x,state.player.y)',ctx),false);
 console.log('Map connections: story gate, two-way travel, unblocked spawn, save and restore passed.');
+
+// Exercise the quest over the same map links that the player uses.
+const run = input => vm.runInContext(input, ctx);
+function talkToScout() {
+  run(`{
+    const scout = assets.map.entities.villagers.find(npc => npc.id === "scout");
+    state.player.x = scout.x;
+    state.player.y = scout.y + 1;
+    interact();
+  }`);
+  assert.equal(run('state.activeNpc.id'), 'scout');
+  const lines = run('state.activeNpc.dialogue.length');
+  for (let i = 0; i < lines; i++) run('interact()');
+}
+run('reset()');
+talkToScout();
+assert.equal(run('state.survey'), 'unstarted');
+run('state.spokeToElder = true');
+talkToScout();
+assert.equal(run('state.survey'), 'active');
+run('state.player.x=22; state.player.y=10; interact()');
+run('state.player.x=22; state.player.y=10; interact()');
+run('state.player.x=5; state.player.y=10; interact()');
+assert.equal(run('state.survey'), 'active');
+run('state.player.x=11; state.player.y=10; interact(); saveGame(); reset(); loadGame()');
+assert.equal(run('state.survey'), 'return');
+assert.equal(run('assets.map.id'), 'ryan-forest-stream');
+run('state.player.x=1; state.player.y=10; interact()');
+run('state.player.x=1; state.player.y=10; interact()');
+talkToScout();
+assert.equal(run('state.survey'), 'done');
+const slot = run('SAVE_KEY');
+const legacySave = JSON.parse(storage.get(slot));
+delete legacySave.survey;
+storage.set(slot, JSON.stringify(legacySave));
+run('loadGame()');
+assert.equal(run('state.survey'), 'unstarted');
+assert.equal(run('assets.map.id'), 'ryan-forest-stream');
+console.log('Survey quest: gated dialogue, bridge proximity, return trip, save/restore and legacy save passed.');
+
+// Holding the stick through an unlocked border carries direction to its safe arrival tile.
+run('reset(); state.player.x=23; state.player.y=10; setMove(1,0)');
+assert.equal(run('assets.map.id'), 'slice01-border-village');
+run('state.spokeToElder=true; setMove(1,0)');
+assert.equal(run('assets.map.id'), 'ryan-phong-loi-forest');
+assert.equal(run('state.player.inputDir.dx'), 1);
+run('releaseMove(1,0)');
+assert.equal(run('state.player.inputDir'), null);

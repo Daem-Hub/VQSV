@@ -1,17 +1,29 @@
-#worldAtlas {width:min(1080px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;border:1px solid #8a986c;border-radius:14px;background:#172820;color:#edf5e9}
-#worldAtlas::backdrop {background:#09110fd9}
-.world-atlas {padding:18px}
-.world-header {display:flex;align-items:center;justify-content:space-between;gap:12px}
-.world-header h2 {margin:0;color:#f3dda1;font-size:22px}
-.world-header p {margin:4px 0;color:#b6cbb9;font-size:12px}
-#closeWorldAtlas {width:38px;background:#344b39;color:white;font-size:18px}
-.world-image {display:block;width:100%;max-height:430px;object-fit:contain;background:#132d38;border-radius:8px;image-rendering:pixelated}
-.world-warning {color:#d7d0a5;font-size:12px;line-height:1.4}
-.world-layout {display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.world-regions {display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:250px;overflow:auto;padding:2px}
-.world-region {display:flex;flex-direction:column;align-items:start;gap:3px;text-align:left;background:#294131;color:#eef4e7;padding:8px;font-size:12px}
-.world-region[aria-pressed="true"] {outline:2px solid #edcf83}
-.world-region small {font-size:10px;color:#bad0b6;font-weight:400}
-.world-detail {padding:12px;border:1px solid #506d52;border-radius:8px;background:#243a2b;font-size:13px;line-height:1.5}
-.world-detail h3 {margin:0;color:#f3dda1}.world-detail p {margin:6px 0}.world-detail ul {padding-left:18px;margin:5px 0}.world-status {color:#bad0b6;font-size:12px}
-@media(max-width:650px){.world-atlas{padding:12px}.world-layout{grid-template-columns:1fr}.world-regions{max-height:180px}}
+#worldAtlas { width:min(740px,calc(100vw - 24px)); }
+.atlas-tabs { padding:8px 12px 0; }
+.atlas-page { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(175px,1fr); gap:12px; align-items:start; padding:12px; }
+.map-frame { position:relative; margin:0; border:2px solid #8cbed2; background:#193547; box-shadow:0 0 0 1px #0b2438; }
+.map-frame canvas,.map-frame img { display:block; width:100%; height:auto; image-rendering:pixelated; }
+.map-frame figcaption { position:absolute; bottom:4px; left:4px; padding:2px 5px; background:#122e43eb; color:#fff1c9; font-size:11px; }
+#localMap { cursor:crosshair; }
+.head-icon { width:34px;height:34px; }
+.atlas-info h3,.atlas-info label { display:block; margin:0 0 6px; font-weight:750; font-size:15px; color:#ffe191; }
+#mapExits { display:grid; gap:5px; }
+#mapExits button { min-height:35px; padding:6px 9px; text-align:left; }
+#routeHint,.map-legend,.atlas-info small { font-size:12px; color:#c4e3f2; }
+#routeHint { margin:9px 0; }
+#trackPlace,#worldRegionDetail button { min-height:37px; color:#102c40; background:#ffda7b; }
+.map-legend { display:flex; gap:9px; flex-wrap:wrap; margin-top:10px; }
+.map-legend b { display:inline-block; margin-right:4px; width:9px; height:9px; }
+.map-legend .you { border:2px solid #f4fbff; border-radius:50%; background:#2496c7; }
+.map-legend .goal { background:#ffbc69; transform:rotate(45deg); }
+.world-chart { align-self:start; }
+#worldPins { position:absolute; inset:0; }
+#worldPins button.world-pin { position:absolute; transform:translate(-50%,-50%); width:25px; height:25px; border:0; padding:0; background:transparent; }
+.world-pin::before { content:""; position:absolute; width:9px; height:9px; left:50%; top:50%; transform:translate(-50%,-50%) rotate(45deg); border:2px solid #28455f; background:#d6f4ff; box-shadow:0 0 0 1px #fff3c5; }
+.world-pin.here::before { background:#58e9ee; border-color:#164b65; }
+.world-pin[aria-pressed="true"] { outline:2px solid #ffdc6d; outline-offset:-3px; }
+.world-pin[aria-pressed="true"]::before { background:#ffda54; }
+#regionSelect { width:100%; min-height:38px; padding:4px 6px; border:1px solid #7da6bf; background:#102e46; color:#edf8ff; font:600 13px system-ui; }
+#worldRegionDetail h3 { margin:10px 0 1px; } #worldRegionDetail p { font-size:13px; margin:8px 0; } #worldRegionDetail small { display:block; }
+@media(max-width:570px) and (min-height:500px) { .atlas-page { grid-template-columns:1fr; gap:8px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-info { padding:0 2px; } }
+@media(max-height:500px) and (min-width:571px) { #worldAtlas { width:min(710px,calc(100vw - 24px)); } .atlas-page { padding:6px 10px; grid-template-columns:minmax(0,1.1fr) minmax(210px,1fr); } #localMap { max-height:48dvh; width:auto; max-width:100%; margin:auto; } #localPage .map-frame { width:fit-content; justify-self:center; max-width:100%; } .world-chart { max-width:300px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-tabs { padding:5px 10px 0; } }

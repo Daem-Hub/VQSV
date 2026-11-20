@@ -1,0 +1,126 @@
+[
+  {
+    "id": "village-apothecary",
+    "title": "Tiệm thuốc",
+    "interior": "apothecary",
+    "width": 24,
+    "height": 18,
+    "tileSize": 20,
+    "groundVariation": [],
+    "paths": [
+      {
+        "x": 10,
+        "y": 8,
+        "width": 4,
+        "height": 8
+      }
+    ],
+    "objects": [],
+    "furniture": [
+      {
+        "x": 5,
+        "y": 6,
+        "width": 5,
+        "height": 2
+      },
+      {
+        "x": 16,
+        "y": 6,
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "entities": {
+      "player": {
+        "x": 12,
+        "y": 13
+      },
+      "villagers": [
+        {
+          "id": "apothecary",
+          "name": "Dược sư",
+          "x": 11,
+          "y": 7,
+          "asset": "characters/villager_74.png",
+          "vendor": "apothecary",
+          "dialogue": [
+            "Chào Kael. Cháu muốn xem hàng chứ?"
+          ]
+        }
+      ]
+    },
+    "links": [
+      {
+        "kind": "exit",
+        "x": 12,
+        "y": 15,
+        "target": "slice01-border-village",
+        "spawnX": 5,
+        "spawnY": 8,
+        "label": "Làng biên giới"
+      }
+    ]
+  },
+  {
+    "id": "village-charms",
+    "title": "Tiệm bùa",
+    "interior": "charms",
+    "width": 24,
+    "height": 18,
+    "tileSize": 20,
+    "groundVariation": [],
+    "paths": [
+      {
+        "x": 10,
+        "y": 8,
+        "width": 4,
+        "height": 8
+      }
+    ],
+    "objects": [],
+    "furniture": [
+      {
+        "x": 5,
+        "y": 6,
+        "width": 5,
+        "height": 2
+      },
+      {
+        "x": 16,
+        "y": 6,
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "entities": {
+      "player": {
+        "x": 12,
+        "y": 13
+      },
+      "villagers": [
+        {
+          "id": "charms",
+          "name": "Thợ chế bùa",
+          "x": 11,
+          "y": 7,
+          "asset": "characters/villager_75.png",
+          "vendor": "charms",
+          "dialogue": [
+            "Chào Kael. Cháu muốn xem hàng chứ?"
+          ]
+        }
+      ]
+    },
+    "links": [
+      {
+        "kind": "exit",
+        "x": 12,
+        "y": 15,
+        "target": "slice01-border-village",
+        "spawnX": 19,
+        "spawnY": 7,
+        "label": "Làng biên giới"
+      }
+    ]
+  }
+]

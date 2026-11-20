@@ -7,7 +7,7 @@ prototype = PROJECT / "prototype"
 opening_map = json.loads((prototype / "data" / "opening_map.json").read_text(encoding="utf-8"))
 forest_map = json.loads((prototype / "data" / "forest_map.json").read_text(encoding="utf-8"))
 stream_map = json.loads((prototype / "data" / "forest_stream_map.json").read_text(encoding="utf-8"))
-opening_map["links"] = [{"x": 23, "y": 10, "target": forest_map["id"], "spawnX": 1, "spawnY": 10, "label": forest_map["title"]}]
+interiors = json.loads((prototype / "data" / "village_interiors.json").read_text(encoding="utf-8"))
 tile_defs = {
     str(index): json.loads((prototype / "assets" / "tilesets" / f"tileset_{index:02}.json").read_text(encoding="utf-8"))
     for index in (0, 4)
@@ -16,6 +16,6 @@ pet_roster = json.loads((prototype / "data" / "pet_roster_v1.json").read_text(en
 vqsv5_animations = json.loads((prototype / "data" / "vqsv5_pet_animations.json").read_text(encoding="utf-8"))
 original_skills = json.loads((prototype / "data" / "original_skills.json").read_text(encoding="utf-8"))
 vqsv6_effects = json.loads((prototype / "data" / "vqsv6_effect_sprites.json").read_text(encoding="utf-8"))
-payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map)}, "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects}, ensure_ascii=False, separators=(",", ":"))
+payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map, *interiors)}, "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects}, ensure_ascii=False, separators=(",", ":"))
 (prototype / "data" / "bootstrap.js").write_text(f"window.VQSVBootstrap = {payload};\n", encoding="utf-8")
 print("Wrote prototype/data/bootstrap.js")

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.VQSV_PORT || 4177);
-const types = { ".html": "text/html; charset=utf-8", ".json": "application/json; charset=utf-8", ".png": "image/png", ".js": "text/javascript; charset=utf-8" };
+const types = { ".css": "text/css; charset=utf-8", ".html": "text/html; charset=utf-8", ".json": "application/json; charset=utf-8", ".png": "image/png", ".webp": "image/webp", ".js": "text/javascript; charset=utf-8" };
 
 http.createServer(async (req, res) => {
   try {

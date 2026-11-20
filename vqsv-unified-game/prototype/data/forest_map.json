@@ -12,96 +12,116 @@
   "groundVariation": [],
   "groundDecor": [
     {
-      "tileset": 4,
-      "tile": 0,
+      "asset": "scenery/flowers.png",
       "x": 3,
-      "y": 5
+      "y": 5,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 1,
+      "asset": "scenery/shrub.png",
       "x": 8,
-      "y": 4
+      "y": 4,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 3,
+      "asset": "scenery/shrub.png",
       "x": 15,
-      "y": 4
+      "y": 4,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 5,
+      "asset": "scenery/flowers.png",
       "x": 20,
-      "y": 5
+      "y": 5,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 0,
+      "asset": "scenery/shrub.png",
       "x": 5,
-      "y": 12
+      "y": 12,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 1,
+      "asset": "scenery/shrub.png",
       "x": 9,
-      "y": 12
+      "y": 12,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 3,
+      "asset": "scenery/flowers.png",
       "x": 15,
-      "y": 12
+      "y": 12,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 5,
+      "asset": "scenery/shrub.png",
       "x": 19,
-      "y": 13
+      "y": 13,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 0,
+      "asset": "scenery/shrub.png",
       "x": 7,
-      "y": 16
+      "y": 16,
+      "anchorX": 0.5
     },
     {
-      "tileset": 4,
-      "tile": 1,
+      "asset": "scenery/flowers.png",
       "x": 16,
-      "y": 17
+      "y": 17,
+      "anchorX": 0.5
     }
   ],
-  "paths": [
+  "trails": [
     {
-      "x": 0,
-      "y": 9,
-      "width": 24,
-      "height": 3
-    },
-    {
-      "x": 11,
-      "y": 3,
-      "width": 3,
-      "height": 9
-    },
-    {
-      "x": 11,
-      "y": 11,
-      "width": 3,
-      "height": 5
+      "width": 1.65,
+      "points": [
+        [
+          -1,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          4.5,
+          10.5
+        ],
+        [
+          7,
+          10.6
+        ],
+        [
+          10,
+          9.3
+        ],
+        [
+          13,
+          8.8
+        ],
+        [
+          16,
+          9.4
+        ],
+        [
+          18.5,
+          10.6
+        ],
+        [
+          21,
+          10.2
+        ],
+        [
+          24,
+          10
+        ]
+      ]
     }
   ],
   "objects": [
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 1,
-      "y": 1
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/oak.png",
       "x": 1,
       "y": 3,
       "solid": [
@@ -124,44 +144,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 4,
-      "y": 0
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 4,
-      "y": 2,
-      "solid": [
-        [
-          4,
-          1
-        ],
-        [
-          5,
-          1
-        ],
-        [
-          4,
-          2
-        ],
-        [
-          5,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 7,
-      "y": 1
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/oak.png",
       "x": 7,
       "y": 3,
       "solid": [
@@ -184,44 +167,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 10,
-      "y": 0
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 10,
-      "y": 2,
-      "solid": [
-        [
-          10,
-          1
-        ],
-        [
-          11,
-          1
-        ],
-        [
-          10,
-          2
-        ],
-        [
-          11,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 14,
-      "y": 0
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/oak.png",
       "x": 14,
       "y": 2,
       "solid": [
@@ -244,44 +190,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 17,
-      "y": 0
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 17,
-      "y": 2,
-      "solid": [
-        [
-          17,
-          1
-        ],
-        [
-          18,
-          1
-        ],
-        [
-          17,
-          2
-        ],
-        [
-          18,
-          2
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 20,
-      "y": 1
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 20,
       "y": 3,
       "solid": [
@@ -304,74 +213,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 22,
-      "y": 2
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 22,
-      "y": 4,
-      "solid": [
-        [
-          22,
-          3
-        ],
-        [
-          23,
-          3
-        ],
-        [
-          22,
-          4
-        ],
-        [
-          23,
-          4
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 1,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 1,
-      "y": 7,
-      "solid": [
-        [
-          1,
-          6
-        ],
-        [
-          2,
-          6
-        ],
-        [
-          1,
-          7
-        ],
-        [
-          2,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 4,
-      "y": 4
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/oak.png",
       "x": 4,
       "y": 6,
       "solid": [
@@ -394,44 +236,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 7,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 7,
-      "y": 7,
-      "solid": [
-        [
-          7,
-          6
-        ],
-        [
-          8,
-          6
-        ],
-        [
-          7,
-          7
-        ],
-        [
-          8,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 16,
-      "y": 4
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/oak.png",
       "x": 16,
       "y": 6,
       "solid": [
@@ -454,44 +259,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 19,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 19,
-      "y": 7,
-      "solid": [
-        [
-          19,
-          6
-        ],
-        [
-          20,
-          6
-        ],
-        [
-          19,
-          7
-        ],
-        [
-          20,
-          7
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 22,
-      "y": 5
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 22,
       "y": 7,
       "solid": [
@@ -514,14 +282,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 1,
-      "y": 12
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 1,
       "y": 14,
       "solid": [
@@ -544,44 +305,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 4,
-      "y": 13
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 4,
-      "y": 15,
-      "solid": [
-        [
-          4,
-          14
-        ],
-        [
-          5,
-          14
-        ],
-        [
-          4,
-          15
-        ],
-        [
-          5,
-          15
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 7,
-      "y": 12
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 7,
       "y": 14,
       "solid": [
@@ -604,44 +328,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 9,
-      "y": 14
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 9,
-      "y": 16,
-      "solid": [
-        [
-          9,
-          15
-        ],
-        [
-          10,
-          15
-        ],
-        [
-          9,
-          16
-        ],
-        [
-          10,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 15,
-      "y": 13
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 15,
       "y": 15,
       "solid": [
@@ -664,44 +351,7 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 18,
-      "y": 14
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
-      "x": 18,
-      "y": 16,
-      "solid": [
-        [
-          18,
-          15
-        ],
-        [
-          19,
-          15
-        ],
-        [
-          18,
-          16
-        ],
-        [
-          19,
-          16
-        ]
-      ]
-    },
-    {
-      "tileset": 0,
-      "tile": 11,
-      "x": 21,
-      "y": 12
-    },
-    {
-      "tileset": 0,
-      "tile": 12,
+      "asset": "scenery/fir.png",
       "x": 21,
       "y": 14,
       "solid": [
@@ -724,40 +374,56 @@
       ]
     },
     {
-      "tileset": 0,
-      "tile": 11,
-      "x": 22,
-      "y": 14
+      "asset": "scenery/oak.png",
+      "x": 4,
+      "y": 15,
+      "solid": [
+        [
+          4,
+          14
+        ],
+        [
+          5,
+          14
+        ],
+        [
+          4,
+          15
+        ],
+        [
+          5,
+          15
+        ]
+      ]
     },
     {
-      "tileset": 0,
-      "tile": 12,
-      "x": 22,
+      "asset": "scenery/oak.png",
+      "x": 18,
       "y": 16,
       "solid": [
         [
-          22,
+          18,
           15
         ],
         [
-          23,
+          19,
           15
         ],
         [
-          22,
+          18,
           16
         ],
         [
-          23,
+          19,
           16
         ]
       ]
     },
     {
-      "tileset": 4,
-      "tile": 4,
+      "asset": "scenery/stones.png",
       "x": 6,
       "y": 5,
+      "anchorX": 0.5,
       "solid": [
         [
           6,
@@ -766,10 +432,10 @@
       ]
     },
     {
-      "tileset": 4,
-      "tile": 4,
+      "asset": "scenery/stones.png",
       "x": 17,
       "y": 4,
+      "anchorX": 0.5,
       "solid": [
         [
           17,
@@ -778,10 +444,10 @@
       ]
     },
     {
-      "tileset": 4,
-      "tile": 4,
+      "asset": "scenery/stones.png",
       "x": 8,
       "y": 13,
+      "anchorX": 0.5,
       "solid": [
         [
           8,
@@ -790,10 +456,10 @@
       ]
     },
     {
-      "tileset": 4,
-      "tile": 4,
+      "asset": "scenery/stones.png",
       "x": 16,
       "y": 13,
+      "anchorX": 0.5,
       "solid": [
         [
           16,
@@ -802,10 +468,10 @@
       ]
     },
     {
-      "tileset": 4,
-      "tile": 4,
+      "asset": "scenery/stones.png",
       "x": 20,
       "y": 12,
+      "anchorX": 0.5,
       "solid": [
         [
           20,

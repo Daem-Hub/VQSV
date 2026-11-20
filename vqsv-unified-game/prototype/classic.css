@@ -1,0 +1,40 @@
+/* The blue panels and check/cross soft keys use the palette of the VQSV5 UI atlas. */
+dialog.v5-panel { --sky:#78d5ed; --rim:#4598ce; --gold:#ffdf78; --navy:#0b263b; --paper:#eef8ff; width:min(438px,calc(100vw - 24px)); padding:0; margin:auto; overflow:auto; border:3px solid #101e3f; border-radius:5px; background:#153955; color:var(--paper); box-shadow:0 0 0 2px #5499c1,inset 0 0 0 1px #68a9c5,0 12px 36px #07162ba6; font:500 15px/1.4 system-ui,sans-serif; }
+.v5-panel::backdrop { background:#08172aab; }
+.v5-panel button { border-radius:3px; font:700 14px/1.2 system-ui; }
+.v5-panel button:focus-visible,.v5-panel select:focus-visible,.v5-panel summary:focus-visible { outline:2px solid #fff4af; outline-offset:-3px; }
+.v5-panel button:disabled { opacity:.57; cursor:default; }
+.v5-head { display:flex; position:relative; align-items:center; justify-content:space-between; min-height:86px; gap:12px; padding:13px 19px; border-bottom:3px solid #68c3df; background-color:#164674; background-image:linear-gradient(90deg,#132e52ff 2%,#15395af2 38%,#17385725 95%),url("assets/ui/vqsv5-sky.png"); background-size:cover,60% auto; background-position:center,right 58%; background-repeat:no-repeat; image-rendering:pixelated; }
+.v5-head p,#tradePerson { color:#bce6f7; font:700 12px/1.3 system-ui; margin:0 0 4px; text-transform:none; letter-spacing:0; }
+.v5-head h2 { font:800 clamp(24px,5vw,32px)/1.1 system-ui; margin:0; color:#ffdf82; text-shadow:1px 2px #643c23,2px 3px #192b45; letter-spacing:-.025em; }
+.v5-wallet { display:flex; align-items:center; gap:5px; padding:4px 8px; background:#10283de8; border:1px solid #79a4be; color:#ffdf85; white-space:nowrap; font-weight:750; font-variant-numeric:tabular-nums; }
+.v5-icon { --icon:0; flex:none; display:inline-block; width:26px; height:26px; background-image:url("assets/ui/vqsv5-icons.png"); background-size:1300% 100%; background-position:calc(var(--icon) * 100% / 12) center; image-rendering:pixelated; pointer-events:none; }
+.v5-icon.money {--icon:1} .v5-icon.scroll {--icon:2} .v5-icon.skill {--icon:3} .v5-icon.pack {--icon:5} .v5-icon.potion {--icon:7} .v5-icon.charm {--icon:8} .v5-icon.yes {--icon:9} .v5-icon.no {--icon:10} .v5-icon.crystal {--icon:11} .v5-icon.star {--icon:12}
+.menu-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:14px; }
+.menu-grid button { position:relative; display:grid; justify-items:center; align-content:center; gap:6px; min-height:85px; padding:6px; color:var(--paper); border:1px solid #5686a9; box-shadow:inset 0 0 0 2px #214b6b,0 2px #0b2237; background:linear-gradient(#316184,#254967); }
+.menu-grid .v5-icon { width:40px; height:40px; filter:drop-shadow(1px 2px #112d44); }
+.menu-grid button[aria-current="true"],#stock button[aria-current="true"],.v5-choice[aria-pressed="true"] { border-color:#ffdd70; color:#fff3c0; background:linear-gradient(#356c88,#285269); box-shadow:inset 0 0 0 1px #d3ae55,0 2px #132a37; }
+.menu-grid button[aria-current="true"]::after { content:""; position:absolute; inset:3px auto auto 3px; border:5px solid transparent; border-top-color:#ffe275; border-left-color:#ffe275; }
+.softkeys { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:4px 10px; border-top:1px solid #5792b1; background:#102c44; }
+.softkeys button { display:inline-flex; justify-content:center; align-items:center; gap:5px; width:auto; min-height:42px; padding:4px 8px; background:transparent; color:#ffdc80; }
+.softkeys .v5-icon { width:20px; height:20px; }
+.v5-content { padding:14px; }
+.v5-note,.v5-guide { margin:4px 14px 12px; font-size:13px; color:#c5dfef; }
+.v5-guide { margin:14px 0 4px; } .v5-guide summary { cursor:pointer; padding:5px 0; }
+.system-actions,.v5-tabs { display:flex; gap:6px; }
+.system-actions button,.v5-tabs button,#restart,.v5-choice { min-height:40px; color:#ddf1fc; border:1px solid #5986a1; background:#254c6a; }
+.v5-tabs button { flex:1; min-height:37px; }
+.v5-tabs button[aria-pressed="true"] { color:#ffe285; border-color:#ecca67; background:#294f65; box-shadow:inset 0 -3px #f6cd60; }
+#restart { width:auto; padding-inline:12px; margin-top:8px; color:#ffe0af; }
+#saveStatus,#receipt { color:#ffde83; font-size:13px; margin:8px 0 0; }
+#receipt:empty,#saveStatus:empty { display:none; }
+#stock { display:grid; gap:5px; margin:9px 0; }
+#stock button { display:flex; align-items:center; text-align:left; gap:9px; padding:7px 10px; min-height:45px; border:1px solid #6287a0; background:#244960; color:#edf6ff; }
+#stock small { margin-left:auto; white-space:nowrap; font:700 12px system-ui; color:#ffe085; }
+#itemDetail { min-height:61px; padding:9px 12px; background:#102e46; border-left:3px solid #74b1d2; color:#daebf4; font-size:14px; }
+#itemDetail p { margin:0 0 4px; } #itemDetail small { color:#a5d0e5; }
+#quantityBox,#tradeTotal { display:flex; align-items:center; gap:7px; margin-top:10px; color:#f9df9a; font-weight:700; }
+#quantityBox span { margin-right:auto; } #quantityBox output { min-width:26px; text-align:center; }
+#quantityBox button { width:42px; height:40px; background:#275572; border:1px solid #5c8eae; color:#f7e9b8; font-size:19px; }
+.v5-panel button:hover:enabled { filter:brightness(1.13); }
+@media(max-height:480px) { .v5-head { min-height:56px; padding:7px 13px; } .v5-head h2 { font-size:22px; } .menu-grid { gap:5px; padding:8px; } .menu-grid button { min-height:60px; } .menu-grid .v5-icon { width:32px;height:32px; } .v5-content { padding:8px 12px; } }

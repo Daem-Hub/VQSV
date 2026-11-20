@@ -7,7 +7,7 @@
   const byId = id => document.getElementById(id);
   const dialog = byId("petRoster"), list = byId("rosterList"), detail = byId("rosterDetail"), message = byId("rosterMessage");
   const BAG_MAX = 6, BANK_MAX = 100;
-  let tab = "bag", selected = "loi-mieu", confirmRelease = null;
+  let tab = "bag", selected = "loi-mieu", confirmRelease = null, fuseFrom = null;   // fuseFrom: main pet while picking a partner
 
   const team = () => window.VQSVPetTeam?.ids() || [];
   function bagPets() { return buildTeam().sort((a, b) => order(a.id) - order(b.id)); }
@@ -16,7 +16,14 @@
     const carried = new Set(team()), trained = Object.keys(progress).filter(key => key !== "loi-mieu");
     return window.VQSVPetTeam.owned(trained.filter(id => window.VQSVPetTeam.info(id))).filter(id => !carried.has(id)).slice(0, BANK_MAX);
   }
-  function current() { return tab === "bag" ? bagPets() : bankIds().map(reserveCombatant).filter(Boolean); }
+  function allPets() { return [...bagPets(), ...bankIds().map(reserveCombatant).filter(Boolean)]; }
+  function fuseMain() { return fuseFrom ? allPets().find(pet => pet.id === fuseFrom) : null; }
+  // Partner picking lists every pet from the other game, from the backpack and the bank.
+  function current() {
+    const main = fuseMain();
+    if (main) return allPets().filter(pet => pet.id !== main.id && pet.id !== "loi-mieu" && !!pet.v5 !== !!main.v5);
+    return tab === "bag" ? bagPets() : bankIds().map(reserveCombatant).filter(Boolean);
+  }
 
   function bar(className, value, max) {
     const meter = document.createElement("span"), fill = document.createElement("i");
@@ -47,7 +54,7 @@
       row.setAttribute("aria-selected", String(pet.id === selected));
       name.textContent = pet.name;
       const first = tab === "bag" && pet.id === battleFirst();
-      sub.textContent = `Cấp ${pet.level} · ${pet.element || "Chưa rõ hệ"}${first ? " · Xuất chiến" : ""}`;
+      sub.textContent = `Cấp ${pet.level} · ${pet.v5 ? `${pet.element} (${pet.unifiedElement})` : pet.element || "Chưa rõ hệ"} · ${pet.v5 ? "VQSV5" : "VQSV6"}${first ? " · Xuất chiến" : ""}`;
       const { exp, need } = expOf(pet);
       text.append(name, sub, bar("hp", pet.hp, pet.max), bar("exp", exp, need || 1));
       row.append(portrait(pet), text);
@@ -62,14 +69,32 @@
     button.type = "button"; button.textContent = label; button.disabled = disabled; if (kind) button.className = kind;
     button.onclick = handler; return button;
   }
+  function renderFusion(main, partner) {
+    const head = document.createElement("p"); head.className = "roster-evo";
+    head.textContent = `Ghép vào ${main.name} (cấp ${main.level}, ${main.v5 ? "VQSV5" : "VQSV6"}). Chọn một pet ${main.v5 ? "VQSV6" : "VQSV5"} cấp ${FUSE_MIN_LEVEL}+ làm pet ghép; pet ghép sẽ mất đi.`;
+    detail.append(head);
+    const actions = document.createElement("div"); actions.className = "roster-actions";
+    if (partner) {
+      const check = fusionCheck(main, partner), preview = document.createElement("p"); preview.className = "roster-skills";
+      preview.textContent = check.ok
+        ? `${partner.name} (cấp ${partner.level}, ${elementOfPet(partner)}) → ${main.name} nhận ${check.exp} EXP${check.sameElement ? (main.v5 ? ", gieo lại đặc tính (cùng hệ)" : `, phẩm chất ${main.quality} → ${check.quality} (cùng hệ)`) : ""}. Phí ${check.cost} kim tiền.`
+        : check.reason;
+      detail.append(preview);
+      actions.append(action("Xác nhận ghép", () => { const result = fusePets(main, partner); fuseFrom = null; tab = "bag"; selected = main.id; say(result.message); }, !check.ok, "danger"));
+    }
+    actions.append(action("Hủy ghép", () => { fuseFrom = null; selected = main.id; message.textContent = ""; render(); }));
+    detail.append(actions);
+  }
   function renderDetail(pet) {
     detail.replaceChildren();
+    const main = fuseMain();
+    if (main) { renderFusion(main, pet); return; }
     if (!pet) return;
     const head = document.createElement("div"), title = document.createElement("h3"), sub = document.createElement("p");
     head.className = "roster-head";
     title.textContent = pet.name;
     const quality = pet.v5 ? `Hạng ${pet.quality}` : `Phẩm chất ${pet.quality}`;
-    sub.textContent = `${pet.kind === "lead" ? "Pet của Kael" : (pet.kind || "").toUpperCase()} · ${pet.element || "Chưa rõ hệ"} · ${quality}`;
+    sub.textContent = `${pet.kind === "lead" ? "Pet của Kael" : (pet.kind || "").toUpperCase()} · ${pet.v5 ? `${pet.element} → ${pet.unifiedElement}` : pet.element || "Chưa rõ hệ"} · ${quality}`;
     const info = document.createElement("div"); info.append(title, sub);
     head.append(portrait(pet), info);
     const stats = document.createElement("dl"); stats.className = "roster-stats";
@@ -98,6 +123,7 @@
       actions.append(action("Lấy ra", () => withdraw(pet), team().length + 1 >= BAG_MAX));
     }
     for (const option of evo.filter(o => o.ok)) actions.append(action(option.verb, () => evolve(pet, option)));
+    actions.append(action("Ghép", () => { fuseFrom = pet.id; selected = null; confirmRelease = null; message.textContent = ""; render(); }));
     if (confirmRelease === pet.id) {
       actions.append(action("Xác nhận phóng sinh", () => release(pet), false, "danger"), action("Hủy", () => { confirmRelease = null; render(); }));
     } else actions.append(action("Phóng sinh", () => { confirmRelease = pet.id; say("Bạn muốn phóng sinh sủng vật này? Bấm Xác nhận phóng sinh."); render(); }, story, "danger"));
@@ -137,6 +163,7 @@
     byId("rosterBagTab").textContent = `Ba lô ${bag.length}/${BAG_MAX}`;
     byId("rosterBankTab").textContent = `Ngân hàng ${bank.length}/${BANK_MAX}`;
     byId("rosterCount").textContent = tab === "bag" ? `${bag.length}/${BAG_MAX}` : `${bank.length}/${BANK_MAX}`;
+    byId("rosterTitle").textContent = fuseFrom ? "Ghép sủng vật" : "Sủng vật";
     const pets = current();
     if (!pets.some(pet => pet.id === selected)) selected = pets[0]?.id ?? null;
     renderList(pets);
@@ -153,14 +180,14 @@
     if (!assets.map || state.mode === "loading" || dialog.open) return;
     if (state.mode === "battle") { say("Đổi sủng vật trong trận ở lệnh Sủng vật."); return; }
     state.player.inputDir = null;
-    tab = "bag"; selected = battleFirst(); confirmRelease = null; message.textContent = "";
+    tab = "bag"; selected = battleFirst(); confirmRelease = null; fuseFrom = null; message.textContent = "";
     dialog.showModal(); render();
     list.querySelector('[aria-selected="true"]')?.focus();
   };
   byId("openPetRoster").addEventListener("click", () => window.openPetRoster());
-  byId("rosterBagTab").onclick = () => { tab = "bag"; selected = null; confirmRelease = null; message.textContent = ""; render(); };
-  byId("rosterBankTab").onclick = () => { tab = "bank"; selected = null; confirmRelease = null; message.textContent = ""; render(); };
-  byId("rosterBack").onclick = () => dialog.close();
+  byId("rosterBagTab").onclick = () => { fuseFrom = null; tab = "bag"; selected = null; confirmRelease = null; message.textContent = ""; render(); };
+  byId("rosterBankTab").onclick = () => { fuseFrom = null; tab = "bank"; selected = null; confirmRelease = null; message.textContent = ""; render(); };
+  byId("rosterBack").onclick = () => { if (fuseFrom) { selected = fuseFrom; fuseFrom = null; render(); } else dialog.close(); };
   byId("rosterChoose").onclick = () => detail.querySelector(".roster-actions button:enabled")?.click();
   dialog.addEventListener("close", () => updateGuidance());
   dialog.addEventListener("keydown", e => {

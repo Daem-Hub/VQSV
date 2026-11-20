@@ -69,3 +69,24 @@ assert.equal(els.rosterBankTab.textContent, 'Ngân hàng 1/100');
 els.petRoster.close(); run('state.mode = "battle"; window.openPetRoster()');
 assert.equal(els.petRoster.open, false);
 console.log('Pet roster: backpack 6 / bank 100, Xuất chiến order, Gởi lại, Lấy ra, Phóng sinh with confirmation, battle lock passed.');
+
+// Ghép sủng vật: a VQSV6 pet absorbs a VQSV5 partner (both level 10+), for 100 kim tiền per partner level.
+run('state.mode = "explore"; wallet.gold = 5000');
+const v6 = run('STATS.pets.find(p => p.element_id === 1 && !buildTeam().some(t => t.id === p.pet_id)).pet_id');
+const v5 = run('STATS5.pets.find(p => p.type_id === 0).pet_id');          // Thực Vật -> Mộc: same element as v6
+run(`window.VQSVPetTeam.setTeam([]); window.VQSVPetTeam.recordCatch(${JSON.stringify(v6)}, 12, 2); window.VQSVPetTeam.recordCatch(${JSON.stringify(v5)}, 15, 2)`);
+run(`progress[${JSON.stringify(v6)}] = { level: 12, exp: 0, quality: 2 }; progress[${JSON.stringify(v5)}] = { level: 15, exp: 0 }; saveProgress()`);
+run('window.openPetRoster()');
+pick(v6); press('Ghép');
+assert.equal(els.rosterTitle.textContent, 'Ghép sủng vật');
+assert(all(els.rosterList).filter(n => n.dataset.id).every(n => run(`!!STAT5_BY_ID.get(${JSON.stringify(n.dataset.id)})`)), 'only VQSV5 partners are offered');
+pick(v5); press('Xác nhận ghép');
+assert.equal(run(`progress[${JSON.stringify(v6)}].quality`), 3);                     // same element: quality 2 -> 3
+assert(run(`progress[${JSON.stringify(v6)}].level`) >= 12);
+assert.equal(run(`window.VQSVPetTeam.owned().includes(${JSON.stringify(v5)})`), false);   // the partner is used up
+assert.equal(run('wallet.gold'), 5000 - 100 * 15);
+assert.match(els.rosterMessage.textContent, /Ghép thành công/);
+// Same game, or under level 10: refused.
+ctx.p1 = run(`reserveCombatant(${JSON.stringify(v6)})`); ctx.p2 = run('buildTeam()[0]');
+assert.equal(run('fusionCheck(p1, p2).ok'), false);
+console.log('Pet fusion: VQSV5 partner into a VQSV6 pet, same-element quality step, cost and partner removal passed.');

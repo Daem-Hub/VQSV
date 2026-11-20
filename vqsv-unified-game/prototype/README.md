@@ -112,3 +112,21 @@ Menu ☰ → **Sủng vật** (hoặc phím `P` ngoài trận) mở màn hình q
 - Không mở được màn hình này trong trận; trong trận đổi pet bằng lệnh **Sủng vật** như trước.
 - Sổ pet (Đồ giám) vẫn cho đưa một loài vào đội từ danh mục, kể cả loài chưa bắt. Đây là cách thử của prototype, không phải luật của game gốc.
 - Pet hiện vẫn lưu theo loài: mỗi loài một con. Bắt thêm con cùng loài sẽ giữ con mạnh hơn, như trước.
+
+## Kết hợp sủng vật hai bản
+
+Cả ba phần dưới đây là thiết kế thử của bản hợp nhất, không có trong game gốc nào.
+
+- **Một bảng hệ chung:** 5 hệ VQSV5 được xếp vào 7 hệ VQSV6, gồm Thực Vật → Mộc, Kim Loại → Điện, Phi Hành → Phong, Mãnh Thú → Thổ, Hải Dương → Thủy. Hai pet VQSV5 không có hệ (Quỷ Vương Địa Phủ) tính là Quỷ hệ. Bảng nằm ở `UNIFY5` trong `index.html` và trong `tools/atlas_wild.py`.
+  - Trận có pet hai bản đấu nhau: tính khắc chế theo bảng VQSV6.
+  - Hai pet VQSV5 đấu nhau: vẫn dùng luật gốc +30% theo bảng hệ VQSV5, không cộng thêm bảng VQSV6.
+  - Nền trận khi gặp pet VQSV5 hoang dã chọn theo hệ chung.
+  - Hiệu ứng kỹ năng của pet VQSV5 vẫn giữ màu theo hệ gốc.
+  - Màn Sủng vật hiện cả hai tên hệ, ví dụ "Hải Dương hệ (Thủy hệ)".
+- **Pet hoang dã trên 29 map mới:** mỗi map có pet hoang dã trộn cả hai bản, theo hệ của vùng (`wildElements`). Ví dụ: hoang mạc ra Thổ và Hỏa, vùng băng và biển ra Thủy, tháp và trời ra Phong. Pet sinh ra chỉ là dạng gốc; pet VQSV5 chỉ lấy hạng 1–3. Cấp tăng dần theo đường đi, map thứ i có cấp từ 8 + 2i đến 11 + 2i (map cuối là cấp 64–67). Làng và hai tiệm không có pet hoang dã.
+- **Ghép sủng vật:** trong màn Sủng vật, chọn pet chính rồi bấm **Ghép**, sau đó chọn một pet của bản kia (ở ba lô hoặc ngân hàng).
+  - Điều kiện: cả hai đạt cấp 10.
+  - Phí: 100 kim tiền cho mỗi cấp của pet ghép.
+  - Pet chính nhận một nửa số EXP mà pet ghép cần cho cấp cuối của nó.
+  - Nếu hai pet cùng hệ chung: pet VQSV6 lên một bậc phẩm chất (tối đa 5); pet VQSV5 được gieo lại đặc tính theo kiểu "may mắn".
+  - Pet ghép mất đi sau khi ghép. Lôi Miêu làm được pet chính nhưng không làm pet ghép.

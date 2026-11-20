@@ -1078,6 +1078,46 @@
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
       }
     }
+    // ---- Ghép sủng vật (TRIAL design, not in either source game): a VQSV5 pet and a VQSV6 pet are joined. The main pet
+    // stays and grows; the partner from the other game is used up. Both need level 10. Cost: 100 kim tiền per partner level.
+    // The main pet gains half the EXP the partner needed for its last level. A partner of the same unified element also
+    // raises a VQSV6 pet's quality by one step (max 5), or gives a VQSV5 pet a new "lucky" trait roll. ----
+    const FUSE_MIN_LEVEL = 10, FUSE_GOLD_PER_LEVEL = 100;
+    const progressKeyOf = pet => pet.id === "loi-mieu" ? "loi-mieu" : pet.id;
+    const elementOfPet = pet => pet.v5 ? pet.unifiedElement : pet.element;
+    function fusionCheck(main, partner) {
+      if (!main || !partner || main.id === partner.id) return { ok: false, reason: "Chọn hai sủng vật khác nhau." };
+      if (partner.id === "loi-mieu") return { ok: false, reason: "Lôi Miêu không thể làm pet ghép." };
+      if (!!main.v5 === !!partner.v5) return { ok: false, reason: "Chỉ ghép một pet VQSV5 với một pet VQSV6." };
+      if (main.level < FUSE_MIN_LEVEL || partner.level < FUSE_MIN_LEVEL) return { ok: false, reason: `Cả hai cần đạt cấp ${FUSE_MIN_LEVEL}.` };
+      const cost = FUSE_GOLD_PER_LEVEL * partner.level;
+      if (wallet.gold < cost) return { ok: false, cost, reason: `Cần ${cost} kim tiền (đang có ${wallet.gold}).` };
+      const sameElement = elementOfPet(main) === elementOfPet(partner);
+      const exp = Math.max(0, Math.floor(expToReach(partner.level) / 2));
+      const quality = !main.v5 && sameElement ? Math.min(QUALITY_PCT.length, (main.quality || 1) + 1) : main.quality;
+      return { ok: true, cost, exp, sameElement, quality, traits: main.v5 && sameElement };
+    }
+    function fusePets(main, partner) {
+      const check = fusionCheck(main, partner);
+      if (!check.ok) return { ok: false, message: `Chưa thể ghép: ${check.reason}` };
+      const key = progressKeyOf(main), entry = { ...progressOf(key, main.level) };
+      const before = entry.level;
+      entry.exp += check.exp;
+      while (entry.level < LEVEL_CAP && entry.exp >= expToReach(entry.level + 1)) { entry.exp -= expToReach(entry.level + 1); entry.level++; }
+      if (entry.level >= LEVEL_CAP) entry.exp = 0;
+      const next = { ...(progress[key] || {}), level: entry.level, exp: entry.exp };
+      if (!main.v5 && check.quality !== main.quality) next.quality = check.quality;
+      if (check.traits) next.traits = rollTraits5(STAT5_BY_ID.get(main.petId), "lucky");
+      progress[key] = next;
+      delete progress[partner.id];
+      saveProgress();
+      window.VQSVPetTeam.release(partner.id);
+      wallet.gold -= check.cost; saveWallet(); updateWallet();
+      const parts = [`${main.name} nhận ${check.exp} EXP${entry.level > before ? ` (lên cấp ${entry.level})` : ""}`];
+      if (!main.v5 && next.quality !== main.quality) parts.push(`phẩm chất ${main.quality} → ${next.quality}`);
+      if (check.traits) parts.push("đặc tính được gieo lại");
+      return { ok: true, message: `Ghép thành công: ${parts.join(", ")}. ${partner.name} đã hòa vào ${main.name}.` };
+    }
     function recordWildCatch(enemy) {
       // A caught species keeps the stronger of its stored progress and the newly caught individual.
       const stored = progress[enemy.petId];

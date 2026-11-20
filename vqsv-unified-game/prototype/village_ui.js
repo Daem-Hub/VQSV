@@ -127,7 +127,7 @@
   byId("quickMap").onclick = () => {pauseWalking(); openMap();};
   byId("menuJournal").onclick = () => openQuestJournal();
   byId("menuBag").onclick = () => { menu.close(); openBag(); };
-  for (const id of ["openPetBook","openSkillBook","openWorldAtlas","openShop","menuJournal"]) byId(id).addEventListener("click", () => menu.close(), true);
+  for (const id of ["openPetRoster","openSkillBook","openWorldAtlas","openShop","menuJournal"]) byId(id).addEventListener("click", () => menu.close(), true);
   byId("playAgain").onclick = () => reset();
   byId("restart").addEventListener("click", () => menu.close());
   const full = byId("fullscreen");

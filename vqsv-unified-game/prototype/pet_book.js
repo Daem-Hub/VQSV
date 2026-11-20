@@ -29,7 +29,7 @@
   // Reserve team for the trial battle. Lôi Miêu is always Kael's lead pet, so the
   // Điện Miêu reference record cannot be added as a duplicate reserve.
   const teamKey = "vqsv-unified-pet-team-v1";
-  const TEAM_MAX = 2;
+  const TEAM_MAX = 5;                  // VQSV6 pet backpack: 6 slots (game/j.java A[6]), one is Lôi Miêu
   // The lead pet's current species: Điện Miêu at first, its evolved form afterwards (index.html owns the lead).
   const LEAD_DEFAULT_ID = "vqsv6-db-78";
   const leadId = () => window.VQSVEvolution?.leadForm?.() || LEAD_DEFAULT_ID;
@@ -463,6 +463,17 @@
         persistCaught();
       }
       persistTeam(); persistCollection();
+    },
+    // Backpack / bank management (pet_roster.js). Owned = caught, trained or carried species.
+    owned(extra = []) { return [...new Set([...team, ...caught.map(item => item.pet_id), ...extra])].filter(id => byId.has(id) && id !== leadId()); },
+    setTeam(ids) {
+      team = [...new Set(ids.filter(id => typeof id === "string" && byId.has(id) && id !== leadId()))].slice(0, TEAM_MAX);
+      persistTeam();
+    },
+    release(id) {
+      team = team.filter(item => item !== id);
+      caught = caught.filter(item => item.pet_id !== id);
+      persistTeam(); persistCaught();
     },
     // Record a catch; also adds the species to the collection and to a free team slot.
     recordCatch(id, level, quality) {

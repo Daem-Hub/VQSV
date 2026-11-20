@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROTO = os.path.join(ROOT, "prototype")
 PACK_LIMIT = 11_000_000  # bytes of JS per pack, well under a 16MB file limit
 
-TEXT_SOURCES = ["index.html", "pet_book.js", "skill_book.js", "world_atlas.js", "skill_fx.js", "field_map.js", "village_ui.js", "shop_room.js", "expedition.css", "classic.css", "battle.css",
+TEXT_SOURCES = ["index.html", "pet_book.js", "skill_book.js", "world_atlas.js", "skill_fx.js", "field_map.js", "village_ui.js", "shop_room.js", "expedition.css", "classic.css", "battle.css", "pet_roster.js", "pet_roster.css",
                 "sound_fx.js", "data/bootstrap.js", "pet_book.css", "world_atlas.css"]
 
 HOOK = r"""<script>

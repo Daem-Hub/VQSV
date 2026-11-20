@@ -1,0 +1,37 @@
+/* Sủng vật: backpack / bank list on the left, the selected pet's state and actions on the right (VQSV6 petstate.ui). */
+dialog#petRoster { width:min(720px,calc(100vw - 16px)); }
+.roster-tabs { padding:10px 12px 0; }
+.roster-tabs button { flex:1; }
+.roster-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:10px; padding:10px 12px; }
+.roster-list { display:grid; gap:5px; align-content:start; max-height:min(52dvh,420px); overflow:auto; }
+.roster-list button { display:grid; grid-template-columns:44px minmax(0,1fr); gap:8px; align-items:center; text-align:left; min-height:56px; padding:5px 8px; color:#edf6ff; border:1px solid #5d89a6; background:#244960; }
+.roster-list button[aria-selected="true"] { border-color:#ffdd70; background:linear-gradient(#356c88,#285269); box-shadow:inset 0 0 0 1px #d3ae55; }
+.roster-list img, .roster-head img { width:44px; height:44px; object-fit:contain; image-rendering:pixelated; background:#173a52; border:1px solid #4f7f9f; border-radius:3px; }
+.roster-list span { display:grid; gap:2px; min-width:0; }
+.roster-list strong { font-size:14px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.roster-list small { color:#ffe085; font:600 11px/1.2 system-ui; }
+.roster-meter { display:block; height:5px; background:#10283d; border:1px solid #0b1d2c; }
+.roster-meter i { display:block; height:100%; }
+.roster-meter.hp i { background:#f63037; }
+.roster-meter.exp i { background:#00d8ff; }
+.roster-empty { margin:6px 2px; color:#c5dfef; font-size:13px; line-height:1.45; }
+.roster-detail { display:grid; gap:7px; align-content:start; padding:10px; background:#102e46; border-left:3px solid #74b1d2; color:#daebf4; font-size:13px; min-width:0; }
+.roster-head { display:flex; gap:10px; align-items:center; }
+.roster-head img { width:64px; height:64px; }
+.roster-head h3 { margin:0; color:#ffdf82; font-size:18px; }
+.roster-head p { margin:2px 0 0; color:#bce6f7; font-size:12px; }
+.roster-stats { display:grid; grid-template-columns:repeat(3,auto minmax(0,1fr)); gap:3px 8px; margin:0; font-variant-numeric:tabular-nums; }
+.roster-stats dt { color:#a5d0e5; } .roster-stats dd { margin:0; color:#fff; font-weight:700; }
+.roster-skills, .roster-evo, .roster-note { margin:0; line-height:1.4; }
+.roster-skills:empty, .roster-evo:empty { display:none; }
+.roster-evo { color:#ffe085; }
+.roster-note { color:#a5d0e5; font-size:12px; }
+.roster-actions { display:flex; flex-wrap:wrap; gap:6px; }
+.roster-actions button { width:auto; flex:1 1 auto; min-height:42px; padding:6px 10px; color:#ddf1fc; border:1px solid #5986a1; background:#254c6a; }
+.roster-actions button.danger { color:#ffd0c4; border-color:#a46a5f; background:#5a3236; }
+.roster-message { margin:0 12px 8px; min-height:1.3em; color:#ffde83; font-size:13px; }
+.roster-message:empty { display:none; }
+@media (max-width:600px) {
+  .roster-layout { grid-template-columns:1fr; }
+  .roster-list { max-height:30dvh; }
+}

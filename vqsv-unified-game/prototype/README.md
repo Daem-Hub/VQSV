@@ -95,3 +95,20 @@ Phần này ghép bản Codex trên `main` vào engine hiện tại. Rừng Phon
 - **Nhiệm vụ phụ Khảo sát Suối Sấm:** nhận từ người đi rừng sau khi gặp người gác làng, đến điểm ◆ ở Suối Sấm rồi về báo tin. Map Suối Sấm thật không có đối tượng cầu riêng, nên `tools/build_prototype_bootstrap.py` đặt điểm khảo sát ở ô đi được gần tâm map nhất (`surveyPoint`). Phần thưởng thử là 200 kim tiền, nhận một lần. Bản lưu cũ chưa có nhiệm vụ này vẫn tải được.
 - **Bản đồ khu vực** (Menu → Bản đồ, phím M): vẽ cả map hiện tại, kể cả map VQSV5 lớn hơn màn hình, kèm lối đi, mục tiêu và nút **Chỉ đường**. Tab **Thế giới** có 12 địa danh.
 - **Trận đấu kiểu VQSV5:** đối thủ đứng trên phải, pet của Kael dưới trái, hiệu ứng pixelfx bay theo hướng mới. Lời nhắn và năm lệnh **Công kích, Đạo cụ, Sủng vật, Cửa hàng, Chạy trốn** nằm trong khung xanh bên dưới. **Bắt sủng vật** nằm trong **Đạo cụ**. Nền trận theo vùng và hệ vẫn giữ như trước. Mở `/#thu-tran` để vào thẳng trận truyện.
+
+## Sủng vật: ba lô và ngân hàng (theo VQSV6)
+
+Menu ☰ → **Sủng vật** (hoặc phím `P` ngoài trận) mở màn hình quản lý pet. Quy tắc lấy từ mã nguồn VQSV6: `game/k.java` cho màn `petstate.ui` / `petsetting.ui`, `game/j.java` cho sức chứa.
+
+- **Ba lô Sủng vật:** tối đa 6 con, gồm Lôi Miêu và 5 pet khác. Đây là đội mang vào trận và đổi được trong trận. Pet bắt được tự vào ba lô nếu còn chỗ, nếu không thì vào ngân hàng.
+- **Ngân hàng Sủng vật:** tối đa 100 con. Gồm mọi pet đã bắt hoặc đã luyện mà không nằm trong ba lô.
+- Mỗi dòng hiện hình, cấp, hệ, thanh HP (đỏ) và thanh EXP (xanh). Bảng chi tiết có HP, Công, Thủ, Tốc, EXP, kỹ năng, trang bị và tình trạng tiến hóa.
+- **Xuất chiến:** chọn pet ra trận đầu tiên ở trận sau. Các pet còn lại giữ thứ tự trong ba lô.
+- **Gởi lại:** chuyển pet sang ngân hàng. Không gởi được khi ngân hàng đã đầy.
+- **Lấy ra:** chuyển pet từ ngân hàng về ba lô. Không lấy được khi ba lô đã đủ 6 con.
+- **Phóng sinh:** bấm hai lần (Phóng sinh rồi Xác nhận phóng sinh). Pet bị xóa cùng bản ghi bắt và tiến trình luyện.
+- **Tiến hóa / Dị hóa:** nút hiện khi đủ điều kiện, dùng cùng quy tắc với sổ pet.
+- Lôi Miêu là bạn đồng hành của Kael trong truyện: luôn ở trong ba lô và không phóng sinh được, giống cách bản gốc chặn phóng sinh Thần thú. Bản gốc chỉ yêu cầu ba lô còn ít nhất một sủng vật; prototype luôn giữ Lôi Miêu nên điều kiện đó luôn đúng.
+- Không mở được màn hình này trong trận; trong trận đổi pet bằng lệnh **Sủng vật** như trước.
+- Sổ pet (Đồ giám) vẫn cho đưa một loài vào đội từ danh mục, kể cả loài chưa bắt. Đây là cách thử của prototype, không phải luật của game gốc.
+- Pet hiện vẫn lưu theo loài: mỗi loài một con. Bắt thêm con cùng loài sẽ giữ con mạnh hơn, như trước.

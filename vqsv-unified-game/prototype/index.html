@@ -82,6 +82,7 @@
   <link rel="stylesheet" href="classic.css">
   <link rel="stylesheet" href="world_atlas.css">
   <link rel="stylesheet" href="battle.css">
+  <link rel="stylesheet" href="pet_roster.css">
 </head>
 <body>
   <main>
@@ -143,7 +144,7 @@
     <div id="mainMenuPage">
       <nav id="menuGrid" class="v6-list" aria-label="Menu chính">
         <button id="openShop" type="button">Tùy thân cửa hàng</button>
-        <button id="openPetBook" type="button">Sủng vật</button>
+        <button id="openPetRoster" type="button">Sủng vật</button>
         <button id="menuBag" type="button">Lưng bao</button>
         <button id="menuDex" type="button">Đồ giám</button>
         <button id="menuJournal" type="button">Nhiệm vụ</button>
@@ -166,6 +167,13 @@
     </section>
     <p id="battleHint" class="v5-note" hidden></p>
     <footer class="softkeys"><button id="menuChoose" type="button"><i class="v5-icon yes"></i>Chọn</button><button id="menuBack" type="button"><i class="v5-icon no"></i>Quay lại</button></footer>
+  </dialog>
+  <dialog id="petRoster" class="v5-panel" aria-labelledby="rosterTitle">
+    <header class="v5-head"><div><p id="rosterSubtitle">Kael · Sủng vật mang theo</p><h2 id="rosterTitle">Sủng vật</h2></div><span class="v5-wallet" id="rosterCount"></span></header>
+    <div class="v5-tabs roster-tabs" aria-label="Nơi giữ sủng vật"><button id="rosterBagTab" type="button">Ba lô</button><button id="rosterBankTab" type="button">Ngân hàng</button></div>
+    <div class="roster-layout"><div id="rosterList" class="roster-list" role="listbox" aria-label="Danh sách sủng vật"></div><section id="rosterDetail" class="roster-detail" aria-live="polite"></section></div>
+    <p id="rosterMessage" class="roster-message" role="status"></p>
+    <footer class="softkeys"><button id="rosterChoose" type="button"><i class="v5-icon yes"></i>Chọn</button><button id="rosterBack" type="button"><i class="v5-icon no"></i>Quay lại</button></footer>
   </dialog>
   <dialog id="worldAtlas" class="v5-panel" aria-labelledby="worldAtlasTitle">
     <header class="v5-head"><div><p id="atlasLocation">Lục địa Ryan</p><h2 id="worldAtlasTitle">Bản đồ</h2></div><i class="v5-icon crystal head-icon"></i></header>
@@ -1040,7 +1048,20 @@
       if (formImage) cachedImage(formImage);
       lead.name = "Lôi Miêu";
       lead.subtitle = evolved ? `CẤP ${lead.level} · ${STAT_BY_ID.get(form).name.toUpperCase()}` : `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
-      const reserves = (window.VQSVPetTeam?.ids() || []).filter(id => id !== form).map(id => window.VQSVPetTeam.info(id)).filter(Boolean).map(info => {
+      const reserves = (window.VQSVPetTeam?.ids() || []).filter(id => id !== form).map(reserveCombatant).filter(Boolean);
+      // "Xuất chiến" (VQSV6 petsetting): the chosen pet opens the battle; the rest keep their backpack order.
+      const team = [lead, ...reserves], first = team.findIndex(pet => pet.id === battleFirst());
+      if (first > 0) team.unshift(...team.splice(first, 1));
+      return team;
+    }
+    const FIRST_KEY = "vqsv-unified-pet-first-v1";
+    function battleFirst() { try { return localStorage.getItem(FIRST_KEY) || "loi-mieu"; } catch (_) { return "loi-mieu"; } }
+    function setBattleFirst(id) { try { localStorage.setItem(FIRST_KEY, id); } catch (_) {} }
+    // One backpack or bank pet as a combatant (stats at its stored level, quality, skills and item).
+    function reserveCombatant(id) {
+      const info = window.VQSVPetTeam?.info(id);
+      if (!info) return null;
+      {
         // Warm the sprite cache so switching in does not flash an empty frame.
         cachedImage(info.image); info.sequences.flat().forEach(frame => cachedImage(frame.image));
         const best = window.VQSVPetTeam.caughtBest?.(info.id);
@@ -1048,8 +1069,7 @@
         const combat = info.kind === "vqsv6" && STAT_BY_ID.has(info.id) ? { ...vqsv6Combatant(info.id, own.level, progress[info.id]?.quality || best?.quality, own.skills, own.item), progressKey: info.id, exp: own.exp }
           : { ...vqsv5Combatant(info.id, own.level, ensureTraits5(info.id, info.id, teamLucky5() ? "lucky" : "random"), passivesOf5(info.id)), progressKey: info.id, exp: own.exp };
         return { ...info, ...combat, name: info.name, subtitle: `CẤP ${combat.level} · ${(combat.element || info.element || "Chưa rõ hệ").toUpperCase()} · ${info.kind.toUpperCase()}` };
-      });
-      return [lead, ...reserves];
+      }
     }
     function recordWildCatch(enemy) {
       // A caught species keeps the stronger of its stored progress and the newly caught individual.
@@ -2867,7 +2887,7 @@
       if (document.getElementById("gameMenu").open || document.getElementById("petBook").open || document.getElementById("skillBook").open || questJournal.open || document.getElementById("worldAtlas").open || learnDialog.open || shopDialog.open || bagDialog.open) return;
       if (e.target instanceof Element && (e.target.closest("input, select, textarea") || (e.target.closest("button, summary") && ["enter", " "].includes(key)))) return;
       // preventDefault: the dialogs move focus to a text field, which would otherwise receive the typed letter.
-      if (key === "p" && !e.repeat) { e.preventDefault(); if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); return; }
+      if (key === "p" && !e.repeat) { e.preventDefault(); if (state.mode === "battle") { if (!state.battle.pendingUntil) window.openPetBook(); return; } state.player.inputDir = null; window.openPetRoster?.(); return; }
       if (key === "j" && !e.repeat) { e.preventDefault(); openQuestJournal(); return; }
       if (key === "m" && !e.repeat) { e.preventDefault(); openMap(); return; }
       if (key === "b" && !e.repeat) { e.preventDefault(); openShop(); return; }
@@ -2894,7 +2914,7 @@
       if (["d", "arrowright"].includes(key)) releaseMove(1, 0);
     });
     window.addEventListener("blur", () => { state.player.inputDir = null; });
-    document.getElementById("openPetBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); });
+    document.getElementById("openPetBook")?.addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openPetBook(); });
     document.getElementById("openSkillBook").addEventListener("click", () => { if (state.mode === "battle" && state.battle.pendingUntil) return; state.player.inputDir = null; window.openSkillBook(); });
     document.getElementById("restart").addEventListener("click", reset);
     document.getElementById("openQuestJournal").addEventListener("click", openQuestJournal);
@@ -2941,5 +2961,6 @@
     loadData().catch(err => { statusEl.textContent = "Không nạp được prototype"; errorEl.textContent = err.message; console.error(err); });
   </script>
   <script src="village_ui.js"></script>
+  <script src="pet_roster.js"></script>
 </body>
 </html>

@@ -38,3 +38,25 @@ dialog.v5-panel { --sky:#78d5ed; --rim:#4598ce; --gold:#ffdf78; --navy:#0b263b; 
 #quantityBox button { width:42px; height:40px; background:#275572; border:1px solid #5c8eae; color:#f7e9b8; font-size:19px; }
 .v5-panel button:hover:enabled { filter:brightness(1.13); }
 @media(max-height:480px) { .v5-head { min-height:56px; padding:7px 13px; } .v5-head h2 { font-size:22px; } .menu-grid { gap:5px; padding:8px; } .menu-grid button { min-height:60px; } .menu-grid .v5-icon { width:32px;height:32px; } .v5-content { padding:8px 12px; } }
+
+/* The six labels in gamemenu.ui share one centered column, spaced 17 source pixels apart. */
+#gameMenu { width:min(330px,calc(100vw - 24px)); max-height:calc(100dvh - 16px); border:2px solid #205471; border-radius:4px; color:#163a54; background:#c6f3ff; box-shadow:inset 0 0 0 2px #effcff,0 0 0 2px #72bde7,0 6px 18px #07162b88; }
+#gameMenu[open] { display:flex; flex-direction:column; }
+#gameMenu .v5-head { flex:none; background:linear-gradient(#317baa,#215a84); border-color:#6cc2fb; min-height:54px; padding:8px 12px; }
+#gameMenu .v5-head h2 { font-size:20px; color:#fff6ca; }
+#mainMenuPage,#systemPage,#recordPage { overflow:auto; padding:8px 12px; }
+#gameMenu .v6-list { display:grid; gap:3px; }
+#gameMenu .v6-list button,#menuSystem { min-height:44px; margin:0; width:100%; color:#214c66; font-size:15px; border:1px solid #77b6d1; border-radius:2px; background:linear-gradient(#effcff,#bee6f2); }
+#gameMenu button[aria-current="true"] { color:white; background:#1c6d92; border-color:#28566b; box-shadow:inset 3px 0 #ffd564; }
+#menuSystem { margin-top:7px; background:#acd9ed; }
+#gameMenu .softkeys { flex:none; } #gameMenu .softkeys button { min-height:44px; }
+#gameMenu .v5-note,#gameMenu .v5-guide,#gameMenu #saveStatus { color:#214c66; }
+#gameMenu .sound-controls { align-items:center; } #soundVolume { min-width:0; height:44px; }
+#gameMenu .v5-head { display:grid; grid-template-columns:1fr; gap:4px; }
+#gameMenu .v5-head p { margin:0; }
+#gameMenu .v5-wallet { justify-self:start; padding:1px 5px; font-size:12px; }
+#gameMenu .v5-wallet .v5-icon { width:18px; height:18px; }
+@media (orientation:landscape) and (max-height:500px) {
+  #gameMenu { width:min(440px,95vw); }
+  #gameMenu .v5-head { grid-template-columns:1fr auto; }
+}

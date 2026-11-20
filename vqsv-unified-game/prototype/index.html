@@ -131,6 +131,7 @@
       <div class="mission"><button id="openQuestJournal" type="button" title="Nhật ký nhiệm vụ · J" aria-label="Nhật ký nhiệm vụ">!</button><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></div>
       <div class="shortcuts"><button id="quickMap" type="button"><i class="glyph map" aria-hidden="true"></i>Bản đồ</button><button id="openBag" type="button"><i class="glyph bag" aria-hidden="true"></i>Túi đồ</button></div>
       <div id="touchControls">
+        <div id="stickZone" aria-hidden="true"></div>
         <div id="joystick" role="group" aria-label="Joystick di chuyển"><i aria-hidden="true"></i></div>
         <button type="button" id="touchAction">Tương tác</button>
       </div>
@@ -139,18 +140,25 @@
   </main>
   <dialog id="gameMenu" class="v5-panel" aria-labelledby="menuTitle">
     <header class="v5-head"><div><p id="menuLocation"></p><h2 id="menuTitle">Menu</h2></div><span class="v5-wallet"><i class="v5-icon money"></i><span id="walletStatus"></span></span></header>
-    <nav id="menuGrid" class="menu-grid" aria-label="Menu chính">
-      <button id="openPetBook" type="button"><i class="v5-icon pet"></i>Sủng vật</button>
-      <button id="menuBag" type="button"><i class="v5-icon pack"></i>Hành trang</button>
-      <button id="menuJournal" type="button"><i class="v5-icon scroll"></i>Nhiệm vụ</button>
-      <button id="openSkillBook" type="button"><i class="v5-icon skill"></i>Kỹ năng</button>
-      <button id="openWorldAtlas" type="button"><i class="v5-icon crystal"></i>Bản đồ</button>
-      <button id="openShop" type="button"><i class="v5-icon money"></i>Thương điếm</button>
-      <button id="menuSystem" type="button"><i class="v5-icon star"></i>Hệ thống</button>
-    </nav>
-    <section id="systemPage" class="v5-content" hidden>
-      <div class="system-actions"><button id="saveGame" type="button">Lưu trò chơi</button><button id="loadGame" type="button">Tải bản lưu</button></div>
+    <div id="mainMenuPage">
+      <nav id="menuGrid" class="v6-list" aria-label="Menu chính">
+        <button id="openShop" type="button">Tùy thân cửa hàng</button>
+        <button id="openPetBook" type="button">Sủng vật</button>
+        <button id="menuBag" type="button">Lưng bao</button>
+        <button id="menuDex" type="button">Đồ giám</button>
+        <button id="menuJournal" type="button">Nhiệm vụ</button>
+        <button id="menuRecord" type="button">Lưu dữ liệu</button>
+      </nav>
+      <button id="menuSystem" type="button">Hệ thống</button>
+    </div>
+    <section id="recordPage" class="v6-list" hidden>
+      <button id="saveGame" type="button">Lưu trò chơi</button>
+      <button id="loadGame" type="button">Tải bản lưu</button>
       <p id="saveStatus" role="status"></p>
+    </section>
+    <section id="systemPage" class="v5-content v6-list" hidden>
+      <button id="openWorldAtlas" type="button">Bản đồ</button>
+      <button id="openSkillBook" type="button">Sổ kỹ năng</button>
       <div class="system-actions sound-controls"><button id="toggleSound" type="button" title="Bật/tắt âm thanh hiệu ứng (phím N)">Âm thanh: bật</button><input id="soundVolume" type="range" min="0" max="100" step="5" aria-label="Âm lượng hiệu ứng"></div>
       <p class="v5-note">Nguyên liệu tiến hóa: <span id="stoneStatus"></span></p>
       <details class="v5-guide"><summary>Cách điều khiển</summary><p>Kéo joystick hoặc dùng WASD/phím mũi tên để đi. Nhấn E để tương tác. Trong trận: 1 kỹ năng hệ, 2 phòng thủ, 3 đòn thường, 4 đổi pet, 5 bắt pet. Phím tắt: P sổ pet, J nhiệm vụ, M bản đồ, B thương điếm, I túi đồ, N âm thanh.</p></details>

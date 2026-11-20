@@ -67,3 +67,10 @@ button { touch-action:manipulation; }
 #joystick i::after { content:""; position:absolute; inset:36%; border:1px solid #b8c39c; transform:rotate(45deg); }
 @media(hover:hover) { :is(.hud-actions,.shortcuts) button:hover,#touchAction:enabled:hover { filter:brightness(1.13); } }
 :is(.hud-actions,.shortcuts) button:active,#touchAction:enabled:active { transform:translateY(2px); filter:brightness(.94); }
+
+#stickZone { position:absolute; left:0; bottom:0; width:50%; height:45%; pointer-events:auto; touch-action:none; }
+body:not([data-mode="explore"]) #stickZone { display:none; }
+#joystick { width:clamp(130px,36vmin,170px); }
+#joystick.floating { left:var(--stick-x); top:var(--stick-y); bottom:auto; transform:translate(-50%,-50%); }
+.hud-actions button,.shortcuts button { touch-action:manipulation; }
+@media (orientation:landscape) and (max-height:500px) { #joystick { width:clamp(110px,31vmin,142px); } }

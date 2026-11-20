@@ -484,7 +484,11 @@
       };
     }
   };
-  window.openPetBook = () => {
+  window.openPetBook = (filter = "all") => {
+    if (filter === "caught" || collectionFilter.value === "caught") {
+      collectionFilter.value = filter;
+      search.value = ""; source.value = element.value = materialFilter.value = "all";
+    }
     if (!book.open) { book.showModal(); render(); search.focus(); }
   };
 })();

@@ -8,13 +8,15 @@ for (const id of ['joystick', 'touchAction', 'touchControls', 'openMenu', 'gameM
 assert(html.indexOf('src="village_ui.js"') > html.lastIndexOf('<script>'), 'village_ui.js loads after the game script');
 const els = {};
 const element = id => els[id] ||= {
-  id, textContent: '', hidden: false, disabled: false, listeners: {}, style: { setProperty() {}, removeProperty() {} },
+  id, classList:{add() {}, remove() {}}, textContent: '', hidden: false, disabled: false, listeners: {}, style: { setProperty() {}, removeProperty() {} },
   addEventListener(type, fn) { (this.listeners[type] ||= []).push(fn); }, getContext() { return new Proxy({}, { get: () => () => {} }); },
   getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 }), setPointerCapture() {}, setAttribute() {}, focus() {},
   querySelectorAll: () => [], showModal() { this.open = true; }, close() { this.open = false; }, click() { (this.listeners.click || []).forEach(fn => fn({})); if (this.onclick) this.onclick({}); }
 };
 let clock = 1000;
-const ctx = vm.createContext({ document: { body: { dataset: {} }, getElementById: element, querySelectorAll: () => [], querySelector: () => null, addEventListener() {}, fullscreenEnabled: false },
+const documentListeners = {};
+let hitTarget;
+const ctx = vm.createContext({ document: { body: { dataset: {} }, getElementById: element, querySelectorAll: () => [], querySelector: () => null, elementFromPoint: () => hitTarget, addEventListener(type, fn) { documentListeners[type] = fn; }, fullscreenEnabled: false },
   window: { addEventListener() {}, VQSVBootstrap: require('./bootstrap_for_tests.cjs') }, Element: class {}, performance: { now: () => clock }, console });
 vm.runInContext(code, ctx);
 vm.runInContext(fs.readFileSync(path.join(root, 'village_ui.js'), 'utf8'), ctx);
@@ -51,3 +53,19 @@ run('state.mode = "battle"');
 fire('joystick', 'pointerdown', { pointerId: 2, clientX: 95, clientY: 50 });
 assert.equal(run('state.player.inputDir'), null);
 console.log('Touch controls: joystick movement and release, action button and its labels passed.');
+
+// A stationary tap activates once on release. Scrolling, cancellation and releasing
+// outside the hit target must never select an item from a scrolling battle list.
+let activations = 0, prevented = 0;
+const target = {closest:() => target, contains:other => target === other, click:() => activations++};
+const touch = (type, x=10) => documentListeners[type]({
+  target, cancelable:true, changedTouches:[{identifier:1,clientX:x,clientY:10}],
+  preventDefault() { prevented++; }
+});
+hitTarget = target;
+touch('touchstart'); touch('touchend'); touch('touchend');
+assert.equal(activations,1); assert.equal(prevented,1);
+touch('touchstart'); touch('touchmove',35); touch('touchend',35);
+touch('touchstart'); touch('touchcancel'); touch('touchend');
+touch('touchstart'); hitTarget = null; touch('touchend');
+assert.equal(activations,1);

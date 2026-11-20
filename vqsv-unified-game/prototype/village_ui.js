@@ -6,6 +6,7 @@
     if (direction) releaseMove(...direction);
     direction = null;
     pointer = null;
+    stick.classList.remove("floating");
     stick.style.removeProperty("--dx");
     stick.style.removeProperty("--dy");
   }
@@ -26,13 +27,21 @@
     direction = next;
     if (next) setMove(...next);
   }
-  stick.addEventListener("pointerdown", e => {
+  function startStick(e) {
     if (pointer !== null || e.button !== 0 || state.mode !== "explore") return;
     e.preventDefault();
+    if (e.currentTarget === byId("stickZone")) {
+      const box = byId("touchControls").getBoundingClientRect();
+      stick.style.setProperty("--stick-x", (e.clientX-box.left)+"px");
+      stick.style.setProperty("--stick-y", (e.clientY-box.top)+"px");
+      stick.classList.add("floating");
+    }
     pointer = e.pointerId;
     stick.setPointerCapture(pointer);
     steer(e);
-  });
+  }
+  stick.addEventListener("pointerdown", startStick);
+  byId("stickZone").addEventListener("pointerdown", startStick);
   stick.addEventListener("pointermove", steer);
   for (const event of ["pointerup","pointercancel","lostpointercapture"]) {
     stick.addEventListener(event, e => { if (pointer === e.pointerId) stopStick(); });
@@ -41,73 +50,80 @@
   document.addEventListener("visibilitychange", () => { if (document.hidden) stopStick(); });
   byId("touchAction").addEventListener("click", () => {stopStick(); interact();});
 
-  // A tap immediately after steering can lose its compatibility click on touch
-  // browsers. Handle the release directly while keeping ordinary keyboard clicks.
-  for (const button of document.querySelectorAll("main button")) {
-    let finger = null;
-    button.addEventListener("pointerdown", e => {
-      if (e.pointerType !== "touch" || finger !== null || button.disabled) return;
-      finger = e.pointerId;
-      button.setPointerCapture(finger);
-    });
-    button.addEventListener("pointerup", e => {
-      if (finger !== e.pointerId) return;
-      finger = null;
-      const over = document.elementFromPoint(e.clientX,e.clientY);
-      if (over && button.contains(over)) button.click();
-    });
-    button.addEventListener("lostpointercapture", () => { finger = null; });
-    button.addEventListener("click", e => {
-      if (e.isTrusted && (e.pointerType === "touch" || e.sourceCapabilities?.firesTouchEvents)) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-      }
-    }, true);
-  }
+  // A browser can suppress the compatibility click immediately after a drag.
+  // Confirm a stationary touch on release and cancel its compatibility click.
+  // Delegate so dynamically created battle items follow the same rule.
+  const taps = new Map();
+  document.addEventListener("touchstart", e => {
+    const button = e.target.closest?.("main button:enabled");
+    if (!button) return;
+    for (const touch of e.changedTouches) {
+      taps.set(touch.identifier,{button,x:touch.clientX,y:touch.clientY});
+    }
+  }, {passive:true});
+  document.addEventListener("touchmove", e => {
+    for (const touch of e.changedTouches) {
+      const tap = taps.get(touch.identifier);
+      if (tap && Math.hypot(touch.clientX-tap.x,touch.clientY-tap.y)>12) taps.delete(touch.identifier);
+    }
+  }, {passive:true});
+  document.addEventListener("touchcancel", e => {
+    for (const touch of e.changedTouches) taps.delete(touch.identifier);
+  });
+  document.addEventListener("touchend", e => {
+    for (const touch of e.changedTouches) {
+      const tap = taps.get(touch.identifier);
+      taps.delete(touch.identifier);
+      if (!tap || !e.cancelable || tap.button.disabled) continue;
+      if (!tap.button.contains(document.elementFromPoint(touch.clientX,touch.clientY))) continue;
+      e.preventDefault();
+      tap.button.click();
+    }
+  }, {passive:false});
 
   const menu = byId("gameMenu");
   function pauseWalking() {
     stopStick();
     state.player.inputDir = null;
   }
-  const grid = byId("menuGrid"), system = byId("systemPage");
-  const tiles = [...grid.querySelectorAll("button")];
-  let menuIndex = 0;
-  function markMenu(index) {
-    menuIndex = index;
-    tiles.forEach((button, i) => button.setAttribute("aria-current", String(i === index)));
+  const home = byId("mainMenuPage"), system = byId("systemPage"), record = byId("recordPage");
+  let page = home, selected;
+  function choices() { return [...page.querySelectorAll("button:not(:disabled),input,summary")]; }
+  function mark(control) {
+    selected?.removeAttribute("aria-current");
+    selected = control;
+    selected?.setAttribute("aria-current","true");
   }
-  function systemPage(open) {
-    grid.hidden = open;
-    system.hidden = !open;
-    byId("menuTitle").textContent = open ? "Hệ thống" : "Menu";
-    byId("menuChoose").hidden = open;
-    (open ? byId("saveGame") : tiles[menuIndex]).focus();
+  function showPage(next, initial) {
+    page = next;
+    for (const part of [home,system,record]) part.hidden = part !== next;
+    byId("menuTitle").textContent = next === home ? "Menu trò chơi" : next === system ? "Hệ thống" : "Lưu dữ liệu";
+    const first = initial || choices()[0];
+    mark(first); first?.focus();
   }
-  tiles.forEach((button, i) => {
-    button.addEventListener("focus", () => markMenu(i));
-    button.addEventListener("click", () => markMenu(i));
-  });
+  menu.addEventListener("focusin", e => { if (choices().includes(e.target)) mark(e.target); });
   byId("openMenu").onclick = () => {
     if (!assets.map || menu.open) return;
-    pauseWalking();
-    updateWallet();
-    menu.showModal();
-    if (!system.hidden) systemPage(false);
-    markMenu(menuIndex); tiles[menuIndex].focus();
+    pauseWalking(); updateWallet(); menu.showModal(); showPage(home);
   };
-  byId("menuSystem").onclick = () => systemPage(true);
-  byId("menuChoose").onclick = () => { tiles[menuIndex].focus(); tiles[menuIndex].click(); };
-  function backMenu() { if (system.hidden) menu.close(); else systemPage(false); }
+  byId("menuSystem").onclick = () => showPage(system);
+  byId("menuRecord").onclick = () => showPage(record);
+  function choose() { if (selected?.type === "range") selected.focus(); else selected?.click(); }
+  byId("menuChoose").onclick = choose;
+  function backMenu() { if (page === home) menu.close(); else showPage(home, byId(page === system ? "menuSystem" : "menuRecord")); }
   byId("menuBack").onclick = backMenu;
   menu.addEventListener("cancel", e => { e.preventDefault(); backMenu(); });
   menu.addEventListener("keydown", e => {
-    if (grid.hidden) return;
-    const delta = {ArrowLeft:-1, "4":-1, ArrowRight:1, "6":1, ArrowUp:-3, "2":-3, ArrowDown:3, "8":3}[e.key];
+    if (e.target.type === "range" && ["ArrowLeft","ArrowRight"].includes(e.key)) return;
+    const delta = {ArrowLeft:-1,"4":-1,ArrowRight:1,"6":1,ArrowUp:-1,"2":-1,ArrowDown:1,"8":1}[e.key];
     if (delta !== undefined) {
-      e.preventDefault(); tiles[(menuIndex + delta + tiles.length) % tiles.length].focus();
-    } else if (e.key === "5") { e.preventDefault(); if (!e.repeat) tiles[menuIndex].click(); }
+      e.preventDefault(); e.stopPropagation(); const options = choices();
+      options[(options.indexOf(selected)+delta+options.length)%options.length].focus();
+    } else if (e.key === "5" || (e.key === "Enter" && !e.target.closest(".softkeys"))) {
+      e.preventDefault(); e.stopPropagation(); if (!e.repeat) choose();
+    }
   });
+  byId("menuDex").onclick = () => { menu.close(); window.openPetBook("caught"); };
   byId("quickMap").onclick = () => {pauseWalking(); openMap();};
   byId("menuJournal").onclick = () => openQuestJournal();
   byId("menuBag").onclick = () => { menu.close(); openBag(); };

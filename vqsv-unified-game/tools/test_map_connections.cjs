@@ -6,7 +6,7 @@ const bootCtx = {window:{}}; vm.runInNewContext(fs.readFileSync(path.join(root,'
 const maps = bootCtx.window.VQSVBootstrap.maps;
 const els = {}, element = id => els[id] ||= {textContent:'',hidden:false,addEventListener(){},getContext(){return {}}};
 const storage = new Map(), localStorage = {getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
-const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},console,localStorage,maps});
+const ctx = vm.createContext({document:{getElementById:element},window:{addEventListener(){},VQSVBootstrap:require('./bootstrap_for_tests.cjs')},performance:{now:()=>1000},Element:class{},Image:class{},console,localStorage,maps});
 vm.runInContext(code,ctx); vm.runInContext('assets.maps=maps; assets.map=maps["slice01-border-village"]; reset()',ctx);
 const run = js => vm.runInContext(js, ctx);
 run('globalThis.travelTo = target => { const l = assets.map.links.find(k => k.target === target); state.player.x = l.x; state.player.y = l.y; interact(); }');

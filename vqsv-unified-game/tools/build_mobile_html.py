@@ -19,7 +19,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROTO = os.path.join(ROOT, "prototype")
 PACK_LIMIT = 11_000_000  # bytes of JS per pack, well under a 16MB file limit
 
-TEXT_SOURCES = ["index.html", "pet_book.js", "skill_book.js", "world_atlas.js", "skill_fx.js",
+TEXT_SOURCES = ["index.html", "pet_book.js", "skill_book.js", "world_atlas.js", "skill_fx.js", "field_map.js", "village_ui.js", "shop_room.js", "expedition.css", "classic.css", "battle.css",
                 "sound_fx.js", "data/bootstrap.js", "pet_book.css", "world_atlas.css"]
 
 HOOK = r"""<script>
@@ -39,6 +39,9 @@ HOOK = r"""<script>
 </script>"""
 
 
+IMAGES = {}
+
+
 def read(path):
     with open(os.path.join(PROTO, path), encoding="utf-8") as f:
         return f.read()
@@ -51,7 +54,8 @@ def safe_inline(js):
 def used_images():
     text = "".join(read(p) for p in TEXT_SOURCES)
     keep, dropped = [], []
-    for p in sorted(glob.glob(os.path.join(PROTO, "assets", "**", "*.png"), recursive=True)):
+    files = [p for ext in ("png", "webp") for p in glob.glob(os.path.join(PROTO, "assets", "**", "*." + ext), recursive=True)]
+    for p in sorted(files):
         rel = os.path.relpath(p, PROTO).replace(os.sep, "/")
         base = os.path.basename(rel)
         # Character art is only ever named literally; everything else may be built from ids at runtime.
@@ -73,14 +77,15 @@ def encode_images(paths, optimize):
     for rel in paths:
         with open(os.path.join(PROTO, rel), "rb") as f:
             data = f.read()
-        if oxi:
+        if oxi and rel.endswith(".png"):
             try:
                 smaller = oxi.optimize_from_memory(data, level=2)
                 if len(smaller) < len(data):
                     data = smaller
             except Exception:
                 pass
-        out[rel] = "data:image/png;base64," + base64.b64encode(data).decode("ascii")
+        mime = "image/webp" if rel.endswith(".webp") else "image/png"
+        out[rel] = "data:%s;base64,%s" % (mime, base64.b64encode(data).decode("ascii"))
     return out
 
 
@@ -106,7 +111,7 @@ def build_parts(esbuild):
     html = read("index.html")
     head = re.search(r"<head>(.*?)</head>", html, re.S).group(1)
     body = re.search(r"<body[^>]*>(.*)</body>", html, re.S).group(1)
-    inline_css = lambda m: "<style>\n" + read(m.group(1)) + "\n</style>"
+    inline_css = lambda m: "<style>\n" + re.sub(r'url\("(assets/[^"]+)"\)', lambda u: 'url("%s")' % IMAGES.get(u.group(1), u.group(1)), read(m.group(1))) + "\n</style>"
     head = re.sub(r'<link rel="stylesheet" href="([^"]+)">', inline_css, head)
 
     def inline_script(m):
@@ -129,6 +134,7 @@ def main():
     keep, dropped = used_images()
     images = encode_images(keep, not a.no_optimize)
     packs = make_packs(images)
+    IMAGES.update(images)
     head, body = build_parts(a.esbuild)
 
     web = os.path.join(a.out, "web")

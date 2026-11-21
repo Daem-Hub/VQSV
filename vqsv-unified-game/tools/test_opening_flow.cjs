@@ -30,7 +30,7 @@ assert.equal(element('fightMenu').hidden, false);
 vm.runInContext('Math.random = () => 0.99', context);
 const finishAction = () => { clock += 1100; vm.runInContext('updateBattle(performance.now())', context); };
 vm.runInContext('assets.pets={hero:{},enemy:{}}; drawBattle()', context);
-assert(drawnText.includes('LƯỢT 1'));
+assert.equal(element('duelTurn').textContent, 'Lượt 1');   // the turn sits in the bar above the command window (Codex's VQSV5 screen)
 // Decoded VQSV6 stats: Tà Vân Khuyển Thần L3 (HP 62, atk 31, def 6, spd 8) vs Điện Miêu L5 (HP 115, atk 26, def 15, spd 5).
 assert(drawnText.includes('62 / 62'));
 assert(drawnText.includes('115 / 115'));

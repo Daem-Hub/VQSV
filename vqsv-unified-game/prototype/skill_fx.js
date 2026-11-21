@@ -71,9 +71,10 @@ import * as spinSlash from "./vendor/pixelfx/src/fx/melee/spin-slash.js";
 const FX = { fireball, hitSpark, critHit, shieldBlock, clawSwipe, swordSlash, heavyCleave, doubleSlash, uppercut, vineWhip, earthSpike, tornado, rootSnare, leafStorm, splash, waterJet, waveCrash, zapHit, lightningStrike, chainLightning, curse, lifeSteal, graspingHands, energyDisc, plasmaShot, iceLance, iceShatter, heal, divineShield, manaBurst, poisoned, confused, slowed, stunned, cursed, haste, rage, petrified, frozen, bleeding, fireRing, charmed, spellCharge, thorns, blinkOut, electrified, burning, soulDrain, hexSigil, implosion, runeCircle, healAoe, respawnBeam, poof, collectBurst, featherBurst, parry, quake, groundSlam, shadowTendrils, hammerSmash, fireTornado, blizzardVortex, spinSlash };
 
 // The battle canvas is 480x360; effects are drawn on a 240x180 frame and scaled 2x so their pixels match the sprites.
-const SCALE = 2, W = 240, H = 180;
+const SCALE = 2;
+let W = 240, H = 180;          // setLayout() resizes the frame for the stacked VQSV5 battle screen
 // Where the two combatants stand, in frame pixels (feet). VQSV5 layout: the enemy up on the right, the player's active pet down on the left.
-const SIDE = { foe: { x: 179, feet: 76 }, hero: { x: 61, feet: 92 } };
+let SIDE = { foe: { x: 179, feet: 76 }, hero: { x: 61, feet: 92 } };
 const BODY = 28;              // roughly how high a pet's torso sits above its feet
 
 // Seven-step ramps (dark to bright) for the generic hit spark, per element.
@@ -212,7 +213,7 @@ const EVENT_FX = {
   sacrifice: { fx: "implosion", ms: 1100, speed: 1.2 },
 };
 
-const frame = createFrame(W, H);
+let frame = createFrame(W, H);
 let canvas = null, image = null;
 const live = [];
 const sidePos = (side, atFeet = false) => ({ x: SIDE[side].x, y: SIDE[side].feet - (atFeet ? 0 : BODY) });
@@ -298,5 +299,12 @@ function draw(ctx, now) {
   ctx.imageSmoothingEnabled = smoothing;
 }
 
-window.VQSVSkillFx = { cast, basic, status, event, draw, eventFx: EVENT_FX, tiersOf: key => PLANS[key].length, clear: () => { live.length = 0; }, busy: () => live.length > 0, plans: Object.keys(PLANS), planOf: planKey, elements: ELEMENT_PLAN, buffFx: BUFF_FX, debuffFx: DEBUFF_FX, v5Fx: V5_FX };
+// The battle screen tells the module its size (canvas pixels) and where both pets stand (canvas pixels, feet).
+function setLayout({ width, height, foe, hero }) {
+  const w = Math.max(16, Math.round(width / SCALE)), h = Math.max(16, Math.round(height / SCALE));
+  SIDE = { foe: { x: Math.round(foe.x / SCALE), feet: Math.round(foe.feet / SCALE) }, hero: { x: Math.round(hero.x / SCALE), feet: Math.round(hero.feet / SCALE) } };
+  if (w === W && h === H) return;
+  W = w; H = h; frame = createFrame(W, H); canvas = null; live.length = 0;
+}
+window.VQSVSkillFx = { setLayout, cast, basic, status, event, draw, eventFx: EVENT_FX, tiersOf: key => PLANS[key].length, clear: () => { live.length = 0; }, busy: () => live.length > 0, plans: Object.keys(PLANS), planOf: planKey, elements: ELEMENT_PLAN, buffFx: BUFF_FX, debuffFx: DEBUFF_FX, v5Fx: V5_FX };
 window.dispatchEvent?.(new Event("vqsv-skillfx-ready"));

@@ -160,3 +160,13 @@ Mã gốc còn hai chỗ prototype **không** làm:
 - **Lên cấp:** dòng "Lên cấp N" cho biết HP, Công, Thủ, Tốc tăng bao nhiêu ở cấp kế tiếp. Số được tính bằng cùng công thức dùng trong trận: VQSV6 theo `growth` và phẩm chất; VQSV5 theo bảng gốc đã quy đổi sang thang VQSV6.
 - **Trước/sau tiến hóa:** với mỗi dạng pet có thể tiến hóa hoặc dị hóa thành, màn hình hiện chỉ số của dạng mới ở cấp hiện tại và mức chênh lệch. Phẩm chất sau tiến hóa theo luật gốc: giữ nguyên nếu không thấp hơn mức mặc định của dạng mới, nếu thấp hơn thì lấy mức mặc định đó.
 - **Map mới của Codex** (Cao nguyên Ngọc Lục, Quần đảo San Hô Hồng, Bán đảo Đồng Đỏ) có pet hoang dã trộn hai bản theo hệ của vùng. Cấp tính theo map mà vùng đó rẽ ra, cộng thêm 2 cấp cho mỗi map đi xa hơn. Đây là giá trị thử.
+
+## Màn trận theo thiết kế của Codex
+
+Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Khi gộp lần đầu, phần hình này chưa được đưa vào. Nay toàn bộ được vẽ trên canvas của game, nên đổi pet, bắt pet, hiệu ứng pixelfx, trạng thái và nền theo vùng vẫn chạy như trước.
+
+- **Bố cục:** hai dải cảnh xếp chồng. Dải trên là đối thủ (đứng bên phải), dải dưới là pet của Kael (đứng bên trái). Vị trí theo màn gốc 240 × 320 của VQSV5.
+- **Bảng tên và HP:** bảng tên màu băng ghi cấp. Ô xanh ghi % HP bằng chữ số vàng (`assets/ui/duel-digits.png`). Dưới chân pet có số HP và thanh máu đỏ; pet của Kael có thêm thanh xanh lam (số lần dùng kỹ năng chính) và vạch vàng dưới bảng tên (EXP).
+- **Nền:** mỗi dải dùng nền theo vùng hoặc theo hệ như trước. Trận VQSV5 mỗi bên một nền địa hình. Dải dưới lật gương như bản Codex. Ảnh nền được kéo vừa chiều ngang; khi dải cao hơn ảnh thì phần trời phía trên được kéo dài từ hàng điểm ảnh đầu tiên của ảnh. Trận truyện dùng hình Lôi Miêu và sói tha hóa Codex vẽ.
+- **Khung lệnh:** thanh "Lượt N", khung lệnh xanh với 5 lệnh, và hàng phím mềm **Chọn / ⛶ / Menu**. Khi đang mở một bảng (Công kích, Đạo cụ...), phím phải đổi thành **Trở lại**.
+- **Kích thước:** canvas trận đổi theo khoảng trống phía trên khung lệnh: cao 300–900 đơn vị, rộng 480, độ nét theo màn hình. Hết trận, canvas trở lại 480 × 360. `skill_fx.js` có thêm `setLayout()` để hiệu ứng bay đúng vị trí hai pet trong bố cục này; đây là thay đổi duy nhất trong phần hiệu ứng.

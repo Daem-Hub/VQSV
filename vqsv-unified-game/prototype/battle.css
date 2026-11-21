@@ -37,3 +37,11 @@
 }
 body[data-mode="battle"] #game { object-position:center top !important; }
 body[data-mode="battle"] .hud { display:none; }
+/* Codex's VQSV5 screen (commit 7c4f864): sky-blue frame, turn bar and soft keys around the blue command window. */
+body[data-mode="battle"] .game-frame { background:#52bdef; }
+body[data-mode="battle"] #battleControls { background:#52bdef; gap:2px; }
+.duel-turn { display:flex; align-items:center; gap:8px; width:min(100%,640px); margin:0 auto; padding:2px 8px; border-block:2px solid var(--navy); background:#eafcff; box-shadow:inset 0 -2px #a2d4ed; color:#233754; font:bold clamp(11px,1.8vmin,15px)/1.2 system-ui; }
+.duel-turn::after { content:""; height:3px; flex:1; background:#a7d8ec; border-bottom:1px solid white; }
+.duel-softkeys { display:flex; justify-content:space-between; align-items:center; width:min(100%,640px); margin:0 auto; }
+.duel-softkeys button { display:flex; justify-content:center; align-items:center; gap:5px; min-width:44px; min-height:40px; width:auto; background:transparent; border:0; box-shadow:none; color:#122f53; padding:3px 5px; font:750 clamp(12px,2vmin,16px)/1.2 system-ui; }
+.duel-softkeys .v5-icon { width:24px; height:24px; } #duelFull .glyph { width:17px; height:17px; }

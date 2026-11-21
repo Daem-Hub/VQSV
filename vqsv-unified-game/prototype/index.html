@@ -118,6 +118,7 @@
             <div id="ballList"></div>
             <p id="ballNote" class="team-note"></p>
           </div>
+          <div class="duel-turn"><span id="duelTurn">Lượt 1</span></div>
           <div class="duel-command-box">
             <p id="duelMessage" role="status" aria-live="polite"></p>
             <div id="duelCommands" class="duel-commands" role="group" aria-label="Lệnh chiến đấu">
@@ -128,6 +129,11 @@
               <button id="fleeButton" type="button">Chạy trốn</button>
             </div>
           </div>
+          <footer class="duel-softkeys">
+            <button id="duelChoose" type="button"><i class="v5-icon yes" aria-hidden="true"></i>Chọn</button>
+            <button id="duelFull" type="button" aria-label="Toàn màn hình"><i class="glyph fullscreen" aria-hidden="true"></i></button>
+            <button id="duelBack" type="button"><span id="duelBackLabel">Menu</span><i class="v5-icon no" aria-hidden="true"></i></button>
+          </footer>
         </div>
       </div>
       <div class="mission"><button id="openQuestJournal" type="button" title="Nhật ký nhiệm vụ · J" aria-label="Nhật ký nhiệm vụ">!</button><span id="objective" aria-live="polite">Đang chuẩn bị hành trình…</span></div>
@@ -1611,7 +1617,7 @@
     const assetPaths = {
       tiles: [[0, "assets/tilesets/tileset_00.png"], [4, "assets/tilesets/tileset_04.png"]],
       chars: [["player", "assets/characters/kael_field.png"], ["elder", "assets/illustrations/elder.webp"]],
-      pets: [["companion", "assets/illustrations/loi-mieu-field.webp"], ["hero", "assets/pets/electric_cat_candidate.png"], ["enemy", "assets/pets/corrupted_beast_placeholder.png"]]
+      pets: [["companion", "assets/illustrations/loi-mieu-field.webp"], ["hero", "assets/illustrations/loi-mieu.webp"], ["enemy", "assets/illustrations/corrupted-wolf.webp"]]
     };
     const lines = [
       "Đêm nay sương kéo xuống sớm quá, Kael.",
@@ -1678,6 +1684,8 @@
       refreshFieldMap();
       document.getElementById("duelMessage").textContent = state.battle.message || "";
       for (const [button, menu] of [["fightButton", fightMenu], ["itemButton", itemMenu], ["teamButton", teamMenu]]) document.getElementById(button).setAttribute?.("aria-expanded", String(!menu.hidden));
+      const backLabel = document.getElementById("duelBackLabel");
+      if (backLabel) backLabel.textContent = [fightMenu, itemMenu, teamMenu, ballMenu].some(menu => !menu.hidden) ? "Trở lại" : "Menu";
       battleControls.hidden = state.mode !== "battle";
       battleHint.hidden = state.mode !== "battle";
       if (state.mode !== "battle") { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; }
@@ -2209,69 +2217,164 @@
       ctx.fillStyle = "#577453"; ctx.beginPath(); ctx.ellipse(135, 200, 105, 27, 0, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "#718b5b"; ctx.beginPath(); ctx.ellipse(330, 247, 117, 30, 0, 0, Math.PI * 2); ctx.fill();
     }
+    // ---- VQSV5 battle screen (Codex's design, commit 7c4f864): two stacked landscapes, the opponent up on the right with its
+    // name plate top-left, the player's pet down on the left with its plate bottom-right, gold HP % digits, HP pills under the pets.
+    // VQSV5's own screen anchors the pets at (177, 97) and (46, 206) of 240 × 320. Drawn on the game canvas so the pixelfx
+    // effects, capture ball and status chips share one layer; the canvas takes the shape of the space above the command window.
+    const DUEL = { h: 360, k: 1, sized: false };
+    function sizeBattleCanvas() {
+      const frame = canvas.parentElement;
+      if (!frame?.clientWidth) return;
+      const stageW = frame.clientWidth, stageH = Math.max(120, frame.clientHeight - (battleControls.offsetHeight || 0));
+      const h = Math.round(Math.min(900, Math.max(300, 480 * stageH / stageW)));
+      const shown = Math.min(stageW, stageH * 480 / h), k = Math.min(3, Math.max(1, shown * (window.devicePixelRatio || 1) / 480));
+      const pw = Math.round(480 * k), ph = Math.round(h * k);
+      if (canvas.width !== pw || canvas.height !== ph) { canvas.width = pw; canvas.height = ph; }
+      canvas.style.height = stageH + "px";
+      Object.assign(DUEL, { h, k, sized: true });
+    }
+    function resetFieldCanvas() {
+      if (!DUEL.sized) return;
+      canvas.width = 480; canvas.height = 360; canvas.style.height = ""; DUEL.sized = false; DUEL.h = 360; DUEL.k = 1;
+      ctx.imageSmoothingEnabled = false;
+    }
+    // Each half shows its own field: VQSV5 sides follow the terrain (and a pet's terrain skill), VQSV6 regions one picture.
+    function laneImages() {
+      const battle = state.battle, key = battle?.backdrop6, own = activePet();
+      if (key) {
+        const ownField = own?.v5 && own.typeId != null && hasPassive(own, 43 + own.typeId) ? own.typeId : null;
+        return { enemy: BG6(key), player: ownField != null ? FIELD_BG(ownField) : BG6(key) };
+      }
+      const fields = battleFields5();
+      if (fields) return { enemy: FIELD_BG(fields.enemy), player: FIELD_BG(fields.player) };
+      return { enemy: "assets/illustrations/battle.webp", player: "assets/illustrations/battle.webp" };
+    }
+    function drawLane(path, lane, mirrored) {
+      ctx.fillStyle = "#68b440"; ctx.fillRect(0, lane.y, 480, lane.h);
+      const image = typeof Image === "undefined" ? null : cachedImage(path);
+      if (!image?.complete || !image.naturalWidth) return;
+      // Fit the picture to the width with its ground at the bottom of the lane; a taller lane continues the picture's top
+      // row upward as sky, so field art made for 240 × 108 is not blown up on a tall phone screen.
+      const scale = 480 / image.naturalWidth, h = image.naturalHeight * scale, y = lane.y + lane.h - h;
+      ctx.save(); ctx.beginPath(); ctx.rect(0, lane.y, 480, lane.h); ctx.clip();
+      if (mirrored) { ctx.translate(480, 0); ctx.scale(-1, 1); }
+      if (y > lane.y) ctx.drawImage(image, 0, 0, image.naturalWidth, 1, 0, lane.y, 480, y - lane.y + 1);
+      ctx.drawImage(image, 0, y, 480, h);
+      ctx.restore();
+    }
+    const DUEL_INK = "#1d1e35", DUEL_ICE = "#eafcff";
+    function duelIcon(index, x, y, size) {
+      const sheet = typeof Image === "undefined" ? null : cachedImage("assets/ui/duel-icons.png");
+      if (!sheet?.complete || !sheet.naturalWidth) return;
+      const cell = sheet.naturalWidth / 6;
+      ctx.drawImage(sheet, index * cell, 0, cell, sheet.naturalHeight, x, y, size, size);
+    }
+    function duelPercent(x, y, percent, alignRight) {
+      const sheet = typeof Image === "undefined" ? null : cachedImage("assets/ui/duel-digits.png");
+      const text = `${percent}%`, cw = 13, ch = 12, w = 8 + 16 + text.length * (cw - 2) + 4, h = 20;
+      const left = alignRight ? x - w : x;
+      ctx.fillStyle = DUEL_INK; ctx.fillRect(left - 2, y - 2, w + 4, h + 4);
+      ctx.fillStyle = "#0877ee"; ctx.fillRect(left, y, w, h);
+      ctx.fillStyle = "#79c6ff"; ctx.fillRect(left, y, w, 2);
+      duelIcon(2, left + 4, y + 3, 14);
+      if (sheet?.complete && sheet.naturalWidth) {
+        const cell = sheet.naturalWidth / 11;
+        [...text].forEach((c, i) => ctx.drawImage(sheet, (c === "%" ? 10 : Number(c)) * cell, 0, cell, sheet.naturalHeight, left + 20 + i * (cw - 2), y + 4, cw, ch));
+      } else { ctx.fillStyle = "#ffd34d"; ctx.font = "bold 12px system-ui"; ctx.fillText(text, left + 20, y + 15); }
+      return w;
+    }
+    function duelPlate(x, y, icon, name, level, alignRight) {
+      ctx.font = "800 17px system-ui";
+      const label = `Cấp ${level}`, w = 34 + ctx.measureText(name).width + 10 + (ctx.font = "700 11px system-ui", ctx.measureText(label).width) + 12, h = 30;
+      const left = alignRight ? x - w : x;
+      ctx.fillStyle = "#293444"; ctx.fillRect(left + 3, y + 3, w, h);
+      ctx.fillStyle = DUEL_INK; ctx.fillRect(left - 2, y - 2, w + 4, h + 4);
+      ctx.fillStyle = DUEL_ICE; ctx.fillRect(left, y, w, h);
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(left, y, w, 2); ctx.fillStyle = "#b2d7ec"; ctx.fillRect(left, y + h - 3, w, 3);
+      duelIcon(icon, left + 4, y + 3, 24);
+      ctx.fillStyle = "#403266"; ctx.font = "800 17px system-ui"; ctx.textBaseline = "middle"; ctx.fillText(name, left + 32, y + h / 2);
+      const nameW = ctx.measureText(name).width;
+      ctx.fillStyle = "#5c6f8c"; ctx.font = "700 11px system-ui"; ctx.fillText(label, left + 32 + nameW + 8, y + h / 2 + 1);
+      ctx.textBaseline = "alphabetic";
+      return { left, w, h };
+    }
+    function duelVitals(cx, y, hp, max, uses = null, usesMax = null) {
+      const w = 116, left = Math.round(cx - w / 2);
+      const text = `${hp} / ${max}`;
+      ctx.font = "800 11px system-ui"; ctx.textAlign = "center";
+      const tw = ctx.measureText(text).width + 10;
+      ctx.fillStyle = "#24223c"; ctx.fillRect(cx - tw / 2, y - 13, tw, 14);
+      ctx.fillStyle = "#fff5ed"; ctx.fillText(text, cx, y - 2); ctx.textAlign = "left";
+      ctx.fillStyle = "#3e1141"; ctx.fillRect(left - 2, y, w + 4, 10);
+      ctx.fillStyle = "#603443"; ctx.fillRect(left, y + 2, w, 6);
+      const fill = Math.max(0, Math.min(1, hp / max)) * w;
+      ctx.fillStyle = "#f63037"; ctx.fillRect(left, y + 2, fill, 6); ctx.fillStyle = "#ff8d69"; ctx.fillRect(left, y + 2, fill, 2);
+      if (usesMax) { ctx.fillStyle = "#3e1141"; ctx.fillRect(left - 2, y + 10, w + 4, 6); ctx.fillStyle = "#00d8ff"; ctx.fillRect(left, y + 11, Math.max(0, Math.min(1, uses / usesMax)) * w, 4); }
+    }
     function drawBattle() {
       const now = performance.now();
-      drawBattleBackdrop();
-      ctx.fillStyle = "#102528e8"; roundRect(207, 12, 66, 25, 6, true);
-      ctx.textAlign = "center"; ctx.font = "bold 10px system-ui"; ctx.fillStyle = "#eadba6"; ctx.fillText(`LƯỢT ${state.battle.turn + 1}`, 240, 29); ctx.textAlign = "left";
-      battlePanel(12, 12, state.battle.wild ? state.battle.enemy.name.toUpperCase() : "SỦNG VẬT THA HÓA", state.battle.enemy.subtitle, state.battle.enemy.hp, state.battle.enemy.max, "#dc8e7f");
-      const heroAttack = now - state.battle.attackAt;
-      const enemyAttack = now - state.battle.enemyAt;
-      const guard = now - state.battle.guardAt;
+      sizeBattleCanvas();
+      const H = DUEL.h, divide = 8, laneH = (H - divide) / 2, top = { y: 0, h: laneH }, bottom = { y: laneH + divide, h: laneH };
+      ctx.setTransform(DUEL.k, 0, 0, DUEL.k, 0, 0); ctx.imageSmoothingEnabled = false;
+      const lanes = laneImages();
+      drawLane(lanes.enemy, top, false); drawLane(lanes.player, bottom, true);
+      ctx.fillStyle = DUEL_INK; ctx.fillRect(0, laneH, 480, divide); ctx.fillStyle = DUEL_ICE; ctx.fillRect(0, laneH + 2, 480, divide - 4);
+      if (lanes.enemy === BG6("dien")) { const t = now % 4200; if (t < 140) { ctx.fillStyle = `rgba(255,252,220,${(1 - t / 140) * .45})`; ctx.fillRect(0, 0, 480, laneH); } }
+      const box = Math.round(Math.min(laneH * .72, 190));
+      const foePos = { x: 354, feet: Math.round(top.y + laneH * .82) }, heroPos = { x: 96, feet: Math.round(bottom.y + laneH * .80) };
+      window.VQSVSkillFx?.setLayout?.({ width: 480, height: H, foe: foePos, hero: heroPos });
+      const heroAttack = now - state.battle.attackAt, enemyAttack = now - state.battle.enemyAt, guard = now - state.battle.guardAt;
       const attackPulse = heroAttack >= 0 && heroAttack < 360 ? Math.sin(heroAttack / 360 * Math.PI) : 0;
       const enemyPulse = enemyAttack >= 0 && enemyAttack < 300 ? Math.sin(enemyAttack / 300 * Math.PI) : 0;
       const enemyShake = heroAttack >= 0 && heroAttack < 240 ? Math.sin(heroAttack / 28) * (1 - heroAttack / 240) * 5 : 0;
-      const idleEnemy = Math.sin(now / 210) * 2;
-      const idleHero = Math.sin(now / 180 + 1) * 2;
-      const sinceCapture = now - state.battle.captureAt;
-      const capturing = sinceCapture >= 0 && sinceCapture < 1400;
+      const idleEnemy = Math.sin(now / 265) * 1.5, idleHero = -Math.sin(now / 265) * 1.5;
+      const sinceCapture = now - state.battle.captureAt, capturing = sinceCapture >= 0 && sinceCapture < 1400;
       const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : state.battle.rewarded ? .3 : 1;
-      if (state.battle.wild) {
-        const foe = state.battle.enemy, frames = foe.v5 ? foe.sequences?.[0] : null;
-        // Source sprites face right; the foe stands on the right, so mirror it to face Kael's pet.
-        const fx = 300 - enemyPulse * 22 + enemyShake;
-        ctx.save(); ctx.translate(2 * fx + 114, 0); ctx.scale(-1, 1);
-        drawFitted(cachedImage(frames?.length ? sequenceFrame(frames, now).image : foe.image), fx, 40 + idleEnemy, 114, 112, enemyAlpha);
-        ctx.restore();
-      }
-      else { const fx = 310 - enemyPulse * 22 + enemyShake; ctx.save(); ctx.globalAlpha = enemyAlpha; ctx.translate(2 * fx + 94, 0); ctx.scale(-1, 1); ctx.drawImage(assets.pets.enemy, fx, 56 + idleEnemy, 94, 96); ctx.restore(); }
-      if (capturing) drawCaptureBall(sinceCapture);
-      drawActivePet(76 + attackPulse * 30, 151 - Math.abs(attackPulse) * 4 + idleHero, 92, 94, now, heroAttack);
+      // shadows under both pets
+      ctx.fillStyle = "#26381e65";
+      for (const pos of [foePos, heroPos]) { ctx.beginPath(); ctx.ellipse(pos.x, pos.feet, box * .32, Math.max(3, box * .06), 0, 0, Math.PI * 2); ctx.fill(); }
+      const foe = state.battle.enemy, fx = foePos.x - box / 2 - enemyPulse * 26 + enemyShake;
+      const foeImage = state.battle.wild ? cachedImage(foe.v5 && foe.sequences?.[0]?.length ? sequenceFrame(foe.sequences[0], now).image : foe.image) : assets.pets.enemy;
+      // Source sprites face right; the foe stands on the right, so mirror it to face Kael's pet.
+      ctx.save(); ctx.translate(2 * fx + box, 0); ctx.scale(-1, 1);
+      drawFitted(foeImage, fx, foePos.feet - box + idleEnemy, box, box, enemyAlpha);
+      ctx.restore();
+      if (capturing) drawCaptureBall(sinceCapture, heroPos, foePos, box);
+      drawActivePet({ x: heroPos.x - box / 2 + attackPulse * 30, y: heroPos.feet - box - Math.abs(attackPulse) * 4 + idleHero, w: box, h: box }, now, heroAttack);
       if (window.VQSVSkillFx) window.VQSVSkillFx.draw(ctx, now);
-      else {
-        // Fallback when the pixelfx module did not load: the original slash lines, Điện giật sprite and guard ring.
-        if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
-          let elapsed = heroAttack;
-          let chosen = assets.skillEffects[assets.skillEffects.length - 1];
-          for (const frame of assets.skillEffects) { if (elapsed < frame.duration_ticks * 60) { chosen = frame; break; } elapsed -= frame.duration_ticks * 60; }
-          const image = chosen.image;
-          const scale = Math.min(2.5, 90 / Math.max(image.width, image.height));
-          ctx.drawImage(image, 358 - image.width * scale / 2, 104 - image.height * scale / 2, image.width * scale, image.height * scale);
-        }
-        if (attackPulse > 0 && state.battle.skill && !["spark", "guard"].includes(state.battle.skill)) {
-          ctx.save(); ctx.strokeStyle = `rgba(255,236,186,${attackPulse})`; ctx.lineWidth = 3;
-          for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.moveTo(346 + i * 12, 80); ctx.lineTo(369 + i * 12, 112); ctx.stroke(); }
-          ctx.restore();
-        }
-        if (guard >= 0 && guard < 500) {
-          ctx.save(); ctx.globalAlpha = Math.max(0, 1 - guard / 500) * .75;
-          ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.ellipse(122, 198, 57, 54, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
-        }
+      else if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
+        // Fallback when the pixelfx module did not load: the source Điện giật sprite on the opponent.
+        let elapsed = heroAttack, chosen = assets.skillEffects[assets.skillEffects.length - 1];
+        for (const frame of assets.skillEffects) { if (elapsed < frame.duration_ticks * 60) { chosen = frame; break; } elapsed -= frame.duration_ticks * 60; }
+        const image = chosen.image, scale = Math.min(2.5, box * .8 / Math.max(image.width, image.height));
+        ctx.drawImage(image, foePos.x - image.width * scale / 2, foePos.feet - box * .5 - image.height * scale / 2, image.width * scale, image.height * scale);
+      } else if (guard >= 0 && guard < 500) {
+        ctx.save(); ctx.globalAlpha = Math.max(0, 1 - guard / 500) * .75; ctx.strokeStyle = "#a6e7ff"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(heroPos.x, heroPos.feet - box / 2, box * .5, box * .52, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
       }
+      // opponent: plate top-left, % below it, HP under the pet
       const pet = activePet();
-      battlePanel(276, 196, pet.name.toUpperCase(), pet.subtitle, pet.hp, pet.max, "#a6dfcf");
-      if (pet.progressKey) {
+      const foePlate = duelPlate(8, 8, 0, state.battle.wild ? foe.name : "Sủng vật tha hóa", foe.level, false);
+      duelPercent(8, 8 + foePlate.h + 6, Math.round(100 * foe.hp / foe.max), false);
+      drawStatuses(foe, 8, 8 + foePlate.h + 32);
+      duelVitals(foePos.x, top.y + laneH - 16, foe.hp, foe.max);
+      // Kael's pet: plate bottom-right, % above it, HP (red) and skill uses (cyan) under the pet
+      const heroPlate = duelPlate(472, bottom.y + laneH - 40, pet.kind === "lead" ? 1 : 0, pet.name, pet.level, true);
+      const pw = duelPercent(472, bottom.y + laneH - 40 - 26, Math.round(100 * pet.hp / pet.max), true);
+      drawStatuses(pet, 472 - pw - 2 - 8 - statusLabels(pet).reduce((sum, label) => sum + label.length * 5 + 11, 0), bottom.y + laneH - 62);
+      drawTeamPips(heroPlate.left - 8 - state.battle.team.length * 12, bottom.y + laneH - 25);
+      const skill = pet.skill;
+      duelVitals(heroPos.x, bottom.y + laneH - 22, pet.hp, pet.max, skill?.uses ?? null, skill?.max ?? null);
+      if (pet.progressKey) {               // EXP: a thin gold line under the plate
         const need = expToReach(pet.level + 1);
-        ctx.fillStyle = "#101d24"; ctx.fillRect(305, 246, 156, 3);
-        ctx.fillStyle = "#e8c45a"; ctx.fillRect(305, 246, pet.level >= LEVEL_CAP ? 156 : Math.max(0, Math.min(156, 156 * pet.exp / need)), 3);
+        ctx.fillStyle = "#24223c"; ctx.fillRect(heroPlate.left, bottom.y + laneH - 8, heroPlate.w, 3);
+        ctx.fillStyle = "#e8c45a"; ctx.fillRect(heroPlate.left, bottom.y + laneH - 8, pet.level >= LEVEL_CAP ? heroPlate.w : Math.max(0, Math.min(1, pet.exp / need)) * heroPlate.w, 3);
       }
-      drawTeamPips(278, 188);
-      drawStatuses(pet, 316, 182);
-      drawStatuses(state.battle.enemy, 14, 70);
-      // The message sits in the blue VQSV5 command window (#duelMessage), not on the canvas.
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       const message = document.getElementById("duelMessage");
       if (message.textContent !== state.battle.message) message.textContent = state.battle.message || "";
+      const turn = document.getElementById("duelTurn");
+      if (turn && turn.textContent !== `Lượt ${state.battle.turn + 1}`) turn.textContent = `Lượt ${state.battle.turn + 1}`;
     }
     // Fit a sprite inside the box at an integer scale (pixel art stays crisp), anchored to the bottom.
     function drawFitted(image, x, y, w, h, alpha = 1) {
@@ -2288,14 +2391,11 @@
       for (const frame of sequence) { const d = Math.max(1, frame.duration_ticks) * 60; if (t < d) return frame; t -= d; }
       return sequence[sequence.length - 1];
     }
-    function drawActivePet(x, y, w, h, now, sinceAttack) {
-      const pet = activePet();
+    function drawActivePet(box, now, sinceAttack) {
+      const pet = activePet(), { x, y, w, h } = box;
       const switched = now - (state.battle.switchedAt || -10000);
       const alpha = switched >= 0 && switched < 300 ? switched / 300 : 1;
-      if (pet.kind === "lead" && !pet.image) { ctx.save(); ctx.globalAlpha = alpha; ctx.drawImage(assets.pets.hero, x, y, w, h); ctx.restore(); return; }
-      // Reserve sprites are bottom-anchored, so lift their box clear of the HP panel below.
-      // Box bottom sits at y=184, just above the team pips and HP panel.
-      x -= 14; w += 28; h = 110; y = 184 - h + (y - 151);
+      if (pet.kind === "lead" && !pet.image) { drawFitted(assets.pets.hero, x, y, w, h, alpha); return; }
       if (pet.kind === "vqsv6" || pet.image) { drawFitted(cachedImage(pet.image), x, y, w, h, alpha); return; }
       // VQSV5: loop the first source sequence; play the second one briefly when attacking.
       // Which source sequence means idle/attack is not verified; this is a presentation choice.
@@ -2305,9 +2405,9 @@
       drawFitted(cachedImage(sequenceFrame(sequence, attacking ? sinceAttack : now).image), x, y, w, h, alpha);
     }
     // A thrown ball arcs from Kael's side, then wobbles on the enemy; it pops open on a failed catch.
-    function drawCaptureBall(t) {
-      const flight = Math.min(1, t / 450);
-      let x = 122 + (358 - 122) * flight, y = 200 + (118 - 200) * flight - Math.sin(flight * Math.PI) * 70;
+    function drawCaptureBall(t, from = { x: 122, feet: 230 }, to = { x: 358, feet: 160 }, box = 100) {
+      const flight = Math.min(1, t / 450), fy = from.feet - box * .5, ty = to.feet - box * .45;
+      let x = from.x + (to.x - from.x) * flight, y = fy + (ty - fy) * flight - Math.sin(flight * Math.PI) * 80;
       if (t > 450) x += Math.sin((t - 450) / 70) * (state.battle.captured === false && t > 1000 ? 0 : 3);
       if (state.battle.captured === false && t > 1000) return;
       ctx.save(); ctx.translate(x, y);
@@ -2541,6 +2641,8 @@
     function loop() {
       updateBattle(performance.now());
       updatePlayer(performance.now());
+      if (state.mode !== "battle") resetFieldCanvas();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       if (state.mode === "explore") drawExplore();
       if (state.mode === "dialogue") drawDialogue();
@@ -3071,6 +3173,18 @@
     document.getElementById("teamButton").addEventListener("click", () => toggleTeamMenu());
     document.getElementById("teamBookButton").addEventListener("click", () => { if (state.mode === "battle" && !state.battle.pendingUntil) window.openPetBook(); });
     document.getElementById("fleeButton").addEventListener("click", fleeBattle);
+    // Soft keys under the command window (VQSV5 phones): Chọn presses the focused command, the right key closes an open list
+    // or opens the game menu.
+    document.getElementById("duelChoose")?.addEventListener("click", () => {
+      const focused = document.activeElement?.closest?.("#battleControls button:not(.duel-softkeys button)");
+      (focused && !focused.disabled ? focused : document.getElementById("fightButton")).click();
+    });
+    document.getElementById("duelBack")?.addEventListener("click", () => {
+      if (state.battle.pendingUntil) return;
+      const open = [fightMenu, itemMenu, teamMenu, ballMenu].find(menu => !menu.hidden);
+      if (open) { open.hidden = true; updateGuidance(); } else document.getElementById("openMenu")?.click();
+    });
+    document.getElementById("duelFull")?.addEventListener("click", () => document.getElementById("fullscreen")?.click());
     // Sound settings (sound_fx.js): on/off and volume, kept in this browser; N toggles.
     function renderSoundControls() {
       const sound = window.VQSVSound, button = document.getElementById("toggleSound"), slider = document.getElementById("soundVolume");

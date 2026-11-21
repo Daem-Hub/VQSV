@@ -128,7 +128,7 @@
   byId("menuJournal").onclick = () => openQuestJournal();
   byId("menuBag").onclick = () => { menu.close(); openBag(); };
   for (const id of ["openPetRoster","openSkillBook","openWorldAtlas","openShop","menuJournal"]) byId(id).addEventListener("click", () => menu.close(), true);
-  byId("playAgain").onclick = () => reset();
+  byId("playAgain").onclick = () => { if (!window.Quests?.continueFromEnding()) reset(); };
   byId("restart").addEventListener("click", () => menu.close());
   const full = byId("fullscreen");
   full.hidden = !document.fullscreenEnabled;
@@ -147,6 +147,7 @@
     byId("menuLocation").textContent = assets.map.title;
     document.body.dataset.mode = state.mode;
     byId("playAgain").hidden = !["ending","defeat"].includes(state.mode);
+    byId("playAgain").textContent = state.mode === "ending" && window.Quests ? "Tiếp tục" : "Chơi lại";
   };
   // CSS crops the 4:3 canvas to the viewport. Pan that crop toward Kael's position on screen
   // (the engine's camera already scrolls maps larger than the canvas).

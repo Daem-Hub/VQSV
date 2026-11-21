@@ -1159,7 +1159,7 @@
         return { ...enemy, sequences: info?.sequences || [], image: frames[0]?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element ? enemy.element.toUpperCase() : "CHƯA RÕ HỆ"} · VQSV5 · HẠNG ${enemy.quality}` };
       }
       const enemy = vqsv6Combatant(wild.petId, wild.level, wild.quality, wild.skills || wildSkillRows(STAT_BY_ID.get(wild.petId), wild.level));
-      return { ...enemy, image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
+      return { ...enemy, ...(wild.questName ? { name: wild.questName } : {}), image: window.VQSVPetTeam?.info(wild.petId)?.image, subtitle: `HOANG DÃ · CẤP ${wild.level} · ${enemy.element.toUpperCase()} · HẠNG ${wild.quality}` };
     }
     function randInt(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
     // ---- VQSV5 wild pets (vqsv5_map_terrain.json: m<N>.d). A map stands for several VQSV5 areas (terrain5.source_maps); each area has a level range and
@@ -1184,6 +1184,8 @@
       return { v5: true, petId, area: `vqsv5-${index}`, level: randInt(table.level_min, table.level_max), quality: record.rank, traits: rollTraits5(record, teamLucky5() ? "lucky" : "random") };
     }
     function rollWild(mapId, terrain = 0) {
+      const forced = window.Quests?.forceWild(mapId);
+      if (forced) return forced;
       if (terrain === 0 && Math.random() >= 1 - V5_WILD_SHARE) { const wild5 = rollWild5(mapId); if (wild5) return wild5; }
       const areas = wildAreasOf(mapId);
       const usable = (area, wanted) => area.pets.filter(pet => pet.terrain === wanted && STAT_BY_ID.has(pet.pet_id));
@@ -1715,6 +1717,7 @@
       if (state.mode === "battle") battleHint.textContent = `Kim tiền ${wallet.gold} · ${CAPTURE.balls[1].name}: ${bag[1] || 0} · ${CAPTURE.balls[2].name}: ${bag[2] || 0} · Đạo cụ hồi phục: ${battleItems().reduce((sum, entry) => sum + bag[entry.row], 0)}`;
       updateWallet();
       if (state.mode === "battle") objectiveEl.textContent = state.battle.mustSwitch ? `${pet.name} kiệt sức. Chọn pet khác trong Sủng vật.` : state.battle.wild ? "Đánh yếu pet hoang dã rồi chọn Bắt pet: HP càng thấp càng dễ bắt." : "Cùng Lôi Miêu vượt qua sinh vật bị tha hóa.";
+      else if (state.mode === "explore" && window.Quests?.objective()) objectiveEl.textContent = window.Quests.objective();
       else if (wildAreasOf(assets.map.id).length && state.mode === "explore") {
         const range = wildLevelRange(assets.map.id);
         objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.`;
@@ -1899,7 +1902,8 @@
         return {...npc, dialogue};
       });
       const elder = assets.map.entities.elder;
-      return elder ? [{...elder, id: "elder", dialogue: [...lines, "Đi thôi, Kael. Đừng để Lôi Miêu đi một mình."]}, ...villagers] : villagers;
+      const list = elder ? [{...elder, id: "elder", dialogue: [...lines, "Đi thôi, Kael. Đừng để Lôi Miêu đi một mình."]}, ...villagers] : villagers;
+      return window.Quests ? window.Quests.npcs(list) : list;
     }
     function nearbyHerb() { return assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.find(herb => !state.herbQuest.collected.includes(herb.id) && near(state.player, herb)) : null; }
     function nearbyLink() {
@@ -1936,6 +1940,7 @@
         : `▶ Tìm thảo dược quanh làng: ${q.collected.length}/${HERBS.length} khóm.`;
       if (state.mode === "ending" && q.stage !== "done") herbQuestText.textContent = "Bản thử đã kết thúc; tải bản lưu trước trận hoặc chơi lại để làm nhiệm vụ này.";
       document.getElementById("surveyText").textContent = surveyHint();
+      if (window.Quests) window.Quests.renderJournal(questSteps);
       questJournal.showModal();
     }
     // Side quest "Khảo sát Suối Sấm": the scout asks Kael to check the middle of the Suối Sấm bridge.
@@ -1964,6 +1969,8 @@
     // The label on the round touch button follows what E would do here.
     function fieldAction() {
       if (state.mode !== "explore") return "";
+      const questLabel = window.Quests?.actionLabel();
+      if (questLabel) return questLabel;
       const npc = nearbyNpc();
       if (npc) return npc.vendor ? "Mua đồ" : "Nói chuyện";
       if (nearbyHerb()) return "Hái thảo dược";
@@ -1973,7 +1980,7 @@
       const link = nearbyLink();
       if (link && (link.kind || state.spokeToElder)) return link.kind === "exit" ? "Ra làng" : (link.kind === "door" ? "Vào " : "Đến ") + link.label;
       const point = assets.map.entities.encounter;
-      return point && state.spokeToElder && near(state.player, point) ? "Theo dấu vết" : "";
+      return point && state.spokeToElder && near(state.player, point) && !window.Quests ? "Theo dấu vết" : "";
     }
     function refreshFieldMap() {
       if (!assets.map) return;
@@ -2007,13 +2014,14 @@
         if (assets.props["quest-herb"]) ctx.drawImage(assets.props["quest-herb"], x-9, y-12, 18, 17);
       }
       for (const chest of mapChests()) drawChest(chest, chestsOpened.has(chest.id));
+      window.Quests?.draw(ctx, S);
       if (!state.spokeToElder && assets.map.entities.elder) {
         const x = (assets.map.entities.elder.x + .5) * S, y = assets.map.entities.elder.y * S - 26 + Math.sin(performance.now() / 340) * .7;
         ctx.fillStyle = "#513d29"; ctx.beginPath(); ctx.moveTo(x, y-7); ctx.lineTo(x+5.8, y); ctx.lineTo(x, y+7); ctx.lineTo(x-5.8, y); ctx.closePath(); ctx.fill();
         ctx.strokeStyle = "#ffd579"; ctx.lineWidth = .9; ctx.stroke();
         ctx.fillStyle = "#ffe6a4"; ctx.font = "bold 9px system-ui"; ctx.textAlign = "center"; ctx.fillText("!", x, y+3); ctx.textAlign = "left";
       }
-      if (point && assets.props["beast-track"]) ctx.drawImage(assets.props["beast-track"], point.x*S-1, point.y*S+2, 22, 17);
+      if (point && assets.props["beast-track"] && (!window.Quests || window.Quests.current()?.id === "MQ008")) ctx.drawImage(assets.props["beast-track"], point.x*S-1, point.y*S+2, 22, 17);
       const survey = surveyPoint();
       if (survey) { ctx.save(); ctx.textAlign = "center"; ctx.font = "bold 15px system-ui"; ctx.fillStyle = "#ffe69a"; ctx.fillText("◆", survey.x*S+10, survey.y*S+12); ctx.restore(); }
       for (const link of (assets.map.links || [])) {
@@ -2040,11 +2048,13 @@
       ctx.restore();
       window.drawTrailGuide?.(ctx, S);
       const npc = nearbyNpc();
-      if (npc) prompt(`E  ${npc.vendor ? "Mua đồ" : "Nói chuyện"} · ${npc.name}`);
+      const questLabel = window.Quests?.actionLabel();
+      if (questLabel) prompt(`E  ${questLabel}`);
+      else if (npc) prompt(`E  ${npc.vendor ? "Mua đồ" : "Nói chuyện"} · ${npc.name}`);
       else if (surveyPoint() && near(state.player, surveyPoint())) prompt("E  Khảo sát cầu");
       else if (nearbyHerb()) prompt("E  Thu thập thảo dược");
       else if (nearbyChest()) prompt("E  Mở rương");
-      else if (point && state.spokeToElder && near(state.player, point)) prompt("E  Theo dấu vết");
+      else if (point && state.spokeToElder && near(state.player, point) && !window.Quests) prompt("E  Theo dấu vết");
       else if (nearbyLink()) { const link = nearbyLink(); prompt(`E  ${link.kind === "exit" ? "Ra làng" : link.kind === "door" ? "Vào " + link.label : state.spokeToElder ? "Đến " + link.label : "Nói chuyện với người gác làng trước"}`); }
       title(assets.map.title.toLocaleUpperCase("vi-VN"));
       drawNotice();
@@ -2651,6 +2661,7 @@
       }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = text;
+      if (result === "win") window.Quests?.wildWon(enemy);
       updateGuidance();
     }
     function maybeEncounter() {
@@ -2737,7 +2748,7 @@
       ctx.fillStyle = "#fff"; ctx.font = "13px system-ui";
       ctx.fillText("Ánh sáng xanh chạy quanh vết sẹo của Lôi Miêu.", 83, 202);
       ctx.fillText("La bàn cũ của cha Kael chỉ về phía bìa rừng.", 89, 224);
-      ctx.fillStyle = "#c6d0dc"; ctx.font = "11px system-ui"; ctx.fillText("Đây là điểm kết thúc của lát prototype đầu tiên.", 113, 266);
+      ctx.fillStyle = "#c6d0dc"; ctx.font = "11px system-ui"; ctx.fillText(window.Quests ? "Nhấn E hoặc Tiếp tục để đến Điện Thờ Cổ (MQ009)." : "Đây là điểm kết thúc của lát prototype đầu tiên.", window.Quests ? 98 : 113, 266);
       title("CHƯƠNG 1 · MỞ ĐẦU");
     }
     function drawDefeat() {
@@ -2826,10 +2837,12 @@
       if (dir && dir.dx === dx && dir.dy === dy) state.player.inputDir = null;
     }
     function interact() {
+      if (state.mode === "ending" && window.Quests?.continueFromEnding()) return;
       if (state.mode === "dialogue") {
         state.dialogue++;
         if (state.dialogue >= state.activeNpc.dialogue.length) {
           if (state.activeNpc.id === "elder") state.spokeToElder = true;
+          window.Quests?.talked(state.activeNpc);
           if (state.activeNpc.id === "scout" && state.spokeToElder) {
             if (state.survey === "unstarted") { state.survey = "active"; statusEl.textContent = "Nhiệm vụ phụ · Khảo sát Suối Sấm"; }
             else if (state.survey === "return") {
@@ -2851,6 +2864,7 @@
       }
       if (state.mode !== "explore") return;
       state.player.inputDir = null;
+      if (window.Quests?.interact()) return;
       const point = assets.map.entities.encounter;
       const npc = nearbyNpc();
       if (npc?.vendor) { openShop(); return; }
@@ -2862,7 +2876,7 @@
       const chest = nearbyChest();
       if (chest) { openMapChest(chest); return; }
       if (enterLink(nearbyLink())) return;
-      if (point && state.spokeToElder && near(state.player, point)) {
+      if (point && state.spokeToElder && near(state.player, point) && !window.Quests) {     // with quests.js this fight is MQ008
         state.battle = newBattle();
         state.mode = "battle";
         statusEl.textContent = "Chiến đấu · Lôi Miêu";
@@ -2926,6 +2940,7 @@
       state.battle.pendingUntil = 0;
       if (state.battle.captured === true) { finishWild("caught"); return; }
       if (state.battle.enemy.hp <= 0 && !state.battle.rewarded) { awardExperience(now); return; }
+      if (state.battle.enemy.hp <= 0 && state.battle.quest && window.Quests) { window.Quests.battleWon(state.battle.quest); return; }
       if (state.battle.enemy.hp <= 0 && state.battle.wild) { finishWild("win"); return; }
       if (state.battle.enemy.hp <= 0) {
         state.mode = "ending";
@@ -2939,6 +2954,7 @@
       endRound();
       state.battle.guard = false;
       state.battle.turn++;
+      if (state.battle.quest?.surviveTurns && state.battle.turn >= state.battle.quest.surviveTurns && window.Quests) { window.Quests.battleWon(state.battle.quest); return; }
       if (state.battle.enemy.hp <= 0) { state.battle.pendingUntil = now + 900; updateGuidance(); return; }
       handleFaint();
       updateGuidance();
@@ -2980,6 +2996,7 @@
     }
     function enemyStrike(at) {
       const battle = state.battle, pet = activePet(), enemy = battle.enemy;
+      if (enemy.passive) { battle.enemyAt = at + 180; battle.enemyActed = true; battle.message += `${battle.message ? " " : ""}${enemy.name} đứng yên.`; return; }
       // Enemy AI: any skill with uses left; a status-only skill is skipped while its status is already active.
       const usable = enemy.skills.filter(skill => skill.uses > 0 && !(enemy.v5status?.id === 6 && skillTier5(enemy, skill) > SPECIAL5(30).blocks_tier_above) && (!skill.noDamage || (skill.effect && !(skill.effect.kind === "buff" ? enemy.buffs[skill.effect.id] : pet.debuffs[skill.effect.id]))));
       const picked = usable.length ? usable[Math.floor(Math.random() * usable.length)] : { name: "Đòn thường", power: BASIC_POWER };
@@ -3004,6 +3021,7 @@
         return;
       }
       if (state.battle.wild) { finishWild("lose"); return; }
+      if (state.battle.quest && window.Quests) { window.Quests.battleLost(state.battle.quest); return; }
       state.mode = "defeat";
       statusEl.textContent = "Lôi Miêu cần nghỉ ngơi";
       updateGuidance();
@@ -3059,6 +3077,7 @@
       const own5 = activePet();
       if (!state.battle.mustSwitch && !hasPassive(own5, 42) && (own5.v5status?.id === 3 || own5.v5status?.id === 4)) { state.battle.message = `${own5.name} đang bị ${STATUS5[own5.v5status.id].name}, không thể chạy trốn.`; return; }
       if (state.battle.wild) { window.VQSVSound?.play("flee"); finishWild("flee"); return; }
+      if (state.battle.quest?.noFlee) { state.battle.message = "Không thể chạy trốn khỏi trận này!"; updateGuidance(); return; }
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = "Đã rút lui · Có thể trở lại dấu vết";
       updateGuidance();
@@ -3182,7 +3201,7 @@
     function reset() {
       if (assets.maps?.["slice01-border-village"]) assets.map = assets.maps["slice01-border-village"];
       state.mode = "explore"; const start = assets.map.entities.player; state.player = { x: start.x, y: start.y, visualX: start.x, visualY: start.y, faceX: 1, faceY: 0, step: null, inputDir: null }; state.dialogue = 0; state.activeNpc = null; state.spokeToElder = false;
-      state.battle = newBattle(); state.herbQuest = newHerbQuest(); state.survey = "unstarted";
+      state.battle = newBattle(); state.herbQuest = newHerbQuest(); state.survey = "unstarted"; window.Quests?.reset();
       window.clearTrailGuide?.();
       statusEl.textContent = "Đang khám phá · Làng biên giới";
       updateGuidance();
@@ -3192,7 +3211,7 @@
       if (state.mode !== "explore" && state.mode !== "ending") { saveStatus.textContent = "Hãy kết thúc hội thoại hoặc trận đấu trước khi lưu."; return; }
       if (state.player.step) { saveStatus.textContent = "Hãy dừng di chuyển trước khi lưu."; return; }
       const save = { version: 1, atlasLayout: assets.map.atlasRegion != null ? 2 : undefined, mapId: assets.map.id, x: state.player.x, y: state.player.y,
-        faceX: state.player.faceX, faceY: state.player.faceY, spokeToElder: state.spokeToElder, completed: state.mode === "ending", herbQuest: state.herbQuest, survey: state.survey };
+        faceX: state.player.faceX, faceY: state.player.faceY, spokeToElder: state.spokeToElder, completed: state.mode === "ending", herbQuest: state.herbQuest, survey: state.survey, ...(window.Quests ? { quests: window.Quests.save() } : {}) };
       try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); saveStatus.textContent = "Đã lưu tiến trình trên trình duyệt này."; }
       catch (_) { saveStatus.textContent = "Không thể lưu: trình duyệt không cho phép lưu dữ liệu."; }
     }
@@ -3218,7 +3237,7 @@
         && (!save.completed || save.spokeToElder) && [[1,0],[-1,0],[0,1],[0,-1]].some(([x,y]) => save.faceX === x && save.faceY === y);
       if (!valid) { assets.map = originalMap; saveStatus.textContent = "Bản lưu không hợp lệ hoặc không phù hợp với map hiện tại."; return; }
       state.player = { x: save.x, y: save.y, visualX: save.x, visualY: save.y, faceX: save.faceX, faceY: save.faceY, step: null, inputDir: null };
-      state.dialogue = 0; state.activeNpc = null; state.spokeToElder = save.spokeToElder; state.survey = survey; window.clearTrailGuide?.(); state.herbQuest = {stage: herbQuest.stage, collected: [...herbQuest.collected]}; state.battle = newBattle();
+      state.dialogue = 0; state.activeNpc = null; state.spokeToElder = save.spokeToElder; state.survey = survey; if (window.Quests && save.quests) window.Quests.load(save.quests); window.clearTrailGuide?.(); state.herbQuest = {stage: herbQuest.stage, collected: [...herbQuest.collected]}; state.battle = newBattle();
       state.mode = save.completed ? "ending" : "explore";
       statusEl.textContent = save.completed ? "Hoàn tất lát prototype · Chương 1" : `Đang khám phá · ${assets.map.title}`;
       updateGuidance(); saveStatus.textContent = "Đã tải tiến trình.";
@@ -3315,5 +3334,6 @@
   </script>
   <script src="village_ui.js"></script>
   <script src="pet_roster.js"></script>
+  <script src="quests.js"></script>
 </body>
 </html>

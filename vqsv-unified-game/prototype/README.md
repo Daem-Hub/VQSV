@@ -184,3 +184,30 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
   - Tại thời điểm trúng: phát âm thanh hệ và tiếng đòn chạm thân, pet nhận đòn rung và nháy, thanh HP và % HP bắt đầu tụt (tụt dần trong 350 ms).
   - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
   - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.
+
+## Nhiệm vụ chính Chương 1 (MQ001–MQ009)
+
+`quests.js` đưa 9 nhiệm vụ đầu của `DANH_SACH_NHIEM_VU.md` vào game. Nhiệm vụ làm lần lượt: xong nhiệm vụ này mới mở nhiệm vụ kế tiếp. Mục tiêu hiện ở thanh nhiệm vụ, nút hành động đổi chữ theo việc đang làm, và Nhật ký (phím J) liệt kê cả 9 nhiệm vụ kèm phần thưởng. Tiến độ được lưu cùng bản lưu game.
+
+| Mã | Ở đâu | Cách hoàn thành trong game |
+| --- | --- | --- |
+| MQ001 | Làng, cạnh Trưởng làng Elden | Nói chuyện với Elden (người gác làng cũ, nay mang tên theo bảng), rồi đánh bia gỗ đặt cạnh ông. Bia gỗ không đánh trả. |
+| MQ002 | Căn hầm cũ phía tây làng | Mở hầm, nhận La Bàn Đồng Cổ và Nhật Ký Thất Lạc. |
+| MQ003 | Rừng Phong Lôi | Gặp Thợ săn Bran ở bìa rừng, hạ 3 Dã Lang Bão Tố (một nửa số lần gặp pet trong rừng là con này), rồi về báo Bran. |
+| MQ004 | Làng → Đồng Cỏ (Thung Lũng Rêu) | Nói chuyện với Dược sĩ Mae (người chăm sóc pet), hái 5 Cỏ Dạ Quang phát sáng trên map Đồng Cỏ, mang về cho Mae. |
+| MQ005 | Suối Sấm | Lần theo 3 dấu chân tà khí theo thứ tự, rồi báo Elden. |
+| MQ006 | Làng, ban đêm | Làng nhuốm màu đỏ. Ba dân làng bị lửa hắc ám vây; mỗi người là một trận với ma thú. |
+| MQ007 | Cổng đông của làng | Trận với Cuồng Nham Cự Tượng: không chạy trốn được, thắng khi cầm cự đủ 6 lượt. |
+| MQ008 | Giữa làng (chỗ dấu vết cũ) | Trận với Tà Vân Khuyển Thần bị Ma Khống Cầu điều khiển. Riêng trận này Lôi Miêu có chiêu Lôi Kích Trắng. Thắng thì hiện cảnh la bàn thức tỉnh, nhấn E hoặc **Tiếp tục** để đi tiếp. |
+| MQ009 | Điện thờ cổ trong Rừng Phong Lôi | Nghe Linh Hồn Cổ Thụ kể về 4 thánh vật, nhận Bản Đồ Ryan. Hết phần Làng Sương Mù của Chương 1. |
+
+Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc định (TRIAL, chờ anh duyệt):
+- **Tên NPC:** Elden, Bran, Mae dùng tên đề xuất trong bảng. Elden là người gác làng có sẵn; Mae là người chăm sóc pet có sẵn. Bran là NPC mới, mượn hình người đi rừng.
+- **MQ002 và cái la bàn:** kịch bản nói Kael đã có la bàn từ đầu. Prototype vẫn làm theo bảng: tìm la bàn và nhật ký trong hầm.
+- **Địa điểm:** Thung Lũng Rêu dùng map Đồng Cỏ; Bờ Suối Trầm Mặc dùng Suối Sấm; Điện Thờ Cổ đặt trong Rừng Phong Lôi. Vị trí các điểm nhiệm vụ được tính từ dữ liệu map lúc chạy, nên vẫn đúng khi map đổi.
+- **MQ007:** bảng ghi "sống sót 3 phút"; trận theo lượt nên đổi thành 6 lượt. Nham Cự Tượng là Nham Sơn Long cấp 9 với HP gấp 6.
+- **Kẻ địch:** Dã Lang Bão Tố là Nhiệt Bạo Phong Tốc Khuyển; ma thú đêm trăng là Đan nhãn thú; Ma Khống Cầu điều khiển Tà Vân Khuyển Thần.
+- **Phần thưởng:** EXP cộng cho Lôi Miêu, vàng thành kim tiền. Các món chưa có trong game được thay bằng món gần nhất: Bình Thuốc Nhỏ → Khôi phục tề; Bột Thảo Mộc → Bánh Sandwich; Quả Cầu Bắt Thú → Phong ấn cầu; Giáp Da Tân Thủ → Quy Xác Toái Phiến; Phong Ấn Cầu Nguyên Tố → Đại sư cầu. La Bàn, Nhật Ký và Bản Đồ Ryan là vật phẩm cốt truyện, hiện trong Nhật ký.
+- **Trận nhiệm vụ:** thua thì không mất game; Kael được đưa về chỗ cũ để thử lại.
+- **Lôi Kích Trắng** (uy lực 320%, 3 lần dùng) chỉ có trong trận MQ008.
+- **Phần chưa làm:** từ MQ010 (Đèo Gió Bấc) trở đi.

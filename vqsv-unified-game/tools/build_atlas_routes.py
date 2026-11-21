@@ -2,12 +2,12 @@
 import json
 
 
-def attach_atlas_route(data, village):
+def attach_atlas_route(data, village, desert_gate):
     scenes = json.loads((data / "atlas_routes.json").read_text(encoding="utf-8"))
     decoded = data.parents[1] / "assets" / "vqsv5" / "maps" / "json"
     maps = {village["id"]: village}
-    gates = {village["id"]: {scenes[0]["id"]: [10, 14]}}
-    arrivals = {village["id"]: {scenes[0]["id"]: [10, 14]}}
+    gates = {village["id"]: {scenes[0]["id"]: desert_gate}}
+    arrivals = {village["id"]: {scenes[0]["id"]: [desert_gate[0], desert_gate[1] - 1]}}
     for scene in scenes:
         name = scene["id"]
         native = json.loads((decoded / f"map_{scene['sourceMap']:02}.json").read_text())

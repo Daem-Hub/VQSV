@@ -7,76 +7,106 @@
   "scenes": [
     {
       "id": "jade-terraces", "title": "Rừng Bậc Thang Ngọc Lục", "region": 12,
-      "size": [52, 40], "theme": "jade", "landmark": ["grove", 34, 31],
+      "size": [78, 62], "theme": "jade", "landmark": ["grove", 34, 31],
       "paths": [
         {"kind": "road", "width": 4, "points": [[0, 30], [10, 30], [10, 20], [16, 14], [22, 14], [22, 6], [33, 6], [38, 11], [47, 11], [51, 7]]},
         {"kind": "road", "width": 3, "points": [[10, 30], [22, 34], [34, 31], [37, 23], [31, 18], [22, 14]]},
-        {"kind": "road", "width": 3, "points": [[37, 23], [46, 22], [46, 12]]}
+        {"kind": "road", "width": 3, "points": [[37, 23], [46, 22], [46, 12]]},
+        {"kind": "road", "width": 5, "points": [[51, 7], [58, 12], [58, 26], [65, 35], [65, 46], [77, 48]]},
+        {"kind": "road", "width": 4, "points": [[34, 31], [33, 45], [43, 53], [59, 53], [65, 46]]},
+        {"kind": "road", "width": 4, "points": [[43, 53], [43, 39], [50, 29], [58, 26]]}
       ],
-      "plazas": [[10, 20, 3], [31, 18, 3], [34, 31, 4]],
-      "gates": {"ryan-phong-loi-forest": [0, 30], "jade-observatory": [51, 7]}
+      "plazas": [[10, 20, 3], [31, 18, 3], [34, 31, 4], [58, 26, 5], [43, 53, 5], [65, 46, 6]],
+      "gates": {"ryan-phong-loi-forest": [0, 30], "jade-observatory": [77, 48]}
     },
     {
       "id": "jade-observatory", "title": "Đài Quan Sát Lục Bảo", "region": 12,
-      "size": [48, 42], "theme": "jade", "landmark": ["observatory", 27, 9],
+      "size": [76, 64], "theme": "jade", "landmark": ["observatory", 27, 9],
       "paths": [
         {"kind": "road", "width": 4, "points": [[0, 34], [12, 34], [12, 27], [20, 22], [20, 13], [27, 9], [36, 9], [36, 3], [47, 3]]},
         {"kind": "road", "width": 3, "points": [[12, 27], [8, 21], [8, 12], [14, 8], [27, 9]]},
-        {"kind": "road", "width": 3, "points": [[20, 22], [32, 23], [37, 19], [37, 15], [36, 9]]}
+        {"kind": "road", "width": 3, "points": [[20, 22], [32, 23], [37, 19], [37, 15], [36, 9]]},
+        {"kind": "road", "width": 4, "points": [[47, 3], [56, 3], [63, 11], [60, 25], [68, 37], [66, 51], [75, 57]]},
+        {"kind": "road", "width": 4, "points": [[32, 23], [32, 42], [42, 54], [54, 55], [66, 51]]},
+        {"kind": "road", "width": 3, "points": [[42, 54], [47, 40], [52, 31], [60, 25]]}
       ],
-      "plazas": [[27, 9, 5], [8, 12, 3], [32, 23, 3]],
-      "gates": {"jade-terraces": [0, 34], "ice-pass": [47, 3]}
+      "plazas": [[27, 9, 5], [8, 12, 3], [32, 23, 3], [60, 25, 5], [52, 31, 4], [54, 55, 5]],
+      "gates": {"jade-terraces": [0, 34], "ice-pass": [75, 57]}
     },
     {
       "id": "coral-lagoons", "title": "Đầm Phá San Hô Hồng", "region": 13,
-      "size": [56, 38], "theme": "coral", "landmark": ["pavilion", 31, 16],
+      "size": [84, 60], "theme": "coral", "landmark": ["pavilion", 31, 16],
       "paths": [
         {"kind": "road", "width": 5, "points": [[0, 28], [8, 28], [12, 23], [13, 18]]},
         {"kind": "bridge", "width": 2, "points": [[13, 18], [24, 18]]},
         {"kind": "road", "width": 5, "points": [[24, 18], [30, 18], [34, 13], [34, 8], [41, 8]]},
         {"kind": "bridge", "width": 2, "points": [[41, 8], [49, 8]]},
         {"kind": "road", "width": 5, "points": [[49, 8], [52, 8], [55, 5]]},
-        {"kind": "bridge", "width": 2, "points": [[30, 18], [30, 30], [18, 30], [17, 27], [12, 27]]}
+        {"kind": "bridge", "width": 2, "points": [[30, 18], [30, 30], [18, 30], [17, 27], [12, 27]]},
+        {"kind": "road", "width": 5, "points": [[55, 5], [61, 8], [63, 17]]},
+        {"kind": "bridge", "width": 2, "points": [[63, 17], [63, 29], [68, 29]]},
+        {"kind": "road", "width": 5, "points": [[68, 29], [73, 33], [73, 40]]},
+        {"kind": "bridge", "width": 2, "points": [[73, 40], [80, 40], [83, 48]]},
+        {"kind": "bridge", "width": 2, "points": [[30, 30], [46, 30], [46, 45]]},
+        {"kind": "road", "width": 5, "points": [[46, 45], [54, 48], [62, 45]]},
+        {"kind": "bridge", "width": 2, "points": [[62, 45], [73, 45], [73, 40]]}
       ],
-      "plazas": [[8, 27, 5], [31, 16, 5], [34, 8, 4], [52, 8, 4]],
-      "gates": {"ryan-port": [0, 28], "island-docks": [55, 5]}
+      "plazas": [[8, 27, 5], [31, 16, 5], [34, 8, 4], [52, 8, 4], [61, 8, 5], [71, 33, 5], [81, 45, 4], [53, 47, 5]],
+      "gates": {"ryan-port": [0, 28], "island-docks": [83, 48]}
     },
     {
       "id": "island-docks", "title": "Bến Vạn Đảo", "region": 13,
-      "size": [52, 42], "theme": "coral", "landmark": ["warehouse", 27, 29],
+      "size": [80, 66], "theme": "coral", "landmark": ["warehouse", 27, 29],
       "paths": [
         {"kind": "road", "width": 5, "points": [[0, 12], [8, 12], [12, 17]]},
         {"kind": "bridge", "width": 2, "points": [[12, 17], [12, 29], [21, 29]]},
         {"kind": "road", "width": 5, "points": [[21, 29], [27, 29], [31, 25], [35, 25]]},
         {"kind": "bridge", "width": 2, "points": [[35, 25], [47, 25], [47, 40]]},
         {"kind": "road", "width": 5, "points": [[47, 40], [51, 41]]},
-        {"kind": "bridge", "width": 2, "points": [[27, 29], [27, 13], [22, 8], [14, 8], [8, 12]]}
+        {"kind": "bridge", "width": 2, "points": [[27, 29], [27, 13], [22, 8], [14, 8], [8, 12]]},
+        {"kind": "road", "width": 5, "points": [[51, 41], [54, 43], [56, 48]]},
+        {"kind": "bridge", "width": 2, "points": [[56, 48], [56, 57], [67, 57]]},
+        {"kind": "road", "width": 5, "points": [[67, 57], [73, 57], [79, 54]]},
+        {"kind": "bridge", "width": 2, "points": [[47, 25], [61, 25], [62, 32]]},
+        {"kind": "road", "width": 5, "points": [[62, 32], [67, 34], [71, 32]]},
+        {"kind": "bridge", "width": 2, "points": [[71, 32], [74, 44], [73, 57]]},
+        {"kind": "bridge", "width": 2, "points": [[21, 29], [22, 42], [35, 43]]},
+        {"kind": "road", "width": 5, "points": [[35, 43], [42, 48], [49, 48]]},
+        {"kind": "bridge", "width": 2, "points": [[49, 48], [56, 48]]}
       ],
-      "plazas": [[7, 13, 5], [23, 8, 4], [27, 29, 5], [46, 39, 4]],
-      "gates": {"coral-lagoons": [0, 12], "endless-sea": [51, 41]}
+      "plazas": [[7, 13, 5], [23, 8, 4], [27, 29, 5], [46, 39, 4], [55, 46, 4], [67, 34, 5], [72, 57, 4], [41, 48, 5]],
+      "gates": {"coral-lagoons": [0, 12], "endless-sea": [79, 54]}
     },
     {
       "id": "copper-gorge", "title": "Hẻm Sông Đồng Đỏ", "region": 14,
-      "size": [54, 44], "theme": "copper", "landmark": ["arch", 45, 31],
+      "size": [82, 64], "theme": "copper", "landmark": ["arch", 45, 31],
       "paths": [
         {"kind": "road", "width": 4, "points": [[7, 43], [7, 36], [12, 30], [21, 30], [27, 24], [27, 16], [36, 9], [45, 9], [47, 0]]},
         {"kind": "road", "width": 3, "points": [[12, 30], [9, 24], [9, 17], [15, 13], [17, 13]]},
         {"kind": "bridge", "width": 2, "points": [[17, 13], [27, 13], [31, 13]]},
-        {"kind": "road", "width": 3, "points": [[21, 30], [27, 37], [39, 37], [45, 31], [45, 25], [39, 21], [27, 24]]}
+        {"kind": "road", "width": 3, "points": [[21, 30], [27, 37], [39, 37], [45, 31], [45, 25], [39, 21], [27, 24]]},
+        {"kind": "road", "width": 5, "points": [[47, 0], [58, 5], [66, 13], [64, 24], [73, 29], [77, 40], [81, 43]]},
+        {"kind": "road", "width": 4, "points": [[45, 31], [53, 36], [53, 50], [61, 56], [73, 55], [77, 40]]},
+        {"kind": "bridge", "width": 2, "points": [[53, 36], [64, 36], [73, 29]]},
+        {"kind": "road", "width": 4, "points": [[27, 37], [30, 51], [43, 56], [53, 50]]}
       ],
-      "plazas": [[12, 30, 3], [45, 31, 4], [39, 21, 3]],
-      "gates": {"red-dunes": [7, 43], "copper-ruins": [47, 0]}
+      "plazas": [[12, 30, 3], [45, 31, 4], [39, 21, 3], [58, 5, 5], [73, 29, 5], [61, 56, 6], [43, 56, 4]],
+      "gates": {"red-dunes": [7, 43], "copper-ruins": [81, 43]}
     },
     {
       "id": "copper-ruins", "title": "Phế Tích Thành Đồng", "region": 14,
-      "size": [52, 42], "theme": "copper", "landmark": ["ruin", 28, 12],
+      "size": [80, 64], "theme": "copper", "landmark": ["ruin", 28, 12],
       "paths": [
         {"kind": "road", "width": 4, "points": [[0, 34], [12, 34], [19, 27], [19, 18], [28, 12], [28, 6], [39, 6], [47, 14], [51, 14]]},
         {"kind": "road", "width": 3, "points": [[12, 34], [12, 19], [19, 18], [12, 13], [12, 7], [19, 4], [28, 6]]},
-        {"kind": "road", "width": 3, "points": [[19, 27], [31, 33], [40, 31], [44, 25], [44, 16], [47, 14]]}
+        {"kind": "road", "width": 3, "points": [[19, 27], [31, 33], [40, 31], [44, 25], [44, 16], [47, 14]]},
+        {"kind": "road", "width": 5, "points": [[51, 14], [60, 14], [65, 21], [65, 33], [72, 44], [79, 54]]},
+        {"kind": "road", "width": 4, "points": [[40, 31], [47, 42], [57, 43], [57, 53], [66, 57], [75, 54]]},
+        {"kind": "road", "width": 4, "points": [[19, 27], [19, 42], [29, 52], [44, 54], [57, 53]]},
+        {"kind": "road", "width": 4, "points": [[57, 43], [65, 33]]}
       ],
-      "plazas": [[19, 27, 4], [28, 12, 5], [40, 31, 4]],
-      "gates": {"copper-gorge": [0, 34], "sand-canyon": [51, 14]}
+      "plazas": [[19, 27, 4], [28, 12, 5], [40, 31, 4], [65, 21, 6], [66, 57, 5], [29, 52, 5], [47, 42, 4]],
+      "gates": {"copper-gorge": [0, 34], "sand-canyon": [79, 54]}
     }
   ],
   "connections": [

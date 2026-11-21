@@ -21,6 +21,7 @@
   "characters/kael_field.png": { "source": "Existing Kael art in kael_pixel_v2.png, cropped by tools/pixel_art.py", "role": "sixteen native 32 by 40 walking frames", "confidence": "new project art" },
   "characters/kael_pixel_v2.png": { "source": "Generated using prior Kael sheet and VQSV5 NPC contact sheet as visual references", "role": "Kael prototype sprite adapted to NPC pixel-art proportions", "confidence": "new project art; identity details are design interpretations" },
   "world/world_map_expanded.webp": { "source": "New illustrated expansion of the existing atlas, adding three original regions", "role": "scrollable world atlas" },
+  "trails/village-south*.webp": { "source": "Original gardens and bridge built around the existing village art with tools/render_village_south.py", "role": "playable village ground and local chart" },
   "maps/frontier/*.webp": { "source": "Original pixel art rendered by tools/render_atlas_expansion.py", "role": "six playable regional fields and their previews" },
   "world/world_map_concept.png": { "source": "Generated from the existing world overview and opening village pixel art as visual references", "role": "illustrated world map backdrop", "confidence": "concept art; region placement and details are design proposals, not playable source map geometry" },
   "characters/elder_candidate.png": { "source": "vqsv5/images/data/npc0/31.png", "role": "temporary village elder candidate", "confidence": "visual candidate; character mapping unverified" },

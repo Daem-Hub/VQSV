@@ -137,7 +137,8 @@ assert.equal(gateCount, 57 + 2 * 8 + 5);
 const frontier = Object.values(maps).filter(map => map.fieldArt);
 assert.equal(frontier.length, 6);
 for (const map of frontier) {
-  assert(map.width >= 48 && map.height >= 38);
+  assert(map.width >= 76 && map.height >= 60);
+  assert(map.links[1].x >= 75 && map.links[1].y >= 43, map.id + " exit crosses the new ground");
   assert(fs.existsSync(path.join(root,map.fieldArt)));
   for (const gate of map.links) {
     const previous = maps[gate.target], entrance = previous.links.find(link => link.target === map.id);
@@ -153,3 +154,17 @@ for (const map of frontier) {
     assert(!run('blocked(state.player.x,state.player.y)'));
   }
 }
+
+const village = maps['slice01-border-village'];
+assert.equal(village.height, 56);
+for (const file of [village.sceneArt, village.chartArt]) assert(fs.existsSync(path.join(root,file)));
+run('reset(); state.spokeToElder=true');
+const desertGate = village.links.find(link => link.target === 'red-dunes');
+assert.equal(desertGate.y,55);
+assert(run('blocked(7, 38) && !blocked(12, 38) && blocked(17, 38)'));
+assert(canReach(desertGate));
+run('travelTo("red-dunes"); travelTo("slice01-border-village")');
+assert.equal(run('state.player.y'),54);
+run('saveGame(); reset(); loadGame()');
+assert.equal(run('state.player.y'),54);
+console.log('Expanded village: southern bridge, new desert gate, return landing, and save restoration passed.');

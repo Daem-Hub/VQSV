@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from village_south import expand_village, read_village_south
 from build_atlas_routes import attach_atlas_route
 from atlas_expansion import attach_atlas_expansion
 from atlas_wild import attach_atlas_wild, attach_frontier_wild
@@ -41,7 +42,9 @@ wild_maps = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((pr
 order = ["ryan-lakeside", "ryan-meadow", "ryan-highland", "ryan-canyon", "ryan-ashfield", "ryan-skyridge",
          "ryan-pinewind", "ryan-inkmarsh", "ryan-stormplain", "ryan-sanctum"]   # branch maps from tools/design_extra_wild_maps.py
 wild_maps.sort(key=lambda m: order.index(m["id"]))
-atlas_maps = attach_atlas_route(prototype / "data", opening_map)
+village_south = read_village_south(prototype / "data")
+expand_village(opening_map, village_south)
+atlas_maps = attach_atlas_route(prototype / "data", opening_map, village_south["desertGate"])
 atlas_maps = attach_atlas_wild(atlas_maps, vqsv6_stats, vqsv5_stats, pet_roster)
 expansion = json.loads((prototype / "data" / "atlas_expansion.json").read_text(encoding="utf-8"))
 frontier_maps = attach_atlas_expansion(expansion, [forest_map, *atlas_maps])

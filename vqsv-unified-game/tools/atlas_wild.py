@@ -19,6 +19,9 @@ MAP_ELEMENTS = {
     "coral-grotto": [3, 1], "wreck-graveyard": [5, 3], "ocean-abyss": [5, 3], "aethelgard-gate": [2, 6],
     "obsidian-crater": [0, 2], "boran-arena": [0, 2, 4], "cloud-stair": [6], "crystal-palace": [4, 6], "mirror-hall": [5],
     "aethelgard-summit": [6, 4], "sky-monolith": [6, 5], "orbit": [4, 5], "machine-ring": [4], "red-moon": [0, 5],
+    # Codex's three frontier regions (data/atlas_expansion.json): jade forest, coral islands, copper peninsula.
+    "jade-terraces": [1, 6], "jade-observatory": [1, 6], "coral-lagoons": [3, 1], "island-docks": [3],
+    "copper-gorge": [2, 4], "copper-ruins": [2, 4],
 }
 
 
@@ -26,19 +29,54 @@ def unified5(pet):
     return UNIFY5.get(pet.get("type_id"), UNIFY5_NONE) if pet.get("type_id") is not None else UNIFY5_NONE
 
 
-def attach_atlas_wild(atlas_maps, stats6, stats5, roster):
+def pools(wanted, stats6, stats5, targets6, targets5):
+    pets6 = [pet["pet_id"] for pet in stats6["pets"] if pet["element_id"] in wanted and pet["pet_id"] not in targets6]
+    pets5 = [pet["pet_id"] for pet in stats5["pets"] if unified5(pet) in wanted and pet["pet_id"] not in targets5 and pet.get("rank", 1) <= 3]
+    return pets6, pets5
+
+
+def fill(atlas_map, wanted, low, stats6, stats5, targets6, targets5):
+    pets6, pets5 = pools(wanted, stats6, stats5, targets6, targets5)
+    cap6 = {pet["pet_id"]: pet["max_quality_stars"] for pet in stats6["pets"]}      # a species' highest quality (table 0 column 4)
+    atlas_map["wildElements"] = [ELEMENTS[e] for e in wanted]
+    atlas_map["customWildAreas"] = [{"area": f"atlas-{atlas_map['id']}", "level_range": [low, low + 3],
+                                     "pets": [{"pet_id": pet_id, "terrain": 0, "quality_range": [1, min(3, cap6[pet_id])]} for pet_id in pets6]}]
+    atlas_map["wild5Pool"] = {"pet_ids": pets5, "level_min": low, "level_max": low + 3}
+
+
+def targets_of(stats5, roster):
     targets6 = {record["evolution"]["target_pet_id"] for record in roster["records"] if record.get("evolution")}
     targets5 = {t for pet in stats5["pets"] for evo in [pet.get("evolution") or {}]
                 for t in (evo.get("target_pet_id"), evo.get("mutation_target_pet_id")) if t}
+    return targets6, targets5
+
+
+def attach_frontier_wild(frontier_maps, neighbours, stats6, stats5, roster):
+    """Side regions take the level of the map they branch from (+2 per step away from it)."""
+    targets6, targets5 = targets_of(stats5, roster)
+    level = {m["id"]: m["customWildAreas"][0]["level_range"][0] for m in neighbours if m.get("customWildAreas")}
+    for m in neighbours:
+        if m["id"] == "ryan-phong-loi-forest":
+            level.setdefault(m["id"], 5)
+    pending = [m for m in frontier_maps if m["id"] in MAP_ELEMENTS]
+    while pending:
+        progressed = False
+        for m in list(pending):
+            known = [level[l["target"]] for l in m.get("links", []) if l["target"] in level]
+            if not known:
+                continue
+            level[m["id"]] = min(known) + 2
+            fill(m, MAP_ELEMENTS[m["id"]], level[m["id"]], stats6, stats5, targets6, targets5)
+            pending.remove(m); progressed = True
+        if not progressed:
+            break
+    return frontier_maps
+
+
+def attach_atlas_wild(atlas_maps, stats6, stats5, roster):
+    targets6, targets5 = targets_of(stats5, roster)
     for index, atlas_map in enumerate(atlas_maps):
         wanted = MAP_ELEMENTS.get(atlas_map["id"])
-        if not wanted:
-            continue
-        low = 8 + 2 * index
-        pets6 = [pet["pet_id"] for pet in stats6["pets"] if pet["element_id"] in wanted and pet["pet_id"] not in targets6]
-        pets5 = [pet["pet_id"] for pet in stats5["pets"] if unified5(pet) in wanted and pet["pet_id"] not in targets5 and pet.get("rank", 1) <= 3]
-        atlas_map["wildElements"] = [ELEMENTS[e] for e in wanted]
-        atlas_map["customWildAreas"] = [{"area": f"atlas-{atlas_map['id']}", "level_range": [low, low + 3],
-                                         "pets": [{"pet_id": pet_id, "terrain": 0, "quality_range": [1, 3]} for pet_id in pets6]}]
-        atlas_map["wild5Pool"] = {"pet_ids": pets5, "level_min": low, "level_max": low + 3}
+        if wanted:
+            fill(atlas_map, wanted, 8 + 2 * index, stats6, stats5, targets6, targets5)
     return atlas_maps

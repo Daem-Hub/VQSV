@@ -93,7 +93,8 @@
     const head = document.createElement("div"), title = document.createElement("h3"), sub = document.createElement("p");
     head.className = "roster-head";
     title.textContent = pet.name;
-    const quality = pet.v5 ? `Hạng ${pet.quality}` : `Phẩm chất ${pet.quality}`;
+    const cap = !pet.v5 ? STAT_BY_ID.get(pet.petId)?.max_quality_stars || pet.quality : null;
+    const quality = pet.v5 ? `Hạng ${pet.quality}` : `Phẩm chất ${"★".repeat(pet.quality)}${"☆".repeat(Math.max(0, cap - pet.quality))} (${pet.quality}/${cap})`;
     sub.textContent = `${pet.kind === "lead" ? "Pet của Kael" : (pet.kind || "").toUpperCase()} · ${pet.v5 ? `${pet.element} → ${pet.unifiedElement}` : pet.element || "Chưa rõ hệ"} · ${quality}`;
     const info = document.createElement("div"); info.append(title, sub);
     head.append(portrait(pet), info);
@@ -106,12 +107,24 @@
     skills.textContent = "Kỹ năng: " + ((pet.skills || []).map(skill => skill.name).filter(Boolean).join(", ") || "đòn thường");
     const item = document.createElement("p"); item.className = "roster-skills";
     item.textContent = pet.item ? `Trang bị: ${RELIC(pet.item)?.name || "vật phẩm"}` : "";
-    detail.append(head, stats, skills, item);
+    const growth = document.createElement("p"); growth.className = "roster-skills";
+    const next = pet.level < LEVEL_CAP ? statsPreview(pet, pet.level + 1) : null, now = statsPreview(pet, pet.level);
+    if (next && now) growth.textContent = `Lên cấp ${pet.level + 1}: HP +${next.hp - now.hp}, Công +${next.attack - now.attack}, Thủ +${next.defense - now.defense}, Tốc +${next.speed - now.speed}`;
+    detail.append(head, stats, skills, item, growth);
 
     const evo = evolution(pet), ready = evo.find(option => option.ok);
     const evoNote = document.createElement("p"); evoNote.className = "roster-evo";
     evoNote.textContent = ready ? `Có thể ${ready.verb.toLowerCase()}${ready.targetName ? " thành " + ready.targetName : ""}` : evo[0]?.reason ? `Tiến hóa: ${evo[0].reason}` : "";
     detail.append(evoNote);
+    // Before / after at the current level for every form this pet can turn into.
+    for (const option of evo.filter(o => o.targetId)) {
+      const after = statsPreview(pet, pet.level, option.targetId), before = now;
+      if (!after || !before) continue;
+      const diff = (k, label) => `${label} ${after[k]}${after[k] !== before[k] ? ` (${after[k] > before[k] ? "+" : ""}${after[k] - before[k]})` : ""}`;
+      const line = document.createElement("p"); line.className = "roster-compare";
+      line.textContent = `${option.verb} → ${option.targetName}: ${diff("hp", "HP")}, ${diff("attack", "Công")}, ${diff("defense", "Thủ")}, ${diff("speed", "Tốc")}`;
+      detail.append(line);
+    }
 
     const actions = document.createElement("div"); actions.className = "roster-actions";
     const story = pet.id === "loi-mieu";

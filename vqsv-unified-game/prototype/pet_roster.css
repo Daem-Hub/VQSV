@@ -25,6 +25,7 @@ dialog#petRoster { width:min(720px,calc(100vw - 16px)); }
 .roster-skills, .roster-evo, .roster-note { margin:0; line-height:1.4; }
 .roster-skills:empty, .roster-evo:empty { display:none; }
 .roster-evo { color:#ffe085; }
+.roster-compare { margin:0; padding:6px 8px; background:#0c2438; border:1px solid #2f5d7c; color:#cfe7f5; font-size:12px; line-height:1.4; }
 .roster-note { color:#a5d0e5; font-size:12px; }
 .roster-actions { display:flex; flex-wrap:wrap; gap:6px; }
 .roster-actions button { width:auto; flex:1 1 auto; min-height:42px; padding:6px 10px; color:#ddf1fc; border:1px solid #5986a1; background:#254c6a; }

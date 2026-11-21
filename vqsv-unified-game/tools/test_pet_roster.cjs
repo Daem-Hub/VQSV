@@ -90,3 +90,14 @@ assert.match(els.rosterMessage.textContent, /Ghép thành công/);
 ctx.p1 = run(`reserveCombatant(${JSON.stringify(v6)})`); ctx.p2 = run('buildTeam()[0]');
 assert.equal(run('fusionCheck(p1, p2).ok'), false);
 console.log('Pet fusion: VQSV5 partner into a VQSV6 pet, same-element quality step, cost and partner removal passed.');
+
+// Stats screen: next-level growth, before/after stats of the evolved form, and the species' quality cap.
+run('state.mode = "explore"; window.openPetRoster()');
+const texts = () => all(els.rosterDetail).map(n => n.textContent).filter(Boolean);
+assert(texts().some(t => /^Lên cấp \d+: HP \+\d+, Công \+\d+, Thủ \+\d+, Tốc \+\d+$/.test(t)), 'next-level growth line');
+assert(texts().some(t => /^Tiến hóa → .+: HP \d+/.test(t)), 'evolution preview for Lôi Miêu (Điện Miêu evolves)');
+assert(texts().some(t => /Phẩm chất ★+☆*\s\(\d\/\d\)/.test(t)), 'quality stars with the species cap');
+ctx.lead = run('buildTeam()[0]');
+const capped = run('(() => { const cap = STAT_BY_ID.get(lead.petId).max_quality_stars; const pet = { ...lead, quality: cap, level: 20 }; const partner = vqsv5Combatant(STATS5.pets.find(p => p.type_id === 1).pet_id, 20); partner.id = partner.petId; return [cap, fusionCheck(pet, partner).quality]; })()');
+assert.equal(capped[1], capped[0], 'fusion never lifts quality above the species cap');
+console.log('Pet stats: growth preview, evolution before/after, quality cap passed.');

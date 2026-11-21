@@ -747,12 +747,12 @@
           return individualsOf(speciesId).flatMap(individual => modes.map(mode => {
             const check = evolutionCheck5(individual.key, speciesId, mode);
             return { key: individual.key, label: individual.label, level: check.entry?.level ?? individualEntry(individual.key, speciesId).level, ok: check.ok, reason: check.reason,
-              verb: mode === "mutation" ? "Dị hóa" : "Tiến hóa", targetName: check.targetName, mode };
+              verb: mode === "mutation" ? "Dị hóa" : "Tiến hóa", targetName: check.targetName, targetId: check.targetId, mode };
           }));
         }
         return individualsOf(speciesId).map(individual => {
           const check = evolutionCheck(individual.key, speciesId);
-          return { key: individual.key, label: individual.label, level: check.entry?.level, ok: check.ok, reason: check.reason, verb: check.evo ? (evolutionKind(check.evo.target_pet_id) === "dị hóa" ? "Dị hóa" : "Tiến hóa") : "Tiến hóa", targetName: check.targetName };
+          return { key: individual.key, label: individual.label, level: check.entry?.level, ok: check.ok, reason: check.reason, verb: check.evo ? (evolutionKind(check.evo.target_pet_id) === "dị hóa" ? "Dị hóa" : "Tiến hóa") : "Tiến hóa", targetName: check.targetName, targetId: check.evo?.target_pet_id };
         });
       },
       evolve: evolvePet
@@ -1091,6 +1091,14 @@
     const FUSE_MIN_LEVEL = 10, FUSE_GOLD_PER_LEVEL = 100;
     const progressKeyOf = pet => pet.id === "loi-mieu" ? "loi-mieu" : pet.id;
     const elementOfPet = pet => pet.v5 ? pet.unifiedElement : pet.element;
+    // Stats of a pet at another level or in another form, for the pet screen (same formulas as in battle).
+    function statsPreview(pet, level, formId = pet.petId) {
+      if (pet.v5 || STAT5_BY_ID.has(formId)) return STAT5_BY_ID.has(formId) ? vqsv5Combatant(formId, level, pet.traits || [], pet.passives || []).stats : null;
+      const record = STAT_BY_ID.get(formId);
+      if (!record) return null;
+      const quality = Math.max(pet.quality || record.default_quality, formId === pet.petId ? 0 : record.default_quality);
+      return statsAt(record, level, Math.min(quality, QUALITY_PCT.length));
+    }
     function fusionCheck(main, partner) {
       if (!main || !partner || main.id === partner.id) return { ok: false, reason: "Chọn hai sủng vật khác nhau." };
       if (partner.id === "loi-mieu") return { ok: false, reason: "Lôi Miêu không thể làm pet ghép." };
@@ -1100,7 +1108,8 @@
       if (wallet.gold < cost) return { ok: false, cost, reason: `Cần ${cost} kim tiền (đang có ${wallet.gold}).` };
       const sameElement = elementOfPet(main) === elementOfPet(partner);
       const exp = Math.max(0, Math.floor(expToReach(partner.level) / 2));
-      const quality = !main.v5 && sameElement ? Math.min(QUALITY_PCT.length, (main.quality || 1) + 1) : main.quality;
+      const cap = STAT_BY_ID.get(main.petId)?.max_quality_stars || QUALITY_PCT.length;   // the species' highest quality
+      const quality = !main.v5 && sameElement ? Math.min(cap, (main.quality || 1) + 1) : main.quality;
       return { ok: true, cost, exp, sameElement, quality, traits: main.v5 && sameElement };
     }
     function fusePets(main, partner) {

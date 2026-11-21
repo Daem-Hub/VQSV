@@ -153,3 +153,10 @@ Mã gốc còn hai chỗ prototype **không** làm:
 - Hai mức tăng sát thương thuộc tính năng nạp tiền của bản gốc.
 
 **Sát thương dự tính:** trong bảng **Công kích**, mỗi chiêu hiện `≈ số` là sát thương một đòn không bạo kích lên đối thủ hiện tại. ▲ là khắc hệ, ▼ là bị khắc. Số này bỏ qua các phần ngẫu nhiên: bạo kích, ±1, đánh trượt, đặc tính, và kỹ năng bị động có xác suất.
+
+## Chỉ số và tiến hóa trong màn Sủng vật
+
+- **Phẩm chất:** pet VQSV6 hiện sao theo dạng ★★☆☆ (đang có / tối đa). Mức tối đa là số sao của loài, lấy từ bảng 0 cột 4 của `db.mid` (`max_quality_stars`); 106 trên 111 dòng pet hoang dã của bản gốc nằm trong giới hạn này. Ghép pet không nâng phẩm chất quá mức tối đa của loài. Pet hoang dã trên các map mới cũng không sinh ra vượt mức này.
+- **Lên cấp:** dòng "Lên cấp N" cho biết HP, Công, Thủ, Tốc tăng bao nhiêu ở cấp kế tiếp. Số được tính bằng cùng công thức dùng trong trận: VQSV6 theo `growth` và phẩm chất; VQSV5 theo bảng gốc đã quy đổi sang thang VQSV6.
+- **Trước/sau tiến hóa:** với mỗi dạng pet có thể tiến hóa hoặc dị hóa thành, màn hình hiện chỉ số của dạng mới ở cấp hiện tại và mức chênh lệch. Phẩm chất sau tiến hóa theo luật gốc: giữ nguyên nếu không thấp hơn mức mặc định của dạng mới, nếu thấp hơn thì lấy mức mặc định đó.
+- **Map mới của Codex** (Cao nguyên Ngọc Lục, Quần đảo San Hô Hồng, Bán đảo Đồng Đỏ) có pet hoang dã trộn hai bản theo hệ của vùng. Cấp tính theo map mà vùng đó rẽ ra, cộng thêm 2 cấp cho mỗi map đi xa hơn. Đây là giá trị thử.

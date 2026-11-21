@@ -1649,9 +1649,9 @@
       for (const map of Object.values(assets.maps)) {
         assets.mapObjects[map.id] = [...(map.objects || [])].sort((a, b) => a.y - b.y || a.x - b.x);
         if (!map.interior && !map.trails || map.source5) continue;
-        const path = map.interior ? `assets/illustrations/${map.interior}.webp` : `assets/trails/${map.id}.webp`;
+        const path = map.interior ? `assets/illustrations/${map.interior}.webp` : map.sceneArt || `assets/trails/${map.id}.webp`;
         jobs.push(loadImage(path).then(img => assets.scenes[map.id] = img));
-        if (map.trails) jobs.push(loadImage(`assets/trails/${map.id}-chart.png`).then(img => assets.charts[map.id] = img));
+        if (map.trails) jobs.push(loadImage(map.chartArt || `assets/trails/${map.id}-chart.png`).then(img => assets.charts[map.id] = img));
       }
       for (const id of ["quest-herb", "beast-track"]) jobs.push(loadImage(`assets/illustrations/${id}.png`).then(img => assets.props[id] = img));
       const villagerArt = { "characters/villager_74.png": "assets/illustrations/herbalist.webp", "characters/villager_66.png": "assets/illustrations/villager.webp", "characters/villager_75.png": "assets/illustrations/scout.webp" };
@@ -1721,7 +1721,7 @@
       else if (assets.map.illustration) objectiveEl.textContent = "Mở bản đồ khu vực để chọn cổng và xem đường đi.";
       else if (state.survey === "active" || state.survey === "return") objectiveEl.textContent = surveyHint();
       else if (!assets.map.entities.elder) objectiveEl.textContent = "Khám phá khu vực; đến lối đi và nhấn E để chuyển map.";
-      else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ, qua cổng đông vào rừng hoặc theo đường phía nam đến hoang mạc.";
+      else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ, qua cổng đông vào rừng hoặc theo đường qua vườn và cầu phía nam đến Hoang Mạc Xích Diễm.";
       else objectiveEl.textContent = "Tìm người gác làng và nói chuyện.";
     }
 

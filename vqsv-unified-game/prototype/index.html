@@ -400,7 +400,7 @@
     const cell5 = (m, x, y) => (m.collision && y >= 0 && y < m.height && x >= 0 && x < m.width ? m.collision[y][x] : "1");
     function terrainAt(x, y) {
       const m = assets.map;
-      if (m?.source5) return cell5(m, x, y) === "3" || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => cell5(m, x + dx, y + dy) === "2") ? 2 : 0;
+      if (m?.source5 && m.atlasRegion == null) return cell5(m, x, y) === "3" || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => cell5(m, x + dx, y + dy) === "2") ? 2 : 0;
       const bridge = assets.map?.bridge;
       return bridge && x >= bridge.x && x < bridge.x + bridge.width && y >= bridge.y && y < bridge.y + bridge.height ? 2 : 0;
     }
@@ -1696,7 +1696,7 @@
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
       else if (state.mode === "dialogue") objectiveEl.textContent = `Đang trò chuyện với ${state.activeNpc?.name || "người gác làng"}.`;
       else if (assets.map.interior) objectiveEl.textContent = "Đến cạnh người bán để xem hàng; cửa phía nam dẫn ra làng.";
-      else if (assets.map.illustration) objectiveEl.textContent = assets.map.links.length > 1 ? "Theo đường về phía đông để đi tiếp, hoặc về phía tây để quay lại." : "Đã đến Mặt Trăng Đỏ. Lối phía tây dẫn về Vành đai cơ khí.";
+      else if (assets.map.illustration) objectiveEl.textContent = "Mở bản đồ khu vực để chọn cổng và xem đường đi.";
       else if (state.survey === "active" || state.survey === "return") objectiveEl.textContent = surveyHint();
       else if (!assets.map.entities.elder) objectiveEl.textContent = "Khám phá khu vực; đến lối đi và nhấn E để chuyển map.";
       else if (state.spokeToElder) objectiveEl.textContent = "Theo dấu đỏ, qua cổng đông vào rừng hoặc theo đường phía nam đến hoang mạc.";
@@ -1724,7 +1724,7 @@
     function drawMap(depthY = null) {
       const m = assets.map;
       if (m.source5 || m.illustration) {
-        const base = cachedImage(m.illustration || m.source5.base);
+        const base = cachedImage(m.source5?.base || m.illustration);
         ctx.fillStyle = m.source5?.background || "#253c42"; ctx.fillRect(0, 0, m.width * S, m.height * S);
         if (base?.complete && base.naturalWidth) ctx.drawImage(base, 0, 0);
         return;
@@ -1947,7 +1947,7 @@
     function refreshFieldMap() {
       if (!assets.map) return;
       const herbs = assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.filter(herb => !state.herbQuest.collected.includes(herb.id)) : [];
-      const picture = assets.map.illustration || assets.map.source5?.base;
+      const picture = assets.map.source5?.base || assets.map.illustration;
       const background = picture ? cachedImage(picture) : null;
       if (background && !background.complete) background.onload = () => {
         if (assets.map.illustration === picture || assets.map.source5?.base === picture) refreshFieldMap();
@@ -2958,7 +2958,7 @@
       if (state.mode === "loading" || !assets.map) { saveStatus.textContent = "Game chưa tải xong."; return; }
       if (state.mode !== "explore" && state.mode !== "ending") { saveStatus.textContent = "Hãy kết thúc hội thoại hoặc trận đấu trước khi lưu."; return; }
       if (state.player.step) { saveStatus.textContent = "Hãy dừng di chuyển trước khi lưu."; return; }
-      const save = { version: 1, mapId: assets.map.id, x: state.player.x, y: state.player.y,
+      const save = { version: 1, atlasLayout: assets.map.atlasRegion != null ? 2 : undefined, mapId: assets.map.id, x: state.player.x, y: state.player.y,
         faceX: state.player.faceX, faceY: state.player.faceY, spokeToElder: state.spokeToElder, completed: state.mode === "ending", herbQuest: state.herbQuest, survey: state.survey };
       try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); saveStatus.textContent = "Đã lưu tiến trình trên trình duyệt này."; }
       catch (_) { saveStatus.textContent = "Không thể lưu: trình duyệt không cho phép lưu dữ liệu."; }
@@ -2975,6 +2975,9 @@
       const survey = save?.survey === undefined ? "unstarted" : save.survey;    // saves from before the survey quest still load
       const surveyValid = survey === "unstarted" || (save?.spokeToElder === true && ["active", "return", "done"].includes(survey));
       const savedMap = assets.maps?.[save?.mapId] || (save?.mapId === assets.map.id ? assets.map : null);
+      if (savedMap?.atlasRegion != null && save.atlasLayout == null && Number.isInteger(save.x) && save.x >= 0 && save.x < 24 && Number.isInteger(save.y) && save.y >= 0 && save.y < 18) {
+        Object.assign(save, savedMap.entities.player);
+      }
       const originalMap = assets.map;
       if (savedMap) assets.map = savedMap;
       const valid = surveyValid && herbsValid && save && save.version === 1 && !!savedMap && Number.isInteger(save.x) && Number.isInteger(save.y)

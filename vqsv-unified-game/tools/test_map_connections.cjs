@@ -120,3 +120,16 @@ for (const next of journey) {
   }
 }
 console.log('All 29 atlas scenes reachable on foot in both directions, including save and restore on the Red Moon.');
+
+assert.equal(new Set(atlas.map(m => m.source5.map)).size, atlas.length);
+let gateCount = 0;
+for (const map of atlas) {
+  run(`assets.map=maps[${JSON.stringify(map.id)}]; Object.assign(state.player,assets.map.entities.player)`);
+  for (const gate of map.links) {
+    assert(canReach(gate), map.id + ' to ' + gate.target);
+    assert(maps[gate.target].links.some(link => link.target === map.id));
+    gateCount++;
+  }
+  for(const picture of [map.source5.base,map.source5.overlay].filter(Boolean)) assert(fs.existsSync(path.join(root,picture)));
+}
+assert.equal(gateCount, 57 + 2 * 8);

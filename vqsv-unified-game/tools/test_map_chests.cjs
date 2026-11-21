@@ -17,7 +17,7 @@ assert(all.every(c => Number.isInteger(c.x) && Number.isInteger(c.y)));
 // ---- Designed placement ----
 // ---- Placement: each region stands on one real VQSV5 map (tools/build_vqsv5_walk_maps.py), so its chests are that map's own
 // chests at their own cells (only the ones next to an exit or arrival cell are left out). ----
-const mapIds = Object.keys(boot.maps).filter(id => boot.maps[id].source5);
+const mapIds = Object.keys(boot.maps).filter(id => boot.maps[id].source5 && boot.maps[id].atlasRegion == null);
 assert.equal(mapIds.length, 12);
 let placed = 0;
 for (const id of mapIds) {

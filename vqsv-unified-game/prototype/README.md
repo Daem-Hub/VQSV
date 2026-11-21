@@ -171,3 +171,16 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
 - **Nền:** mỗi dải dùng nền theo vùng hoặc theo hệ như trước. Trận VQSV5 mỗi bên một nền địa hình. Dải dưới lật gương như bản Codex. Ảnh nền được kéo vừa chiều ngang; khi dải cao hơn ảnh thì phần trời phía trên được kéo dài từ hàng điểm ảnh đầu tiên của ảnh. Trận truyện dùng hình Lôi Miêu và sói tha hóa Codex vẽ.
 - **Khung lệnh:** thanh "Lượt N", khung lệnh xanh với 5 lệnh, và hàng phím mềm **Chọn / ⛶ / Menu**. Khi đang mở một bảng (Công kích, Đạo cụ...), phím phải đổi thành **Trở lại**.
 - **Kích thước:** canvas trận đổi theo khoảng trống phía trên khung lệnh: cao 300–900 đơn vị, rộng 480, độ nét theo màn hình. Hết trận, canvas trở lại 480 × 360. `skill_fx.js` có thêm `setLayout()` để hiệu ứng bay đúng vị trí hai pet trong bố cục này; đây là thay đổi duy nhất trong phần hiệu ứng.
+
+## Động tác pet, độ lớn sprite và nhịp hiệu ứng, âm thanh
+
+- **Độ lớn sprite:** pet được vẽ theo phần hình thật, đã cắt bỏ viền trong suốt. Khung hình VQSV5 thường có viền trong suốt rộng, nên trước đây pet VQSV5 trông nhỏ hơn hẳn Lôi Miêu. Mỗi chuỗi hoạt ảnh dùng một khung cắt chung để các khung không bị nhảy. Hình vẫn phóng theo bội số nguyên nên giữ nét pixel.
+- **Hướng nhìn:** hình VQSV6 quay sang phải, hình VQSV5 quay sang trái (bản gốc lật hình cho phía người chơi). Mỗi pet được lật để luôn quay mặt về đối thủ.
+- **Động tác khi dùng chiêu:**
+  - Chiêu gây sát thương: lấy đà (ngả về sau, hơi dẹt) trong 170 ms, lao chéo về phía đối thủ (kéo dài người), rồi trở về chỗ.
+  - Chiêu trạng thái: nảy lên, có quầng sáng theo màu hệ.
+  - Pet trúng đòn: bị đẩy lùi, rung (bạo kích rung mạnh hơn) và nháy trắng.
+- **Nhịp khớp nhau:** hiệu ứng bay ra ngay sau lúc lấy đà. `VQSVSkillFx.cast()` trả về thời điểm trúng (`impactAt`) và thời điểm hiệu ứng cuối cùng kết thúc (`endAt`).
+  - Tại thời điểm trúng: phát âm thanh hệ và tiếng đòn chạm thân, pet nhận đòn rung và nháy, thanh HP và % HP bắt đầu tụt (tụt dần trong 350 ms).
+  - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
+  - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.

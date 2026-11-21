@@ -1356,16 +1356,18 @@
     }
     // Battle skill effects (skill_fx.js, pixelfx). All calls are optional so the game still runs without the module.
     let fxMoveAt = null;
-    const fxNow = () => (fxMoveAt != null ? fxMoveAt : performance.now());
+    // A move: the pet winds up (WINDUP ms), then its effect leaves; statuses and events of the move follow the hit.
+    const WINDUP = 170, MOVE_GAP = 140;
+    const fxNow = () => (fxMoveAt != null ? fxMoveAt + WINDUP + 160 : performance.now());
     function fxSprite(c) {
       const battle = state.battle;
       if (!battle) return {};
-      if (c === battle.enemy) return battle.wild ? { image: cachedImage(c.image), box: [114, 112] } : { image: assets.pets?.enemy, box: [94, 96] };
-      if (c.kind === "lead" && !c.image) return { image: assets.pets?.hero, box: [92, 94] };
+      const box = [DUEL.box || 114, DUEL.box || 112];
+      if (c === battle.enemy) return { image: trimmedSprite(battle.wild ? cachedImage(c.image || c.sequences?.[0]?.[0]?.image) : assets.pets?.enemy), box };
+      if (c.kind === "lead" && !c.image) return { image: trimmedSprite(assets.pets?.hero), box };
       const frames = c.sequences?.[0];
-      return { image: c.image ? cachedImage(c.image) : frames?.length ? cachedImage(frames[0].image) : null, box: [120, 110] };
+      return { image: trimmedSprite(c.image ? cachedImage(c.image) : frames?.length ? cachedImage(frames[0].image) : null), box };
     }
-    // One-off effects (miss, reflect, drain, revive, capture, special moves) on one side; `delay` in ms after the move starts.
     function fxEvent(kind, c, delay = 0) {
       if (!window.VQSVSkillFx || !state.battle) return;
       window.VQSVSkillFx.event({ kind, onEnemy: c === state.battle.enemy, startAt: fxNow(), delay, ...fxSprite(c) });
@@ -1500,7 +1502,8 @@
         // parameter and the held item Cá Thờn Bơn (9) removes the miss chance.
         const missPct = actor.item === 9 ? 0 : Math.max(0, Math.min(20, 2 * (target.level - (actor.level - (debuffs[4] ? debuffs[4].value : 0)))));
         if (missPct > 0 && Math.random() * 100 < missPct) { fxEvent("miss", target, 150); return `${text} nhưng đánh trượt.`; }
-        const hits = actor.buffs?.[12] ? 2 : 1;
+        const hits = actor.buffs?.[12] ? 2 : 1, hpBefore = target.hp;
+        actor.anim = { at: fxMoveAt ?? performance.now(), kind: "attack" };
         const parts = [];
         let last = null;
         for (let i = 0; i < hits && target.hp > 0; i++) {
@@ -1537,7 +1540,8 @@
         if (window.VQSVSkillFx && state.battle && parts.length) {
           // Basic attacks (no element skill) use the plain slash; the crit flash plays when any hit was critical.
           const basic = skill.v5Id === 25 || (skill.row == null && skill.v5Id == null);
-          window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: fxMoveAt ?? performance.now(), crit: !!last?.crit, tier: basic ? 1 : fxTier(skill) });
+          const timing = window.VQSVSkillFx.cast({ fromEnemy: actor === state.battle.enemy, element: basic ? null : actor.element, startAt: (fxMoveAt ?? performance.now()) + WINDUP, crit: !!last?.crit, tier: basic ? 1 : fxTier(skill) });
+          if (timing) { target.hit = { at: timing.impactAt, crit: !!last?.crit, effect: last?.effect || 0 }; target.hpAnim = { from: hpBefore, at: timing.impactAt }; state.battle.moveEnd = Math.max(state.battle.moveEnd || 0, timing.endAt); }
         }
         text += `, ${parts.join("; ")}${hits > 1 ? " (2 đòn)" : ""}`;
         const extra = hitEffects5(actor, target, skill);
@@ -1547,6 +1551,7 @@
           if (debuffLands(target, chance, skill.effect.id)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, last.base, skill.row).trimEnd();
         }
       } else if (skill.effect?.kind === "debuff" && debuffLands(target, -1, skill.effect.id)) text += "." + applyDebuff(target, skill.effect.id, skill.effect.param, 0, skill.row).trimEnd();
+      if (skill.noDamage) { actor.anim = { at: fxMoveAt ?? performance.now(), kind: "cast" }; if (state.battle) state.battle.moveEnd = Math.max(state.battle.moveEnd || 0, (fxMoveAt ?? performance.now()) + WINDUP + 700); }
       if (skill.effect?.kind === "buff") text += (text.endsWith(".") ? "" : ".") + applyBuff(actor, skill.effect.id, skill.effect.param).trimEnd();
       return text.endsWith(".") || text.endsWith("!") ? text : `${text}!`;
     }
@@ -1691,7 +1696,7 @@
       if (state.mode !== "battle") { fightMenu.hidden = true; teamMenu.hidden = true; ballMenu.hidden = true; itemMenu.hidden = true; }
       const pet = activePet();
       const isLead = pet.kind === "lead";
-      const busy = !!state.battle.pendingUntil || state.battle.mustSwitch;
+      const busy = !!state.battle.pendingUntil || state.battle.mustSwitch || performance.now() < (state.battle.busyUntil || 0);
       document.getElementById("skillHeading").textContent = `Kỹ năng · ${pet.name}`;
       document.getElementById("attackButton").hidden = !pet.skill;
       if (pet.skill) {
@@ -2311,6 +2316,64 @@
       ctx.fillStyle = "#f63037"; ctx.fillRect(left, y + 2, fill, 6); ctx.fillStyle = "#ff8d69"; ctx.fillRect(left, y + 2, fill, 2);
       if (usesMax) { ctx.fillStyle = "#3e1141"; ctx.fillRect(left - 2, y + 10, w + 4, 6); ctx.fillStyle = "#00d8ff"; ctx.fillRect(left, y + 11, Math.max(0, Math.min(1, uses / usesMax)) * w, 4); }
     }
+    // ---- Pet animation when using a move: a wind-up (lean back, squash), a lunge toward the opponent (stretch) and a
+    // return; status moves hop with a glow in the pet's element colour. The target recoils, shakes and flashes white at the
+    // moment the effect lands (cast() timing), when its HP bar starts to fall. ----
+    const ease = t => 1 - (1 - t) * (1 - t);
+    function poseOf(c, now, dir) {
+      const pose = { dx: 0, dy: 0, sx: 1, sy: 1, flash: 0, glow: 0 };
+      const anim = c?.anim, t = anim ? now - anim.at : -1;
+      if (anim?.kind === "attack" && t >= 0 && t < WINDUP + 460) {
+        if (t < WINDUP) { const k = ease(t / WINDUP); pose.dx = -dir.x * 12 * k; pose.dy = -dir.y * 4 * k; pose.sx = 1 + .08 * k; pose.sy = 1 - .1 * k; }
+        else {
+          const u = (t - WINDUP) / 460, k = u < .3 ? ease(u / .3) : 1 - ease((u - .3) / .7);
+          // out: from the wind-up (-12) to 72 units toward the opponent, stretched; back: ease home
+          pose.dx = dir.x * (u < .3 ? -12 + 84 * k : 72 * k); pose.dy = dir.y * 34 * k;
+          if (u < .3) { pose.sx = 1 + .1 * k; pose.sy = 1 - .06 * k; }
+        }
+      } else if (anim?.kind === "cast" && t >= 0 && t < 700) {
+        const k = Math.sin(Math.PI * t / 700);
+        pose.dy = -20 * k; pose.glow = k; pose.sy = 1 + .05 * k; pose.sx = 1 - .03 * k;
+      }
+      const hit = c?.hit, h = hit ? now - hit.at : -1;
+      if (h >= 0 && h < 320) {
+        const fade = 1 - h / 320, power = hit.crit ? 10 : hit.effect > 0 ? 8 : 5;
+        pose.dx += Math.sin(h / 15) * power * fade - dir.x * 10 * fade;
+        pose.dy += -dir.y * 4 * fade;
+        if (h < 160) pose.flash = (hit.crit ? .95 : .75) * (1 - h / 160);
+      }
+      return pose;
+    }
+    // Draw one pet with its pose: mirrored for the foe, scaled around its feet, then a white flash on a hit.
+    function drawPosed(pose, pos, mirrored, draw) {
+      const apply = () => {
+        ctx.translate(pos.x + pose.dx, pos.feet + pose.dy);
+        ctx.scale((mirrored ? -1 : 1) * pose.sx, pose.sy);
+        ctx.translate(-pos.x, -pos.feet);
+      };
+      ctx.save(); apply(); draw(); ctx.restore();
+      if (pose.flash > 0) {
+        ctx.save(); apply(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = pose.flash; draw(); ctx.restore();
+      }
+    }
+    const ELEMENT_GLOW = { "Hỏa hệ": "255,120,60", "Mộc hệ": "120,230,110", "Thổ hệ": "220,170,90", "Thủy hệ": "90,190,255", "Điện hệ": "255,240,110", "Quỷ hệ": "190,110,255", "Phong hệ": "170,255,220" };
+    function castGlow(pose, pos, box, c) {
+      if (!(pose.glow > 0)) return;
+      const rgb = ELEMENT_GLOW[c.unifiedElement || c.element] || "255,255,220", cy = pos.feet - box * .45 + pose.dy;
+      const g = ctx.createRadialGradient(pos.x, cy, 4, pos.x, cy, box * .6);
+      g.addColorStop(0, `rgba(${rgb},${.45 * pose.glow})`); g.addColorStop(1, `rgba(${rgb},0)`);
+      ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.fillStyle = g;
+      ctx.beginPath(); ctx.ellipse(pos.x, cy, box * .6, box * .6, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    }
+    // HP shown on screen: unchanged until the move lands, then it runs down to the real value over 350 ms.
+    function shownHp(c, now) {
+      const anim = c?.hpAnim;
+      if (!anim) return c.hp;
+      if (now < anim.at) return anim.from;
+      const k = (now - anim.at) / 350;
+      if (k >= 1) { delete c.hpAnim; return c.hp; }
+      return Math.round(anim.from + (c.hp - anim.from) * k);
+    }
     function drawBattle() {
       const now = performance.now();
       sizeBattleCanvas();
@@ -2322,25 +2385,26 @@
       if (lanes.enemy === BG6("dien")) { const t = now % 4200; if (t < 140) { ctx.fillStyle = `rgba(255,252,220,${(1 - t / 140) * .45})`; ctx.fillRect(0, 0, 480, laneH); } }
       const box = Math.round(Math.min(laneH * .72, 190));
       const foePos = { x: 354, feet: Math.round(top.y + laneH * .82) }, heroPos = { x: 96, feet: Math.round(bottom.y + laneH * .80) };
-      window.VQSVSkillFx?.setLayout?.({ width: 480, height: H, foe: foePos, hero: heroPos });
-      const heroAttack = now - state.battle.attackAt, enemyAttack = now - state.battle.enemyAt, guard = now - state.battle.guardAt;
-      const attackPulse = heroAttack >= 0 && heroAttack < 360 ? Math.sin(heroAttack / 360 * Math.PI) : 0;
-      const enemyPulse = enemyAttack >= 0 && enemyAttack < 300 ? Math.sin(enemyAttack / 300 * Math.PI) : 0;
-      const enemyShake = heroAttack >= 0 && heroAttack < 240 ? Math.sin(heroAttack / 28) * (1 - heroAttack / 240) * 5 : 0;
-      const idleEnemy = Math.sin(now / 265) * 1.5, idleHero = -Math.sin(now / 265) * 1.5;
+      window.VQSVSkillFx?.setLayout?.({ width: 480, height: H, foe: { ...foePos, body: Math.round(box * .42) }, hero: { ...heroPos, body: Math.round(box * .42) } });
+      const heroAttack = now - state.battle.attackAt, guard = now - state.battle.guardAt;
       const sinceCapture = now - state.battle.captureAt, capturing = sinceCapture >= 0 && sinceCapture < 1400;
       const enemyAlpha = state.battle.captured === true && sinceCapture > 500 ? Math.max(0, 1 - (sinceCapture - 500) / 300) : state.battle.rewarded ? .3 : 1;
-      // shadows under both pets
+      const foe = state.battle.enemy, pet = activePet();
+      DUEL.box = box;
+      // shadows under both pets (they stay on the ground while the pets lunge or hop)
       ctx.fillStyle = "#26381e65";
       for (const pos of [foePos, heroPos]) { ctx.beginPath(); ctx.ellipse(pos.x, pos.feet, box * .32, Math.max(3, box * .06), 0, 0, Math.PI * 2); ctx.fill(); }
-      const foe = state.battle.enemy, fx = foePos.x - box / 2 - enemyPulse * 26 + enemyShake;
-      const foeImage = state.battle.wild ? cachedImage(foe.v5 && foe.sequences?.[0]?.length ? sequenceFrame(foe.sequences[0], now).image : foe.image) : assets.pets.enemy;
-      // Source sprites face right; the foe stands on the right, so mirror it to face Kael's pet.
-      ctx.save(); ctx.translate(2 * fx + box, 0); ctx.scale(-1, 1);
-      drawFitted(foeImage, fx, foePos.feet - box + idleEnemy, box, box, enemyAlpha);
-      ctx.restore();
+      const foePose = poseOf(foe, now, { x: -1, y: 1 }), heroPose = poseOf(pet, now, { x: 1, y: -1 });
+      const idle = Math.sin(now / 265) * 1.5;
+      // VQSV6 sprites face right and VQSV5 frames face left (the source game flips them for the player's side):
+      // each pet is turned to face its opponent.
+      const foeFrames = state.battle.wild && foe.v5 && foe.sequences?.[0]?.length ? foe.sequences[0] : null;
+      const foeImage = state.battle.wild ? cachedImage(foeFrames ? sequenceFrame(foeFrames, now).image : foe.image) : assets.pets.enemy;
+      drawPosed(foePose, foePos, !foe.v5, () => drawFitted(foeImage, foePos.x - box / 2, foePos.feet - box + idle, box, box, enemyAlpha, foeFrames ? unionRect(foeFrames) : null));
+      castGlow(foePose, foePos, box, foe);
       if (capturing) drawCaptureBall(sinceCapture, heroPos, foePos, box);
-      drawActivePet({ x: heroPos.x - box / 2 + attackPulse * 30, y: heroPos.feet - box - Math.abs(attackPulse) * 4 + idleHero, w: box, h: box }, now, heroAttack);
+      drawPosed(heroPose, heroPos, !!pet.v5, () => drawActivePet({ x: heroPos.x - box / 2, y: heroPos.feet - box - idle, w: box, h: box }, now, heroAttack));
+      castGlow(heroPose, heroPos, box, pet);
       if (window.VQSVSkillFx) window.VQSVSkillFx.draw(ctx, now);
       else if (heroAttack >= 0 && heroAttack < 480 && state.battle.skill === "spark" && assets.skillEffects.length) {
         // Fallback when the pixelfx module did not load: the source Điện giật sprite on the opponent.
@@ -2353,18 +2417,18 @@
         ctx.beginPath(); ctx.ellipse(heroPos.x, heroPos.feet - box / 2, box * .5, box * .52, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
       }
       // opponent: plate top-left, % below it, HP under the pet
-      const pet = activePet();
+      const foeHp = shownHp(foe, now), petHp = shownHp(pet, now);
       const foePlate = duelPlate(8, 8, 0, state.battle.wild ? foe.name : "Sủng vật tha hóa", foe.level, false);
-      duelPercent(8, 8 + foePlate.h + 6, Math.round(100 * foe.hp / foe.max), false);
+      duelPercent(8, 8 + foePlate.h + 6, Math.round(100 * foeHp / foe.max), false);
       drawStatuses(foe, 8, 8 + foePlate.h + 32);
-      duelVitals(foePos.x, top.y + laneH - 16, foe.hp, foe.max);
+      duelVitals(foePos.x, top.y + laneH - 16, foeHp, foe.max);
       // Kael's pet: plate bottom-right, % above it, HP (red) and skill uses (cyan) under the pet
       const heroPlate = duelPlate(472, bottom.y + laneH - 40, pet.kind === "lead" ? 1 : 0, pet.name, pet.level, true);
-      const pw = duelPercent(472, bottom.y + laneH - 40 - 26, Math.round(100 * pet.hp / pet.max), true);
+      const pw = duelPercent(472, bottom.y + laneH - 40 - 26, Math.round(100 * petHp / pet.max), true);
       drawStatuses(pet, 472 - pw - 2 - 8 - statusLabels(pet).reduce((sum, label) => sum + label.length * 5 + 11, 0), bottom.y + laneH - 62);
       drawTeamPips(heroPlate.left - 8 - state.battle.team.length * 12, bottom.y + laneH - 25);
       const skill = pet.skill;
-      duelVitals(heroPos.x, bottom.y + laneH - 22, pet.hp, pet.max, skill?.uses ?? null, skill?.max ?? null);
+      duelVitals(heroPos.x, bottom.y + laneH - 22, petHp, pet.max, skill?.uses ?? null, skill?.max ?? null);
       if (pet.progressKey) {               // EXP: a thin gold line under the plate
         const need = expToReach(pet.level + 1);
         ctx.fillStyle = "#24223c"; ctx.fillRect(heroPlate.left, bottom.y + laneH - 8, heroPlate.w, 3);
@@ -2376,13 +2440,61 @@
       const turn = document.getElementById("duelTurn");
       if (turn && turn.textContent !== `Lượt ${state.battle.turn + 1}`) turn.textContent = `Lượt ${state.battle.turn + 1}`;
     }
-    // Fit a sprite inside the box at an integer scale (pixel art stays crisp), anchored to the bottom.
-    function drawFitted(image, x, y, w, h, alpha = 1) {
+    // Pets are drawn from their visible pixels only: source frames carry wide transparent borders (VQSV5 frames often
+    // more than half of the image), which made them look small next to Lôi Miêu. Cached per image.
+    const trimCache = new WeakMap(), cropCache = new WeakMap(), unionCache = new WeakMap();
+    function trimRect(image) {
+      const full = { x: 0, y: 0, w: image.naturalWidth, h: image.naturalHeight };
+      if (typeof document === "undefined" || !document.createElement) return full;
+      if (trimCache.has(image)) return trimCache.get(image);
+      let rect = full;
+      try {
+        const w = image.naturalWidth, h = image.naturalHeight, c = document.createElement("canvas");
+        c.width = w; c.height = h;
+        const g = c.getContext("2d", { willReadFrequently: true }); g.drawImage(image, 0, 0);
+        const px = g.getImageData(0, 0, w, h).data;
+        let x0 = w, y0 = h, x1 = -1, y1 = -1;
+        for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (px[(y * w + x) * 4 + 3] > 16) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+        if (x1 >= x0) rect = { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
+      } catch (_) { rect = full; }
+      trimCache.set(image, rect);
+      return rect;
+    }
+    // One crop for a whole animation, so its frames keep the same scale and position.
+    function unionRect(frames) {
+      if (unionCache.has(frames)) return unionCache.get(frames);
+      const images = frames.map(frame => cachedImage(frame.image));
+      if (!images.every(image => image?.complete && image.naturalWidth)) return null;
+      const rects = images.map(trimRect);
+      const x0 = Math.min(...rects.map(r => r.x)), y0 = Math.min(...rects.map(r => r.y));
+      const rect = { x: x0, y: y0, w: Math.max(...rects.map(r => r.x + r.w)) - x0, h: Math.max(...rects.map(r => r.y + r.h)) - y0 };
+      unionCache.set(frames, rect);
+      return rect;
+    }
+    // The visible part of a sprite as its own canvas (for the effect silhouettes in skill_fx.js).
+    function trimmedSprite(image) {
+      if (!image?.complete || !image.naturalWidth || typeof document === "undefined" || !document.createElement) return image;
+      if (cropCache.has(image)) return cropCache.get(image);
+      const r = trimRect(image);
+      let result = image;
+      if (r.w < image.naturalWidth || r.h < image.naturalHeight) {
+        try {
+          const t = document.createElement("canvas"); t.width = r.w; t.height = r.h;
+          t.getContext("2d").drawImage(image, r.x, r.y, r.w, r.h, 0, 0, r.w, r.h);
+          result = Object.assign(t, { complete: true, naturalWidth: r.w, naturalHeight: r.h });
+        } catch (_) { result = image; }
+      }
+      cropCache.set(image, result);
+      return result;
+    }
+    // Fit the visible part of a sprite inside the box at an integer scale (pixel art stays crisp), anchored to the bottom.
+    function drawFitted(image, x, y, w, h, alpha = 1, crop = null) {
       if (!image?.complete || !image.naturalWidth) return;
-      const scale = Math.max(1, Math.floor(Math.min(w / image.naturalWidth, h / image.naturalHeight))) || Math.min(w / image.naturalWidth, h / image.naturalHeight);
-      const dw = image.naturalWidth * scale, dh = image.naturalHeight * scale;
-      ctx.save(); ctx.globalAlpha = alpha;
-      ctx.drawImage(image, Math.round(x + (w - dw) / 2), Math.round(y + h - dh), dw, dh);
+      const r = crop || trimRect(image);
+      const fit = Math.min(w / r.w, h / r.h), scale = fit >= 1 ? Math.floor(fit) : fit;
+      const dw = r.w * scale, dh = r.h * scale;
+      ctx.save(); ctx.globalAlpha *= alpha;
+      ctx.drawImage(image, r.x, r.y, r.w, r.h, Math.round(x + (w - dw) / 2), Math.round(y + h - dh), dw, dh);
       ctx.restore();
     }
     function sequenceFrame(sequence, elapsed) {
@@ -2399,10 +2511,10 @@
       if (pet.kind === "vqsv6" || pet.image) { drawFitted(cachedImage(pet.image), x, y, w, h, alpha); return; }
       // VQSV5: loop the first source sequence; play the second one briefly when attacking.
       // Which source sequence means idle/attack is not verified; this is a presentation choice.
-      const attacking = sinceAttack >= 0 && sinceAttack < 480 && state.battle.skill !== "guard";
+      const attacking = sinceAttack >= 0 && sinceAttack < WINDUP + 480 && state.battle.skill !== "guard";
       const sequence = (attacking ? pet.sequences[1] : pet.sequences[0]) || pet.sequences[0] || [];
       if (!sequence.length) return;
-      drawFitted(cachedImage(sequenceFrame(sequence, attacking ? sinceAttack : now).image), x, y, w, h, alpha);
+      drawFitted(cachedImage(sequenceFrame(sequence, attacking ? sinceAttack : now).image), x, y, w, h, alpha, unionRect(pet.sequences[0] || sequence));
     }
     // A thrown ball arcs from Kael's side, then wobbles on the enemy; it pops open on a failed catch.
     function drawCaptureBall(t, from = { x: 122, feet: 230 }, to = { x: 358, feet: 160 }, box = 100) {
@@ -2774,7 +2886,7 @@
     // One round: the faster side acts first (game/a.java Q() sorts by speed).
     function action(guard, move = "skill", slot = 0) {
       const battle = state.battle;
-      if (state.mode !== "battle" || battle.mustSwitch || activePet().hp <= 0 || battle.pendingUntil) return;
+      if (state.mode !== "battle" || battle.mustSwitch || activePet().hp <= 0 || battle.pendingUntil || performance.now() < (battle.busyUntil || 0)) return;
       const pet = activePet();
       const chosen = pet.skills?.[slot];
       if (!guard && move === "skill" && !chosen) { battle.message = `${pet.name} chưa có kỹ năng hệ.`; return; }
@@ -2791,7 +2903,7 @@
         enemyStrike(now);
         if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
-      const at = battle.enemyActed ? now + 420 : now;
+      const at = battle.enemyActed ? Math.max(now + 420, (battle.moveEnd || 0) + MOVE_GAP) : now;
       if (guard) {
         battle.guardAt = at; battle.skill = "guard";
         window.VQSVSkillFx?.status({ onEnemy: false, kind: "buff", id: 4, startAt: at, ...fxSprite(pet) });
@@ -2804,10 +2916,11 @@
         battle.message += `${battle.message ? " " : ""}${performMove(pet, battle.enemy, skill, pet.name)}`;
         if (pet.hp <= 0) { handleFaint(); updateGuidance(); return; }
       }
-      battle.pendingUntil = at + 650;
+      battle.pendingUntil = Math.max(at + 650, (battle.moveEnd || 0) + MOVE_GAP);
       updateGuidance();
     }
     function updateBattle(now) {
+      if (state.mode === "battle" && state.battle.busyUntil && now >= state.battle.busyUntil) { state.battle.busyUntil = 0; updateGuidance(); }
       if (state.mode !== "battle" || !state.battle.pendingUntil || now < state.battle.pendingUntil) return;
       if (learnDialog.open) return; // wait for the skill choice
       state.battle.pendingUntil = 0;
@@ -2821,7 +2934,7 @@
         updateGuidance();
         return;
       }
-      if (!state.battle.enemyActed) enemyCounter();
+      if (!state.battle.enemyActed) { enemyCounter(); if (state.battle.moveEnd > now) state.battle.busyUntil = state.battle.moveEnd + MOVE_GAP; }
       if (state.mode !== "battle" || state.battle.mustSwitch) { state.battle.guard = false; updateGuidance(); return; }
       endRound();
       state.battle.guard = false;

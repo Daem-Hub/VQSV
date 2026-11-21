@@ -19,7 +19,7 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'sound_fx.js'), 'utf8'), sand
 const S = win.VQSVSound;
 assert(S.supported);
 const expected = ['fire', 'leaf', 'earth', 'water', 'volt', 'dark', 'wind', 'steel', 'beast', 'sea', 'plain', 'crit', 'buff', 'debuff', 'heal', 'revive', 'miss', 'reflect', 'drain', 'loyalty', 'sacrifice',
-  'throw', 'ballHit', 'caught', 'escape', 'encounter', 'victory', 'levelUp', 'faint', 'chest', 'coin', 'flee', 'select'];
+  'throw', 'ballHit', 'caught', 'escape', 'encounter', 'victory', 'levelUp', 'faint', 'chest', 'coin', 'flee', 'select', 'swing', 'charge', 'hit'];
 assert.deepEqual([...S.names].sort(), [...expected].sort());
 for (const name of expected) {
   const counts = [1, 2, 3].map(tier => { log.length = 0; assert.equal(S.play(name, { tier }), true, name); return log.length; });
@@ -50,9 +50,13 @@ assert.equal(quiet.window.VQSVSound.supported, false); assert.equal(quiet.window
   await import(pathToFileURL(path.join(root, 'skill_fx.js')).href);
   const fx = window.VQSVSkillFx;
   fx.cast({ fromEnemy: false, element: 'Hỏa hệ', startAt: 0, tier: 3, crit: true });
-  assert.deepEqual(calls.slice(-2), [['fire', 3, 280], ['crit', 1, 360]]);                     // tier-3 fireball lands at 280 ms
-  fx.cast({ fromEnemy: true, element: 'Kim Loại hệ', startAt: 100, tier: 2 }); assert.deepEqual(calls.at(-1), ['steel', 2, 360]);
-  fx.cast({ fromEnemy: true, element: null, startAt: 0 }); assert.deepEqual(calls.at(-1), ['plain', 1, 60]);
+  // a move: charge (elemental) or swing (plain) as it leaves, the element sound and the body hit when it lands, then the crit
+  assert.deepEqual(calls.slice(-4), [['charge', 3, 0], ['fire', 3, 280], ['hit', 3, 300], ['crit', 1, 360]]);   // tier-3 fireball lands at 280 ms
+  let timing = fx.cast({ fromEnemy: true, element: 'Kim Loại hệ', startAt: 100, tier: 2 });
+  assert.deepEqual(calls.slice(-3), [['charge', 2, 100], ['steel', 2, 360], ['hit', 2, 380]]);
+  assert.equal(timing.impactAt, 360); assert(timing.endAt >= timing.impactAt);                // the battle syncs HP and the next move on this
+  timing = fx.cast({ fromEnemy: true, element: null, startAt: 0 });
+  assert.deepEqual(calls.slice(-3), [['swing', 1, 0], ['plain', 1, 60], ['hit', 1, 80]]);
   fx.status({ onEnemy: true, kind: 'buff', id: 3, startAt: 0 }); assert.equal(calls.at(-1)[0], 'heal');
   fx.status({ onEnemy: true, kind: 'buff', id: 12, startAt: 0 }); assert.equal(calls.at(-1)[0], 'buff');
   fx.status({ onEnemy: true, kind: 'debuff', id: 10, startAt: 0 }); assert.equal(calls.at(-1)[0], 'debuff');

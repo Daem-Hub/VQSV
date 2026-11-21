@@ -56,6 +56,10 @@
     beast: (t, k) => { for (let i = 0; i < k + 1; i++) noise(t + i * 0.09, { dur: 0.08, vol: 0.25, filter: "bandpass", from: 2500, to: 900, q: 2 }); tone(t, { type: "sawtooth", from: 160, to: 110, dur: 0.15, vol: 0.12 }); },
     sea: (t, k) => SOUNDS.water(t, k),
     plain: (t) => { noise(t, { dur: 0.1, vol: 0.2, filter: "bandpass", from: 1500, to: 3500, q: 2 }); tone(t + 0.05, { type: "triangle", from: 150, to: 70, dur: 0.12, vol: 0.3 }); },
+    // the two halves of every move: leaving the caster, then the body blow on the target
+    swing: (t, k) => noise(t, { dur: 0.12 + 0.03 * k, vol: 0.13, filter: "bandpass", from: 700, to: 2600, q: 2.5 }),
+    charge: (t, k) => { tone(t, { type: "sine", from: 260, to: 620 + 120 * k, dur: 0.16 + 0.04 * k, vol: 0.09 }); tone(t + 0.02, { type: "triangle", from: 520, to: 1240, dur: 0.12, vol: 0.05 }); },
+    hit: (t, k) => { tone(t, { type: "triangle", from: 160, to: 55, dur: 0.12 + 0.04 * k, vol: 0.22 + 0.04 * k }); noise(t, { dur: 0.06, vol: 0.12 + 0.03 * k, filter: "lowpass", from: 1800, to: 300 }); },
     crit: (t) => { tone(t, { type: "square", from: 1320, to: 1760, dur: 0.08, vol: 0.14 }); tone(t + 0.07, { type: "square", from: 1760, to: 2640, dur: 0.12, vol: 0.12 }); },
     // statuses and events
     buff: (t) => arp(t, [523, 659, 784, 1047], { type: "triangle", step: 0.06, vol: 0.14 }),

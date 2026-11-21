@@ -216,7 +216,8 @@ const EVENT_FX = {
 let frame = createFrame(W, H);
 let canvas = null, image = null;
 const live = [];
-const sidePos = (side, atFeet = false) => ({ x: SIDE[side].x, y: SIDE[side].feet - (atFeet ? 0 : BODY) });
+const bodyOf = side => SIDE[side].body ?? BODY;
+const sidePos = (side, atFeet = false) => ({ x: SIDE[side].x, y: SIDE[side].feet - (atFeet ? 0 : bodyOf(side)), body: bodyOf(side) });
 
 function add(step, from, to, base, speedUp = 1) {
   const target = step.on === "caster" ? from : to;
@@ -226,26 +227,31 @@ function add(step, from, to, base, speedUp = 1) {
   const entry = { mod, start: base + (step.at || 0), ms: step.ms || 800, speed: (step.speed || 1) * speedUp, flip, step, from, to, fx: null, last: null };
   const pos = step.travel ? from : target;
   // "ox": slide the origin toward the attacker so a melee mark lands on the target; "feet": stand on the target's feet.
-  const offset = step.ox ? (flip ? 1 : -1) * step.ox : 0, feetY = step.feet ? (step.on === "caster" ? from : to).y + BODY : pos.y;
+  const offset = step.ox ? (flip ? 1 : -1) * step.ox : 0, ref = step.on === "caster" ? from : to, feetY = step.feet ? ref.y + (ref.body ?? BODY) : pos.y;
   entry.opts = { x: pos.x + offset, y: step.feet ? feetY : pos.y, flip, seed: Math.floor(Math.random() * 1e6), ...(step.opts || {}) };
-  if (step.fx === "hitSpark" || step.fx === "critHit") entry.opts.height = BODY - 8;
+  if (step.fx === "hitSpark" || step.fx === "critHit") entry.opts.height = (to.body ?? BODY) - 8;
   live.push(entry);
 }
 
+// Returns when the move lands and when its last effect ends (performance.now() ms), so the battle can sync HP, hit
+// reactions and the next action with what is on screen.
 function cast({ fromEnemy, element, startAt, crit = false, tier = 1 }) {
   const from = sidePos(fromEnemy ? "foe" : "hero"), to = sidePos(fromEnemy ? "hero" : "foe");
   const feetTo = sidePos(fromEnemy ? "hero" : "foe", true);
   // Ground effects stand on the target's feet; spark and strike effects hit its body.
   const plan = planOf(planKey(element), tier);
   // sound on impact (sound_fx.js): after the projectile flight when the move throws something
-  const impact = Math.max(0, startAt - performance.now()) + (plan.find(step => step.travel)?.travel || 60);
+  const travel = plan.find(step => step.travel)?.travel || 60, wait = Math.max(0, startAt - performance.now()), impact = wait + travel;
+  window.VQSVSound?.play(element ? "charge" : "swing", { tier, delay: wait });              // the move leaves the caster
   window.VQSVSound?.play(planKey(element), { tier, delay: impact });
+  window.VQSVSound?.play("hit", { tier: crit ? 3 : tier, delay: impact + 20 });               // the target is struck
   if (crit) window.VQSVSound?.play("crit", { delay: impact + 80 });
   for (const step of plan) {
     add(step, from, to, startAt);
   }
   if (crit) add({ fx: "critHit", on: "target", at: (plan.find(step => step.travel)?.travel || 120) - 20, ms: 700 }, from, to, startAt);
-  if (!live.length) return;
+  const end = plan.reduce((last, step) => Math.max(last, (step.at || 0) + (step.ms || 800) / Math.max(.25, step.speed || 1)), travel);
+  return { impactAt: startAt + travel, endAt: startAt + end };
 }
 // A one-off event effect standing on one side's feet (EVENT_FX), e.g. a capture burst on the enemy or a parry on the attacker.
 const EVENT_SOUND = { miss: ["miss"], reflect: ["reflect"], drain: ["drain"], revive: ["revive"], captureHit: ["ballHit"], captureOk: ["caught"], captureFail: ["escape"],
@@ -302,7 +308,8 @@ function draw(ctx, now) {
 // The battle screen tells the module its size (canvas pixels) and where both pets stand (canvas pixels, feet).
 function setLayout({ width, height, foe, hero }) {
   const w = Math.max(16, Math.round(width / SCALE)), h = Math.max(16, Math.round(height / SCALE));
-  SIDE = { foe: { x: Math.round(foe.x / SCALE), feet: Math.round(foe.feet / SCALE) }, hero: { x: Math.round(hero.x / SCALE), feet: Math.round(hero.feet / SCALE) } };
+  const side = p => ({ x: Math.round(p.x / SCALE), feet: Math.round(p.feet / SCALE), ...(p.body ? { body: Math.round(p.body / SCALE) } : {}) });
+  SIDE = { foe: side(foe), hero: side(hero) };
   if (w === W && h === H) return;
   W = w; H = h; frame = createFrame(W, H); canvas = null; live.length = 0;
 }

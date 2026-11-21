@@ -184,7 +184,12 @@
       <section class="atlas-info"><h3>Lối đi</h3><div id="mapExits"></div><p id="routeHint" role="status"></p><button id="trackPlace" type="button">Chỉ đường</button><div class="map-legend"><span><b class="you"></b>Kael</span><span><b class="goal"></b>Mục tiêu</span><span id="herbLegend" hidden>▲ Thảo dược</span></div></section>
     </div>
     <div id="worldPage" class="atlas-page" hidden>
-      <div class="map-frame world-chart"><img src="assets/world/world_map_concept.png" alt="Lục địa Ryan, đại dương và các vùng đất trên trời"><div id="worldPins" aria-label="Các điểm trên bản đồ"></div></div>
+      <div class="world-viewport">
+        <button type="button" id="worldZoom" aria-pressed="false">Phóng to bản đồ</button>
+        <div id="worldScroll" tabindex="0" role="region" aria-label="Bản đồ thế giới cuộn được">
+          <div class="map-frame world-chart" id="worldChart"><img src="assets/world/world_map_expanded.webp" width="1536" height="1024" alt="Lục địa Ryan, các vùng đất trên trời và ba vùng biển mới"><div id="worldPins" aria-label="Các điểm trên bản đồ"></div></div>
+        </div>
+      </div>
       <section class="atlas-info"><label for="regionSelect">Địa danh</label><select id="regionSelect"></select><section id="worldRegionDetail" aria-live="polite"></section></section>
     </div>
     <footer class="softkeys"><button id="atlasSwitch" type="button"><i class="v5-icon crystal"></i><span>Thế giới</span></button><button id="closeWorldAtlas" type="button"><i class="v5-icon no"></i>Quay lại</button></footer>
@@ -1723,8 +1728,8 @@
     }
     function drawMap(depthY = null) {
       const m = assets.map;
-      if (m.source5 || m.illustration) {
-        const base = cachedImage(m.source5?.base || m.illustration);
+      if (m.source5 || m.fieldArt || m.illustration) {
+        const base = cachedImage(m.source5?.base || m.fieldArt || m.illustration);
         ctx.fillStyle = m.source5?.background || "#253c42"; ctx.fillRect(0, 0, m.width * S, m.height * S);
         if (base?.complete && base.naturalWidth) ctx.drawImage(base, 0, 0);
         return;
@@ -1875,7 +1880,11 @@
       return elder ? [{...elder, id: "elder", dialogue: [...lines, "Đi thôi, Kael. Đừng để Lôi Miêu đi một mình."]}, ...villagers] : villagers;
     }
     function nearbyHerb() { return assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.find(herb => !state.herbQuest.collected.includes(herb.id) && near(state.player, herb)) : null; }
-    function nearbyLink() { return (assets.map.links || []).find(link => near(state.player, link)); }
+    function nearbyLink() {
+      const links = assets.map.links || [];
+      return links.find(link => link.x === state.player.x && link.y === state.player.y)
+        || links.find(link => near(state.player, link));
+    }
     function nearbyNpc() {
       return villageNpcs().filter(npc => near(state.player, npc)).sort((a, b) =>
         (Math.abs(a.x - state.player.x) + Math.abs(a.y - state.player.y)) - (Math.abs(b.x - state.player.x) + Math.abs(b.y - state.player.y)))[0];
@@ -1947,10 +1956,10 @@
     function refreshFieldMap() {
       if (!assets.map) return;
       const herbs = assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.filter(herb => !state.herbQuest.collected.includes(herb.id)) : [];
-      const picture = assets.map.source5?.base || assets.map.illustration;
+      const picture = assets.map.source5?.base || assets.map.fieldArt || assets.map.illustration;
       const background = picture ? cachedImage(picture) : null;
       if (background && !background.complete) background.onload = () => {
-        if (assets.map.illustration === picture || assets.map.source5?.base === picture) refreshFieldMap();
+        if (cachedImage(assets.map.source5?.base || assets.map.fieldArt || assets.map.illustration) === background) refreshFieldMap();
       };
       window.drawFieldMap?.(assets.map, state.player, mapTarget(), herbs, assets.charts[assets.map.id] || (background?.complete && background.naturalWidth ? background : undefined));
       const button = document.getElementById("touchAction");
@@ -2975,7 +2984,7 @@
       const survey = save?.survey === undefined ? "unstarted" : save.survey;    // saves from before the survey quest still load
       const surveyValid = survey === "unstarted" || (save?.spokeToElder === true && ["active", "return", "done"].includes(survey));
       const savedMap = assets.maps?.[save?.mapId] || (save?.mapId === assets.map.id ? assets.map : null);
-      if (savedMap?.atlasRegion != null && save.atlasLayout == null && Number.isInteger(save.x) && save.x >= 0 && save.x < 24 && Number.isInteger(save.y) && save.y >= 0 && save.y < 18) {
+      if (savedMap?.atlasRegion != null && !savedMap.fieldArt && save.atlasLayout == null && Number.isInteger(save.x) && save.x >= 0 && save.x < 24 && Number.isInteger(save.y) && save.y >= 0 && save.y < 18) {
         Object.assign(save, savedMap.entities.player);
       }
       const originalMap = assets.map;

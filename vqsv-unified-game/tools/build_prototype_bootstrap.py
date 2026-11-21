@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from build_atlas_routes import attach_atlas_route
+from atlas_expansion import attach_atlas_expansion
 from atlas_wild import attach_atlas_wild
 
 
@@ -42,6 +43,8 @@ order = ["ryan-lakeside", "ryan-meadow", "ryan-highland", "ryan-canyon", "ryan-a
 wild_maps.sort(key=lambda m: order.index(m["id"]))
 atlas_maps = attach_atlas_route(prototype / "data", opening_map)
 atlas_maps = attach_atlas_wild(atlas_maps, vqsv6_stats, vqsv5_stats, pet_roster)
-payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map, *interiors, *wild_maps, *atlas_maps)}, "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects, "vqsv6Stats": vqsv6_stats, "vqsv5Stats": vqsv5_stats, "vqsv5Wild": vqsv5_wild}, ensure_ascii=False, separators=(",", ":"))
+expansion = json.loads((prototype / "data" / "atlas_expansion.json").read_text(encoding="utf-8"))
+frontier_maps = attach_atlas_expansion(expansion, [forest_map, *atlas_maps])
+payload = json.dumps({"map": opening_map, "maps": {m["id"]: m for m in (opening_map, forest_map, stream_map, *interiors, *wild_maps, *atlas_maps, *frontier_maps)}, "atlasRegions": expansion["regions"], "tileDefs": tile_defs, "petRoster": pet_roster, "vqsv5Animations": vqsv5_animations, "originalSkills": original_skills, "vqsv6Effects": vqsv6_effects, "vqsv6Stats": vqsv6_stats, "vqsv5Stats": vqsv5_stats, "vqsv5Wild": vqsv5_wild}, ensure_ascii=False, separators=(",", ":"))
 (prototype / "data" / "bootstrap.js").write_text(f"window.VQSVBootstrap = {payload};\n", encoding="utf-8")
 print("Wrote prototype/data/bootstrap.js")

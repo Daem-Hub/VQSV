@@ -91,7 +91,7 @@ assert.equal(run('state.player.inputDir'), null);
 console.log('Doors, interiors and walking through open borders passed.');
 
 // Walkable cells must connect every painted entrance to its exit and allow a return trip.
-const atlas = Object.values(maps).filter(map => map.illustration);
+const atlas = Object.values(maps).filter(map => map.illustration && map.source5);
 assert.equal(atlas.length, 29);
 function canReach(point) {
   const [x,y] = run('[state.player.x,state.player.y]');
@@ -132,4 +132,24 @@ for (const map of atlas) {
   }
   for(const picture of [map.source5.base,map.source5.overlay].filter(Boolean)) assert(fs.existsSync(path.join(root,picture)));
 }
-assert.equal(gateCount, 57 + 2 * 8);
+assert.equal(gateCount, 57 + 2 * 8 + 5);
+
+const frontier = Object.values(maps).filter(map => map.fieldArt);
+assert.equal(frontier.length, 6);
+for (const map of frontier) {
+  assert(map.width >= 48 && map.height >= 38);
+  assert(fs.existsSync(path.join(root,map.fieldArt)));
+  for (const gate of map.links) {
+    const previous = maps[gate.target], entrance = previous.links.find(link => link.target === map.id);
+    assert(entrance, map.id + ' has a reciprocal gate to ' + previous.id);
+    run(`assets.map=maps[${JSON.stringify(previous.id)}]; Object.assign(state.player,assets.map.entities.player)`);
+    assert(canReach(entrance), previous.id + ' can reach ' + map.id);
+    run(`travelTo(${JSON.stringify(map.id)})`);
+    assert.equal(run('assets.map.id'),map.id);
+    assert(!run('blocked(state.player.x,state.player.y)'));
+    for (const exit of map.links) assert(canReach(exit), map.id + ' can reach ' + exit.target);
+    run(`travelTo(${JSON.stringify(previous.id)})`);
+    assert.equal(run('assets.map.id'),previous.id);
+    assert(!run('blocked(state.player.x,state.player.y)'));
+  }
+}

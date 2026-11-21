@@ -22,9 +22,9 @@ let preferred;
 const window = {showLocalMap(id) { preferred = id; }};
 vm.runInNewContext(fs.readFileSync(path.join(root,'data/bootstrap.js'),'utf8'), {window});
 vm.runInNewContext(fs.readFileSync(path.join(root,'world_atlas.js'),'utf8'), {window,document});
-assert(fs.existsSync(path.join(root,'assets/world/world_map_concept.png')));
-assert.equal(els.worldPins.children.length,12);
-assert.equal(els.regionSelect.children.length,12);
+assert(fs.existsSync(path.join(root,'assets/world/world_map_expanded.webp')));
+assert.equal(els.worldPins.children.length,15);
+assert.equal(els.regionSelect.children.length,15);
 window.openWorldAtlas('village-apothecary');
 assert(els.worldAtlas.open && !els.localPage.hidden);
 els.worldTab.onclick();
@@ -40,7 +40,7 @@ assert.equal(els.worldRegionDetail.children[0].textContent,'Mặt Trăng Đỏ')
 assert.match(els.worldRegionDetail.children[1].textContent,/Có thể khám phá/);
 let scenes = 0;
 const previews = new Set();
-for (let i = 2; i < 12; i++) {
+for (let i = 2; i < 15; i++) {
   els.worldPins.children[i].listeners.click();
   const [, , , picker, image, action] = els.worldRegionDetail.children;
   for (const option of picker.children) {
@@ -54,8 +54,8 @@ for (let i = 2; i < 12; i++) {
   action.onclick();
   assert.equal(preferred, 'slice01-border-village');
 }
-assert.equal(scenes, 29);
+assert.equal(scenes, 35);
 assert.equal(previews.size, scenes);
 els.closeWorldAtlas.listeners.click();
 assert(!els.worldAtlas.open);
-console.log('World atlas: both views, 12 selectable pins, current interiors, first connecting exit and all 29 illustrated destinations passed.');
+console.log('World atlas: both views, 15 selectable pins, current interiors, first connecting exit and all 35 illustrated destinations passed.');

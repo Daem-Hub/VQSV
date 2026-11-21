@@ -1,4 +1,4 @@
-#worldAtlas { width:min(740px,calc(100vw - 24px)); }
+#worldAtlas { width:min(1040px,calc(100vw - 24px)); }
 .atlas-tabs { padding:8px 12px 0; }
 .atlas-page { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(175px,1fr); gap:12px; align-items:start; padding:12px; }
 .map-frame { position:relative; margin:0; border:2px solid #8cbed2; background:#193547; box-shadow:0 0 0 1px #0b2438; }
@@ -26,7 +26,13 @@
 #regionSelect { width:100%; min-height:38px; padding:4px 6px; border:1px solid #7da6bf; background:#102e46; color:#edf8ff; font:600 13px system-ui; }
 #worldRegionDetail h3 { margin:10px 0 1px; } #worldRegionDetail p { font-size:13px; margin:8px 0; } #worldRegionDetail small { display:block; }
 @media(max-width:570px) and (min-height:500px) { .atlas-page { grid-template-columns:1fr; gap:8px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-info { padding:0 2px; } }
-@media(max-height:500px) and (min-width:571px) { #worldAtlas { width:min(710px,calc(100vw - 24px)); } .atlas-page { padding:6px 10px; grid-template-columns:minmax(0,1.1fr) minmax(210px,1fr); } #localMap { max-height:48dvh; width:auto; max-width:100%; margin:auto; } #localPage .map-frame { width:fit-content; justify-self:center; max-width:100%; } .world-chart { max-width:300px; } #mapExits { grid-template-columns:1fr 1fr; } .atlas-tabs { padding:5px 10px 0; } }
+@media(max-height:500px) and (min-width:571px) { #worldAtlas { width:min(710px,calc(100vw - 24px)); } .atlas-page { padding:6px 10px; grid-template-columns:minmax(0,1.1fr) minmax(210px,1fr); } #localMap { max-height:48dvh; width:auto; max-width:100%; margin:auto; } #localPage .map-frame { width:fit-content; justify-self:center; max-width:100%; }  #mapExits { grid-template-columns:1fr 1fr; } .atlas-tabs { padding:5px 10px 0; } }
 
 #worldRegionDetail img { display:block; width:100%; max-height:20dvh; object-fit:contain; margin:5px auto; image-rendering:pixelated; }
 #worldRegionDetail select { width:100%; min-height:40px; }
+
+.world-viewport { min-width:0; }
+#worldScroll { overflow:auto; max-height:55dvh; overscroll-behavior:contain; }
+#worldZoom { min-height:44px; margin-bottom:5px; }
+.world-chart.zoomed { width:clamp(760px,150vw,1536px); }
+#worldPins button.world-pin { width:36px; height:36px; }

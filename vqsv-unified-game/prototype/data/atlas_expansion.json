@@ -1,0 +1,90 @@
+{
+  "regions": [
+    {"name": "Cao nguyên Ngọc Lục", "area": "Tây Hải", "position": [12, 26], "description": "Qua rừng bậc thang đến đài quan sát trên đảo phía tây."},
+    {"name": "Quần đảo San Hô Hồng", "area": "Đông Hải", "position": [89, 53], "description": "Cầu gỗ và bến nhỏ nối các đảo qua đầm nước san hô."},
+    {"name": "Bán đảo Đồng Đỏ", "area": "Nam Hải", "position": [25, 76], "description": "Đường đất uốn qua hẻm núi và các bậc đá dẫn tới phế tích đồng."}
+  ],
+  "scenes": [
+    {
+      "id": "jade-terraces", "title": "Rừng Bậc Thang Ngọc Lục", "region": 12,
+      "size": [52, 40], "theme": "jade", "landmark": ["grove", 34, 31],
+      "paths": [
+        {"kind": "road", "width": 4, "points": [[0, 30], [10, 30], [10, 20], [16, 14], [22, 14], [22, 6], [33, 6], [38, 11], [47, 11], [51, 7]]},
+        {"kind": "road", "width": 3, "points": [[10, 30], [22, 34], [34, 31], [37, 23], [31, 18], [22, 14]]},
+        {"kind": "road", "width": 3, "points": [[37, 23], [46, 22], [46, 12]]}
+      ],
+      "plazas": [[10, 20, 3], [31, 18, 3], [34, 31, 4]],
+      "gates": {"ryan-phong-loi-forest": [0, 30], "jade-observatory": [51, 7]}
+    },
+    {
+      "id": "jade-observatory", "title": "Đài Quan Sát Lục Bảo", "region": 12,
+      "size": [48, 42], "theme": "jade", "landmark": ["observatory", 27, 9],
+      "paths": [
+        {"kind": "road", "width": 4, "points": [[0, 34], [12, 34], [12, 27], [20, 22], [20, 13], [27, 9], [36, 9], [36, 3], [47, 3]]},
+        {"kind": "road", "width": 3, "points": [[12, 27], [8, 21], [8, 12], [14, 8], [27, 9]]},
+        {"kind": "road", "width": 3, "points": [[20, 22], [32, 23], [37, 19], [37, 15], [36, 9]]}
+      ],
+      "plazas": [[27, 9, 5], [8, 12, 3], [32, 23, 3]],
+      "gates": {"jade-terraces": [0, 34], "ice-pass": [47, 3]}
+    },
+    {
+      "id": "coral-lagoons", "title": "Đầm Phá San Hô Hồng", "region": 13,
+      "size": [56, 38], "theme": "coral", "landmark": ["pavilion", 31, 16],
+      "paths": [
+        {"kind": "road", "width": 5, "points": [[0, 28], [8, 28], [12, 23], [13, 18]]},
+        {"kind": "bridge", "width": 2, "points": [[13, 18], [24, 18]]},
+        {"kind": "road", "width": 5, "points": [[24, 18], [30, 18], [34, 13], [34, 8], [41, 8]]},
+        {"kind": "bridge", "width": 2, "points": [[41, 8], [49, 8]]},
+        {"kind": "road", "width": 5, "points": [[49, 8], [52, 8], [55, 5]]},
+        {"kind": "bridge", "width": 2, "points": [[30, 18], [30, 30], [18, 30], [17, 27], [12, 27]]}
+      ],
+      "plazas": [[8, 27, 5], [31, 16, 5], [34, 8, 4], [52, 8, 4]],
+      "gates": {"ryan-port": [0, 28], "island-docks": [55, 5]}
+    },
+    {
+      "id": "island-docks", "title": "Bến Vạn Đảo", "region": 13,
+      "size": [52, 42], "theme": "coral", "landmark": ["warehouse", 27, 29],
+      "paths": [
+        {"kind": "road", "width": 5, "points": [[0, 12], [8, 12], [12, 17]]},
+        {"kind": "bridge", "width": 2, "points": [[12, 17], [12, 29], [21, 29]]},
+        {"kind": "road", "width": 5, "points": [[21, 29], [27, 29], [31, 25], [35, 25]]},
+        {"kind": "bridge", "width": 2, "points": [[35, 25], [47, 25], [47, 40]]},
+        {"kind": "road", "width": 5, "points": [[47, 40], [51, 41]]},
+        {"kind": "bridge", "width": 2, "points": [[27, 29], [27, 13], [22, 8], [14, 8], [8, 12]]}
+      ],
+      "plazas": [[7, 13, 5], [23, 8, 4], [27, 29, 5], [46, 39, 4]],
+      "gates": {"coral-lagoons": [0, 12], "endless-sea": [51, 41]}
+    },
+    {
+      "id": "copper-gorge", "title": "Hẻm Sông Đồng Đỏ", "region": 14,
+      "size": [54, 44], "theme": "copper", "landmark": ["arch", 45, 31],
+      "paths": [
+        {"kind": "road", "width": 4, "points": [[7, 43], [7, 36], [12, 30], [21, 30], [27, 24], [27, 16], [36, 9], [45, 9], [47, 0]]},
+        {"kind": "road", "width": 3, "points": [[12, 30], [9, 24], [9, 17], [15, 13], [17, 13]]},
+        {"kind": "bridge", "width": 2, "points": [[17, 13], [27, 13], [31, 13]]},
+        {"kind": "road", "width": 3, "points": [[21, 30], [27, 37], [39, 37], [45, 31], [45, 25], [39, 21], [27, 24]]}
+      ],
+      "plazas": [[12, 30, 3], [45, 31, 4], [39, 21, 3]],
+      "gates": {"red-dunes": [7, 43], "copper-ruins": [47, 0]}
+    },
+    {
+      "id": "copper-ruins", "title": "Phế Tích Thành Đồng", "region": 14,
+      "size": [52, 42], "theme": "copper", "landmark": ["ruin", 28, 12],
+      "paths": [
+        {"kind": "road", "width": 4, "points": [[0, 34], [12, 34], [19, 27], [19, 18], [28, 12], [28, 6], [39, 6], [47, 14], [51, 14]]},
+        {"kind": "road", "width": 3, "points": [[12, 34], [12, 19], [19, 18], [12, 13], [12, 7], [19, 4], [28, 6]]},
+        {"kind": "road", "width": 3, "points": [[19, 27], [31, 33], [40, 31], [44, 25], [44, 16], [47, 14]]}
+      ],
+      "plazas": [[19, 27, 4], [28, 12, 5], [40, 31, 4]],
+      "gates": {"copper-gorge": [0, 34], "sand-canyon": [51, 14]}
+    }
+  ],
+  "connections": [
+    ["ryan-phong-loi-forest", [4, 16], "jade-terraces"],
+    ["ice-pass", [16, 20], "jade-observatory"],
+    ["ryan-port", [12, 20], "coral-lagoons"],
+    ["endless-sea", [10, 19], "island-docks"],
+    ["red-dunes", [5, 20], "copper-gorge"],
+    ["sand-canyon", [19, 22], "copper-ruins"]
+  ]
+}

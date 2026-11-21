@@ -15,7 +15,8 @@
     {name:'Miệng Núi Lửa Hắc Diệu',area:'Lục địa bay Aethelgard',description:'Qua cổng Aethelgard và miệng núi lửa để đến đấu trường trong pháo đài Boran.'},
     {name:'Tầng Mây Khởi Nguyên',area:'Lục địa bay Aethelgard',description:'Lối đá qua các đảo mây nối cung điện pha lê với điện gương.'},
     {name:'Cột Mốc Vọng Thiên',area:'Lục địa bay Aethelgard',description:'Điểm nối từ Aethelgard lên quỹ đạo trong đoạn cuối kịch bản.'},
-    {name:'Mặt Trăng Đỏ',area:'Không gian',description:'Từ quỹ đạo, băng qua vành đai bánh răng để đặt chân lên bề mặt Mặt Trăng Đỏ.'}
+    {name:'Mặt Trăng Đỏ',area:'Không gian',description:'Từ quỹ đạo, băng qua vành đai bánh răng để đặt chân lên bề mặt Mặt Trăng Đỏ.'},
+    ...(window.VQSVBootstrap.atlasRegions || [])
   ];
   for (const map of Object.values(window.VQSVBootstrap.maps)) {
     if (map.atlasRegion == null) continue;
@@ -24,7 +25,7 @@
   }
   window.atlasArea = regionIndex => regions[regionIndex]?.area;
   // Marker positions are proportions of the illustrated world, independent of screen size.
-  const positions = [[18,45],[21,21],[28,66],[41,19],[43,69],[42,39],[71,55],[77,81],[13,65],[78,17],[87,31],[94,8]];
+  const positions = [[32,36],[34,23],[40,49],[53,21],[60,35],[49,33],[70,44],[66,68],[71,17],[76,18],[81,24],[82,8]];
   let currentId, index = 0;
   function el(tag, text) {
     const node = document.createElement(tag);
@@ -87,10 +88,11 @@
   regions.forEach((region,i) => {
     const option = el('option',region.name);
     option.value = String(i); selector.append(option);
+    const [x,y] = region.position || positions[i];
     const pin = document.createElement('button');
     pin.type = 'button'; pin.className = 'world-pin'; pin.title = region.name;
     pin.setAttribute('aria-label',region.name);
-    pin.style.left = positions[i][0] + '%'; pin.style.top = positions[i][1] + '%';
+    pin.style.left = x + '%'; pin.style.top = y + '%';
     pin.addEventListener('click',() => select(i)); list.append(pin);
   });
   selector.addEventListener('change',() => select(Number(selector.value)));
@@ -99,6 +101,14 @@
     if (!d) return;
     e.preventDefault(); select((index + d + regions.length) % regions.length); list.children[index].focus();
   });
+  const zoom = byId('worldZoom'), chart = byId('worldChart');
+  zoom.onclick = () => {
+    const expanded = zoom.getAttribute('aria-pressed') !== 'true';
+    zoom.setAttribute('aria-pressed', String(expanded));
+    zoom.textContent = expanded ? 'Thu nhỏ bản đồ' : 'Phóng to bản đồ';
+    chart.classList.toggle('zoomed', expanded);
+    if (expanded) list.children[index].focus();
+  };
   byId('localTab').onclick = () => switchPage(false);
   byId('worldTab').onclick = () => switchPage(true);
   byId('atlasSwitch').onclick = () => switchPage(byId('worldPage').hidden);

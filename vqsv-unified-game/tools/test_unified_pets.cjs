@@ -20,8 +20,8 @@ assert.equal(run('elementMultiplier(b, a)'), -1);
 // Two VQSV5 pets keep only the source rule (+30% in adjustDamage5), not the VQSV6 chart on top.
 ctx.c = v5(3);
 assert.equal(run('elementMultiplier(c, b)'), 0);
-// Every atlas map has wild pets; the mixed pools follow the map's elements and both games appear.
-const atlas = Object.values(ctx.maps).filter(m => m.illustration);
+// Every main-route atlas map has wild pets; the mixed pools follow the map's elements and both games appear.
+const atlas = Object.values(ctx.maps).filter(m => m.illustration && m.source5);
 assert.equal(atlas.length, 29);
 let seen5 = 0, seen6 = 0;
 for (const map of atlas) {

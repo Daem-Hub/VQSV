@@ -31,7 +31,8 @@ const talkThrough = () => { for (let i = 0; i < 12 && run('state.mode') === 'dia
 const winBattle = () => {
   assert.equal(run('state.mode'), 'battle');
   run('state.battle.enemy.hp = 0; state.battle.pendingUntil = 1');
-  for (let i = 0; i < 6 && run('state.mode') === 'battle'; i++) { clock += 2000; run('state.battle.pendingUntil = state.battle.pendingUntil || 1; updateBattle(performance.now())'); }
+  // a level-up may offer a new skill first (the battle waits for that dialog); skip it
+  for (let i = 0; i < 8 && run('state.mode') === 'battle'; i++) { clock += 2000; while (run('learnDialog.open')) run('skipLearn()'); run('state.battle.pendingUntil = state.battle.pendingUntil || 1; updateBattle(performance.now())'); }
 };
 const spot = name => run(`(() => { const s = window.Quests.spots().get(${JSON.stringify(name)}); return JSON.parse(JSON.stringify(s)); })()`);
 // MQ001: Elden's talk starts it; the training dummy is a quest battle that never strikes back.
@@ -98,9 +99,69 @@ assert.equal(run('state.mode'), 'ending'); assert.equal(Q(), 'MQ009');
 run('interact()'); assert.equal(run('state.mode'), 'explore');
 // MQ009: the old shrine in the forest; the chain ends with the map of Ryan.
 nextTo('ryan-phong-loi-forest', spot('shrine')); run('interact()'); talkThrough();
-assert.equal(Q(), null); assert(run('window.Quests.state().items').includes('Bản Đồ Ryan'));
+assert.equal(Q(), 'MQ010'); assert(run('window.Quests.state().items').includes('Bản Đồ Ryan'));
 assert.match(run('objectiveEl.textContent'), /MQ010/);
+// ---- MQ010–MQ020 on the atlas maps ----
+const where = id => run(`JSON.parse(JSON.stringify(window.Quests.where(${JSON.stringify(id)})))`);
+const stand = p => { at(p.map, p.x, p.y); const ok = [[0, 1], [0, -1], [1, 0], [-1, 0]].find(([dx, dy]) => !run(`blocked(${p.x + dx}, ${p.y + dy})`)); at(p.map, p.x + ok[0], p.y + ok[1]); };
+const survive = () => { run('state.battle.turn = state.battle.quest.surviveTurns - 1; state.battle.pendingUntil = 1; state.battle.enemyActed = true; activePet().hp = activePet().max'); clock += 2000; run('updateBattle(performance.now())'); };
+// MQ010: the caravan leader, two ambushes in order, then the far end of the pass.
+let w = where('MQ010');
+stand(w.npc); run('interact()'); talkThrough();
+assert.match(run('objectiveEl.textContent'), /MQ010 · Đẩy lùi phục kích/);
+stand(w.spots[1]); assert.equal(run('window.Quests.actionLabel()'), '');            // ordered: the second ambush waits
+for (const sp of w.spots) { stand(sp); run('interact()'); if (run('state.mode') === 'battle') winBattle(); else talkThrough(); }
+assert.equal(Q(), 'MQ011');
+// MQ011: touch the ice pillar, break three seals.
+w = where('MQ011'); stand(w.start); run('interact()'); talkThrough();
+for (const sp of w.spots) { stand(sp); run('interact()'); winBattle(); }
+assert.equal(Q(), 'MQ012'); assert(run('window.Quests.state().items').includes('Băng Tinh Thạch'));
+// MQ012: calm the guardian; knocking it out fails, holding out five turns succeeds.
+w = where('MQ012'); stand(w.spots[0]); run('interact()'); winBattle();
+assert.equal(Q(), 'MQ012'); assert.match(run('statusEl.textContent'), /trấn an/);
+stand(w.spots[0]); run('interact()'); survive();
+assert.equal(Q(), 'MQ013');
+// MQ013: Jax, then the rock scorpion.
+w = where('MQ013'); stand(w.npc); run('interact()'); talkThrough();
+stand(w.spots[0]); run('interact()'); assert.equal(run('state.battle.enemy.name'), 'Bọ Cạp Nham Thạch'); winBattle();
+assert.equal(Q(), 'MQ014');
+// MQ014: the lava needs a Thủy pet in the backpack.
+w = where('MQ014'); run('window.VQSVPetTeam.setTeam([])'); stand(w.spots[0]); run('interact()');
+assert.equal(Q(), 'MQ014'); assert.match(run('statusEl.textContent'), /Thủy hệ/);
+run('window.VQSVPetTeam.recordCatch("vqsv6-db-58", 12, 2)'); run('interact()'); talkThrough();
+assert.equal(Q(), 'MQ015');
+// MQ015: knocking the dragon out fails; catching it completes.
+w = where('MQ015'); stand(w.spots[0]); run('interact()');
+assert.equal(run('state.battle.enemy.name'), 'Viêm Long Tí Nị'); assert(run('!!state.battle.wild'));
+winBattle(); assert.equal(Q(), 'MQ015');
+stand(w.spots[0]); run('interact()'); run('state.battle.captured = true; state.battle.pendingUntil = 1'); clock += 2000; run('updateBattle(performance.now())');
+assert.equal(Q(), 'MQ016');
+// MQ016: the veteran; cultist groups count two each; report back.
+w = where('MQ016'); stand(w.npc); run('interact()'); talkThrough();
+let cult = 0; for (let i = 0; i < 40; i++) if (run('rollWild("ryan-stormplain", 0)').questName === 'Nhóm Tín Đồ Ma Khống') cult++;
+assert(cult > 15, 'cultists appear on the storm plain');
+for (let i = 0; i < 5; i++) { run('startWildBattle({ petId: "vqsv6-db-94", area: "MQ016", level: 22, quality: 2, questName: "Nhóm Tín Đồ Ma Khống" })'); run('finishWild("win")'); }
+assert.equal(run('window.Quests.state().progress'), 10);
+stand(w.npc); run('interact()'); talkThrough();
+assert.equal(Q(), 'MQ017');
+// MQ017: four crystals on four pillars.
+for (const sp of where('MQ017').spots) { stand(sp); run('interact()'); talkThrough(); }
+assert.equal(Q(), 'MQ018'); assert(run('window.Quests.state().items').includes('Chìa Khóa Thiên Không'));
+// MQ018: beat the phantom; the ritual evolves Lôi Miêu when its form has a next stage.
+run('progress["loi-mieu"] = { ...(progress["loi-mieu"] || {}), level: 24, exp: 0 }; saveProgress()');
+const form0 = run('leadForm()');
+w = where('MQ018'); stand(w.spots[0]); run('interact()'); winBattle();
+assert.equal(Q(), 'MQ019'); assert.notEqual(run('leadForm()'), form0, 'Lôi Miêu evolved in the ritual');
+// MQ019: three waves at one spot.
+w = where('MQ019'); for (let i = 0; i < 3; i++) { stand(w.spots[0]); run('interact()'); winBattle(); }
+assert.equal(Q(), 'MQ020');
+// MQ020: the dark dragon; the chapter ends on its own scene.
+w = where('MQ020'); stand(w.spots[0]); run('interact()'); run('fleeBattle()'); assert.equal(run('state.mode'), 'battle'); winBattle();
+assert.equal(run('state.mode'), 'ending'); assert.equal(run('window.Quests.endingScene().heading'), 'ANH HÙNG RYAN');
+run('interact()'); assert.equal(run('state.mode'), 'explore');
+assert.equal(Q(), null); assert(run('window.Quests.state().items').includes('Bức thư của cha'));
+assert.match(run('objectiveEl.textContent'), /Chương 1 · Ryan đã hoàn thành/);
 // Saves carry the quest state; a reset starts over.
 at('slice01-border-village', elder.x, elder.y + 1); run('saveGame(); reset()');
 assert.equal(Q(), 'MQ001'); run('loadGame()'); assert.equal(Q(), null);
-console.log('Chapter 1: MQ001–MQ009 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');
+console.log('Chapter 1: MQ001–MQ020 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');

@@ -1365,7 +1365,7 @@
       const battle = state.battle;
       if (!battle) return {};
       const box = [DUEL.box || 114, DUEL.box || 112];
-      if (c === battle.enemy) return { image: trimmedSprite(battle.wild ? cachedImage(c.image || c.sequences?.[0]?.[0]?.image) : assets.pets?.enemy), box };
+      if (c === battle.enemy) return { image: trimmedSprite(battle.wild || (battle.quest && c.image) ? cachedImage(c.image || c.sequences?.[0]?.[0]?.image) : assets.pets?.enemy), box };
       if (c.kind === "lead" && !c.image) return { image: trimmedSprite(assets.pets?.hero), box };
       const frames = c.sequences?.[0];
       return { image: trimmedSprite(c.image ? cachedImage(c.image) : frames?.length ? cachedImage(frames[0].image) : null), box };
@@ -2409,7 +2409,7 @@
       // VQSV6 sprites face right and VQSV5 frames face left (the source game flips them for the player's side):
       // each pet is turned to face its opponent.
       const foeFrames = state.battle.wild && foe.v5 && foe.sequences?.[0]?.length ? foe.sequences[0] : null;
-      const foeImage = state.battle.wild ? cachedImage(foeFrames ? sequenceFrame(foeFrames, now).image : foe.image) : assets.pets.enemy;
+      const foeImage = state.battle.wild || (state.battle.quest && foe.image) ? cachedImage(foeFrames ? sequenceFrame(foeFrames, now).image : foe.image) : assets.pets.enemy;
       drawPosed(foePose, foePos, !foe.v5, () => drawFitted(foeImage, foePos.x - box / 2, foePos.feet - box + idle, box, box, enemyAlpha, foeFrames ? unionRect(foeFrames) : null));
       castGlow(foePose, foePos, box, foe);
       if (capturing) drawCaptureBall(sinceCapture, heroPos, foePos, box);
@@ -2428,7 +2428,7 @@
       }
       // opponent: plate top-left, % below it, HP under the pet
       const foeHp = shownHp(foe, now), petHp = shownHp(pet, now);
-      const foePlate = duelPlate(8, 8, 0, state.battle.wild ? foe.name : "Sủng vật tha hóa", foe.level, false);
+      const foePlate = duelPlate(8, 8, 0, state.battle.wild || state.battle.quest ? foe.name : "Sủng vật tha hóa", foe.level, false);
       duelPercent(8, 8 + foePlate.h + 6, Math.round(100 * foeHp / foe.max), false);
       drawStatuses(foe, 8, 8 + foePlate.h + 32);
       duelVitals(foePos.x, top.y + laneH - 16, foeHp, foe.max);
@@ -2662,6 +2662,7 @@
       state.battle = newBattle(); state.mode = "explore"; wildSteps = 0;
       statusEl.textContent = text;
       if (result === "win") window.Quests?.wildWon(enemy);
+      if (result === "caught") window.Quests?.wildCaught(enemy);
       updateGuidance();
     }
     function maybeEncounter() {
@@ -2733,6 +2734,19 @@
       updateGuidance();
     }
     function drawEnding() {
+      const scene = window.Quests?.endingScene?.();
+      if (scene) {          // the end of Chương 1 (quests.js)
+        drawMap();
+        ctx.fillStyle = "#101b"; roundRect(28, 55, 424, 246, 12, true);
+        ctx.strokeStyle = "#e2c87f"; roundRect(28, 55, 424, 246, 12, false);
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#f0d482"; ctx.font = "bold 19px system-ui"; ctx.fillText(scene.heading, 240, 112);
+        ctx.fillStyle = "#fff"; ctx.font = "13px system-ui"; scene.lines.forEach((line, i) => ctx.fillText(line, 240, 170 + i * 24));
+        ctx.fillStyle = "#c6d0dc"; ctx.font = "11px system-ui"; ctx.fillText(scene.hint, 240, 266);
+        ctx.textAlign = "left";
+        title(scene.title);
+        return;
+      }
       drawMap();
       drawCharacter(assets.chars.player, state.player.x, state.player.y, "player", state.player.faceX, state.player.faceY);
       ctx.fillStyle = "#101b"; roundRect(28, 55, 424, 246, 12, true);

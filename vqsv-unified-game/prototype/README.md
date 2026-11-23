@@ -185,7 +185,7 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
   - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
   - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.
 
-## Nhiệm vụ chính Chương 1 (MQ001–MQ009)
+## Nhiệm vụ chính Chương 1 (MQ001–MQ020)
 
 `quests.js` đưa 9 nhiệm vụ đầu của `DANH_SACH_NHIEM_VU.md` vào game. Nhiệm vụ làm lần lượt: xong nhiệm vụ này mới mở nhiệm vụ kế tiếp. Mục tiêu hiện ở thanh nhiệm vụ, nút hành động đổi chữ theo việc đang làm, và Nhật ký (phím J) liệt kê cả 9 nhiệm vụ kèm phần thưởng. Tiến độ được lưu cùng bản lưu game.
 
@@ -210,4 +210,22 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 - **Phần thưởng:** EXP cộng cho Lôi Miêu, vàng thành kim tiền. Các món chưa có trong game được thay bằng món gần nhất: Bình Thuốc Nhỏ → Khôi phục tề; Bột Thảo Mộc → Bánh Sandwich; Quả Cầu Bắt Thú → Phong ấn cầu; Giáp Da Tân Thủ → Quy Xác Toái Phiến; Phong Ấn Cầu Nguyên Tố → Đại sư cầu. La Bàn, Nhật Ký và Bản Đồ Ryan là vật phẩm cốt truyện, hiện trong Nhật ký.
 - **Trận nhiệm vụ:** thua thì không mất game; Kael được đưa về chỗ cũ để thử lại.
 - **Lôi Kích Trắng** (uy lực 320%, 3 lần dùng) chỉ có trong trận MQ008.
-- **Phần chưa làm:** từ MQ010 (Đèo Gió Bấc) trở đi.
+- **Phần còn lại của Chương 1 (MQ010–MQ020)** đặt trên các map Codex dựng ở phía nam làng. Mỗi nhiệm vụ được mô tả bằng dữ liệu trong `quests.js` (ai giao, việc cần làm, phần thưởng):
+
+| Mã | Map | Cách hoàn thành |
+| --- | --- | --- |
+| MQ010 | Đèo băng | Gặp Trưởng đoàn buôn, đẩy lùi 2 đợt phục kích theo thứ tự, đưa đoàn tới lối ra phía Hồ Băng. |
+| MQ011 | Hồ Băng Cổ Xưa | Chạm vào Băng Trụ Trấn Giữ, phá 3 phong ấn băng lam (mỗi phong ấn một trận). |
+| MQ012 | Hồ Băng Cổ Xưa | Trấn an Tuyết Y Linh Thú: cầm cự 5 lượt mà không hạ gục nó. Hạ gục là phải làm lại. |
+| MQ013 | Hẻm núi cát đỏ | Gặp Hướng dẫn viên Jax, đánh bại Bọ Cạp Nham Thạch. |
+| MQ014 | Hỏa Sơn Bất Diệt | Cần một sủng vật Thủy hệ trong ba lô để làm nguội dung nham (bảng ghi "hệ Băng"; VQSV6 không có hệ Băng). |
+| MQ015 | Hỏa Sơn Bất Diệt | Thu phục Viêm Long Tí Nị (Long bảo bối) bằng cầu bắt. Đánh ngất nó là phải làm lại. |
+| MQ016 | Đồng Bằng Sấm Sét | Gặp Tàn binh giáo phái, hạ 10 Tín Đồ Ma Khống (mỗi trận gặp một nhóm 2 tên), về báo tàn binh. |
+| MQ017 | Đường lên Tháp Thiên Không | Đặt 4 tinh thể Băng, Hỏa, Lôi, Phong vào 4 trụ đài. |
+| MQ018 | Các tầng Tháp Thiên Không | Thắng "Ảo ảnh thù hận"; nghi thức cho Lôi Miêu tiến hóa lên dạng kế tiếp (nghi thức tự cấp nguyên liệu, vẫn cần đủ cấp). Bảng gọi dạng này là "Cực Lôi Hoàng Hổ"; game dùng dạng tiến hóa có trong dữ liệu gốc. |
+| MQ019 | Đỉnh Tháp Thiên Không | Thắng 3 đợt hộ vệ giáo chủ tại cùng một chỗ. |
+| MQ020 | Đỉnh Tháp Thiên Không | Đánh bại Cổ Long Hắc Ám (Minh vương Long), nhận Bức thư của cha và danh hiệu Anh Hùng Ryan. Cảnh kết Chương 1. |
+
+  Quy ước chung cho các trận nhiệm vụ: trận boss không chạy trốn được; tên và hình đối thủ lấy từ dữ liệu pet VQSV6. Nền trận dùng địa hình của map; trận trong làng giữ cảnh đêm.
+- **Chọn mặc định (TRIAL):** cấp và độ trâu của từng đối thủ; các món thưởng được thay bằng món gần nhất đã có trong game (xem bảng thưởng trong Nhật ký); thứ tự vùng theo bảng nhiệm vụ: Hồ Băng trước rồi mới tới Hỏa Sơn. Bảng nhiệm vụ ghi điểm này "cần chốt".
+- **Phần chưa làm:** từ MQ021 (Chương 2) trở đi.

@@ -124,7 +124,9 @@ const PLANS = {
   dark: [
     [{ fx: "curse", on: "target", at: 0, ms: 1000, speed: 2.4 }, spark("dark", 300)],
     [{ fx: "curse", on: "target", at: 0, ms: 1100, speed: 2.4 }, ground("graspingHands", 250, 1100, 2.4), spark("dark", 500)],
-    [ground("shadowTendrils", 0, 1200, 2.2), ground("graspingHands", 250, 1100, 2.4), { fx: "curse", on: "target", at: 350, ms: 900, speed: 2.4 }, spark("dark", 550)],
+    // pixelfx's shadowTendrils can loop forever on some seeds (about one cast in fifteen froze the game), so the
+    // tier-3 dark move opens with an implosion on the target instead.
+    [{ fx: "implosion", on: "target", at: 0, ms: 1000, speed: 2.2 }, ground("graspingHands", 250, 1100, 2.4), { fx: "curse", on: "target", at: 350, ms: 900, speed: 2.4 }, spark("dark", 550)],
   ],
   wind: [
     [slash("swordSlash", 0, 600, 1.4, 36, { palette: RAMP.wind }), spark("wind", 120)],

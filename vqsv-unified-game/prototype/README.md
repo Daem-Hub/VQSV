@@ -259,3 +259,7 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 - **Vị trí điểm nhiệm vụ:** chỉ đặt ở ô Kael đi tới được từ lối vào map (tìm bằng loang từ các lối ra) và luôn có ô trống bên cạnh để đứng.
 - **Hội thoại:** lời thoại hiện trong khung riêng phía trên nút điều khiển, không vẽ trên canvas nữa, vì trên điện thoại dọc canvas bị cắt mất phần đáy.
 - **Phần chưa làm:** từ MQ043 (Chương 3 · Aethelgard và Boran) trở đi.
+
+## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
+
+Hiệu ứng `shadowTendrils` của pixelfx bị kẹt vòng lặp vô tận với một số seed ngẫu nhiên. Cứ khoảng 15 lần tung chiêu Quỷ hệ cấp 3 thì có 1 lần game đứng hình; test `test_skill_fx.cjs` cũng thỉnh thoảng bị treo vì lỗi này. Đã chạy thử mọi hiệu ứng pixelfx mà game dùng, mỗi hiệu ứng với hàng trăm seed: chỉ có hiệu ứng này treo thật. Chiêu Quỷ hệ cấp 3 giờ mở đầu bằng hiệu ứng `implosion` trên mục tiêu thay cho xúc tu. Thư viện pixelfx đã vendor được giữ nguyên, không sửa.

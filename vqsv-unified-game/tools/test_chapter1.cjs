@@ -159,9 +159,36 @@ assert.equal(Q(), 'MQ020');
 w = where('MQ020'); stand(w.spots[0]); run('interact()'); run('fleeBattle()'); assert.equal(run('state.mode'), 'battle'); winBattle();
 assert.equal(run('state.mode'), 'ending'); assert.equal(run('window.Quests.endingScene().heading'), 'ANH HÙNG RYAN');
 run('interact()'); assert.equal(run('state.mode'), 'explore');
-assert.equal(Q(), null); assert(run('window.Quests.state().items').includes('Bức thư của cha'));
-assert.match(run('objectiveEl.textContent'), /Chương 1 · Ryan đã hoàn thành/);
+assert.equal(Q(), 'MQ021'); assert(run('window.Quests.state().items').includes('Bức thư của cha'));
+// ---- Chương 2 · Hải Vực và Atlantis (MQ021–MQ042): every quest played with the same generic steps ----
+run('progress["loi-mieu"] = { ...(progress["loi-mieu"] || {}), level: 40, exp: 0 }; saveProgress()');
+const played = [];
+for (let guard = 0; guard < 40 && Q() && Q() !== null; guard++) {
+  const id = Q(), info = where(id);
+  played.push(id);
+  if (info.npc) { stand(info.npc); run('interact()'); talkThrough(); }
+  if (Q() !== id) continue;                                         // talk-only quests end on the first talk
+  if (info.start) { stand(info.start); run('interact()'); talkThrough(); }
+  for (const sp of info.spots) {
+    for (let wave = 0; wave < (sp.waves || 1); wave++) {
+      stand(sp); run('interact()');
+      if (run('state.mode') === 'battle') {
+        if (sp.capture) { run('state.battle.captured = true; state.battle.pendingUntil = 1'); clock += 2000; run('updateBattle(performance.now())'); }
+        else if (run('!!state.battle.quest?.surviveTurns')) survive();
+        else winBattle();
+      } else talkThrough();
+    }
+  }
+  if (Q() === id && info.npc) { stand(info.npc); run('interact()'); talkThrough(); }
+  if (run('state.mode') === 'ending') run('interact()');
+  assert.notEqual(Q(), id, `${id} completes`);
+}
+assert.equal(played[0], 'MQ021'); assert.equal(played.at(-1), 'MQ042'); assert.equal(played.length, 22);
+assert.equal(Q(), null);
+assert(run('window.Quests.state().items').includes('Tín Vật Tình Bạn Lyra'));
+assert(run('buildTeam()[0].skills.some(s => s.name === "Lôi Dực Khiêu Vũ")'), 'MQ031 gives Lôi Miêu its wing move');
+assert.match(run('objectiveEl.textContent'), /Chương 2 · Hải Vực và Atlantis đã hoàn thành/);
 // Saves carry the quest state; a reset starts over.
 at('slice01-border-village', elder.x, elder.y + 1); run('saveGame(); reset()');
 assert.equal(Q(), 'MQ001'); run('loadGame()'); assert.equal(Q(), null);
-console.log('Chapter 1: MQ001–MQ020 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');
+console.log('Chapters 1–2: MQ001–MQ042 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');

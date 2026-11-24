@@ -143,6 +143,7 @@
         <div id="joystick" role="group" aria-label="Joystick di chuyển"><i aria-hidden="true"></i></div>
         <button type="button" id="touchAction">Tương tác</button>
       </div>
+      <div id="speech" role="status" hidden><strong id="speaker"></strong><p id="line"></p><small class="speech-next">Chạm Tiếp tục hoặc nhấn E</small></div>
       <div id="status" role="status">Đang nạp dữ liệu…</div><p id="error" role="alert"></p>
       <button id="playAgain" type="button" hidden>Chơi lại</button>
   </main>
@@ -1066,6 +1067,7 @@
       const lead = { id: "loi-mieu", kind: "lead", name: "Lôi Miêu", ...vqsv6Combatant(form, leadProgress.level, leadProgress.quality, leadProgress.skills, leadProgress.item), portrait: formImage || "assets/pets/electric_cat_candidate.png", image: formImage || undefined, progressKey: "loi-mieu", exp: leadProgress.exp };
       if (formImage) cachedImage(formImage);
       lead.name = "Lôi Miêu";
+      for (const extra of window.Quests?.bonusSkills?.("loi-mieu") || []) if (!lead.skills.some(skill => skill.name === extra.name)) lead.skills = [...lead.skills, { ...extra }];
       lead.subtitle = evolved ? `CẤP ${lead.level} · ${STAT_BY_ID.get(form).name.toUpperCase()}` : `KAEL · CẤP ${lead.level} · ${lead.element.toUpperCase()}`;
       const reserves = (window.VQSVPetTeam?.ids() || []).filter(id => id !== form).map(reserveCombatant).filter(Boolean);
       // "Xuất chiến" (VQSV6 petsetting): the chosen pet opens the battle; the rest keep their backpack order.
@@ -2049,7 +2051,8 @@
       window.drawTrailGuide?.(ctx, S);
       const npc = nearbyNpc();
       const questLabel = window.Quests?.actionLabel();
-      if (questLabel) prompt(`E  ${questLabel}`);
+      if (state.mode === "dialogue") { /* the speech box is showing */ }
+      else if (questLabel) prompt(`E  ${questLabel}`);
       else if (npc) prompt(`E  ${npc.vendor ? "Mua đồ" : "Nói chuyện"} · ${npc.name}`);
       else if (surveyPoint() && near(state.player, surveyPoint())) prompt("E  Khảo sát cầu");
       else if (nearbyHerb()) prompt("E  Thu thập thảo dược");
@@ -2098,6 +2101,7 @@
     }
     function drawDialogue() {
       drawExplore();
+      if (document.getElementById("speech")?.classList) return;     // the speech box (village_ui.js) shows the line
       ctx.fillStyle = "#111d";
       roundRect(16, 264, 448, 84, 8, true);
       ctx.strokeStyle = "#e2c87f";

@@ -104,6 +104,107 @@
       task: { spots: [{ map: "tower-crown", frac: [.7, .35], label: "Đối đầu Cổ Long Hắc Ám", battle: { pet: "vqsv6-db-97", level: 26, name: "Cổ Long Hắc Ám", hpScale: 4, noFlee: true } }] },
       reward: { exp: 7500, story: ["Bức thư của cha", "Danh hiệu Anh Hùng Ryan"] }, rewardText: "7.500 EXP, Danh hiệu Anh Hùng Ryan, Bức thư của cha" },
   ];
+  // ---- Chương 2 · Hải Vực và Atlantis (MQ021–MQ042), on the sea maps of the atlas route. ----
+  const B = (pet, level, name, more = {}) => ({ pet, level, name, ...more });
+  const SAY = (who, ...lines) => [who, lines];
+  PART2.push(
+    { id: "MQ021", chapter: 2, title: "Lời Cảnh Báo Ngoài Đại Dương", place: "Bến cảng Ryan", giver: "Thuyền trưởng Drake",
+      text: "Thuyền trưởng Drake cần vật liệu để chiến thuyền vượt Hải Vực Vô Tận: 10 Gỗ Lim Thần (5 đống gỗ) và 5 Cánh Buồm Bão (kho buồm).",
+      npc: { id: "drake", name: "Thuyền trưởng Drake", map: "ryan-port", near: "tower-crown",
+        offer: ["Muốn ra khơi à? Hải Vực Vô Tận nuốt chửng thuyền thường đấy.", "Gom cho ta Gỗ Lim Thần ở năm đống gỗ quanh bến và Cánh Buồm Bão trong kho."], wait: ["Thiếu gỗ thì thân tàu không chịu nổi sóng."], done: ["Đủ cả rồi! Chiến Thuyền Viễn Chinh sẵn sàng."] },
+      task: { report: true, spots: [[.2, .3], [.8, .3], [.3, .6], [.7, .6], [.5, .8]].map(frac => ({ map: "ryan-port", frac, label: "Nhặt 2 Gỗ Lim Thần" }))
+        .concat([{ map: "ryan-port", frac: [.5, .45], label: "Lấy 5 Cánh Buồm Bão trong kho" }]) },
+      reward: { exp: 8200, story: ["Chiến Thuyền Viễn Chinh"] }, rewardText: "8.200 EXP, Chiến Thuyền Viễn Chinh" },
+    { id: "MQ022", chapter: 2, title: "Làn Nước Tím Ma Quái", place: "Hải Vực Vô Tận", giver: "Thủy thủ đoàn",
+      text: "Nước biển đổi màu huỳnh quang. Lấy 3 mẫu nước nhiễm Hư Không Tinh Thể.",
+      npc: { id: "sailor", name: "Thủy thủ đoàn", map: "endless-sea", near: "ryan-port", offer: ["Thuyền trưởng ơi, nước đang phát sáng tím!", "Lấy mẫu ở ba chỗ nước sáng nhất giúp bọn tôi."], wait: ["Cẩn thận, nước đó lạnh buốt."] },
+      task: { spots: [[.3, .3], [.7, .45], [.4, .7]].map(frac => ({ map: "endless-sea", frac, label: "Lấy mẫu nước tím" })) },
+      reward: { exp: 9000, relic: 9 }, rewardText: "9.000 EXP, Cá Thờn Bơn (thay cho Kính Thủy Tinh Lọc)" },
+    { id: "MQ023", chapter: 2, title: "Cơn Thịnh Nộ Thủy Quái Cơ Khí", place: "Vùng Biển Chết", giver: "Cá mập cơ khí đột biến",
+      text: "Quái vật nửa sống nửa máy tấn công chiến thuyền. Đánh chìm 2 Thủy Quái Bọc Thép.",
+      task: { spots: [[.25, .55], [.75, .75]].map(frac => ({ map: "endless-sea", frac, label: "Đánh Thủy Quái Bọc Thép", battle: B("vqsv6-db-71", 28, "Thủy Quái Bọc Thép", { hpScale: 2 }) })) },
+      reward: { exp: 10000, stones: { 13: 1 }, story: ["Mảnh Hợp Kim Biển"] }, rewardText: "10.000 EXP, Mảnh Hợp Kim Biển (thêm 1 Thiên Giới Tinh Thạch)" },
+    { id: "MQ024", chapter: 2, title: "Lốc Xoáy Lôi Đình Cuốn Phăng", place: "Vòng xoáy lôi đình", giver: "Bão tố biển sâu",
+      text: "Lốc xoáy lôi đình cuốn tàu. Lái thuyền né 3 cột sóng xoáy theo đúng thứ tự.",
+      task: { ordered: true, spots: [[.3, .35], [.6, .55], [.4, .8]].map((frac, i) => ({ map: "thunder-whirlpool", frac, label: `Né cột sóng xoáy ${i + 1}`, say: SAY("Bánh lái", ["Bẻ lái sang trái!", "Giữ chặt buồm!", "Lao qua khe sóng!"][i]) })) },
+      reward: { exp: 11200, gold: 2500 }, rewardText: "11.200 EXP, 2.500 kim tiền" },
+    { id: "MQ025", chapter: 2, title: "Vương Quốc Chìm Atlantis", place: "Cổng San Hô Atlantis", giver: "Lính gác Hải Tộc",
+      text: "Tỉnh dậy dưới đáy biển. Thuyết phục Hải Tộc rằng Kael không phải kẻ xâm lăng: đặt lại vũ khí trước cổng rồi nói chuyện với lính gác.",
+      npc: { id: "seaguard", name: "Lính gác Hải Tộc", map: "atlantis", near: "thunder-whirlpool", offer: ["Dừng lại, kẻ trên cạn!", "Muốn vào Atlantis thì đặt vũ khí ở cột đá kia."], wait: ["Vũ khí của ngươi đâu?"], done: ["Ngươi không mang ý xâm lăng… Được, vào đi."] },
+      task: { report: true, spots: [{ map: "atlantis", frac: [.4, .3], label: "Đặt vũ khí ở cột đá", say: SAY("Cột đá", "Kael đặt vũ khí xuống. Lôi Miêu ngồi yên bên cạnh.") }] },
+      reward: { exp: 12500, items: { 10: 3 } }, rewardText: "12.500 EXP, 3 Vạn năng dược (thay cho Thuốc Thở Dưới Nước)" },
+    { id: "MQ026", chapter: 2, title: "Gặp Gỡ Nàng Lyra", place: "Cung điện San Hô", giver: "Lyra (Bán Nhân Ngư)",
+      text: "Gặp Lyra, nữ hộ vệ của quả trứng Thương Hải Thần Cự Kình, và nhận lời ủy thác của nàng.",
+      npc: { id: "lyra", name: "Lyra", map: "atlantis", frac: [.6, .5], offer: ["Ta là Lyra, hộ vệ của quả trứng Thần Cự Kình.", "Quân đoàn cơ giới đang săn nó. Ngươi… sẽ giúp ta bảo vệ nó chứ?"] },
+      task: { talkOnly: true }, reward: { exp: 14000, relic: 8 }, rewardText: "14.000 EXP, Hấp Huyết Đằng Mạn (thay cho Vòng Tay San Hô)" },
+    { id: "MQ027", chapter: 2, title: "Tập Kích Của Quân Đoàn Cơ Giới", place: "Vườn ươm Cự Kình", giver: "Tiểu đội thiết giáp",
+      text: "Quân đoàn cơ giới đột kích để cướp quả trứng. Bảo vệ Lyra và quả trứng: cầm cự 6 lượt.",
+      task: { spots: [{ map: "atlantis", frac: [.55, .75], label: "Bảo vệ quả trứng", battle: B("vqsv6-db-83", 32, "Tiểu đội thiết giáp", { hpScale: 3, survive: 6, noFlee: true }) }] },
+      reward: { exp: 15800, relic: 2 }, rewardText: "15.800 EXP, Quy Xác Toái Phiến (thay cho Khiên Nước Atlantis)" },
+    { id: "MQ028", chapter: 2, title: "Sự Thật Về Người Cha Hiến Tế", place: "Đền tưởng niệm biển", giver: "Lyra",
+      text: "Lyra kể rằng cha Kael đã hiến mình làm vật tế phong ấn mười năm trước. Tìm phiến đá ký ức của cha.",
+      task: { spots: [{ map: "atlantis", frac: [.25, .7], label: "Chạm phiến đá ký ức", say: SAY("Phiến đá ký ức", "Giọng cha vang lên: \"Kael… nếu con nghe được, hãy chăm sóc Lôi Miêu.\"", "\"Cha phải ở lại giữ phong ấn. Đừng trách mẹ con.\"") }] },
+      reward: { exp: 17800, story: ["Mảnh Ký Ức Lam"] }, rewardText: "17.800 EXP, Mảnh Ký Ức Lam" },
+    { id: "MQ029", chapter: 2, title: "Âm Mưu Của Tiến Sĩ Vane", place: "Phòng thí nghiệm đáy biển", giver: "Băng ghi âm cổ",
+      text: "Băng ghi âm lộ dã tâm cấy linh hồn sủng vật vào cỗ máy. Vượt qua 3 bẫy điện tử theo thứ tự.",
+      task: { ordered: true, spots: [[.3, .3], [.6, .45], [.8, .7]].map(frac => ({ map: "coral-grotto", frac, label: "Phá bẫy điện tử", battle: B("vqsv6-db-82", 34, "Bẫy điện tử") })) },
+      reward: { exp: 20000, story: ["Lõi Vi Mạch Cổ"] }, rewardText: "20.000 EXP, Lõi Vi Mạch Cổ" },
+    { id: "MQ030", chapter: 2, title: "Thử Thách San Hô Lân Quang", place: "Hang San Hô sâu", giver: "Ảo cảnh nỗi sợ",
+      text: "Ảo ảnh ngày làng cháy hiện về. Vượt qua nó mà không dùng bạo lực: cầm cự 5 lượt, không hạ gục ảo ảnh.",
+      task: { spots: [{ map: "coral-grotto", frac: [.5, .8], label: "Đối mặt ảo cảnh", battle: B("vqsv6-db-96", 35, "Ảo cảnh nỗi sợ", { hpScale: 3, survive: 5, mercy: true, noFlee: true }) }] },
+      reward: { exp: 22500, story: ["Ngọc Lân Quang"] }, rewardText: "22.500 EXP, Ngọc Lân Quang" },
+    { id: "MQ031", chapter: 2, title: "Vết Sẹo Là Sức Mạnh", place: "Đài Tinh Thần Lôi Đình", giver: "Lôi Miêu",
+      text: "Lôi Miêu chấp nhận vết sẹo của mình. Đưa nó lên đài lôi đình để đánh thức đôi cánh sấm sét.",
+      task: { spots: [{ map: "thunder-whirlpool", frac: [.7, .25], label: "Bước lên đài lôi đình", say: SAY("Lôi Miêu", "Sét giáng xuống đài. Vết sẹo trên tai Lôi Miêu sáng rực.", "Đôi cánh sấm sét kim sắc bung ra!") }] },
+      reward: { exp: 25500, story: ["Lôi Dực Khiêu Vũ"] }, rewardText: "25.500 EXP, kỹ năng Lôi Dực Khiêu Vũ cho Lôi Miêu" },
+    { id: "MQ032", chapter: 2, title: "Lạc Vào Nghĩa Địa Chiến Thuyền", place: "Nghĩa Địa Chiến Thuyền", giver: "Xác tàu cổ",
+      text: "Tìm lối xuống Vực Thẳm: đánh lui oan hồn canh xác tàu rồi tìm la bàn áp suất trong buồng hạm trưởng.",
+      task: { ordered: true, spots: [
+        { map: "wreck-graveyard", frac: [.4, .4], label: "Đánh lui oan hồn", battle: B("vqsv6-db-93", 37, "Oan hồn xác tàu") },
+        { map: "wreck-graveyard", frac: [.65, .7], label: "Lục buồng hạm trưởng", say: SAY("Buồng hạm trưởng", "Dưới tấm hải đồ mục là chiếc la bàn áp suất vẫn còn chạy.") }] },
+      reward: { exp: 29000, story: ["La Bàn Áp Suất"] }, rewardText: "29.000 EXP, La Bàn Áp Suất" },
+    { id: "MQ033", chapter: 2, title: "U Linh Sa Ngư Lạc Lối", place: "Vùng tối thủy triều", giver: "U Linh Sa Ngư",
+      text: "Một linh thể từng bị thí nghiệm tàn nhẫn đang lạc lối. Thuần hóa U Linh Sa Ngư: đánh nhẹ tay rồi dùng cầu bắt.",
+      task: { spots: [{ map: "wreck-graveyard", frac: [.25, .75], label: "Tiếp cận U Linh Sa Ngư", battle: B("vqsv6-db-70", 38, "U Linh Sa Ngư", { capture: true }) }] },
+      reward: { exp: 33000 }, rewardText: "33.000 EXP, U Linh Sa Ngư gia nhập đội" },
+    { id: "MQ034", chapter: 2, title: "Bẻ Khóa Trạm Quan Sát Ngầm", place: "Cửa Vực Sâu Vane", giver: "Cơ chế khóa sinh học",
+      text: "Các tháp phát sóng làm nhiễu tâm trí sủng vật. Vô hiệu hóa 3 trạm phát sóng cơ giới.",
+      task: { spots: [[.2, .25], [.5, .2], [.8, .25]].map(frac => ({ map: "ocean-abyss", frac, label: "Phá trạm phát sóng", battle: B("vqsv6-db-84", 39, "Trạm phát sóng cơ giới", { hpScale: 2 }) })) },
+      reward: { exp: 37500, story: ["Thẻ Truy Cập Hư Vô"] }, rewardText: "37.500 EXP, Thẻ Truy Cập Hư Vô" },
+    { id: "MQ035", chapter: 2, title: "Đường Xuống Vực Thẳm Tận Cùng", place: "Vực áp suất cực hạn", giver: "Lyra",
+      text: "Lyra dùng Thương Hải Chi Lệ tạo màng bong bóng chịu áp suất. Dẫn cả nhóm vượt 3 khe đá nứt theo thứ tự.",
+      task: { ordered: true, spots: [[.3, .4], [.55, .5], [.35, .6]].map((frac, i) => ({ map: "ocean-abyss", frac, label: `Vượt khe đá nứt ${i + 1}`, say: SAY("Lyra", ["Giữ sát nhau, bong bóng mỏng lắm!", "Áp suất tăng… cố lên!", "Qua rồi! Phía dưới là căn cứ của Vane."][i]) })) },
+      reward: { exp: 42500, relic: 2 }, rewardText: "42.500 EXP, Quy Xác Toái Phiến (thay cho Áo Giáp Lặn Thần)" },
+    { id: "MQ036", chapter: 2, title: "Hình Bóng Trong Lồng Kính", place: "Trung tâm thí nghiệm Vane", giver: "Cha Kael (bị giam cầm)",
+      text: "Cha Kael bị gắn vào cỗ máy hình nhện rút năng lượng. Đánh bại hộ vệ người máy canh phòng giam.",
+      task: { spots: [{ map: "ocean-abyss", frac: [.7, .45], label: "Đánh hộ vệ người máy", battle: B("vqsv6-db-85", 41, "Hộ vệ người máy", { hpScale: 3, noFlee: true }) }] },
+      reward: { exp: 48000, story: ["Chìa Khóa Lồng Kính"] }, rewardText: "48.000 EXP, Chìa Khóa Lồng Kính" },
+    { id: "MQ037", chapter: 2, title: "Kỷ Nguyên Thần Thú Cơ Khí?", place: "Sàn đấu lõi Vực Thẳm", giver: "Tiến sĩ Vane",
+      text: "Tiến sĩ Vane tuyên bố về sự bất tử của máy móc. Đập tan 2 cánh tay robot khổng lồ bảo vệ bục.",
+      task: { spots: [[.2, .7], [.8, .7]].map(frac => ({ map: "ocean-abyss", frac, label: "Đập cánh tay robot", battle: B("vqsv6-db-81", 42, "Cánh tay robot", { hpScale: 2, noFlee: true }) })) },
+      reward: { exp: 54000, stones: { 14: 1 } }, rewardText: "54.000 EXP, Thiên Địa Thần Thạch (thay cho Mảnh Thép Titan)" },
+    { id: "MQ038", chapter: 2, title: "Cơ Giới Thần Long Xuất Thế", place: "Lõi Vực Thẳm", giver: "Cơ Giới Thần Long Hư Không",
+      text: "Cơ Giới Thần Long hấp thụ mọi nguyên tố. Phá hủy 4 bộ hấp thụ năng lượng ở bốn góc.",
+      task: { spots: [[.12, .12], [.88, .12], [.12, .88], [.88, .88]].map(frac => ({ map: "ocean-abyss", frac, label: "Phá bộ hấp thụ năng lượng", battle: B("vqsv6-db-80", 43, "Bộ hấp thụ năng lượng") })) },
+      reward: { exp: 61000, relic: 3 }, rewardText: "61.000 EXP, Ô Nha Uế (thay cho Tinh Thể Kháng Nguyên Tố)" },
+    { id: "MQ039", chapter: 2, title: "Giai Điệu Ru Thơ Ấu", place: "Lõi cỗ máy", giver: "Chiếc la bàn đồng",
+      text: "Kael nghe tiếng cha hát ru. Kích hoạt khúc nhạc tuổi thơ qua la bàn cổ để đánh thức linh hồn rồng.",
+      task: { spots: [{ map: "ocean-abyss", frac: [.5, .35], label: "Mở khúc nhạc qua la bàn", say: SAY("La bàn đồng", "Kim la bàn quay tròn, phát ra khúc hát ru cha từng hát.", "Sâu trong lớp vỏ sắt, một linh hồn rồng khẽ cựa mình.") }] },
+      reward: { exp: 69000, story: ["Kỷ Vật Gia Đình Cấp 2"] }, rewardText: "69.000 EXP, Kỷ Vật Gia Đình Cấp 2" },
+    { id: "MQ040", chapter: 2, title: "Xé Toạc Lớp Vỏ Sắt", place: "Lưng Cự Long", giver: "Lõi sinh học Thần Long",
+      text: "Buông vũ khí, dùng năng lượng thanh tẩy giải thoát linh hồn rồng: cầm cự 6 lượt mà không hạ gục nó.",
+      task: { spots: [{ map: "ocean-abyss", frac: [.5, .6], label: "Thanh tẩy linh hồn rồng", battle: B("vqsv6-db-108", 44, "Cơ Giới Thần Long", { hpScale: 4, survive: 6, mercy: true, noFlee: true }) }] },
+      reward: { exp: 78000, story: ["Long Lân Bạc"] }, rewardText: "78.000 EXP, Long Lân Bạc" },
+    { id: "MQ041", chapter: 2, title: "Sụp Đổ Dưới Đáy Biển", place: "Căn cứ sụp đổ", giver: "Tiến sĩ Vane & Vực Sâu",
+      text: "Căn cứ nổ tung. Dìu cha Kael chạy qua 3 hành lang sụp đổ theo thứ tự.",
+      task: { ordered: true, spots: [[.5, .45], [.35, .3], [.2, .15]].map((frac, i) => ({ map: "ocean-abyss", frac, label: `Chạy qua hành lang ${i + 1}`, say: SAY("Cha Kael", ["Đừng bỏ ta lại… à không, đi đi Kael!", "Trần sắp sập rồi!", "Ánh sáng phía trên kìa!"][i]) })) },
+      reward: { exp: 88000, relic: 10 }, rewardText: "88.000 EXP, Cảm Lãm Chi Diệp (thay cho Nhẫn Bảo Vệ Biển Sâu)" },
+    { id: "MQ042", chapter: 2, title: "Thương Hải Cự Kình Tái Sinh", place: "Mặt nước đại dương", giver: "Thần Cự Kình (mới nở)",
+      text: "Trứng cự kình nở, đưa cả nhóm trồi lên mặt biển. Xem cảnh cha con đoàn tụ.",
+      task: { spots: [{ map: "atlantis", frac: [.55, .75], label: "Đến bên quả trứng", say: SAY("Thần Cự Kình", "Vỏ trứng nứt, một chú cá voi ánh bạc cất tiếng ca.", "Nó cõng cả nhóm vút lên mặt biển. Cha ôm chặt Kael; Lyra mỉm cười.") }] },
+      reward: { exp: 100000, story: ["Tín Vật Tình Bạn Lyra"] }, rewardText: "100.000 EXP, Tín Vật Tình Bạn Lyra" },
+  );
+  NPC_ART.drake = "scout"; NPC_ART.sailor = "villager"; NPC_ART.seaguard = "villager"; NPC_ART.lyra = "herbalist";
   const byIdP2 = new Map(PART2.map(def => [def.id, def]));
   const p2 = () => byIdP2.get(current()?.id) || null;
   // Where a spot or NPC stands: next to the exit toward `near` (two cells inward) or at a fraction of the map.
@@ -113,7 +214,7 @@
     const map = assets.maps?.[def.map];
     if (!map) return null;
     let x = map.width * (def.frac?.[0] ?? .5), y = map.height * (def.frac?.[1] ?? .5);
-    const link = def.near && (map.links || []).find(l => l.target === def.near);
+    const link = def.near && !def.frac && (map.links || []).find(l => l.target === def.near);
     if (link) { const cx = map.width / 2, cy = map.height / 2; x = link.x + Math.sign(cx - link.x) * 2; y = link.y + Math.sign(cy - link.y) * 2; }
     const taken = [...placeCache.entries()].filter(([k]) => k.startsWith(def.map + ":")).map(([, v]) => v);
     const at = nearFree(map, x, y, taken);
@@ -162,7 +263,7 @@
       player.inputDir = null; player.step = null; player.visualX = player.x; player.visualY = player.y;
       state.battle = newBattle({ petId: b.pet, area: def.id, level: b.level, quality: 3, questName: b.name });
       state.battle.quest = { id: def.id, spot: s.i, capture: true };
-      state.battle.message = `${b.name} kêu yếu ớt giữa dung nham. Hãy thu phục nó!`;
+      state.battle.message = `${b.name} xuất hiện. Đánh nhẹ tay rồi dùng cầu bắt để thu phục nó!`;
       state.mode = "battle"; window.VQSVSound?.play("encounter"); updateGuidance();
       return;
     }
@@ -174,8 +275,8 @@
     const def = byIdP2.get(info.id);
     const raw = def?.task.spots?.[info.spot], s = raw && { ...raw, i: info.spot };
     if (!def || !s) return false;
-    if (info.mercy && enemyDown) { statusEl.textContent = "Tuyết Y Linh Thú gục ngã… Phải trấn an chứ không hạ gục. Thử lại."; return true; }
-    if (info.capture) { statusEl.textContent = "Viêm Long Tí Nị ngất đi. Thử lại và dùng cầu bắt khi nó còn máu."; return true; }
+    if (info.mercy && enemyDown) { statusEl.textContent = `${s.battle.name} gục ngã… Phải trấn an chứ không hạ gục. Thử lại.`; return true; }
+    if (info.capture) { statusEl.textContent = `${s.battle.name} ngất đi. Thử lại và dùng cầu bắt khi nó còn máu.`; return true; }
     if (info.ritual) ritualEvolve();
     markSpot(def, s);
     return true;
@@ -191,6 +292,7 @@
   function finishP2(def) {
     complete();
     if (def.id === "MQ020") { state.mode = "ending"; endingCard = "chapter1"; }
+    if (def.id === "MQ042") { state.mode = "ending"; endingCard = "chapter2"; }
     updateGuidance();
   }
   let endingCard = null;
@@ -208,6 +310,7 @@
   function p2Talked(npc) {
     const def = p2();
     if (!def?.npc || npc.questTalk !== def.npc.id) return false;
+    if (def.task.talkOnly) { finishP2(def); return true; }
     if (!q.started) { q.started = true; save(); statusEl.textContent = `Nhiệm vụ chính · ${def.id} ${def.title}`; return true; }
     const need = def.task.wild?.count || def.task.spots?.length || 0;
     if (def.task.report && q.progress >= need) finishP2(def);
@@ -227,6 +330,7 @@
   function p2Objective(def) {
     if (!q.started) return def.npc ? `${def.id} · Gặp ${def.npc.name} ở ${assets.maps?.[def.npc.map]?.title || def.place}` : def.start ? `${def.id} · Đến ${def.place} tìm ${def.giver}` : `${def.id} · ${def.text}`;
     if (def.task.wild) return q.progress >= def.task.wild.count ? `${def.id} · Về báo ${def.npc.name}` : `${def.id} · Hạ Tín Đồ Ma Khống trên ${assets.maps?.[def.task.wild.map]?.title} (${q.progress}/${def.task.wild.count})`;
+    if (def.task.report && q.progress >= (def.task.spots?.length || 0)) return `${def.id} · Về báo ${def.npc.name}`;
     const spotsList = p2Spots(def), s = def.task.ordered ? spotsList[q.marks.length] : spotsList.find(x => x.waves ? q.progress < x.waves : !q.marks.includes(x.i));
     const total = spotsList[0]?.waves || spotsList.length, n = total > 1 ? ` (${Math.min(q.progress, total)}/${total})` : "";
     return `${def.id} · ${s ? s.label : def.title} · ${assets.maps?.[s?.map]?.title || def.place}${n}`;
@@ -265,13 +369,33 @@
     placing++;
     try { return nearFreeCore(map, x, y, taken); } finally { placing--; }
   }
+  // Cells Kael can walk to from the map's exits (flood fill), so no spot ends up on an island or behind a wall.
+  const reachCache = new Map();
+  function reachable(map) {
+    if (reachCache.has(map.id)) return reachCache.get(map.id);
+    const open = (x, y) => x >= 0 && y >= 0 && x < map.width && y < map.height && !withMap(map, () => blocked(x, y));
+    const seen = new Set(), queue = [];
+    for (const link of map.links || []) for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) if (open(link.x + dx, link.y + dy)) queue.push([link.x + dx, link.y + dy]);
+    if (map.entities?.player) queue.push([map.entities.player.x, map.entities.player.y]);
+    while (queue.length) {
+      const [x, y] = queue.pop(), key = x + "," + y;
+      if (seen.has(key) || !open(x, y)) continue;
+      seen.add(key);
+      queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+    }
+    reachCache.set(map.id, seen);
+    return seen;
+  }
   function nearFreeCore(map, x, y, taken) {
+    const reach = reachable(map);
+    // a spot must be reachable and leave a reachable neighbour cell to stand on
+    const usable = (cx, cy) => reach.has(cx + "," + cy) && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => reach.has((cx + dx) + "," + (cy + dy)) && !taken.some(t => t.x === cx + dx && t.y === cy + dy));
     const seen = new Set(), queue = [[Math.round(x), Math.round(y)]];
     while (queue.length) {
       const [cx, cy] = queue.shift(), key = cx + "," + cy;
       if (seen.has(key) || cx < 0 || cy < 0 || cx >= map.width || cy >= map.height) continue;
       seen.add(key);
-      if (free(map, cx, cy) && !taken.some(t => t.x === cx && t.y === cy)) return { x: cx, y: cy };
+      if (free(map, cx, cy) && (!reach.size || usable(cx, cy)) && !taken.some(t => t.x === cx && t.y === cy)) return { x: cx, y: cy };
       queue.push([cx + 1, cy], [cx - 1, cy], [cx, cy + 1], [cx, cy - 1]);
       if (seen.size > 4000) break;
     }
@@ -512,7 +636,7 @@
   // ---- what the screen shows ----
   function objective() {
     const quest = current();
-    if (!quest) return "Chương 1 · Ryan đã hoàn thành. Chương 2 (từ MQ021) chưa có trong bản thử.";
+    if (!quest) return "Chương 2 · Hải Vực và Atlantis đã hoàn thành. Chương 3 (từ MQ043) chưa có trong bản thử.";
     if (!q.intro) return null;
     if (byIdP2.has(quest.id)) return p2Objective(byIdP2.get(quest.id));
     if (!q.started) return `${quest.id} · ${quest.goal}`;
@@ -558,13 +682,19 @@
     list.replaceChildren();
     const card = list.parentElement;
     const h3 = card?.querySelector?.("h3"), intro = card?.querySelector?.("p");
-    if (h3) h3.textContent = "Nhiệm vụ chính · Chương 1 · Ryan";
-    if (intro) intro.textContent = "MQ001–MQ020 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
+    if (h3) h3.textContent = "Nhiệm vụ chính";
+    if (intro) intro.textContent = "MQ001–MQ042 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
     QUESTS.forEach((quest, i) => {
+      if (i === 0 || (quest.chapter || 1) !== (QUESTS[i - 1].chapter || 1)) {
+        const head = document.createElement("li"); head.className = "pending";
+        head.textContent = (quest.chapter || 1) === 1 ? "— Chương 1 · Ryan —" : "— Chương 2 · Hải Vực và Atlantis —";
+        list.append(head);
+      }
       const li = document.createElement("li"), done = q.done.includes(quest.id), now = i === q.index;
       li.className = done ? "done" : now ? "current" : "pending";
       li.textContent = done ? `✓ ${quest.id} · ${quest.title}` : now ? `▶ ${quest.id} · ${quest.title} — ${q.intro ? quest.text : "Nói chuyện với Trưởng làng Elden."} (Thưởng: ${quest.rewardText})` : `○ ${quest.id} · ${quest.title} · ${quest.place}`;
       list.append(li);
+      if (now) setTimeout(() => li.scrollIntoView?.({ block: "center" }), 0);
     });
     if (q.items.length) { const li = document.createElement("li"); li.className = "done"; li.textContent = `Vật phẩm cốt truyện: ${[...new Set(q.items)].join(", ")}`; list.append(li); }
   }
@@ -574,6 +704,7 @@
   }
   // The scene shown in "ending" mode: the compass awakening after MQ008, the end of the chapter after MQ020.
   function endingScene() {
+    if (endingCard === "chapter2") return { title: "CHƯƠNG 2 · HOÀN THÀNH", heading: "THƯƠNG HẢI CỰ KÌNH TÁI SINH", lines: ["Cha Kael đã trở về. Atlantis gửi lời cảm ơn.", "Phía chân trời, Lục Địa Bay Aethelgard lơ lửng chờ đợi."], hint: "Nhấn E hoặc Tiếp tục. Chương 3 chưa có trong bản thử." };
     if (endingCard !== "chapter1") return null;
     return { title: "CHƯƠNG 1 · HOÀN THÀNH", heading: "ANH HÙNG RYAN", lines: ["Cổ Long Hắc Ám tan biến trong Quang Minh Trận.", "Dưới chân tháp, Kael tìm thấy bức thư của cha."], hint: "Nhấn E hoặc Tiếp tục. Chương 2 chưa có trong bản thử." };
   }
@@ -585,7 +716,9 @@
 
   window.Quests = {
     list: QUESTS, state: () => q, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
-    battleWon, battleLost, continueFromEnding, wildCaught, endingScene, night, storyFightOpen: () => false, spots,
+    battleWon, battleLost, continueFromEnding, wildCaught, endingScene,
+    // MQ031 wakes Lôi Miêu's thunder wings: a permanent extra move (TRIAL power and uses)
+    bonusSkills(key) { return key === "loi-mieu" && q.items.includes("Lôi Dực Khiêu Vũ") ? [{ name: "Lôi Dực Khiêu Vũ", power: 260, uses: 12, max: 12, description: "Đôi cánh sấm sét kim sắc: nhảy múa giữa lôi đình." }] : []; }, night, storyFightOpen: () => false, spots,
     save: () => JSON.parse(JSON.stringify(q)),
     load(data) { q = data && Number.isInteger(data.index) ? { ...fresh(), ...data } : fresh(); save(); },
     reset() { q = fresh(); save(); },

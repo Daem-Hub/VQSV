@@ -60,3 +60,4 @@ dialog.v5-panel { --sky:#78d5ed; --rim:#4598ce; --gold:#ffdf78; --navy:#0b263b; 
   #gameMenu { width:min(440px,95vw); }
   #gameMenu .v5-head { grid-template-columns:1fr auto; }
 }
+#speech .speech-next { display:block; margin-top:6px; color:#c9d6b8; font-size:11px; }

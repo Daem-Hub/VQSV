@@ -185,7 +185,7 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
   - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
   - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.
 
-## Nhiệm vụ chính Chương 1 (MQ001–MQ020)
+## Nhiệm vụ chính Chương 1 và 2 (MQ001–MQ042)
 
 `quests.js` đưa 9 nhiệm vụ đầu của `DANH_SACH_NHIEM_VU.md` vào game. Nhiệm vụ làm lần lượt: xong nhiệm vụ này mới mở nhiệm vụ kế tiếp. Mục tiêu hiện ở thanh nhiệm vụ, nút hành động đổi chữ theo việc đang làm, và Nhật ký (phím J) liệt kê cả 9 nhiệm vụ kèm phần thưởng. Tiến độ được lưu cùng bản lưu game.
 
@@ -228,4 +228,34 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 
   Quy ước chung cho các trận nhiệm vụ: trận boss không chạy trốn được; tên và hình đối thủ lấy từ dữ liệu pet VQSV6. Nền trận dùng địa hình của map; trận trong làng giữ cảnh đêm.
 - **Chọn mặc định (TRIAL):** cấp và độ trâu của từng đối thủ; các món thưởng được thay bằng món gần nhất đã có trong game (xem bảng thưởng trong Nhật ký); thứ tự vùng theo bảng nhiệm vụ: Hồ Băng trước rồi mới tới Hỏa Sơn. Bảng nhiệm vụ ghi điểm này "cần chốt".
-- **Phần chưa làm:** từ MQ021 (Chương 2) trở đi.
+- **Chương 2 · Hải Vực và Atlantis (MQ021–MQ042)** đặt trên các map biển của Codex, theo thứ tự đường đi: Bến cảng Ryan, Hải Vực Vô Tận, Vòng xoáy lôi đình, Vương Quốc Chìm Atlantis, Hang Động San Hô Lân Quang, Nghĩa Địa Chiến Thuyền, Vực Thẳm Tận Cùng.
+
+| Mã | Map | Cách hoàn thành |
+| --- | --- | --- |
+| MQ021 | Bến cảng Ryan | Gặp Thuyền trưởng Drake; nhặt gỗ ở 5 đống gỗ và lấy buồm trong kho; về báo Drake. |
+| MQ022 | Hải Vực Vô Tận | Gặp thủy thủ đoàn; lấy 3 mẫu nước tím. |
+| MQ023 | Hải Vực Vô Tận | Đánh chìm 2 Thủy Quái Bọc Thép. |
+| MQ024 | Vòng xoáy lôi đình | Né 3 cột sóng xoáy theo thứ tự. |
+| MQ025 | Atlantis | Gặp lính gác Hải Tộc; đặt vũ khí ở cột đá; nói chuyện lại với lính gác. |
+| MQ026 | Atlantis | Nói chuyện với Lyra để nhận lời ủy thác. |
+| MQ027 | Atlantis | Bảo vệ quả trứng: trụ 6 lượt trước Tiểu đội thiết giáp. |
+| MQ028 | Atlantis | Chạm phiến đá ký ức của cha. |
+| MQ029 | Hang San Hô | Phá 3 bẫy điện tử theo thứ tự. |
+| MQ030 | Hang San Hô | Đối mặt Ảo cảnh nỗi sợ: trụ 5 lượt, không được hạ gục nó. |
+| MQ031 | Vòng xoáy lôi đình | Đưa Lôi Miêu lên đài lôi đình. Lôi Miêu có thêm chiêu Lôi Dực Khiêu Vũ (uy lực 260%, 12 lần dùng) từ đây về sau. |
+| MQ032 | Nghĩa Địa Chiến Thuyền | Đánh lui oan hồn rồi lục buồng hạm trưởng tìm la bàn áp suất. |
+| MQ033 | Nghĩa Địa Chiến Thuyền | Thu phục U Linh Sa Ngư bằng cầu bắt (dùng loài Tấn Cá Kiếm). |
+| MQ034 | Vực Thẳm Tận Cùng | Phá 3 trạm phát sóng. |
+| MQ035 | Vực Thẳm Tận Cùng | Dẫn cả nhóm qua 3 khe đá nứt theo thứ tự. |
+| MQ036 | Vực Thẳm Tận Cùng | Đánh hộ vệ người máy canh phòng giam. |
+| MQ037 | Vực Thẳm Tận Cùng | Đập 2 cánh tay robot. |
+| MQ038 | Vực Thẳm Tận Cùng | Phá 4 bộ hấp thụ năng lượng ở bốn góc. |
+| MQ039 | Vực Thẳm Tận Cùng | Mở khúc hát ru qua la bàn đồng. |
+| MQ040 | Vực Thẳm Tận Cùng | Thanh tẩy Cơ Giới Thần Long: trụ 6 lượt, không được hạ gục nó. |
+| MQ041 | Vực Thẳm Tận Cùng | Dìu cha chạy qua 3 hành lang sụp đổ theo thứ tự. |
+| MQ042 | Atlantis | Đến bên quả trứng. Cảnh kết Chương 2. |
+
+  Bảng nhiệm vụ đặt đồng hồ đếm ngược cho MQ027 (4 phút) và MQ041 (3 phút). Vì trận đánh theo lượt, MQ027 đổi thành trụ 6 lượt, còn MQ041 thành 3 chặng chạy theo thứ tự, không đếm giờ. Cơ Giới Thần Long, robot và bẫy điện tử dùng pet VQSV6 cùng hệ, vì dữ liệu gốc không có pet máy. Các món thưởng chưa có trong game được thay bằng món gần nhất (Nhật ký ghi rõ từng món).
+- **Vị trí điểm nhiệm vụ:** chỉ đặt ở ô Kael đi tới được từ lối vào map (tìm bằng loang từ các lối ra) và luôn có ô trống bên cạnh để đứng.
+- **Hội thoại:** lời thoại hiện trong khung riêng phía trên nút điều khiển, không vẽ trên canvas nữa, vì trên điện thoại dọc canvas bị cắt mất phần đáy.
+- **Phần chưa làm:** từ MQ043 (Chương 3 · Aethelgard và Boran) trở đi.

@@ -146,6 +146,12 @@
   window.syncScene = () => {
     byId("menuLocation").textContent = assets.map.title;
     document.body.dataset.mode = state.mode;
+    // Dialogue lines go in a box above the controls: the canvas is cropped to the screen on phones.
+    const speaking = state.mode === "dialogue", speech = byId("speech");
+    if (speech) {
+      speech.hidden = !speaking;
+      if (speaking) { byId("speaker").textContent = state.activeNpc?.name || ""; byId("line").textContent = state.activeNpc?.dialogue?.[state.dialogue] || ""; }
+    }
     byId("playAgain").hidden = !["ending","defeat"].includes(state.mode);
     byId("playAgain").textContent = state.mode === "ending" && window.Quests ? "Tiếp tục" : "Chơi lại";
   };

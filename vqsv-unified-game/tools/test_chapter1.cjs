@@ -162,13 +162,21 @@ run('interact()'); assert.equal(run('state.mode'), 'explore');
 assert.equal(Q(), 'MQ021'); assert(run('window.Quests.state().items').includes('Bức thư của cha'));
 // ---- Chương 2 · Hải Vực và Atlantis (MQ021–MQ042): every quest played with the same generic steps ----
 run('progress["loi-mieu"] = { ...(progress["loi-mieu"] || {}), level: 40, exp: 0 }; saveProgress()');
+run('window.VQSVPetTeam.recordCatch("vqsv6-db-99", 30, 2); window.VQSVPetTeam.recordCatch("vqsv6-db-65", 30, 2)');   // MQ059 checks for 3 pets
 const played = [];
-for (let guard = 0; guard < 40 && Q() && Q() !== null; guard++) {
+for (let guard = 0; guard < 60 && Q() && Q() !== null; guard++) {
   const id = Q(), info = where(id);
   played.push(id);
   if (info.npc) { stand(info.npc); run('interact()'); talkThrough(); }
   if (Q() !== id) continue;                                         // talk-only quests end on the first talk
   if (info.start) { stand(info.start); run('interact()'); talkThrough(); }
+  if (info.wild) {                                                 // wild hunts: the map forces the quest pet; each win counts perWin
+    let forcedHere = 0; for (let i = 0; i < 30; i++) if (run(`rollWild(${JSON.stringify(info.wild.map)}, 0)`).questName === info.wild.name) forcedHere++;
+    assert(forcedHere > 10, `${id}: quest pets appear on ${info.wild.map}`);
+    for (let i = 0; i < 20 && Q() === id && run('window.Quests.state().progress') < info.wild.count; i++) {
+      run(`startWildBattle(${JSON.stringify({ petId: info.wild.pet, area: id, level: info.wild.level[0], quality: 2, questName: info.wild.name })})`); run('finishWild("win")');
+    }
+  }
   for (const sp of info.spots) {
     for (let wave = 0; wave < (sp.waves || 1); wave++) {
       stand(sp); run('interact()');
@@ -183,12 +191,21 @@ for (let guard = 0; guard < 40 && Q() && Q() !== null; guard++) {
   if (run('state.mode') === 'ending') run('interact()');
   assert.notEqual(Q(), id, `${id} completes`);
 }
-assert.equal(played[0], 'MQ021'); assert.equal(played.at(-1), 'MQ042'); assert.equal(played.length, 22);
+assert.equal(played[0], 'MQ021'); assert.equal(played.at(-1), 'MQ060'); assert.equal(played.length, 40);
+assert(played.includes('MQ042') && played.includes('MQ048') && played.includes('MQ054'));
 assert.equal(Q(), null);
 assert(run('window.Quests.state().items').includes('Tín Vật Tình Bạn Lyra'));
 assert(run('buildTeam()[0].skills.some(s => s.name === "Lôi Dực Khiêu Vũ")'), 'MQ031 gives Lôi Miêu its wing move');
-assert.match(run('objectiveEl.textContent'), /Chương 2 · Hải Vực và Atlantis đã hoàn thành/);
+assert.match(run('objectiveEl.textContent'), /Chương 3 · Aethelgard và Boran đã hoàn thành/);
+// MQ059 refuses a backpack with fewer than 3 pets; MQ054 lends Lôi Miêu Lôi Kích Băng Hàn for the final phase.
+const doneState = run('JSON.stringify(window.Quests.save())');
+run('window.Quests.jump("MQ059"); window.VQSVPetTeam.setTeam([])');
+w = where('MQ059'); stand(w.spots[0]); run('interact()');
+assert.equal(Q(), 'MQ059'); assert.match(run('statusEl.textContent'), /ít nhất 3 sủng vật/);
+run('window.Quests.jump("MQ054")'); w = where('MQ054'); stand(w.spots[0]); run('interact()');
+assert.equal(run('state.battle.team.find(p => p.kind === "lead").skill.name'), 'Lôi Kích Băng Hàn');
+run(`state.battle = newBattle(); state.mode = "explore"; window.Quests.load(${doneState})`);
 // Saves carry the quest state; a reset starts over.
 at('slice01-border-village', elder.x, elder.y + 1); run('saveGame(); reset()');
 assert.equal(Q(), 'MQ001'); run('loadGame()'); assert.equal(Q(), null);
-console.log('Chapters 1–2: MQ001–MQ042 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');
+console.log('Chapters 1–3: MQ001–MQ060 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');

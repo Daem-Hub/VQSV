@@ -185,7 +185,7 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
   - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
   - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.
 
-## Nhiệm vụ chính Chương 1 và 2 (MQ001–MQ042)
+## Nhiệm vụ chính Chương 1–3 (MQ001–MQ060)
 
 `quests.js` đưa 9 nhiệm vụ đầu của `DANH_SACH_NHIEM_VU.md` vào game. Nhiệm vụ làm lần lượt: xong nhiệm vụ này mới mở nhiệm vụ kế tiếp. Mục tiêu hiện ở thanh nhiệm vụ, nút hành động đổi chữ theo việc đang làm, và Nhật ký (phím J) liệt kê cả 9 nhiệm vụ kèm phần thưởng. Tiến độ được lưu cùng bản lưu game.
 
@@ -258,7 +258,31 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
   Bảng nhiệm vụ đặt đồng hồ đếm ngược cho MQ027 (4 phút) và MQ041 (3 phút). Vì trận đánh theo lượt, MQ027 đổi thành trụ 6 lượt, còn MQ041 thành 3 chặng chạy theo thứ tự, không đếm giờ. Cơ Giới Thần Long, robot và bẫy điện tử dùng pet VQSV6 cùng hệ, vì dữ liệu gốc không có pet máy. Các món thưởng chưa có trong game được thay bằng món gần nhất (Nhật ký ghi rõ từng món).
 - **Vị trí điểm nhiệm vụ:** chỉ đặt ở ô Kael đi tới được từ lối vào map (tìm bằng loang từ các lối ra) và luôn có ô trống bên cạnh để đứng.
 - **Hội thoại:** lời thoại hiện trong khung riêng phía trên nút điều khiển, không vẽ trên canvas nữa, vì trên điện thoại dọc canvas bị cắt mất phần đáy.
-- **Phần chưa làm:** từ MQ043 (Chương 3 · Aethelgard và Boran) trở đi.
+- **Chương 3 · Aethelgard và Boran (MQ043–MQ060)** đặt trên các map Lối vào Aethelgard, Miệng Núi Lửa Hắc Diệu, Pháo đài và đấu trường Boran, Đường lên Tầng Mây Khởi Nguyên, Cung điện pha lê.
+
+| Mã | Map | Cách hoàn thành |
+| --- | --- | --- |
+| MQ043 | Lối vào Aethelgard | Nói chuyện với cha Kael ở doanh trại, nhận Khí Cầu Cổ. |
+| MQ044 | Lối vào Aethelgard | Nói chuyện với Lyra dưới ánh trăng. |
+| MQ045 | Lối vào Aethelgard | Giữ bánh lái qua 3 tâm bão theo thứ tự. |
+| MQ046 | Lối vào Aethelgard | Gặp cư dân Thiên Không, kích hoạt trạm dịch chuyển. |
+| MQ047 | Lối vào Aethelgard | Giải mã bản đồ cổ tự ở đài thiên văn. |
+| MQ048 | Miệng Núi Lửa Hắc Diệu | Hạ 8 Quái Nham Thạch Cơ Giới (gặp khi đi trong map). |
+| MQ049 | Miệng Núi Lửa Hắc Diệu | Phá 2 cổng sắt do lính gác Titan canh. |
+| MQ050 | Miệng Núi Lửa Hắc Diệu | Ghi dữ liệu ở 3 trụ xích. |
+| MQ051 | Pháo đài Boran | Thắng 3 đợt thiết giáp tiên phong. |
+| MQ052 | Pháo đài Boran | Phá lớp Nhiệt Giáp của Nham Bạo Long. |
+| MQ053 | Pháo đài Boran | Cầm cự 5 lượt trong lồng sắt. |
+| MQ054 | Pháo đài Boran | Kết liễu Nham Bạo Long; riêng trận này Lôi Miêu có chiêu Lôi Kích Băng Hàn. |
+| MQ055 | Pháo đài Boran | Nói chuyện với linh hồn Cổ Thú Nham Thạch. |
+| MQ056 | Pháo đài Boran | Nói chuyện với Lyra ở doanh trại. |
+| MQ057 | Đường lên Tầng Mây | Lần theo 3 cột khói tím rồi chế Khiên Kháng Gương. |
+| MQ058 | Cung điện pha lê | Hạ 12 Ảo Ảnh Phi Hành Cơ (mỗi trận một tốp 3). |
+| MQ059 | Cung điện pha lê | Bước lên bậc thang khi ba lô có ít nhất 3 sủng vật. |
+| MQ060 | Cung điện pha lê | Bước qua cánh cửa gương. Cảnh kết Chương 3. |
+
+  Một số mục tiêu trong bảng nhiệm vụ không làm được đúng nguyên văn trong trận đánh theo lượt, nên được đổi như sau. Ba giai đoạn boss Nham Bạo Long thành ba trận liền nhau. Thanh "Nhiệt Giáp về 0, Boss còn 70% HP" thành trận phá lớp Nhiệt Giáp. Đếm ngược 60 giây ở giai đoạn 3 được bỏ. MQ059 "kiểm tra trang bị và nâng cấp linh thú" thành điều kiện ba lô có ít nhất 3 sủng vật. Nham Bạo Long dùng loài Bạo Long Thú, Quái Nham Thạch Cơ Giới dùng Sừng tê giác bạo long, Ảo Ảnh Phi Hành Cơ dùng Quáng thạch dực long. Các món thưởng chưa có trong game được thay bằng món gần nhất.
+- **Phần chưa làm:** từ MQ061 (Chương 4 · Kính Giới) trở đi.
 
 ## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
 

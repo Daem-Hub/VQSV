@@ -2001,9 +2001,17 @@
       button.disabled = !label;
     }
     // Camera: maps larger than the 24 x 18 screen scroll with Kael; smaller ones are centred on a dark border.
+    // On a portrait phone the canvas is cropped and covered by the HUD (name plate on top, joystick and buttons below),
+    // so the camera may look past the map edge into the dark border: Kael then stays clear of the HUD at map edges
+    // instead of standing under the name plate or half off the screen.
     function cameraOf(m = assets.map) {
-      const axis = (size, view, focus) => size * S <= view ? -Math.round((view - size * S) / 2) : Math.max(0, Math.min(size * S - view, Math.round(focus * S + S / 2 - view / 2)));
-      return { x: axis(m.width, 480, state.player.visualX), y: axis(m.height, 360, state.player.visualY) };
+      const portrait = typeof innerHeight === "number" && innerHeight > innerWidth && !m.interior;
+      const axis = (size, view, focus, padLo, padHi) => {
+        const centred = -Math.round((view - size * S) / 2), want = Math.round(focus * S + S / 2 - view / 2);
+        if (!portrait) return size * S <= view ? centred : Math.max(0, Math.min(size * S - view, want));
+        return Math.max(Math.min(centred, -padLo), Math.min(Math.max(centred, size * S - view + padHi), want));
+      };
+      return { x: axis(m.width, 480, state.player.visualX, 90, 90), y: axis(m.height, 360, state.player.visualY, 95, 105) };
     }
     function drawExplore() {
       const cam = cameraOf();
@@ -2911,7 +2919,9 @@
       if (!link || (!link.kind && !state.spokeToElder) || !assets.maps?.[link.target]) return false;
       assets.map = assets.maps[link.target];
       wildSteps = 0;
-      state.player = { x: link.spawnX, y: link.spawnY, visualX: link.spawnX, visualY: link.spawnY,
+      // An arrival on the top row would draw Kael's head above the map art: step one row in when that cell is open.
+      const spawnY = link.spawnY === 0 && !blocked(link.spawnX, 1) ? 1 : link.spawnY;
+      state.player = { x: link.spawnX, y: spawnY, visualX: link.spawnX, visualY: spawnY,
         faceX: link.kind ? 0 : heldDirection?.dx || 1, faceY: link.kind ? (link.kind === "door" ? -1 : 1) : heldDirection?.dy || 0, step: null, inputDir: heldDirection };
       const range = wildLevelRange(assets.map.id);
       statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`;

@@ -369,3 +369,10 @@ Thế giới có hơn 40 map, nên game chỉ lối cho nhiệm vụ đang làm:
 - **Bản đồ (nút Bản đồ):** chọn sẵn lối hoặc điểm nhiệm vụ; bấm **Chỉ đường** để vẽ vệt đường trên sân như trước.
 - Áp dụng cho mọi nhiệm vụ chính (cả MQ001–MQ009 của Chương 1). Khi đã xong cốt truyện, chỉ đường theo nhiệm vụ phụ đang làm đầu tiên.
 - Test `test_chapter1.cjs` đi theo chỉ đường từ làng tới map của từng nhiệm vụ MQ010–MQ096.
+
+## Sửa lỗi nhân vật lòi ra ngoài map trên điện thoại
+
+Trên điện thoại dọc, khung hình bị cắt và bị bảng tên vùng (trên) cùng cụm nút bấm (dưới) che. Trước đây camera không được nhìn quá mép map, nên khi Kael tới mép (ví dụ vào Mặt Trăng Đỏ từ lối phía trên) thì nhân vật nằm dưới bảng tên vùng, đầu lòi ra ngoài mép map hoặc bị cắt nửa người ở mép màn hình.
+
+- `cameraOf` (chỉ khi màn hình dọc, trừ trong tiệm) cho camera nhìn quá mép map một khoảng (trên 95, dưới 105, hai bên 90 điểm ảnh của khung 480×360), phần ngoài map tô nền tối như các map nhỏ. Kael luôn nằm giữa bảng tên vùng và cụm nút. Trên máy tính hoặc khi xoay ngang, camera giữ như cũ.
+- Khi vào map qua lối đặt ở hàng ô trên cùng, Kael xuất hiện lùi vào một hàng (nếu ô đó đi được), để đầu nhân vật không vẽ ra ngoài hình map.

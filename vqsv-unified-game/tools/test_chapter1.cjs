@@ -165,7 +165,7 @@ run('progress["loi-mieu"] = { ...(progress["loi-mieu"] || {}), level: 40, exp: 0
 for (const id of ["vqsv6-db-99", "vqsv6-db-65", "vqsv6-db-42", "vqsv6-db-11", "vqsv6-db-30"]) run(`window.VQSVPetTeam.recordCatch("${id}", 30, 2)`);   // MQ059 / MQ078 check the backpack size
 run('window.VQSVPetTeam.setTeam(window.VQSVPetTeam.owned().slice(0, 5))');
 const played = [];
-for (let guard = 0; guard < 80 && Q() && Q() !== null; guard++) {
+for (let guard = 0; guard < 100 && Q() && Q() !== null; guard++) {
   const id = Q(), info = where(id);
   played.push(id);
   if (info.npc) { stand(info.npc); run('interact()'); talkThrough(); }
@@ -192,12 +192,13 @@ for (let guard = 0; guard < 80 && Q() && Q() !== null; guard++) {
   if (run('state.mode') === 'ending') run('interact()');
   assert.notEqual(Q(), id, `${id} completes`);
 }
-assert.equal(played[0], 'MQ021'); assert.equal(played.at(-1), 'MQ080'); assert.equal(played.length, 60);
+assert.equal(played[0], 'MQ021'); assert.equal(played.at(-1), 'MQ096'); assert.equal(played.length, 76);
 assert(played.includes('MQ042') && played.includes('MQ048') && played.includes('MQ054'));
 assert.equal(Q(), null);
 assert(run('window.Quests.state().items').includes('Tín Vật Tình Bạn Lyra'));
 assert(run('buildTeam()[0].skills.some(s => s.name === "Lôi Dực Khiêu Vũ")'), 'MQ031 gives Lôi Miêu its wing move');
-assert.match(run('objectiveEl.textContent'), /Chương 4 · Kính Giới đã hoàn thành/);
+assert.match(run('objectiveEl.textContent'), /toàn bộ 96 nhiệm vụ chính/);
+assert(run('buildTeam()[0].skills.some(s => s.name === "Uyên Ương Lôi Hải")'), 'MQ093 gives the couple move');
 // MQ059 refuses a backpack with fewer than 3 pets; MQ054 lends Lôi Miêu Lôi Kích Băng Hàn for the final phase.
 const doneState = run('JSON.stringify(window.Quests.save())');
 run('window.Quests.jump("MQ059"); window.VQSVPetTeam.setTeam([])');
@@ -209,4 +210,4 @@ run(`state.battle = newBattle(); state.mode = "explore"; window.Quests.load(${do
 // Saves carry the quest state; a reset starts over.
 at('slice01-border-village', elder.x, elder.y + 1); run('saveGame(); reset()');
 assert.equal(Q(), 'MQ001'); run('loadGame()'); assert.equal(Q(), null);
-console.log('Chapters 1–4: MQ001–MQ080 played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');
+console.log('Chapters 1–5: all 96 main quests played through (dummy, cellar, wolves, herbs, footprints, night raid, colossus, Ma Khống Cầu, shrine), rewards and save passed.');

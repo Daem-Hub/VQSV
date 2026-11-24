@@ -372,6 +372,77 @@
       reward: { exp: 5500000, relic: 2 }, rewardText: "5.500.000 EXP, Quy Xác Toái Phiến (thay cho Bộ Giáp Phi Hành)" },
   );
   NPC_ART.lyra5 = "herbalist";
+  // ---- Chương 5 · Mặt Trăng (MQ081–MQ096). The table marks this chapter as expanded content to be reviewed (the mother
+  // being alive, the end of Thực Thể Thứ 0); it is played as written so the whole route can be tried. ----
+  PART2.push(
+    { id: "MQ081", chapter: 5, title: "Xé Rách Tầng Điện Ly", place: "Cột Mốc Vọng Thiên", giver: "Tầng thượng khí quyển",
+      text: "Lôi Miêu tung cánh sấm sét đưa Kael và Lyra thoát ly trọng lực. Giữ thanh Lôi Đình qua 3 tầng khí quyển.",
+      task: { ordered: true, spots: RANGE3("sky-monolith", [[.5, .85], [.5, .55], [.5, .25]], i => `Giữ thanh Lôi Đình (tầng ${i + 1})`, i => ({ say: SAY("Lôi Miêu", ["Sấm sét bao quanh đôi cánh!", "Gió trời rít lên, trọng lực níu lại!", "Thoát ly! Bầu trời đen thẫm đầy sao."][i]) })) },
+      reward: { exp: 6200000, relic: 7 }, rewardText: "6.200.000 EXP, Linh Trùng Thi Hài (thay cho Lông Vũ Thần Tốc)" },
+    { id: "MQ082", chapter: 5, title: "Vành Đai Rác Cơ Khí", place: "Quỹ đạo tầm thấp", giver: "Trận địa mìn vũ trụ",
+      text: "Mìn cơ khí trôi khắp Quỹ đạo. Phá hủy 8 quả mìn từ tính hư không (mỗi trận một cụm 2 quả).",
+      task: { wild: { map: "orbit", pet: "vqsv6-db-11", level: [69, 70], name: "Cụm Mìn từ tính", perWin: 2, count: 8 } },
+      reward: { exp: 7000000, stones: { 14: 1 } }, rewardText: "7.000.000 EXP, Thiên Địa Thần Thạch (thay cho Kim Loại Vũ Trụ)" },
+    { id: "MQ083", chapter: 5, title: "Tập Kích Tuần Dương Hạm", place: "Bên ngoài soái hạm", giver: "Hạm đội bảo hộ",
+      text: "Đột nhập soái hạm Hư Không: đánh lui tàu hộ tống rồi đổ bộ lên boong chỉ huy.",
+      task: { ordered: true, spots: [{ map: "orbit", frac: [.65, .3], label: "Đánh lui tàu hộ tống", battle: B("vqsv6-db-106", 70, "Tàu hộ tống Hư Không", { hpScale: 2 }) },
+        { map: "orbit", frac: [.75, .6], label: "Đổ bộ lên boong", say: SAY("Lyra", "Bám chắc vào, Kael! Lên boong rồi!") }] },
+      reward: { exp: 7900000, relic: 2 }, rewardText: "7.900.000 EXP, Quy Xác Toái Phiến (thay cho Khiên Lực Từ Trường)" },
+    { id: "MQ084", chapter: 5, title: "Chiến Đấu Không Trọng Lực", place: "Boong tàu chiến hạm", giver: "Vệ binh trọng lực",
+      text: "Không trọng lực trên boong tàu. Hạ 10 Robot Kháng Trọng Lực (mỗi trận một tốp 2).",
+      task: { wild: { map: "orbit", pet: "vqsv6-db-84", level: [69, 70], name: "Tốp Robot Kháng Trọng Lực", perWin: 2, count: 10 } },
+      reward: { exp: 8900000, items: { 7: 5 } }, rewardText: "8.900.000 EXP, 5 Tụ Năng Thạch (thay cho Giày Nam Châm)" },
+    { id: "MQ085", chapter: 5, title: "Vô Hiệu Hóa Động Cơ Hư Vô", place: "Phòng động cơ tàu mẹ", giver: "Lõi nhiệt hạch tàu",
+      text: "Lyra dùng nước biển đông kết động cơ warp. Sau đó kích nổ buồng đốt chính.",
+      task: { ordered: true, spots: [{ map: "orbit", frac: [.4, .7], label: "Giúp Lyra đông kết động cơ", say: SAY("Lyra", "Nước biển kết băng quanh động cơ warp. Nó khựng lại rồi!") },
+        { map: "orbit", frac: [.55, .8], label: "Kích nổ buồng đốt", battle: B("vqsv6-db-15", 70, "Lõi nhiệt hạch", { hpScale: 3, noFlee: true }) }] },
+      reward: { exp: 10000000, story: ["Lõi Động Cơ Tinh Vân"] }, rewardText: "10.000.000 EXP, Lõi Động Cơ Tinh Vân" },
+    { id: "MQ086", chapter: 5, title: "Chạm Trán Tổng Chỉ Huy Hư Không", place: "Đài chỉ huy soái hạm", giver: "Đại Tướng Cơ Giới",
+      text: "Đánh bại Đại Tướng Cơ Giới trước khi soái hạm rơi.",
+      task: { spots: [{ map: "orbit", frac: [.85, .45], label: "Đối đầu Đại Tướng Cơ Giới", battle: B("vqsv6-db-57", 70, "Đại Tướng Cơ Giới", { hpScale: 5, noFlee: true }) }] },
+      reward: { exp: 11200000, relic: 0 }, rewardText: "11.200.000 EXP, Mạn Đà La Thạch (thay cho Kiếm Quang Học Bậc S)" },
+    { id: "MQ087", chapter: 5, title: "Con Tàu Bốc Cháy", place: "Khoang thoát hiểm", giver: "Lôi Miêu",
+      text: "Tàu mẹ nổ tung. Lôi Miêu chở Kael và Lyra né 3 đợt mảnh vỡ theo thứ tự, phóng về Mặt Trăng.",
+      task: { ordered: true, spots: RANGE3("orbit", [[.3, .35], [.15, .6], [.1, .85]], i => `Né mảnh vỡ ${i + 1}`, i => ({ say: SAY("Lôi Miêu", ["Lửa ở khắp nơi!", "Xoay người tránh khối thép!", "Mặt Trăng Đỏ ngay trước mặt!"][i]) })) },
+      reward: { exp: 12500000, relic: 10 }, rewardText: "12.500.000 EXP, Cảm Lãm Chi Diệp (thay cho Nhẫn Tinh Vân)" },
+    { id: "MQ088", chapter: 5, title: "Bề Mặt Mặt Trăng Đỏ", place: "Bình nguyên bụi máu", giver: "Bề mặt Mặt Trăng",
+      text: "Đặt chân lên cát đỏ, cảm nhận nhịp đập của Thực Thể Thứ 0. Tìm cửa hầm dẫn vào lõi.",
+      task: { spots: [{ map: "red-moon", frac: [.5, .85], label: "Tìm cửa hầm", say: SAY("Mặt Trăng Đỏ", "Dưới lớp bụi đỏ là một nắp hầm kim loại, đập theo một nhịp đều như tim.") }] },
+      reward: { exp: 14000000, items: { 11: 3 } }, rewardText: "14.000.000 EXP, 3 Sinh mệnh thạch (thay cho Bình Dưỡng Khí Vũ Trụ)" },
+    { id: "MQ089", chapter: 5, title: "Dấu Vết Của Người Mẹ", place: "Trạm nghiên cứu số 1", giver: "Hình chiếu của mẹ",
+      text: "Tìm phòng ngủ đông của mẹ Kael và mở khóa bằng la bàn gia tộc.",
+      task: { spots: [{ map: "red-moon", frac: [.3, .65], label: "Mở buồng ngủ đông bằng la bàn", say: SAY("Hình chiếu của mẹ", "Một hình chiếu mờ hiện ra: \"Kael… con đã lớn thế này rồi.\"", "Kim la bàn khớp vào ổ khóa. Buồng ngủ đông mở hé.") }] },
+      reward: { exp: 15800000, story: ["Vòng Tay Người Mẹ"] }, rewardText: "15.800.000 EXP, Vòng Tay Người Mẹ" },
+    { id: "MQ090", chapter: 5, title: "Sự Thật Về Giấc Ngủ Đông", place: "Hệ thống duy trì sự sống", giver: "Máy chủ cổ đại",
+      text: "Mẹ Kael tự nguyện ngủ đông để duy trì phong ấn. Bảo vệ hệ thống duy trì sự sống: cầm cự 6 lượt.",
+      task: { spots: [{ map: "red-moon", frac: [.7, .6], label: "Bảo vệ hệ thống sự sống", battle: B("vqsv6-db-93", 70, "Kẻ phá hoại hệ thống", { hpScale: 4, survive: 6, noFlee: true }) }] },
+      reward: { exp: 17800000, story: ["Tinh Thể Sự Sống"] }, rewardText: "17.800.000 EXP, Tinh Thể Sự Sống" },
+    { id: "MQ091", chapter: 5, title: "Đánh Thức Vành Đai Cơ Khí", place: "Vành đai cơ khí", giver: "Bộ xương cơ khí khổng lồ",
+      text: "Hệ thống phòng thủ của Thực Thể Thứ 0 thức giấc. Phá 4 tháp phát tia plasma.",
+      task: { spots: RANGE3("machine-ring", [[.25, .2], [.75, .35], [.25, .65], [.75, .8]], "Phá tháp plasma", () => ({ battle: B("vqsv6-db-80", 70, "Tháp plasma quỹ đạo", { hpScale: 2 }) })) },
+      reward: { exp: 20000000, relic: 2 }, rewardText: "20.000.000 EXP, Quy Xác Toái Phiến (thay cho Giáp Trụ Mặt Trăng)" },
+    { id: "MQ092", chapter: 5, title: "Nhịp Đập Của Trái Tim Đen", place: "Đại sảnh lõi Mặt Trăng", giver: "Lõi Hư Không đỏ",
+      text: "Phôi thai hư không bò khắp Mặt Trăng Đỏ. Dọn sạch 9 con (mỗi trận một ổ 3 con).",
+      task: { wild: { map: "red-moon", pet: "vqsv6-db-92", level: [69, 70], name: "Ổ Phôi thai hư không", perWin: 3, count: 9 } },
+      reward: { exp: 22500000, story: ["Thạch Hư Không"] }, rewardText: "22.500.000 EXP, Thạch Hư Không" },
+    { id: "MQ093", chapter: 5, title: "Nguyện Ước Chung Đôi", place: "Trước kén thần", giver: "Lyra",
+      text: "Kael và Lyra hợp sức mọi thánh vật, kích hoạt Kết Giới Uyên Ương.",
+      npc: { id: "lyra6", name: "Lyra", map: "red-moon", frac: [.5, .45], offer: ["Đưa tay đây, Kael. Thương Hải Chi Lệ, la bàn, khối lập phương… tất cả.", "Cùng nhau, chúng ta là một kết giới."] },
+      task: { talkOnly: true }, reward: { exp: 25500000, story: ["Kỹ Năng Đôi Tối Thượng"] }, rewardText: "25.500.000 EXP, Kỹ Năng Đôi Tối Thượng (chiêu Uyên Ương Lôi Hải cho Lôi Miêu)" },
+    { id: "MQ094", chapter: 5, title: "Cắt Đứt Ống Dẫn Sinh Mệnh", place: "Lõi kén Thực Thể Thứ 0", giver: "Hệ thống dẫn máu máy",
+      text: "Cắt đứt 6 ống dẫn năng lượng titan đang truyền tà khí vào kén.",
+      task: { spots: RANGE3("red-moon", [[.2, .2], [.5, .15], [.8, .2], [.2, .35], [.5, .3], [.8, .35]], "Cắt ống dẫn titan", () => ({ say: SAY("Ống dẫn titan", "Lôi Miêu cắn đứt ống dẫn. Dòng tà khí phụt ra rồi tắt dần.") })) },
+      reward: { exp: 29000000, stones: { 12: 3 } }, rewardText: "29.000.000 EXP, 3 Tinh Nguyên Thạch (thay cho Thần Dược Hồi Sinh)" },
+    { id: "MQ095", chapter: 5, title: "Mắt Thần Hé Mở: Trận Chiến Mở Đầu", place: "Lõi kén thức giác", giver: "Thực Thể Thứ 0 (phân thân)",
+      text: "Giao chiến với phân thân thức tỉnh đầu tiên của Thực Thể Thứ 0.",
+      task: { spots: [{ map: "red-moon", frac: [.5, .1], label: "Đối đầu Thực Thể Thứ 0", battle: B("vqsv6-db-97", 70, "Thực Thể Thứ 0 (phân thân)", { hpScale: 6, noFlee: true }) }] },
+      reward: { exp: 33000000, relic: 4 }, rewardText: "33.000.000 EXP, Viễn Cổ Long Cốt (thay cho Vũ Khí Thần Thoại)" },
+    { id: "MQ096", chapter: 5, title: "Khúc Khải Hoàn Bất Tận", place: "Bệ phóng niềm tin", giver: "Kael, Lyra và gia đình",
+      text: "Tái lập phong ấn, đưa mẹ trở về nhân gian và mở ra kỷ nguyên mới.",
+      task: { spots: [{ map: "red-moon", frac: [.5, .7], label: "Tái lập phong ấn", say: SAY("Mẹ Kael", "Phong ấn khép lại. Mẹ Kael mở mắt, nắm lấy tay con trai.", "\"Về nhà thôi, Kael. Cả nhà mình.\"") }] },
+      reward: { exp: 50000000, story: ["Danh hiệu Chúa Tể VQSV"] }, rewardText: "50.000.000 EXP, Danh hiệu Chúa Tể VQSV" },
+  );
+  NPC_ART.lyra6 = "herbalist";
   const byIdP2 = new Map(PART2.map(def => [def.id, def]));
   const p2 = () => byIdP2.get(current()?.id) || null;
   // Where a spot or NPC stands: next to the exit toward `near` (two cells inward) or at a fraction of the map.
@@ -468,6 +539,7 @@
     if (def.id === "MQ042") { state.mode = "ending"; endingCard = "chapter2"; }
     if (def.id === "MQ060") { state.mode = "ending"; endingCard = "chapter3"; }
     if (def.id === "MQ080") { state.mode = "ending"; endingCard = "chapter4"; }
+    if (def.id === "MQ096") { state.mode = "ending"; endingCard = "finale"; }
     updateGuidance();
   }
   let endingCard = null;
@@ -813,7 +885,7 @@
   // ---- what the screen shows ----
   function objective() {
     const quest = current();
-    if (!quest) return "Chương 4 · Kính Giới đã hoàn thành. Chương 5 (từ MQ081, Mặt Trăng) chưa có trong bản thử.";
+    if (!quest) return "Đã hoàn thành toàn bộ 96 nhiệm vụ chính. Chế độ tự do: đi khắp các vùng, bắt và nuôi pet.";
     if (!q.intro) return null;
     if (byIdP2.has(quest.id)) return p2Objective(byIdP2.get(quest.id));
     if (!q.started) return `${quest.id} · ${quest.goal}`;
@@ -860,11 +932,11 @@
     const card = list.parentElement;
     const h3 = card?.querySelector?.("h3"), intro = card?.querySelector?.("p");
     if (h3) h3.textContent = "Nhiệm vụ chính";
-    if (intro) intro.textContent = "MQ001–MQ080 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
+    if (intro) intro.textContent = "MQ001–MQ096 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
     QUESTS.forEach((quest, i) => {
       if (i === 0 || (quest.chapter || 1) !== (QUESTS[i - 1].chapter || 1)) {
         const head = document.createElement("li"); head.className = "pending";
-        head.textContent = ["", "— Chương 1 · Ryan —", "— Chương 2 · Hải Vực và Atlantis —", "— Chương 3 · Aethelgard và Boran —", "— Chương 4 · Kính Giới và hành trình lên trời —"][quest.chapter || 1];
+        head.textContent = ["", "— Chương 1 · Ryan —", "— Chương 2 · Hải Vực và Atlantis —", "— Chương 3 · Aethelgard và Boran —", "— Chương 4 · Kính Giới và hành trình lên trời —", "— Chương 5 · Mặt Trăng —"][quest.chapter || 1];
         list.append(head);
       }
       const li = document.createElement("li"), done = q.done.includes(quest.id), now = i === q.index;
@@ -881,6 +953,7 @@
   }
   // The scene shown in "ending" mode: the compass awakening after MQ008, the end of the chapter after MQ020.
   function endingScene() {
+    if (endingCard === "finale") return { title: "ĐẠI KẾT CỤC", heading: "KỶ NGUYÊN MỚI", lines: ["Phong ấn đã được tái lập. Mẹ Kael trở về nhân gian.", "Kael, Lyra, Lôi Miêu và cả gia đình cùng về nhà."], hint: "Nhấn E hoặc Tiếp tục để chơi tự do." };
     if (endingCard === "chapter4") return { title: "CHƯƠNG 4 · HOÀN THÀNH", heading: "LÊN QUỸ ĐẠO", lines: ["Kính Giới đã vỡ, Seraphina tan biến.", "Theo cột sáng Vọng Thiên, cả đoàn bay về phía Mặt Trăng Đỏ."], hint: "Nhấn E hoặc Tiếp tục. Chương 5 chưa có trong bản thử." };
     if (endingCard === "chapter3") return { title: "CHƯƠNG 3 · HOÀN THÀNH", heading: "CÁNH CỬA KÍNH GIỚI", lines: ["Boran đã gục ngã, Cổ Thú Nham Thạch được siêu thoát.", "Sau cánh cửa gương, Seraphina đang chờ."], hint: "Nhấn E hoặc Tiếp tục. Chương 4 chưa có trong bản thử." };
     if (endingCard === "chapter2") return { title: "CHƯƠNG 2 · HOÀN THÀNH", heading: "THƯƠNG HẢI CỰ KÌNH TÁI SINH", lines: ["Cha Kael đã trở về. Atlantis gửi lời cảm ơn.", "Phía chân trời, Lục Địa Bay Aethelgard lơ lửng chờ đợi."], hint: "Nhấn E hoặc Tiếp tục. Chương 3 chưa có trong bản thử." };
@@ -897,7 +970,14 @@
     list: QUESTS, state: () => q, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
     battleWon, battleLost, continueFromEnding, wildCaught, endingScene,
     // MQ031 wakes Lôi Miêu's thunder wings: a permanent extra move (TRIAL power and uses)
-    bonusSkills(key) { return key === "loi-mieu" && q.items.includes("Lôi Dực Khiêu Vũ") ? [{ name: "Lôi Dực Khiêu Vũ", power: 260, uses: 12, max: 12, description: "Đôi cánh sấm sét kim sắc: nhảy múa giữa lôi đình." }] : []; }, night, storyFightOpen: () => false, spots,
+    bonusSkills(key) {
+      if (key !== "loi-mieu") return [];
+      const out = [];
+      if (q.items.includes("Lôi Dực Khiêu Vũ")) out.push({ name: "Lôi Dực Khiêu Vũ", power: 260, uses: 12, max: 12, description: "Đôi cánh sấm sét kim sắc: nhảy múa giữa lôi đình." });
+      // MQ093: the couple's ultimate move (TRIAL power and uses)
+      if (q.items.includes("Kỹ Năng Đôi Tối Thượng")) out.push({ name: "Uyên Ương Lôi Hải", power: 340, uses: 8, max: 8, description: "Sấm của Lôi Miêu và biển của Lyra hòa làm một." });
+      return out;
+    }, night, storyFightOpen: () => false, spots,
     save: () => JSON.parse(JSON.stringify(q)),
     load(data) { q = data && Number.isInteger(data.index) ? { ...fresh(), ...data } : fresh(); save(); },
     reset() { q = fresh(); save(); },

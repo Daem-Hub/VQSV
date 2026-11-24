@@ -306,7 +306,27 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 | MQ080 | Quỹ đạo | Phá 3 pháo phòng không theo thứ tự. Cảnh kết Chương 4. |
 
   Bảng nhiệm vụ cho đối thủ cấp 66–85, nhưng game chỉ có tới cấp 70, nên đối thủ nhiệm vụ và pet nhiệm vụ gặp ngoài map được giữ ở tối đa cấp 70. Boss Seraphina chia thành nhiều trận theo các giai đoạn trong bảng. Mục "QTE" và "tiêu diệt 2 bản sao trong 5 giây" đổi thành trận đánh thường. Các món thưởng chưa có trong game được thay bằng món gần nhất.
-- **Phần chưa làm:** Chương 5 (MQ081–MQ096, Mặt Trăng). Bảng ghi chương này cần duyệt, vì có chi tiết mẹ Kael còn sống và kết cục của Thực Thể Thứ 0.
+- **Chương 5 · Mặt Trăng (MQ081–MQ096)** đặt trên các map Cột Mốc Vọng Thiên, Quỹ đạo, Vành đai cơ khí và Mặt Trăng Đỏ. Bảng ghi chương này cần chủ dự án duyệt, vì có chi tiết mẹ Kael còn sống và kết cục của Thực Thể Thứ 0. Prototype tạm làm đúng theo bảng (TRIAL) để chơi được trọn tuyến; nếu cốt truyện đổi thì chỉ cần sửa khối `PART2.push` của chương 5 trong `quests.js`.
+
+| Mã | Map | Cách hoàn thành |
+| --- | --- | --- |
+| MQ081 | Cột Mốc Vọng Thiên | Giữ thanh Lôi Đình qua 3 tầng khí quyển theo thứ tự. |
+| MQ082 | Quỹ đạo | Phá 8 mìn từ tính (gặp khi đi trong map, mỗi trận một cụm 2). |
+| MQ083 | Quỹ đạo | Đánh lui tàu hộ tống rồi đổ bộ lên boong. |
+| MQ084 | Quỹ đạo | Hạ 10 Robot Kháng Trọng Lực (mỗi trận một tốp 2). |
+| MQ085 | Quỹ đạo | Giúp Lyra đông kết động cơ, rồi phá Lõi nhiệt hạch. |
+| MQ086 | Quỹ đạo | Đánh bại Đại Tướng Cơ Giới (không chạy được). |
+| MQ087 | Quỹ đạo | Né 3 đợt mảnh vỡ theo thứ tự. |
+| MQ088–MQ089 | Mặt Trăng Đỏ | Tìm cửa hầm, mở buồng ngủ đông của mẹ bằng la bàn. |
+| MQ090 | Mặt Trăng Đỏ | Cầm cự 6 lượt để bảo vệ hệ thống sự sống. |
+| MQ091 | Vành đai cơ khí | Phá 4 tháp plasma. |
+| MQ092 | Mặt Trăng Đỏ | Dọn 9 phôi thai hư không (mỗi trận một ổ 3). |
+| MQ093 | Mặt Trăng Đỏ | Nói chuyện với Lyra. Lôi Miêu học hẳn chiêu đôi **Uyên Ương Lôi Hải** (sức mạnh 340, 8 lần; TRIAL). |
+| MQ094 | Mặt Trăng Đỏ | Cắt 6 ống dẫn titan. |
+| MQ095 | Mặt Trăng Đỏ | Đánh bại phân thân Thực Thể Thứ 0 (dùng loài Minh vương Long, máu gấp 6). |
+| MQ096 | Mặt Trăng Đỏ | Tái lập phong ấn. Cảnh **Đại kết cục**, sau đó chơi tự do. |
+
+  Các trận "trong 3 phút" và "điều khiển né mảnh vỡ" đổi thành trận thường và chặng theo thứ tự, vì trận đánh theo lượt. Mìn, robot, tháp plasma, Đại Tướng Cơ Giới và Thực Thể Thứ 0 dùng pet VQSV6 cùng hệ, vì dữ liệu gốc không có loài riêng (TRIAL). Mọi đối thủ giữ ở cấp 70. Các món thưởng chưa có trong game được thay bằng món gần nhất. Khi xong MQ096, dòng mục tiêu ghi đã hoàn thành cả 96 nhiệm vụ chính và người chơi đi tự do khắp các vùng.
 
 ## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
 

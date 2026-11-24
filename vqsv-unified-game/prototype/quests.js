@@ -285,6 +285,93 @@
       reward: { exp: 700000, relic: 3, story: ["Hộ Phù Ý Chí"] }, rewardText: "700.000 EXP, Hộ Phù Ý Chí" },
   );
   NPC_ART.father = "elder"; NPC_ART.lyra3 = "herbalist"; NPC_ART.lyra4 = "herbalist"; NPC_ART.skyfolk = "villager";
+  // ---- Chương 4 · Kính Giới và hành trình lên trời (MQ061–MQ080). The table marks chapters 4–5 as expanded content
+  // still to be reviewed; it is played as written. Enemy levels above the game's cap (70) are held at 70. ----
+  PART2.push(
+    { id: "MQ061", chapter: 4, title: "Bước Vào Kính Giới Vô Cực", place: "Điện gương", giver: "Seraphina",
+      text: "Cung điện phản chiếu ngàn hình bóng. Tìm lối đi thật qua mê cung gương: chạm 4 tấm gương thật theo thứ tự.",
+      task: { ordered: true, spots: RANGE3("mirror-hall", [[.15, .5], [.35, .25], [.6, .7], [.85, .4]], i => `Chạm tấm gương thật ${i + 1}`, i => ({ say: SAY("Gương", ["Mặt gương lạnh và thật. Lối đi mở tiếp.", "Hình bóng Kael trong gương không cử động theo… gương giả ở bên cạnh.", "Lôi Miêu gầm lên, chỉ đúng tấm gương thật.", "Cuối mê cung, một hành lang ký ức hiện ra."][i]) })) },
+      reward: { exp: 780000, relic: 9 }, rewardText: "780.000 EXP, Cá Thờn Bơn (thay cho Kính Phù Thủy)" },
+    { id: "MQ062", chapter: 4, title: "Huyễn Ảnh Quá Khứ", place: "Hành lang ký ức", giver: "Gương ký ức",
+      text: "Ảo ảnh tái hiện nỗi đau và mất mát. Phá hủy 3 tấm gương tạo ảo giác.",
+      task: { spots: RANGE3("mirror-hall", [[.25, .7], [.5, .3], [.75, .75]], "Phá gương ảo giác", () => ({ battle: B("vqsv6-db-94", 67, "Gương ảo giác", { hpScale: 2 }) })) },
+      reward: { exp: 865000, items: { 10: 3 } }, rewardText: "865.000 EXP, 3 Vạn năng dược (thay cho Thuốc Bình Tâm)" },
+    { id: "MQ063", chapter: 4, title: "Lời Thì Thầm Của Hư Không", place: "Điện gương thứ hai", giver: "Bóng ma tâm linh",
+      text: "Sóng âm của Seraphina thao túng tâm trí. Giữ vững ý chí: cầm cự 6 lượt trước Bóng ma tâm linh.",
+      task: { spots: [{ map: "mirror-hall", frac: [.9, .75], label: "Chống lại lời thì thầm", battle: B("vqsv6-db-96", 68, "Bóng ma tâm linh", { hpScale: 4, survive: 6, noFlee: true }) }] },
+      reward: { exp: 955000, relic: 3 }, rewardText: "955.000 EXP, Ô Nha Uế (thay cho Dây Chuyền Bạc)" },
+    { id: "MQ064", chapter: 4, title: "Khúc Hát Đại Dương Của Lyra", place: "Đài vọng kính", giver: "Lyra",
+      text: "Lyra hát bản hùng ca biển khơi thanh tẩy cung điện. Đẩy lùi 3 đợt bóng gương quấy nhiễu theo thứ tự để nàng hát trọn.",
+      task: { ordered: true, spots: RANGE3("mirror-hall", [[.4, .5], [.55, .55], [.7, .5]], i => `Bảo vệ khúc hát (đoạn ${i + 1})`, () => ({ battle: B("vqsv6-db-95", 69, "Bóng gương quấy nhiễu") })) },
+      reward: { exp: 1050000, story: ["Bản Nhạc Cổ Biển"] }, rewardText: "1.050.000 EXP, Bản Nhạc Cổ Biển" },
+    { id: "MQ065", chapter: 4, title: "Kích Hoạt Trận Đồ Pha Lê", place: "Trung tâm Kính Giới", giver: "Cột trụ pha lê",
+      text: "Hội tụ ánh sáng: kích hoạt 4 trụ pha lê theo đúng thứ tự Bắc, Đông, Nam, Tây.",
+      task: { ordered: true, spots: RANGE3("aethelgard-summit", [[.5, .15], [.85, .5], [.5, .85], [.15, .5]], i => `Kích hoạt trụ ${["Bắc", "Đông", "Nam", "Tây"][i]}`, i => ({ say: SAY("Trụ pha lê", i < 3 ? "Một tia sáng bắn về tâm trận đồ." : "Bốn tia sáng hội tụ. Trận Đồ Pha Lê bừng sáng!") })) },
+      reward: { exp: 1150000, story: ["Tinh Cầu Pha Lê"] }, rewardText: "1.150.000 EXP, Tinh Cầu Pha Lê" },
+    { id: "MQ066", chapter: 4, title: "Đao Kiếm Phản Chiếu", place: "Quảng trường gương", giver: "Binh đoàn tinh thể",
+      text: "Đội cận vệ tinh thể tuần tra khắp Đỉnh Aethelgard. Tiêu diệt 15 Cận Vệ Gương (mỗi trận một tốp 3).",
+      task: { wild: { map: "aethelgard-summit", pet: "vqsv6-db-95", level: [68, 70], name: "Tốp Cận Vệ Gương", perWin: 3, count: 15 } },
+      reward: { exp: 1260000, relic: 0 }, rewardText: "1.260.000 EXP, Mạn Đà La Thạch (thay cho Kiếm Pha Lê Tinh Khiết)" },
+    { id: "MQ067", chapter: 4, title: "Phá Vỡ Phong Ấn Thời Gian", place: "Đồng hồ cát pha lê", giver: "Đồng Hồ Vô Tận",
+      text: "Seraphina tua ngược thời gian để chữa lành quái vật. Đập vỡ đồng hồ cát hư không.",
+      task: { spots: [{ map: "aethelgard-summit", frac: [.3, .3], label: "Đập đồng hồ cát", battle: B("vqsv6-db-109", 70, "Đồng Hồ Vô Tận", { hpScale: 3, noFlee: true }) }] },
+      reward: { exp: 1380000, story: ["Bụi Thời Gian"] }, rewardText: "1.380.000 EXP, Bụi Thời Gian" },
+    { id: "MQ068", chapter: 4, title: "Trùm 2 - Khởi Động: Gương Đa Chiều", place: "Điện pha lê chính", giver: "Seraphina (giai đoạn 1)",
+      text: "Không đánh trực diện: phá 4 tấm gương phản đòn ở bốn góc điện.",
+      task: { spots: RANGE3("aethelgard-summit", [[.12, .12], [.88, .12], [.12, .88], [.88, .88]], "Phá gương phản đòn", () => ({ battle: B("vqsv6-db-94", 70, "Gương phản đòn", { hpScale: 2 }) })) },
+      reward: { exp: 1520000, relic: 3 }, rewardText: "1.520.000 EXP, Ô Nha Uế (thay cho Áo Choàng Quang Học)" },
+    { id: "MQ069", chapter: 4, title: "Trùm 2 - Đối Đầu: Ảo Ảnh Song Trùng", place: "Điện pha lê chính", giver: "Bản sao Kael & Lyra",
+      text: "Hai bản sao mang dáng hình Kael và Lyra. Đánh bại cả hai.",
+      task: { spots: [{ map: "aethelgard-summit", frac: [.4, .55], label: "Đánh bản sao Lôi Miêu", battle: B("vqsv6-db-79", 70, "Bản sao Lôi Miêu", { hpScale: 2, noFlee: true }) },
+        { map: "aethelgard-summit", frac: [.6, .55], label: "Đánh bản sao của Lyra", battle: B("vqsv6-db-63", 70, "Bản sao của Lyra", { hpScale: 2, noFlee: true }) }] },
+      reward: { exp: 1680000, story: ["Gương Song Sinh"] }, rewardText: "1.680.000 EXP, Gương Song Sinh" },
+    { id: "MQ070", chapter: 4, title: "Bẫy Phân Rã Tâm Trí", place: "Không gian vô định", giver: "Seraphina",
+      text: "Kael bị kéo vào hố đen ý thức. Cầm cự 5 lượt cho tới khi nắm được bàn tay ánh sáng của Lyra.",
+      task: { spots: [{ map: "aethelgard-summit", frac: [.5, .3], label: "Chống chọi hố đen ý thức", battle: B("vqsv6-db-96", 70, "Hố đen ý thức", { hpScale: 5, survive: 5, noFlee: true }) }] },
+      reward: { exp: 1850000, story: ["Trái Tim Dũng Cảm"] }, rewardText: "1.850.000 EXP, Trái Tim Dũng Cảm" },
+    { id: "MQ071", chapter: 4, title: "Trùm 2 - Sinh Tử: Thủy Lôi Thần Hợp Nhất", place: "Không gian vỡ vụn", giver: "Kính Giới Thiên Sứ",
+      text: "Sàn kính vỡ vụn, Lyra rải màng nước dẫn sét. Kết liễu Kính Giới Thiên Sứ.",
+      task: { spots: [{ map: "aethelgard-summit", frac: [.5, .5], label: "Đối đầu Kính Giới Thiên Sứ", battle: B("vqsv6-db-102", 70, "Kính Giới Thiên Sứ", { hpScale: 5, noFlee: true,
+        grantSkill: { name: "Thủy Lôi Thần Hợp Nhất", power: 420, uses: 3, max: 3, description: "Màng nước của Lyra dẫn sét của Lôi Miêu ra khắp sàn kính." } }) }] },
+      reward: { exp: 2050000, relic: 4 }, rewardText: "2.050.000 EXP, Viễn Cổ Long Cốt (pháp bảo thay thế)" },
+    { id: "MQ072", chapter: 4, title: "Tro Tàn Của Kẻ Kiến Trúc", place: "Sàn đấu đổ nát", giver: "Xác pha lê Seraphina",
+      text: "Seraphina tan biến, để lại lời tiên tri về Mặt Trăng. Nhặt Khối Lập Phương Hư Vô.",
+      task: { spots: [{ map: "aethelgard-summit", frac: [.55, .45], label: "Nhặt Khối Lập Phương Hư Vô", say: SAY("Xác pha lê Seraphina", "\"Các ngươi chỉ làm chậm điều tất yếu… Mặt Trăng Đỏ đã thức giấc.\"", "Giữa đống pha lê vỡ là một khối lập phương đen tuyền, lạnh buốt.") }] },
+      reward: { exp: 2280000, story: ["Khối Lập Phương Hư Vô"] }, rewardText: "2.280.000 EXP, Khối Lập Phương Hư Vô" },
+    { id: "MQ073", chapter: 4, title: "Cú Nhảy Vực Mây", place: "Mép lục địa bay", giver: "Lôi Miêu",
+      text: "Cung điện sụp đổ. Kael ôm Lyra nhảy lên lưng Lôi Miêu, lượn qua 3 mảnh vỡ rơi theo thứ tự.",
+      task: { ordered: true, spots: RANGE3("sky-monolith", [[.3, .2], [.7, .4], [.35, .6]], i => `Lượn qua mảnh vỡ ${i + 1}`, i => ({ say: SAY("Lôi Miêu", ["Nghiêng cánh trái!", "Lao xuống dưới khối đá!", "Vút lên, đáp xuống Cột Mốc Vọng Thiên!"][i]) })) },
+      reward: { exp: 2520000, relic: 7 }, rewardText: "2.520.000 EXP, Linh Trùng Thi Hài (thay cho Yên Cương Hoàng Kim)" },
+    { id: "MQ074", chapter: 4, title: "Bản Đồ Chiếu Lên Đêm Đen", place: "Đài tinh tú Aethelgard", giver: "La bàn cổ & khối lập phương",
+      text: "Khối lập phương cộng hưởng với la bàn, chiếu bản đồ lên trời đêm.",
+      task: { spots: [{ map: "sky-monolith", frac: [.5, .3], label: "Ghép la bàn và khối lập phương", say: SAY("La bàn cổ", "Một cột sáng chiếu lên trời, vẽ ra vành đai cơ khí quanh Mặt Trăng Đỏ.") }] },
+      reward: { exp: 2800000, story: ["La Bàn Vũ Trụ"] }, rewardText: "2.800.000 EXP, La Bàn Vũ Trụ" },
+    { id: "MQ075", chapter: 4, title: "Bí Mật Về Mẹ Của Kael", place: "Tàn tích đài tinh tú", giver: "Bản ghi âm của cha",
+      text: "Nghe trọn bản ghi âm của cha về Thực Thể Thứ 0 và lý do ông tìm kiếm năng lượng.",
+      task: { spots: [{ map: "sky-monolith", frac: [.25, .45], label: "Mở bản ghi âm của cha", say: SAY("Giọng cha Kael", "\"Kael, mẹ con không chết. Bà ấy bị Thực Thể Thứ 0 mang lên Mặt Trăng.\"", "\"Mọi năng lượng ta tìm kiếm… đều là để đưa bà ấy về.\"") }] },
+      reward: { exp: 3100000, story: ["Bức Ảnh Mẹ Kael"] }, rewardText: "3.100.000 EXP, Bức Ảnh Mẹ Kael" },
+    { id: "MQ076", chapter: 4, title: "Cột Mốc Vọng Thiên Kích Hoạt", place: "Đỉnh tháp Vọng Thiên", giver: "Cột năng lượng đỏ",
+      text: "Khởi động bàn điều khiển Cột Mốc Vọng Thiên.",
+      task: { spots: [{ map: "sky-monolith", frac: [.5, .15], label: "Khởi động bàn điều khiển", say: SAY("Cột Mốc Vọng Thiên", "Tia sáng đỏ bắn thẳng lên quỹ đạo Mặt Trăng.") }] },
+      reward: { exp: 3450000, story: ["Chìa Khóa Vọng Thiên"] }, rewardText: "3.450.000 EXP, Chìa Khóa Vọng Thiên" },
+    { id: "MQ077", chapter: 4, title: "Đại Hạm Đội Trồi Lên", place: "Bầu trời Aethelgard", giver: "Hạm đội Hư Không",
+      text: "Tàu bay bọc thép trồi lên từ tầng mây. Bắn hạ 5 khinh khí cầu trinh sát quanh Cột Mốc Vọng Thiên.",
+      task: { wild: { map: "sky-monolith", pet: "vqsv6-db-104", level: [68, 70], name: "Khinh khí cầu trinh sát", perWin: 1, count: 5 } },
+      reward: { exp: 3850000, relic: 4 }, rewardText: "3.850.000 EXP, Viễn Cổ Long Cốt (thay cho Pháo Bắn Nhanh)" },
+    { id: "MQ078", chapter: 4, title: "Tiếng Sáo Xé Tầng Mây", place: "Đài quan sát trời", giver: "Kael & Lyra",
+      text: "Kael huýt sáo hiệu triệu đồng minh. Tập hợp đủ 6 sủng vật trong ba lô cho chiến dịch cuối.",
+      task: { spots: [{ map: "sky-monolith", frac: [.75, .7], label: "Huýt sáo hiệu triệu", needTeam: 6, say: SAY("Tiếng sáo", "Tiếng sáo vang qua tầng mây. Sáu linh thú đáp lời, đứng quanh Kael.") }] },
+      reward: { exp: 4300000, story: ["Tù Và Hiệu Triệu"] }, rewardText: "4.300.000 EXP, Tù Và Hiệu Triệu" },
+    { id: "MQ079", chapter: 4, title: "Nụ Hôn Dưới Ánh Đỏ", place: "Mũi tàu chiến thần", giver: "Lyra",
+      text: "Trước giờ xuất trận, Kael và Lyra trao trọn niềm tin.",
+      npc: { id: "lyra5", name: "Lyra", map: "sky-monolith", frac: [.3, .8], offer: ["Dù trên kia là gì… tớ không sợ nữa.", "Vì cậu ở đây, Kael."] },
+      task: { talkOnly: true }, reward: { exp: 4800000, story: ["Danh hiệu Tình Yêu Vượt Thiên Cương"] }, rewardText: "4.800.000 EXP, Danh hiệu Tình Yêu Vượt Thiên Cương" },
+    { id: "MQ080", chapter: 4, title: "Mở Đường Lên Quỹ Đạo", place: "Bệ phóng cột mốc", giver: "Toàn quân liên minh",
+      text: "Toàn quân theo cột sáng tiến vào không gian. Phá 3 khẩu pháo phòng không trên Quỹ đạo theo thứ tự.",
+      task: { ordered: true, spots: RANGE3("orbit", [[.2, .5], [.5, .3], [.8, .5]], "Phá pháo phòng không", () => ({ battle: B("vqsv6-db-85", 70, "Pháo phòng không Hư Không", { hpScale: 2, noFlee: true }) })) },
+      reward: { exp: 5500000, relic: 2 }, rewardText: "5.500.000 EXP, Quy Xác Toái Phiến (thay cho Bộ Giáp Phi Hành)" },
+  );
+  NPC_ART.lyra5 = "herbalist";
   const byIdP2 = new Map(PART2.map(def => [def.id, def]));
   const p2 = () => byIdP2.get(current()?.id) || null;
   // Where a spot or NPC stands: next to the exit toward `near` (two cells inward) or at a fraction of the map.
@@ -380,6 +467,7 @@
     if (def.id === "MQ020") { state.mode = "ending"; endingCard = "chapter1"; }
     if (def.id === "MQ042") { state.mode = "ending"; endingCard = "chapter2"; }
     if (def.id === "MQ060") { state.mode = "ending"; endingCard = "chapter3"; }
+    if (def.id === "MQ080") { state.mode = "ending"; endingCard = "chapter4"; }
     updateGuidance();
   }
   let endingCard = null;
@@ -406,7 +494,7 @@
   function p2ForceWild(mapId) {
     const def = p2(), w = def?.task.wild;
     if (!w || !q.started || mapId !== w.map || q.progress >= w.count || Math.random() >= .7) return null;
-    return { petId: w.pet, area: def.id, level: w.level[0] + Math.floor(Math.random() * (w.level[1] - w.level[0] + 1)), quality: 2, questName: w.name };
+    return { petId: w.pet, area: def.id, level: Math.min(LEVEL_CAP, w.level[0] + Math.floor(Math.random() * (w.level[1] - w.level[0] + 1))), quality: 2, questName: w.name };
   }
   function p2WildWon(enemy) {
     const def = p2(), w = def?.task.wild;
@@ -543,6 +631,7 @@
     updateGuidance();
   }
   function questEnemy(petId, level, name, { hpScale = 1, image } = {}) {
+    level = Math.min(level, LEVEL_CAP);
     const enemy = vqsv6Combatant(petId, level);
     enemy.max = enemy.hp = Math.round(enemy.hp * hpScale);
     return { ...enemy, name, image: image || window.VQSVPetTeam?.info(petId)?.image, subtitle: `NHIỆM VỤ · CẤP ${level}` };
@@ -724,7 +813,7 @@
   // ---- what the screen shows ----
   function objective() {
     const quest = current();
-    if (!quest) return "Chương 3 · Aethelgard và Boran đã hoàn thành. Chương 4 (từ MQ061) chưa có trong bản thử.";
+    if (!quest) return "Chương 4 · Kính Giới đã hoàn thành. Chương 5 (từ MQ081, Mặt Trăng) chưa có trong bản thử.";
     if (!q.intro) return null;
     if (byIdP2.has(quest.id)) return p2Objective(byIdP2.get(quest.id));
     if (!q.started) return `${quest.id} · ${quest.goal}`;
@@ -771,11 +860,11 @@
     const card = list.parentElement;
     const h3 = card?.querySelector?.("h3"), intro = card?.querySelector?.("p");
     if (h3) h3.textContent = "Nhiệm vụ chính";
-    if (intro) intro.textContent = "MQ001–MQ060 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
+    if (intro) intro.textContent = "MQ001–MQ080 theo bảng nhiệm vụ (bản thử). Nhiệm vụ kế tiếp mở khi xong nhiệm vụ trước.";
     QUESTS.forEach((quest, i) => {
       if (i === 0 || (quest.chapter || 1) !== (QUESTS[i - 1].chapter || 1)) {
         const head = document.createElement("li"); head.className = "pending";
-        head.textContent = ["", "— Chương 1 · Ryan —", "— Chương 2 · Hải Vực và Atlantis —", "— Chương 3 · Aethelgard và Boran —"][quest.chapter || 1];
+        head.textContent = ["", "— Chương 1 · Ryan —", "— Chương 2 · Hải Vực và Atlantis —", "— Chương 3 · Aethelgard và Boran —", "— Chương 4 · Kính Giới và hành trình lên trời —"][quest.chapter || 1];
         list.append(head);
       }
       const li = document.createElement("li"), done = q.done.includes(quest.id), now = i === q.index;
@@ -792,6 +881,7 @@
   }
   // The scene shown in "ending" mode: the compass awakening after MQ008, the end of the chapter after MQ020.
   function endingScene() {
+    if (endingCard === "chapter4") return { title: "CHƯƠNG 4 · HOÀN THÀNH", heading: "LÊN QUỸ ĐẠO", lines: ["Kính Giới đã vỡ, Seraphina tan biến.", "Theo cột sáng Vọng Thiên, cả đoàn bay về phía Mặt Trăng Đỏ."], hint: "Nhấn E hoặc Tiếp tục. Chương 5 chưa có trong bản thử." };
     if (endingCard === "chapter3") return { title: "CHƯƠNG 3 · HOÀN THÀNH", heading: "CÁNH CỬA KÍNH GIỚI", lines: ["Boran đã gục ngã, Cổ Thú Nham Thạch được siêu thoát.", "Sau cánh cửa gương, Seraphina đang chờ."], hint: "Nhấn E hoặc Tiếp tục. Chương 4 chưa có trong bản thử." };
     if (endingCard === "chapter2") return { title: "CHƯƠNG 2 · HOÀN THÀNH", heading: "THƯƠNG HẢI CỰ KÌNH TÁI SINH", lines: ["Cha Kael đã trở về. Atlantis gửi lời cảm ơn.", "Phía chân trời, Lục Địa Bay Aethelgard lơ lửng chờ đợi."], hint: "Nhấn E hoặc Tiếp tục. Chương 3 chưa có trong bản thử." };
     if (endingCard !== "chapter1") return null;

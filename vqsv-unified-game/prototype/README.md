@@ -185,7 +185,7 @@ Màn trận dùng lại thiết kế VQSV5 Codex làm trong commit `7c4f864`. Kh
   - Âm thanh khi chiêu rời khỏi pet: chiêu hệ có tiếng tụ lực (`charge`), đòn thường có tiếng vút (`swing`).
   - Lượt tiếp theo, kể cả phản đòn của đối thủ, chỉ bắt đầu khi hiệu ứng trước đã chạy xong, nên các chiêu không chồng lên nhau. Trong lúc chờ, các nút lệnh bị khóa.
 
-## Nhiệm vụ chính Chương 1–3 (MQ001–MQ060)
+## Nhiệm vụ chính Chương 1–4 (MQ001–MQ080)
 
 `quests.js` đưa 9 nhiệm vụ đầu của `DANH_SACH_NHIEM_VU.md` vào game. Nhiệm vụ làm lần lượt: xong nhiệm vụ này mới mở nhiệm vụ kế tiếp. Mục tiêu hiện ở thanh nhiệm vụ, nút hành động đổi chữ theo việc đang làm, và Nhật ký (phím J) liệt kê cả 9 nhiệm vụ kèm phần thưởng. Tiến độ được lưu cùng bản lưu game.
 
@@ -282,7 +282,31 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 | MQ060 | Cung điện pha lê | Bước qua cánh cửa gương. Cảnh kết Chương 3. |
 
   Một số mục tiêu trong bảng nhiệm vụ không làm được đúng nguyên văn trong trận đánh theo lượt, nên được đổi như sau. Ba giai đoạn boss Nham Bạo Long thành ba trận liền nhau. Thanh "Nhiệt Giáp về 0, Boss còn 70% HP" thành trận phá lớp Nhiệt Giáp. Đếm ngược 60 giây ở giai đoạn 3 được bỏ. MQ059 "kiểm tra trang bị và nâng cấp linh thú" thành điều kiện ba lô có ít nhất 3 sủng vật. Nham Bạo Long dùng loài Bạo Long Thú, Quái Nham Thạch Cơ Giới dùng Sừng tê giác bạo long, Ảo Ảnh Phi Hành Cơ dùng Quáng thạch dực long. Các món thưởng chưa có trong game được thay bằng món gần nhất.
-- **Phần chưa làm:** từ MQ061 (Chương 4 · Kính Giới) trở đi.
+- **Chương 4 · Kính Giới và hành trình lên trời (MQ061–MQ080)** đặt trên các map Điện gương, Đỉnh Aethelgard, Cột Mốc Vọng Thiên và Quỹ đạo. Bảng nhiệm vụ ghi chương 4–5 là nội dung mở rộng còn cần duyệt; prototype làm đúng theo bảng.
+
+| Mã | Map | Cách hoàn thành |
+| --- | --- | --- |
+| MQ061 | Điện gương | Chạm 4 tấm gương thật theo thứ tự. |
+| MQ062 | Điện gương | Phá 3 gương ảo giác. |
+| MQ063 | Điện gương | Cầm cự 6 lượt trước Bóng ma tâm linh. |
+| MQ064 | Điện gương | Đẩy lùi 3 đợt bóng gương theo thứ tự để Lyra hát trọn bài. |
+| MQ065 | Đỉnh Aethelgard | Kích hoạt 4 trụ pha lê theo thứ tự Bắc, Đông, Nam, Tây. |
+| MQ066 | Đỉnh Aethelgard | Hạ 15 Cận Vệ Gương (mỗi trận một tốp 3). |
+| MQ067 | Đỉnh Aethelgard | Đập vỡ Đồng Hồ Vô Tận. |
+| MQ068 | Đỉnh Aethelgard | Phá 4 gương phản đòn ở bốn góc. |
+| MQ069 | Đỉnh Aethelgard | Đánh bại bản sao Lôi Miêu và bản sao của Lyra. |
+| MQ070 | Đỉnh Aethelgard | Cầm cự 5 lượt trong hố đen ý thức. |
+| MQ071 | Đỉnh Aethelgard | Đánh bại Kính Giới Thiên Sứ; riêng trận này Lôi Miêu có chiêu Thủy Lôi Thần Hợp Nhất. |
+| MQ072 | Đỉnh Aethelgard | Nhặt Khối Lập Phương Hư Vô. |
+| MQ073 | Cột Mốc Vọng Thiên | Lượn qua 3 mảnh vỡ theo thứ tự. |
+| MQ074–MQ076 | Cột Mốc Vọng Thiên | Chiếu bản đồ sao, nghe bản ghi âm của cha, khởi động Cột Mốc. |
+| MQ077 | Cột Mốc Vọng Thiên | Bắn hạ 5 khinh khí cầu trinh sát (gặp khi đi trong map). |
+| MQ078 | Cột Mốc Vọng Thiên | Huýt sáo hiệu triệu khi ba lô có đủ 6 sủng vật. |
+| MQ079 | Cột Mốc Vọng Thiên | Nói chuyện với Lyra. |
+| MQ080 | Quỹ đạo | Phá 3 pháo phòng không theo thứ tự. Cảnh kết Chương 4. |
+
+  Bảng nhiệm vụ cho đối thủ cấp 66–85, nhưng game chỉ có tới cấp 70, nên đối thủ nhiệm vụ và pet nhiệm vụ gặp ngoài map được giữ ở tối đa cấp 70. Boss Seraphina chia thành nhiều trận theo các giai đoạn trong bảng. Mục "QTE" và "tiêu diệt 2 bản sao trong 5 giây" đổi thành trận đánh thường. Các món thưởng chưa có trong game được thay bằng món gần nhất.
+- **Phần chưa làm:** Chương 5 (MQ081–MQ096, Mặt Trăng). Bảng ghi chương này cần duyệt, vì có chi tiết mẹ Kael còn sống và kết cục của Thực Thể Thứ 0.
 
 ## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
 

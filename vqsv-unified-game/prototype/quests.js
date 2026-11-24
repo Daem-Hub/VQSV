@@ -696,6 +696,53 @@
     spotCache.set("prints", prints);
     return spotCache;
   }
+  // ---- quest guide: where the current quest wants Kael, and which exit leads there from the map he is on ----
+  function target() {
+    const quest = current();
+    if (!quest || !assets.maps || !q.intro) return null;
+    const def = byIdP2.get(quest.id), at = (map, p, name) => p && { map, x: p.x, y: p.y, name };
+    if (def) {
+      if (!q.started) return def.npc ? at(def.npc.map, place(def.npc, `${def.npc.map}:${def.id}:npc`), def.npc.name) : def.start ? at(def.start.map, place(def.start, `${def.start.map}:${def.id}:start`), def.start.label) : null;
+      const need = def.task.wild?.count || def.task.spots?.[0]?.waves || def.task.spots?.length || 0;
+      if (def.npc && def.task.report && q.progress >= need) return at(def.npc.map, place(def.npc, `${def.npc.map}:${def.id}:npc`), def.npc.name);
+      if (def.task.wild) return { map: def.task.wild.map, name: def.task.wild.name };
+      const list = p2Spots(def), next = def.task.ordered ? list[q.marks.length] : list.find(x => x.waves ? q.progress < x.waves : !q.marks.includes(x.i));
+      return next ? at(next.map, next.at, next.label) : null;
+    }
+    const s = spots(), village = assets.maps[VILLAGE], elder = village.entities.elder;
+    const herbalist = (village.entities.villagers || []).find(npc => npc.id === "herbalist");
+    switch (quest.id) {
+      case "MQ001": return at(VILLAGE, s.get("dummy"), "Bia gỗ");
+      case "MQ002": return at(VILLAGE, s.get("cellar"), "Căn hầm cũ");
+      case "MQ003": return !q.started || q.progress >= 3 ? at(FOREST, s.get("bran"), "Thợ săn Bran") : { map: FOREST, name: "Dã Lang Bão Tố" };
+      case "MQ004": return !q.started || q.progress >= 5 ? at(VILLAGE, herbalist, "Dược sĩ Mae") : at(MEADOW, s.get("grass").find((g, n) => !q.marks.includes(n)), "Cỏ Dạ Quang");
+      case "MQ005": return q.progress >= 3 ? at(VILLAGE, elder, "Trưởng làng Elden") : at(STREAM, s.get("prints")[q.progress], "Dấu chân tà khí");
+      case "MQ007": return at(VILLAGE, s.get("colossus"), "Nham Cự Tượng");
+      case "MQ008": return at(VILLAGE, village.entities.encounter, "Ma Khống Cầu");
+      case "MQ009": return at(FOREST, s.get("shrine"), "Điện thờ cổ");
+      default: return null;
+    }
+  }
+  const routeCache = new Map();
+  function firstLink(from, to) {
+    const key = from + ">" + to;
+    if (routeCache.has(key)) return routeCache.get(key);
+    const seen = new Map([[from, null]]), queue = [from];
+    while (queue.length && !seen.has(to)) {
+      const id = queue.shift();
+      for (const link of assets.maps[id]?.links || []) if (assets.maps[link.target] && !seen.has(link.target)) { seen.set(link.target, seen.get(id) || link); queue.push(link.target); }
+    }
+    const link = seen.get(to) || null;
+    routeCache.set(key, link);
+    return link;
+  }
+  function guide(t = target()) {
+    const map = assets.map;
+    if (!t || !map) return null;
+    if (t.map === map.id) return t.x == null ? null : { x: t.x, y: t.y, id: "quest", name: t.name };
+    const link = firstLink(map.id, t.map);
+    return link && { x: link.x, y: link.y, id: link.target, name: link.label || assets.maps[link.target]?.title, link: true, goal: assets.maps[t.map]?.title || t.map };
+  }
   const onMap = id => assets.map?.id === id;
   const close = (a, b) => Math.abs(a.x - state.player.x) + Math.abs(a.y - state.player.y) <= 1 && b;
 
@@ -916,6 +963,10 @@
 
   // ---- what the screen shows ----
   function objective() {
+    const text = objectiveText(), g = text && guide();
+    return g?.link ? `${text} ➜ đi lối ${g.name}` : text;
+  }
+  function objectiveText() {
     const quest = current();
     if (!quest) return "Đã hoàn thành toàn bộ 96 nhiệm vụ chính. Chế độ tự do: đi khắp các vùng, bắt và nuôi pet.";
     if (!q.intro) return null;
@@ -941,6 +992,9 @@
       ctx.beginPath(); ctx.arc(x * S + 10, y * S + 10, r, 0, Math.PI * 2); ctx.fill(); ctx.restore();
     };
     p2Draw(ctx, S, glow);
+    compass(ctx, S, t);
+    const g = guide();
+    if (g?.link) { glow(g.x, g.y, "#7fe9ff", 9); ctx.save(); ctx.font = "bold 13px system-ui"; ctx.textAlign = "center"; ctx.lineWidth = 3; ctx.strokeStyle = "#0d2a38"; ctx.fillStyle = "#c9f6ff"; ctx.strokeText("➜", g.x * S + 10, g.y * S - 6); ctx.fillText("➜", g.x * S + 10, g.y * S - 6); ctx.restore(); }
     if (!q.started) return;
     if (night()) { ctx.save(); ctx.fillStyle = "rgba(70,10,30,.28)"; ctx.fillRect(0, 0, assets.map.width * S, assets.map.height * S); ctx.restore(); }
     if (id === "MQ001" && onMap(VILLAGE)) { const d = s.get("dummy"); const img = cachedImage("assets/scenery/stump.png"); if (img?.complete) ctx.drawImage(img, d.x * S - 2, d.y * S - 4, 24, 24); glow(d.x, d.y, "#ffe08a", 4); }
@@ -951,6 +1005,19 @@
     if (id === "MQ007" && onMap(VILLAGE)) { const c = s.get("colossus"); glow(c.x, c.y, "#ff7a3a", 9); }
     if (id === "MQ008" && onMap(VILLAGE)) { const e = assets.map.entities.encounter; glow(e.x, e.y, "#7a2cff", 10); }
     if (id === "MQ009" && onMap(FOREST)) { const c = s.get("shrine"); glow(c.x, c.y, "#9effd6", 10); }
+  }
+  // A small arrow beside Kael pointing at the guide (main quest, or the open side quest once the story is done).
+  function compass(ctx, S, t) {
+    const g = state.mode === "explore" && window.Quests?.guide?.();
+    if (!g) return;
+    const p = state.player, px = (p.visualX ?? p.x) * S + 10, py = (p.visualY ?? p.y) * S + 10;
+    const dx = g.x * S + 10 - px, dy = g.y * S + 10 - py, d = Math.hypot(dx, dy);
+    if (d < S * 2.5) return;
+    const a = Math.atan2(dy, dx), r = 36 + Math.sin(t / 220) * 3;
+    ctx.save(); ctx.translate(px + Math.cos(a) * r, py + Math.sin(a) * r); ctx.rotate(a);
+    ctx.beginPath(); ctx.moveTo(11, 0); ctx.lineTo(-7, -8); ctx.lineTo(-3, 0); ctx.lineTo(-7, 8); ctx.closePath();
+    ctx.lineWidth = 3; ctx.strokeStyle = "#0d2a38"; ctx.stroke(); ctx.fillStyle = g.link ? "#7fe9ff" : "#ffe08a"; ctx.fill();
+    ctx.restore();
   }
   function flames(ctx, S, x, y, t) {
     for (let i = 0; i < 4; i++) {
@@ -999,7 +1066,7 @@
   }
 
   window.Quests = {
-    list: QUESTS, state: () => q, expOf, rewardTextOf, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
+    list: QUESTS, state: () => q, expOf, rewardTextOf, target, guide, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
     battleWon, battleLost, continueFromEnding, wildCaught, endingScene,
     // MQ031 wakes Lôi Miêu's thunder wings: a permanent extra move (TRIAL power and uses)
     bonusSkills(key) {
@@ -1011,7 +1078,7 @@
       return out;
     }, night, storyFightOpen: () => false, spots,
     // shared pieces for side_quests.js
-    kit: { busy: () => placing > 0, foeLevel, isBoss, mapRange, levelExp, roundExp, formatExp, place, say, questEnemy, questBattle, grantReward, onMap, close, NPC_ART, done: id => q.done.includes(id) },
+    kit: { guideTo: t => guide(t), busy: () => placing > 0, foeLevel, isBoss, mapRange, levelExp, roundExp, formatExp, place, say, questEnemy, questBattle, grantReward, onMap, close, NPC_ART, done: id => q.done.includes(id) },
     save: () => JSON.parse(JSON.stringify(q)),
     load(data) { q = data && Number.isInteger(data.index) ? { ...fresh(), ...data } : fresh(); save(); },
     reset() { q = fresh(); save(); },

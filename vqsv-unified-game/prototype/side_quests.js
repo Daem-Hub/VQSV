@@ -395,6 +395,19 @@
     return out;
   }
 
+  // Once the main story leaves nothing to point at, the guide follows the first open side quest.
+  function target() {
+    for (const def of SIDE) {
+      if (!active(def)) continue;
+      const p = st(def.id);
+      if (ready(def) && def.npc) return { map: def.npc.map, ...npcAt(def), name: def.npc.name };
+      if (def.task.wild) return { map: def.task.wild.map, name: def.task.wild.name };
+      const list = spotsOf(def), next = def.task.ordered ? list[p.marks.length] : list.find(x => !spotDone(def, x));
+      if (next?.at) return { map: next.map, x: next.at.x, y: next.at.y, name: next.label };
+    }
+    return null;
+  }
+
   // ---- hook into window.Quests: main quests first, then side quests ----
   const base = { ...Q };
   Object.assign(Q, {
@@ -402,7 +415,12 @@
     talked(npc) { if (npc?.sideTalk && !npc.questAfter) { talked(npc); updateGuidance(); return; } base.talked(npc); },
     interact() { if (base.interact()) return true; const x = here(); if (x) { x.run(); return true; } return false; },
     actionLabel: () => base.actionLabel() || here()?.label || "",
-    draw(ctx, S) { base.draw(ctx, S); draw(ctx, S); },
+    draw(ctx, S) {
+      base.draw(ctx, S); draw(ctx, S);
+      const g = !base.guide() && K.guideTo(target());
+      if (g?.link) { ctx.save(); ctx.globalAlpha = .6; ctx.fillStyle = "#7fe9ff"; ctx.beginPath(); ctx.arc(g.x * S + 10, g.y * S + 10, 8, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+    },
+    guide: () => base.guide() || K.guideTo(target()),
     forceWild: mapId => base.forceWild(mapId) || forceWild(mapId),
     wildWon(enemy) { base.wildWon(enemy); wildWon(enemy); },
     wildCaught(enemy) { base.wildCaught(enemy); caught(enemy); },

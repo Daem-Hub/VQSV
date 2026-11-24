@@ -1966,6 +1966,8 @@
       if (map.illustration) return null;
       if (state.survey === "active") return surveyPoint() || map.links?.find(link => link.target === "ryan-forest-stream") || map.links?.find(link => link.x === map.width - 1);
       if (state.survey === "return") return map.entities.villagers?.find(npc => npc.id === "scout") || map.links?.find(link => link.target === "slice01-border-village") || map.links?.find(link => link.target === "ryan-phong-loi-forest");
+      const quest = window.Quests?.guide?.();
+      if (quest) return quest;
       return state.spokeToElder ? map.entities.encounter : map.entities.elder;
     }
     // The label on the round touch button follows what E would do here.

@@ -305,7 +305,7 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 | MQ079 | Cột Mốc Vọng Thiên | Nói chuyện với Lyra. |
 | MQ080 | Quỹ đạo | Phá 3 pháo phòng không theo thứ tự. Cảnh kết Chương 4. |
 
-  Bảng nhiệm vụ cho đối thủ cấp 66–85, nhưng game chỉ có tới cấp 70, nên đối thủ nhiệm vụ và pet nhiệm vụ gặp ngoài map được giữ ở tối đa cấp 70. Boss Seraphina chia thành nhiều trận theo các giai đoạn trong bảng. Mục "QTE" và "tiêu diệt 2 bản sao trong 5 giây" đổi thành trận đánh thường. Các món thưởng chưa có trong game được thay bằng món gần nhất.
+  Bảng nhiệm vụ cho đối thủ cấp 66–85, nhưng game chỉ có tới cấp 70; cấp đối thủ giờ theo cấp của map (xem mục Cân bằng bên dưới). Boss Seraphina chia thành nhiều trận theo các giai đoạn trong bảng. Mục "QTE" và "tiêu diệt 2 bản sao trong 5 giây" đổi thành trận đánh thường. Các món thưởng chưa có trong game được thay bằng món gần nhất.
 - **Chương 5 · Mặt Trăng (MQ081–MQ096)** đặt trên các map Cột Mốc Vọng Thiên, Quỹ đạo, Vành đai cơ khí và Mặt Trăng Đỏ. Bảng ghi chương này cần chủ dự án duyệt, vì có chi tiết mẹ Kael còn sống và kết cục của Thực Thể Thứ 0. Prototype tạm làm đúng theo bảng (TRIAL) để chơi được trọn tuyến; nếu cốt truyện đổi thì chỉ cần sửa khối `PART2.push` của chương 5 trong `quests.js`.
 
 | Mã | Map | Cách hoàn thành |
@@ -326,7 +326,7 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 | MQ095 | Mặt Trăng Đỏ | Đánh bại phân thân Thực Thể Thứ 0 (dùng loài Minh vương Long, máu gấp 6). |
 | MQ096 | Mặt Trăng Đỏ | Tái lập phong ấn. Cảnh **Đại kết cục**, sau đó chơi tự do. |
 
-  Các trận "trong 3 phút" và "điều khiển né mảnh vỡ" đổi thành trận thường và chặng theo thứ tự, vì trận đánh theo lượt. Mìn, robot, tháp plasma, Đại Tướng Cơ Giới và Thực Thể Thứ 0 dùng pet VQSV6 cùng hệ, vì dữ liệu gốc không có loài riêng (TRIAL). Mọi đối thủ giữ ở cấp 70. Các món thưởng chưa có trong game được thay bằng món gần nhất. Khi xong MQ096, dòng mục tiêu ghi đã hoàn thành cả 96 nhiệm vụ chính và người chơi đi tự do khắp các vùng.
+  Các trận "trong 3 phút" và "điều khiển né mảnh vỡ" đổi thành trận thường và chặng theo thứ tự, vì trận đánh theo lượt. Mìn, robot, tháp plasma, Đại Tướng Cơ Giới và Thực Thể Thứ 0 dùng pet VQSV6 cùng hệ, vì dữ liệu gốc không có loài riêng (TRIAL). Cấp đối thủ theo cấp của map (xem mục Cân bằng). Các món thưởng chưa có trong game được thay bằng món gần nhất. Khi xong MQ096, dòng mục tiêu ghi đã hoàn thành cả 96 nhiệm vụ chính và người chơi đi tự do khắp các vùng.
 
 ## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
 
@@ -359,3 +359,13 @@ Bảng nhiệm vụ cho cấp 1–100, còn game chỉ tới cấp 70. EXP thư�
 - **Nhiệm vụ phụ:** EXP bằng khoảng một cấp ở cấp map của nhiệm vụ. Sủng vật thưởng vào đội ở cấp của map đó.
 - Dòng thưởng trong Nhật ký và thông báo hoàn thành hiện số EXP mới. Vật phẩm, đá và thánh vật giữ nguyên.
 - Test `test_chapter1.cjs` kiểm tra cấp boss MQ086, cấp pet săn ở Quỹ đạo và việc EXP nhiệm vụ chỉ chạm cấp tối đa ở cuối truyện.
+
+## Chỉ đường nhiệm vụ
+
+Thế giới có hơn 40 map, nên game chỉ lối cho nhiệm vụ đang làm:
+
+- **Dòng mục tiêu** ghi thêm `➜ đi lối …` khi chỗ cần đến nằm ở map khác. Đó là lối ra trên map hiện tại dẫn tới map đích theo đường ngắn nhất (tính theo số lần chuyển map, dựa trên các lối của map).
+- **Trên sân:** lối cần đi sáng màu xanh nhạt và có mũi tên ➜. Một mũi tên nhỏ cạnh Kael luôn chỉ về phía cần đi: xanh nhạt khi phải sang map khác, vàng khi điểm cần đến ở ngay map này.
+- **Bản đồ (nút Bản đồ):** chọn sẵn lối hoặc điểm nhiệm vụ; bấm **Chỉ đường** để vẽ vệt đường trên sân như trước.
+- Áp dụng cho mọi nhiệm vụ chính (cả MQ001–MQ009 của Chương 1). Khi đã xong cốt truyện, chỉ đường theo nhiệm vụ phụ đang làm đầu tiên.
+- Test `test_chapter1.cjs` đi theo chỉ đường từ làng tới map của từng nhiệm vụ MQ010–MQ096.

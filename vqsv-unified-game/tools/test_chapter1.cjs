@@ -216,6 +216,21 @@ run('state.battle = newBattle(); state.mode = "explore"; window.Quests.jump("MQ0
 for (let i = 0; i < 20; i++) { const f = run('window.Quests.forceWild("orbit")'); if (f) assert(f.level >= 60 && f.level <= 63, `orbit hunt level ${f.level}`); }
 { let lv = 5, e = 0, capAt = null; for (const q of run('window.Quests.list.map(q => [q.id, window.Quests.expOf(q)])')) { e += q[1]; while (lv < 70 && e >= run(`expToReach(${lv + 1})`)) { e -= run(`expToReach(${lv + 1})`); lv++; } if (lv >= 70 && !capAt) capAt = q[0]; }
   assert(!capAt || capAt >= 'MQ090', `quest EXP alone reaches the cap at ${capAt}`); }
+// Quest guide: from the village, following the guide's exits reaches every quest's map; the objective names the exit.
+for (const id of run('window.Quests.list.map(q => q.id)').slice(9)) {
+  run(`state.battle = newBattle(); window.Quests.jump(${JSON.stringify(id)})`);
+  const goal = run('window.Quests.target()'); assert(goal, `${id} has a target`);
+  at('slice01-border-village', elder.x, elder.y + 1);
+  for (let hop = 0; hop < 40 && run('assets.map.id') !== goal.map; hop++) {
+    const g = run('window.Quests.guide()'); assert(g?.link, `${id}: exit toward ${goal.map} from ${run('assets.map.id')}`);
+    if (hop === 0) assert.match(run('window.Quests.objective()'), /➜ đi lối /);
+    const next = ctx.maps[g.id], arrive = next.links.find(l => l.target === run('assets.map.id')) || { x: 1, y: 1 };
+    at(g.id, arrive.x, arrive.y);
+  }
+  assert.equal(run('assets.map.id'), goal.map, `${id}: the guide leads to ${goal.map}`);
+  if (goal.x != null) assert.deepEqual([run('window.Quests.guide().x'), run('window.Quests.guide().y')], [goal.x, goal.y]);
+}
+run('state.battle = newBattle(); state.mode = "explore"');
 assert.match(run('window.Quests.rewardTextOf(window.Quests.list.find(q => q.id === "MQ096"))'), /^[\d.]+ EXP, Danh hiệu Chúa Tể VQSV$/);
 run(`state.battle = newBattle(); state.mode = "explore"; window.Quests.load(${doneState})`);
 // Saves carry the quest state; a reset starts over.

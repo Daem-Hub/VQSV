@@ -2262,9 +2262,21 @@
       canvas.style.height = stageH + "px";
       Object.assign(DUEL, { h, k, sized: true });
     }
+    // The field is drawn in 480 × 360 logical pixels but the canvas holds FIELD.k device pixels for each of them, so on a
+    // phone the art is scaled once by a whole number (sharp pixel blocks) and text is drawn at screen resolution, instead
+    // of a 480 × 360 picture being stretched ~6× by the browser (blurry or uneven).
+    const FIELD = { k: 1 };
+    function fieldScale() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return 1;
+      const shown = getComputedStyle(canvas).objectFit === "contain" ? Math.min(w / 480, h / 360) : Math.max(w / 480, h / 360);
+      return Math.min(6, Math.max(1, Math.round(shown * (window.devicePixelRatio || 1))));
+    }
     function resetFieldCanvas() {
-      if (!DUEL.sized) return;
-      canvas.width = 480; canvas.height = 360; canvas.style.height = ""; DUEL.sized = false; DUEL.h = 360; DUEL.k = 1;
+      const k = fieldScale();
+      if (!DUEL.sized && FIELD.k === k && canvas.width === 480 * k) return;
+      canvas.width = 480 * k; canvas.height = 360 * k; canvas.style.height = ""; DUEL.sized = false; DUEL.h = 360; DUEL.k = 1; FIELD.k = k;
+      canvas.style.imageRendering = k > 1 ? "auto" : "";
       ctx.imageSmoothingEnabled = false;
     }
     // Each half shows its own field: VQSV5 sides follow the terrain (and a pet's terrain skill), VQSV6 regions one picture.
@@ -2795,6 +2807,7 @@
       if (state.mode !== "battle") resetFieldCanvas();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (state.mode !== "battle") { ctx.setTransform(FIELD.k, 0, 0, FIELD.k, 0, 0); ctx.imageSmoothingEnabled = false; }
       if (state.mode === "explore") drawExplore();
       if (state.mode === "dialogue") drawDialogue();
       window.followKael?.();

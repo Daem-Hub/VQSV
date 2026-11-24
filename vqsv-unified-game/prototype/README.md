@@ -376,3 +376,8 @@ Trên điện thoại dọc, khung hình bị cắt và bị bảng tên vùng (
 
 - `cameraOf` (chỉ khi màn hình dọc, trừ trong tiệm) cho camera nhìn quá mép map một khoảng (trên 95, dưới 105, hai bên 90 điểm ảnh của khung 480×360), phần ngoài map tô nền tối như các map nhỏ. Kael luôn nằm giữa bảng tên vùng và cụm nút. Trên máy tính hoặc khi xoay ngang, camera giữ như cũ.
 - Khi vào map qua lối đặt ở hàng ô trên cùng, Kael xuất hiện lùi vào một hàng (nếu ô đó đi được), để đầu nhân vật không vẽ ra ngoài hình map.
+
+## Sửa đồ họa mờ và vỡ trên điện thoại
+
+- **Nguyên nhân 1:** sân chơi được vẽ vào khung 480×360 điểm ảnh rồi trình duyệt phóng to khoảng 6,5 lần lên màn hình điện thoại (độ phân giải ×3). Chữ vẽ trên sân bị vỡ hạt; trên trình duyệt làm mịn khi phóng to thì cả hình bị mờ. Giờ canvas sân chơi có `FIELD.k` điểm ảnh thật cho mỗi điểm ảnh logic (k = tỉ lệ hiển thị × devicePixelRatio, làm tròn, tối đa 6). Mọi thứ vẫn vẽ theo tọa độ 480×360 qua `setTransform(k)`, nên logic game không đổi. Hình pixel được phóng một lần theo số nguyên (khối điểm ảnh sắc nét) và chữ vẽ ở độ phân giải màn hình. Màn trận đấu vốn đã có cách tương tự (`DUEL.k`).
+- **Nguyên nhân 2:** `tools/render_village_south.py` (phần làng phía nam) lưu `village-south.webp` và `village-south-chart.webp` dạng nén có mất chất lượng, làm nhòe nét pixel. Tool giờ lưu không mất chất lượng (`lossless=True`) và hai ảnh đã được dựng lại; file còn nhỏ hơn bản cũ.

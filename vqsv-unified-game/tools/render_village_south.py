@@ -72,14 +72,14 @@ def paint():
         color = Image.blend(Image.new("RGB",(1,1),"#739346"),Image.new("RGB",(1,1),"#ccb27d"),(y-old.height)/20).getpixel((0,0))
         draw.line((194,y,225,y),fill=color)
     path = TRAILS / "village-south.webp"
-    image.save(path,quality=91,method=6)
+    image.save(path,lossless=True,method=6)   # lossless: lossy WebP smears pixel art
     chart = image.convert("RGBA")
     chart.paste(Image.open(TRAILS / "slice01-border-village-chart.png").convert("RGBA"),(0,0))
     for kind,x,y in sorted(south["props"],key=lambda prop:prop[2]):
         asset = "stones" if kind == "stone" else kind
         sprite = Image.open(PROTO / "assets/scenery" / f"{asset}.png").convert("RGBA")
         chart.alpha_composite(sprite,(int((x+.5)*TILE-sprite.width/2),(y+1)*TILE-sprite.height))
-    chart.convert("RGB").save(TRAILS / "village-south-chart.webp",quality=88,method=6)
+    chart.convert("RGB").save(TRAILS / "village-south-chart.webp",lossless=True,method=6)
 
 
 if __name__ == "__main__":

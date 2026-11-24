@@ -241,14 +241,19 @@
   const npcAt = def => K.place(def.npc, `${def.npc.map}:${def.id}:npc`);
 
   function begin(def) { st(def.id).started = true; store(); statusEl.textContent = `Nhiệm vụ phụ · ${def.id} ${def.title}`; updateGuidance(); }
+  // Balance (TRIAL): side EXP is about one level of the curve at the quest's map; reward pets join at that map's level.
+  const homeMap = def => def.npc?.map || def.start?.map || def.task.spots?.[0]?.map || def.task.wild?.map;
+  const homeLevel = def => K.mapRange(homeMap(def))?.[0] || null;
+  const expOf = def => def.reward?.exp ? (homeLevel(def) ? K.roundExp(K.levelExp(homeLevel(def) + 1)) : def.reward.exp) : 0;
+  const rewardTextOf = def => def.reward?.exp ? def.rewardText.replace(/^[\d.]+ EXP/, `${K.formatExp(expOf(def))} EXP`) : def.rewardText;
   function finish(def) {
-    const r = def.reward || {};
+    const r = { ...(def.reward || {}), exp: expOf(def) };
     K.grantReward(r);
     if (r.story) s.items.push(...r.story);
     if (r.aff) s.aff += r.aff;
-    if (r.pet) window.VQSVPetTeam?.recordCatch(r.pet[0], Math.min(LEVEL_CAP, r.pet[1]), r.pet[2]);
+    if (r.pet) window.VQSVPetTeam?.recordCatch(r.pet[0], Math.min(LEVEL_CAP, homeLevel(def) || r.pet[1]), r.pet[2]);
     s.done.push(def.id); delete s.q[def.id]; store();
-    statusEl.textContent = `Hoàn thành nhiệm vụ phụ ${def.id} · ${def.title} · ${def.rewardText}`;
+    statusEl.textContent = `Hoàn thành nhiệm vụ phụ ${def.id} · ${def.title} · ${rewardTextOf(def)}`;
     window.VQSVSound?.play("levelUp");
     updateGuidance();
   }
@@ -261,7 +266,7 @@
     updateGuidance();
   }
   function fight(def, x) {
-    const b = x.battle, enemy = K.questEnemy(b.pet, b.level, b.name, { hpScale: b.hpScale || 1 });
+    const b = x.battle, enemy = K.questEnemy(b.pet, K.foeLevel(x.map, b.level, K.isBoss(b)), b.name, { hpScale: b.hpScale || 1 });
     K.questBattle(def.id, enemy, b.survive ? `${b.name}! Cầm cự ${b.survive} lượt.` : `${b.name} xuất hiện!`,
       { side: true, spot: x.i, ...(b.survive ? { surviveTurns: b.survive } : {}), ...(b.noFlee ? { noFlee: true } : {}) });
     statusEl.textContent = `Nhiệm vụ phụ · ${def.title}`;
@@ -310,7 +315,8 @@
     for (const def of SIDE) {
       const w = def.task.wild;
       if (!w || !active(def) || mapId !== w.map || ready(def) || Math.random() >= .6) continue;
-      return { petId: w.pet, area: def.id, level: Math.min(LEVEL_CAP, w.level[0] + Math.floor(Math.random() * (w.level[1] - w.level[0] + 1))), quality: 2, questName: w.name };
+      const [lo, hi] = K.mapRange(w.map) || w.level;
+      return { petId: w.pet, area: def.id, level: Math.min(LEVEL_CAP, lo + Math.floor(Math.random() * (hi - lo + 1))), quality: 2, questName: w.name };
     }
     return null;
   }
@@ -373,7 +379,7 @@
     for (const def of shown) {
       const li = document.createElement("li"), done = isDone(def), on = !!s.q[def.id]?.started;
       li.className = done ? "done" : on ? "current" : "pending";
-      li.textContent = done ? `✓ ${def.id} · ${def.title}` : `${on ? "▶" : "○"} ${def.id} · ${def.title} — ${objectiveOf(def)} (Thưởng: ${def.rewardText})`;
+      li.textContent = done ? `✓ ${def.id} · ${def.title}` : `${on ? "▶" : "○"} ${def.id} · ${def.title} — ${objectiveOf(def)} (Thưởng: ${rewardTextOf(def)})`;
       list.append(li);
     }
     const locked = SIDE.length - shown.length;

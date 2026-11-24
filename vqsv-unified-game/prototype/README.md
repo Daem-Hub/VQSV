@@ -349,3 +349,13 @@ Hiệu ứng `shadowTendrils` của pixelfx bị kẹt vòng lặp vô tận v�
 - **Test:** `tools/test_side_quests.cjs` kiểm tra khóa/mở theo nhiệm vụ chính, lưu và tải, thua trận rồi thử lại, và chơi trọn cả 47 nhiệm vụ phụ.
 
 Sửa kèm: khi một hội thoại nhiệm vụ kết thúc rồi mở tiếp hội thoại, trận đánh hay cảnh kết, game không còn tự đưa về chế độ đi lại nữa. Trước đây cảnh **Đại kết cục** sau MQ096 bị bỏ qua vì lỗi này. Thông báo cuối các chương 1–4 cũng không còn ghi "chương sau chưa có".
+
+## Cân bằng cấp đối thủ và EXP nhiệm vụ (TRIAL)
+
+Bảng nhiệm vụ cho cấp 1–100, còn game chỉ tới cấp 70. EXP thưởng trong bảng cũng tăng khoảng 1,15 lần sau mỗi nhiệm vụ (MQ096 thưởng 50.000.000 EXP). Đo thử thì chỉ riêng EXP nhiệm vụ đã đưa Lôi Miêu lên cấp 70 ở MQ049, nên từ Chương 3 trở đi không còn lên cấp nữa. Cách cân bằng mới:
+
+- **Cấp đối thủ nhiệm vụ** lấy theo cấp pet hoang dã của map nơi diễn ra trận (`customWildAreas`, dựng theo tuyến đường trong `tools/atlas_wild.py`). Đối thủ thường lấy cấp cao nhất của map, boss (không chạy được hoặc máu từ gấp 3) thêm 2 cấp, tối đa 70. Pet nhiệm vụ gặp khi đi trong map ra cấp trong khoảng cấp của map đó. Các trận riêng của Chương 1 (MQ001–MQ009, ở làng và rừng chưa có bảng pet) giữ nguyên.
+- **EXP nhiệm vụ chính (MQ010–MQ096)** tính theo đường cong lên cấp của game (`expToReach`): mỗi nhiệm vụ cho khoảng một nửa số EXP cần để đi từ cấp map của nhiệm vụ này lên cấp map của nhiệm vụ sau, ít nhất bằng 35% một cấp. Phần còn lại đến từ đánh pet hoang dã. Chỉ riêng EXP nhiệm vụ thì Lôi Miêu lên cấp đều và chạm 70 ở nhiệm vụ cuối. Ví dụ: MQ010 7.800 EXP, MQ042 28.000 EXP, MQ096 200.000 EXP.
+- **Nhiệm vụ phụ:** EXP bằng khoảng một cấp ở cấp map của nhiệm vụ. Sủng vật thưởng vào đội ở cấp của map đó.
+- Dòng thưởng trong Nhật ký và thông báo hoàn thành hiện số EXP mới. Vật phẩm, đá và thánh vật giữ nguyên.
+- Test `test_chapter1.cjs` kiểm tra cấp boss MQ086, cấp pet săn ở Quỹ đạo và việc EXP nhiệm vụ chỉ chạm cấp tối đa ở cuối truyện.

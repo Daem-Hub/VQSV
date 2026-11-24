@@ -444,6 +444,33 @@
   );
   NPC_ART.lyra6 = "herbalist";
   const byIdP2 = new Map(PART2.map(def => [def.id, def]));
+
+  // ---- Balance (TRIAL). The table's levels run 1–100 and its EXP grows ~1.15× per quest, so Lôi Miêu reached the
+  // level cap (70) at MQ049. Quest foes now follow the level of the map they stand on (its wild pool, built along the
+  // route by tools/atlas_wild.py), bosses 2 above; each quest's EXP covers about half of the curve (expToReach) from
+  // its map's level to the next quest's, so wild fights still matter and the lead keeps growing to the last quest. ----
+  const mapRange = id => assets.maps?.[id]?.customWildAreas?.[0]?.level_range || null;
+  const isBoss = b => !!b.noFlee || (b.hpScale || 1) >= 3;
+  function foeLevel(map, raw, boss) { const r = mapRange(map); return Math.min(LEVEL_CAP, r ? r[1] + (boss ? 2 : 0) : raw); }
+  const levelExp = level => Math.max(0, expToReach(level));
+  const curveExp = level => { let sum = 0; for (let l = 2; l <= level; l++) sum += levelExp(l); return sum; };
+  const roundExp = n => { if (n < 100) return Math.round(n); const k = 10 ** (Math.floor(Math.log10(n)) - 1); return Math.round(n / k) * k; };
+  const homeMap = def => def.npc?.map || def.start?.map || def.task.spots?.[0]?.map || def.task.wild?.map;
+  let expPlan = null;
+  function planExp() {
+    if (expPlan || !assets.maps) return expPlan;
+    const lv = []; let top = 0;
+    for (const def of PART2) { const r = mapRange(homeMap(def)); if (r) top = Math.max(top, r[0]); lv.push(top || null); }
+    expPlan = new Map(PART2.map((def, i) => {
+      if (!lv[i]) return [def.id, def.reward.exp];
+      const next = i + 1 < PART2.length ? lv[i + 1] : LEVEL_CAP;
+      return [def.id, roundExp(Math.max(.35 * levelExp(lv[i] + 1), .5 * (curveExp(next) - curveExp(lv[i]))))];
+    }));
+    return expPlan;
+  }
+  const expOf = quest => planExp()?.get(quest.id) ?? quest.reward?.exp ?? 0;
+  const formatExp = n => n.toLocaleString("vi-VN");
+  const rewardTextOf = quest => byIdP2.has(quest.id) && planExp() ? quest.rewardText.replace(/^[\d.]+ EXP/, `${formatExp(expOf(quest))} EXP`) : quest.rewardText;
   const p2 = () => byIdP2.get(current()?.id) || null;
   // Where a spot or NPC stands: next to the exit toward `near` (two cells inward) or at a fraction of the map.
   const placeCache = new Map();
@@ -500,13 +527,13 @@
     if (b.capture) {
       const player = state.player;
       player.inputDir = null; player.step = null; player.visualX = player.x; player.visualY = player.y;
-      state.battle = newBattle({ petId: b.pet, area: def.id, level: b.level, quality: 3, questName: b.name });
+      state.battle = newBattle({ petId: b.pet, area: def.id, level: foeLevel(s.map, b.level, false), quality: 3, questName: b.name });
       state.battle.quest = { id: def.id, spot: s.i, capture: true };
       state.battle.message = `${b.name} xuất hiện. Đánh nhẹ tay rồi dùng cầu bắt để thu phục nó!`;
       state.mode = "battle"; window.VQSVSound?.play("encounter"); updateGuidance();
       return;
     }
-    const enemy = questEnemy(b.pet, b.level, b.name, { hpScale: b.hpScale || 1 });
+    const enemy = questEnemy(b.pet, foeLevel(s.map, b.level, isBoss(b)), b.name, { hpScale: b.hpScale || 1 });
     questBattle(def.id, enemy, b.survive ? (b.mercy ? `${b.name} lồng lộn! Kiên nhẫn trấn an nó ${b.survive} lượt, đừng hạ gục nó.` : `${b.name} xuất hiện! Cầm cự ${b.survive} lượt.`) : `${b.name} xuất hiện!`,
       { spot: s.i, ...(b.survive ? { surviveTurns: b.survive } : {}), ...(b.mercy ? { mercy: true } : {}), ...(b.noFlee ? { noFlee: true } : {}), ...(b.ritual ? { ritual: true } : {}) });
     if (b.grantSkill) { grantBattleSkill(b.grantSkill); state.battle.message += ` Lôi Miêu có ${b.grantSkill.name} cho trận này!`; }
@@ -566,7 +593,8 @@
   function p2ForceWild(mapId) {
     const def = p2(), w = def?.task.wild;
     if (!w || !q.started || mapId !== w.map || q.progress >= w.count || Math.random() >= .7) return null;
-    return { petId: w.pet, area: def.id, level: Math.min(LEVEL_CAP, w.level[0] + Math.floor(Math.random() * (w.level[1] - w.level[0] + 1))), quality: 2, questName: w.name };
+    const [lo, hi] = mapRange(w.map) || w.level;
+    return { petId: w.pet, area: def.id, level: Math.min(LEVEL_CAP, lo + Math.floor(Math.random() * (hi - lo + 1))), quality: 2, questName: w.name };
   }
   function p2WildWon(enemy) {
     const def = p2(), w = def?.task.wild;
@@ -776,14 +804,14 @@
   function complete(text) {
     const quest = current();
     if (!quest) return;
-    grantReward(quest.reward || {});
+    grantReward({ ...(quest.reward || {}), exp: expOf(quest) });
     if (quest.reward?.story) q.items.push(...quest.reward.story);
     q.done.push(quest.id); q.index++; q.progress = 0; q.marks = [];
     // Steps that start by themselves; MQ003 and MQ004 start when Kael talks to their giver.
     const next = current(), nextP2 = next && byIdP2.get(next.id);
     q.started = ["MQ002", "MQ005", "MQ006", "MQ007", "MQ008", "MQ009"].includes(next?.id) || !!(nextP2 && !nextP2.npc && !nextP2.start);
     save(); updateWallet();
-    statusEl.textContent = `Hoàn thành ${quest.id} · ${quest.title} · ${quest.rewardText}`;
+    statusEl.textContent = `Hoàn thành ${quest.id} · ${quest.title} · ${rewardTextOf(quest)}`;
     window.VQSVSound?.play("levelUp");
     if (text && state.battle) state.battle.message = text;
   }
@@ -945,7 +973,7 @@
       }
       const li = document.createElement("li"), done = q.done.includes(quest.id), now = i === q.index;
       li.className = done ? "done" : now ? "current" : "pending";
-      li.textContent = done ? `✓ ${quest.id} · ${quest.title}` : now ? `▶ ${quest.id} · ${quest.title} — ${q.intro ? quest.text : "Nói chuyện với Trưởng làng Elden."} (Thưởng: ${quest.rewardText})` : `○ ${quest.id} · ${quest.title} · ${quest.place}`;
+      li.textContent = done ? `✓ ${quest.id} · ${quest.title}` : now ? `▶ ${quest.id} · ${quest.title} — ${q.intro ? quest.text : "Nói chuyện với Trưởng làng Elden."} (Thưởng: ${rewardTextOf(quest)})` : `○ ${quest.id} · ${quest.title} · ${quest.place}`;
       list.append(li);
       if (now) setTimeout(() => li.scrollIntoView?.({ block: "center" }), 0);
     });
@@ -971,7 +999,7 @@
   }
 
   window.Quests = {
-    list: QUESTS, state: () => q, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
+    list: QUESTS, state: () => q, expOf, rewardTextOf, current, interact, talked, npcs, objective, actionLabel, draw, renderJournal, forceWild, wildWon,
     battleWon, battleLost, continueFromEnding, wildCaught, endingScene,
     // MQ031 wakes Lôi Miêu's thunder wings: a permanent extra move (TRIAL power and uses)
     bonusSkills(key) {
@@ -983,7 +1011,7 @@
       return out;
     }, night, storyFightOpen: () => false, spots,
     // shared pieces for side_quests.js
-    kit: { busy: () => placing > 0, place, say, questEnemy, questBattle, grantReward, onMap, close, NPC_ART, done: id => q.done.includes(id) },
+    kit: { busy: () => placing > 0, foeLevel, isBoss, mapRange, levelExp, roundExp, formatExp, place, say, questEnemy, questBattle, grantReward, onMap, close, NPC_ART, done: id => q.done.includes(id) },
     save: () => JSON.parse(JSON.stringify(q)),
     load(data) { q = data && Number.isInteger(data.index) ? { ...fresh(), ...data } : fresh(); save(); },
     reset() { q = fresh(); save(); },

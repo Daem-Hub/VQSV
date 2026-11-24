@@ -208,6 +208,15 @@ w = where('MQ059'); stand(w.spots[0]); run('interact()');
 assert.equal(Q(), 'MQ059'); assert.match(run('statusEl.textContent'), /ít nhất 3 sủng vật/);
 run('window.Quests.jump("MQ054")'); w = where('MQ054'); stand(w.spots[0]); run('interact()');
 assert.equal(run('state.battle.team.find(p => p.kind === "lead").skill.name'), 'Lôi Kích Băng Hàn');
+// Balance (TRIAL): quest foes follow their map's wild level (bosses +2), hunts roll in the map's range, and quest EXP
+// alone brings Lôi Miêu to the cap only at the last quest instead of halfway through.
+run('state.battle = newBattle(); state.mode = "explore"; window.Quests.jump("MQ086")'); w = where('MQ086'); stand(w.spots[0]); run('interact()');
+assert.equal(run('state.battle.enemy.level'), Math.min(70, ctx.maps.orbit.customWildAreas[0].level_range[1] + 2));
+run('state.battle = newBattle(); state.mode = "explore"; window.Quests.jump("MQ082")');
+for (let i = 0; i < 20; i++) { const f = run('window.Quests.forceWild("orbit")'); if (f) assert(f.level >= 60 && f.level <= 63, `orbit hunt level ${f.level}`); }
+{ let lv = 5, e = 0, capAt = null; for (const q of run('window.Quests.list.map(q => [q.id, window.Quests.expOf(q)])')) { e += q[1]; while (lv < 70 && e >= run(`expToReach(${lv + 1})`)) { e -= run(`expToReach(${lv + 1})`); lv++; } if (lv >= 70 && !capAt) capAt = q[0]; }
+  assert(!capAt || capAt >= 'MQ090', `quest EXP alone reaches the cap at ${capAt}`); }
+assert.match(run('window.Quests.rewardTextOf(window.Quests.list.find(q => q.id === "MQ096"))'), /^[\d.]+ EXP, Danh hiệu Chúa Tể VQSV$/);
 run(`state.battle = newBattle(); state.mode = "explore"; window.Quests.load(${doneState})`);
 // Saves carry the quest state; a reset starts over.
 at('slice01-border-village', elder.x, elder.y + 1); run('saveGame(); reset()');

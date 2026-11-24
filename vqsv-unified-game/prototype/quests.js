@@ -699,7 +699,7 @@
     if (typeof Image !== "undefined" && enemy.image) cachedImage(enemy.image);
     state.mode = "battle";
     window.VQSVSound?.play("encounter");
-    statusEl.textContent = `Nhiệm vụ · ${current().title}`;
+    statusEl.textContent = `Nhiệm vụ · ${current()?.title || ""}`;
     updateGuidance();
   }
   function questEnemy(petId, level, name, { hpScale = 1, image } = {}) {
@@ -776,14 +776,8 @@
   function complete(text) {
     const quest = current();
     if (!quest) return;
-    const r = quest.reward || {};
-    if (r.exp) grantLeadExp(r.exp);
-    if (r.gold) addGold(r.gold);
-    for (const [row, n] of Object.entries(r.items || {})) bag[row] = Math.min(STACK_MAX, (bag[row] || 0) + n);
-    if (r.items) saveBag();
-    if (r.relic != null) { stones[r.relic] = (stones[r.relic] || 0) + 1; saveStones(); updateStones(); }
-    for (const [row, n] of Object.entries(r.stones || {})) { stones[row] = (stones[row] || 0) + n; saveStones(); updateStones(); }
-    if (r.story) q.items.push(...r.story);
+    grantReward(quest.reward || {});
+    if (quest.reward?.story) q.items.push(...quest.reward.story);
     q.done.push(quest.id); q.index++; q.progress = 0; q.marks = [];
     // Steps that start by themselves; MQ003 and MQ004 start when Kael talks to their giver.
     const next = current(), nextP2 = next && byIdP2.get(next.id);
@@ -792,6 +786,16 @@
     statusEl.textContent = `Hoàn thành ${quest.id} · ${quest.title} · ${quest.rewardText}`;
     window.VQSVSound?.play("levelUp");
     if (text && state.battle) state.battle.message = text;
+  }
+  // EXP, kim tiền, bag items, relics and stones (story items are kept by the caller).
+  function grantReward(r) {
+    if (r.exp) grantLeadExp(r.exp);
+    if (r.gold) addGold(r.gold);
+    for (const [row, n] of Object.entries(r.items || {})) bag[row] = Math.min(STACK_MAX, (bag[row] || 0) + n);
+    if (r.items) saveBag();
+    if (r.relic != null) { stones[r.relic] = (stones[r.relic] || 0) + 1; saveStones(); updateStones(); }
+    for (const [row, n] of Object.entries(r.stones || {})) { stones[row] = (stones[row] || 0) + n; saveStones(); updateStones(); }
+    updateWallet();
   }
   function grantLeadExp(amount) {
     const entry = { ...progressOf("loi-mieu", BATTLE_LEVEL) };
@@ -954,11 +958,11 @@
   // The scene shown in "ending" mode: the compass awakening after MQ008, the end of the chapter after MQ020.
   function endingScene() {
     if (endingCard === "finale") return { title: "ĐẠI KẾT CỤC", heading: "KỶ NGUYÊN MỚI", lines: ["Phong ấn đã được tái lập. Mẹ Kael trở về nhân gian.", "Kael, Lyra, Lôi Miêu và cả gia đình cùng về nhà."], hint: "Nhấn E hoặc Tiếp tục để chơi tự do." };
-    if (endingCard === "chapter4") return { title: "CHƯƠNG 4 · HOÀN THÀNH", heading: "LÊN QUỸ ĐẠO", lines: ["Kính Giới đã vỡ, Seraphina tan biến.", "Theo cột sáng Vọng Thiên, cả đoàn bay về phía Mặt Trăng Đỏ."], hint: "Nhấn E hoặc Tiếp tục. Chương 5 chưa có trong bản thử." };
-    if (endingCard === "chapter3") return { title: "CHƯƠNG 3 · HOÀN THÀNH", heading: "CÁNH CỬA KÍNH GIỚI", lines: ["Boran đã gục ngã, Cổ Thú Nham Thạch được siêu thoát.", "Sau cánh cửa gương, Seraphina đang chờ."], hint: "Nhấn E hoặc Tiếp tục. Chương 4 chưa có trong bản thử." };
-    if (endingCard === "chapter2") return { title: "CHƯƠNG 2 · HOÀN THÀNH", heading: "THƯƠNG HẢI CỰ KÌNH TÁI SINH", lines: ["Cha Kael đã trở về. Atlantis gửi lời cảm ơn.", "Phía chân trời, Lục Địa Bay Aethelgard lơ lửng chờ đợi."], hint: "Nhấn E hoặc Tiếp tục. Chương 3 chưa có trong bản thử." };
+    if (endingCard === "chapter4") return { title: "CHƯƠNG 4 · HOÀN THÀNH", heading: "LÊN QUỸ ĐẠO", lines: ["Kính Giới đã vỡ, Seraphina tan biến.", "Theo cột sáng Vọng Thiên, cả đoàn bay về phía Mặt Trăng Đỏ."], hint: "Nhấn E hoặc Tiếp tục sang Chương 5." };
+    if (endingCard === "chapter3") return { title: "CHƯƠNG 3 · HOÀN THÀNH", heading: "CÁNH CỬA KÍNH GIỚI", lines: ["Boran đã gục ngã, Cổ Thú Nham Thạch được siêu thoát.", "Sau cánh cửa gương, Seraphina đang chờ."], hint: "Nhấn E hoặc Tiếp tục sang Chương 4." };
+    if (endingCard === "chapter2") return { title: "CHƯƠNG 2 · HOÀN THÀNH", heading: "THƯƠNG HẢI CỰ KÌNH TÁI SINH", lines: ["Cha Kael đã trở về. Atlantis gửi lời cảm ơn.", "Phía chân trời, Lục Địa Bay Aethelgard lơ lửng chờ đợi."], hint: "Nhấn E hoặc Tiếp tục sang Chương 3." };
     if (endingCard !== "chapter1") return null;
-    return { title: "CHƯƠNG 1 · HOÀN THÀNH", heading: "ANH HÙNG RYAN", lines: ["Cổ Long Hắc Ám tan biến trong Quang Minh Trận.", "Dưới chân tháp, Kael tìm thấy bức thư của cha."], hint: "Nhấn E hoặc Tiếp tục. Chương 2 chưa có trong bản thử." };
+    return { title: "CHƯƠNG 1 · HOÀN THÀNH", heading: "ANH HÙNG RYAN", lines: ["Cổ Long Hắc Ám tan biến trong Quang Minh Trận.", "Dưới chân tháp, Kael tìm thấy bức thư của cha."], hint: "Nhấn E hoặc Tiếp tục sang Chương 2." };
   }
   function continueFromEnding() {
     if (state.mode !== "ending") return false;
@@ -978,6 +982,8 @@
       if (q.items.includes("Kỹ Năng Đôi Tối Thượng")) out.push({ name: "Uyên Ương Lôi Hải", power: 340, uses: 8, max: 8, description: "Sấm của Lôi Miêu và biển của Lyra hòa làm một." });
       return out;
     }, night, storyFightOpen: () => false, spots,
+    // shared pieces for side_quests.js
+    kit: { busy: () => placing > 0, place, say, questEnemy, questBattle, grantReward, onMap, close, NPC_ART, done: id => q.done.includes(id) },
     save: () => JSON.parse(JSON.stringify(q)),
     load(data) { q = data && Number.isInteger(data.index) ? { ...fresh(), ...data } : fresh(); save(); },
     reset() { q = fresh(); save(); },

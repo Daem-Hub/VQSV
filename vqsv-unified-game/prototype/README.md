@@ -331,3 +331,21 @@ Những chỗ bảng nhiệm vụ còn để ngỏ, prototype tự chọn mặc 
 ## Sửa lỗi treo game ở chiêu Quỷ hệ cấp 3
 
 Hiệu ứng `shadowTendrils` của pixelfx bị kẹt vòng lặp vô tận với một số seed ngẫu nhiên. Cứ khoảng 15 lần tung chiêu Quỷ hệ cấp 3 thì có 1 lần game đứng hình; test `test_skill_fx.cjs` cũng thỉnh thoảng bị treo vì lỗi này. Đã chạy thử mọi hiệu ứng pixelfx mà game dùng, mỗi hiệu ứng với hàng trăm seed: chỉ có hiệu ứng này treo thật. Chiêu Quỷ hệ cấp 3 giờ mở đầu bằng hiệu ứng `implosion` trên mục tiêu thay cho xúc tu. Thư viện pixelfx đã vendor được giữ nguyên, không sửa.
+
+## Nhiệm vụ phụ SQ001–SQ047
+
+`side_quests.js` thêm 47 nhiệm vụ phụ của bảng nhiệm vụ (5 tuyến A–E). Nhiệm vụ phụ chạy song song với nhiệm vụ chính, nhận được nhiều cái cùng lúc, mỗi cái có tiến độ riêng. Tiến độ nằm trong bản lưu của game (cùng chỗ với nhiệm vụ chính).
+
+- **Mở khóa (TRIAL):** bảng chỉ ghi cấp gợi ý, nên mỗi nhiệm vụ phụ mở khi xong một nhiệm vụ chính có cấp ngay dưới cấp gợi ý, và map của nó đã đi tới được. Ví dụ SQ032 (Lv. 12) mở sau MQ010, SQ001 (Lv. 32) mở sau MQ026, SQ047 mở sau MQ096.
+- **Nhận nhiệm vụ:** người giao việc đứng trên map, có dấu **!** xanh trên đầu. Nhiệm vụ do đồ vật giao (rương cổ, bia đá, kính viễn vọng, bảng điều khiển…) thì có một điểm sáng xanh; bấm vào đó để bắt đầu.
+- **Cách làm:** giống nhiệm vụ chính. Điểm sáng xanh là chỗ cần đến, điểm sáng cam là trận đánh. Có săn pet hoang dã theo số lượng, bắt sủng vật bất kỳ (SQ043), cầm cự theo lượt (SQ017, SQ040, SQ046) và đấu nhiều trận liền (SQ042, SQ044). Nhật ký ghi từng nhiệm vụ phụ đã mở, việc cần làm tiếp và phần thưởng.
+- **Minigame trong bảng** (nhảy theo nhịp, chụp ảnh, hát Perfect, giải mã, QTE) đổi thành các điểm đi theo thứ tự. Mục "trong 2 phút", "trong 3 phút", "5 phút" đổi thành trận thường hoặc cầm cự theo lượt.
+- **Phần thưởng:** EXP, kim tiền, vật phẩm, đá và thánh vật như nhiệm vụ chính. Có thêm:
+  - **Hảo cảm với Lyra** (tuyến A), hiện trong Nhật ký.
+  - **Sủng vật thưởng:** Khốc Tị Mộc Linh (SQ012), Tiểu Bạch Long (SQ013), Cá Kình khổng lồ (SQ015), Sa Vương Cuồng Bạo (SQ016), Hỏa Phượng Hoàng (SQ018), Tuyệt Đối Linh Độ Khuyển (SQ020), Tinh Vân Hạc (SQ022). Loài nào bảng ghi mà game không có thì dùng loài gần nhất.
+  - **Chiêu mới cho Lôi Miêu:** Nhịp Bước Uyên Ương (SQ004, sức mạnh 220, 10 lần) và Lôi Bạo Cuồng Nộ (SQ017, sức mạnh 300, 6 lần). Hai con số này là TRIAL.
+  - Thưởng chưa có trong game (trang phục, trang bị, danh hiệu có chỉ số, +% chỉ số vĩnh viễn, tốc độ tiến hóa) được thay bằng món gần nhất hoặc giữ thành vật phẩm cốt truyện; Nhật ký ghi rõ từng món.
+- **Map:** dùng các map đã có, kể cả các map mới của Codex (Rừng Bậc Thang Ngọc Lục, Đài Quan Sát Lục Bảo, Đầm Phá San Hô Hồng, Hẻm Sông Đồng Đỏ, Phế Tích Thành Đồng). Đối thủ nhiệm vụ phụ là pet VQSV6 cùng hệ, tối đa cấp 70.
+- **Test:** `tools/test_side_quests.cjs` kiểm tra khóa/mở theo nhiệm vụ chính, lưu và tải, thua trận rồi thử lại, và chơi trọn cả 47 nhiệm vụ phụ.
+
+Sửa kèm: khi một hội thoại nhiệm vụ kết thúc rồi mở tiếp hội thoại, trận đánh hay cảnh kết, game không còn tự đưa về chế độ đi lại nữa. Trước đây cảnh **Đại kết cục** sau MQ096 bị bỏ qua vì lỗi này. Thông báo cuối các chương 1–4 cũng không còn ghi "chương sau chưa có".

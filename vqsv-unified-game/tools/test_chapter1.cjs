@@ -189,6 +189,8 @@ for (let guard = 0; guard < 100 && Q() && Q() !== null; guard++) {
     }
   }
   if (Q() === id && info.npc) { stand(info.npc); run('interact()'); talkThrough(); }
+  if (['MQ042', 'MQ060', 'MQ080', 'MQ096'].includes(id)) assert.equal(run('state.mode'), 'ending', `${id} shows its ending card`);
+  if (id === 'MQ096') assert.equal(run('window.Quests.endingScene().heading'), 'KỶ NGUYÊN MỚI');
   if (run('state.mode') === 'ending') run('interact()');
   assert.notEqual(Q(), id, `${id} completes`);
 }

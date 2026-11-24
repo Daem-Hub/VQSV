@@ -2860,7 +2860,10 @@
         state.dialogue++;
         if (state.dialogue >= state.activeNpc.dialogue.length) {
           if (state.activeNpc.id === "elder") state.spokeToElder = true;
-          window.Quests?.talked(state.activeNpc);
+          const spoke = state.activeNpc;
+          window.Quests?.talked(spoke);
+          // a quest step may open the next dialogue, a battle or an ending card; keep it on screen
+          if (state.activeNpc !== spoke || state.mode !== "dialogue") { if (state.activeNpc === spoke) state.activeNpc = null; updateGuidance(); return; }
           if (state.activeNpc.id === "scout" && state.spokeToElder) {
             if (state.survey === "unstarted") { state.survey = "active"; statusEl.textContent = "Nhiệm vụ phụ · Khảo sát Suối Sấm"; }
             else if (state.survey === "return") {
@@ -3353,5 +3356,6 @@
   <script src="village_ui.js"></script>
   <script src="pet_roster.js"></script>
   <script src="quests.js"></script>
+  <script src="side_quests.js"></script>
 </body>
 </html>

@@ -1625,7 +1625,9 @@
     const assets = { scenes: {}, mapObjects: {}, charts: {}, tiles: {}, tileDefs: {}, chars: {}, props: {}, pets: {}, skillEffects: [], map: null, petCatalog: null };
     const assetPaths = {
       tiles: [[0, "assets/tilesets/tileset_00.png"], [4, "assets/tilesets/tileset_04.png"]],
-      chars: [["player", "assets/characters/kael_field.png"], ["elder", "assets/illustrations/elder.webp"]],
+      // playerHd: Kael at 4× from his source sheet (tools/pixel_art.py), drawn at the same 32 × 40 size; the
+      // high-resolution field canvas shows his face, buckle and scarf instead of 32 × 40 blocks.
+      chars: [["player", "assets/characters/kael_field.png"], ["playerHd", "assets/characters/kael_field_hd.webp"], ["elder", "assets/illustrations/elder.webp"]],
       pets: [["companion", "assets/illustrations/loi-mieu-field.webp"], ["hero", "assets/illustrations/loi-mieu.webp"], ["enemy", "assets/illustrations/corrupted-wolf.webp"]]
     };
     const lines = [
@@ -1865,7 +1867,9 @@
         // kael_field.png: 4 rows (down, left, right, up) x 4 walk frames of 32 x 40 (tools/pixel_art.py).
         const xOffset = row === 2 ? 2 : row === 3 ? 1 : row === 1 && frame % 2 ? -1 : 0;
         const yOffset = row === 0 && frame % 2 ? -1 : 0;
-        ctx.drawImage(sprite, frame * 32, row * 40, 32, 40, -16 + xOffset, -40 + yOffset, 32, 40);
+        const hd = assets.chars.playerHd;
+        if (hd?.naturalWidth) { ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high"; ctx.drawImage(hd, frame * 128, row * 160, 128, 160, -16 + xOffset, -40 + yOffset, 32, 40); }
+        else ctx.drawImage(sprite, frame * 32, row * 40, 32, 40, -16 + xOffset, -40 + yOffset, 32, 40);
       } else {
         const height = 38, width = Math.round(height * sprite.width / sprite.height);
         ctx.drawImage(sprite, -Math.round(width / 2), -height, width, height);

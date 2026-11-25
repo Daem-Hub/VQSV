@@ -39,5 +39,22 @@ def build_kael_sheet():
     pixel_sprite(native, native.size, 44).save(ART / 'characters' / 'kael_field.png', optimize=True)
 
 
+def build_kael_sheet_hd(scale=4):
+    """The same 16 poses at 4× (128 × 160 per frame) for the high-resolution field canvas: the 32 × 40 sheet lost the
+    face, buckle and scarf detail. Plain Lanczos keeps the source's own shading; alpha is snapped so edges stay crisp."""
+    source = Image.open(ART / 'characters' / 'kael_pixel_v2.png').convert('RGBA')
+    fw, fh = 32 * scale, 40 * scale
+    sheet = Image.new('RGBA', (fw * 4, fh * 4))
+    for row, top in enumerate((50, 370, 690, 1020)):
+        for column in range(4):
+            left = 50 + column * 260
+            pose = source.crop((left, top, left+260, top+330)).resize((fw, fh), Image.Resampling.LANCZOS)
+            alpha = pose.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
+            pose.putalpha(alpha)
+            sheet.paste(pose, (column*fw, row*fh))
+    sheet.save(ART / 'characters' / 'kael_field_hd.webp', lossless=True, method=6)
+
+
 if __name__ == '__main__':
     build_kael_sheet()
+    build_kael_sheet_hd()

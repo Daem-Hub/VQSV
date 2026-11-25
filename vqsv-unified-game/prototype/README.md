@@ -402,3 +402,9 @@ Chạy thử các màn chính trên khung iPhone (hội thoại, trận đấu, 
 ## Lôi Miêu tiến hóa thì con đi theo cũng đổi hình
 
 Sau khi Lôi Miêu tiến hóa (ví dụ thành Thiểm Điện Miêu), con đi theo Kael ngoài sân dùng hình pixel của dạng mới, giống trong trận; quay mặt theo hướng Kael. Chưa tiến hóa thì vẫn dùng hình Lôi Miêu như cũ.
+
+## Kael nét hơn ngoài sân
+
+Hình Kael ngoài sân (`kael_field.png`, 32×40 mỗi tư thế) được thu nhỏ từ bộ hình gốc `kael_pixel_v2.png` (mỗi tư thế khoảng 260×330), nên mất mặt, khóa thắt lưng và khăn. `tools/pixel_art.py` giờ dựng thêm `kael_field_hd.webp`: cùng 16 tư thế nhưng 128×160 mỗi tư thế, lưu không mất chất lượng. Game vẽ bản HD ở đúng kích thước cũ (32×40 điểm ảnh logic) trên canvas độ phân giải cao, có làm mịn khi thu nhỏ; bản 32×40 vẫn giữ làm dự phòng.
+
+NPC trong làng (trưởng làng, dược sĩ, dân làng, người gác) chỉ có hình 18–21×38 điểm ảnh và repo không có bản lớn hơn. Đã thử phóng kiểu Scale4x nhưng gần như không khác, nên giữ nguyên. Muốn NPC nét như Kael thì cần vẽ lại hình NPC ở độ phân giải lớn hơn.

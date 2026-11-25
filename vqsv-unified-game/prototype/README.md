@@ -92,7 +92,7 @@ Phần này ghép bản Codex trên `main` vào engine hiện tại. Rừng Phon
 
 - **Khung màn hình:** game phủ kín màn hình. Góc trái trên ghi tên khu vực, dưới đó là thanh mục tiêu; bấm `!` để mở nhật ký. Góc phải có nút toàn màn hình và menu ☰. Kéo joystick ở góc trái dưới để đi, hoặc đặt ngón tay vào nửa trái của vùng dưới màn hình để kéo từ vị trí đó. Trên màn hình dọc, joystick rộng 130–170 px. Nút tròn bên phải đổi chữ theo việc nhấn E sẽ làm: nói chuyện, mua đồ, hái thảo dược, mở rương, qua cổng, khảo sát cầu. Bàn phím vẫn dùng như cũ.
 - **Menu ☰:** hiển thị sáu mục theo thứ tự VQSV6: Tùy thân cửa hàng, Sủng vật, Lưng bao, Đồ giám, Nhiệm vụ, Lưu dữ liệu. Đồ giám lọc pet đã bắt. Mục Lưu dữ liệu cho phép lưu và tải lại. Trong Hệ thống có bản đồ, sổ kỹ năng, âm thanh và chơi lại. Dùng phím 2/4/6/8 hoặc mũi tên để di chuyển, 5/Enter hoặc Chọn để mở, Esc hoặc Quay lại để trở về. Ví tiền hiện ở đầu menu.
-- **Làng biên giới:** dùng tranh pixel của Codex (`assets/trails/slice01-border-village.webp`), cây và nhà vẽ theo chiều sâu, cùng hình mới cho Kael, NPC và Lôi Miêu đi theo. Hai cửa nhà dẫn vào **Tiệm thuốc** và **Tiệm bùa** (`data/village_interiors.json`). Người bán trong tiệm mở Thương điếm chung của game (kim tiền, huy hiệu, danh mục VQSV6), không dùng bảng xu riêng của bản Codex. Hai tiệm hiện bán cùng một danh mục; việc chia mặt hàng theo từng tiệm chưa làm.
+- **Làng biên giới:** dùng tranh pixel của Codex (`assets/trails/slice01-border-village.webp`), cây và nhà vẽ theo chiều sâu, cùng hình mới cho Kael, NPC và Lôi Miêu đi theo. Hai cửa nhà dẫn vào **Tiệm thuốc** và **Tiệm bùa** (`data/village_interiors.json`). Người bán trong tiệm mở Thương điếm chung của game (kim tiền, huy hiệu, danh mục VQSV6), không dùng bảng xu riêng của bản Codex. Mỗi tiệm bán hàng riêng (xem mục Cửa hàng bên dưới).
 - **Đi qua cổng:** cổng làng/rừng/suối đã mở thì giữ phím hoặc joystick đi qua mép map là sang khu kế tiếp, vẫn giữ hướng đi. Cửa tiệm không cần gặp người gác làng trước.
 - **Nhiệm vụ phụ Khảo sát Suối Sấm:** nhận từ người đi rừng sau khi gặp người gác làng, đến điểm ◆ ở Suối Sấm rồi về báo tin. Map Suối Sấm thật không có đối tượng cầu riêng, nên `tools/build_prototype_bootstrap.py` đặt điểm khảo sát ở ô đi được gần tâm map nhất (`surveyPoint`). Phần thưởng thử là 200 kim tiền, nhận một lần. Bản lưu cũ chưa có nhiệm vụ này vẫn tải được.
 - **Bản đồ khu vực** (Menu → Bản đồ, phím M): vẽ cả map hiện tại, kể cả map VQSV5 lớn hơn màn hình, kèm lối đi, mục tiêu và nút **Chỉ đường**. Tab **Thế giới** có 12 địa danh.
@@ -389,3 +389,16 @@ Chạy thử các màn chính trên khung iPhone (hội thoại, trận đấu, 
 - **Bia gỗ (MQ001):** ảnh gốc chỉ 18×13 điểm ảnh nhưng bị phóng to hơn 10 lần, thành vài khối vuông chiếm cả nửa sân trận. `drawFitted` giờ phóng tối đa 4 lần cho ảnh nhỏ dưới 24 điểm ảnh; sprite pet vẫn phóng theo số nguyên lớn nhất vừa khung như trước.
 - **Chữ trên sân:** khi màn hình dọc, dòng gợi ý `E …` (bị cần điều khiển che) và tên vùng vẽ mờ trên sân (nằm sau bảng tên vùng) không vẽ nữa, vì nút tròn và bảng tên vùng đã hiện đúng nội dung đó. Trên máy tính vẫn hiện như cũ.
 - **Lôi Miêu đi theo Kael ngoài sân:** trước đây vẽ từ ảnh thu nhỏ 24×21 (`loi-mieu-field.webp`) nên nét bị nhòe. Vì canvas sân giờ có nhiều điểm ảnh thật cho mỗi điểm ảnh logic, game vẽ thẳng hình gốc 94×82 (`loi-mieu.webp`), thu nhỏ có làm mịn, cùng kích thước như cũ. Ảnh 24×21 chỉ còn là ảnh dự phòng.
+
+## Cửa hàng: tùy thân ở mọi nơi, hai tiệm bán hàng riêng (TRIAL)
+
+- **Tùy thân cửa hàng** (nút trong menu, phím B) trước đây chỉ mở ở làng biên giới, nên từ Chương 2 trở đi không mua được cầu hay thuốc, trừ khi mua trong trận với giá gấp đôi. Giờ cửa hàng tùy thân mở ở mọi nơi Kael đi lại (theo cách của VQSV6), bán đủ danh mục với giá niêm yết. Trong trận vẫn giá gấp đôi như cũ.
+- **Tiệm thuốc** chỉ bán đồ ăn, thuốc hồi phục, đá hồi sinh và Tị quái hàn (đạo cụ túi từ dòng 4 trở đi).
+- **Tiệm bùa** bán cầu bắt pet, vật phẩm mang theo (bùa), đá tiến hóa, sách kỹ năng và vật phẩm VQSV5.
+- Hai tiệm cộng lại đủ cả danh mục; bán lại đạo cụ ở đâu cũng được.
+- Dòng gợi ý ở vùng pet hoang dã giờ chỉ tới Tùy thân cửa hàng trong menu.
+- Test: `tools/test_shops.cjs`.
+
+## Lôi Miêu tiến hóa thì con đi theo cũng đổi hình
+
+Sau khi Lôi Miêu tiến hóa (ví dụ thành Thiểm Điện Miêu), con đi theo Kael ngoài sân dùng hình pixel của dạng mới, giống trong trận; quay mặt theo hướng Kael. Chưa tiến hóa thì vẫn dùng hình Lôi Miêu như cũ.

@@ -1722,7 +1722,7 @@
       else if (state.mode === "explore" && window.Quests?.objective()) objectiveEl.textContent = window.Quests.objective();
       else if (wildAreasOf(assets.map.id).length && state.mode === "explore") {
         const range = wildLevelRange(assets.map.id);
-        objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; về làng mở Thương điếm (phím B) để mua thêm cầu và đạo cụ.`;
+        objectiveEl.textContent = `Đi trong vùng để gặp pet hoang dã${range ? ` (cấp ${range[0]}–${range[1]})` : ""} và bắt chúng; mua thêm cầu và đạo cụ ở Tùy thân cửa hàng trong menu (phím B).`;
       }
       else if (state.mode === "ending") objectiveEl.textContent = "La bàn đã thức tỉnh. Anh có thể chơi lại từ đầu.";
       else if (state.mode === "defeat") objectiveEl.textContent = "Lôi Miêu cần nghỉ. Chọn Chơi lại để thử lần nữa.";
@@ -1883,6 +1883,17 @@
       contactShadow(px + 12, (y + 1) * S - .5, 5.7, 1.9);
       // The canvas now has several device pixels per logical pixel, so draw the 94 × 82 painting smoothly instead of the
       // 24 × 21 thumbnail, which blurred the details away.
+      // After an evolution the companion shows the evolved form's pixel sprite, like the battle does.
+      const form = leadForm(), formSrc = form !== LEAD_DEFAULT_FORM ? window.VQSVPetTeam?.info(form)?.image : null;
+      const formArt = formSrc ? cachedImage(formSrc) : null;
+      if (formArt?.complete && formArt.naturalWidth) {
+        const r = trimRect(formArt), k = Math.min(28 / r.w, 26 / r.h), w = r.w * k, h = r.h * k;
+        ctx.save(); ctx.imageSmoothingEnabled = false;
+        if (followSide > 0) { ctx.translate(px + 12, 0); ctx.scale(-1, 1); ctx.translate(-(px + 12), 0); }   // VQSV6 sprites face right
+        ctx.drawImage(formArt, r.x, r.y, r.w, r.h, Math.round(px + 12 - w / 2), Math.round((y + 1) * S - h - bob), w, h);
+        ctx.restore();
+        return;
+      }
       const art = assets.pets.hero?.naturalWidth ? assets.pets.hero : sprite;
       ctx.save(); ctx.imageSmoothingEnabled = FIELD.k > 1 && art !== sprite; ctx.imageSmoothingQuality = "high";
       ctx.drawImage(art, px, py + 3, 24, 21);
@@ -2921,7 +2932,7 @@
       if (window.Quests?.interact()) return;
       const point = assets.map.entities.encounter;
       const npc = nearbyNpc();
-      if (npc?.vendor) { openShop(); return; }
+      if (npc?.vendor) { openShop(npc.vendor); return; }
       if (npc) { state.dialogue = 0; state.activeNpc = npc; state.mode = "dialogue"; updateGuidance(); return; }
       const survey = surveyPoint();
       if (survey && near(state.player, survey)) { state.survey = "return"; statusEl.textContent = "Cầu gỗ vẫn chắc chắn."; updateGuidance(); return; }
@@ -3141,24 +3152,32 @@
     // ---- Shop and bag dialogs ----
     const shopDialog = document.getElementById("shopDialog"), bagDialog = document.getElementById("bagDialog");
     let shopMode = "buy", shopSelected = null, shopQty = 1, shopMessage = "";
+    // Where the shop is opened from. The menu's Tùy thân cửa hàng (portable shop, VQSV6) works anywhere Kael walks, so
+    // chapters far from the village can still restock; the two village shops each stock their own trade (TRIAL split):
+    // Tiệm thuốc food, potions and repel, Tiệm bùa capture balls, held charms, evolution stones and VQSV5 books and items.
+    let shopVendor = null;
     function shopContext() {
       if (state.mode === "battle") return "battle";
-      // The village and its two shop interiors (Tiệm thuốc, Tiệm bùa) share the one catalogue.
-      return state.mode === "explore" && (assets.map?.id === "slice01-border-village" || assets.map?.interior) ? "village" : null;
+      return state.mode === "explore" ? "field" : null;
     }
-    function openShop() {
+    const VENDOR_STOCK = {
+      apothecary: entry => entry.store === "bag" && entry.row >= 4,
+      charms: entry => !(entry.store === "bag" && entry.row >= 4),
+    };
+    function openShop(vendor = null) {
       const context = shopContext();
       if (!shopDialog.showModal || state.mode === "loading") return;
-      if (!context) { statusEl.textContent = "Thương điếm chỉ mở ở làng biên giới hoặc trong trận"; return; }
+      if (!context) return;
+      shopVendor = context === "field" && VENDOR_STOCK[vendor] ? vendor : null;
       if (context === "battle" && (state.battle.pendingUntil || state.battle.mustSwitch)) return;
       state.player.inputDir = null;
       shopMode = "buy"; shopSelected = null; shopQty = 1; shopMessage = "";
       if (!shopDialog.open) shopDialog.showModal();
       renderShop();
-      document.getElementById("shopTitle").textContent = context === "village" && assets.map.interior ? assets.map.title : "Thương điếm";
+      document.getElementById("shopTitle").textContent = shopVendor ? assets.map.title : context === "battle" ? "Thương điếm" : "Tùy thân cửa hàng";
     }
     function shopEntries() {
-      return shopMode === "buy" ? CATALOG : CATALOG.filter(entry => entry.store === "bag" && countOf(entry) > 0 && entry.row <= 13);
+      return shopMode === "buy" ? CATALOG.filter(entry => !shopVendor || VENDOR_STOCK[shopVendor](entry)) : CATALOG.filter(entry => entry.store === "bag" && countOf(entry) > 0 && entry.row <= 13);
     }
     function renderShop() {
       const inBattle = state.mode === "battle";
@@ -3340,7 +3359,7 @@
       state.player.inputDir = null; window.openWorldAtlas(assets.map.id);
     }
     document.getElementById("openWorldAtlas").addEventListener("click", openMap);
-    document.getElementById("openShop").addEventListener("click", openShop);
+    document.getElementById("openShop").addEventListener("click", () => openShop());
     document.getElementById("openBag").addEventListener("click", openBag);
     document.getElementById("shopButton").addEventListener("click", openShop);
     document.getElementById("closeShop").addEventListener("click", () => shopDialog.close());

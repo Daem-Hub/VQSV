@@ -1881,7 +1881,12 @@
       const px = Math.round((x + .5 + followSide * .72) * S - 12);
       const py = Math.round((y + 1) * S - 24 - bob);
       contactShadow(px + 12, (y + 1) * S - .5, 5.7, 1.9);
-      ctx.drawImage(sprite, px, py + 3, 24, 21);
+      // The canvas now has several device pixels per logical pixel, so draw the 94 × 82 painting smoothly instead of the
+      // 24 × 21 thumbnail, which blurred the details away.
+      const art = assets.pets.hero?.naturalWidth ? assets.pets.hero : sprite;
+      ctx.save(); ctx.imageSmoothingEnabled = FIELD.k > 1 && art !== sprite; ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(art, px, py + 3, 24, 21);
+      ctx.restore();
     }
     function near(a, b) { return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) <= 1; }
     function villageNpcs() {

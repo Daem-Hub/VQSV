@@ -388,3 +388,4 @@ Chạy thử các màn chính trên khung iPhone (hội thoại, trận đấu, 
 
 - **Bia gỗ (MQ001):** ảnh gốc chỉ 18×13 điểm ảnh nhưng bị phóng to hơn 10 lần, thành vài khối vuông chiếm cả nửa sân trận. `drawFitted` giờ phóng tối đa 4 lần cho ảnh nhỏ dưới 24 điểm ảnh; sprite pet vẫn phóng theo số nguyên lớn nhất vừa khung như trước.
 - **Chữ trên sân:** khi màn hình dọc, dòng gợi ý `E …` (bị cần điều khiển che) và tên vùng vẽ mờ trên sân (nằm sau bảng tên vùng) không vẽ nữa, vì nút tròn và bảng tên vùng đã hiện đúng nội dung đó. Trên máy tính vẫn hiện như cũ.
+- **Lôi Miêu đi theo Kael ngoài sân:** trước đây vẽ từ ảnh thu nhỏ 24×21 (`loi-mieu-field.webp`) nên nét bị nhòe. Vì canvas sân giờ có nhiều điểm ảnh thật cho mỗi điểm ảnh logic, game vẽ thẳng hình gốc 94×82 (`loi-mieu.webp`), thu nhỏ có làm mịn, cùng kích thước như cũ. Ảnh 24×21 chỉ còn là ảnh dự phòng.

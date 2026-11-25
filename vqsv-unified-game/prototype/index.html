@@ -2061,7 +2061,10 @@
       window.drawTrailGuide?.(ctx, S);
       const npc = nearbyNpc();
       const questLabel = window.Quests?.actionLabel();
-      if (state.mode === "dialogue") { /* the speech box is showing */ }
+      // On a portrait phone the round action button already shows this label and the name plate shows the map title;
+      // the canvas copies sat under the joystick and behind the plate.
+      const touchLayout = typeof innerHeight === "number" && innerHeight > innerWidth;
+      if (state.mode === "dialogue" || touchLayout) { /* the speech box or the touch HUD is showing it */ }
       else if (questLabel) prompt(`E  ${questLabel}`);
       else if (npc) prompt(`E  ${npc.vendor ? "Mua đồ" : "Nói chuyện"} · ${npc.name}`);
       else if (surveyPoint() && near(state.player, surveyPoint())) prompt("E  Khảo sát cầu");
@@ -2069,7 +2072,7 @@
       else if (nearbyChest()) prompt("E  Mở rương");
       else if (point && state.spokeToElder && near(state.player, point) && !window.Quests) prompt("E  Theo dấu vết");
       else if (nearbyLink()) { const link = nearbyLink(); prompt(`E  ${link.kind === "exit" ? "Ra làng" : link.kind === "door" ? "Vào " + link.label : state.spokeToElder ? "Đến " + link.label : "Nói chuyện với người gác làng trước"}`); }
-      title(assets.map.title.toLocaleUpperCase("vi-VN"));
+      if (!touchLayout) title(assets.map.title.toLocaleUpperCase("vi-VN"));
       drawNotice();
     }
     // A small pixel chest on one 20 px tile; open chests show the dark inside and a raised lid.
@@ -2527,7 +2530,9 @@
     function drawFitted(image, x, y, w, h, alpha = 1, crop = null) {
       if (!image?.complete || !image.naturalWidth) return;
       const r = crop || trimRect(image);
-      const fit = Math.min(w / r.w, h / r.h), scale = fit >= 1 ? Math.floor(fit) : fit;
+      // Tiny props (under 24 px, like the 18 × 13 training stump) stop at 4× instead of filling the lane as a few giant
+      // blocks; pet sprites keep the full integer fit.
+      const fit = Math.min(w / r.w, h / r.h), scale = fit >= 1 ? (Math.max(r.w, r.h) < 24 ? Math.min(4, Math.floor(fit)) : Math.floor(fit)) : fit;
       const dw = r.w * scale, dh = r.h * scale;
       ctx.save(); ctx.globalAlpha *= alpha;
       ctx.drawImage(image, r.x, r.y, r.w, r.h, Math.round(x + (w - dw) / 2), Math.round(y + h - dh), dw, dh);

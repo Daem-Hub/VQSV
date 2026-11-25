@@ -381,3 +381,10 @@ Trên điện thoại dọc, khung hình bị cắt và bị bảng tên vùng (
 
 - **Nguyên nhân 1:** sân chơi được vẽ vào khung 480×360 điểm ảnh rồi trình duyệt phóng to khoảng 6,5 lần lên màn hình điện thoại (độ phân giải ×3). Chữ vẽ trên sân bị vỡ hạt; trên trình duyệt làm mịn khi phóng to thì cả hình bị mờ. Giờ canvas sân chơi có `FIELD.k` điểm ảnh thật cho mỗi điểm ảnh logic (k = tỉ lệ hiển thị × devicePixelRatio, làm tròn, tối đa 6). Mọi thứ vẫn vẽ theo tọa độ 480×360 qua `setTransform(k)`, nên logic game không đổi. Hình pixel được phóng một lần theo số nguyên (khối điểm ảnh sắc nét) và chữ vẽ ở độ phân giải màn hình. Màn trận đấu vốn đã có cách tương tự (`DUEL.k`).
 - **Nguyên nhân 2:** `tools/render_village_south.py` (phần làng phía nam) lưu `village-south.webp` và `village-south-chart.webp` dạng nén có mất chất lượng, làm nhòe nét pixel. Tool giờ lưu không mất chất lượng (`lossless=True`) và hai ảnh đã được dựng lại; file còn nhỏ hơn bản cũ.
+
+## Dọn hiển thị trên điện thoại
+
+Chạy thử các màn chính trên khung iPhone (hội thoại, trận đấu, menu, nhật ký, túi đồ, sủng vật, tiệm, bản đồ) và sửa:
+
+- **Bia gỗ (MQ001):** ảnh gốc chỉ 18×13 điểm ảnh nhưng bị phóng to hơn 10 lần, thành vài khối vuông chiếm cả nửa sân trận. `drawFitted` giờ phóng tối đa 4 lần cho ảnh nhỏ dưới 24 điểm ảnh; sprite pet vẫn phóng theo số nguyên lớn nhất vừa khung như trước.
+- **Chữ trên sân:** khi màn hình dọc, dòng gợi ý `E …` (bị cần điều khiển che) và tên vùng vẽ mờ trên sân (nằm sau bảng tên vùng) không vẽ nữa, vì nút tròn và bảng tên vùng đã hiện đúng nội dung đó. Trên máy tính vẫn hiện như cũ.

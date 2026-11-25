@@ -408,3 +408,14 @@ Sau khi Lôi Miêu tiến hóa (ví dụ thành Thiểm Điện Miêu), con đi 
 Hình Kael ngoài sân (`kael_field.png`, 32×40 mỗi tư thế) được thu nhỏ từ bộ hình gốc `kael_pixel_v2.png` (mỗi tư thế khoảng 260×330), nên mất mặt, khóa thắt lưng và khăn. `tools/pixel_art.py` giờ dựng thêm `kael_field_hd.webp`: cùng 16 tư thế nhưng 128×160 mỗi tư thế, lưu không mất chất lượng. Game vẽ bản HD ở đúng kích thước cũ (32×40 điểm ảnh logic) trên canvas độ phân giải cao, có làm mịn khi thu nhỏ; bản 32×40 vẫn giữ làm dự phòng.
 
 NPC trong làng (trưởng làng, dược sĩ, dân làng, người gác) chỉ có hình 18–21×38 điểm ảnh và repo không có bản lớn hơn. Đã thử phóng kiểu Scale4x nhưng gần như không khác, nên giữ nguyên. Muốn NPC nét như Kael thì cần vẽ lại hình NPC ở độ phân giải lớn hơn.
+
+## NPC đi lại ngẫu nhiên (TRIAL)
+
+`ambient_npcs.js` cho một vài NPC đi lại quanh chỗ đứng của mình:
+
+- **Làng biên giới:** Dân làng (NPC cũ) và ba người qua đường mới: Bà bán hoa, Thợ săn trẻ, Ông lão câu cá.
+- **Bến cảng Ryan:** Thủy thủ, Cô bán cá. **Atlantis:** Cư dân Hải Tộc, Lính tuần Hải Tộc. **Lối vào Aethelgard:** Lữ khách tầng mây.
+- Người qua đường dùng lại hình NPC sẵn có, mỗi người có 2 câu thoại; bấm Nói chuyện như NPC thường.
+- **Cách đi:** cứ 1,7–4,7 giây bước một ô theo hướng ngẫu nhiên, không xa nhà quá 3 ô. Không bước vào ô bị chặn, ô lối ra hay ô của NPC khác. Chỉ bước vào ô thoáng (ít nhất 3 trong 4 ô xung quanh đi được), để không chắn lối hẹp. Đứng yên khi Kael ở trong 3 ô (để nói chuyện), khi đang hội thoại, trong trận và trong đêm tập kích MQ006–MQ008.
+- NPC giao nhiệm vụ và người bán hàng vẫn đứng yên, để chỉ đường nhiệm vụ và test luôn tìm thấy họ.
+- Test: `tools/test_ambient_npcs.cjs`.

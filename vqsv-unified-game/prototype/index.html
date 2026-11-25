@@ -2072,10 +2072,11 @@
         }
         ctx.textAlign = "left";
       }
-      for (const npc of npcs) if (npc.y < state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
+      // wandering NPCs (ambient_npcs.js) carry a drawX / drawY between two cells
+      for (const npc of npcs) if ((npc.drawY ?? npc.y) < state.player.visualY) drawCharacter(assets.chars[npc.id], npc.drawX ?? npc.x, npc.drawY ?? npc.y, "elder");
       drawCompanion(state.player.visualX, state.player.visualY, state.player.faceX);
       drawCharacter(assets.chars.player, state.player.visualX, state.player.visualY, "player", state.player.faceX, state.player.faceY);
-      for (const npc of npcs) if (npc.y >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.x, npc.y, "elder");
+      for (const npc of npcs) if ((npc.drawY ?? npc.y) >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.drawX ?? npc.x, npc.drawY ?? npc.y, "elder");
       drawForeground(state.player.visualY);
       ctx.restore();
       window.drawTrailGuide?.(ctx, S);
@@ -3415,5 +3416,6 @@
   <script src="pet_roster.js"></script>
   <script src="quests.js"></script>
   <script src="side_quests.js"></script>
+  <script src="ambient_npcs.js"></script>
 </body>
 </html>

@@ -432,3 +432,7 @@ Hình NPC cũ (`elder`, `herbalist`, `villager`, `scout` trong `assets/illustrat
 Đã thử hai cách tự động trước đó (phóng to hình gốc bằng thuật toán pixel art, và tách mảng màu hình gốc rồi tô lại) nhưng hình gốc quá nhỏ và nhiễu nên kết quả loang lổ, mất mặt; vì vậy vẽ tay bằng code.
 
 Game dùng các hình `*_hd.png` cho NPC trong làng, NPC nhiệm vụ, nhiệm vụ phụ và người qua đường (vẫn vẽ cao 38 điểm ảnh như cũ). Hình gốc giữ nguyên trong repo. Chạy lại `python3 tools/draw_npcs.py` sau khi sửa hình trong tool.
+
+## Bộ NPC thay thế theo kiểu Kael (chưa dùng trong game)
+
+`tools/npc_from_kael.py` tạo bốn NPC trong làng từ chính bộ hình đi bộ 4 hướng của Kael (`kael_field_hd.webp`): nhận ra từng phần (tóc, da, khăn, áo, vải quấn, đồ da, la bàn, quần, ủng) theo màu và vị trí, tô lại theo màu của NPC mà vẫn giữ độ sáng tối, rồi thêm khăn trùm cho người gác và kẹp tóc vàng cho dược sĩ. Kết quả là `assets/characters/npc_<tên>_sheet.webp` (đủ 16 khung) và `assets/illustrations/<tên>_kael.png` (khung đứng nhìn thẳng). Bộ này đang chờ chủ dự án chọn; game vẫn dùng NPC của `tools/draw_npcs.py`.

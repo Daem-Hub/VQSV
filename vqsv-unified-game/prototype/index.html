@@ -1627,7 +1627,7 @@
       tiles: [[0, "assets/tilesets/tileset_00.png"], [4, "assets/tilesets/tileset_04.png"]],
       // playerHd: Kael at 4× from his source sheet (tools/pixel_art.py), drawn at the same 32 × 40 size; the
       // high-resolution field canvas shows his face, buckle and scarf instead of 32 × 40 blocks.
-      chars: [["player", "assets/characters/kael_field.png"], ["playerHd", "assets/characters/kael_field_hd.webp"], ["elder", "assets/illustrations/elder.webp"]],
+      chars: [["player", "assets/characters/kael_field.png"], ["playerHd", "assets/characters/kael_field_hd.webp"], ["elder", "assets/illustrations/elder_hd.png"]],
       pets: [["companion", "assets/illustrations/loi-mieu-field.webp"], ["hero", "assets/illustrations/loi-mieu.webp"], ["enemy", "assets/illustrations/corrupted-wolf.webp"]]
     };
     const lines = [
@@ -1665,7 +1665,8 @@
         if (map.trails) jobs.push(loadImage(map.chartArt || `assets/trails/${map.id}-chart.png`).then(img => assets.charts[map.id] = img));
       }
       for (const id of ["quest-herb", "beast-track"]) jobs.push(loadImage(`assets/illustrations/${id}.png`).then(img => assets.props[id] = img));
-      const villagerArt = { "characters/villager_74.png": "assets/illustrations/herbalist.webp", "characters/villager_66.png": "assets/illustrations/villager.webp", "characters/villager_75.png": "assets/illustrations/scout.webp" };
+      // *_hd.png: the village NPCs redrawn as 64 × 80 pixel art at 2× in Kael's style (tools/draw_npcs.py)
+      const villagerArt = { "characters/villager_74.png": "assets/illustrations/herbalist_hd.png", "characters/villager_66.png": "assets/illustrations/villager_hd.png", "characters/villager_75.png": "assets/illustrations/scout_hd.png" };
       for (const npc of Object.values(assets.maps).flatMap(map => map.entities?.villagers || [])) jobs.push(loadImage(villagerArt[npc.asset] || `assets/${npc.asset}`).then(image => { assets.chars[npc.id] = image; }));
       const props = Object.values(assets.maps).filter(map => !map.source5).flatMap(map => [...(map.objects || []), ...(!map.trails ? map.groundDecor || [] : [])]);
       for (const asset of new Set(props.map(obj => obj.asset).filter(Boolean))) jobs.push(loadImage(`assets/${asset}`).then(image => { assets.props[asset] = image; }));

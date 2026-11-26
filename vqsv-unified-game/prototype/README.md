@@ -419,3 +419,14 @@ NPC trong làng (trưởng làng, dược sĩ, dân làng, người gác) chỉ 
 - **Cách đi:** cứ 1,7–4,7 giây bước một ô theo hướng ngẫu nhiên, không xa nhà quá 3 ô. Không bước vào ô bị chặn, ô lối ra hay ô của NPC khác. Chỉ bước vào ô thoáng (ít nhất 3 trong 4 ô xung quanh đi được), để không chắn lối hẹp. Đứng yên khi Kael ở trong 3 ô (để nói chuyện), khi đang hội thoại, trong trận và trong đêm tập kích MQ006–MQ008.
 - NPC giao nhiệm vụ và người bán hàng vẫn đứng yên, để chỉ đường nhiệm vụ và test luôn tìm thấy họ.
 - Test: `tools/test_ambient_npcs.cjs`.
+
+## Vẽ lại NPC trong làng cho nét
+
+Hình NPC cũ (`elder`, `herbalist`, `villager`, `scout` trong `assets/illustrations/`) chỉ có 18–21×38 điểm ảnh nên nhìn thô cạnh Kael. `tools/draw_npcs.py` vẽ lại cả bốn bằng code thành pixel art 64×80, lưu ở cỡ gấp đôi (128×160, `*_hd.png`), theo kiểu của Kael: tỉ lệ chibi, mỗi lớp (tóc sau, chân, thân, tay, mặt, mái tóc, phụ kiện) có viền đậm riêng, đổ bóng nhiều tông, mắt to có mi và hai điểm sáng. Màu tóc và trang phục giữ như hình gốc:
+
+- **Người gác làng:** tóc ngắn xám, áo sơ mi kem, gilê nâu có cúc, quần nâu đỏ.
+- **Dược sĩ:** tóc hồng bồng có nơ vàng, áo kem, váy vàng có tạp dề và viền ren.
+- **Dân làng:** tóc xanh lá có túm dựng, áo khoác nâu đỏ ngoài áo kem.
+- **Người gác:** khăn trùm xanh có đuôi, tóc nâu, khăn cổ cam, áo xanh dương, đai cam, găng nâu.
+
+Game dùng các hình `*_hd.png` này cho NPC trong làng, NPC nhiệm vụ, nhiệm vụ phụ và người qua đường (vẫn vẽ cao 38 điểm ảnh như cũ). Hình gốc giữ nguyên trong repo. Chạy lại `python3 tools/draw_npcs.py` sau khi sửa hình trong tool.

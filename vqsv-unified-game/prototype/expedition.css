@@ -74,3 +74,10 @@ body:not([data-mode="explore"]) #stickZone { display:none; }
 #joystick.floating { left:var(--stick-x); top:var(--stick-y); bottom:auto; transform:translate(-50%,-50%); }
 .hud-actions button,.shortcuts button { touch-action:manipulation; }
 @media (orientation:landscape) and (max-height:500px) { #joystick { width:clamp(110px,31vmin,142px); } }
+
+/* 16:9 screen: held sideways or on a computer, the whole game (field, HUD, buttons) sits in a centred 16:9 frame with dark
+   bars at the sides or top; held upright the game keeps filling the phone, since a 16:9 box would be tiny there. */
+@media (orientation: landscape) {
+  html, body { background:#0b120f; }
+  main { inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); width:min(100vw, calc(100dvh * 16 / 9)); height:min(100dvh, calc(100vw * 9 / 16)); overflow:hidden; box-shadow:0 0 0 1px #2a3a30; }
+}

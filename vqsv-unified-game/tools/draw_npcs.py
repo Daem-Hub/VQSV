@@ -3,7 +3,8 @@
 The original NPC sprites (assets/illustrations/elder|herbalist|villager|scout.webp) are only 18-21 x 38 pixels, so they
 look coarse next to Kael. This draws each NPC again at twice the original size (about 36-44 x 76), following the
 original's build, hair shape and outfit region by region, as clean pixel art with dark outlines, shading and eyes with
-highlights, and saves it doubled again as assets/illustrations/<name>_hd.png (4x the original).
+highlights, and saves it doubled again as assets/illustrations/<name>_redraw.png (4x the original). Not used by the
+game: the game keeps the original NPC look, sharpened by tools/sharpen_npcs.py (<name>_hd.png).
 
 Every part is a layer of flat shapes; each layer gets its own dark outline before it is laid over the layers behind it,
 so a front layer (bangs, scarf, vest) keeps a line where it crosses the one behind it.
@@ -77,7 +78,7 @@ def save(s, name):
     s.img.crop(s.img.getbbox()).resize((s.img.getbbox()[2] - s.img.getbbox()[0]) * 0 + 0 or 1, 1) if False else None
     box = s.img.getbbox()
     art = s.img.crop((box[0], 0, box[2], H))
-    art.resize((art.width * 2, art.height * 2), Image.NEAREST).save(ART / f"{name}_hd.png", optimize=True)
+    art.resize((art.width * 2, art.height * 2), Image.NEAREST).save(ART / f"{name}_redraw.png", optimize=True)
     return art
 
 

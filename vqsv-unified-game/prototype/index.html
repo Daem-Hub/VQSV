@@ -91,7 +91,7 @@
       <div class="hud-actions"><button id="fullscreen" type="button" aria-label="Toàn màn hình" title="Toàn màn hình"><i class="glyph fullscreen" aria-hidden="true"></i></button><button id="openMenu" type="button" aria-label="Mở menu" title="Menu"><i class="glyph menu" aria-hidden="true"></i></button></div>
     </header>
       <div class="game-frame">
-        <canvas id="game" width="480" height="360" aria-label="Bản thử game VQSV Unified"></canvas>
+        <canvas id="game" width="640" height="360" aria-label="Bản thử game VQSV Unified"></canvas>
         <div id="battleControls" hidden aria-label="Lệnh chiến đấu">
           <div id="fightMenu" class="duel-picker" hidden aria-label="Bảng kỹ năng Lôi Miêu">
             <div class="skill-heading"><span id="skillHeading">Kỹ năng · Lôi Miêu</span><span>Số lần</span></div>
@@ -267,6 +267,8 @@
   <script>
     const canvas = document.getElementById("game");
     const ctx = canvas.getContext("2d");
+    // The field view is 16:9: 640 × 360 logical pixels (32 × 18 tiles of 20). Battles keep their own 480-wide layout.
+    const VIEW_W = 640, VIEW_H = 360;
     ctx.imageSmoothingEnabled = false;
     const statusEl = document.getElementById("status");
     const errorEl = document.getElementById("error");
@@ -1812,7 +1814,7 @@
       const ordered = [...m.objects].sort((a, b) => a.y - b.y || a.x - b.x);
       for (const obj of ordered) if (depthY === null || obj.y < depthY) drawMapObject(obj);
       // A light ground mist sells the location while keeping walkable tiles readable.
-      const mist = ctx.createLinearGradient(0, 0, 480, 360);
+      const mist = ctx.createLinearGradient(0, 0, VIEW_W, VIEW_H);
       mist.addColorStop(0, "#cfe7f219");
       mist.addColorStop(.55, "#d7e8e20a");
       mist.addColorStop(1, "#cfe7f21c");
@@ -1873,6 +1875,8 @@
         else ctx.drawImage(sprite, frame * 32, row * 40, 32, 40, -16 + xOffset, -40 + yOffset, 32, 40);
       } else {
         const height = 38, width = Math.round(height * sprite.width / sprite.height);
+        // the sharpened NPCs are 4× their drawn size: shrink them smoothly where the screen has fewer pixels than they do
+        if (sprite.height > height * FIELD.k) { ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high"; }
         ctx.drawImage(sprite, -Math.round(width / 2), -height, width, height);
       }
       ctx.restore();
@@ -2032,11 +2036,11 @@
         if (!portrait) return size * S <= view ? centred : Math.max(0, Math.min(size * S - view, want));
         return Math.max(Math.min(centred, -padLo), Math.min(Math.max(centred, size * S - view + padHi), want));
       };
-      return { x: axis(m.width, 480, state.player.visualX, 90, 90), y: axis(m.height, 360, state.player.visualY, 95, 105) };
+      return { x: axis(m.width, VIEW_W, state.player.visualX, 90, 90), y: axis(m.height, VIEW_H, state.player.visualY, 95, 105) };
     }
     function drawExplore() {
       const cam = cameraOf();
-      ctx.fillStyle = "#0d1416"; ctx.fillRect(0, 0, 480, 360);
+      ctx.fillStyle = "#1c2e22"; ctx.fillRect(0, 0, VIEW_W, VIEW_H);         // beyond a narrow map's edge: dark forest green
       ctx.save(); ctx.translate(-cam.x, -cam.y);
       drawMap(state.player.visualY);
       const npcs = villageNpcs();
@@ -2111,16 +2115,16 @@
       if (!notice || performance.now() > notice.until) return;
       ctx.font = "bold 11px system-ui";
       const w = Math.min(460, ctx.measureText(notice.text).width + 20);
-      ctx.fillStyle = "#101d24e8"; roundRect(240 - w / 2, 14, w, 24, 6, true);
-      ctx.fillStyle = "#f3e6b8"; ctx.textAlign = "center"; ctx.fillText(notice.text, 240, 30); ctx.textAlign = "left";
+      ctx.fillStyle = "#101d24e8"; roundRect(VIEW_W / 2 - w / 2, 14, w, 24, 6, true);
+      ctx.fillStyle = "#f3e6b8"; ctx.textAlign = "center"; ctx.fillText(notice.text, VIEW_W / 2, 30); ctx.textAlign = "left";
     }
     function prompt(text) {
       ctx.font = "bold 11px system-ui";
       const w = ctx.measureText(text).width + 18;
       ctx.fillStyle = "#111a";
-      roundRect(240 - w / 2, 286, w, 23, 6, true);
+      roundRect(VIEW_W / 2 - w / 2, 286, w, 23, 6, true);
       ctx.fillStyle = "#fff4cf";
-      ctx.fillText(text, 240 - w / 2 + 9, 302);
+      ctx.fillText(text, VIEW_W / 2 - w / 2 + 9, 302);
     }
     function roundRect(x, y, w, h, r, fill) {
       ctx.beginPath();
@@ -2138,9 +2142,9 @@
       drawExplore();
       if (document.getElementById("speech")?.classList) return;     // the speech box (village_ui.js) shows the line
       ctx.fillStyle = "#111d";
-      roundRect(16, 264, 448, 84, 8, true);
+      roundRect(16, 264, VIEW_W - 32, 84, 8, true);
       ctx.strokeStyle = "#e2c87f";
-      roundRect(16, 264, 448, 84, 8, false);
+      roundRect(16, 264, VIEW_W - 32, 84, 8, false);
       ctx.fillStyle = "#e8c96f";
       ctx.font = "bold 12px system-ui";
       ctx.fillText((state.activeNpc?.name || "Người gác làng").toLocaleUpperCase("vi"), 30, 284);
@@ -2150,12 +2154,12 @@
       let text = "", y = 307;
       for (const word of words) {
         const next = text ? `${text} ${word}` : word;
-        if (ctx.measureText(next).width > 412 && text) { ctx.fillText(text, 30, y); y += 17; text = word; } else text = next;
+        if (ctx.measureText(next).width > VIEW_W - 68 && text) { ctx.fillText(text, 30, y); y += 17; text = word; } else text = next;
       }
       if (text) ctx.fillText(text, 30, y);
       ctx.fillStyle = "#b7c2d2";
       ctx.font = "11px system-ui";
-      ctx.fillText("E / Enter  Tiếp tục", 354, 333);
+      ctx.fillText("E / Enter  Tiếp tục", VIEW_W - 126, 333);
     }
     function hpBar(x, y, width, value, max) {
       ctx.fillStyle = "#101d24"; roundRect(x, y, width, 8, 3, true);
@@ -2287,20 +2291,20 @@
       canvas.style.height = stageH + "px";
       Object.assign(DUEL, { h, k, sized: true });
     }
-    // The field is drawn in 480 × 360 logical pixels but the canvas holds FIELD.k device pixels for each of them, so on a
+    // The field is drawn in VIEW_W × VIEW_H (640 × 360) logical pixels but the canvas holds FIELD.k device pixels for each of them, so on a
     // phone the art is scaled once by a whole number (sharp pixel blocks) and text is drawn at screen resolution, instead
     // of a 480 × 360 picture being stretched ~6× by the browser (blurry or uneven).
     const FIELD = { k: 1 };
     function fieldScale() {
       const w = canvas.clientWidth, h = canvas.clientHeight;
       if (!w || !h) return 1;
-      const shown = getComputedStyle(canvas).objectFit === "contain" ? Math.min(w / 480, h / 360) : Math.max(w / 480, h / 360);
+      const shown = getComputedStyle(canvas).objectFit === "contain" ? Math.min(w / VIEW_W, h / VIEW_H) : Math.max(w / VIEW_W, h / VIEW_H);
       return Math.min(6, Math.max(1, Math.round(shown * (window.devicePixelRatio || 1))));
     }
     function resetFieldCanvas() {
       const k = fieldScale();
-      if (!DUEL.sized && FIELD.k === k && canvas.width === 480 * k) return;
-      canvas.width = 480 * k; canvas.height = 360 * k; canvas.style.height = ""; DUEL.sized = false; DUEL.h = 360; DUEL.k = 1; FIELD.k = k;
+      if (!DUEL.sized && FIELD.k === k && canvas.width === VIEW_W * k) return;
+      canvas.width = VIEW_W * k; canvas.height = VIEW_H * k; canvas.style.height = ""; DUEL.sized = false; DUEL.h = 360; DUEL.k = 1; FIELD.k = k;
       canvas.style.imageRendering = k > 1 ? "auto" : "";
       ctx.imageSmoothingEnabled = false;
     }
@@ -2839,8 +2843,12 @@
       if (state.mode === "dialogue") drawDialogue();
       window.followKael?.();
       if (state.mode === "battle") drawBattle();
-      if (state.mode === "ending") drawEnding();
-      if (state.mode === "defeat") drawDefeat();
+      if (state.mode === "ending" || state.mode === "defeat") {
+        ctx.fillStyle = "#18202a"; ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+        ctx.save(); ctx.translate((VIEW_W - 480) / 2, 0);              // the cards are laid out on a 480-wide stage
+        if (state.mode === "ending") drawEnding(); else drawDefeat();
+        ctx.restore();
+      }
       requestAnimationFrame(loop);
     }
     function blocked(x, y) {

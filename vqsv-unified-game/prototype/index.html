@@ -2299,7 +2299,9 @@
       const w = canvas.clientWidth, h = canvas.clientHeight;
       if (!w || !h) return 1;
       const shown = getComputedStyle(canvas).objectFit === "contain" ? Math.min(w / VIEW_W, h / VIEW_H) : Math.max(w / VIEW_W, h / VIEW_H);
-      return Math.min(6, Math.max(1, Math.round(shown * (window.devicePixelRatio || 1))));
+      // at most ~5 million canvas pixels: bigger canvases (16:9 at 6× was 8.3 million) can come out blank on phones
+      const cap = Math.max(1, Math.floor(Math.sqrt(5e6 / (VIEW_W * VIEW_H))));
+      return Math.min(6, cap, Math.max(1, Math.round(shown * (window.devicePixelRatio || 1))));
     }
     function resetFieldCanvas() {
       const k = fieldScale();

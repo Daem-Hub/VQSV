@@ -1,9 +1,9 @@
 """Hand-built pixel art for the village NPCs, at Kael's field size.
 
 The original NPC sprites (assets/illustrations/elder|herbalist|villager|scout.webp) are only 18-21 x 38 pixels, so they
-look coarse next to Kael's 128 x 160 frames. This draws each NPC again as 64 x 80 pixel art in Kael's style (chibi
-proportions, dark outlines, 3-tone shading, large eyes with highlights), keeping each one's hair and outfit colours,
-and saves it at 2x (128 x 160) as assets/illustrations/<name>_hd.png.
+look coarse next to Kael. This draws each NPC again at twice the original size (about 36-44 x 76), following the
+original's build, hair shape and outfit region by region, as clean pixel art with dark outlines, shading and eyes with
+highlights, and saves it doubled again as assets/illustrations/<name>_hd.png (4x the original).
 
 Every part is a layer of flat shapes; each layer gets its own dark outline before it is laid over the layers behind it,
 so a front layer (bangs, scarf, vest) keeps a line where it crosses the one behind it.
@@ -12,7 +12,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ART = Path(__file__).resolve().parents[1] / "prototype" / "assets" / "illustrations"
-W, H = 64, 80
+W, H = 44, 76
 SKIN, SKIN_SH, SKIN_HL = "#f6d2b2", "#e0ad8a", "#fde6d2"
 EYE, WHITE, BLUSH, LINE = "#2a2532", "#ffffff", "#f3a29b", "#2b1c16"
 
@@ -64,181 +64,190 @@ def strands(d, lines, c):
         d.line(pts, fill=rgb(c) + (255,), width=1)
 
 
-def legs_and_boots(s, pants, pants_sh, boot, boot_sh, gap=2, top=57, knee=None):
-    def paint(d):
-        for x0 in (25, 33 + gap - 2):
-            rect(d, (x0, top, x0 + 6, 69), pants)
-            rect(d, (x0 + 4, top, x0 + 6, 69), pants_sh)
-            rect(d, (x0 - 1, 68, x0 + 7, 76), boot)
-            rect(d, (x0 + 5, 69, x0 + 7, 76), boot_sh)
-            rect(d, (x0 - 1, 68, x0 + 7, 69), darker(rgb(boot), .8)[:3] and boot_sh)
-    s.layer(paint)
-
-
-def arms(s, sleeve, sleeve_sh, hand=SKIN, cuff=None):
-    def paint(d):
-        for x0, sh in ((17, (19, 22)), (41, (44, 46))):
-            poly(d, [(x0 + 1, 43), (x0 + 5, 42), (x0 + 6, 55), (x0, 55)], sleeve)
-            rect(d, (sh[0], 46, sh[1], 54), sleeve_sh)
-            if cuff:
-                rect(d, (x0, 53, x0 + 6, 56), cuff)
-            ell(d, (x0 + 1, 55, x0 + 5, 59), hand)
-    s.layer(paint)
-
-
-def head(s, eye_iris, mouth="smile"):
-    def face(d):
-        ell(d, (17, 13, 46, 41), SKIN)
-        poly(d, [(40, 22), (45, 26), (44, 34), (39, 39)], SKIN_SH)
-        rect(d, (29, 39, 34, 44), SKIN_SH)
-    s.layer(face)
-
-    def features(d):
-        for x0 in (22, 36):
-            rect(d, (x0 - 1, 26, x0 + 5, 26), LINE)                     # upper lash
-            rect(d, (x0, 27, x0 + 4, 33), EYE)
-            rect(d, (x0, 30, x0 + 4, 33), eye_iris)
-            rect(d, (x0 + 1, 31, x0 + 3, 32), darker(rgb(eye_iris), .75)[:3])
-            rect(d, (x0 + 1, 28, x0 + 2, 29), WHITE)
-            d.point((x0 + 3, 32), fill=rgb(WHITE) + (255,))
-            rect(d, (x0 - 1, 35, x0 + 1, 36), BLUSH)
-        d.point((32, 34), fill=rgb(SKIN_SH) + (255,))
-        if mouth == "smile":
-            rect(d, (30, 37, 33, 37), "#b5605a")
-            d.point((29, 36), fill=rgb("#b5605a") + (255,)); d.point((34, 36), fill=rgb("#b5605a") + (255,))
-        else:
-            rect(d, (30, 37, 32, 37), "#b5605a")
-    s.layer(features, outline=False)
+def eyes(d, xs, y, iris, h=4):
+    for x0 in xs:
+        rect(d, (x0 - 1, y - 1, x0 + 2, y - 1), LINE)
+        rect(d, (x0, y, x0 + 1, y + h - 1), EYE)
+        rect(d, (x0, y + h - 2, x0 + 1, y + h - 1), iris)
+        d.point((x0, y), fill=rgb(WHITE) + (255,))
+        rect(d, (x0 - 1, y + h + 1, x0, y + h + 1), BLUSH)
 
 
 def save(s, name):
-    s.img.resize((W * 2, H * 2), Image.NEAREST).save(ART / f"{name}_hd.png", optimize=True)
-    return s.img
+    s.img.crop(s.img.getbbox()).resize((s.img.getbbox()[2] - s.img.getbbox()[0]) * 0 + 0 or 1, 1) if False else None
+    box = s.img.getbbox()
+    art = s.img.crop((box[0], 0, box[2], H))
+    art.resize((art.width * 2, art.height * 2), Image.NEAREST).save(ART / f"{name}_hd.png", optimize=True)
+    return art
 
+
+# The four NPCs follow their original 18-21 x 38 sprites: same slim build (head about a third of the height), same
+# hair shapes and outfits, drawn again at 2x (each original pixel becomes 2 x 2) as clean pixel art with outlines,
+# shading and new eyes. The canvas is 44 x 76; the saved art is cropped to the figure and doubled.
 
 def elder():
-    """Người gác làng: ash-grey tousled hair, cream shirt, brown vest, maroon trousers, brown boots."""
-    hair, hair_sh, hair_hl = "#cfc4b8", "#9f9388", "#ece4da"
+    """Người gác làng: a big rounded mop of ash-grey hair over the brow, cream sleeves, brown vest, dark red trousers."""
+    hair, hair_sh, hair_hl = "#d6c8ba", "#a8968a", "#eee4da"
     s = Sprite()
-    s.layer(lambda d: (ell(d, (13, 8, 50, 38), hair), ell(d, (30, 10, 50, 36), hair_sh)))
-    legs_and_boots(s, "#7a3328", "#5a2219", "#6a4428", "#4a2c18")
+    s.layer(lambda d: (ell(d, (4, 0, 38, 27), hair), ell(d, (21, 2, 38, 26), hair_sh), ell(d, (5, 16, 12, 30), hair), ell(d, (31, 16, 38, 30), hair_sh)))
+    def legs(d):
+        rect(d, (12, 56, 30, 66), "#7a2a28"); rect(d, (21, 56, 30, 66), "#5e1e1c"); rect(d, (20, 60, 21, 66), "#4a1614")
+        for x0 in (11, 22):
+            rect(d, (x0, 66, x0 + 8, 75), "#7a4a28"); rect(d, (x0 + 5, 67, x0 + 8, 75), "#5a3418")
+    s.layer(legs)
     def body(d):
-        poly(d, [(23, 42), (41, 42), (43, 58), (21, 58)], "#efe2c8")
-        poly(d, [(21, 44), (28, 43), (29, 58), (21, 58)], "#7a4a2c")
-        poly(d, [(35, 43), (42, 44), (43, 58), (34, 58)], "#7a4a2c")
-        rect(d, (38, 45, 43, 58), "#5e3820")
-        rect(d, (21, 55, 43, 57), "#4a2e1c")
-        rect(d, (30, 55, 33, 57), "#d9a441")
-        for y in (46, 50): d.point((27, y), fill=rgb("#d9a441") + (255,))
-        poly(d, [(28, 42), (32, 46), (36, 42)], "#d6c6a6")
+        poly(d, [(11, 31), (31, 31), (32, 57), (10, 57)], "#8a4a2a")
+        poly(d, [(23, 31), (31, 31), (32, 57), (24, 57)], "#6a3420")
+        poly(d, [(17, 31), (25, 31), (21, 38)], "#f0dcc4")
+        for y in (41, 46, 51): d.point((19, y), fill=rgb("#d9a441") + (255,))
+        rect(d, (10, 54, 32, 56), "#4a2a18")
     s.layer(body)
-    arms(s, "#efe2c8", "#d6c6a6", cuff="#d6c6a6")
-    head(s, "#6b4a3a")
-    def front_hair(d):
-        poly(d, [(15, 22), (20, 12), (30, 8), (40, 9), (48, 18), (48, 26), (43, 21), (38, 24), (33, 19), (27, 24), (22, 20), (18, 27)], hair)
-        poly(d, [(38, 12), (47, 18), (47, 25), (43, 20)], hair_sh)
-        rect(d, (24, 11, 31, 13), hair_hl)
-        strands(d, [[(24, 14), (21, 21)], [(31, 12), (29, 20)], [(37, 13), (38, 21)]], hair_sh)
-        poly(d, [(15, 22), (18, 27), (17, 34), (14, 29)], hair)
-        poly(d, [(48, 22), (49, 30), (46, 34), (46, 25)], hair_sh)
-    s.layer(front_hair)
+    def arms(d):
+        for x0, sh in ((4, False), (32, True)):
+            poly(d, [(x0 + 1, 32), (x0 + 6, 31), (x0 + 7, 53), (x0, 53)], "#f2e0cc")
+            if sh: rect(d, (x0 + 4, 35, x0 + 6, 52), "#d8c0a8")
+            ell(d, (x0 + 1, 52, x0 + 6, 57), SKIN)
+    s.layer(arms)
+    s.layer(lambda d: (ell(d, (11, 12, 31, 31), SKIN), poly(d, [(26, 18), (31, 21), (30, 28), (26, 30)], SKIN_SH), rect(d, (18, 29, 23, 32), SKIN_SH)))
+    s.layer(lambda d: (eyes(d, (15, 25), 20, "#6b4a3a"), rect(d, (20, 27, 22, 27), "#b5605a")), outline=False)
+    def bangs(d):
+        poly(d, [(6, 18), (9, 7), (17, 2), (27, 2), (35, 9), (37, 19), (33, 15), (29, 19), (25, 14), (21, 19), (17, 14), (13, 19), (9, 22)], hair)
+        poly(d, [(27, 4), (35, 10), (36, 18), (31, 13)], hair_sh)
+        rect(d, (13, 5, 20, 6), hair_hl); strands(d, [[(15, 8), (13, 15)], [(22, 6), (21, 14)], [(28, 8), (30, 14)]], hair_sh)
+    s.layer(bangs)
     return save(s, "elder")
 
 
 def herbalist():
-    """Dược sĩ: big pink hair with golden bows, cream blouse, yellow dress with cream ruffles."""
+    """Dược sĩ: a big pink puff with curls at the sides and gold clips, orange bodice with a yellow panel, yellow apron."""
     hair, hair_sh, hair_hl = "#f290ac", "#c8587a", "#ffc4d4"
     s = Sprite()
-    s.layer(lambda d: (ell(d, (10, 6, 54, 44), hair), ell(d, (8, 24, 22, 46), hair), ell(d, (42, 24, 56, 46), hair_sh), ell(d, (32, 8, 52, 40), hair_sh)))
-    legs_and_boots(s, "#f3dcc4", "#dcbca0", "#8a4a3a", "#6a3328", gap=1, top=62)
+    s.layer(lambda d: (ell(d, (3, 1, 41, 33), hair), ell(d, (24, 3, 41, 31), hair_sh), ell(d, (1, 18, 10, 36), hair), ell(d, (34, 18, 43, 36), hair_sh), ell(d, (18, 0, 25, 5), hair)))
+    def legs(d):
+        for x0 in (14, 24):
+            rect(d, (x0, 62, x0 + 6, 72), "#8a8a6c"); rect(d, (x0 + 4, 62, x0 + 6, 72), "#6c6c52")
+            rect(d, (x0 - 1, 71, x0 + 7, 75), "#d8b890")
+    s.layer(legs)
     def body(d):
-        poly(d, [(23, 42), (41, 42), (42, 52), (22, 52)], "#f8f0e2")
-        poly(d, [(26, 42), (32, 47), (38, 42)], "#f0e2c8")
-        poly(d, [(22, 50), (42, 50), (47, 64), (17, 64)], "#f2c23a")
-        poly(d, [(36, 50), (42, 50), (47, 64), (39, 64)], "#d49a22")
-        rect(d, (17, 63, 47, 65), "#fff4dc")
-        poly(d, [(29, 51), (35, 51), (36, 61), (28, 61)], "#fffaf0")
-        rect(d, (22, 50, 42, 51), "#e08a3a")
-        for x in range(18, 47, 3): d.point((x, 65), fill=rgb("#e8d4b0") + (255,))
+        poly(d, [(12, 33), (32, 33), (33, 46), (11, 46)], "#b86a3a")
+        rect(d, (16, 36, 28, 44), "#f2c23a"); rect(d, (24, 36, 28, 44), "#d49a22")
+        poly(d, [(17, 32), (27, 32), (22, 36)], "#fff4e4")
+        poly(d, [(10, 45), (34, 45), (38, 62), (6, 62)], "#c47a40")
+        poly(d, [(14, 46), (30, 46), (31, 60), (13, 60)], "#f2c23a")
+        poly(d, [(24, 46), (30, 46), (31, 60), (25, 60)], "#d49a22")
+        rect(d, (6, 60, 38, 63), "#f4e2c0")
+        for x in range(7, 38, 3): d.point((x, 63), fill=rgb("#c8a878") + (255,))
+        for x, y in ((9, 50), (34, 52), (11, 56)): rect(d, (x, y, x + 1, y + 1), "#f4a2b8")
     s.layer(body)
-    arms(s, "#f8f0e2", "#e2d4bc", cuff="#fff4dc")
-    head(s, "#c0507a")
-    def front_hair(d):
-        poly(d, [(14, 24), (18, 12), (28, 7), (38, 7), (47, 13), (50, 24), (45, 22), (42, 26), (37, 20), (32, 25), (27, 20), (21, 26), (17, 30)], hair)
-        poly(d, [(39, 10), (48, 15), (50, 23), (44, 20)], hair_sh)
-        rect(d, (22, 10, 30, 12), hair_hl)
-        strands(d, [[(25, 12), (22, 22)], [(33, 9), (32, 20)], [(40, 11), (42, 20)]], hair_sh)
-        ell(d, (11, 30, 19, 40), hair); ell(d, (45, 30, 53, 40), hair_sh)
-    s.layer(front_hair)
-    def bows(d):
-        for cx in (13, 51):
-            poly(d, [(cx - 5, 12), (cx, 15), (cx - 5, 18)], "#f0b030")
-            poly(d, [(cx + 5, 12), (cx, 15), (cx + 5, 18)], "#d89020")
-            rect(d, (cx - 1, 14, cx + 1, 16), "#fff0a0")
-        rect(d, (30, 5, 34, 8), "#f0b030")
-    s.layer(bows)
+    def arms(d):
+        for x0, sh in ((4, False), (34, True)):
+            poly(d, [(x0 + 1, 34), (x0 + 6, 33), (x0 + 7, 49), (x0, 49)], "#f6ead8")
+            rect(d, (x0, 47, x0 + 7, 50), "#f4a2b8")
+            ell(d, (x0 + 1, 50, x0 + 6, 55), SKIN)
+    s.layer(arms)
+    s.layer(lambda d: (ell(d, (12, 14, 32, 33), SKIN), poly(d, [(27, 20), (32, 23), (31, 30), (27, 32)], SKIN_SH)))
+    s.layer(lambda d: (eyes(d, (16, 26), 22, "#c0507a"), rect(d, (21, 29, 23, 29), "#b5605a")), outline=False)
+    def bangs(d):
+        poly(d, [(6, 20), (9, 8), (17, 3), (28, 3), (36, 9), (39, 20), (34, 17), (31, 22), (27, 16), (22, 22), (17, 16), (13, 22), (9, 24)], hair)
+        poly(d, [(29, 5), (36, 10), (38, 19), (33, 14)], hair_sh)
+        rect(d, (13, 6, 21, 7), hair_hl); strands(d, [[(15, 9), (13, 17)], [(23, 7), (22, 16)], [(30, 9), (32, 16)]], hair_sh)
+        ell(d, (2, 26, 9, 37), hair); ell(d, (35, 26, 42, 37), hair_sh)
+    s.layer(bangs)
+    def clips(d):
+        for cx in (5, 39):
+            poly(d, [(cx - 3, 8), (cx + 3, 8), (cx + 2, 13), (cx - 2, 13)], "#f0b030")
+            rect(d, (cx - 1, 9, cx + 1, 11), "#fff0a0")
+            rect(d, (cx - 3, 13, cx - 1, 15), "#e07a30")
+    s.layer(clips)
     return save(s, "herbalist")
 
 
 def villager():
-    """Dân làng: messy green hair with a cowlick, maroon jacket over a cream shirt, brown trousers."""
-    hair, hair_sh, hair_hl = "#79a43c", "#4e7426", "#a6cc5e"
+    """Dân làng: a wide, curly mop of green hair parted over the face, green eyes, maroon jacket with a tan front."""
+    hair, hair_sh, hair_hl = "#7aa43c", "#4c7024", "#a4cc5e"
     s = Sprite()
-    s.layer(lambda d: (ell(d, (13, 7, 50, 38), hair), ell(d, (32, 9, 50, 36), hair_sh)))
-    legs_and_boots(s, "#4e3a2c", "#36281e", "#6a4428", "#4a2c18")
+    def back(d):
+        ell(d, (2, 3, 40, 30), hair); ell(d, (22, 5, 40, 29), hair_sh); ell(d, (18, 0, 24, 6), hair_sh)
+        for x, y in ((1, 12), (38, 14), (4, 22), (36, 24)): ell(d, (x, y, x + 6, y + 7), hair if x < 20 else hair_sh)
+    s.layer(back)
+    def legs(d):
+        rect(d, (13, 58, 29, 68), "#3e2a20"); rect(d, (21, 58, 29, 68), "#2c1e16")
+        for x0 in (12, 22):
+            rect(d, (x0, 66, x0 + 8, 75), "#4a2c20"); rect(d, (x0 + 5, 67, x0 + 8, 75), "#341e16")
+    s.layer(legs)
     def body(d):
-        poly(d, [(23, 42), (41, 42), (43, 58), (21, 58)], "#7c3a33")
-        poly(d, [(28, 42), (36, 42), (34, 58), (30, 58)], "#efe2c8")
-        poly(d, [(36, 43), (42, 44), (43, 58), (35, 58)], "#5e2a24")
-        rect(d, (21, 55, 43, 57), "#3d2a1c")
-        for y in (46, 50): d.point((27, y), fill=rgb("#d9a441") + (255,))
+        poly(d, [(10, 32), (32, 32), (33, 62), (9, 62)], "#7c3a3a")
+        poly(d, [(23, 32), (32, 32), (33, 62), (24, 62)], "#5e2a2a")
+        poly(d, [(16, 31), (26, 31), (24, 45), (18, 45)], "#d8b080")
+        poly(d, [(15, 32), (19, 32), (20, 44), (17, 46)], "#9a4a48")
+        rect(d, (9, 52, 33, 54), "#3d2a1c"); rect(d, (19, 52, 22, 54), "#d9a441")
     s.layer(body)
-    arms(s, "#7c3a33", "#5e2a24", cuff="#5e2a24")
-    head(s, "#3f7a3a")
-    def front_hair(d):
-        poly(d, [(14, 24), (18, 13), (27, 7), (37, 7), (46, 13), (49, 24), (44, 21), (40, 27), (35, 20), (30, 26), (25, 20), (20, 27), (17, 31)], hair)
-        poly(d, [(31, 8), (34, 1), (37, 2), (35, 8)], hair)
-        poly(d, [(38, 10), (47, 15), (48, 23), (43, 19)], hair_sh)
-        rect(d, (22, 10, 29, 12), hair_hl)
-        strands(d, [[(24, 12), (21, 22)], [(31, 10), (30, 20)], [(38, 11), (40, 20)]], hair_sh)
-    s.layer(front_hair)
+    def arms(d):
+        for x0, sh in ((3, False), (33, True)):
+            poly(d, [(x0 + 1, 33), (x0 + 6, 32), (x0 + 7, 57), (x0, 57)], "#7c3a3a")
+            if sh: rect(d, (x0 + 4, 36, x0 + 6, 56), "#5e2a2a")
+            ell(d, (x0 + 1, 56, x0 + 6, 61), "#e8c090")
+    s.layer(arms)
+    s.layer(lambda d: (ell(d, (12, 12, 30, 31), SKIN), poly(d, [(25, 18), (30, 21), (29, 28), (25, 30)], SKIN_SH), rect(d, (18, 29, 23, 32), SKIN_SH)))
+    s.layer(lambda d: (eyes(d, (15, 25), 20, "#4a8a3a"), rect(d, (20, 27, 22, 27), "#b5605a")), outline=False)
+    def bangs(d):
+        poly(d, [(5, 20), (8, 8), (16, 3), (21, 6), (19, 13), (15, 20), (12, 16), (9, 24)], hair)
+        poly(d, [(21, 6), (27, 3), (35, 8), (38, 20), (34, 24), (31, 16), (27, 20), (24, 13)], hair_sh)
+        rect(d, (11, 7, 17, 8), hair_hl); strands(d, [[(13, 10), (11, 17)], [(29, 8), (32, 15)]], "#3c5a1c")
+    s.layer(bangs)
     return save(s, "villager")
 
 
 def scout():
-    """Người gác: brown hair under a blue bandana with a tail, orange scarf, blue tunic, orange sash, brown gloves."""
-    band, band_sh, band_hl = "#3d5eb0", "#2a4282", "#6a8ad8"
-    hair, hair_sh = "#8a5030", "#643820"
+    """Người gác: blue bandana with a long tail flying left, long brown hair, orange scarf, blue-and-brown tunic, orange wrap."""
+    band, band_sh, band_hl = "#4a6cb8", "#2c4886", "#7a96d8"
+    hair, hair_sh = "#8a4a2a", "#643020"
     s = Sprite()
-    s.layer(lambda d: (ell(d, (14, 10, 49, 40), hair), ell(d, (32, 12, 49, 38), hair_sh), poly(d, [(14, 18), (4, 14), (2, 22), (12, 24)], band), poly(d, [(12, 22), (3, 26), (6, 32), (14, 27)], band_sh)))
-    legs_and_boots(s, "#5a3a2a", "#3e281c", "#6a4428", "#4a2c18")
+    def back(d):
+        ell(d, (9, 4, 39, 32), hair); ell(d, (25, 6, 39, 32), hair_sh)
+        rect(d, (10, 16, 15, 34), hair); rect(d, (34, 16, 39, 34), hair_sh)
+        poly(d, [(10, 12), (2, 18), (0, 26), (4, 30), (8, 22), (12, 18)], band_sh)
+        poly(d, [(4, 26), (0, 34), (3, 36), (7, 28)], band)
+    s.layer(back)
+    def legs(d):
+        rect(d, (15, 58, 31, 66), "#5a3420"); rect(d, (23, 58, 31, 66), "#3e2416")
+        for x0 in (14, 24):
+            rect(d, (x0, 64, x0 + 8, 75), "#6a4428"); rect(d, (x0 + 5, 65, x0 + 8, 75), "#4a2c18")
+            rect(d, (x0, 64, x0 + 8, 65), "#e07a30")
+    s.layer(legs)
     def body(d):
-        poly(d, [(23, 42), (41, 42), (43, 58), (21, 58)], "#3e5e9a")
-        poly(d, [(36, 43), (42, 44), (43, 58), (35, 58)], "#2c4472")
-        poly(d, [(21, 52), (43, 52), (45, 60), (19, 60)], "#d8762a")
-        poly(d, [(36, 52), (43, 52), (45, 60), (37, 60)], "#b45a1c")
+        poly(d, [(12, 35), (34, 35), (35, 60), (11, 60)], "#7a4a2c")
+        poly(d, [(14, 36), (24, 36), (23, 54), (13, 54)], "#3e5e9a")
+        rect(d, (26, 44, 32, 52), "#3e5e9a")
+        rect(d, (11, 50, 35, 52), "#3a2418")
+        poly(d, [(10, 52), (24, 52), (22, 64), (8, 62)], "#d8762a")
+        poly(d, [(18, 52), (24, 52), (22, 64), (17, 63)], "#b45a1c")
     s.layer(body)
-    arms(s, "#3e5e9a", "#2c4472", hand="#6a4428")
-    head(s, "#6a3a20")
+    def arms(d):
+        for x0, sh in ((5, False), (35, True)):
+            poly(d, [(x0 + 1, 36), (x0 + 6, 35), (x0 + 7, 55), (x0, 55)], "#7a4a2c")
+            if sh: rect(d, (x0 + 4, 38, x0 + 6, 54), "#5a3420")
+            rect(d, (x0, 46, x0 + 7, 49), "#3e5e9a")
+            ell(d, (x0 + 1, 54, x0 + 6, 59), "#6a4428")
+    s.layer(arms)
+    s.layer(lambda d: (ell(d, (14, 10, 34, 30), SKIN), poly(d, [(29, 16), (34, 19), (33, 26), (29, 28)], SKIN_SH)))
+    s.layer(lambda d: (eyes(d, (18, 27), 18, "#7a4a2a"), rect(d, (22, 25, 24, 25), "#b5605a")), outline=False)
     def front(d):
-        poly(d, [(15, 22), (18, 12), (26, 7), (38, 7), (46, 12), (49, 21), (15, 21)], band)
-        poly(d, [(38, 8), (46, 12), (49, 21), (40, 21)], band_sh)
-        rect(d, (22, 10, 30, 12), band_hl)
-        rect(d, (15, 20, 49, 23), band_sh)
-        poly(d, [(16, 23), (22, 23), (19, 30)], hair); poly(d, [(42, 23), (48, 23), (46, 31)], hair_sh)
-        poly(d, [(25, 23), (31, 23), (28, 27)], hair)
+        poly(d, [(10, 12), (13, 4), (21, 0), (31, 0), (38, 5), (40, 12)], band)
+        poly(d, [(30, 1), (38, 5), (40, 12), (32, 12)], band_sh)
+        rect(d, (17, 2, 25, 3), band_hl)
+        rect(d, (10, 11, 40, 13), band_sh)
+        poly(d, [(14, 13), (21, 13), (16, 20)], hair); poly(d, [(29, 13), (36, 13), (35, 22)], hair_sh)
+        rect(d, (25, 6, 26, 8), "#e07a30")
     s.layer(front)
     def scarf(d):
-        ell(d, (20, 39, 44, 47), "#e8862e")
-        poly(d, [(36, 43), (44, 41), (46, 52), (40, 52)], "#c86a1e")
-        rect(d, (24, 42, 30, 44), "#f6a85a")
+        ell(d, (12, 28, 36, 38), "#e8862e")
+        poly(d, [(28, 33), (34, 32), (36, 44), (31, 44)], "#c86a1e")
+        rect(d, (16, 30, 22, 31), "#f6a85a")
     s.layer(scarf)
     return save(s, "scout")
 
 
 if __name__ == "__main__":
     frames = [elder(), herbalist(), villager(), scout()]
-    sheet = Image.new("RGBA", (W * 4 + 30, H), (0, 0, 0, 0))
-    for i, f in enumerate(frames):
-        sheet.alpha_composite(f, (i * (W + 10), 0))
-    print("drew", len(frames), "NPCs into", ART)
+    print("drew", len(frames), "NPCs into", ART, [f.size for f in frames])

@@ -422,11 +422,13 @@ NPC trong làng (trưởng làng, dược sĩ, dân làng, người gác) chỉ 
 
 ## Vẽ lại NPC trong làng cho nét
 
-Hình NPC cũ (`elder`, `herbalist`, `villager`, `scout` trong `assets/illustrations/`) chỉ có 18–21×38 điểm ảnh nên nhìn thô cạnh Kael. `tools/draw_npcs.py` vẽ lại cả bốn bằng code thành pixel art 64×80, lưu ở cỡ gấp đôi (128×160, `*_hd.png`), theo kiểu của Kael: tỉ lệ chibi, mỗi lớp (tóc sau, chân, thân, tay, mặt, mái tóc, phụ kiện) có viền đậm riêng, đổ bóng nhiều tông, mắt to có mi và hai điểm sáng. Màu tóc và trang phục giữ như hình gốc:
+Hình NPC cũ (`elder`, `herbalist`, `villager`, `scout` trong `assets/illustrations/`) chỉ có 18–22×38 điểm ảnh nên nhìn thô cạnh Kael. `tools/draw_npcs.py` vẽ lại cả bốn bằng code, bám theo đúng hình gốc từng mảng: cùng dáng người thon (đầu khoảng 1/3 chiều cao), cùng kiểu tóc, cùng trang phục và màu. Mỗi NPC vẽ ở cỡ gấp đôi hình gốc (36–44×76) thành pixel art sạch, mỗi lớp (tóc sau, chân, thân, tay, mặt, mái tóc, phụ kiện) có viền đậm riêng, có đổ bóng, mắt có mi và điểm sáng. Hình được lưu ở cỡ gấp 4 hình gốc (`*_hd.png`).
 
-- **Người gác làng:** tóc ngắn xám, áo sơ mi kem, gilê nâu có cúc, quần nâu đỏ.
-- **Dược sĩ:** tóc hồng bồng có nơ vàng, áo kem, váy vàng có tạp dề và viền ren.
-- **Dân làng:** tóc xanh lá có túm dựng, áo khoác nâu đỏ ngoài áo kem.
-- **Người gác:** khăn trùm xanh có đuôi, tóc nâu, khăn cổ cam, áo xanh dương, đai cam, găng nâu.
+- **Người gác làng:** tóc xám bồng che trán, tay áo kem, gilê nâu có cúc, quần đỏ sẫm, ủng nâu.
+- **Dược sĩ:** tóc hồng rất bồng có lọn xoăn hai bên và kẹp vàng, áo nâu cam có mảng vàng ở ngực, tạp dề vàng, viền ren kem, tất xám.
+- **Dân làng:** tóc xanh xù rẽ ngôi giữa, mắt xanh, áo khoác nâu đỏ có lót be, thắt lưng.
+- **Người gác:** khăn trùm xanh có đuôi dài bay sang trái, tóc nâu dài, khăn cổ cam, áo xanh pha nâu, váy quấn cam.
 
-Game dùng các hình `*_hd.png` này cho NPC trong làng, NPC nhiệm vụ, nhiệm vụ phụ và người qua đường (vẫn vẽ cao 38 điểm ảnh như cũ). Hình gốc giữ nguyên trong repo. Chạy lại `python3 tools/draw_npcs.py` sau khi sửa hình trong tool.
+Đã thử hai cách tự động trước đó (phóng to hình gốc bằng thuật toán pixel art, và tách mảng màu hình gốc rồi tô lại) nhưng hình gốc quá nhỏ và nhiễu nên kết quả loang lổ, mất mặt; vì vậy vẽ tay bằng code.
+
+Game dùng các hình `*_hd.png` cho NPC trong làng, NPC nhiệm vụ, nhiệm vụ phụ và người qua đường (vẫn vẽ cao 38 điểm ảnh như cũ). Hình gốc giữ nguyên trong repo. Chạy lại `python3 tools/draw_npcs.py` sau khi sửa hình trong tool.

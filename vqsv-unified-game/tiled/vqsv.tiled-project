@@ -1,0 +1,276 @@
+{
+ "automappingRulesFile": "",
+ "commands": [],
+ "compatibilityVersion": 1100,
+ "extensionsPath": "extensions",
+ "folders": [
+  "."
+ ],
+ "properties": [],
+ "propertyTypes": [
+  {
+   "id": 1,
+   "name": "player",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ffe6c84a",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 2,
+   "name": "link",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff3cb4e6",
+   "drawFill": true,
+   "members": [
+    {
+     "name": "target",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "spawnX",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "spawnY",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "label",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "kind",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "backX",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "backY",
+     "type": "int",
+     "value": -1
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "door",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff3c78e6",
+   "drawFill": true,
+   "members": [
+    {
+     "name": "target",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "spawnX",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "spawnY",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "label",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "backX",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "backY",
+     "type": "int",
+     "value": -1
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "npc",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ffe678c8",
+   "drawFill": true,
+   "members": [
+    {
+     "name": "art",
+     "type": "string",
+     "value": "villager"
+    },
+    {
+     "name": "dialogue",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "id",
+     "type": "string",
+     "value": ""
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": "chest",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ffc8a03c",
+   "drawFill": true,
+   "members": [
+    {
+     "name": "gold",
+     "type": "int",
+     "value": 0
+    },
+    {
+     "name": "item",
+     "type": "int",
+     "value": -1
+    },
+    {
+     "name": "quantity",
+     "type": "int",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "name": "wild",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff78c83c",
+   "drawFill": true,
+   "members": [
+    {
+     "name": "pets",
+     "type": "string",
+     "value": ""
+    },
+    {
+     "name": "levels",
+     "type": "string",
+     "value": "3-5"
+    },
+    {
+     "name": "quality",
+     "type": "string",
+     "value": "1-2"
+    },
+    {
+     "name": "water",
+     "type": "bool",
+     "value": false
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "name": "quest",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ffb43cdc",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 8,
+   "name": "block",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ffdc3232",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 9,
+   "name": "water",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff2850dc",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 10,
+   "name": "shallow",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff46c8e6",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 11,
+   "name": "walk",
+   "type": "class",
+   "useAs": [
+    "object"
+   ],
+   "color": "#ff3cc85a",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 12,
+   "name": "collision",
+   "type": "class",
+   "useAs": [
+    "layer",
+    "tile"
+   ],
+   "color": "#ffdc3232",
+   "drawFill": true,
+   "members": []
+  },
+  {
+   "id": 13,
+   "name": "above",
+   "type": "class",
+   "useAs": [
+    "layer"
+   ],
+   "color": "#ff9696ff",
+   "drawFill": true,
+   "members": []
+  }
+ ]
+}

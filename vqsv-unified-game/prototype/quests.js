@@ -478,8 +478,10 @@
     if (placeCache.has(key)) return placeCache.get(key);
     const map = assets.maps?.[def.map];
     if (!map) return null;
-    let x = map.width * (def.frac?.[0] ?? .5), y = map.height * (def.frac?.[1] ?? .5);
-    const link = def.near && !def.frac && (map.links || []).find(l => l.target === def.near);
+    // A map drawn in Tiled can pin a spot with a "quest" object named after the key without the map id (MQ030:0, SQ001:npc, ambient:id).
+    const pin = map.questSpots?.[key.slice(def.map.length + 1)];
+    let x = pin ? pin.x : map.width * (def.frac?.[0] ?? .5), y = pin ? pin.y : map.height * (def.frac?.[1] ?? .5);
+    const link = !pin && def.near && !def.frac && (map.links || []).find(l => l.target === def.near);
     if (link) { const cx = map.width / 2, cy = map.height / 2; x = link.x + Math.sign(cx - link.x) * 2; y = link.y + Math.sign(cy - link.y) * 2; }
     const taken = [...placeCache.entries()].filter(([k]) => k.startsWith(def.map + ":")).map(([, v]) => v);
     const at = nearFree(map, x, y, taken);

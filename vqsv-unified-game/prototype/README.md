@@ -437,3 +437,36 @@ Hai lần vẽ lại trước đó vẫn giữ trong repo để tham khảo, gam
 - Màn trận đấu giữ bố cục rộng 480 riêng của nó. Thẻ cảnh kết và màn thua (bố cục 480) được đặt vào giữa khung 640.
 - Sửa lỗi map có thể biến mất trên điện thoại sau khi đổi sang 16:9: canvas sân chơi giới hạn khoảng 5 triệu điểm ảnh (16:9 tối đa gấp 4, 2560×1440) vì canvas 3840×2160 có thể ra trắng trên một số máy; khung 16:9 khi xoay ngang có cách tính dự phòng cho trình duyệt chưa hiểu `dvh` hoặc `min()`.
 - **Map vừa khung hình:** map nhỏ hơn phần màn hình đang thấy (ví dụ làng rộng 24 ô trong khung 16:9 rộng 32 ô, Mặt Trăng Đỏ rộng 16 ô) giờ được phóng to vừa đủ để phủ kín khung, không còn dải trống hai bên (`fieldZoom` trong `index.html`; tính theo phần canvas thực sự hiện ra sau khi bị cắt cho vừa màn hình). Map lớn giữ cỡ 1×. Vệt chỉ đường (`drawTrailGuide`) giờ vẽ trong tọa độ map nên cuộn cùng map.
+
+## Vẽ map bằng Tiled
+
+Có thể vẽ map mới bằng [Tiled](https://www.mapeditor.org) (miễn phí, Windows/Mac/Linux) rồi đưa vào game bằng một lệnh. Map Tiled có đủ va chạm, lối đi, NPC, rương, pet hoang dã và chỗ làm nhiệm vụ; các hệ thống cũ (chỉ đường nhiệm vụ, bản đồ nhỏ, lưu/tải, gặp pet, NPC đi lại) dùng được ngay.
+
+**Thư mục `tiled/` (ngoài `prototype/`, không đóng gói vào game):**
+
+- `tiled/vqsv.tiled-project`: mở file này trong Tiled (File > Open File or Project). Nó khai sẵn các loại đối tượng (`player`, `link`, `door`, `npc`, `chest`, `wild`, `quest`, `block`, `water`, `shallow`, `walk`) kèm ô nhập thuộc tính.
+- `tiled/tilesets/`: 11 bộ gạch thật của VQSV5 (`vqsv5_bo00`–`vqsv5_bo10`, mỗi mảnh một ảnh, lưới 20 px, neo góc dưới trái như trong game) và bộ gạch va chạm `va_cham` (Chặn, Nước sâu, Nước nông, Chặn vách, Đi được).
+- `tiled/vqsv5/`: 68 map VQSV5 đã chuyển sang Tiled, để xem hoặc chép từng phần. Map đi lại đang dùng trong game vẫn dựng bằng `tools/build_vqsv5_walk_maps.py`, không đổi.
+- `tiled/maps/`: map sẽ vào game. Hiện có map mẫu `rung_tay.tmj` (TRIAL).
+
+**Vẽ một map mới:**
+
+1. Trong Tiled: File > New > New Map. Orientation: Orthogonal, Tile size 20 × 20 (dùng gạch VQSV5) hoặc cỡ khác nếu dùng bộ gạch riêng (ô phải vuông), bỏ chọn Infinite. Lưu vào `tiled/maps/` dạng `.tmj` hoặc `.tmx`. Mỗi ô Tiled là một ô đi lại; game giữ nguyên độ phân giải gạch và co giãn cho vừa ô 20 điểm ảnh.
+2. Map > Map Properties, thêm thuộc tính: `id` (chữ thường không dấu, vd `hang-da`), `title` (tên hiện trong game). Tùy chọn: `wildAreas` (bảng pet hoang dã VQSV6, vd `1-1,1-2`), `vqsv5Maps` (bảng pet VQSV5 của map số đó, vd `17`), `battleTerrain` (địa hình trận đấu VQSV5), `background` (màu nền), `badge = true` (lần đầu vào được 1 huy hiệu như vùng mới; mặc định không), `replace = true` (thay map có sẵn cùng `id`).
+3. Lớp gạch: lớp thường vẽ dưới nhân vật. Lớp có tên bắt đầu bằng `Trên` (hoặc `Above`, hoặc thuộc tính `above = true`) vẽ đè lên nhân vật: tán cây, mái nhà. Lớp tên `Va chạm` (hoặc `Collision`) không hiện trong game: tô gạch của bộ `va_cham` vào ô nào thì ô đó bị chặn, là nước sâu (chặn, có pet nước bên cạnh) hay nước nông (lội được, gặp pet nước). Gạch có thuộc tính `collides = true` hoặc `terrain` cũng chặn ô ở lớp thường. Lớp ẩn không được vẽ; lớp va chạm ẩn vẫn có tác dụng. Lớp nhóm và lớp ảnh (một bức tranh nền vẽ sẵn) đều dùng được.
+4. Lớp đối tượng: thêm đối tượng, chọn Class:
+   - `player`: chỗ Kael đứng khi vào map lần đầu.
+   - `link`: lối sang map khác. `target` là id map đích. `spawnX`, `spawnY` là ô đến ở map đích (để -1 thì tự tính khi hai map Tiled có lối nối nhau). `backX`, `backY` thêm luôn lối quay lại vào map đích ở ô đó, rồi tự tính ô đến hai chiều. Lối ở mép map thì đi ra khỏi mép là sang (trước khi gặp người gác làng, lối mép map còn khóa như mọi lối khác); hình chữ nhật phủ nhiều ô là nhiều ô lối đi. `door` là cửa vào nhà (bấm nút để vào), lối quay lại thành cửa ra.
+   - `npc`: tên đối tượng là tên NPC; `art` là `elder`, `herbalist`, `villager`, `scout` hoặc đường dẫn ảnh trong `assets/`; `dialogue` mỗi dòng một câu.
+   - `chest`: `gold` (kim tiền) hoặc `item` (mã vật phẩm VQSV5) + `quantity`.
+   - `wild`: pet hoang dã riêng của map: `pets` (vd `vqsv6-db-33, vqsv6-db-86`), `levels` (vd `3-5`), `quality`, `water`.
+   - `quest`: tên đối tượng là khóa chỗ làm nhiệm vụ (bỏ phần id map): `MQ030:0` là chỗ thứ nhất của MQ030, `MQ030:npc` là người giao, `SQ001:2`, `ambient:<id>`. Nhiệm vụ vẫn đặt chỗ theo tỉ lệ map như cũ; có ghim thì bắt đầu tìm ô trống từ chỗ ghim.
+   - `block`, `water`, `shallow`, `walk`: vùng chữ nhật đổi va chạm (chặn, nước sâu, nước nông, mở lại).
+   - Đối tượng gạch không chọn Class được vẽ vào ảnh như đồ trang trí.
+5. Lưu, rồi trong `vqsv-unified-game` chạy `python3 tools/import_tiled.py`. Lệnh đọc mọi map trong `tiled/maps/`, báo lỗi bằng tiếng Việt (thiếu `target`, map vô hạn, ô không vuông, id trùng, lối đi trùng ô...), ghi ảnh vào `prototype/assets/maps/tiled/`, dữ liệu vào `prototype/data/tiled_maps.json`, rồi tự chạy `build_prototype_bootstrap.py`. `--check` chỉ kiểm tra.
+
+**Bắt đầu từ map VQSV5:** `python3 tools/tiled_vqsv5.py map 17 --out tiled/maps/ten_moi.tmj` xuất map VQSV5 số 17 ra một file mới để sửa. `python3 tools/tiled_vqsv5.py` dựng lại toàn bộ bộ gạch, file dự án và 68 map. Đọc lại một map VQSV5 vừa xuất cho ra đúng từng điểm ảnh và đúng va chạm như map đi lại trong game (đã thử đủ 68 map).
+
+**Map mẫu (TRIAL):** `tiled/maps/rung_tay.tmj`, "Rừng Rậm Phía Tây", dựng từ map VQSV5 số 17. Đi ra mép tây làng (ô 0,10) là sang. Suối được tô nước sâu, có hai chỗ nước nông lội qua; có Bác Tiều Phu, Cô Hái Nấm, hai rương (3 Bánh bích quy, 300 kim tiền) và pet hoang dã giống Rừng Rậm Phong Lôi (bảng `1-1,1-2`). Không nằm trên đường nhiệm vụ chính. Muốn bỏ thì xóa file rồi chạy lại `python3 tools/import_tiled.py`.
+
+**Trong game:** map Tiled có thêm `tiled: {base, overlay, background, cell}`; `drawMap`/`drawForeground` vẽ ảnh co giãn vừa `width × height` ô, va chạm dùng chung lưới số của map VQSV5 (`BLOCK5`, `terrainAt`). `place()` trong `quests.js` đọc ghim `questSpots`. Test: `tools/test_tiled_import.cjs`.

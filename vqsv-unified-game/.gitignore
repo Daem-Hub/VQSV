@@ -1,2 +1,3 @@
 dist_mobile/
 __pycache__/
+tiled/*.tiled-session

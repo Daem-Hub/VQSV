@@ -1,0 +1,152 @@
+{
+ "type": "tileset",
+ "version": "1.10",
+ "tiledversion": "1.11.0",
+ "name": "vqsv5_bo08",
+ "tilewidth": 60,
+ "tileheight": 40,
+ "tilecount": 21,
+ "columns": 0,
+ "margin": 0,
+ "spacing": 0,
+ "grid": {
+  "orientation": "orthogonal",
+  "width": 20,
+  "height": 20
+ },
+ "tiles": [
+  {
+   "id": 0,
+   "image": "vqsv5_bo08/000.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 1,
+   "image": "vqsv5_bo08/001.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 2,
+   "image": "vqsv5_bo08/002.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 3,
+   "image": "vqsv5_bo08/003.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 4,
+   "image": "vqsv5_bo08/004.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 5,
+   "image": "vqsv5_bo08/005.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 6,
+   "image": "vqsv5_bo08/006.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 7,
+   "image": "vqsv5_bo08/007.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 8,
+   "image": "vqsv5_bo08/008.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 9,
+   "image": "vqsv5_bo08/009.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 10,
+   "image": "vqsv5_bo08/010.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 11,
+   "image": "vqsv5_bo08/011.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 12,
+   "image": "vqsv5_bo08/012.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 13,
+   "image": "vqsv5_bo08/013.png",
+   "imagewidth": 60,
+   "imageheight": 40
+  },
+  {
+   "id": 14,
+   "image": "vqsv5_bo08/014.png",
+   "imagewidth": 40,
+   "imageheight": 40
+  },
+  {
+   "id": 15,
+   "image": "vqsv5_bo08/015.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 16,
+   "image": "vqsv5_bo08/016.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 17,
+   "image": "vqsv5_bo08/017.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 18,
+   "image": "vqsv5_bo08/018.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 19,
+   "image": "vqsv5_bo08/019.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 20,
+   "image": "vqsv5_bo08/020.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  }
+ ],
+ "properties": [
+  {
+   "name": "ghichu",
+   "type": "string",
+   "value": "Bộ gạch VQSV5 số 8, dùng cho các map VQSV5 38, 39, 40, 41, 42, 57, 58"
+  }
+ ]
+}

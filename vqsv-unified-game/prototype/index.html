@@ -414,7 +414,7 @@
     const cell5 = (m, x, y) => (m.collision && y >= 0 && y < m.height && x >= 0 && x < m.width ? m.collision[y][x] : "1");
     function terrainAt(x, y) {
       const m = assets.map;
-      if (m?.source5 && m.atlasRegion == null) return cell5(m, x, y) === "3" || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => cell5(m, x + dx, y + dy) === "2") ? 2 : 0;
+      if ((m?.source5 || m?.tiled) && m.atlasRegion == null) return cell5(m, x, y) === "3" || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => cell5(m, x + dx, y + dy) === "2") ? 2 : 0;
       const bridge = assets.map?.bridge;
       return bridge && x >= bridge.x && x < bridge.x + bridge.width && y >= bridge.y && y < bridge.y + bridge.height ? 2 : 0;
     }
@@ -1760,10 +1760,11 @@
     }
     function drawMap(depthY = null) {
       const m = assets.map;
-      if (m.source5 || m.fieldArt || m.illustration) {
-        const base = cachedImage(m.source5?.base || m.fieldArt || m.illustration);
-        ctx.fillStyle = m.source5?.background || "#253c42"; ctx.fillRect(0, 0, m.width * S, m.height * S);
-        if (base?.complete && base.naturalWidth) ctx.drawImage(base, 0, 0);
+      if (m.tiled || m.source5 || m.fieldArt || m.illustration) {
+        const base = cachedImage(m.tiled?.base || m.source5?.base || m.fieldArt || m.illustration);
+        ctx.fillStyle = (m.tiled || m.source5)?.background || "#253c42"; ctx.fillRect(0, 0, m.width * S, m.height * S);
+        // Tiled maps (tools/import_tiled.py) keep the tiles' own resolution: one Tiled cell is stretched onto one 20 px cell.
+        if (base?.complete && base.naturalWidth) m.tiled ? ctx.drawImage(base, 0, 0, m.width * S, m.height * S) : ctx.drawImage(base, 0, 0);
         return;
       }
       if (m.interior) { window.drawShopRoom?.(ctx, m); return; }
@@ -1824,8 +1825,8 @@
       if (m.tint) { ctx.fillStyle = m.tint; ctx.fillRect(0, 0, canvas.width, canvas.height); }
     }
     function drawForeground(depthY) {
-      const over = assets.map.source5?.overlay ? cachedImage(assets.map.source5.overlay) : null;
-      if (over?.complete && over.naturalWidth) ctx.drawImage(over, 0, 0);
+      const layer = assets.map.tiled?.overlay || assets.map.source5?.overlay, over = layer ? cachedImage(layer) : null;
+      if (over?.complete && over.naturalWidth) assets.map.tiled ? ctx.drawImage(over, 0, 0, assets.map.width * S, assets.map.height * S) : ctx.drawImage(over, 0, 0);
       if (assets.map.interior) return;
       for (const obj of assets.mapObjects[assets.map.id] || []) if (obj.y >= depthY) drawMapObject(obj);
     }
@@ -2014,10 +2015,11 @@
     function refreshFieldMap() {
       if (!assets.map) return;
       const herbs = assets.map.id === "slice01-border-village" && state.herbQuest.stage === "active" ? HERBS.filter(herb => !state.herbQuest.collected.includes(herb.id)) : [];
-      const picture = assets.map.source5?.base || assets.map.fieldArt || assets.map.illustration;
+      const pictureOf = m => m.tiled?.base || m.source5?.base || m.fieldArt || m.illustration;
+      const picture = pictureOf(assets.map);
       const background = picture ? cachedImage(picture) : null;
       if (background && !background.complete) background.onload = () => {
-        if (cachedImage(assets.map.source5?.base || assets.map.fieldArt || assets.map.illustration) === background) refreshFieldMap();
+        if (cachedImage(pictureOf(assets.map)) === background) refreshFieldMap();
       };
       window.drawFieldMap?.(assets.map, state.player, mapTarget(), herbs, assets.charts[assets.map.id] || (background?.complete && background.naturalWidth ? background : undefined));
       const button = document.getElementById("touchAction");
@@ -2985,7 +2987,8 @@
       const range = wildLevelRange(assets.map.id);
       statusEl.textContent = `Đang khám phá · ${assets.map.title}${range ? ` · pet hoang dã cấp ${range[0]}–${range[1]}` : ""}`;
       // TRIAL badge source: the first visit to each higher-level region gives 1 huy hiệu (the source sells them for real money).
-      if (assets.map.wildAreas && grantOnce(`region:${assets.map.id}`, () => { wallet.badges += 1; })) statusEl.textContent += " · +1 huy hiệu";
+      // A map drawn in Tiled gives it only with the map property badge = true (tools/import_tiled.py writes regionBadge).
+      if (assets.map.wildAreas && assets.map.regionBadge !== false && grantOnce(`region:${assets.map.id}`, () => { wallet.badges += 1; })) statusEl.textContent += " · +1 huy hiệu";
       updateGuidance();
       return true;
     }

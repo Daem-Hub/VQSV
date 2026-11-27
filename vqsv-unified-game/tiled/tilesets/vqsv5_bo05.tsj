@@ -1,0 +1,224 @@
+{
+ "type": "tileset",
+ "version": "1.10",
+ "tiledversion": "1.11.0",
+ "name": "vqsv5_bo05",
+ "tilewidth": 40,
+ "tileheight": 40,
+ "tilecount": 33,
+ "columns": 0,
+ "margin": 0,
+ "spacing": 0,
+ "grid": {
+  "orientation": "orthogonal",
+  "width": 20,
+  "height": 20
+ },
+ "tiles": [
+  {
+   "id": 0,
+   "image": "vqsv5_bo05/000.png",
+   "imagewidth": 40,
+   "imageheight": 40
+  },
+  {
+   "id": 1,
+   "image": "vqsv5_bo05/001.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 2,
+   "image": "vqsv5_bo05/002.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 3,
+   "image": "vqsv5_bo05/003.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 4,
+   "image": "vqsv5_bo05/004.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 5,
+   "image": "vqsv5_bo05/005.png",
+   "imagewidth": 40,
+   "imageheight": 40
+  },
+  {
+   "id": 6,
+   "image": "vqsv5_bo05/006.png",
+   "imagewidth": 40,
+   "imageheight": 40
+  },
+  {
+   "id": 7,
+   "image": "vqsv5_bo05/007.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 8,
+   "image": "vqsv5_bo05/008.png",
+   "imagewidth": 20,
+   "imageheight": 40
+  },
+  {
+   "id": 9,
+   "image": "vqsv5_bo05/009.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 10,
+   "image": "vqsv5_bo05/010.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 11,
+   "image": "vqsv5_bo05/011.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 12,
+   "image": "vqsv5_bo05/012.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 13,
+   "image": "vqsv5_bo05/013.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 14,
+   "image": "vqsv5_bo05/014.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 15,
+   "image": "vqsv5_bo05/015.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 16,
+   "image": "vqsv5_bo05/016.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 17,
+   "image": "vqsv5_bo05/017.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 18,
+   "image": "vqsv5_bo05/018.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 19,
+   "image": "vqsv5_bo05/019.png",
+   "imagewidth": 40,
+   "imageheight": 20
+  },
+  {
+   "id": 20,
+   "image": "vqsv5_bo05/020.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 21,
+   "image": "vqsv5_bo05/021.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 22,
+   "image": "vqsv5_bo05/022.png",
+   "imagewidth": 40,
+   "imageheight": 40
+  },
+  {
+   "id": 23,
+   "image": "vqsv5_bo05/023.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 24,
+   "image": "vqsv5_bo05/024.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 25,
+   "image": "vqsv5_bo05/025.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 26,
+   "image": "vqsv5_bo05/026.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 27,
+   "image": "vqsv5_bo05/027.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 28,
+   "image": "vqsv5_bo05/028.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 29,
+   "image": "vqsv5_bo05/029.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 30,
+   "image": "vqsv5_bo05/030.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 31,
+   "image": "vqsv5_bo05/031.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  },
+  {
+   "id": 32,
+   "image": "vqsv5_bo05/032.png",
+   "imagewidth": 20,
+   "imageheight": 20
+  }
+ ],
+ "properties": [
+  {
+   "name": "ghichu",
+   "type": "string",
+   "value": "Bộ gạch VQSV5 số 5, dùng cho các map VQSV5 28, 29, 30, 31, 32, 48"
+  }
+ ]
+}

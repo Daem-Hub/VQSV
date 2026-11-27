@@ -1,0 +1,97 @@
+{
+ "type": "tileset",
+ "version": "1.10",
+ "tiledversion": "1.11.0",
+ "name": "va_cham",
+ "tilewidth": 20,
+ "tileheight": 20,
+ "tilecount": 5,
+ "columns": 5,
+ "margin": 0,
+ "spacing": 0,
+ "image": "va_cham.png",
+ "imagewidth": 100,
+ "imageheight": 20,
+ "tiles": [
+  {
+   "id": 0,
+   "type": "collision",
+   "properties": [
+    {
+     "name": "terrain",
+     "type": "int",
+     "value": 1
+    },
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Chặn"
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "type": "collision",
+   "properties": [
+    {
+     "name": "terrain",
+     "type": "int",
+     "value": 2
+    },
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Nước sâu"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "type": "collision",
+   "properties": [
+    {
+     "name": "terrain",
+     "type": "int",
+     "value": 3
+    },
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Nước nông"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "type": "collision",
+   "properties": [
+    {
+     "name": "terrain",
+     "type": "int",
+     "value": 4
+    },
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Chặn (vách)"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "type": "collision",
+   "properties": [
+    {
+     "name": "terrain",
+     "type": "int",
+     "value": 0
+    },
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Đi được"
+    }
+   ]
+  }
+ ]
+}

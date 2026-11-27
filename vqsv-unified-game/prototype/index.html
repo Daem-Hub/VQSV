@@ -2025,23 +2025,32 @@
       button.textContent = label || "Tương tác";
       button.disabled = !label;
     }
-    // Camera: maps larger than the 24 x 18 screen scroll with Kael; smaller ones are centred on a dark border.
+    // Camera: maps larger than the view scroll with Kael; smaller ones are enlarged to fill it (fieldZoom).
     // On a portrait phone the canvas is cropped and covered by the HUD (name plate on top, joystick and buttons below),
     // so the camera may look past the map edge into the dark border: Kael then stays clear of the HUD at map edges
     // instead of standing under the name plate or half off the screen.
+    // A map smaller than the part of the screen that shows (a 24-tile village in the 32-tile-wide 16:9 view) is enlarged
+    // just enough to fill it, so no empty band shows beside it; bigger maps stay at 1×.
+    function fieldZoom(m = assets.map) {
+      const cw = canvas.clientWidth, ch = canvas.clientHeight;
+      if (!cw || !ch || !m?.width) return 1;
+      const fit = Math.max(cw / VIEW_W, ch / VIEW_H), shownW = cw / fit, shownH = ch / fit;   // the canvas is cropped to cover the frame
+      return Math.max(1, shownW / (m.width * S), shownH / (m.height * S));
+    }
     function cameraOf(m = assets.map) {
       const portrait = typeof innerHeight === "number" && innerHeight > innerWidth && !m.interior;
+      const z = fieldZoom(m), viewW = VIEW_W / z, viewH = VIEW_H / z;
       const axis = (size, view, focus, padLo, padHi) => {
         const centred = -Math.round((view - size * S) / 2), want = Math.round(focus * S + S / 2 - view / 2);
         if (!portrait) return size * S <= view ? centred : Math.max(0, Math.min(size * S - view, want));
         return Math.max(Math.min(centred, -padLo), Math.min(Math.max(centred, size * S - view + padHi), want));
       };
-      return { x: axis(m.width, VIEW_W, state.player.visualX, 90, 90), y: axis(m.height, VIEW_H, state.player.visualY, 95, 105) };
+      return { x: axis(m.width, viewW, state.player.visualX, 90 / z, 90 / z), y: axis(m.height, viewH, state.player.visualY, 95 / z, 105 / z), z };
     }
     function drawExplore() {
       const cam = cameraOf();
       ctx.fillStyle = "#1c2e22"; ctx.fillRect(0, 0, VIEW_W, VIEW_H);         // beyond a narrow map's edge: dark forest green
-      ctx.save(); ctx.translate(-cam.x, -cam.y);
+      ctx.save(); ctx.scale(cam.z, cam.z); ctx.translate(-cam.x, -cam.y);
       drawMap(state.player.visualY);
       const npcs = villageNpcs();
       const point = assets.map.entities.encounter;
@@ -2083,8 +2092,8 @@
       drawCharacter(assets.chars.player, state.player.visualX, state.player.visualY, "player", state.player.faceX, state.player.faceY);
       for (const npc of npcs) if ((npc.drawY ?? npc.y) >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.drawX ?? npc.x, npc.drawY ?? npc.y, "elder");
       drawForeground(state.player.visualY);
+      window.drawTrailGuide?.(ctx, S);                                  // in map coordinates, so it scrolls with the map
       ctx.restore();
-      window.drawTrailGuide?.(ctx, S);
       const npc = nearbyNpc();
       const questLabel = window.Quests?.actionLabel();
       // On a portrait phone the round action button already shows this label and the name plate shows the map title;

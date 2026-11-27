@@ -161,8 +161,9 @@
   window.followKael = () => {
     if (!["dialogue","explore"].includes(state.mode)) return;
     const p = state.player, cam = cameraOf(assets.map);
-    const position = Math.max(0, Math.min(100, ((p.visualX+.5)*S - cam.x) / VIEW_W * 100)).toFixed(2) + "% " +
-      Math.max(0, Math.min(100, ((p.visualY+.25)*S - cam.y) / VIEW_H * 100)).toFixed(2) + "%";
+    const z = cam.z || 1;
+    const position = Math.max(0, Math.min(100, ((p.visualX+.5)*S - cam.x) * z / VIEW_W * 100)).toFixed(2) + "% " +
+      Math.max(0, Math.min(100, ((p.visualY+.25)*S - cam.y) * z / VIEW_H * 100)).toFixed(2) + "%";
     if (position !== lastPosition) { canvas.style.objectPosition = position; lastPosition = position; }
   };
 })();

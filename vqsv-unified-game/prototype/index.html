@@ -2049,6 +2049,21 @@
       };
       return { x: axis(m.width, viewW, state.player.visualX, 90 / z, 90 / z), y: axis(m.height, viewH, state.player.visualY, 95 / z, 105 / z), z };
     }
+    // Map makers (tools/import_tiled.py): open the game with ?vacham to see which cells block, on any map. Red: blocked (walls,
+    // objects, NPCs, chests), blue: deep water, cyan: shallow water you can wade, yellow frame: exits.
+    const SHOW_COLLISION = (() => { try { return new URLSearchParams(location.search).has("vacham"); } catch (_) { return false; } })();
+    function drawCollision(cam) {
+      const m = assets.map, z = cam.z || 1;
+      const x0 = Math.max(0, Math.floor(cam.x / S)), y0 = Math.max(0, Math.floor(cam.y / S));
+      const x1 = Math.min(m.width - 1, Math.ceil((cam.x + VIEW_W / z) / S)), y1 = Math.min(m.height - 1, Math.ceil((cam.y + VIEW_H / z) / S));
+      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
+        const digit = m.collision ? cell5(m, x, y) : "0";
+        const fill = digit === "2" ? "rgba(40,90,230,.38)" : blocked(x, y) ? "rgba(230,40,40,.34)" : digit === "3" ? "rgba(70,210,240,.32)" : null;
+        if (fill) { ctx.fillStyle = fill; ctx.fillRect(x * S + 1, y * S + 1, S - 2, S - 2); }
+      }
+      ctx.strokeStyle = "#ffe066"; ctx.lineWidth = 1.5;
+      for (const link of m.links || []) ctx.strokeRect(link.x * S + 1.5, link.y * S + 1.5, S - 3, S - 3);
+    }
     function drawExplore() {
       const cam = cameraOf();
       ctx.fillStyle = "#1c2e22"; ctx.fillRect(0, 0, VIEW_W, VIEW_H);         // beyond a narrow map's edge: dark forest green
@@ -2095,6 +2110,7 @@
       for (const npc of npcs) if ((npc.drawY ?? npc.y) >= state.player.visualY) drawCharacter(assets.chars[npc.id], npc.drawX ?? npc.x, npc.drawY ?? npc.y, "elder");
       drawForeground(state.player.visualY);
       window.drawTrailGuide?.(ctx, S);                                  // in map coordinates, so it scrolls with the map
+      if (SHOW_COLLISION) drawCollision(cam);
       ctx.restore();
       const npc = nearbyNpc();
       const questLabel = window.Quests?.actionLabel();

@@ -1,0 +1,71 @@
+{
+ "type": "tileset",
+ "version": "1.10",
+ "tiledversion": "1.11.0",
+ "name": "nhan_vat",
+ "tilewidth": 84,
+ "tileheight": 152,
+ "tilecount": 4,
+ "columns": 0,
+ "margin": 0,
+ "spacing": 0,
+ "grid": {
+  "orientation": "orthogonal",
+  "width": 20,
+  "height": 20
+ },
+ "tiles": [
+  {
+   "id": 0,
+   "image": "../../prototype/assets/illustrations/elder_hd.png",
+   "imagewidth": 72,
+   "imageheight": 152,
+   "properties": [
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Trưởng làng"
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "image": "../../prototype/assets/illustrations/herbalist_hd.png",
+   "imagewidth": 80,
+   "imageheight": 152,
+   "properties": [
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Dược sĩ"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "image": "../../prototype/assets/illustrations/villager_hd.png",
+   "imagewidth": 72,
+   "imageheight": 152,
+   "properties": [
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Dân làng"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "image": "../../prototype/assets/illustrations/scout_hd.png",
+   "imagewidth": 84,
+   "imageheight": 152,
+   "properties": [
+    {
+     "name": "ten",
+     "type": "string",
+     "value": "Người gác"
+    }
+   ]
+  }
+ ]
+}

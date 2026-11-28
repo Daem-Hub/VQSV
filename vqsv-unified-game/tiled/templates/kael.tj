@@ -1,0 +1,12 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "player",
+  "name": "Kael",
+  "width": 20,
+  "height": 20
+ }
+}

@@ -7,9 +7,14 @@ Mỗi bộ gạch VQSV5 (11 bộ, data/map/N.data) thành một tileset "bộ s�
 gạch neo ở góc dưới trái như trong game. Phép lật/xoay MIDP của mảnh ghép chuyển thành cờ lật của Tiled.
 Map xuất ra có các lớp "Nền N" (lớp 1 của VQSV5, tách nhiều lớp để giữ thứ tự vẽ khi các mảnh đè nhau), "Va chạm" (lớp 2)
 và "Trên nhân vật N" (lớp 3). Đọc lại bằng tools/import_tiled.py cho ra đúng ảnh và va chạm như tools/build_vqsv5_walk_maps.py.
+
+Thêm: thuộc tính chan cho những mảnh gạch hầu như lúc nào cũng bị chặn trong 68 map gốc (TRIAL, learn_footprints), để vẽ cây,
+đá, vách là tự thành vật cản; bộ hình NPC tiled/tilesets/nhan_vat.tsj (hình NPC của game) và mẫu đối tượng tiled/templates/*.tj.
 """
 import argparse
 import json
+import os
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw
@@ -24,6 +29,9 @@ TILED_VERSION = {"version": "1.10", "tiledversion": "1.11.0"}
 # Collision tileset (tiled/tilesets/va_cham.tsj): tile index -> collision digit of the game (index.html BLOCK5, terrainAt)
 COLLISION = [("Chặn", 1, (220, 50, 50)), ("Nước sâu", 2, (40, 90, 220)), ("Nước nông", 3, (70, 200, 230)),
              ("Chặn (vách)", 4, (230, 140, 30)), ("Đi được", 0, (60, 200, 90))]
+# NPC pictures of the game (tiled/tilesets/nhan_vat.tsj, templates npc_*.tj): path under prototype/assets, default name
+NPCS = [("illustrations/elder_hd.png", "Trưởng làng"), ("illustrations/herbalist_hd.png", "Dược sĩ"),
+        ("illustrations/villager_hd.png", "Dân làng"), ("illustrations/scout_hd.png", "Người gác")]
 
 
 def flag_table():
@@ -46,10 +54,51 @@ def tileset_name(ts):
     return f"vqsv5_bo{ts:02d}"
 
 
+def learn_footprints(min_blocked=3, share=0.9):
+    """Cells each VQSV5 piece blocks by itself (TRIAL, a guess from the data): over the 68 maps, a cell of a piece drawn on the
+    ground layer counts when the collision layer blocks it at least `share` of the times (and at least `min_blocked` times).
+    Returns {tileset: {piece: "dx,dy[:digit] ..."}}, cells counted from the bottom-left cell of the unturned piece, y upwards."""
+    mapping, _ = area()
+    stats, uses = defaultdict(lambda: defaultdict(Counter)), Counter()
+    for n in range(len(mapping)):
+        m, ts = parse(n), mapping[n]
+        d, W, H = defs(ts), m["w"], m["h"]
+        grid = [[0] * W for _ in range(H)]
+        for x, y, v in m["layers"].get(2, []):
+            if 0 <= x < W and 0 <= y < H:
+                grid[y][x] = v >> 3
+        for x, y, v in m["layers"].get(1, []):
+            if v < 0 or not (0 <= x < W and 0 <= y < H):
+                continue
+            w, h = d[v >> 3][3:5]
+            cw, ch = max(1, -(-w // T)), max(1, -(-h // T))
+            cells = Image.new("L", (cw, ch))
+            cells.putdata([k + 1 for k in range(cw * ch)])            # cell numbers, row by row from the top
+            drawn = transform(cells, TBL[v & 7])                         # where each cell lands once the piece is turned
+            uses[(ts, v >> 3)] += 1
+            for j in range(drawn.height):
+                for i in range(drawn.width):
+                    k, cx, cy = drawn.getpixel((i, j)) - 1, x + i, y - (drawn.height - 1 - j)
+                    if 0 <= cx < W and 0 <= cy < H:
+                        stats[(ts, v >> 3)][(k % cw, ch - 1 - k // cw)][grid[cy][cx]] += 1
+    out = defaultdict(dict)
+    for (ts, piece), cells in stats.items():
+        parts = []
+        for (dx, dy), c in sorted(cells.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+            blocked = c[1] + c[2] + c[4]
+            if blocked >= min_blocked and blocked / sum(c.values()) >= share:
+                digit = max((1, 2, 4), key=lambda k: c[k])
+                parts.append(f"{dx},{dy}" + ("" if digit == 1 else f":{digit}"))
+        if parts:
+            out[ts][piece] = " ".join(parts)
+    return out
+
+
 def export_tilesets():
     mapping, sets = area()
     out = TILED / "tilesets"
     out.mkdir(parents=True, exist_ok=True)
+    blocks = learn_footprints()
     for ts in sorted(set(mapping)):
         sheet = Image.open(IMG / f"{sets[ts][0]}.png").convert("RGBA")
         folder = out / tileset_name(ts)
@@ -58,12 +107,16 @@ def export_tilesets():
         for i, d in enumerate(defs(ts)):
             sx, sy, w, h = d[1:5]
             sheet.crop((sx, sy, sx + w, sy + h)).save(folder / f"{i:03d}.png", optimize=True)
-            tiles.append({"id": i, "image": f"{tileset_name(ts)}/{i:03d}.png", "imagewidth": w, "imageheight": h})
+            tile = {"id": i, "image": f"{tileset_name(ts)}/{i:03d}.png", "imagewidth": w, "imageheight": h}
+            if i in blocks[ts]:
+                tile["properties"] = [{"name": "chan", "type": "string", "value": blocks[ts][i]}]
+            tiles.append(tile)
         used = sorted(n for n, t in enumerate(mapping) if t == ts)
         tsj = {"type": "tileset", **TILED_VERSION, "name": tileset_name(ts), "tilewidth": max(t["imagewidth"] for t in tiles),
                "tileheight": max(t["imageheight"] for t in tiles), "tilecount": len(tiles), "columns": 0, "margin": 0, "spacing": 0,
                "grid": {"orientation": "orthogonal", "width": T, "height": T}, "tiles": tiles,
-               "properties": [{"name": "ghichu", "type": "string", "value": f"Bộ gạch VQSV5 số {ts}, dùng cho các map VQSV5 {', '.join(map(str, used))}"}]}
+               "properties": [{"name": "ghichu", "type": "string", "value": f"Bộ gạch VQSV5 số {ts}, dùng cho các map VQSV5 {', '.join(map(str, used))}. "
+                                                                         "Thuộc tính chan của gạch: các ô gạch đó tự chặn (TRIAL, học từ 68 map gốc)"}]}
         (out / f"{tileset_name(ts)}.tsj").write_text(json.dumps(tsj, ensure_ascii=False, indent=1), encoding="utf-8")
     # collision tiles: see-through colours so the map shows underneath in Tiled
     sheet = Image.new("RGBA", (T * len(COLLISION), T), (0, 0, 0, 0))
@@ -85,6 +138,49 @@ def export_tilesets():
            "tiles": [{"id": i, "type": "collision", "properties": [{"name": "terrain", "type": "int", "value": digit}, {"name": "ten", "type": "string", "value": name}]}
                      for i, (name, digit, _) in enumerate(COLLISION)]}
     (out / "va_cham.tsj").write_text(json.dumps(tsj, ensure_ascii=False, indent=1), encoding="utf-8")
+    # the village NPC pictures of the game itself, to place NPCs as pictures (tile objects)
+    tiles = []
+    for i, (art, name) in enumerate(NPCS):
+        path = ROOT / "prototype" / "assets" / art
+        w, h = Image.open(path).size
+        tiles.append({"id": i, "image": Path(os.path.relpath(path, out)).as_posix(), "imagewidth": w, "imageheight": h,
+                      "properties": [{"name": "ten", "type": "string", "value": name}]})
+    tsj = {"type": "tileset", **TILED_VERSION, "name": "nhan_vat", "tilewidth": max(t["imagewidth"] for t in tiles),
+           "tileheight": max(t["imageheight"] for t in tiles), "tilecount": len(tiles), "columns": 0, "margin": 0, "spacing": 0,
+           "grid": {"orientation": "orthogonal", "width": T, "height": T}, "tiles": tiles}
+    (out / "nhan_vat.tsj").write_text(json.dumps(tsj, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def templates():
+    """tiled/templates/*.tj: objects ready to drop on a map (Tiled: View > Views and Toolbars > Templates)."""
+    def prop(name, kind, value):
+        return {"name": name, "type": kind, "value": value}
+    way = [prop("target", "string", ""), prop("spawnX", "int", -1), prop("spawnY", "int", -1), prop("backX", "int", -1), prop("backY", "int", -1)]
+    cell = {"width": T, "height": T}
+    area_ = {"width": 2 * T, "height": 2 * T}
+    objects = {
+        "kael": {"type": "player", "name": "Kael", **cell},
+        "loi_di": {"type": "link", "name": "Lối đi", **cell, "properties": way},
+        "cua_vao_nha": {"type": "door", "name": "Cửa", **cell, "properties": way},
+        "ruong_kim_tien": {"type": "chest", "name": "Rương", **cell, "properties": [prop("gold", "int", 100)]},
+        "ruong_vat_pham": {"type": "chest", "name": "Rương", **cell, "properties": [prop("item", "int", 1), prop("quantity", "int", 1)]},
+        "pet_hoang_da": {"type": "wild", "name": "Pet hoang dã", "width": 3 * T, "height": 3 * T,
+                         "properties": [prop("pets", "string", ""), prop("levels", "string", "3-5")]},
+        "nhiem_vu": {"type": "quest", "name": "MQ001:0", **cell},
+        "vung_chan": {"type": "block", "name": "", **area_}, "nuoc_sau": {"type": "water", "name": "", **area_},
+        "nuoc_nong": {"type": "shallow", "name": "", **area_}, "di_duoc": {"type": "walk", "name": "", **area_},
+    }
+    out = TILED / "templates"
+    out.mkdir(parents=True, exist_ok=True)
+    for name, obj in objects.items():
+        (out / f"{name}.tj").write_text(json.dumps({"type": "template", "object": {"id": 1, "rotation": 0, "visible": True, **obj}},
+                                                   ensure_ascii=False, indent=1), encoding="utf-8")
+    for i, (art, name) in enumerate(NPCS):                         # an NPC as its picture, 38 px tall like in the game
+        w, h = Image.open(ROOT / "prototype" / "assets" / art).size
+        obj = {"id": 1, "type": "npc", "name": name, "gid": 1 + i, "width": round(38 * w / h), "height": 38, "rotation": 0, "visible": True,
+               "properties": [prop("dialogue", "string", "Chào cháu!")]}
+        tpl = {"type": "template", "tileset": {"firstgid": 1, "source": "../tilesets/nhan_vat.tsj"}, "object": obj}
+        (out / f"npc_{Path(art).stem.replace('_hd', '')}.tj").write_text(json.dumps(tpl, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def project_file():
@@ -191,7 +287,8 @@ def export_map(n, out_path, tilesets_rel="../tilesets"):
            "tilewidth": T, "tileheight": T, "infinite": False, "backgroundcolor": f"#{m['bg'] & 0xFFFFFF:06x}",
            "nextlayerid": next_id + 1, "nextobjectid": 1, "compressionlevel": -1,
            "properties": [{"name": "id", "type": "string", "value": f"vqsv5-{n:02d}"}, {"name": "title", "type": "string", "value": place},
-                          {"name": "vqsv5", "type": "int", "value": n}],
+                          {"name": "vqsv5", "type": "int", "value": n},
+                          {"name": "autoBlock", "type": "bool", "value": False}],     # the real collision layer is complete
            "tilesets": [{"firstgid": 1, "source": f"{tilesets_rel}/{tileset_name(ts)}.tsj"}, {"firstgid": collision_first, "source": f"{tilesets_rel}/va_cham.tsj"}],
            "layers": layers}
     out_path = Path(out_path)
@@ -209,8 +306,9 @@ def main():
     args = ap.parse_args()
     if args.what in ("all", "tilesets"):
         export_tilesets()
+        templates()
         project_file()
-        print("Đã xuất bộ gạch vào tiled/tilesets/ và tiled/vqsv.tiled-project")
+        print("Đã xuất bộ gạch vào tiled/tilesets/, mẫu đối tượng vào tiled/templates/ và tiled/vqsv.tiled-project")
     if args.what == "all":
         mapping, _ = area()
         for n in range(len(mapping)):
@@ -220,7 +318,7 @@ def main():
         if args.number is None:
             ap.error("cần số map, vd: map 17")
         out = Path(args.out) if args.out else TILED / "vqsv5" / f"vqsv5_{args.number:02d}.tmj"
-        rel = Path("../tilesets") if not args.out else Path(__import__("os").path.relpath(TILED / "tilesets", out.resolve().parent))
+        rel = Path("../tilesets") if not args.out else Path(os.path.relpath(TILED / "tilesets", out.resolve().parent))
         print("Đã xuất", export_map(args.number, out, rel.as_posix()))
 
 

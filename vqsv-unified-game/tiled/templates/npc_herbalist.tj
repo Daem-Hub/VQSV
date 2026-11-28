@@ -1,0 +1,24 @@
+{
+ "type": "template",
+ "tileset": {
+  "firstgid": 1,
+  "source": "../tilesets/nhan_vat.tsj"
+ },
+ "object": {
+  "id": 1,
+  "type": "npc",
+  "name": "Dược sĩ",
+  "gid": 2,
+  "width": 20,
+  "height": 38,
+  "rotation": 0,
+  "visible": true,
+  "properties": [
+   {
+    "name": "dialogue",
+    "type": "string",
+    "value": "Chào cháu!"
+   }
+  ]
+ }
+}

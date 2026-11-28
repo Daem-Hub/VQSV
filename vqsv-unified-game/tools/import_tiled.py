@@ -3,6 +3,8 @@
 Cách dùng (chạy trong thư mục vqsv-unified-game):
     python3 tools/import_tiled.py            # đọc mọi map trong tiled/maps/ rồi dựng lại prototype/data/bootstrap.js
     python3 tools/import_tiled.py --check    # chỉ đọc và báo lỗi, không ghi file nào
+    python3 tools/import_tiled.py --show     # in thêm sơ đồ va chạm của từng map
+    python3 tools/import_tiled.py --watch    # chạy mãi: mỗi lần lưu trong Tiled thì tự đọc lại (Ctrl+C để dừng)
     python3 tools/import_tiled.py a.tmx b.tmj --out-dir /tmp/x --no-build   # đọc file chỉ định, ghi ra chỗ khác
 
 Map Tiled: Orthogonal, không bật Infinite, ô vuông (vd 20 × 20 như VQSV5, hoặc 16, 32...). Lưu dạng .tmx hoặc .tmj/.json.
@@ -14,6 +16,9 @@ Lớp ô (tile layer):
   - tên "Va chạm"/"Collision", hoặc thuộc tính collision = true -> không vẽ; mỗi ô có gạch là ô chặn. Gạch có thuộc tính
     terrain (số) cho biết loại: 1 chặn, 2 nước sâu (chặn, gặp pet nước), 3 nước nông (lội được), 4 chặn, 0 mở lại ô đi được.
   - ở lớp thường, gạch có thuộc tính collides = true (hoặc terrain) cũng chặn ô đó.
+  - ở lớp dưới nhân vật, gạch có thuộc tính chan ("dx,dy[:loại] ..." tính từ ô dưới trái của hình, y lên trên) tự chặn các ô
+    đó, xoay/lật theo gạch. Gạch VQSV5 xuất bởi tools/tiled_vqsv5.py có sẵn chan học từ 68 map gốc (TRIAL).
+    Map có thuộc tính autoBlock = false thì bỏ qua chan (các map VQSV5 xuất ra đã có lớp va chạm thật).
   Lớp ẩn (bỏ dấu mắt) không được vẽ; lớp va chạm ẩn vẫn có tác dụng. Lớp nhóm (group) và lớp ảnh (image layer) đều đọc được.
 
 Lớp đối tượng (object layer): loại của đối tượng là ô Class (Tiled 1.9+) hoặc Type, không phân biệt hoa thường hay dấu.
@@ -30,6 +35,8 @@ Lớp đối tượng (object layer): loại của đối tượng là ô Class 
   quest / nhiemvu          tên đối tượng là khóa chỗ làm nhiệm vụ, vd "MQ030:0", "MQ030:npc", "SQ001:2", "ambient:ba-ban-ca"
   block / chan, water / nuocsau, shallow / nuocnong, walk / diduoc   vùng chữ nhật đổi va chạm (1 / 2 / 3 / 0)
   đối tượng gạch (tile object) không có loại -> vẽ vào ảnh như đồ trang trí
+  NPC đặt bằng hình (đối tượng gạch lấy từ tiled/tilesets/nhan_vat.tsj) không cần art: hình đó chính là hình NPC.
+  Đối tượng đặt từ mẫu (tiled/templates/*.tj, *.tx) được đọc đủ: thuộc tính của mẫu, rồi những gì đối tượng sửa lại.
 
 Thuộc tính của map: id (bắt buộc nếu khác tên file), title, background (#rrggbb), replace = true (thay map có sẵn cùng id),
   wildAreas ("1-1,1-2": bảng pet hoang dã VQSV6), vqsv5Maps ("17": bảng pet hoang dã VQSV5 của map số đó),
@@ -44,6 +51,7 @@ import re
 import struct
 import subprocess
 import sys
+import time
 import unicodedata
 import xml.etree.ElementTree as ET
 import zlib
@@ -87,6 +95,8 @@ ROLES = {
 }
 ROLE_OF = {alias: role for role, aliases in ROLES.items() for alias in aliases}
 AREA_DIGIT = {"block": "1", "deep": "2", "shallow": "3", "walk": "0"}
+ALIGN = {"topleft": (0, 0), "top": (.5, 0), "topright": (1, 0), "left": (0, .5), "center": (.5, .5), "right": (1, .5),
+         "bottomleft": (0, 1), "bottom": (.5, 1), "bottomright": (1, 1)}          # tile object alignment -> anchor in the picture
 TERRAIN_WORDS = {"block": 1, "chan": 1, "wall": 1, "deep": 2, "water": 2, "nuocsau": 2, "shallow": 3, "nuocnong": 3, "walk": 0, "open": 0, "diduoc": 0}
 
 
@@ -168,6 +178,28 @@ def _xml_data(el, layer):
             layer["compression"] = comp
 
 
+def _xml_object(o):
+    """Only the attributes the object has: a template instance stores just what it changes (see MapReader.template)."""
+    obj = {}
+    for key, conv in (("id", int), ("name", str), ("template", str), ("x", float), ("y", float), ("width", float), ("height", float), ("rotation", float), ("gid", int)):
+        if o.get(key) is not None:
+            obj[key] = conv(o.get(key))
+    if o.get("type") or o.get("class"):
+        obj["type"] = o.get("type") or o.get("class")
+    if o.get("visible") is not None:
+        obj["visible"] = o.get("visible") != "0"
+    if o.find("properties") is not None:
+        obj["properties"] = _xml_props(o)
+    if o.find("point") is not None:
+        obj["point"] = True
+    if o.find("ellipse") is not None:
+        obj["ellipse"] = True
+    poly = o.find("polygon") if o.find("polygon") is not None else o.find("polyline")
+    if poly is not None:
+        obj["polygon"] = [{"x": float(a), "y": float(b)} for a, b in (p.split(",") for p in poly.get("points", "").split())]
+    return obj
+
+
 def _xml_layer(el):
     tag = el.tag
     layer = {"name": el.get("name", ""), "visible": el.get("visible", "1") != "0", "opacity": float(el.get("opacity", 1)),
@@ -178,22 +210,7 @@ def _xml_layer(el):
         layer.update(type="tilelayer", width=int(el.get("width")), height=int(el.get("height")))
         _xml_data(el, layer)
     elif tag == "objectgroup":
-        layer.update(type="objectgroup", draworder=el.get("draworder", "topdown"), objects=[])
-        for o in el.findall("object"):
-            obj = {"id": int(o.get("id", 0)), "name": o.get("name", ""), "type": o.get("type") or o.get("class") or "",
-                   "x": float(o.get("x", 0)), "y": float(o.get("y", 0)), "width": float(o.get("width", 0)),
-                   "height": float(o.get("height", 0)), "rotation": float(o.get("rotation", 0)),
-                   "visible": o.get("visible", "1") != "0", "properties": _xml_props(o)}
-            if o.get("gid"):
-                obj["gid"] = int(o.get("gid"))
-            if o.find("point") is not None:
-                obj["point"] = True
-            if o.find("ellipse") is not None:
-                obj["ellipse"] = True
-            poly = o.find("polygon") if o.find("polygon") is not None else o.find("polyline")
-            if poly is not None:
-                obj["polygon"] = [{"x": float(a), "y": float(b)} for a, b in (p.split(",") for p in poly.get("points", "").split())]
-            layer["objects"].append(obj)
+        layer.update(type="objectgroup", draworder=el.get("draworder", "topdown"), objects=[_xml_object(o) for o in el.findall("object")])
     elif tag == "imagelayer":
         layer.update(type="imagelayer", repeatx=el.get("repeatx") == "1", repeaty=el.get("repeaty") == "1")
         _xml_image(el, layer)
@@ -220,11 +237,19 @@ def tmx_to_json(root):
     return tm
 
 
+def tx_to_json(root):
+    out = {"type": "template", "object": _xml_object(root.find("object"))}
+    ts = root.find("tileset")
+    if ts is not None:
+        out["tileset"] = {"firstgid": int(ts.get("firstgid")), "source": ts.get("source")}
+    return out
+
+
 def load_json_or_xml(path):
     path = Path(path)
-    if path.suffix.lower() in (".tmx", ".tsx"):
+    if path.suffix.lower() in (".tmx", ".tsx", ".tx"):
         root = ET.parse(path).getroot()
-        return tmx_to_json(root) if root.tag == "map" else tsx_to_json(root)
+        return {"map": tmx_to_json, "tileset": tsx_to_json, "template": tx_to_json}[root.tag](root)
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -289,18 +314,38 @@ class Tiles:
     """gid -> tileset entry and picture (with the flip flags applied)."""
 
     def __init__(self, tm, map_dir):
-        self.sets, self.images, self.cache = [], {}, {}
+        self.sets, self.images, self.cache, self.paths = [], {}, {}, {}
         for ref in tm.get("tilesets", []):
-            if "source" in ref:
-                path = (map_dir / ref["source"]).resolve()
-                if not path.exists():
-                    raise TiledError(f"không thấy tileset {ref['source']}")
-                ts, base = load_json_or_xml(path), path.parent
-            else:
-                ts, base = ref, map_dir
-            by_id = {t["id"]: t for t in ts.get("tiles", [])}
-            self.sets.append((ref["firstgid"], ts, base, by_id))
+            self.add(ref, map_dir)
+
+    def add(self, ref, folder):
+        """Register a tileset reference (external file or embedded) at its firstgid; returns that firstgid."""
+        if "source" in ref:
+            path = (folder / ref["source"]).resolve()
+            if not path.exists():
+                raise TiledError(f"không thấy tileset {ref['source']}")
+            ts, base = load_json_or_xml(path), path.parent
+            self.paths[str(path)] = ref["firstgid"]
+        else:
+            ts, base = ref, folder
+        by_id = {t["id"]: t for t in ts.get("tiles", [])}
+        self.sets.append((ref["firstgid"], ts, base, by_id))
         self.sets.sort(key=lambda s: s[0])
+        return ref["firstgid"]
+
+    def from_template(self, gid, ref, folder):
+        """A gid of a template's own tileset -> the same tile in this map (the tileset is added when the map lacks it)."""
+        path = str((folder / ref["source"]).resolve()) if "source" in ref else None
+        first = self.paths.get(path) if path else None
+        if first is None:
+            last = max((f + max(int(ts.get("tilecount") or 0), max(by_id or [0]) + 1) for f, ts, _, by_id in self.sets), default=1)
+            first = self.add({**ref, "firstgid": last + 1000}, folder)
+        return (gid & ~GID_MASK) | (first + (gid & GID_MASK) - ref["firstgid"])
+
+    def image_path(self, gid):
+        """The picture file of a tile in a collection of images (None for a tile cut from a sheet)."""
+        ts, _, base, tile = self.find(gid)
+        return (base / tile["image"]).resolve() if tile.get("image") else None
 
     def find(self, gid):
         gid &= GID_MASK
@@ -353,6 +398,30 @@ class Tiles:
         off = ts.get("tileoffset") or {}
         self.cache[gid] = (img, off.get("x", 0), off.get("y", 0))
         return self.cache[gid]
+
+
+def footprint(spec, size, cell, flags):
+    """Cells blocked by a tile with the property chan = "dx,dy[:digit] ..." (dx to the right, dy upwards, counted from the
+    bottom-left cell of the unflipped picture; digit 1 by default). Returns [(dx, dy, digit)] from the bottom-left cell of the
+    picture as drawn, after the tile's flips (the cells turn with the picture)."""
+    cw, ch = max(1, math.ceil(size[0] / cell)), max(1, math.ceil(size[1] / cell))
+    entries = []
+    for part in re.split(r"[;\s]+", str(spec or "").strip()):
+        if not part:
+            continue
+        m = re.fullmatch(r"(-?\d+),(-?\d+)(?::([0-4]))?", part)
+        if not m:
+            raise TiledError(f"thuộc tính chan '{spec}' phải có dạng dx,dy hoặc dx,dy:số, cách nhau bằng dấu cách")
+        if 0 <= int(m[1]) < cw and 0 <= int(m[2]) < ch:
+            entries.append((int(m[1]), int(m[2]), m[3] or "1"))
+    if not entries:
+        return []
+    grid = Image.new("L", (cw, ch), 0)
+    for k, (dx, dy, _) in enumerate(entries):
+        grid.putpixel((dx, ch - 1 - dy), k + 1)
+    grid = apply_flips(grid, flags)
+    return [(i, grid.height - 1 - j, entries[grid.getpixel((i, j)) - 1][2])
+            for j in range(grid.height) for i in range(grid.width) if grid.getpixel((i, j))]
 
 
 def layer_gids(layer, width, height):
@@ -410,7 +479,7 @@ def layer_role(layer, inherited):
 
 class MapReader:
     def __init__(self, path):
-        self.path = Path(path)
+        self.path = Path(path).resolve()
         self.tm = load_json_or_xml(self.path)
         tm = self.tm
         if (tm.get("orientation") or "orthogonal") != "orthogonal":
@@ -430,10 +499,11 @@ class MapReader:
         size = (self.W * self.tw, self.H * self.th)
         self.base = Image.new("RGBA", size, self.background)
         self.over = Image.new("RGBA", size, (0, 0, 0, 0))
-        self.tile_cells = [["0"] * self.W for _ in range(self.H)]      # from collides/terrain tiles in drawn layers
-        self.layer_cells = [[None] * self.W for _ in range(self.H)]    # from collision layers
-        self.area_cells = [[None] * self.W for _ in range(self.H)]     # from block/water objects
-        self.objects = []
+        # collision, strongest first: block/water objects, collision layers, collides/terrain tiles, then the cells a tile
+        # blocks by itself (property chan, learned from the VQSV5 maps; map property autoBlock = false turns them off)
+        self.area_cells, self.layer_cells, self.tile_cells, self.auto_cells = ([[None] * self.W for _ in range(self.H)] for _ in range(4))
+        self.auto_block = not (self.p.get("autoBlock") is False or norm(self.p.get("autoBlock")) in ("false", "0", "no", "khong"))
+        self.objects, self.templates = [], {}
         self.warnings = []
 
     # -- layers
@@ -452,7 +522,26 @@ class MapReader:
                 self.image_layer(layer, here, alpha, r)
             elif kind == "objectgroup":
                 for obj in layer.get("objects", []):
-                    self.objects.append((obj, r, shown, alpha, here))
+                    self.objects.append((self.template(obj), r, shown, alpha, here))
+
+    def template(self, obj):
+        """An object placed from a template (.tx/.tj): the template's fields, then whatever the object changes."""
+        if not obj.get("template"):
+            return obj
+        path = (self.path.parent / obj["template"]).resolve()
+        if str(path) not in self.templates:
+            if not path.exists():
+                raise TiledError(f"không thấy mẫu đối tượng {obj['template']}")
+            self.templates[str(path)] = load_json_or_xml(path)
+        tpl = self.templates[str(path)]
+        base = dict(tpl.get("object") or {})
+        if "gid" in base and tpl.get("tileset"):
+            base["gid"] = self.tiles.from_template(base["gid"], tpl["tileset"], path.parent)
+        merged = {**base, **{k: v for k, v in obj.items() if k not in ("template", "properties")}}
+        by_name = {q["name"]: q for q in (base.get("properties") or [])}
+        by_name.update({q["name"]: q for q in (obj.get("properties") or [])})
+        merged["properties"] = list(by_name.values())
+        return merged
 
     def tile_layer(self, layer, off, alpha, shown, role):
         gids = layer_gids(layer, self.W, self.H)
@@ -464,9 +553,16 @@ class MapReader:
             return
         for i, gid in enumerate(gids):
             if gid & GID_MASK:
-                digit = tile_terrain(self.tiles.meta(gid))
+                meta = self.tiles.meta(gid)
+                digit = tile_terrain(meta)
+                x, y = i % self.W, i // self.W
                 if digit is not None:
-                    self.tile_cells[i // self.W][i % self.W] = digit
+                    self.tile_cells[y][x] = digit
+                spec = props(meta).get("chan") if role == "below" and self.auto_block else None
+                if spec:
+                    for dx, dy, d in footprint(spec, self.tiles.picture(gid & GID_MASK)[0].size, self.tw, gid):
+                        if 0 <= x + dx < self.W and 0 <= y - dy < self.H:
+                            self.auto_cells[y - dy][x + dx] = d
         if not shown:
             return
         canvas = self.over if role == "above" else self.base
@@ -491,11 +587,19 @@ class MapReader:
                 paste_over(canvas, img, x, y)
 
     # -- objects
+    def tile_box(self, obj):
+        """Left, top, width, height of a tile object, by its tileset's object alignment (bottom-left unless set)."""
+        img = self.tiles.picture(obj["gid"])[0]
+        w, h = obj.get("width") or img.width, obj.get("height") or img.height
+        ax, ay = ALIGN.get(self.tiles.find(obj["gid"])[0].get("objectalignment") or "bottomleft", (0, 1))
+        return obj.get("x", 0) - ax * w, obj.get("y", 0) - ay * h, w, h
+
     def cell_of(self, obj):
         t = self.tw
         x, y, w, h = obj.get("x", 0), obj.get("y", 0), obj.get("width", 0) or 0, obj.get("height", 0) or 0
-        if obj.get("gid"):                                    # tile objects stand on their bottom edge
-            cx, cy = (x + w / 2) / t, (y - 0.01) / t
+        if obj.get("gid"):                                    # tile objects stand on the middle of their bottom edge
+            left, top, w, h = self.tile_box(obj)
+            cx, cy = (left + w / 2) / t, (top + h - 0.01) / t
         elif obj.get("point") or (w == 0 and h == 0 and not obj.get("polygon")):
             cx, cy = x / t, y / t
         else:
@@ -509,7 +613,8 @@ class MapReader:
             xs, ys = [x + p["x"] for p in obj["polygon"]], [y + p["y"] for p in obj["polygon"]]
             return min(xs), min(ys), max(xs), max(ys)
         if obj.get("gid"):
-            return x, y - h, x + w, y
+            left, top, w, h = self.tile_box(obj)
+            return left, top, left + w, top + h
         return x, y, x + w, y + h
 
     def cells_of(self, obj):
@@ -523,12 +628,12 @@ class MapReader:
 
     def draw_tile_object(self, obj, role, alpha, off):
         img, ox, oy = self.tiles.picture(obj["gid"])
-        w, h = round(obj.get("width") or img.width), round(obj.get("height") or img.height)
-        if (w, h) != img.size:
-            img = img.resize((max(1, w), max(1, h)), Image.Resampling.NEAREST)
+        left, top, w, h = self.tile_box(obj)
+        if (round(w), round(h)) != img.size:
+            img = img.resize((max(1, round(w)), max(1, round(h))), Image.Resampling.NEAREST)
         if obj.get("rotation"):
             self.warnings.append(f"đối tượng gạch #{obj.get('id')} bị xoay; ảnh được vẽ không xoay")
-        paste_over(self.over if role == "above" else self.base, fade(img, alpha), obj["x"] + off[0] + ox, obj["y"] - h + off[1] + oy)
+        paste_over(self.over if role == "above" else self.base, fade(img, alpha), left + off[0] + ox, top + off[1] + oy)
 
     def inward(self, x, y, grid):
         """The open cell next to an exit, toward the inside of the map."""
@@ -556,7 +661,8 @@ class MapReader:
             if r in AREA_DIGIT:
                 for cx, cy in self.cells_of(obj):
                     self.area_cells[cy][cx] = AREA_DIGIT[r]
-        grid = [[self.area_cells[y][x] or self.layer_cells[y][x] or self.tile_cells[y][x] for x in range(self.W)] for y in range(self.H)]
+        grid = [[self.area_cells[y][x] or self.layer_cells[y][x] or self.tile_cells[y][x] or self.auto_cells[y][x] or "0"
+                 for x in range(self.W)] for y in range(self.H)]
         out = {"id": self.id, "title": self.title, "width": self.W, "height": self.H, "tileSize": GAME_CELL,
                "tiled": {"source": self.path.relative_to(ROOT).as_posix() if self.path.is_relative_to(ROOT) else self.path.name,
                          "background": self.background, "cell": self.tw},
@@ -606,7 +712,11 @@ class MapReader:
                 out["arrivals"].setdefault(target, self.inward(x, y, grid))
             elif r == "npc":
                 lines = [line.strip() for line in str(p.get("dialogue") or p.get("loithoai") or "").splitlines() if line.strip()]
-                art = str(p.get("art") or p.get("hinh") or "villager").strip()
+                art = str(p.get("art") or p.get("hinh") or "").strip()
+                picture = self.tiles.image_path(obj["gid"]) if not art and obj.get("gid") else None
+                if picture and picture.is_relative_to((PROTO / "assets").resolve()):
+                    art = picture.relative_to((PROTO / "assets").resolve()).as_posix()      # an NPC placed as its own picture
+                art = art or "villager"
                 npc = {"id": str(p.get("id") or f"{self.id}-npc-{obj.get('id')}"), "name": name or "Người dân", "x": x, "y": y,
                        "asset": NPC_ART.get(norm(art), art), "dialogue": lines or ["..."]}
                 if not (PROTO / "assets" / npc["asset"]).exists():
@@ -765,30 +875,85 @@ def attach_tiled_maps(maps, data_dir=PROTO / "data", log=print):
     return [m["id"] for m in imported]
 
 
-def main():
-    ap = argparse.ArgumentParser(description="Đọc map Tiled vào game VQSV")
-    ap.add_argument("files", nargs="*", help="file .tmx/.tmj/.json (mặc định: mọi map trong tiled/maps/)")
-    ap.add_argument("--check", action="store_true", help="chỉ kiểm tra, không ghi file")
-    ap.add_argument("--out-dir", help="ghi tiled_maps.json và ảnh vào thư mục này (để thử)")
-    ap.add_argument("--no-build", action="store_true", help="không chạy build_prototype_bootstrap.py sau khi đọc")
-    args = ap.parse_args()
-    files = [Path(f) for f in args.files] or sorted(p for p in TILED_DIR.glob("*") if p.suffix.lower() in (".tmx", ".tmj", ".json"))
+def grid_text(m):
+    """The map as text: # chặn, ~ nước sâu, , nước nông, . đi được; K Kael, L lối đi, N NPC, R rương, Q chỗ nhiệm vụ."""
+    rows = [[{"1": "#", "4": "#", "2": "~", "3": ","}.get(c, ".") for c in row] for row in m["collision"]]
+    marks = [(m["entities"]["player"], "K")] + [(l, "L") for l in m["links"]] + [(n, "N") for n in m["entities"]["villagers"]]
+    marks += [(c, "R") for c in m["chests"]] + [(q, "Q") for q in (m.get("questSpots") or {}).values()]
+    for at, mark in marks:
+        rows[at["y"]][at["x"]] = mark
+    head = "    " + "".join(str(x % 10) for x in range(m["width"]))
+    return "\n".join([head] + [f"{y:3} " + "".join(row) for y, row in enumerate(rows)])
+
+
+def map_files():
+    return sorted(p for p in TILED_DIR.glob("*") if p.suffix.lower() in (".tmx", ".tmj", ".json"))
+
+
+def run(files, args):
+    """One import; returns False on a Tiled error (already printed)."""
     try:
         maps, warnings = import_maps(files, args.out_dir, args.check)
     except TiledError as err:
         print(f"LỖI: {err}", file=sys.stderr)
-        sys.exit(1)
+        return False
     for m in maps:
         print(f"  {m['id']}: {m['title']} ({m['width']} × {m['height']} ô, {len(m['links'])} ô lối đi, "
               f"{len(m['entities']['villagers'])} NPC, {len(m['chests'])} rương)")
+        if args.show:
+            print("    # chặn  ~ nước sâu  , nước nông  . đi được  K Kael  L lối đi  N NPC  R rương  Q chỗ nhiệm vụ")
+            print(grid_text(m))
     for w in warnings:
         print(f"  chú ý: {w}")
     if args.check:
         print(f"Đã kiểm tra {len(maps)} map Tiled, không ghi file.")
-        return
+        return True
     print(f"Đã đọc {len(maps)} map Tiled.")
     if not args.out_dir and not args.no_build:
-        subprocess.run([sys.executable, str(ROOT / "tools" / "build_prototype_bootstrap.py")], check=True, cwd=ROOT)
+        done = subprocess.run([sys.executable, str(ROOT / "tools" / "build_prototype_bootstrap.py")], cwd=ROOT)
+        if done.returncode:
+            return False
+    return True
+
+
+def watched():
+    """Modification times of everything a map can use: maps, tilesets, templates and their pictures."""
+    seen = {}
+    for folder in (TILED_DIR, ROOT / "tiled" / "tilesets", ROOT / "tiled" / "templates"):
+        for p in folder.rglob("*") if folder.exists() else []:
+            if p.is_file() and p.suffix.lower() in (".tmx", ".tmj", ".json", ".tsx", ".tsj", ".tx", ".tj", ".png", ".webp", ".jpg", ".jpeg"):
+                seen[str(p)] = p.stat().st_mtime_ns
+    return seen
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Đọc map Tiled vào game VQSV")
+    ap.add_argument("files", nargs="*", help="file .tmx/.tmj/.json (mặc định: mọi map trong tiled/maps/)")
+    ap.add_argument("--check", action="store_true", help="chỉ kiểm tra, không ghi file")
+    ap.add_argument("--show", action="store_true", help="in sơ đồ va chạm của từng map")
+    ap.add_argument("--watch", action="store_true", help="chạy mãi: mỗi lần lưu map trong Tiled thì tự đọc lại (Ctrl+C để dừng)")
+    ap.add_argument("--out-dir", help="ghi tiled_maps.json và ảnh vào thư mục này (để thử)")
+    ap.add_argument("--no-build", action="store_true", help="không chạy build_prototype_bootstrap.py sau khi đọc")
+    args = ap.parse_args()
+    if not args.watch:
+        sys.exit(0 if run([Path(f) for f in args.files] or map_files(), args) else 1)
+    print("Đang theo dõi thư mục tiled/. Lưu map trong Tiled rồi tải lại trang game. Ctrl+C để dừng.")
+    last = None
+    try:
+        while True:
+            now = watched()
+            if now != last:
+                if last is not None:
+                    time.sleep(0.4)                                   # let Tiled finish writing
+                    print(time.strftime("%H:%M:%S"), "có thay đổi, đọc lại…")
+                try:
+                    run([Path(f) for f in args.files] or map_files(), args)
+                except (ValueError, ET.ParseError, OSError) as err:    # a file caught half-written: wait for the next save
+                    print(f"LỖI: chưa đọc được ({err})", file=sys.stderr)
+                last = watched()
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Dừng theo dõi.")
 
 
 if __name__ == "__main__":

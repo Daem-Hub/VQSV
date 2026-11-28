@@ -146,7 +146,7 @@
   {
    "name": "ghichu",
    "type": "string",
-   "value": "Bộ gạch VQSV5 số 8, dùng cho các map VQSV5 38, 39, 40, 41, 42, 57, 58"
+   "value": "Bộ gạch VQSV5 số 8, dùng cho các map VQSV5 38, 39, 40, 41, 42, 57, 58. Thuộc tính chan của gạch: các ô gạch đó tự chặn (TRIAL, học từ 68 map gốc)"
   }
  ]
 }

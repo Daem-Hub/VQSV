@@ -1,0 +1,39 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "link",
+  "name": "Lối đi",
+  "width": 20,
+  "height": 20,
+  "properties": [
+   {
+    "name": "target",
+    "type": "string",
+    "value": ""
+   },
+   {
+    "name": "spawnX",
+    "type": "int",
+    "value": -1
+   },
+   {
+    "name": "spawnY",
+    "type": "int",
+    "value": -1
+   },
+   {
+    "name": "backX",
+    "type": "int",
+    "value": -1
+   },
+   {
+    "name": "backY",
+    "type": "int",
+    "value": -1
+   }
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "wild",
+  "name": "Pet hoang dã",
+  "width": 60,
+  "height": 60,
+  "properties": [
+   {
+    "name": "pets",
+    "type": "string",
+    "value": ""
+   },
+   {
+    "name": "levels",
+    "type": "string",
+    "value": "3-5"
+   }
+  ]
+ }
+}

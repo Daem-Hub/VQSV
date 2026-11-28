@@ -1,8 +1,11 @@
 // Công cụ đọc map Tiled (tools/import_tiled.py, tools/tiled_vqsv5.py) và map mẫu tiled/maps/rung_tay.tmj trong game.
 // 1. Bộ map thử .tmx/.tsx/.tmj: lớp nhóm, lớp ảnh, lớp "Trên", lớp va chạm ẩn, gạch collides/terrain, mã hóa CSV/base64/zlib,
-//    lối đi tự ghép, NPC, rương, pet hoang dã, chỗ nhiệm vụ, vùng chặn, đồ trang trí, các lỗi thường gặp, nối map vào thế giới.
+//    lối đi tự ghép, NPC, rương, pet hoang dã, chỗ nhiệm vụ, vùng chặn, đồ trang trí, các lỗi thường gặp, nối map vào thế giới,
+//    mẫu đối tượng .tx/.tj, ô tự chặn (chan) xoay/lật theo gạch, autoBlock = false, NPC đặt bằng hình, căn lề đối tượng gạch.
 // 2. Map VQSV5 xuất sang Tiled rồi đọc lại cho đúng ảnh và va chạm của map đi lại đang dùng.
 // 3. Map mẫu trong game: đi từ làng sang, suối chặn, chỗ lội, NPC, rương, pet hoang dã, quay về, lưu/tải, ghim chỗ nhiệm vụ.
+// 4. Nếu máy có cài Tiled (apt-get install tiled): Tiled lưu map mẫu ra .tmx vẫn đọc ra như cũ, và tmxrasterizer của Tiled
+//    vẽ map VQSV5 giống hệt ảnh công cụ tạo ra.
 const fs = require('fs'), os = require('os'), path = require('path'), vm = require('vm'), zlib = require('zlib'), assert = require('assert');
 const { execFileSync } = require('child_process');
 const game = path.join(__dirname, '..'), root = path.join(game, 'prototype');
@@ -63,6 +66,33 @@ fs.writeFileSync(path.join(tmp, 'c.tmj'), JSON.stringify({ ...fixtureB, properti
   { id: 3, name: 'Đối tượng', type: 'objectgroup', objects: [{ id: 1, name: '', type: 'Cửa', x: 50, y: 30, point: true, properties: [prop('target', 'string', 'town'), prop('backX', 'int', 4), prop('backY', 'int', 4)] }] }] }));
 fs.writeFileSync(path.join(tmp, 'inf.tmj'), JSON.stringify({ ...fixtureB, infinite: true }));
 fs.writeFileSync(path.join(tmp, 'flat.tmj'), JSON.stringify({ ...fixtureB, tileheight: 16 }));
+// pieces that block cells by themselves (chan), turned by the tile flips; NPC pictures; object templates
+fs.copyFileSync(path.join(game, 'tiled/tilesets/vqsv5_bo04/008.png'), path.join(tmp, 'tall.png'));      // a 20 × 60 VQSV5 piece
+const villagerPic = path.relative(tmp, path.join(root, 'assets/illustrations/villager_hd.png')).split(path.sep).join('/');
+fs.writeFileSync(path.join(tmp, 'pieces.tsj'), JSON.stringify({ type: 'tileset', name: 'pieces', tilewidth: 20, tileheight: 60, tilecount: 1, columns: 0,
+  tiles: [{ id: 0, image: 'tall.png', imagewidth: 20, imageheight: 60, properties: [prop('chan', 'string', '0,0 0,1')] }] }));
+fs.writeFileSync(path.join(tmp, 'people.tsj'), JSON.stringify({ type: 'tileset', name: 'people', tilewidth: 72, tileheight: 152, tilecount: 1, columns: 0,
+  tiles: [{ id: 0, image: villagerPic, imagewidth: 72, imageheight: 152 }] }));
+fs.writeFileSync(path.join(tmp, 'people_b.tsj'), JSON.stringify({ type: 'tileset', name: 'people_b', tilewidth: 72, tileheight: 152, tilecount: 1, columns: 0,
+  objectalignment: 'bottom', tiles: [{ id: 0, image: villagerPic, imagewidth: 72, imageheight: 152 }] }));
+fs.mkdirSync(path.join(tmp, 'tpl'));
+fs.writeFileSync(path.join(tmp, 'tpl/npc.tx'), `<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../people.tsj"/>
+ <object name="Dân làng" type="npc" gid="1" width="18" height="38"><properties><property name="dialogue" value="Chào!"/></properties></object>
+</template>`);
+fs.writeFileSync(path.join(tmp, 'tpl/box.tj'), JSON.stringify({ type: 'template', object: { type: 'chest', name: 'Rương', width: 20, height: 20, properties: [prop('gold', 'int', 70)] } }));
+const FLIP_V = 0x40000000, FLIP_D = 0x20000000;
+const fixtureD = { type: 'map', orientation: 'orthogonal', renderorder: 'right-down', width: 6, height: 6, tilewidth: 20, tileheight: 20, infinite: false,
+  properties: [prop('id', 'string', 'fx-d')], tilesets: [{ firstgid: 1, source: 'pieces.tsj' }, { firstgid: 2, source: 'people_b.tsj' }],
+  layers: [
+    { id: 1, name: 'Cây', type: 'tilelayer', width: 6, height: 6, opacity: 1, visible: true, data: grid(6, 6, [[1, 3, 1], [3, 3, (1 | FLIP_V) >>> 0], [0, 5, (1 | FLIP_D) >>> 0]]) },
+    { id: 2, name: 'Đối tượng', type: 'objectgroup', objects: [
+      { id: 1, template: 'tpl/npc.tx', x: 60, y: 40 },
+      { id: 2, template: 'tpl/box.tj', x: 80, y: 80, properties: [prop('gold', 'int', 5)] },
+      { id: 3, name: 'Bà Tư', type: 'npc', gid: 2, x: 50, y: 60, width: 18, height: 38, properties: [prop('dialogue', 'string', 'Ừ.')] }] }] };
+fs.writeFileSync(path.join(tmp, 'd.tmj'), JSON.stringify(fixtureD));
+fs.writeFileSync(path.join(tmp, 'e.tmj'), JSON.stringify({ ...fixtureD, properties: [prop('id', 'string', 'fx-e'), prop('autoBlock', 'bool', false)], layers: [fixtureD.layers[0]] }));
 
 const out = path.join(tmp, 'out');
 const r = py(`
@@ -70,18 +100,19 @@ from pathlib import Path
 from PIL import Image
 from import_tiled import import_maps, attach_tiled_maps, TiledError
 T = Path(${JSON.stringify(tmp)}); O = T / "out"
-maps, warns = import_maps([T / "a.tmx", T / "b.tmj", T / "c.tmj"], O)
+maps, warns = import_maps([T / "a.tmx", T / "b.tmj", T / "c.tmj", T / "d.tmj", T / "e.tmj"], O)
 px = lambda name, x, y: list(Image.open(O / "maps" / name).convert("RGBA").getpixel((x, y)))
 res = {"maps": {m["id"]: m for m in maps}, "warns": warns,
        "a_bg": px("fx-a.png", 70, 70), "a_row0": px("fx-a.png", 110, 10), "a_hidden": px("fx-a.png", 110, 90), "a_roof_base": px("fx-a.png", 50, 50),
        "a_roof_over": px("fx-a_over.png", 50, 50), "b_tile": px("fx-b.png", 30, 50), "b_image": px("fx-b.png", 10, 70), "b_deco": px("fx-b.png", 10, 10),
-       "b_over": (O / "maps" / "fx-b_over.png").exists()}
+       "b_over": (O / "maps" / "fx-b_over.png").exists(), "d_turned": px("fx-d.png", 50, 110), "d_bg": px("fx-d.png", 110, 110)}
 errors = {}
 for name in ("inf.tmj", "flat.tmj"):
     try: import_maps([T / name], check=True)
     except TiledError as e: errors[name] = str(e)
 world = {"town": {"id": "town", "title": "Phố", "width": 8, "height": 8, "links": []}}
 res["attached"] = attach_tiled_maps(world, O, log=lambda *a: None)
+res["attached_maps"] = {k: world[k] for k in res["attached"]}
 res["town"] = world["town"]; res["world_c"] = world["fx-c"]; res["world_a"] = world["fx-a"]
 for label, w in (("dup", {"town": world["town"], "fx-a": {"id": "fx-a"}}), ("missing", {})):
     try: attach_tiled_maps(w, O, log=lambda *a: None)
@@ -117,14 +148,26 @@ assert.equal(r.b_over, false, 'no overlay file when nothing is drawn above Kael'
 assert.match(r.errors['inf.tmj'], /Infinite/);
 assert.match(r.errors['flat.tmj'], /vuông/);
 // joining the world: a door with backX/backY adds the way out in the target map, both arrival cells are worked out
-assert.deepEqual(r.attached, ['fx-a', 'fx-b', 'fx-c']);
+assert.deepEqual(r.attached, ['fx-a', 'fx-b', 'fx-c', 'fx-d', 'fx-e']);
 assert.deepEqual(r.town.links, [{ x: 4, y: 4, target: 'fx-c', spawnX: 2, spawnY: 2, label: 'fx-c', kind: 'exit' }]);
 assert.deepEqual(r.world_c.links, [{ x: 2, y: 1, target: 'town', spawnX: 4, spawnY: 5, label: 'Phố', kind: 'door' }]);
 assert.deepEqual(r.town.arrivals, { 'fx-c': [4, 5] });
 assert.equal(r.world_a.links[0].label, 'Thử B');
 assert.match(r.errors.dup, /trùng id/);
 assert.match(r.errors.missing, /không có/);
-console.log('Tiled import: layers, encodings, collision, objects, pictures, errors and joining the world passed.');
+// chan: a 20 × 60 piece blocking its two lower cells; flipped vertically it blocks the two upper ones, turned (diagonal flip) it lies
+// along the row and blocks its 2nd and 3rd cells. With autoBlock = false nothing is blocked.
+const D = r.maps['fx-d'];
+assert.deepEqual(D.collision, ['000000', '000100', '010100', '010000', '000000', '011000']);
+assert.deepEqual(r.maps['fx-e'].collision, ['000000', '000000', '000000', '000000', '000000', '000000']);
+assert.notDeepEqual(r.d_turned, r.d_bg, 'the turned piece is drawn along row 5');
+// a template from another folder with its own tileset; a JSON template with a changed property; an NPC placed as its picture
+// (its picture is the NPC art) and a tileset that aligns objects on their bottom middle
+assert.deepEqual(D.entities.villagers, [
+  { id: 'fx-d-npc-1', name: 'Dân làng', x: 3, y: 1, asset: 'illustrations/villager_hd.png', dialogue: ['Chào!'] },
+  { id: 'fx-d-npc-3', name: 'Bà Tư', x: 2, y: 2, asset: 'illustrations/villager_hd.png', dialogue: ['Ừ.'] }]);
+assert.deepEqual(D.chests, [{ id: 'fx-d:tiled-2', x: 4, y: 4, reward: { kind: 'gold', kim_tien: 5 } }]);
+console.log('Tiled import: layers, encodings, collision, self-blocking pieces, templates, objects, pictures, errors and joining the world passed.');
 
 // ---------------------------------------------------------------- 2. VQSV5 maps through Tiled and back
 const rt = py(`
@@ -212,5 +255,37 @@ forest.questSpots = { 'TEST:0': { x: 19, y: 17 } };
 assert.deepEqual(run(`JSON.parse(JSON.stringify(window.Quests.kit.place({ map: "${ID}", frac: [.1, .1] }, "${ID}:TEST:0")))`), { x: 19, y: 17 });
 assert.notDeepEqual(run(`JSON.parse(JSON.stringify(window.Quests.kit.place({ map: "${ID}", frac: [.1, .1] }, "${ID}:TEST:1")))`), { x: 19, y: 17 });
 delete forest.questSpots;
-fs.rmSync(tmp, { recursive: true, force: true });
 console.log('Sample Tiled map: the way in from the village, stream and fords, NPC, chest, wild pets, save/load, way back and quest pin passed.');
+
+// ---------------------------------------------------------------- 4. against Tiled itself, when it is installed
+const has = cmd => { try { execFileSync('sh', ['-c', `command -v ${cmd}`], { stdio: 'ignore' }); return true; } catch (_) { return false; } };
+if (has('tiled') && has('tmxrasterizer')) {
+  const real = path.join(tmp, 'real'), env = { ...process.env, QT_QPA_PLATFORM: 'offscreen', XDG_RUNTIME_DIR: path.join(tmp, 'xdg') };
+  fs.mkdirSync(env.XDG_RUNTIME_DIR, { mode: 0o700 });
+  fs.cpSync(path.join(game, 'tiled'), path.join(real, 'tiled'), { recursive: true });
+  const tiled = (...args) => execFileSync('tiled', args, { env, stdio: 'ignore' });
+  tiled('--export-map', 'tmx', path.join(real, 'tiled/maps/rung_tay.tmj'), path.join(real, 'tiled/maps/rung_tay.tmx'));
+  for (const n of ['18', '24']) execFileSync('tmxrasterizer', ['--no-smoothing', '--hide-layer', 'Va chạm', '--hide-layer', 'Đối tượng',
+    path.join(real, `tiled/vqsv5/vqsv5_${n}.tmj`), path.join(real, `r${n}.png`)], { env, stdio: 'ignore' });
+  const same = py(`
+from pathlib import Path
+from PIL import Image, ImageChops
+from import_tiled import import_maps
+R = Path(${JSON.stringify(real)})
+a = import_maps([R / "tiled/maps/rung_tay.tmj"], R / "a")[0][0]
+b = import_maps([R / "tiled/maps/rung_tay.tmx"], R / "b")[0][0]
+a["tiled"].pop("source"); b["tiled"].pop("source")
+res = {"tmx": a == b and not ImageChops.difference(Image.open(R / "a/maps" / f"{a['id']}.png"), Image.open(R / "b/maps" / f"{b['id']}.png")).getbbox()}
+for n in ("18", "24"):
+    m = import_maps([R / f"tiled/vqsv5/vqsv5_{n}.tmj"], R / f"v{n}")[0][0]
+    want = Image.open(R / f"v{n}/maps/{m['id']}.png").convert("RGBA")
+    over = R / f"v{n}/maps/{m['id']}_over.png"
+    if over.exists(): want.alpha_composite(Image.open(over).convert("RGBA"))
+    got = Image.new("RGBA", want.size, m["tiled"]["background"]); got.alpha_composite(Image.open(R / f"r{n}.png").convert("RGBA"))
+    res[n] = not ImageChops.difference(got.convert("RGB"), want.convert("RGB")).getbbox()
+print(json.dumps(res))
+`);
+  assert.deepEqual(same, { tmx: true, 18: true, 24: true });
+  console.log('Tiled itself: the sample map saved as .tmx reads the same, and tmxrasterizer draws VQSV5 maps exactly like the importer.');
+} else console.log('Tiled is not installed: skipped the checks against Tiled itself (apt-get install tiled).');
+fs.rmSync(tmp, { recursive: true, force: true });

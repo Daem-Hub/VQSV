@@ -31,7 +31,14 @@
    "id": 2,
    "image": "vqsv5_bo04/002.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0"
+    }
+   ]
   },
   {
    "id": 3,
@@ -67,7 +74,14 @@
    "id": 8,
    "image": "vqsv5_bo04/008.png",
    "imagewidth": 20,
-   "imageheight": 60
+   "imageheight": 60,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0 0,1 0,2"
+    }
+   ]
   },
   {
    "id": 9,
@@ -79,13 +93,27 @@
    "id": 10,
    "image": "vqsv5_bo04/010.png",
    "imagewidth": 20,
-   "imageheight": 60
+   "imageheight": 60,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0 0,1"
+    }
+   ]
   },
   {
    "id": 11,
    "image": "vqsv5_bo04/011.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0"
+    }
+   ]
   },
   {
    "id": 12,
@@ -97,7 +125,14 @@
    "id": 13,
    "image": "vqsv5_bo04/013.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0"
+    }
+   ]
   },
   {
    "id": 14,
@@ -115,7 +150,14 @@
    "id": 16,
    "image": "vqsv5_bo04/016.png",
    "imagewidth": 20,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0 0,1"
+    }
+   ]
   },
   {
    "id": 17,
@@ -254,7 +296,7 @@
   {
    "name": "ghichu",
    "type": "string",
-   "value": "Bộ gạch VQSV5 số 4, dùng cho các map VQSV5 11, 12, 13, 14, 15, 16, 17, 18, 19, 20"
+   "value": "Bộ gạch VQSV5 số 4, dùng cho các map VQSV5 11, 12, 13, 14, 15, 16, 17, 18, 19, 20. Thuộc tính chan của gạch: các ô gạch đó tự chặn (TRIAL, học từ 68 map gốc)"
   }
  ]
 }

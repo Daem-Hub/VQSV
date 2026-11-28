@@ -1,0 +1,19 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "chest",
+  "name": "Rương",
+  "width": 20,
+  "height": 20,
+  "properties": [
+   {
+    "name": "gold",
+    "type": "int",
+    "value": 100
+   }
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "quest",
+  "name": "MQ001:0",
+  "width": 20,
+  "height": 20
+ }
+}

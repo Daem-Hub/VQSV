@@ -1,0 +1,24 @@
+{
+ "type": "template",
+ "object": {
+  "id": 1,
+  "rotation": 0,
+  "visible": true,
+  "type": "chest",
+  "name": "Rương",
+  "width": 20,
+  "height": 20,
+  "properties": [
+   {
+    "name": "item",
+    "type": "int",
+    "value": 1
+   },
+   {
+    "name": "quantity",
+    "type": "int",
+    "value": 1
+   }
+  ]
+ }
+}

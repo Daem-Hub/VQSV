@@ -25,7 +25,14 @@
    "id": 1,
    "image": "vqsv5_bo05/001.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0"
+    }
+   ]
   },
   {
    "id": 2,
@@ -37,7 +44,14 @@
    "id": 3,
    "image": "vqsv5_bo05/003.png",
    "imagewidth": 20,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0 0,1"
+    }
+   ]
   },
   {
    "id": 4,
@@ -49,7 +63,14 @@
    "id": 5,
    "image": "vqsv5_bo05/005.png",
    "imagewidth": 40,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0 0,1 1,1"
+    }
+   ]
   },
   {
    "id": 6,
@@ -61,25 +82,53 @@
    "id": 7,
    "image": "vqsv5_bo05/007.png",
    "imagewidth": 20,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2 0,1:2"
+    }
+   ]
   },
   {
    "id": 8,
    "image": "vqsv5_bo05/008.png",
    "imagewidth": 20,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2 0,1:2"
+    }
+   ]
   },
   {
    "id": 9,
    "image": "vqsv5_bo05/009.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0"
+    }
+   ]
   },
   {
    "id": 10,
    "image": "vqsv5_bo05/010.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2"
+    }
+   ]
   },
   {
    "id": 11,
@@ -103,7 +152,14 @@
    "id": 14,
    "image": "vqsv5_bo05/014.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2"
+    }
+   ]
   },
   {
    "id": 15,
@@ -115,19 +171,40 @@
    "id": 16,
    "image": "vqsv5_bo05/016.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2"
+    }
+   ]
   },
   {
    "id": 17,
    "image": "vqsv5_bo05/017.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2"
+    }
+   ]
   },
   {
    "id": 18,
    "image": "vqsv5_bo05/018.png",
    "imagewidth": 40,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2 1,0:2"
+    }
+   ]
   },
   {
    "id": 19,
@@ -139,7 +216,14 @@
    "id": 20,
    "image": "vqsv5_bo05/020.png",
    "imagewidth": 20,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2"
+    }
+   ]
   },
   {
    "id": 21,
@@ -151,7 +235,14 @@
    "id": 22,
    "image": "vqsv5_bo05/022.png",
    "imagewidth": 40,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,0:2 1,0:2 0,1 1,1:2"
+    }
+   ]
   },
   {
    "id": 23,
@@ -218,7 +309,7 @@
   {
    "name": "ghichu",
    "type": "string",
-   "value": "Bộ gạch VQSV5 số 5, dùng cho các map VQSV5 28, 29, 30, 31, 32, 48"
+   "value": "Bộ gạch VQSV5 số 5, dùng cho các map VQSV5 28, 29, 30, 31, 32, 48. Thuộc tính chan của gạch: các ô gạch đó tự chặn (TRIAL, học từ 68 map gốc)"
   }
  ]
 }

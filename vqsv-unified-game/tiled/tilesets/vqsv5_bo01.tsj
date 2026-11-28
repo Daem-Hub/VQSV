@@ -31,13 +31,27 @@
    "id": 2,
    "image": "vqsv5_bo01/002.png",
    "imagewidth": 40,
-   "imageheight": 20
+   "imageheight": 20,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "1,0"
+    }
+   ]
   },
   {
    "id": 3,
    "image": "vqsv5_bo01/003.png",
    "imagewidth": 40,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "1,1"
+    }
+   ]
   },
   {
    "id": 4,
@@ -55,7 +69,14 @@
    "id": 6,
    "image": "vqsv5_bo01/006.png",
    "imagewidth": 20,
-   "imageheight": 40
+   "imageheight": 40,
+   "properties": [
+    {
+     "name": "chan",
+     "type": "string",
+     "value": "0,1"
+    }
+   ]
   },
   {
    "id": 7,
@@ -206,7 +227,7 @@
   {
    "name": "ghichu",
    "type": "string",
-   "value": "Bộ gạch VQSV5 số 1, dùng cho các map VQSV5 2, 27"
+   "value": "Bộ gạch VQSV5 số 1, dùng cho các map VQSV5 2, 27. Thuộc tính chan của gạch: các ô gạch đó tự chặn (TRIAL, học từ 68 map gốc)"
   }
  ]
 }
